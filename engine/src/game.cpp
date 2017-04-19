@@ -7,12 +7,11 @@ engine::Game::Game(std::string game_name, int window_width, int window_heigth){
 	this->game_name = game_name;
 	this->window_width = window_width;
 	this->window_heigth = window_heigth;
-	this->current_scene = NULL;
-	this->last_scene = NULL;
 
 	InitSDL();
 	game_state = engine::GameState::PLAY;
 }
+
 
 /* Initializing SDL */
 void engine::Game::InitSDL(){
@@ -34,6 +33,7 @@ void engine::Game::InitSDL(){
 
 void engine::Game::CreateWindow(){
 	/* Create Window */
+
 	window = SDL_CreateWindow(
 		game_name.c_str(),      // Game window title
 		SDL_WINDOWPOS_CENTERED, // Window opening position x.
@@ -49,6 +49,7 @@ void engine::Game::CreateWindow(){
 	}
 
 	/* Create Canvas */
+
 	canvas = SDL_CreateRenderer(
 		window,                         // Window pointer
 		-1,                             // The index to the rendering driver, or -1 to the first one
@@ -61,6 +62,7 @@ void engine::Game::CreateWindow(){
 	}
 
 	/* Set window color when redrawing */
+
 	SDL_SetRenderDrawColor(
 		canvas, // Renderer pointer
 		0xff,   // Red color
@@ -74,11 +76,37 @@ void engine::Game::Run(){
 	/* Create Window */
 	CreateWindow();
 
+	/* Load Texture */
+
+	SDL_Texture *play_button_texture = NULL;
+
+	SDL_Surface *image = NULL;
+
+	image = IMG_Load("sprites/scottpilgrim_multiple.png");
+
+	if(image == NULL){
+		std::cout << "Couldn't load sprite." << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
+
+	play_button_texture = SDL_CreateTextureFromSurface(canvas, image);
+
+	if(play_button_texture == NULL){
+		std::cout << "Couldn't create texture from image." << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
+
+	int sprite_size_h = 0;
+	int sprite_size_w = 0;
+
+	SDL_FreeSurface(image);
+	image = NULL;
+
+	/* Finished Loading texture */
+
 	/* Main Loop */
 	while(game_state == engine::GameState::PLAY){
-		if(StartAndStopScenes() == false){
-			break;
-		}
+
 		/* Reading input (events) */
 		SDL_Event _event;
 
@@ -87,39 +115,44 @@ void engine::Game::Run(){
 				case SDL_QUIT:
 					game_state = engine::GameState::EXIT;
 					break;
+				case SDL_KEYDOWN:
+					switch(_event.key.keysym.sym){
+						case SDLK_a:
+							break;
+						case SDLK_d:
+							sprite_size_w = (sprite_size_w + 108) % 864;
+							break;
+						default:
+							break;
+					}
 				default:
 					break;
 			}
+
 			/* Draw */
 			SDL_RenderClear(canvas);
-			std::cout << "Drawing Scene!" << std::endl;
-			current_scene->Draw(canvas);
+			SDL_Rect canvasQuad = {10, 10, 108, 140};
+			SDL_Rect renderQuad = {sprite_size_w, sprite_size_h, 108, 140};
+			SDL_RenderCopy(
+				canvas,
+				play_button_texture,
+				&renderQuad,
+				&canvasQuad
+				);
 			SDL_RenderPresent(canvas);
 		}
 	}
+
 	/* Finishing Main Loop */
+
+	/* Terminate Texture */
+
+	SDL_DestroyTexture(play_button_texture);
+	play_button_texture = NULL;
 
 	/* Shutdown SDL */
 	TerminateSDL();
 
-}
-
-bool engine::Game::AddScene(Scene &scene){
-	auto scene_name = scene.GetSceneName();
-
-	if(scene_map.find(scene_name) != scene_map.end()){
-		std::cout << "Scene already exists!" << std::endl;
-		return false;
-	}
-
-	scene_map[scene_name] = &scene;
-
-	if(current_scene == NULL){
-		std::cout << "Null current scene! Changing Scenes!" << std::endl;
-		ChangeScene(scene_name);
-	}
-
-	return true;
 }
 
 /* Shutdown */
@@ -133,27 +166,4 @@ void engine::Game::TerminateSDL(){
 	IMG_Quit();
 
 	SDL_Quit();
-}
-
-void engine::Game::ChangeScene(std::string &scene_name){
-	if(scene_map.find(scene_name) == scene_map.end()){
-		std::cout << "Scene not found!" << std::endl;
-		std::exit(EXIT_FAILURE);
-	}
-
-	last_scene = current_scene;
-	current_scene = scene_map[scene_name];
-}
-
-bool engine::Game::StartAndStopScenes(){
-	if(current_scene == NULL){
-		std::cout << "No scenes to run!" << std::endl;
-		return false;
-	}else{
-		if(last_scene != NULL){
-			last_scene->Shutdown();
-		}
-		current_scene->Init(canvas);
-	}
-	return true;
 }
