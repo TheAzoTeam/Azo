@@ -2,17 +2,23 @@
 #define GAME_OBJECT_HPP
 
 #include "sdl2include.h"
+#include "component.hpp"
+#include "image_component.hpp"
 #include <iostream>
+#include <typeinfo>
+#include <typeindex>
+#include <map>
 
 namespace engine {
 
 	class GameObject {
 		public:
-			GameObject(std::string game_object_name) : game_object_name(game_object_name){
-			};
+			GameObject(std::string game_object_name) : game_object_name(game_object_name){};
 			virtual bool Init(SDL_Renderer *);
 			virtual bool Shutdown();
 			virtual bool Draw(SDL_Renderer *);
+
+			bool AddComponent(Component &component);
 
 			inline std::string GetGameObjectName(){
 				return game_object_name;
@@ -23,6 +29,7 @@ namespace engine {
 
 		private:
 			std::string game_object_name;
+			std::map<std::type_index, Component *> component_list;
 	};
 
 }

@@ -3,16 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 
-engine::Game::Game(std::string game_name, int window_width, int window_heigth){
-	this->game_name = game_name;
-	this->window_width = window_width;
-	this->window_heigth = window_heigth;
-	this->current_scene = NULL;
-	this->last_scene = NULL;
-
-	InitSDL();
-	game_state = engine::GameState::PLAY;
-}
+engine::Game engine::Game::instance;
 
 /* Initializing SDL */
 void engine::Game::InitSDL(){
@@ -39,7 +30,7 @@ void engine::Game::CreateWindow(){
 		SDL_WINDOWPOS_CENTERED, // Window opening position x.
 		SDL_WINDOWPOS_CENTERED, // Window opening position y.
 		window_width,           // Window width
-		window_heigth,          // Window height
+		window_height,          // Window height
 		SDL_WINDOW_SHOWN
 		);
 
@@ -50,9 +41,9 @@ void engine::Game::CreateWindow(){
 
 	/* Create Canvas */
 	canvas = SDL_CreateRenderer(
-		window,                         // Window pointer
-		-1,                             // The index to the rendering driver, or -1 to the first one
-		SDL_RENDERER_ACCELERATED        // Flag. The renderer will use hardware acceleration
+		window,                                                 // Window pointer
+		-1,                                                     // The index to the rendering driver, or -1 to the first one
+		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC    // Flag. The renderer will use hardware acceleration
 		);
 
 	if(canvas == NULL){
@@ -71,16 +62,24 @@ void engine::Game::CreateWindow(){
 
 /* Game loop */
 void engine::Game::Run(){
+
+	InitSDL();
+	game_state = engine::GameState::PLAY;
+
 	/* Create Window */
 	CreateWindow();
 
 	/* Main Loop */
 	while(game_state == engine::GameState::PLAY){
+
+		timer.Step();
+
 		if(StartAndStopScenes() == false){
 			break;
 		}
 		/* Reading input (events) */
 		SDL_Event _event;
+
 
 		while(SDL_PollEvent(&_event)){
 			switch(_event.type){
@@ -90,16 +89,17 @@ void engine::Game::Run(){
 				default:
 					break;
 			}
+
+			if(timer.DeltaTime() >= 1.0f / FRAME_RATE){}
 			/* Draw */
 			SDL_RenderClear(canvas);
-			std::cout << "Drawing Scene!" << std::endl;
 			current_scene->Draw(canvas);
 			SDL_RenderPresent(canvas);
 		}
 	}
-	/* Finishing Main Loop */
+/* Finishing Main Loop */
 
-	/* Shutdown SDL */
+/* Shutdown SDL */
 	TerminateSDL();
 
 }
@@ -143,17 +143,30 @@ void engine::Game::ChangeScene(std::string &scene_name){
 
 	last_scene = current_scene;
 	current_scene = scene_map[scene_name];
+	need_to_change_scene = true;
 }
 
 bool engine::Game::StartAndStopScenes(){
-	if(current_scene == NULL){
-		std::cout << "No scenes to run!" << std::endl;
-		return false;
-	}else{
-		if(last_scene != NULL){
-			last_scene->Shutdown();
+	if(need_to_change_scene){
+		if(current_scene == NULL){
+			std::cout << "No scenes to run!" << std::endl;
+			return false;
+		}else{
+			if(last_scene != NULL){
+				std::cout << "Shuting down scene!" << std::endl;
+				last_scene->Shutdown();
+			}
+			current_scene->Init(canvas);
+
+			need_to_change_scene = false;
 		}
-		current_scene->Init(canvas);
 	}
 	return true;
+}
+
+void engine::Game::SetAttributes(std::string game_name, int window_width, int window_height, int frame_rate){
+	this->game_name = game_name;
+	this->window_width = window_width;
+	this->window_height = window_height;
+	this->FRAME_RATE = frame_rate;
 }
