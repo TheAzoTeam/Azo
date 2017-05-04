@@ -1,6 +1,6 @@
 #include "game.hpp"
 #include "game_globals.hpp"
-#include "player_scene.hpp"
+#include "player_object.hpp"
 
 int main(int, char**) {
 	engine::Game game(
@@ -8,7 +8,10 @@ int main(int, char**) {
 		global::window_width,
 		global::window_heigth);
 
-	PlayerScene player_scene;
+	PlayerObject player;
+	engine::Scene player_scene("player_scene");
+
+	player_scene.AddGameObject(player);
 
 	game.AddScene(player_scene);
 
