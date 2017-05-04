@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
-project(game)
+project(Azo)
 
 set(PROJECT_ENGINE_DIR "engine")
 set(PROJECT_SRC_DIR "${PROJECT_SOURCE_DIR}/src")
