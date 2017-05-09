@@ -11,12 +11,14 @@ void engine::Timer::Reset(){
 	delta_time = 0.0f;
 }
 
-float engine::Timer::DeltaTime(){
+void engine::Timer::DeltaTime(){
 	delta_time = SDL_GetTicks() - elapsed_ticks;
+}
+
+float engine::Timer::GetDeltaTime(){
 	return delta_time;
 }
 
 void engine::Timer::Step(){
 	elapsed_ticks = SDL_GetTicks();
 }
-

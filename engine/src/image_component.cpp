@@ -22,7 +22,7 @@ bool engine::ImageComponent::Init(){
 		return false;
 	}
 
-	image_texture = SDL_CreateTextureFromSurface(engine::Game::instance.GetCanvas(), image);
+	image_texture = SDL_CreateTextureFromSurface(engine::Game::instance.sdl_elements.GetCanvas(), image);
 
 	if(image_texture == NULL){
 		std::cout << "Couldn't create texture from image." << std::endl;
@@ -54,7 +54,7 @@ bool engine::ImageComponent::Draw(){
 
 
 	SDL_RenderCopy(
-		engine::Game::instance.GetCanvas(),
+		engine::Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
 		&renderQuad,
 		&canvasQuad

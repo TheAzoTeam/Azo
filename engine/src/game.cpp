@@ -3,142 +3,105 @@
 #include <iostream>
 #include <cstdlib>
 
-engine::Game engine::Game::instance;
+using namespace engine;   // Used to avoid write engine::Game engine::Game::instance;.
 
-/* Initializing SDL */
-void engine::Game::InitSDL(){
+Game Game::instance;   // Used to Initialize in fact the static instance of game;
 
-	/* Audio and video */
-	if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0){
-		std::cout << "SDL Video or SDL Audio couldn't be started." << std::endl;
-		std::exit(EXIT_FAILURE);
-	}
-	/* Initializing SDL Image */
 
-	int image_flags = IMG_INIT_PNG;
+// Main Game Loop and SDL Initiators.
+void Game::Run(){
 
-	if(!IMG_Init(image_flags) & image_flags){
-		std::cout << "SDL Image could't be started." << std::endl;
-		std::exit(EXIT_FAILURE);
-	}
-}
+	// (SDL) Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
+	sdl_elements.InitSDL();
 
-void engine::Game::CreateWindow(){
-	/* Create Window */
-	window = SDL_CreateWindow(
-		game_name.c_str(),      // Game window title
-		SDL_WINDOWPOS_CENTERED, // Window opening position x.
-		SDL_WINDOWPOS_CENTERED, // Window opening position y.
-		window_width,           // Window width
-		window_height,          // Window height
-		SDL_WINDOW_SHOWN
-		);
+	// (SDL) Create Window and Canvas.
+	sdl_elements.CreateWindow();
 
-	if(window == NULL){
-		std::cout << "Couldn't create window." << std::endl;
-		std::exit(EXIT_FAILURE);
-	}
-
-	/* Create Canvas */
-	canvas = SDL_CreateRenderer(
-		window,                                                 // Window pointer
-		-1,                                                     // The index to the rendering driver, or -1 to the first one
-		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC    // Flag. The renderer will use hardware acceleration
-		);
-
-	if(canvas == NULL){
-		std::cout << "Couldn't create renderer." << std::endl;
-		std::exit(EXIT_FAILURE);
-	}
-
-	/* Set window color when redrawing */
-	SDL_SetRenderDrawColor(
-		canvas, // Renderer pointer
-		0xff,   // Red color
-		0xff,   // Green color
-		0xff,   // Blue color
-		0xff);  // Opacity (alpha)
-}
-
-/* Game loop */
-void engine::Game::Run(){
-
-	InitSDL();
+	// (STATE) Set game state to show that it's running.
 	game_state = engine::GameState::PLAY;
 
-	/* Create Window */
-	CreateWindow();
+	// Calculate how many time will have one frame of the Game (miliseconds).
+	frame_time = 1000.0f / frame_rate;
 
-	/* Main Loop */
+
+	INFO("Starting Main Loop Game.");
 	while(game_state == engine::GameState::PLAY){
 
+		// Get the current time.
 		timer.Step();
 
 		if(StartAndStopScenes() == false){
 			break;
 		}
-		/* Reading input (events) */
+
+		// Reading input (events).
 		SDL_Event _event;
 
-
+		// "Search" for a event that will close the Game.
 		while(SDL_PollEvent(&_event)){
 			switch(_event.type){
 				case SDL_QUIT:
+					// (STATE) Set game state to show that it'll Die.
 					game_state = engine::GameState::EXIT;
 					break;
 				default:
 					break;
 			}
+		}
 
-			if(timer.DeltaTime() >= 1.0f / FRAME_RATE){}
-			/* Draw */
-			SDL_RenderClear(canvas);
-			current_scene->Draw(canvas);
-			SDL_RenderPresent(canvas);
+		// Clean and Draw the Scene to refreh animations and objects.
+		SDL_RenderClear(sdl_elements.GetCanvas());
+		current_scene->Draw(sdl_elements.GetCanvas());
+		SDL_RenderPresent(sdl_elements.GetCanvas());
+
+		// Calculate how many time has passed of the Loop's init until now.
+		timer.DeltaTime();
+
+		if(frame_time > timer.GetDeltaTime()){
+			SDL_Delay(frame_time - timer.GetDeltaTime());
+		}else{
+			// Nothing to Do.
 		}
 	}
-/* Finishing Main Loop */
+	INFO("Finishing Main Loop.");
 
-/* Shutdown SDL */
-	TerminateSDL();
-
+// Shutdown SDL.
+	sdl_elements.TerminateSDL();
 }
 
-bool engine::Game::AddScene(Scene &scene){
+
+// Used to add a Scene to map that have all Game's Scenes.
+bool Game::AddScene(Scene &scene){
+	INFO("Adding Scene.");
 	auto scene_name = scene.GetSceneName();
 
 	if(scene_map.find(scene_name) != scene_map.end()){
-		std::cout << "Scene already exists!" << std::endl;
+		ERROR("Scene already exists!");
 		return false;
+	}else{
+		// Nothing to Do.
 	}
 
 	scene_map[scene_name] = &scene;
 
 	if(current_scene == NULL){
-		std::cout << "Null current scene! Changing Scenes!" << std::endl;
+		INFO("Null current scene! Changing Scenes.");
 		ChangeScene(scene_name);
+	}else{
+		INFO("Exists a scene running.");
+		// Nothing to Do.
 	}
 
 	return true;
 }
 
-/* Shutdown */
-void engine::Game::TerminateSDL(){
-	SDL_DestroyRenderer(canvas);
-	canvas = NULL;
 
-	SDL_DestroyWindow(window);
-	window = NULL;
-
-	IMG_Quit();
-
-	SDL_Quit();
-}
-
-void engine::Game::ChangeScene(std::string &scene_name){
+// Perform the necessary checks and prepare the structure to switch Scenes.
+void Game::ChangeScene(std::string &scene_name){
 	if(scene_map.find(scene_name) == scene_map.end()){
-		std::cout << "Scene not found!" << std::endl;
-		std::exit(EXIT_FAILURE);
+		ERROR("Scene not found!");
+	}else{
+		// Nothing to Do.
 	}
 
 	last_scene = current_scene;
@@ -146,27 +109,35 @@ void engine::Game::ChangeScene(std::string &scene_name){
 	need_to_change_scene = true;
 }
 
-bool engine::Game::StartAndStopScenes(){
+
+// Perform scene switching effectively.
+bool Game::StartAndStopScenes(){
 	if(need_to_change_scene){
 		if(current_scene == NULL){
-			std::cout << "No scenes to run!" << std::endl;
+			ERROR("No scenes to run!");
 			return false;
 		}else{
 			if(last_scene != NULL){
-				std::cout << "Shuting down scene!" << std::endl;
+				INFO("Shuting down scene!");
 				last_scene->Shutdown();
+			}else{
+				// Nothing to Do.
 			}
-			current_scene->Init(canvas);
+			current_scene->Init(sdl_elements.GetCanvas());
 
 			need_to_change_scene = false;
 		}
+	}else{
+		// Nothing to Do.
 	}
+
 	return true;
 }
 
-void engine::Game::SetAttributes(std::string game_name, int window_width, int window_height, int frame_rate){
-	this->game_name = game_name;
-	this->window_width = window_width;
-	this->window_height = window_height;
-	this->FRAME_RATE = frame_rate;
+
+/* Transfer the game_name, window_width and window_height to SDL instace through its method "SetSDLAttributes"
+and set Game's frame_rate. */
+void Game::SetAttributes(std::string game_name, int window_width, int window_height, int frame_rate){
+	sdl_elements.SetSDLAttributes(game_name, window_width, window_height);
+	this->frame_rate = frame_rate;
 }
