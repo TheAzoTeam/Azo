@@ -3,9 +3,9 @@
 #include <iostream>
 #include <cstdlib>
 
-using namespace engine;   // Used to avoid write engine::Game engine::Game::instance;.
+using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.
 
-Game Game::instance;   // Used to Initialize in fact the static instance of game;
+Game Game::instance;    // Used to Initialize in fact the static instance of game;
 
 
 // Main Game Loop and SDL Initiators.
@@ -51,7 +51,7 @@ void Game::Run(){
 
 		// Clean and Draw the Scene to refreh animations and objects.
 		SDL_RenderClear(sdl_elements.GetCanvas());
-		current_scene->Draw(sdl_elements.GetCanvas());
+		current_scene->Draw();
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
 		// Calculate how many time has passed of the Loop's init until now.
@@ -123,7 +123,7 @@ bool Game::StartAndStopScenes(){
 			}else{
 				// Nothing to Do.
 			}
-			current_scene->Init(sdl_elements.GetCanvas());
+			current_scene->Init();
 
 			need_to_change_scene = false;
 		}
@@ -136,7 +136,7 @@ bool Game::StartAndStopScenes(){
 
 
 /* Transfer the game_name, window_width and window_height to SDL instace through its method "SetSDLAttributes"
-and set Game's frame_rate. */
+   and set Game's frame_rate. */
 void Game::SetAttributes(std::string game_name, int window_width, int window_height, int frame_rate){
 	sdl_elements.SetSDLAttributes(game_name, window_width, window_height);
 	this->frame_rate = frame_rate;

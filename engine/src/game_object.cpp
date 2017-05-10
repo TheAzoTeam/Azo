@@ -3,7 +3,7 @@
 #include "code_component.hpp"
 
 
-bool engine::GameObject::Init(SDL_Renderer *){
+bool engine::GameObject::Init(){
 	for(auto each_pair : component_list){
 		auto component = each_pair.second;
 		if(component->Init() == false){
@@ -25,7 +25,7 @@ bool engine::GameObject::Shutdown(){
 	return true;
 }
 
-bool engine::GameObject::Draw(SDL_Renderer *){
+bool engine::GameObject::Draw(){
 	for(auto each_pair : component_list){
 		if(each_pair.first == typeid(Animation)){
 			auto component = each_pair.second;
