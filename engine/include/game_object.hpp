@@ -1,13 +1,14 @@
 #ifndef GAME_OBJECT_HPP
 #define GAME_OBJECT_HPP
 
-#include "sdl2include.h"
-#include "component.hpp"
-#include "image_component.hpp"
 #include <iostream>
 #include <typeinfo>
 #include <typeindex>
 #include <map>
+#include "animation.hpp"
+#include "sdl2include.h"
+#include "component.hpp"
+#include "image_component.hpp"
 
 namespace engine {
 

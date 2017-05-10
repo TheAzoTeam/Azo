@@ -1,60 +1,64 @@
 #include "image_component.hpp"
 #include "game.hpp"
+#include "game_object.hpp"
 
-engine::ImageComponent::ImageComponent(){}
-
-engine::ImageComponent::~ImageComponent(){}
+using namespace engine;
 
 
-bool engine::ImageComponent::Init(){
+ImageComponent::ImageComponent(){}
+
+ImageComponent::~ImageComponent(){}
+
+bool ImageComponent::Init(){
 	/* Load Texture */
 	SDL_Surface *image = NULL;
 
 	if(image_path == ""){
-		std::cout << "Invalid Image Path." << std::endl;
+		ERROR("Invalid Image Path: " << image_path);
 		return false;
 	}
 
 	image = IMG_Load(image_path.c_str());
 
 	if(image == NULL){
-		std::cout << "Couldn't load sprite." << std::endl;
+		ERROR("Couldn't load sprite.");
 		return false;
 	}
 
-	image_texture = SDL_CreateTextureFromSurface(engine::Game::instance.sdl_elements.GetCanvas(), image);
+	image_texture = SDL_CreateTextureFromSurface(Game::instance.sdl_elements.GetCanvas(), image);
 
 	if(image_texture == NULL){
-		std::cout << "Couldn't create texture from image." << std::endl;
+		ERROR("Couldn't create texture from image.");
 		return false;
 	}
 
-	component_width = 0;
-	component_height = 0;
+	component_width = image->w;
+	component_height = image->h;
+
+	frame_width = component_width;
+	frame_height = component_height;
 
 	game_object->x = 150;
 	game_object->y = 150;
 
+	canvasQuad = {game_object->x, game_object->y, frame_width, frame_height};
+	renderQuad = {component_width, component_height, frame_width, frame_height};
 
 	return true;
 }
 
-bool engine::ImageComponent::Shutdown(){
+bool ImageComponent::Shutdown(){
 	/* Terminate Texture */
-	std::cout << "Shuting down ImageComponent" << std::endl;
+	INFO("Shuting down ImageComponent.");
 	SDL_DestroyTexture(image_texture);
 	image_texture  = NULL;
 	return true;
 }
 
-bool engine::ImageComponent::Draw(){
-	SDL_Rect canvasQuad = {game_object->x, game_object->y, 108, 140};
-
-	SDL_Rect renderQuad = {component_width, component_height, 108, 140};
-
+bool ImageComponent::Draw(){
 
 	SDL_RenderCopy(
-		engine::Game::instance.sdl_elements.GetCanvas(),
+		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
 		&renderQuad,
 		&canvasQuad
@@ -69,7 +73,6 @@ bool engine::ImageComponent::Draw(){
 	}
 	if(input_manager.KeyDown(SDL_SCANCODE_D)){
 		game_object->x += 5;
-		component_width = (component_width + 108) % 864;
 		//std::cout << component_width << std::endl;
 	}
 	if(input_manager.KeyDown(SDL_SCANCODE_A)){

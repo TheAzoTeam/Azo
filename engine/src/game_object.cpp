@@ -1,6 +1,7 @@
 #include "game_object.hpp"
 #include "game.hpp"
 
+
 bool engine::GameObject::Init(SDL_Renderer *){
 	for(auto each_pair : component_list){
 		auto component = each_pair.second;
@@ -25,9 +26,9 @@ bool engine::GameObject::Shutdown(){
 
 bool engine::GameObject::Draw(SDL_Renderer *){
 	for(auto each_pair : component_list){
-		if(each_pair.first == typeid(ImageComponent)){
+		if(each_pair.first == typeid(Animation)){
 			auto component = each_pair.second;
-			(dynamic_cast<ImageComponent *> (component))->Draw();
+			(dynamic_cast<Animation *> (component))->UpdateAnimation();
 		}
 	}
 	return true;

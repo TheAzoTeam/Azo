@@ -57,6 +57,11 @@ namespace engine {
 					   int window_height,
 					   int frame_rate);
 
+			// Used to use the private attribute Timer.
+		    inline Timer GetTimer(){
+				return timer;
+			}
+
 		private:
 			// Perform scene switching effectively.
 			bool StartAndStopScenes();
