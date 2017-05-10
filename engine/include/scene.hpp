@@ -2,7 +2,6 @@
 #define SCENE_ENGINE_HPP
 
 #include <iostream>
-#include "sdl2include.h"
 #include "game_object.hpp"
 #include <map>
 

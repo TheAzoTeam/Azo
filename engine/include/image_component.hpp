@@ -7,14 +7,12 @@
 #include "sdl2include.h"
 #include "log.h"
 #include "component.hpp"
-#include "input_manager.hpp"
 
 
 namespace engine {
 
 	class ImageComponent : public Component {
 		protected:
-			InputManager input_manager;
 			std::string image_path;
 			SDL_Texture *image_texture;
 			SDL_Rect renderQuad;

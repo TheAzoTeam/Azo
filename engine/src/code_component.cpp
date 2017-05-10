@@ -12,7 +12,7 @@ bool CodeComponent::Shutdown(){
 }
 
 bool CodeComponent::UpdateCode(){
-    input_manager.Update();
+	input_manager.Update();
 
 	if(input_manager.KeyDown(SDL_SCANCODE_W)){
 		game_object->y -= 3;
