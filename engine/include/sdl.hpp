@@ -38,6 +38,16 @@ namespace engine {
 
             // Used in the Main Loop's End.
             void TerminateSDL();
+
+			// Used to use the private attribute "window_width".
+		    inline int GetWindowWidth(){
+				return window_width;
+			}
+
+			// Used to use the private attribute "window_height".
+		    inline int GetWindowHeight(){
+				return window_height;
+			}
     };
 }
 

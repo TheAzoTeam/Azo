@@ -1,5 +1,6 @@
 #include "game_object.hpp"
 #include "game.hpp"
+#include "code_component.hpp"
 
 
 bool engine::GameObject::Init(SDL_Renderer *){
@@ -29,6 +30,11 @@ bool engine::GameObject::Draw(SDL_Renderer *){
 		if(each_pair.first == typeid(Animation)){
 			auto component = each_pair.second;
 			(dynamic_cast<Animation *> (component))->UpdateAnimation();
+		}
+
+		if(each_pair.first == typeid(CodeComponent)){
+			auto component = each_pair.second;
+			(dynamic_cast<CodeComponent *> (component))->UpdateCode();
 		}
 	}
 	return true;

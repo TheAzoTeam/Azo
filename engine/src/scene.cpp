@@ -1,5 +1,6 @@
 #include "scene.hpp"
 
+
 bool engine::Scene::Init(SDL_Renderer *canvas){
 	for(auto each_game_object : game_object_map){
 		auto game_object = each_game_object.second;

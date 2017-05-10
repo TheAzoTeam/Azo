@@ -5,10 +5,12 @@
 #include <typeinfo>
 #include <typeindex>
 #include <map>
+
 #include "animation.hpp"
 #include "sdl2include.h"
 #include "component.hpp"
 #include "image_component.hpp"
+
 
 namespace engine {
 

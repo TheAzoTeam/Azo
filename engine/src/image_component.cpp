@@ -1,6 +1,7 @@
 #include "image_component.hpp"
 #include "game.hpp"
 #include "game_object.hpp"
+#include "sdl.hpp"
 
 using namespace engine;
 
@@ -63,21 +64,6 @@ bool ImageComponent::Draw(){
 		&renderQuad,
 		&canvasQuad
 		);
-
-	input_manager.Update();
-	if(input_manager.KeyDown(SDL_SCANCODE_W)){
-		game_object->y -= 5;
-	}
-	if(input_manager.KeyDown(SDL_SCANCODE_S)){
-		game_object->y += 5;
-	}
-	if(input_manager.KeyDown(SDL_SCANCODE_D)){
-		game_object->x += 5;
-		//std::cout << component_width << std::endl;
-	}
-	if(input_manager.KeyDown(SDL_SCANCODE_A)){
-		game_object->x -= 5;
-	}
 
 	return true;
 }

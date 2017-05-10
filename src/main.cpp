@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include "game_globals.hpp"
+#include "code_component.hpp"
 
 
 int main(int, char**) {
@@ -18,8 +19,10 @@ int main(int, char**) {
 			       8,   // Sprite Colums
 			       0,   // Start Frame
 			       7);   // End Frame
-
 	player.AddComponent(player_image);
+
+	engine::CodeComponent player_movement(player);
+	player.AddComponent(player_movement);
 
 	engine::Scene player_scene("player_scene");
 	player_scene.AddGameObject(player);
