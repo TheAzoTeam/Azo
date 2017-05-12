@@ -5,9 +5,15 @@ namespace engine {
 
 	class GameObject;
 
+	enum class State {
+		ENABLED,
+		DISABLED
+	};
+
 	class Component {
 		protected:
 			GameObject *game_object;
+			State component_state;
 
 		public:
 			Component();
