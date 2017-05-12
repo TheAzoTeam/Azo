@@ -1,28 +1,22 @@
 #include "game.hpp"
 #include "game_globals.hpp"
 #include "code_component.hpp"
-
+#include "player.hpp"
+using namespace Azo;
 
 int main(int, char**) {
 	engine::Game::instance.SetAttributes(
-						 global::game_name,
-					     global::window_width,
-					     global::window_height,
-					     global::frame_rate);
+		global::game_name,
+		global::window_width,
+		global::window_height,
+		global::frame_rate);
 
-	engine::GameObject player("player_object");
+	Player player("McCree");
+	player.SetAnimations(player);
 
-	engine::Animation player_image(player,   // Game Object
-			       "sprites/scottpilgrim_multiple.png",   // Imagem Path
-			       1200.0f,   // Animation Time
-			       2,   // Sprite Rows
-			       8,   // Sprite Colums
-			       0,   // Start Frame
-			       7);   // End Frame
-	player.AddComponent(player_image);
-
-	engine::CodeComponent player_movement(player);
-	player.AddComponent(player_movement);
+	//TODO(Roger): Create class which implements player movement.
+	// engine::CodeComponent player_movement(player);
+	// player.AddComponent(player_movement);
 
 	engine::Scene player_scene("player_scene");
 	player_scene.AddGameObject(player);

@@ -18,9 +18,9 @@ namespace engine {
 		public:
 			GameObject();
 			GameObject(std::string game_object_name);
-			virtual bool Init(SDL_Renderer *);
+			virtual bool Init();
 			virtual bool Shutdown();
-			virtual bool Draw(SDL_Renderer *);
+			virtual bool Draw();
 
 			bool AddComponent(Component &component);
 
@@ -31,7 +31,7 @@ namespace engine {
 			int x, y;
 			int width, height;
 
-		private:
+		protected:
 			std::string game_object_name;
 			std::map<std::type_index, Component *> component_list;
 	};

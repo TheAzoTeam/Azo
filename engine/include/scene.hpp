@@ -13,9 +13,9 @@ namespace engine {
 			Scene(std::string scene_name);
 			~Scene(){};
 
-			virtual bool Init(SDL_Renderer *canvas);
+			virtual bool Init();
 			virtual bool Shutdown();
-			virtual bool Draw(SDL_Renderer *canvas);
+			virtual bool Draw();
 
 			inline std::string GetSceneName() {
 				return scene_name;

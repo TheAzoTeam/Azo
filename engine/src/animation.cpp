@@ -6,7 +6,7 @@ using namespace engine;
 
 Animation::Animation(){}
 
-Animation::Animation(
+void Animation::CreateAnimation(
 	GameObject & game_object,
 	std::string image_path,
 	float animation_time,
@@ -15,7 +15,6 @@ Animation::Animation(
 	int starting_frame,
 	int ending_frame){
 
-	INFO("Starting Animation Constructor.");
 	ImageComponent::game_object = &game_object;
 	ImageComponent::image_path = image_path;
 
@@ -44,11 +43,11 @@ void Animation::UpdateAnimation(){
 
 	ImageComponent::renderQuad = {X*frame_width, Y * frame_height, frame_width, frame_height};
 
-    ImageComponent::canvasQuad = {
+	ImageComponent::canvasQuad = {
 		ImageComponent::game_object->x,
 		ImageComponent::game_object->y,
-        frame_width,
-        frame_height
+		frame_width,
+		frame_height
 	};
 
 	if(current_frame >= ending_frame){
