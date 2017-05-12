@@ -16,8 +16,8 @@ Animation::Animation(
 	int ending_frame){
 
 	INFO("Starting Animation Constructor.");
-	this->game_object = &game_object;
-	this->image_path = image_path;
+	ImageComponent::game_object = &game_object;
+	ImageComponent::image_path = image_path;
 
 	this->animation_time = animation_time;
 	this->sprite_rows = sprite_rows;
@@ -32,23 +32,23 @@ Animation::Animation(
 Animation::~Animation(){}
 
 void Animation::UpdateAnimation(){
-	frame_width = component_width / sprite_colums;
-	frame_height = component_height / sprite_rows;
+	ImageComponent::frame_width = ImageComponent::component_width / sprite_colums;
+	ImageComponent::frame_height = ImageComponent::component_height / sprite_rows;
 
 	current_animation_time += Game::instance.GetTimer().GetDeltaTime();
 	current_frame = current_animation_time / frame_time + starting_frame;
 
 	//DEBUG("Current Frame:" << current_frame);
-	int Y = current_frame / (component_width / frame_width);
-	int X = current_frame % (component_width / frame_width);
+	int Y = current_frame / (ImageComponent::component_width / frame_width);
+	int X = current_frame % (ImageComponent::component_width / frame_width);
 
-	renderQuad = {X*frame_width, Y * frame_height, frame_width, frame_height};
+	ImageComponent::renderQuad = {X*frame_width, Y * frame_height, frame_width, frame_height};
 
-	canvasQuad = {
-		game_object->x,
-		game_object->y,
-		frame_width,
-		frame_height
+    ImageComponent::canvasQuad = {
+		ImageComponent::game_object->x,
+		ImageComponent::game_object->y,
+        frame_width,
+        frame_height
 	};
 
 	if(current_frame >= ending_frame){

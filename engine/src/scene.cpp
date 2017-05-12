@@ -1,10 +1,18 @@
 #include "scene.hpp"
 
+using namespace engine;
 
-bool engine::Scene::Init(){
+Scene::Scene(){}
+
+Scene::Scene(std::string scene_name){
+	this->scene_name = scene_name;
+}
+
+
+bool engine::Scene::Init(SDL_Renderer *canvas){
 	for(auto each_game_object : game_object_map){
 		auto game_object = each_game_object.second;
-		if(game_object->Init() == false){
+		if(game_object->Init(canvas) == false){
 			return false;
 		}
 	}
@@ -21,10 +29,10 @@ bool engine::Scene::Shutdown(){
 	return true;
 }
 
-bool engine::Scene::Draw(){
+bool engine::Scene::Draw(SDL_Renderer *canvas){
 	for(auto each_game_object : game_object_map){
 		auto game_object = each_game_object.second;
-		if(game_object->Draw() == false){
+		if(game_object->Draw(canvas) == false){
 			return false;
 		}
 	}

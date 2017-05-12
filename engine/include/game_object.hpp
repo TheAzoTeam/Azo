@@ -8,16 +8,19 @@
 
 #include "animation.hpp"
 #include "sdl2include.h"
+#include "component.hpp"
+#include "image_component.hpp"
 
 
 namespace engine {
 
 	class GameObject {
 		public:
-			GameObject(std::string game_object_name) : game_object_name(game_object_name){};
-			virtual bool Init();
+			GameObject();
+			GameObject(std::string game_object_name);
+			virtual bool Init(SDL_Renderer *);
 			virtual bool Shutdown();
-			virtual bool Draw();
+			virtual bool Draw(SDL_Renderer *);
 
 			bool AddComponent(Component &component);
 

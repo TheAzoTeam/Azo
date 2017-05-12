@@ -2,18 +2,20 @@
 #define SCENE_ENGINE_HPP
 
 #include <iostream>
+#include "sdl2include.h"
 #include "game_object.hpp"
 #include <map>
 
 namespace engine {
 	class Scene {
 		public:
-			Scene(std::string scene_name) : scene_name(scene_name) {};
+			Scene();
+			Scene(std::string scene_name);
 			~Scene(){};
 
-			virtual bool Init();
+			virtual bool Init(SDL_Renderer *canvas);
 			virtual bool Shutdown();
-			virtual bool Draw();
+			virtual bool Draw(SDL_Renderer *canvas);
 
 			inline std::string GetSceneName() {
 				return scene_name;

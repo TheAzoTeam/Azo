@@ -4,6 +4,10 @@ using namespace engine;
 
 Component::Component(){}
 
+Component::Component(GameObject &game_object){
+	this->game_object = &game_object;
+}
+
 Component::~Component(){}
 
 bool Component::Init(){
@@ -12,12 +16,4 @@ bool Component::Init(){
 
 bool Component::Shutdown(){
 	return true;
-}
-
-void Component::EnableComponent(){
-	component_state = State::ENABLED;
-}
-
-void Component::DisableComponent(){
-	component_state = State::DISABLED;
 }

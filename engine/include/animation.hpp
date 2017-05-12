@@ -4,6 +4,7 @@
 #include "sdl2include.h"
 #include "image_component.hpp"
 
+
 namespace engine {
 	class Animation : public ImageComponent {
 		private:

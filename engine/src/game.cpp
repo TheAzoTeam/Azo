@@ -7,6 +7,12 @@ using namespace engine; // Used to avoid write engine::Game engine::Game::instan
 
 Game Game::instance;    // Used to Initialize in fact the static instance of game;
 
+Game::Game(){
+	this->need_to_change_scene = false;
+	this->current_scene = NULL;
+	this->last_scene = NULL;
+	this->frame_rate = 60;
+}
 
 // Main Game Loop and SDL Initiators.
 void Game::Run(){
@@ -51,7 +57,7 @@ void Game::Run(){
 
 		// Clean and Draw the Scene to refreh animations and objects.
 		SDL_RenderClear(sdl_elements.GetCanvas());
-		current_scene->Draw();
+		current_scene->Draw(sdl_elements.GetCanvas());
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
 		// Calculate how many time has passed of the Loop's init until now.
@@ -123,7 +129,7 @@ bool Game::StartAndStopScenes(){
 			}else{
 				// Nothing to Do.
 			}
-			current_scene->Init();
+			current_scene->Init(sdl_elements.GetCanvas());
 
 			need_to_change_scene = false;
 		}
