@@ -9,7 +9,7 @@ Scene::Scene(std::string scene_name){
 }
 
 
-bool engine::Scene::Init(){
+bool Scene::Init(){
 	for(auto each_game_object : game_object_map){
 		auto game_object = each_game_object.second;
 		if(game_object->Init() == false){
@@ -19,7 +19,7 @@ bool engine::Scene::Init(){
 	return true;
 }
 
-bool engine::Scene::Shutdown(){
+bool Scene::Shutdown(){
 	for(auto each_game_object : game_object_map){
 		auto game_object = each_game_object.second;
 		if(game_object->Shutdown() == false){
@@ -29,7 +29,7 @@ bool engine::Scene::Shutdown(){
 	return true;
 }
 
-bool engine::Scene::Draw(){
+bool Scene::Draw(){
 	for(auto each_game_object : game_object_map){
 		auto game_object = each_game_object.second;
 		if(game_object->Draw() == false){
@@ -39,7 +39,7 @@ bool engine::Scene::Draw(){
 	return true;
 }
 
-bool engine::Scene::AddGameObject(GameObject &game_object){
+bool Scene::AddGameObject(GameObject &game_object){
 	auto game_object_name = game_object.GetGameObjectName();
 
 	if(game_object_map.find(game_object_name) != game_object_map.end()){
@@ -51,7 +51,7 @@ bool engine::Scene::AddGameObject(GameObject &game_object){
 	return true;
 }
 
-engine::GameObject & engine::Scene::GetGameObject(std::string &game_object_name){
+GameObject & Scene::GetGameObject(std::string &game_object_name){
 
 	if(game_object_map.find(game_object_name) == game_object_map.end()){
 		std::cout << "Game object doesn't exist!" << std::endl;
@@ -61,7 +61,7 @@ engine::GameObject & engine::Scene::GetGameObject(std::string &game_object_name)
 
 }
 
-bool engine::Scene::RemoveGameObject(std::string &game_object_name){
+bool Scene::RemoveGameObject(std::string &game_object_name){
 	if(game_object_map.find(game_object_name) == game_object_map.end()){
 		std::cout << "Game object doesn't exist!" << std::endl;
 		return false;

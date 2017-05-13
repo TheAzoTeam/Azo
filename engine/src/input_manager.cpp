@@ -1,12 +1,14 @@
 #include "input_manager.hpp"
 
-engine::InputManager::InputManager(){}
-engine::InputManager::~InputManager(){}
+using namespace engine;
 
-bool engine::InputManager::KeyDown(SDL_Scancode scan_code){
+InputManager::InputManager(){}
+InputManager::~InputManager(){}
+
+bool InputManager::KeyDown(SDL_Scancode scan_code){
 	return keyboard_states[scan_code];
 }
 
-void engine::InputManager::Update(){
+void InputManager::Update(){
 	keyboard_states = SDL_GetKeyboardState(NULL);
 }

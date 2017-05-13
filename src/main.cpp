@@ -13,10 +13,7 @@ int main(int, char**) {
 
 	Player player("McCree");
 	player.SetAnimations(player);
-
-	//TODO(Roger): Create class which implements player movement.
-	// engine::CodeComponent player_movement(player);
-	// player.AddComponent(player_movement);
+	player.SetCode(player);
 
 	engine::Scene player_scene("player_scene");
 	player_scene.AddGameObject(player);

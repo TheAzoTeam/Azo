@@ -21,4 +21,8 @@ void Player::SetAnimations(Player &player){
 	player.AddComponent(walking_animation);
 }
 
+void Player::SetCode(Player &player){
+	jumping_code.SetGameObject(player);
+	player.AddComponent(jumping_code);
+}
 

@@ -33,7 +33,7 @@ namespace engine {
 			~Animation();
 
 			// Define frames of animation from sprites
-			void UpdateAnimation();
+			bool Draw();
 	};
 }
 

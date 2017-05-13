@@ -11,7 +11,7 @@
 namespace engine {
 
 	class CodeComponent : public Component {
-		private:
+		protected:
 			InputManager input_manager;
 			bool jump = false;
 			Timer timer;
@@ -26,7 +26,6 @@ namespace engine {
 			bool Shutdown();
 
 			bool UpdateCode();
-
 	};
 }
 

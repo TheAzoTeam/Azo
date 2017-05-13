@@ -1,24 +1,26 @@
 #include "timer.hpp"
 
-engine::Timer::Timer(){
+using namespace engine;
+
+Timer::Timer(){
 	Reset();
 }
-engine::Timer::~Timer(){}
+Timer::~Timer(){}
 
-void engine::Timer::Reset(){
+void Timer::Reset(){
 	start_ticks = SDL_GetTicks();
 	elapsed_ticks = 0.0f;
 	delta_time = 0.0f;
 }
 
-void engine::Timer::DeltaTime(){
+void Timer::DeltaTime(){
 	delta_time = SDL_GetTicks() - elapsed_ticks;
 }
 
-float engine::Timer::GetDeltaTime(){
+float Timer::GetDeltaTime(){
 	return delta_time;
 }
 
-void engine::Timer::Step(){
+void Timer::Step(){
 	elapsed_ticks = SDL_GetTicks();
 }

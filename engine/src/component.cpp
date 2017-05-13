@@ -17,3 +17,13 @@ bool Component::Init(){
 bool Component::Shutdown(){
 	return true;
 }
+
+
+bool Component::Draw(){
+	return true;
+}
+
+
+bool Component::UpdateCode(){
+	return true;
+}

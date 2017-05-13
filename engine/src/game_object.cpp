@@ -11,9 +11,8 @@ GameObject::GameObject(std::string game_object_name){
 	this->game_object_name = game_object_name;
 };
 
-bool engine::GameObject::Init(){
-	for(auto each_pair : component_list){
-		auto component = each_pair.second;
+bool GameObject::Init(){
+	for(auto component : component_list){
 		if(component->Init() == false){
 			return false;
 		}
@@ -22,9 +21,8 @@ bool engine::GameObject::Init(){
 	return true;
 }
 
-bool engine::GameObject::Shutdown(){
-	for(auto each_pair : component_list){
-		auto component = each_pair.second;
+bool GameObject::Shutdown(){
+	for(auto component : component_list){
 		if(component->Shutdown() == false){
 			return false;
 		}
@@ -33,25 +31,16 @@ bool engine::GameObject::Shutdown(){
 	return true;
 }
 
-bool engine::GameObject::Draw(){
-	for(auto each_pair : component_list){
-		if(each_pair.first == typeid(Animation)){
-			auto component = each_pair.second;
-			(dynamic_cast<Animation *> (component))->UpdateAnimation();
-		}
-
-		if(each_pair.first == typeid(CodeComponent)){
-			auto component = each_pair.second;
-			(dynamic_cast<CodeComponent *> (component))->UpdateCode();
-		}
+bool GameObject::Draw(){
+	for(auto component : component_list){
+		component->Draw();
+		component->UpdateCode();
 	}
+
 	return true;
 }
 
-bool engine::GameObject::AddComponent(engine::Component &component){
-	std::pair <std::type_index, Component *> component_pair(typeid(component), &component);
-
-	component_list.insert(component_pair);
-
+bool GameObject::AddComponent(engine::Component &component){
+	component_list.push_back(&component);
 	return true;
 }

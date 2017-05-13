@@ -62,7 +62,7 @@ bool ImageComponent::Shutdown(){
 }
 
 bool ImageComponent::Draw(){
-
+	INFO("Image Component Draw.");
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,

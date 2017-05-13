@@ -15,8 +15,16 @@ void Animation::CreateAnimation(
 	int starting_frame,
 	int ending_frame){
 
-	ImageComponent::game_object = &game_object;
-	ImageComponent::image_path = image_path;
+	ASSERT(image_path != "", "Animation::CreateAnimation, image_path is empty.");
+	ASSERT(animation_time > 0, "Animation time can't be zero or less.");
+	ASSERT(sprite_rows >= 0, "The number of rows in a sprite can't be less than zero.");
+	ASSERT(sprite_colums >= 0, "The number of colums in a sprite can't be less than zero.");
+	ASSERT(starting_frame >= 0, "The starting frame in a animation can't be less than zero.");
+	ASSERT(ending_frame > 0, "THe ending frame in a animation can't be zero or less.");
+	ASSERT(&game_object != NULL, "The game_object can't be null.");
+
+	this->game_object = &game_object;
+	this->image_path = image_path;
 
 	this->animation_time = animation_time;
 	this->sprite_rows = sprite_rows;
@@ -30,7 +38,7 @@ void Animation::CreateAnimation(
 
 Animation::~Animation(){}
 
-void Animation::UpdateAnimation(){
+bool Animation::Draw(){
 	ImageComponent::frame_width = ImageComponent::component_width / sprite_colums;
 	ImageComponent::frame_height = ImageComponent::component_height / sprite_rows;
 
@@ -56,4 +64,6 @@ void Animation::UpdateAnimation(){
 	}
 
 	ImageComponent::Draw();
+
+	return true;
 }

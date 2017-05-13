@@ -4,7 +4,7 @@
 #include <iostream>
 #include <typeinfo>
 #include <typeindex>
-#include <map>
+#include <list>
 
 #include "animation.hpp"
 #include "sdl2include.h"
@@ -18,6 +18,7 @@ namespace engine {
 		public:
 			GameObject();
 			GameObject(std::string game_object_name);
+
 			virtual bool Init();
 			virtual bool Shutdown();
 			virtual bool Draw();
@@ -33,7 +34,7 @@ namespace engine {
 
 		protected:
 			std::string game_object_name;
-			std::map<std::type_index, Component *> component_list;
+			std::list<Component *> component_list;
 	};
 
 }
