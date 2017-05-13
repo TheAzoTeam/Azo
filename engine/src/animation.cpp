@@ -25,6 +25,7 @@ void Animation::CreateAnimation(
 
 	this->game_object = &game_object;
 	this->image_path = image_path;
+	this->animation_name = animation_name;
 
 	this->animation_time = animation_time;
 	this->sprite_rows = sprite_rows;
@@ -39,15 +40,17 @@ void Animation::CreateAnimation(
 Animation::~Animation(){}
 
 bool Animation::Draw(){
-	ImageComponent::frame_width = ImageComponent::component_width / sprite_colums;
-	ImageComponent::frame_height = ImageComponent::component_height / sprite_rows;
+//	DEBUG("Animation::Draw()");
 
+	this->frame_width = this->component_width / sprite_colums;
+	this->frame_height = this->component_height / sprite_rows;
+//	DEBUG("Component width: " << this->component_height);
 	current_animation_time += Game::instance.GetTimer().GetDeltaTime();
 	current_frame = current_animation_time / frame_time + starting_frame;
 
 	//DEBUG("Current Frame:" << current_frame);
-	int Y = current_frame / (ImageComponent::component_width / frame_width);
-	int X = current_frame % (ImageComponent::component_width / frame_width);
+	int Y = current_frame / (this->component_width / frame_width);
+	int X = current_frame % (this->component_width / frame_width);
 
 	ImageComponent::renderQuad = {X*frame_width, Y * frame_height, frame_width, frame_height};
 

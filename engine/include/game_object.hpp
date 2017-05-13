@@ -4,12 +4,13 @@
 #include <iostream>
 #include <typeinfo>
 #include <typeindex>
-#include <list>
+#include <map>
 
 #include "animation.hpp"
 #include "sdl2include.h"
 #include "component.hpp"
 #include "image_component.hpp"
+#include "animation_controller.hpp"
 
 
 namespace engine {
@@ -29,12 +30,14 @@ namespace engine {
 				return game_object_name;
 			};
 
+			AnimationController* GetComponentByType(std::type_index component_type);
+
 			int x, y;
 			int width, height;
 
 		protected:
 			std::string game_object_name;
-			std::list<Component *> component_list;
+			std::map<std::type_index, Component *> component_list;
 	};
 
 }

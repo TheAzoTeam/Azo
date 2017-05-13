@@ -11,6 +11,7 @@ ImageComponent::ImageComponent(){}
 ImageComponent::ImageComponent(GameObject & game_object, std::string image_path){
 	this->game_object = &game_object;
 	this->image_path = image_path;
+	this->component_state = State::ENABLED;
 }
 
 ImageComponent::~ImageComponent(){}
@@ -41,6 +42,7 @@ bool ImageComponent::Init(){
 	component_width = image->w;
 	component_height = image->h;
 
+
 	frame_width = component_width;
 	frame_height = component_height;
 
@@ -62,7 +64,6 @@ bool ImageComponent::Shutdown(){
 }
 
 bool ImageComponent::Draw(){
-	INFO("Image Component Draw.");
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,

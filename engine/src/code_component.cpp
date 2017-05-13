@@ -7,6 +7,7 @@ CodeComponent::CodeComponent(){}
 
 CodeComponent::CodeComponent(GameObject &game_object){
 	this->game_object = &game_object;
+	this->component_state = State::ENABLED;
 }
 
 bool CodeComponent::Init(){

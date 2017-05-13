@@ -34,6 +34,8 @@ namespace engine {
 
 			// Define frames of animation from sprites
 			bool Draw();
+
+			std::string animation_name;
 	};
 }
 

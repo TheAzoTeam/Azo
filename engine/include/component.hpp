@@ -13,7 +13,7 @@ namespace engine {
 	class Component {
 		protected:
 			GameObject *game_object;
-			State component_state;
+			State component_state = State::ENABLED;
 
 		public:
 			Component();
@@ -29,6 +29,12 @@ namespace engine {
 			virtual bool Draw();
 
 			virtual bool UpdateCode();
+
+			void EnableComponent();
+
+			void DisableComponent();
+
+			bool IsEnabled();
 	};
 }
 
