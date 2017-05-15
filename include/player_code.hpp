@@ -8,7 +8,9 @@
 #include "animation_controller.hpp"
 #include "timer.hpp"
 
+
 namespace Azo {
+
 	class PlayerCode : public engine::CodeComponent {
 		private:
 			bool jump = false;
@@ -18,9 +20,10 @@ namespace Azo {
 			PlayerCode();
 			PlayerCode(engine::GameObject &game_object);
 			bool UpdateCode();
-			void SetGameObject(engine::GameObject & game_object);
+			void SetGameObject(engine::GameObject &game_object);
 			void FindAnimationController();
 	};
+
 }
 
 #endif

@@ -66,5 +66,3 @@ void AnimationController::StopAnimation(std::string animation_name){
 		ERROR("Animation couldn't be found!");
 	}
 }
-
-

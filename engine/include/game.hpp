@@ -22,8 +22,7 @@ namespace engine {
 	// Generic Game class. It's how the engine'll see all games that will try to use it.
 	class Game {
 		public:
-			static Game instance;   /* Global game instance that allow access to public attributes.
-		                                                        and methods in any part of the code.*/
+			static Game instance;   /* Global game instance that allow access to public attributes and methods in any part of the code.*/
 			SDL sdl_elements;       // Used to access SDL class to take care of sdl elements in game Initialize.
 
 		private:
@@ -39,6 +38,7 @@ namespace engine {
 		public:
 			// Constructor Default with default values.
 			Game();
+
 			// Used to Initialize the Game in fact (Main Loop).
 			void Run();
 

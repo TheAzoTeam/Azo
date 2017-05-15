@@ -63,6 +63,8 @@ void Game::Run(){
 		// Calculate how many time has passed of the Loop's init until now.
 		timer.DeltaTime();
 
+		/* If the time that has passed until now was faster than the frame's time, is needed wait
+		   the time necessary to complete a frame's time.*/
 		if(frame_time > timer.GetDeltaTime()){
 			SDL_Delay(frame_time - timer.GetDeltaTime());
 		}else{
@@ -71,7 +73,7 @@ void Game::Run(){
 	}
 	INFO("Finishing Main Loop.");
 
-// Shutdown SDL.
+	// Shutdown SDL.
 	sdl_elements.TerminateSDL();
 }
 
