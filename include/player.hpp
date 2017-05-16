@@ -31,11 +31,11 @@ namespace Azo {
 
 			/* Used to create, start as Enable or Disable and set Game Object's animations to Animation Controller.
 			   At the final of the method the Animation Controller is added as a Component to the respective Game Object. */
-			void SetAnimations(Player &player);
+			void SetAnimations();
 
 			/* Used to send the respective Game Object, that will have this Code Component, to the Code Component.
 			   At the final of the method the Code Component is added as a Component to the respective Game Object. */
-			void SetCode(Player &player);
+			void SetCode();
 	};
 
 }

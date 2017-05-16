@@ -7,14 +7,18 @@ Player::Player(){}
 
 Player::Player(std::string player_name){
 	this->game_object_name = player_name;
+	// Used to create, start as Enable or Disable and set Game Object's animations to Animation Controller.
+	this->SetAnimations();
+	// Used to send the respective Game Object, that will have this Code Component, to the Code Component.
+	this->SetCode();
 }
 
 /* Used to create, start as Enable or Disable and set Game Object's animations to Animation Controller.
    At the final of the method the Animation Controller is added as a Component to the respective Game Object. */
-void Player::SetAnimations(Player &player){
+void Player::SetAnimations(){
 	// Creating the player's animation that runs to right looking to right.
 	walking_animation.CreateAnimation(
-		player,                                 // Game Object
+		*this,                                  // Game Object
 		"sprites/scottpilgrim_multiple.png",    // Image Path
 		1200.0f,                                // Animation Time
 		2,                                      // Sprite Rows
@@ -24,7 +28,7 @@ void Player::SetAnimations(Player &player){
 
 	// Creating the player's animation that runs to right looking to left.
 	walking_backwards_animation.CreateAnimation(
-		player,                                                 // Game Object
+		*this,                                                  // Game Object
 		"sprites/scottpilgrim_multiple.png",                    // Image Path
 		1200.0f,                                                // Animation Time
 		2,                                                      // Sprite Rows
@@ -40,15 +44,15 @@ void Player::SetAnimations(Player &player){
 	player_animation_controller.AddAnimation("walking_backward", walking_backwards_animation);
 
 	// Animation Controller is added as a Component to the respective Game Object.
-	player.AddComponent(player_animation_controller);
+	this->AddComponent(player_animation_controller);
 }
 
 /* Used to send the respective Game Object, that will have this Code Component, to the Code Component.
    At the final of the method the Code Component is added as a Component to the respective Game Object. */
-void Player::SetCode(Player &player){
+void Player::SetCode(){
 	// Set the Game Object to the player code.
-	player_code.SetGameObject(player);
+	player_code.SetGameObject(*this);
 
 	// Code Component (player code) is added as a Component to the respective Game Object.
-	player.AddComponent(player_code);
+	this->AddComponent(player_code);
 }

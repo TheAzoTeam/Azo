@@ -59,7 +59,7 @@ bool ImageComponent::Shutdown(){
 	/* Terminate Texture */
 	INFO("Shuting down ImageComponent.");
 	SDL_DestroyTexture(image_texture);
-	image_texture  = NULL;
+	image_texture = NULL;
 	return true;
 }
 
