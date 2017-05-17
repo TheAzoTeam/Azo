@@ -15,11 +15,10 @@ int main(int, char**) {
 		global::frame_rate);
 
 	// Creating a game object player, Setting Animations to Animation Controller and Setting specific codes.
-	Player player("McCree");
+	Player player("McCree", 150, 150);
 
 	engine::Scene player_scene("player_scene");
 	player_scene.AddGameObject(player);
-
 	engine::Game::instance.AddScene(player_scene);
 
 	engine::Game::instance.Run();

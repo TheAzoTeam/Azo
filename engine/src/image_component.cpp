@@ -23,17 +23,15 @@ bool ImageComponent::Init(){
 
 	image_texture = assets_image->texture;
 
+
 	component_width = assets_image->width;
 	component_height = assets_image->height;
 
 	frame_width = component_width;
 	frame_height = component_height;
 
-	game_object->x = 150;
-	game_object->y = 150;
-
 	canvasQuad = {game_object->x, game_object->y, frame_width, frame_height};
-	renderQuad = {component_width, component_height, frame_width, frame_height};
+	renderQuad = {0, 0, frame_width, frame_height};
 
 	return true;
 }

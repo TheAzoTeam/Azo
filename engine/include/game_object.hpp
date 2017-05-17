@@ -4,7 +4,7 @@
 #include <iostream>
 #include <typeinfo>
 #include <typeindex>
-#include <map>
+#include <unordered_map>
 
 #include "animation.hpp"
 #include "sdl2include.h"
@@ -21,13 +21,13 @@ namespace engine {
 			int width, height;      // Game Object size in canvas.
 
 		protected:
-			std::string game_object_name;                           // Game Object name.
-			std::map<std::type_index, Component *> component_list;  /* Map (List) that keep all Game Object's Components. */
+			std::string game_object_name;                                           // Game Object name.
+			std::unordered_map<std::type_index, Component *> component_map;         /* Map (List) that keep all Game Object's Components. */
 
 		public:
 			GameObject();
 
-			GameObject(std::string game_object_name);
+			GameObject(std::string game_object_name, int x, int y);
 
 			// Used to add a component to Game Object's "component_list" (map with the component and its type).
 			bool AddComponent(Component &component);

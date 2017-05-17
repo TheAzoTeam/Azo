@@ -5,12 +5,16 @@ using namespace Azo;
 
 Player::Player(){}
 
-Player::Player(std::string player_name){
+Player::Player(std::string player_name, int x, int y){
 	this->game_object_name = player_name;
 	// Used to create, start as Enable or Disable and set Game Object's animations to Animation Controller.
 	this->SetAnimations();
 	// Used to send the respective Game Object, that will have this Code Component, to the Code Component.
 	this->SetCode();
+
+	// Setting the starting position of the game object.
+	this->x = x;
+	this->y = y;
 }
 
 /* Used to create, start as Enable or Disable and set Game Object's animations to Animation Controller.

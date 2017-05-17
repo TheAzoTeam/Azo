@@ -4,7 +4,7 @@
 #include <iostream>
 #include "sdl2include.h"
 #include "game_object.hpp"
-#include <map>
+#include <unordered_map>
 
 namespace engine {
 	class Scene {
@@ -26,7 +26,7 @@ namespace engine {
 			bool RemoveGameObject(std::string &game_object_name);
 
 		protected:
-			std::map<std::string, engine::GameObject *> game_object_map;
+			std::unordered_map<std::string, engine::GameObject *> game_object_map;
 			std::string scene_name;
 			int image_w, image_h;
 	};

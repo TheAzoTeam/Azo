@@ -7,15 +7,17 @@ using namespace engine;
 
 GameObject::GameObject(){}
 
-GameObject::GameObject(std::string game_object_name){
+GameObject::GameObject(std::string game_object_name, int x, int y){
 	this->game_object_name = game_object_name;
+	this->x = x;
+	this->y = y;
 };
 
-// Used to add a component to Game Object's "component_list" (map with the component and its type).
+// Used to add a component to Game Object's "component_map" (map with the component and its type).
 bool engine::GameObject::AddComponent(engine::Component &component){
 	std::pair <std::type_index, Component *> component_pair(typeid(component), &component);
 
-	component_list.insert(component_pair);
+	component_map.insert(component_pair);
 
 	return true;
 }
@@ -24,9 +26,9 @@ bool engine::GameObject::AddComponent(engine::Component &component){
    can only be an AnimationController.
    OBS: This method is used be possible to communicate between components. */
 AnimationController* GameObject::GetComponentByType(std::type_index component_type){
-	auto component_to_be_found = component_list.find(component_type);
+	auto component_to_be_found = component_map.find(component_type);
 
-	if(component_to_be_found != component_list.end()){
+	if(component_to_be_found != component_map.end()){
 		return dynamic_cast <AnimationController * > (component_to_be_found->second);
 	}else{
 		ERROR("Animation Controller couldn't be found!");
@@ -35,7 +37,7 @@ AnimationController* GameObject::GetComponentByType(std::type_index component_ty
 
 // Call all Init methods of the components of the Game Object.
 bool engine::GameObject::Init(){
-	for(auto each_pair : component_list){
+	for(auto each_pair : component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled() && component->Init() == false){
 			return false;
@@ -49,8 +51,7 @@ bool engine::GameObject::Init(){
 
 // Call all Draw and Update methods of the components of the Game Object.
 bool engine::GameObject::Draw(){
-	//DEBUG("Number of components: " << component_list.size());
-	for(auto each_pair : component_list){
+	for(auto each_pair : component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled()){
 			component->UpdateCode();
@@ -64,7 +65,7 @@ bool engine::GameObject::Draw(){
 
 // Call all Shutdowns methods of the components of the Game Object.
 bool engine::GameObject::Shutdown(){
-	for(auto each_pair : component_list){
+	for(auto each_pair : component_map){
 		auto component = each_pair.second;
 		if(component->Shutdown() == false){
 			return false;

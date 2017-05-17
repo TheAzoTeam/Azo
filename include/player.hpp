@@ -27,7 +27,7 @@ namespace Azo {
 		public:
 			Player();
 
-			Player(std::string player_name);
+			Player(std::string player_name, int x, int y);
 
 			/* Used to create, start as Enable or Disable and set Game Object's animations to Animation Controller.
 			   At the final of the method the Animation Controller is added as a Component to the respective Game Object. */
