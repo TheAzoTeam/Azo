@@ -6,6 +6,7 @@
 #include "scene.hpp"
 #include "timer.hpp"
 #include "sdl.hpp"
+#include "assets_manager.hpp"
 
 #include <string>
 #include <map>
@@ -22,8 +23,8 @@ namespace engine {
 	// Generic Game class. It's how the engine'll see all games that will try to use it.
 	class Game {
 		public:
-			static Game instance;   /* Global game instance that allow access to public attributes and methods in any part of the code.*/
-			SDL sdl_elements;       // Used to access SDL class to take care of sdl elements in game Initialize.
+			static Game instance;           /* Global game instance that allow access to public attributes and methods in any part of the code.*/
+			SDL sdl_elements;               // Used to access SDL class to take care of sdl elements in game Initialize.
 
 		private:
 			GameState game_state;                           // Define Game States to control Loops and other strutuctures.
@@ -34,6 +35,8 @@ namespace engine {
 			Timer timer;                                    // Timer to control all Game's Time.
 			int frame_rate;                                 // Frames per Second of the Game (FPS).
 			float frame_time;                               // How many time will have one frame of the Game (miliseconds).
+			// TODO(Roger): Move Assets Manager to Scene.
+			AssetsManager assets_manager;                   // Manager to load, unload and reference assets.
 
 		public:
 			// Constructor Default with default values.
@@ -53,8 +56,13 @@ namespace engine {
 					   int frame_rate);
 
 			// Used to use the private attribute Timer.
-			inline Timer GetTimer(){
+			inline Timer& GetTimer(){
 				return timer;
+			}
+
+			// Used to get the private attribute AssetsManager.
+			inline AssetsManager& GetAssetsManager(){
+				return assets_manager;
 			}
 
 		private:

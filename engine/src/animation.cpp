@@ -41,7 +41,6 @@ Animation::~Animation(){}
 
 bool Animation::Draw(){
 //	DEBUG("Animation::Draw()");
-
 	this->frame_width = this->component_width / sprite_colums;
 	this->frame_height = this->component_height / sprite_rows;
 //	DEBUG("Component width: " << this->component_height);

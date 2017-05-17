@@ -36,7 +36,7 @@ void Player::SetAnimations(){
 		8,                                                      // Start Frame
 		15);                                                    // End frame
 
-	// Disable de Animation Component.
+	// Disable Animation Component.
 	walking_backwards_animation.DisableComponent();
 
 	// Add all animations to Game Object's Animation Controller's map (Animation name, Animation component).

@@ -17,31 +17,14 @@ ImageComponent::ImageComponent(GameObject & game_object, std::string image_path)
 ImageComponent::~ImageComponent(){}
 
 bool ImageComponent::Init(){
-	/* Load Texture */
-	SDL_Surface *image = NULL;
 
-	if(image_path == ""){
-		ERROR("Invalid Image Path: " << image_path);
-		return false;
-	}
+	// Check AssetsManager to see if image is already loaded.
+	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
 
-	image = IMG_Load(image_path.c_str());
+	image_texture = assets_image->texture;
 
-	if(image == NULL){
-		ERROR("Couldn't load sprite.");
-		return false;
-	}
-
-	image_texture = SDL_CreateTextureFromSurface(Game::instance.sdl_elements.GetCanvas(), image);
-
-	if(image_texture == NULL){
-		ERROR("Couldn't create texture from image.");
-		return false;
-	}
-
-	component_width = image->w;
-	component_height = image->h;
-
+	component_width = assets_image->width;
+	component_height = assets_image->height;
 
 	frame_width = component_width;
 	frame_height = component_height;
@@ -57,8 +40,6 @@ bool ImageComponent::Init(){
 
 bool ImageComponent::Shutdown(){
 	/* Terminate Texture */
-	INFO("Shuting down ImageComponent.");
-	SDL_DestroyTexture(image_texture);
 	image_texture = NULL;
 	return true;
 }
