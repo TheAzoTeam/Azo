@@ -24,10 +24,7 @@ namespace engine {
 			bool AddGameObject(engine::GameObject &game_object);
 			engine::GameObject & GetGameObject(std::string & game_object_name);
 			bool RemoveGameObject(std::string &game_object_name);
-			bool ResolveCollision();
-
-		private:
-			bool CheckCollision(GameObject &game_object);
+			void ResolveCollision();
 
 		protected:
 			std::unordered_map<std::string, engine::GameObject *> game_object_map;

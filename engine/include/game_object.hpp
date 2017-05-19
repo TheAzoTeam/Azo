@@ -15,11 +15,17 @@
 
 namespace engine {
 
+	enum class GameObjectState {
+		COLLIDING,
+		NOT_COLLIDING,
+	};
+
 	class GameObject {
 		public:
 			int x, y;                                       // Game Object positions in canvas.
 			int game_object_width, game_object_height;      // Game Object size in canvas.
 			int top, bottom, left, right;                   // Axis position of game_object, to check collision.
+			GameObjectState state = GameObjectState::NOT_COLLIDING;
 
 		protected:
 			std::string game_object_name;                                           // Game Object name.
@@ -51,8 +57,6 @@ namespace engine {
 
 			// Call all Shutdowns methods of the components of the Game Object.
 			virtual bool Shutdown();
-
-			virtual void ResolveCollision();
 	};
 
 }

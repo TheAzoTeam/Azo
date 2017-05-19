@@ -37,7 +37,6 @@ namespace Azo {
 			   At the final of the method the Code Component is added as a Component to the respective Game Object. */
 			void SetCode();
 
-			void ResolveCollision();
 	};
 
 }

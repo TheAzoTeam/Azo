@@ -16,6 +16,10 @@ void PlayerCode::FindAnimationController(){
 }
 
 bool PlayerCode::UpdateCode(){
+	if(game_object->state == engine::GameObjectState::COLLIDING){
+		ResolveCollision();
+	}
+
 	input_manager.Update();
 
 	if(input_manager.KeyDown(SDL_SCANCODE_W)){

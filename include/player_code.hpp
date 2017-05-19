@@ -16,13 +16,15 @@ namespace Azo {
 			bool jump = false;
 			engine::Timer timer;
 			engine::AnimationController anim_controller;
+
+			void ResolveCollision();
+
 		public:
 			PlayerCode();
 			PlayerCode(engine::GameObject &game_object);
 			bool UpdateCode();
 			void SetGameObject(engine::GameObject &game_object);
 			void FindAnimationController();
-			void ResolveCollision();
 	};
 
 }
