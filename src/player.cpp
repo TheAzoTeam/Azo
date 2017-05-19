@@ -60,3 +60,7 @@ void Player::SetCode(){
 	// Code Component (player code) is added as a Component to the respective Game Object.
 	this->AddComponent(player_code);
 }
+
+void Player::ResolveCollision(){
+	player_code.ResolveCollision();
+}

@@ -16,8 +16,11 @@ int main(int, char**) {
 
 	// Creating a game object player, Setting Animations to Animation Controller and Setting specific codes.
 	Player player("McCree", 150, 150);
-
+	engine::GameObject box("box", 300, 150);
+	engine::ImageComponent box_image(box, "sprites/blackbox.jpeg");
+	box.AddComponent(box_image);
 	engine::Scene player_scene("player_scene");
+	player_scene.AddGameObject(box);
 	player_scene.AddGameObject(player);
 	engine::Game::instance.AddScene(player_scene);
 

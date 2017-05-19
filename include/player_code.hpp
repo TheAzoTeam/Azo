@@ -22,6 +22,7 @@ namespace Azo {
 			bool UpdateCode();
 			void SetGameObject(engine::GameObject &game_object);
 			void FindAnimationController();
+			void ResolveCollision();
 	};
 
 }

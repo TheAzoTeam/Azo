@@ -59,3 +59,10 @@ bool PlayerCode::UpdateCode(){
 	return true;
 
 }
+
+
+void PlayerCode::ResolveCollision(){
+	anim_controller.StopAnimation("walking_foward");
+	anim_controller.StartAnimation("walking_backward");
+	game_object->x = 0;
+}

@@ -74,3 +74,6 @@ bool engine::GameObject::Shutdown(){
 
 	return true;
 }
+
+
+void GameObject::ResolveCollision(){}
