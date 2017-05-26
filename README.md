@@ -4,6 +4,16 @@
 Repositório para o desenvolvimento do jogo _Azo_ na matéria de Introdução à Jogos Eletrônicos, Universidade de Brasília.
 
 
+### Envolvidos no Projeto
+
+* Allan Jefrey (Desenvolvedor - UnB FGA);
+* Hugo Alves (Desenvolvedor - UnB FGA);
+* Roger Lenke (Desenvolvedor - UnB FGA);
+* Murilo Oliveira (Músico - UnB Darcy Ribeiro);
+* Marina Rebello (Designer - UnB Darcy Ribeiro);
+* Thainá Ferreira (Designer - UnB Darcy Ribeiro).
+
+
 ### Introdução e Objetivos
 
 Azo é um jogo onde o jogador deve controlar três diferentes personagens em diferentes épocas, para corrigir a distorção nas linhas temporais!
