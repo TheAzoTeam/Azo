@@ -13,11 +13,9 @@ Repositório para o desenvolvimento do jogo _Azo_ na matéria de Introdução à
 * Marina Rebello (Designer - UnB Darcy Ribeiro);
 * Thainá Ferreira (Designer - UnB Darcy Ribeiro).
 
-
 ### Introdução e Objetivos
 
 Azo é um jogo onde o jogador deve controlar três diferentes personagens em diferentes épocas, para corrigir a distorção nas linhas temporais!
-
 
 ### História
 
@@ -74,6 +72,35 @@ O jogador pode:
 * Saltar obstáculos.
 * Deslizar por baixo de obstáculos.
 * Ativar a habilidade especial.
+
+### Dependências
+
+Para executar o jogo com sucesso é necessário possuir instaladas tais dependências:
+* CMake 3.5.1
+* SDL 2
+* SDL_image 2
+* SDL_ttf 2
+* SDL_mixer 2
+* How to build
+
+### Como executar
+
+No terminal do sistema operacional (Linux), utilize os comandos na pasta do clone do projeto:
+```
+$ mkdir build
+```
+```
+$ cd build
+```
+```
+$ cmake ..
+```
+```
+$ make
+```
+```
+$ ./Azo
+```
 
 ### Produto final
 
