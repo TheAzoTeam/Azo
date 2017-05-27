@@ -74,25 +74,35 @@ bool Scene::RemoveGameObject(std::string &game_object_name){
 }
 
 void Scene::ResolveCollision(){
-	auto game_object = game_object_map.find("McCree")->second;
+	std::unordered_map<std::string, engine::GameObject *>::iterator iterator_one;
+	std::unordered_map<std::string, engine::GameObject *>::iterator iterator_two;
 
+	// Iterate through game_object_map, comparing each element with the subsequent ones.
+	for(iterator_one = game_object_map.begin(); iterator_one != game_object_map.end(); ++iterator_one){
 
-	for(auto each_row : game_object_map){
-		auto each_game_object = each_row.second;
-		if(each_game_object->GetGameObjectName() != "McCree"){
-			if(game_object->bottom <= each_game_object->top){
-				game_object->state = GameObjectState::NOT_COLLIDING;
-			}else if(game_object->top >= each_game_object->bottom){
-				game_object->state = GameObjectState::NOT_COLLIDING;
-			}else if(game_object->right <= each_game_object->left){
-				game_object->state = GameObjectState::NOT_COLLIDING;
-			}else if(game_object->left >= each_game_object->right){
-				game_object->state = GameObjectState::NOT_COLLIDING;
+		auto game_object_one = iterator_one->second;
+
+		for(iterator_two = std::next(game_object_map.begin()); iterator_two != game_object_map.end(); ++iterator_two){
+
+			auto game_object_two = iterator_two->second;
+
+			// Check if the objects are colliding.
+			if(game_object_one->bottom <= game_object_two->top){
+				game_object_one->state = GameObjectState::NOT_COLLIDING;
+
+			}else if(game_object_one->top >= game_object_two->bottom){
+				game_object_one->state = GameObjectState::NOT_COLLIDING;
+
+			}else if(game_object_one->right <= game_object_two->left){
+				game_object_one->state = GameObjectState::NOT_COLLIDING;
+
+			}else if(game_object_one->left >= game_object_two->right){
+				game_object_one->state = GameObjectState::NOT_COLLIDING;
+
 			}else{
-				game_object->state = GameObjectState::COLLIDING;
+				game_object_one->state = GameObjectState::COLLIDING;
 			}
 		}
 	}
-
 }
 
