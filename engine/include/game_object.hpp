@@ -5,13 +5,13 @@
 #include <typeinfo>
 #include <typeindex>
 #include <unordered_map>
+#include <list>
 
 #include "animation.hpp"
 #include "sdl2include.h"
 #include "component.hpp"
 #include "image_component.hpp"
 #include "animation_controller.hpp"
-
 
 namespace engine {
 
@@ -26,6 +26,7 @@ namespace engine {
 			int game_object_width, game_object_height;      // Game Object size in canvas.
 			int top, bottom, left, right;                   // Axis position of game_object, to check collision.
 			GameObjectState state = GameObjectState::NOT_COLLIDING;
+			std::list<GameObject *> collision_object_list;
 
 		protected:
 			std::string game_object_name;                                           // Game Object name.

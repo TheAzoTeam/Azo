@@ -9,8 +9,14 @@ GameObject::GameObject(){}
 
 GameObject::GameObject(std::string game_object_name, int x, int y){
 	this->game_object_name = game_object_name;
+
 	this->x = x;
 	this->y = y;
+
+	this->top = 0;
+	this->bottom = 0;
+	this->left = 0;
+	this->right = 0;
 };
 
 // Used to add a component to Game Object's "component_map" (map with the component and its type).

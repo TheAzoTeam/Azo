@@ -66,7 +66,15 @@ bool PlayerCode::UpdateCode(){
 
 
 void PlayerCode::ResolveCollision(){
+	for(auto collision : this->game_object->collision_object_list){
+		INFO("GameObject name: " << collision->GetGameObjectName());
+	}
+
 	anim_controller.StopAnimation("walking_foward");
 	anim_controller.StartAnimation("walking_backward");
 	game_object->x = 0;
+
+	// Reseting the default state to a non colliding game object.
+	this->game_object->collision_object_list.pop_front();
+	this->game_object->state = engine::GameObjectState::NOT_COLLIDING;
 }
