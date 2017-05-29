@@ -21,6 +21,8 @@ namespace Azo {
 			engine::Animation walking_animation;
 			// The player's animation.
 			engine::Animation walking_backwards_animation;
+			// The player's animation.
+			engine::Animation jump_animation;
 			// The player's motion code.
 			PlayerCode player_code;
 
@@ -36,6 +38,7 @@ namespace Azo {
 			/* Used to send the respective Game Object, that will have this Code Component, to the Code Component.
 			   At the final of the method the Code Component is added as a Component to the respective Game Object. */
 			void SetCode();
+
 	};
 
 }

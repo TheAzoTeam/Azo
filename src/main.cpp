@@ -15,12 +15,25 @@ int main(int, char**) {
 		global::frame_rate);
 
 	// Creating a game object player, Setting Animations to Animation Controller and Setting specific codes.
-	Player player("McCree", 150, 150);
+	Player player("McCree", -200, 230);
+	engine::GameObject box("box", 450, 150);
 
+	// Adding Components to respectives game objects.
+	engine::ImageComponent box_image(box, "sprites/blackbox.jpeg");
+	box.AddComponent(box_image);
+
+	// Creating Scenes.
 	engine::Scene player_scene("player_scene");
+
+	// Adding game objects to respectives Scenes.
 	player_scene.AddGameObject(player);
+	player_scene.AddGameObject(box);
+
+	// Adding Scenes to game.
 	engine::Game::instance.AddScene(player_scene);
 
+	// Starting game execution.
 	engine::Game::instance.Run();
+
 	return 0;
 }
