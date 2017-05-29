@@ -69,9 +69,9 @@ Os objetos presentes no jogo são:
 ### Controles
 
 O jogador pode:
-* Saltar obstáculos.
-* Deslizar por baixo de obstáculos.
-* Ativar a habilidade especial.
+* Saltar obstáculos (tecla 'w').
+* Deslizar por baixo de obstáculos (tecla 's').
+* Ativar a habilidade especial (tecla 'space').
 
 ### Dependências
 
