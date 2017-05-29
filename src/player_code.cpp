@@ -1,5 +1,6 @@
 #include "player_code.hpp"
 
+
 using namespace Azo;
 
 
@@ -8,6 +9,7 @@ PlayerCode::PlayerCode(){}
 void PlayerCode::SetGameObject(engine::GameObject &game_object){
 	this->game_object = &game_object;
 	this->component_state = engine::State::ENABLED;
+	this->state = PlayerState::RUNNING;
 	FindAnimationController();
 }
 
@@ -20,48 +22,57 @@ bool PlayerCode::UpdateCode(){
 		ResolveCollision();
 	}
 
+	// Catch the User input.
 	input_manager.Update();
 
-	if(input_manager.KeyDown(SDL_SCANCODE_W)){
+	// The player should jump (INPUT = 'W').
+	if(input_manager.KeyDown(SDL_SCANCODE_W) && this->state == PlayerState::RUNNING){
 		timer.Step();
-		jump = true;
+		this->state = PlayerState::JUMPING;
+		anim_controller.StartAnimation("jumping");
+		anim_controller.StopAnimation("walking_foward");
+		anim_controller.StopAnimation("walking_backward");
 	}
 
-	if(jump){
+	if(this->state == PlayerState::JUMPING){
 		timer.DeltaTime();
-		if(timer.GetDeltaTime() <= 500.0f){
+		if(timer.GetDeltaTime() <= 300.0f){
 			INFO("Tempo: " << timer.GetDeltaTime());
-			game_object->y -= 10;
+			game_object->y -= 13;
 		}else{
-			jump = false;
+			this->state = PlayerState::FALLING;
 		}
 	}
 
+	if(this->state == PlayerState::RUNNING){
+		anim_controller.StopAnimation("jumping");
+		anim_controller.StartAnimation("walking_foward");
+	}
+
+	// The player should slide (INPUT = 'S').
 	if(input_manager.KeyDown(SDL_SCANCODE_S)){
 		game_object->y += 3;
 	}
 
-	if(input_manager.KeyDown(SDL_SCANCODE_A)){
-		anim_controller.StopAnimation("walking_foward");
-		anim_controller.StartAnimation("walking_backward");
+	// Gravity that pulls the player down.
+	if(game_object->y <= 230){
+		game_object->y += 6;
 	}
 
-	if(input_manager.KeyDown(SDL_SCANCODE_D)){
-		anim_controller.StopAnimation("walking_backward");
-		anim_controller.StartAnimation("walking_foward");
+	// Verify if the player stopped to fall.
+	if(game_object->y >= 230){
+		this->state = PlayerState::RUNNING;
 	}
 
+	// Stop the player almost in the center of the page
+	if(game_object->x >= 310){
+		game_object->x = 310;
+	}
+
+	// Continuous run to right.
 	game_object->x += 4;
-	if(game_object->y <= 150){
-		game_object->y += 5;
-	}
-
-	if(game_object->x >= engine::Game::instance.sdl_elements.GetWindowWidth()){
-		game_object->x = -1 * 108;
-	}
 
 	return true;
-
 }
 
 
@@ -70,9 +81,7 @@ void PlayerCode::ResolveCollision(){
 		INFO("GameObject name: " << collision->GetGameObjectName());
 	}
 
-	anim_controller.StopAnimation("walking_foward");
-	anim_controller.StartAnimation("walking_backward");
-	game_object->x = 0;
+	game_object->x = -200;
 
 	// Reseting the default state to a non colliding game object.
 	this->game_object->collision_object_list.pop_front();

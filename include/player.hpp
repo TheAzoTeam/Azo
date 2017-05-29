@@ -21,6 +21,8 @@ namespace Azo {
 			engine::Animation walking_animation;
 			// The player's animation.
 			engine::Animation walking_backwards_animation;
+			// The player's animation.
+			engine::Animation jump_animation;
 			// The player's motion code.
 			PlayerCode player_code;
 
