@@ -26,6 +26,9 @@ namespace Azo {
 			void CreateComponents();
 			void SetGameObjects();
 			void SetComponents();
+			bool Shutdown();
+			void DestroyComponents();
+			void DestroyGameObjects();
 	};
 }
 

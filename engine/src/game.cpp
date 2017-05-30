@@ -125,13 +125,15 @@ bool Game::StartAndStopScenes(){
 			ERROR("No scenes to run!");
 			return false;
 		}else{
+
+			current_scene->Init();
+
 			if(last_scene != NULL){
 				INFO("Shuting down scene!");
 				last_scene->Shutdown();
 			}else{
 				// Nothing to Do.
 			}
-			current_scene->Init();
 
 			need_to_change_scene = false;
 		}

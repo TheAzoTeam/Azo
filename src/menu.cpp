@@ -29,12 +29,51 @@ void Menu::CreateComponents(){
 }
 
 void Menu::SetGameObjects(){
+	ASSERT(play_button_menu != NULL, "Play button menu can't be NULL.");
+	ASSERT(menu_game_object != NULL, "Menu game object can't be NULL.");
+
 	this->AddGameObject(*play_button_menu);
 	this->AddGameObject(*menu_game_object);
 }
 void Menu::SetComponents(){
+	ASSERT(play_button_menu != NULL, "Play button menu can't be NULL.");
+	ASSERT(menu_game_object != NULL, "Menu game object can't be NULL.");
+	ASSERT(menu_image != NULL, "Menu image can't be NULL.");
+	ASSERT(play_button_image != NULL, "Play button image object can't be NULL.");
+	ASSERT(menu_code != NULL, "Menu Code can't be NULL.");
+
 	menu_game_object->AddComponent(*menu_image);
 	play_button_menu->AddComponent(*play_button_image);
-
 	menu_game_object->AddComponent(*menu_code);
+}
+
+bool Menu::Shutdown(){
+	INFO("Destroying Menu.");
+	DestroyComponents();
+	DestroyGameObjects();
+	return true;
+}
+
+void Menu::DestroyComponents(){
+	INFO("Destroying Menu Components.");
+	free(play_button_image);
+	play_button_image = NULL;
+
+	free(menu_image);
+	menu_image = NULL;
+
+	free(menu_code);
+	menu_image = NULL;
+}
+void Menu::DestroyGameObjects(){
+	INFO("Destroying GameObjects.");
+	free(menu_game_object);
+	DEBUG("Freeing Menu pointer.");
+	menu_game_object = NULL;
+	DEBUG("Cleaning menu reference.");
+
+	free(play_button_menu);
+	DEBUG("Freeing play button menu.");
+	play_button_menu = NULL;
+	DEBUG("Cleaning play button reference.");
 }
