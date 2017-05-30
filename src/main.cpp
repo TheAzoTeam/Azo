@@ -4,7 +4,6 @@
 #include "player.hpp"
 #include "menu.hpp"
 #include "menu_code.hpp"
-#include "background_component.hpp"
 
 using namespace Azo;
 

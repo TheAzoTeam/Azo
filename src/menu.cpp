@@ -24,7 +24,7 @@ void Menu::CreateGameObjects(){
 }
 void Menu::CreateComponents(){
 	play_button_image = new engine::ImageComponent(*play_button_menu, "backgrounds/play_button.png");
-	menu_image = new engine::BackgroundComponent(*menu_game_object, "backgrounds/menu.png");
+	menu_image = new engine::ImageComponent(*menu_game_object, "backgrounds/menu.png");
 	menu_code = new MenuCode(*menu_game_object);
 }
 

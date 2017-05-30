@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 #include <string>
+#include <vector>
 
 #include "game_object.hpp"
 #include "animation.hpp"
@@ -25,6 +26,9 @@ namespace Azo {
 			engine::Animation *jump_animation;
 			// The player's motion code.
 			PlayerCode *player_code;
+
+			std::vector<engine::Sprite *> sprite_list;
+
 
 		public:
 			Player();

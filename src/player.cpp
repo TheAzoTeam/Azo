@@ -23,36 +23,63 @@ void Player::SetPlayerDependencies(){
 }
 
 void Player::CreateAnimations(){
+	int width = 0;
+
+	INFO("Entering Create Animations");
+	for(int i = 0; i < 16; i++){
+		sprite_list.push_back(new engine::Sprite());
+	}
+
+
+	for(int i = 0; i < 8; i++){
+		sprite_list[i]->sprite_x = width;
+		sprite_list[i]->sprite_y = 0;
+		sprite_list[i]->sprite_width = 108;
+		sprite_list[i]->sprite_height = 140;
+		width += 108;
+	}
+
+	width = 0;
+	for(int i = 8; i < 16; i++){
+		sprite_list[i]->sprite_x = width;
+		sprite_list[i]->sprite_y = 108;
+		sprite_list[i]->sprite_width = 108;
+		sprite_list[i]->sprite_height = 280;
+		width += 108;
+	}
+
 	// Creating a animation controller.
 	player_animation_controller = new engine::AnimationController();
 
+	DEBUG("Creating walking animation.");
 	// Creating the player's animation that runs to right looking to right.
 	walking_animation = new engine::Animation(
 		*this,                                                                  // Game Object
 		"sprites/scottpilgrim_multiple.png",                                    // Image Path
 		900.0f,                                                                 // Animation Time
-		2,                                                                      // Sprite Rows
-		8,                                                                      // Sprite Colums
-		0,                                                                      // Start Frame
-		7);                                                                     // End Frame
+		sprite_list,
+		0,
+		7
+		);
+
+	DEBUG("Finished creating walking animation.");
 
 	// Creating the player's animation that runs to right looking to left.
 	walking_backwards_animation = new engine::Animation(
 		*this,                                                  // Game Object
 		"sprites/scottpilgrim_multiple.png",                    // Image Path
 		900.0f,                                                 // Animation Time
-		2,                                                      // Sprite Rows
-		8,                                                      // Sprite Colums
-		8,                                                      // Start Frame
-		15);                                                    // End frame
+		sprite_list,
+		8,
+		15
+		);
 
 	// Creating the player's animation that jump.
 	jump_animation = new engine::Animation(
 		*this,                                                  // Game Object
 		"sprites/scottpilgrim_multiple.png",                    // Image Path
 		500.0f,                                                 // Animation Time
-		2,                                                      // Sprite Rows
-		8,                                                      // Sprite Colums
+		sprite_list,
 		5,                                                      // Start Frame
 		5);                                                     // End frame
 
