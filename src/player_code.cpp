@@ -3,10 +3,9 @@
 
 using namespace Azo;
 
-
 PlayerCode::PlayerCode(){}
 
-void PlayerCode::SetGameObject(engine::GameObject &game_object){
+PlayerCode::PlayerCode(engine::GameObject &game_object){
 	this->game_object = &game_object;
 	this->component_state = engine::State::ENABLED;
 	this->state = PlayerState::RUNNING;

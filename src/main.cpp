@@ -17,18 +17,6 @@ int main(int, char**) {
 		global::window_height,
 		global::frame_rate);
 
-	// engine::GameObject menu_game_object("menu_game_object", 0, 0);
-	//
-	// engine::BackgroundComponent menu_image(menu_game_object, "backgrounds/menu.png");
-	// menu_game_object.AddComponent(menu_image);
-	//
-	// MenuCode menu_code;
-	// menu_code.SetGameObject(menu_game_object);
-	// menu_game_object.AddComponent(menu_code);
-	//
-	// engine::GameObject play_button_menu("play_button_menu", 300, 300);
-	// engine::ImageComponent play_button_image(play_button_menu, "backgrounds/play_button.png");
-	// play_button_menu.AddComponent(play_button_image);
 
 	Menu menu_scene("menu_scene");
 	// menu_scene.AddGameObject(play_button_menu);

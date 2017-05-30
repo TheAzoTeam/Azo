@@ -5,6 +5,10 @@ using namespace Azo;
 
 MenuCode::MenuCode(){}
 
+MenuCode::MenuCode(engine::GameObject &game_object){
+	this->game_object = &game_object;
+}
+
 MenuCode::~MenuCode(){}
 
 bool MenuCode::UpdateCode(){
@@ -17,8 +21,4 @@ bool MenuCode::UpdateCode(){
 	}
 
 	return true;
-}
-
-void MenuCode::SetGameObject(engine::GameObject &game_object){
-	this->game_object = &game_object;
 }

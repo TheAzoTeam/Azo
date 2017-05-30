@@ -6,7 +6,7 @@ using namespace engine;
 
 Animation::Animation(){}
 
-void Animation::CreateAnimation(
+Animation::Animation(
 	GameObject & game_object,
 	std::string image_path,
 	float animation_time,

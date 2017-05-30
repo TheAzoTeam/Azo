@@ -7,21 +7,27 @@ Player::Player(){}
 
 Player::Player(std::string player_name, int x, int y){
 	this->game_object_name = player_name;
-	// Used to create, start as Enable or Disable and set Game Object's animations to Animation Controller.
-	this->SetAnimations();
-	// Used to send the respective Game Object, that will have this Code Component, to the Code Component.
-	this->SetCode();
 
 	// Setting the starting position of the game object.
 	this->x = x;
 	this->y = y;
+
+	SetPlayerDependencies();
 }
 
-/* Used to create, start as Enable or Disable and set Game Object's animations to Animation Controller.
-   At the final of the method the Animation Controller is added as a Component to the respective Game Object. */
-void Player::SetAnimations(){
+void Player::SetPlayerDependencies(){
+	CreateAnimations();
+	SetAnimations();
+	CreateCode();
+	SetCode();
+}
+
+void Player::CreateAnimations(){
+	// Creating a animation controller.
+	player_animation_controller = new engine::AnimationController();
+
 	// Creating the player's animation that runs to right looking to right.
-	walking_animation.CreateAnimation(
+	walking_animation = new engine::Animation(
 		*this,                                  // Game Object
 		"sprites/scottpilgrim_multiple.png",    // Image Path
 		900.0f,                                 // Animation Time
@@ -31,7 +37,7 @@ void Player::SetAnimations(){
 		7);                                     // End Frame
 
 	// Creating the player's animation that runs to right looking to left.
-	walking_backwards_animation.CreateAnimation(
+	walking_backwards_animation = new engine::Animation(
 		*this,                                                  // Game Object
 		"sprites/scottpilgrim_multiple.png",                    // Image Path
 		900.0f,                                                 // Animation Time
@@ -41,7 +47,7 @@ void Player::SetAnimations(){
 		15);                                                    // End frame
 
 	// Creating the player's animation that jump.
-	jump_animation.CreateAnimation(
+	jump_animation = new engine::Animation(
 		*this,                                                  // Game Object
 		"sprites/scottpilgrim_multiple.png",                    // Image Path
 		500.0f,                                                 // Animation Time
@@ -50,26 +56,32 @@ void Player::SetAnimations(){
 		5,                                                      // Start Frame
 		5);                                                     // End frame
 
-
 	// Disable Animation Component.
-	walking_backwards_animation.DisableComponent();
-	jump_animation.DisableComponent();
-
-	// Add all animations to Game Object's Animation Controller's map (Animation name, Animation component).
-	player_animation_controller.AddAnimation("walking_foward", walking_animation);
-	player_animation_controller.AddAnimation("walking_backward", walking_backwards_animation);
-	player_animation_controller.AddAnimation("jumping", jump_animation);
-
-	// Animation Controller is added as a Component to the respective Game Object.
-	this->AddComponent(player_animation_controller);
+	walking_backwards_animation->DisableComponent();
+	jump_animation->DisableComponent();
 }
 
-/* Used to send the respective Game Object, that will have this Code Component, to the Code Component.
-   At the final of the method the Code Component is added as a Component to the respective Game Object. */
-void Player::SetCode(){
-	// Set the Game Object to the player code.
-	player_code.SetGameObject(*this);
+void Player::CreateCode(){
+	player_code = new PlayerCode(*this);
+}
 
-	// Code Component (player code) is added as a Component to the respective Game Object.
-	this->AddComponent(player_code);
+
+void Player::SetAnimations(){
+	ASSERT(player_animation_controller != NULL, "Player Animation Controller can't be null.");
+
+	// Add all animations to Game Object's Animation Controller's map (Animation name, Animation component).
+	player_animation_controller->AddAnimation("walking_foward", *walking_animation);
+	player_animation_controller->AddAnimation("walking_backward", *walking_backwards_animation);
+	player_animation_controller->AddAnimation("jumping", *jump_animation);
+
+
+	// Animation Controller is added as a Component to the respective Game Object.
+	this->AddComponent(*player_animation_controller);
+}
+
+void Player::SetCode(){
+	ASSERT(player_code != NULL, "Player Code can't be null.");
+
+	// PlayerCode is added as a component to this GameObject.
+	this->AddComponent(*player_code);
 }

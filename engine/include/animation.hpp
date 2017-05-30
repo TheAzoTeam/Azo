@@ -21,7 +21,7 @@ namespace engine {
 		public:
 			Animation();
 
-			void CreateAnimation(
+			Animation(
 				GameObject &game_object,
 				std::string image_path,
 				float animation_time,

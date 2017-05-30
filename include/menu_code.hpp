@@ -10,9 +10,9 @@ namespace Azo {
 	class MenuCode : public engine::CodeComponent {
 		public:
 			MenuCode();
+			MenuCode(engine::GameObject &game_object);
 			~MenuCode();
 			bool UpdateCode();
-			void SetGameObject(engine::GameObject &game_object);
 	};
 }
 
