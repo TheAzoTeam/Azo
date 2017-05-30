@@ -33,13 +33,14 @@ void SDL::CreateWindow(){
 		SDL_WINDOWPOS_CENTERED, // Window opening position y.
 		window_width,           // Window width.
 		window_height,          // Window height.
-		SDL_WINDOW_SHOWN
+		SDL_WINDOW_FULLSCREEN_DESKTOP
 		);
 
 	if(window == NULL){
-        ERROR( "Couldn't create window.");
+		ERROR( "Couldn't create window.");
 	}
 
+	SDL_GetWindowSize(window, &window_width, &window_height);
 
 	INFO("Creating canvas.");
 	canvas = SDL_CreateRenderer(
@@ -74,7 +75,7 @@ void SDL::TerminateSDL(){
 	IMG_Quit();
 
 	SDL_Quit();
-    INFO("Bye bye, SDL.");
+	INFO("Bye bye, SDL.");
 }
 
 

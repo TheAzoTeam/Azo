@@ -36,7 +36,7 @@ bool PlayerCode::UpdateCode(){
 
 	if(this->state == PlayerState::JUMPING){
 		timer.DeltaTime();
-		if(timer.GetDeltaTime() <= 300.0f){
+		if(timer.GetDeltaTime() <= 350.0f){
 			INFO("Tempo: " << timer.GetDeltaTime());
 			game_object->y -= 13;
 		}else{
@@ -55,18 +55,18 @@ bool PlayerCode::UpdateCode(){
 	}
 
 	// Gravity that pulls the player down.
-	if(game_object->y <= 230){
+	if(game_object->y <= 380){
 		game_object->y += 6;
 	}
 
 	// Verify if the player stopped to fall.
-	if(game_object->y >= 230){
+	if(game_object->y >= 380){
 		this->state = PlayerState::RUNNING;
 	}
 
 	// Stop the player almost in the center of the page
-	if(game_object->x >= 310){
-		game_object->x = 310;
+	if(game_object->x >= engine::Game::instance.sdl_elements.GetWindowWidth() / 3){
+		game_object->x = engine::Game::instance.sdl_elements.GetWindowWidth() / 3;
 	}
 
 	// Continuous run to right.
@@ -77,13 +77,15 @@ bool PlayerCode::UpdateCode(){
 
 
 void PlayerCode::ResolveCollision(){
+	INFO("GameObject size: " << this->game_object->collision_object_list.size());
+
 	for(auto collision : this->game_object->collision_object_list){
 		INFO("GameObject name: " << collision->GetGameObjectName());
 	}
 
-	game_object->x = -200;
+	game_object->x = -250;
 
 	// Reseting the default state to a non colliding game object.
-	this->game_object->collision_object_list.pop_front();
+	this->game_object->collision_object_list.clear();
 	this->game_object->state = engine::GameObjectState::NOT_COLLIDING;
 }

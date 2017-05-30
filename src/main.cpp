@@ -15,8 +15,8 @@ int main(int, char**) {
 		global::frame_rate);
 
 	// Creating a game object player, Setting Animations to Animation Controller and Setting specific codes.
-	Player player("McCree", -200, 230);
-	engine::GameObject box("box", 450, 150);
+	Player player("McCree", -250, 380);
+	engine::GameObject box("box", 600, 500);
 
 	// Adding Components to respectives game objects.
 	engine::ImageComponent box_image(box, "sprites/blackbox.jpeg");
