@@ -56,12 +56,15 @@ bool Menu::Shutdown(){
 
 void Menu::DestroyComponents(){
 	INFO("Destroying Menu Components.");
+	play_button_image->Shutdown();
 	free(play_button_image);
 	play_button_image = NULL;
 
+	menu_image->Shutdown();
 	free(menu_image);
 	menu_image = NULL;
 
+	menu_code->Shutdown();
 	free(menu_code);
 	menu_image = NULL;
 }
