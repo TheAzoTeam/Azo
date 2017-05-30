@@ -45,6 +45,10 @@ namespace Azo {
 
 			void SetCode();
 
+			void DestroyComponents();
+
+			bool Shutdown();
+
 	};
 
 }

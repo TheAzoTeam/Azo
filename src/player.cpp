@@ -28,13 +28,13 @@ void Player::CreateAnimations(){
 
 	// Creating the player's animation that runs to right looking to right.
 	walking_animation = new engine::Animation(
-		*this,                                  // Game Object
-		"sprites/scottpilgrim_multiple.png",    // Image Path
-		900.0f,                                 // Animation Time
-		2,                                      // Sprite Rows
-		8,                                      // Sprite Colums
-		0,                                      // Start Frame
-		7);                                     // End Frame
+		*this,                                                                  // Game Object
+		"sprites/scottpilgrim_multiple.png",                                    // Image Path
+		900.0f,                                                                 // Animation Time
+		2,                                                                      // Sprite Rows
+		8,                                                                      // Sprite Colums
+		0,                                                                      // Start Frame
+		7);                                                                     // End Frame
 
 	// Creating the player's animation that runs to right looking to left.
 	walking_backwards_animation = new engine::Animation(
@@ -67,7 +67,10 @@ void Player::CreateCode(){
 
 
 void Player::SetAnimations(){
-	ASSERT(player_animation_controller != NULL, "Player Animation Controller can't be null.");
+	ASSERT(player_animation_controller != NULL, "Player Animation Controller can't be null when setting animations.");
+	ASSERT(walking_animation != NULL, "Walking animation can't be null when setting animations.");
+	ASSERT(walking_backwards_animation != NULL, "Walking backwards animation can't be null when setting animations.");
+	ASSERT(jump_animation != NULL, "Jump animation can't be null when setting animations.");
 
 	// Add all animations to Game Object's Animation Controller's map (Animation name, Animation component).
 	player_animation_controller->AddAnimation("walking_foward", *walking_animation);
@@ -85,3 +88,30 @@ void Player::SetCode(){
 	// PlayerCode is added as a component to this GameObject.
 	this->AddComponent(*player_code);
 }
+
+bool Player::Shutdown(){
+	INFO("Shutting down player.");
+	DestroyComponents();
+	return true;
+}
+
+void Player::DestroyComponents(){
+	INFO("Destroying components.");
+
+	ASSERT(walking_animation != NULL, "Walking animation can't be NULL when shutting down.");
+	ASSERT(walking_backwards_animation != NULL, "Walking backwards animation can't be NULL when shutting down.");
+	ASSERT(jump_animation != NULL, "Jump animation can't be NULL when shutting down.");
+
+	walking_animation->Shutdown();
+	free(walking_animation);
+	walking_animation = NULL;
+
+	walking_backwards_animation->Shutdown();
+	free(walking_backwards_animation);
+	walking_backwards_animation = NULL;
+
+	jump_animation->Shutdown();
+	free(jump_animation);
+	jump_animation = NULL;
+}
+
