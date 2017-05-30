@@ -9,7 +9,6 @@
 #include "component.hpp"
 #include "input_manager.hpp"
 
-
 namespace engine {
 
 	class ImageComponent : public Component {

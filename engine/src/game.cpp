@@ -105,7 +105,7 @@ bool Game::AddScene(Scene &scene){
 
 
 // Perform the necessary checks and prepare the structure to switch Scenes.
-void Game::ChangeScene(std::string &scene_name){
+void Game::ChangeScene(std::string scene_name){
 	if(scene_map.find(scene_name) == scene_map.end()){
 		ERROR("Scene not found!");
 	}else{

@@ -2,6 +2,9 @@
 #define MENU_CODE_HPP
 
 #include "code_component.hpp"
+#include "log.h"
+#include "game_globals.hpp"
+#include <string>
 
 namespace Azo {
 	class MenuCode : public engine::CodeComponent {

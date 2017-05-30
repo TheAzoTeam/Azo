@@ -65,12 +65,14 @@ namespace engine {
 				return assets_manager;
 			}
 
+
+			// Perform the necessary checks and prepare the structure to switch Scenes.
+			void ChangeScene(std::string scene_name);
+
 		private:
 			// Perform scene switching effectively.
 			bool StartAndStopScenes();
 
-			// Perform the necessary checks and prepare the structure to switch Scenes.
-			void ChangeScene(std::string &scene_name);
 	};
 }
 

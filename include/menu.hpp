@@ -5,6 +5,7 @@
 
 #include "scene.hpp"
 #include "menu_code.hpp"
+#include "background_component.hpp"
 
 namespace Azo {
 	class Menu : public engine::Scene {
@@ -14,7 +15,8 @@ namespace Azo {
 			Menu();
 			~Menu();
 			Menu(std::string scene_name);
-
+		private:
+			void SetMenuDependencies();
 	};
 }
 
