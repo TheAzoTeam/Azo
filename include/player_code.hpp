@@ -19,8 +19,6 @@ namespace Azo {
 
 	class PlayerCode : public engine::CodeComponent {
 		private:
-			bool jumping = false;
-			bool falling = false;
 			engine::Timer timer;
 			engine::AnimationController anim_controller;
 			PlayerState state;

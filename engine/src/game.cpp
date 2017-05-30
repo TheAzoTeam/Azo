@@ -136,6 +136,7 @@ bool Game::StartAndStopScenes(){
 			need_to_change_scene = false;
 		}
 	}else{
+		//	DEBUG("No need to change scenes.");
 		// Nothing to Do.
 	}
 

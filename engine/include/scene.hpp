@@ -11,7 +11,6 @@ namespace engine {
 		public:
 			Scene();
 			Scene(std::string scene_name);
-			~Scene(){};
 
 			virtual bool Init();
 			virtual bool Shutdown();

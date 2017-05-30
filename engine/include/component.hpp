@@ -20,8 +20,6 @@ namespace engine {
 
 			Component(GameObject &game_object);
 
-			~Component();
-
 			virtual bool Init();
 
 			virtual bool Shutdown();

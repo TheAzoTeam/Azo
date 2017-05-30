@@ -23,7 +23,6 @@ bool ImageComponent::Init(){
 
 	image_texture = assets_image->texture;
 
-
 	component_width = assets_image->width;
 	component_height = assets_image->height;
 

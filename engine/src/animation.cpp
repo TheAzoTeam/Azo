@@ -47,7 +47,6 @@ bool Animation::Draw(){
 	current_animation_time += Game::instance.GetTimer().GetDeltaTime();
 	current_frame = current_animation_time / frame_time + starting_frame;
 
-
 	//DEBUG("Current Frame:" << current_frame);
 	int Y = current_frame / (this->component_width / frame_width);
 	int X = current_frame % (this->component_width / frame_width);

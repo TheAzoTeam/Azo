@@ -55,7 +55,7 @@ bool Scene::AddGameObject(GameObject &game_object){
 GameObject & Scene::GetGameObject(std::string &game_object_name){
 
 	if(game_object_map.find(game_object_name) == game_object_map.end()){
-		std::cout << "Game object doesn't exist!" << std::endl;
+		ERROR("Game object doesn't exist!");
 	}
 
 	return *game_object_map[game_object_name];
@@ -64,7 +64,7 @@ GameObject & Scene::GetGameObject(std::string &game_object_name){
 
 bool Scene::RemoveGameObject(std::string &game_object_name){
 	if(game_object_map.find(game_object_name) == game_object_map.end()){
-		std::cout << "Game object doesn't exist!" << std::endl;
+		ERROR("Game object doesn't exist!");
 		return false;
 	}
 

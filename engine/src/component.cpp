@@ -9,8 +9,6 @@ Component::Component(GameObject &game_object){
 	this->component_state = State::ENABLED;
 }
 
-Component::~Component(){}
-
 bool Component::Init(){
 	return true;
 }

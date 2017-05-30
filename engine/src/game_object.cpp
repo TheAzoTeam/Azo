@@ -43,6 +43,7 @@ AnimationController* GameObject::GetComponentByType(std::type_index component_ty
 
 // Call all Init methods of the components of the Game Object.
 bool engine::GameObject::Init(){
+	DEBUG("Initializing game_object");
 	for(auto each_pair : component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled() && component->Init() == false){

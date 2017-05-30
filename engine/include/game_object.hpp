@@ -10,7 +10,6 @@
 #include "animation.hpp"
 #include "sdl2include.h"
 #include "component.hpp"
-#include "image_component.hpp"
 #include "animation_controller.hpp"
 
 namespace engine {

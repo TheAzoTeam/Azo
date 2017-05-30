@@ -2,6 +2,9 @@
 #include "game_globals.hpp"
 #include "code_component.hpp"
 #include "player.hpp"
+#include "menu.hpp"
+#include "menu_code.hpp"
+#include "background_component.hpp"
 
 using namespace Azo;
 
@@ -13,6 +16,15 @@ int main(int, char**) {
 		global::window_width,
 		global::window_height,
 		global::frame_rate);
+
+	engine::GameObject menu_game_object("menu_game_object", 0, 0);
+	engine::BackgroundComponent menu_image(menu_game_object, "backgrounds/menu.png");
+	menu_game_object.AddComponent(menu_image);
+
+	Menu menu_scene("menu_scene");
+	menu_scene.AddGameObject(menu_game_object);
+
+	engine::Game::instance.AddScene(menu_scene);
 
 	// Creating a game object player, Setting Animations to Animation Controller and Setting specific codes.
 	Player player("McCree", -250, 380);
