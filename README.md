@@ -116,8 +116,7 @@ Será entregue como produto final:
 ### Cronograma
 #### Entrega dos dias 31/05 e 01/06 (30%)
 
-* Sprites dos personagens.
-* Elementos visuais iniciais de cada fase.
+* Sprites de um dos personagens.
 * Engine.
 * Menu parcialmente implementado.
 * Possibilidade de habilitar ou desabilitar o som.
