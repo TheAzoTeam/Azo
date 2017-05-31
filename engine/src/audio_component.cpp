@@ -48,6 +48,13 @@ bool AudioComponent::UpdateCode(){
 
 bool AudioComponent::Shutdown(){
 	INFO("Shutdown audio component");
+
+	Stop(-1);
+	free(music);
+	music = NULL;
+	free(sound);
+	sound = NULL;
+
 	return true;
 }
 

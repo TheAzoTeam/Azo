@@ -13,8 +13,6 @@ namespace engine {
 	class CodeComponent : public Component {
 		protected:
 			InputManager input_manager;
-			bool jump = false;
-			Timer timer;
 
 		public:
 			CodeComponent();

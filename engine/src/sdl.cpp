@@ -71,13 +71,20 @@ void SDL::CreateWindow(){
 // Used in the Main Loop's End.
 void SDL::TerminateSDL(){
 	INFO("Terminating SDL.");
+
+	DEBUG("Destroying Renderer");
 	SDL_DestroyRenderer(canvas);
 	canvas = NULL;
 
+	DEBUG("Destroying Window");
 	SDL_DestroyWindow(window);
 	window = NULL;
 
+	DEBUG("Quitting IMG.");
 	IMG_Quit();
+
+	DEBUG("Quitting MIX");
+	Mix_Quit();
 
 	SDL_Quit();
 	INFO("Bye bye, SDL.");

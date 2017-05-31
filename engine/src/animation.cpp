@@ -50,8 +50,8 @@ void Animation::UpdateQuad(){
 	};
 
 	canvasQuad = {
-		ImageComponent::game_object->x,
-		ImageComponent::game_object->y,
+		BackgroundComponent::game_object->x,
+		BackgroundComponent::game_object->y,
 		sprite_list[current_sprite]->sprite_width,
 		sprite_list[current_sprite]->sprite_height
 	};
