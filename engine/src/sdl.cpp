@@ -21,6 +21,11 @@ void SDL::InitSDL(){
 	if(!(IMG_Init(image_flags) & image_flags)){
 		ERROR("SDL Image could't be started.");
 	}
+
+	INFO("Initializing SDL Mixer.");
+	if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 2048) < 0){
+		ERROR("SDL MIXER could't be started.");
+	}
 }
 
 

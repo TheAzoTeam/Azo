@@ -26,6 +26,7 @@ void Menu::CreateComponents(){
 	play_button_image = new engine::ImageComponent(*play_button_menu, "backgrounds/play_button.png");
 	menu_image = new engine::ImageComponent(*menu_game_object, "backgrounds/menu.png");
 	menu_code = new MenuCode(*menu_game_object);
+	menu_theme = new engine::AudioComponent(*menu_game_object, "audios/TemaGame.ogg", true, true);
 }
 
 void Menu::SetGameObjects(){
@@ -41,10 +42,12 @@ void Menu::SetComponents(){
 	ASSERT(menu_image != NULL, "Menu image can't be NULL.");
 	ASSERT(play_button_image != NULL, "Play button image object can't be NULL.");
 	ASSERT(menu_code != NULL, "Menu Code can't be NULL.");
+	ASSERT(menu_theme != NULL, "Menu Theme can't be NULL.");
 
 	menu_game_object->AddComponent(*menu_image);
 	play_button_menu->AddComponent(*play_button_image);
 	menu_game_object->AddComponent(*menu_code);
+	menu_game_object->AddComponent(*menu_theme);
 }
 
 bool Menu::Shutdown(){
@@ -67,7 +70,12 @@ void Menu::DestroyComponents(){
 	menu_code->Shutdown();
 	free(menu_code);
 	menu_image = NULL;
+
+	menu_theme->Shutdown();
+	free(menu_theme);
+	menu_theme = NULL;
 }
+
 void Menu::DestroyGameObjects(){
 	INFO("Destroying GameObjects.");
 	free(menu_game_object);

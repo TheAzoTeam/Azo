@@ -5,6 +5,7 @@
 
 #include "scene.hpp"
 #include "menu_code.hpp"
+#include "audio_component.hpp"
 
 namespace Azo {
 	class Menu : public engine::Scene {
@@ -15,6 +16,7 @@ namespace Azo {
 
 			engine::ImageComponent *play_button_image;
 			engine::ImageComponent *menu_image;
+			engine::AudioComponent *menu_theme;
 		public:
 			Menu();
 			~Menu();
