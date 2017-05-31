@@ -30,6 +30,7 @@ bool ImageComponent::Init(){
 
 
 bool ImageComponent::Draw(){
+	UpdateQuad();
 	UpdateGameObjectMeasures();
 
 	SDL_RenderCopy(
@@ -42,6 +43,14 @@ bool ImageComponent::Draw(){
 	return true;
 }
 
+void ImageComponent::UpdateQuad(){
+	canvasQuad = {
+		BackgroundComponent::game_object->x,
+		BackgroundComponent::game_object->y,
+		component_width,
+		component_height
+	};
+}
 
 void ImageComponent::UpdateGameObjectMeasures(){
 	// Before drawing, set the GameObject sizes so we can calculate collision.

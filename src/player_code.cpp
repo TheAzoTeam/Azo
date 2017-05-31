@@ -8,7 +8,7 @@ PlayerCode::PlayerCode(){}
 PlayerCode::PlayerCode(engine::GameObject &game_object){
 	this->game_object = &game_object;
 	this->component_state = engine::State::ENABLED;
-	this->state = PlayerState::RUNNING;
+	this->state = PlayerState::FALLING;
 	FindAnimationController();
 }
 
@@ -17,8 +17,11 @@ void PlayerCode::FindAnimationController(){
 }
 
 bool PlayerCode::UpdateCode(){
-	if(game_object->state == engine::GameObjectState::COLLIDING){
-		ResolveCollision();
+	//DEBUG("Updating player code.");
+
+	if(state != PlayerState::JUMPING){
+		state = PlayerState::FALLING;
+		CheckCollisioWithFloor();
 	}
 
 	// The player should jump (INPUT = 'W').
@@ -47,42 +50,47 @@ bool PlayerCode::UpdateCode(){
 
 	// The player should slide (INPUT = 'S').
 	if(input_manager.KeyDown(SDL_SCANCODE_S)){
-		game_object->y += 3;
+		//game_object->y += 3;
 	}
 
 	// Gravity that pulls the player down.
-	if(game_object->y <= 380){
+	if(state != PlayerState::RUNNING){
+		DEBUG("Gravity!");
 		game_object->y += 6;
 	}
 
-	// Verify if the player stopped to fall.
-	if(game_object->y >= 380){
-		this->state = PlayerState::RUNNING;
-	}
+	// // Verify if the player stopped to fall.
+	// if(game_object->y >= 380){
+	//      this->state = PlayerState::RUNNING;
+	// }
 
 	// Stop the player almost in the center of the page
-	if(game_object->x >= engine::Game::instance.sdl_elements.GetWindowWidth() / 3){
-		game_object->x = engine::Game::instance.sdl_elements.GetWindowWidth() / 3;
+	if(game_object->x < engine::Game::instance.sdl_elements.GetWindowWidth() / 3){
+		Run();
 	}
 
-	// Continuous run to right.
-	game_object->x += 4;
 
 	return true;
 }
 
+void PlayerCode::Run(){
+	// Continuous run to right.
+	game_object->x += 4;
 
-void PlayerCode::ResolveCollision(){
-	INFO("GameObject size: " << this->game_object->collision_list.size());
+}
 
-	for(auto collision : this->game_object->collision_list){
+void PlayerCode::CheckCollisioWithFloor(){
+	std::list<std::string>::iterator it;
+
+	for(it = game_object->collision_list.begin(); it != game_object->collision_list.end(); ++it){
+		auto collision = *it;
 		if(collision == "floor"){
-			game_object->x = -250;
+			state = PlayerState::RUNNING;
+			game_object->collision_list.erase(it);
+			break;
 		}
 	}
 
+	DEBUG("List after clear: " << game_object->collision_list.size());
 
-	// Reseting the default state to a non colliding game object.
-	this->game_object->collision_list.clear();
-	this->game_object->state = engine::GameObjectState::NOT_COLLIDING;
 }

@@ -25,8 +25,8 @@ int main(int, char**) {
 	engine::Game::instance.AddScene(menu_scene);
 
 	// Creating a game object player, Setting Animations to Animation Controller and Setting specific codes.
-	Player player("McCree", -250, 380);
-	Floor floor_platform("floor", 300, 500);
+	Player player("McCree", 0, 300);
+	Floor floor_platform("floor", 0, 500);
 
 	// Creating Scenes.
 	engine::Scene player_scene(global::player_scene);

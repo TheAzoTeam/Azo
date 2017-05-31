@@ -15,6 +15,7 @@ namespace Azo {
 		JUMPING,
 		FALLING,
 		RUNNING,
+		NOT_RUNNING,
 	};
 
 	class PlayerCode : public engine::CodeComponent {
@@ -23,7 +24,8 @@ namespace Azo {
 			engine::AnimationController anim_controller;
 			PlayerState state;
 
-			void ResolveCollision();
+			void CheckCollisioWithFloor();
+			void Run();
 
 		public:
 			PlayerCode();

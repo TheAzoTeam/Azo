@@ -17,6 +17,7 @@ namespace engine {
 			ImageComponent(GameObject &game_object, std::string image_path);
 			bool Init();
 			bool Draw();
+			void UpdateQuad();
 			void UpdateGameObjectMeasures();
 	};
 }

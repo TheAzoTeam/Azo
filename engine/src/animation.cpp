@@ -56,6 +56,7 @@ void Animation::UpdateQuad(){
 		sprite_list[current_sprite]->sprite_height
 	};
 }
+
 void Animation::CheckLimits(){
 	current_sprite++;
 
