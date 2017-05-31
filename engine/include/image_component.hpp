@@ -6,11 +6,7 @@
 
 namespace engine {
 	class ImageComponent : public BackgroundComponent {
-		private:
-			int component_width;
-			int component_height;
 		protected:
-			SDL_Rect renderQuad;
 			SDL_Rect canvasQuad;
 		public:
 			ImageComponent();

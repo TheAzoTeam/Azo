@@ -28,8 +28,23 @@ bool BackgroundComponent::Init(){
 
 	image_texture = assets_image->texture;
 
+	component_width = assets_image->width;
+	component_height = assets_image->height;
+
+	renderQuad = {game_object->x, game_object->y, component_width, component_height};
+
 	return true;
 }
+
+void BackgroundComponent::UpdateQuad(){
+	renderQuad = {
+		game_object->x,
+		game_object->y,
+		component_width,
+		component_height
+	};
+}
+
 
 bool BackgroundComponent::Shutdown(){
 	/* Terminate Texture */
@@ -38,10 +53,11 @@ bool BackgroundComponent::Shutdown(){
 }
 
 bool BackgroundComponent::Draw(){
+	UpdateQuad();
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
-		NULL,
+		&renderQuad,
 		NULL
 		);
 

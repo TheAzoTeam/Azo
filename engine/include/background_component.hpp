@@ -15,8 +15,12 @@ namespace engine {
 		protected:
 			std::string image_path;
 			SDL_Texture *image_texture;
-
+			SDL_Rect renderQuad;
+			int component_width;
+			int component_height;
 		public:
+			void UpdateQuad();
+
 			BackgroundComponent();
 
 			BackgroundComponent(std::string image_path);
