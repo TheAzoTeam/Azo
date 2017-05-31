@@ -51,29 +51,36 @@ void Game::Run(){
 					game_state = engine::GameState::EXIT;
 					break;
 				default:
+					// Check for user inputs.
+					input_manager.Update(_event);
 					break;
 			}
 		}
+
+		//INFO("Updating current scene: " << current_scene->GetSceneName() << " code.");
+		current_scene->UpdateCode();
 
 		// Clean and Draw the Scene to refreh animations and objects.
 		SDL_RenderClear(sdl_elements.GetCanvas());
 		current_scene->Draw();
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
-		// Calculate how many time has passed of the Loop's init until now.
+		//INFO("Clearing user input from InputManager.");
+		input_manager.Clear();
+
+		//INFO("Calculating elapsed time from the start of this frame until now");
 		timer.DeltaTime();
 
 		/* If the time that has passed until now was faster than the frame's time, is needed wait
 		   the time necessary to complete a frame's time.*/
 		if(frame_time > timer.GetDeltaTime()){
 			SDL_Delay(frame_time - timer.GetDeltaTime());
-		}else{
-			// Nothing to Do.
 		}
 	}
+
 	INFO("Finishing Main Loop.");
 
-	// Shutdown SDL.
+	INFO("Shutting down SDL.");
 	sdl_elements.TerminateSDL();
 }
 

@@ -31,6 +31,7 @@ bool Scene::Shutdown(){
 
 bool Scene::Draw(){
 	ResolveCollision();
+
 	for(auto each_game_object : game_object_map){
 		auto game_object = each_game_object.second;
 		if(game_object->Draw() == false){
@@ -39,6 +40,17 @@ bool Scene::Draw(){
 	}
 	return true;
 }
+
+bool Scene::UpdateCode(){
+	for(auto each_game_object : game_object_map){
+		auto game_object = each_game_object.second;
+		if(game_object->UpdateCode() == false){
+			return false;
+		}
+	}
+	return true;
+}
+
 
 bool Scene::AddGameObject(GameObject &game_object){
 	auto game_object_name = game_object.GetGameObjectName();

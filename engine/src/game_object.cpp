@@ -71,14 +71,22 @@ bool engine::GameObject::Draw(){
 	for(auto each_pair : component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled()){
-			component->UpdateCode();
 			component->Draw();
-		}else{
-			// Nothing to do.
 		}
 	}
 	return true;
 }
+
+bool GameObject::UpdateCode(){
+	for(auto each_pair : component_map){
+		auto component = each_pair.second;
+		if(component->IsEnabled()){
+			component->UpdateCode();
+		}
+	}
+	return true;
+}
+
 
 // Call all Shutdowns methods of the components of the Game Object.
 bool engine::GameObject::Shutdown(){

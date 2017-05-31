@@ -60,6 +60,9 @@ namespace engine {
 
 			// Call all Shutdowns methods of the components of the Game Object.
 			virtual bool Shutdown();
+
+			// Call all UpdateCode methods of the components of the Game Object.
+			virtual bool UpdateCode();
 	};
 
 }
