@@ -26,7 +26,7 @@ namespace engine {
 			int game_object_width, game_object_height;      // Game Object size in canvas.
 			int top, bottom, left, right;                   // Axis position of game_object, to check collision.
 			GameObjectState state = GameObjectState::NOT_COLLIDING;
-			std::list<GameObject *> collision_object_list;
+			std::list<std::string> collision_list;
 
 		protected:
 			std::string game_object_name;                                           // Game Object name.

@@ -73,15 +73,16 @@ bool PlayerCode::UpdateCode(){
 
 
 void PlayerCode::ResolveCollision(){
-	INFO("GameObject size: " << this->game_object->collision_object_list.size());
+	INFO("GameObject size: " << this->game_object->collision_list.size());
 
-	for(auto collision : this->game_object->collision_object_list){
-		INFO("GameObject name: " << collision->GetGameObjectName());
+	for(auto collision : this->game_object->collision_list){
+		if(collision == "floor"){
+			game_object->x = -250;
+		}
 	}
 
-	game_object->x = -250;
 
 	// Reseting the default state to a non colliding game object.
-	this->game_object->collision_object_list.clear();
+	this->game_object->collision_list.clear();
 	this->game_object->state = engine::GameObjectState::NOT_COLLIDING;
 }
