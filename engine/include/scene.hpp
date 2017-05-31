@@ -15,6 +15,7 @@ namespace engine {
 			virtual bool Init();
 			virtual bool Shutdown();
 			virtual bool Draw();
+			virtual bool UpdateCode();
 
 			inline std::string GetSceneName() {
 				return scene_name;

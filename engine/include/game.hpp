@@ -7,6 +7,7 @@
 #include "timer.hpp"
 #include "sdl.hpp"
 #include "assets_manager.hpp"
+#include "input_manager.hpp"
 
 #include <string>
 #include <map>
@@ -25,7 +26,7 @@ namespace engine {
 		public:
 			static Game instance;           /* Global game instance that allow access to public attributes and methods in any part of the code.*/
 			SDL sdl_elements;               // Used to access SDL class to take care of sdl elements in game Initialize.
-
+			InputManager input_manager;
 		private:
 			GameState game_state;                           // Define Game States to control Loops and other strutuctures.
 			bool need_to_change_scene;                      // Used to define if there's a Change Scene to occur.

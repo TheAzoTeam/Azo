@@ -13,7 +13,7 @@ MenuCode::~MenuCode(){}
 
 bool MenuCode::UpdateCode(){
 
-	if(input_manager.KeyDown(SDL_SCANCODE_RETURN)){
+	if(engine::Game::instance.input_manager.KeyDown(engine::Button::ENTER)){
 		DEBUG("Enter pressionado!");
 		engine::Game::instance.ChangeScene(global::player_scene);
 	}

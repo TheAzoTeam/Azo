@@ -16,7 +16,7 @@ void DisableSoundCode::FindAudioController(){
 }
 
 bool DisableSoundCode::UpdateCode(){
-	if(input_manager.KeyDown(SDL_SCANCODE_SPACE)){
+	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::SPACE)){
 		if(audio_controller->GetAudioState("menu_theme") == engine::AudioState::PLAYING){
 			DEBUG("Stopping Audio");
 			audio_controller->StopAudio("menu_theme");

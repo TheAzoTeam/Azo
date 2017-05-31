@@ -27,7 +27,7 @@ bool PlayerCode::UpdateCode(){
 	CheckCollisionWithWall();
 
 	// The player should jump (INPUT = 'W').
-	if(input_manager.KeyDown(SDL_SCANCODE_W) && this->state == PlayerState::RUNNING){
+	if(engine::Game::instance.input_manager.KeyDown(engine::Button::W) && this->state == PlayerState::RUNNING){
 		timer.Step();
 		this->state = PlayerState::JUMPING;
 		anim_controller.StartAnimation("jumping");
@@ -51,7 +51,7 @@ bool PlayerCode::UpdateCode(){
 	}
 
 	// The player should slide (INPUT = 'S').
-	if(input_manager.KeyDown(SDL_SCANCODE_S)){
+	if(engine::Game::instance.input_manager.KeyDown(engine::Button::S)){
 		//game_object->y += 3;
 	}
 
@@ -105,6 +105,7 @@ void PlayerCode::CheckCollisionWithWall(){
 		auto collision = *it;
 		if(collision == "wall"){
 			DEBUG("Player died.");
+			game_object->collision_list.erase(it);
 			game_object->x = 0;
 			game_object->y = 300;
 			break;

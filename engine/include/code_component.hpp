@@ -3,7 +3,6 @@
 
 #include "game_object.hpp"
 #include "component.hpp"
-#include "input_manager.hpp"
 #include "game.hpp"
 #include "timer.hpp"
 
@@ -11,9 +10,6 @@
 namespace engine {
 
 	class CodeComponent : public Component {
-		protected:
-			InputManager input_manager;
-
 		public:
 			CodeComponent();
 
