@@ -5,6 +5,7 @@
 #include "menu.hpp"
 #include "menu_code.hpp"
 #include "floor.hpp"
+#include "wall.hpp"
 
 using namespace Azo;
 
@@ -27,13 +28,18 @@ int main(int, char**) {
 	// Creating a game object player, Setting Animations to Animation Controller and Setting specific codes.
 	Player player("McCree", 0, 300);
 	Floor floor_platform("floor", 0, 500);
+	Wall wall("wall", 500, 430);
+
+
 
 	// Creating Scenes.
 	engine::Scene player_scene(global::player_scene);
 
+
 	// Adding game objects to respectives Scenes.
 	player_scene.AddGameObject(player);
 	player_scene.AddGameObject(floor_platform);
+	player_scene.AddGameObject(wall);
 
 	// Adding Scenes to game.
 	engine::Game::instance.AddScene(player_scene);

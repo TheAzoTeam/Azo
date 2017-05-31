@@ -19,6 +19,8 @@ namespace engine {
 		public:
 			BackgroundComponent();
 
+			BackgroundComponent(std::string image_path);
+
 			BackgroundComponent(GameObject &game_object, std::string image_path);
 
 			~BackgroundComponent();

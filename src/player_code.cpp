@@ -21,8 +21,10 @@ bool PlayerCode::UpdateCode(){
 
 	if(state != PlayerState::JUMPING){
 		state = PlayerState::FALLING;
-		CheckCollisioWithFloor();
+		CheckCollisionWithFloor();
 	}
+
+	CheckCollisionWithWall();
 
 	// The player should jump (INPUT = 'W').
 	if(input_manager.KeyDown(SDL_SCANCODE_W) && this->state == PlayerState::RUNNING){
@@ -79,7 +81,8 @@ void PlayerCode::Run(){
 
 }
 
-void PlayerCode::CheckCollisioWithFloor(){
+
+void PlayerCode::CheckCollisionWithFloor(){
 	std::list<std::string>::iterator it;
 
 	for(it = game_object->collision_list.begin(); it != game_object->collision_list.end(); ++it){
@@ -94,3 +97,20 @@ void PlayerCode::CheckCollisioWithFloor(){
 	DEBUG("List after clear: " << game_object->collision_list.size());
 
 }
+
+void PlayerCode::CheckCollisionWithWall(){
+	std::list<std::string>::iterator it;
+
+	for(it = game_object->collision_list.begin(); it != game_object->collision_list.end(); ++it){
+		auto collision = *it;
+		if(collision == "wall"){
+			DEBUG("Player died.");
+			game_object->x = 0;
+			game_object->y = 300;
+			break;
+		}
+	}
+
+	DEBUG("List after clear: " << game_object->collision_list.size());
+}
+

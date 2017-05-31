@@ -24,7 +24,8 @@ namespace Azo {
 			engine::AnimationController anim_controller;
 			PlayerState state;
 
-			void CheckCollisioWithFloor();
+			void CheckCollisionWithFloor();
+			void CheckCollisionWithWall();
 			void Run();
 
 		public:

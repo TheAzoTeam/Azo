@@ -79,11 +79,9 @@ void Scene::ResolveCollision(){
 
 	// Iterate through game_object_map, comparing each element with the subsequent ones.
 	for(iterator_one = game_object_map.begin(); iterator_one != game_object_map.end(); ++iterator_one){
-		//DEBUG("For de fora");
 		auto game_object_one = iterator_one->second;
 
 		for(iterator_two = std::next(iterator_one); iterator_two != game_object_map.end(); ++iterator_two){
-			//DEBUG("For de dentro");
 			auto game_object_two = iterator_two->second;
 
 			// Check if the objects are colliding.
@@ -100,8 +98,6 @@ void Scene::ResolveCollision(){
 				game_object_one->state = GameObjectState::NOT_COLLIDING;
 
 			}else{
-				DEBUG("Colisão!");
-
 				//		INFO("Game object one: " << game_object_one->GetGameObjectName());
 				//	INFO("Game object two: " << game_object_two->GetGameObjectName());
 
@@ -111,8 +107,6 @@ void Scene::ResolveCollision(){
 				game_object_one->collision_list.push_back(game_object_two->GetGameObjectName());
 				game_object_two->collision_list.push_back(game_object_one->GetGameObjectName());
 
-				// DEBUG("Tamanho do mapa do game object:: " << game_object_one->GetGameObjectName() << " " << game_object_one->collision_list.size());
-				// DEBUG("Tamanho do mapa do game object:: " << game_object_two->GetGameObjectName() << " " << game_object_two->collision_list.size());
 			}
 		}
 	}

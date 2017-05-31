@@ -8,6 +8,12 @@ using namespace engine;
 
 BackgroundComponent::BackgroundComponent(){}
 
+BackgroundComponent::BackgroundComponent(std::string image_path){
+	this->image_path = image_path;
+	this->component_state = State::ENABLED;
+}
+
+
 BackgroundComponent::BackgroundComponent(GameObject & game_object, std::string image_path){
 	this->game_object = &game_object;
 	this->image_path = image_path;
