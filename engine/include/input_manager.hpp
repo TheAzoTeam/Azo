@@ -15,6 +15,7 @@ namespace engine {
 
 			bool KeyDown(SDL_Scancode scan_code);
 
+		private:
 			void Update();
 	};
 }

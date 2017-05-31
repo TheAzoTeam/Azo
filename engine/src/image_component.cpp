@@ -17,6 +17,11 @@ bool ImageComponent::Init(){
 	component_width = assets_image->width;
 	component_height = assets_image->height;
 
+	game_object->game_object_width = component_width;
+
+	game_object->game_object_height = component_height;
+
+
 	canvasQuad = {game_object->x, game_object->y, component_width, component_height};
 	renderQuad = {0, 0, component_width, component_height};
 
@@ -25,6 +30,7 @@ bool ImageComponent::Init(){
 
 
 bool ImageComponent::Draw(){
+	UpdateGameObjectMeasures();
 
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
@@ -35,3 +41,15 @@ bool ImageComponent::Draw(){
 
 	return true;
 }
+
+
+void ImageComponent::UpdateGameObjectMeasures(){
+	// Before drawing, set the GameObject sizes so we can calculate collision.
+
+	game_object->left = game_object->x;
+	game_object->right = game_object->x + game_object->game_object_width;
+	game_object->top = game_object->y;
+	game_object->bottom = game_object->y + game_object->game_object_height;
+
+}
+

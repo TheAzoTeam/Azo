@@ -31,13 +31,23 @@ bool engine::GameObject::AddComponent(engine::Component &component){
 /* Find the desired component by type and get (returns) the found component, which, in this case,
    can only be an AnimationController.
    OBS: This method is used be possible to communicate between components. */
-AnimationController* GameObject::GetComponentByType(std::type_index component_type){
+AnimationController* GameObject::GetAnimationController(std::type_index component_type){
 	auto component_to_be_found = component_map.find(component_type);
 
 	if(component_to_be_found != component_map.end()){
 		return dynamic_cast <AnimationController * > (component_to_be_found->second);
 	}else{
 		ERROR("Animation Controller couldn't be found!");
+	}
+}
+
+AudioController* GameObject::GetAudioController(std::type_index component_type){
+	auto component_to_be_found = component_map.find(component_type);
+
+	if(component_to_be_found != component_map.end()){
+		return dynamic_cast <AudioController * > (component_to_be_found->second);
+	}else{
+		ERROR("Audio Controller couldn't be found!");
 	}
 }
 

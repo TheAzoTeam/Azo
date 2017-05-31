@@ -11,6 +11,7 @@
 #include "sdl2include.h"
 #include "component.hpp"
 #include "animation_controller.hpp"
+#include "audio_controller.hpp"
 
 namespace engine {
 
@@ -42,7 +43,9 @@ namespace engine {
 			/* Find the desired component by type and get (returns) the found component, which, in this case,
 			   can only be an AnimationController.
 			   OBS: This method is used be possible to communicate between components. */
-			AnimationController* GetComponentByType(std::type_index component_type);
+			AnimationController* GetAnimationController(std::type_index component_type);
+
+			AudioController* GetAudioController(std::type_index component_type);
 
 			// Used to get (returns) the name of the Game Object.
 			inline std::string GetGameObjectName(){

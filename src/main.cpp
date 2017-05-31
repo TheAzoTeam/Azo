@@ -25,10 +25,10 @@ int main(int, char**) {
 
 	// Creating a game object player, Setting Animations to Animation Controller and Setting specific codes.
 	Player player("McCree", -250, 380);
-	engine::GameObject box("box", 600, 500);
+	engine::GameObject box("box", 300, 500);
 
 	// Adding Components to respectives game objects.
-	engine::ImageComponent box_image(box, "sprites/blackbox.jpeg");
+	engine::ImageComponent box_image(box, "sprites/floor.png");
 	box.AddComponent(box_image);
 
 	// Creating Scenes.

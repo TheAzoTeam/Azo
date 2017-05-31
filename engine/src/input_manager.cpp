@@ -6,6 +6,7 @@ InputManager::InputManager(){}
 InputManager::~InputManager(){}
 
 bool InputManager::KeyDown(SDL_Scancode scan_code){
+	Update();
 	return keyboard_states[scan_code];
 }
 

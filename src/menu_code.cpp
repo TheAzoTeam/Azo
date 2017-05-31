@@ -12,8 +12,6 @@ MenuCode::MenuCode(engine::GameObject &game_object){
 MenuCode::~MenuCode(){}
 
 bool MenuCode::UpdateCode(){
-	//DEBUG("MenuCode::UpdateCode");
-	input_manager.Update();
 
 	if(input_manager.KeyDown(SDL_SCANCODE_RETURN)){
 		DEBUG("Enter pressionado!");

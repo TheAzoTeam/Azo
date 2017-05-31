@@ -84,8 +84,6 @@ void Scene::ResolveCollision(){
 
 		for(iterator_two = std::next(iterator_one); iterator_two != game_object_map.end(); ++iterator_two){
 			auto game_object_two = iterator_two->second;
-			// INFO("Game object one: " << game_object_one->GetGameObjectName());
-			// INFO("Game object two: " << game_object_two->GetGameObjectName());
 
 			// Check if the objects are colliding.
 			if(game_object_one->bottom <= game_object_two->top){
@@ -101,6 +99,9 @@ void Scene::ResolveCollision(){
 				game_object_one->state = GameObjectState::NOT_COLLIDING;
 
 			}else{
+				INFO("Game object one: " << game_object_one->GetGameObjectName());
+				INFO("Game object two: " << game_object_two->GetGameObjectName());
+
 				game_object_one->state = GameObjectState::COLLIDING;
 				game_object_two->state = GameObjectState::COLLIDING;
 				game_object_one->collision_object_list.push_back(game_object_two);

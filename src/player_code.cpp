@@ -13,16 +13,13 @@ PlayerCode::PlayerCode(engine::GameObject &game_object){
 }
 
 void PlayerCode::FindAnimationController(){
-	this->anim_controller = *(game_object->GetComponentByType(typeid(engine::AnimationController)));
+	this->anim_controller = *(game_object->GetAnimationController(typeid(engine::AnimationController)));
 }
 
 bool PlayerCode::UpdateCode(){
 	if(game_object->state == engine::GameObjectState::COLLIDING){
 		ResolveCollision();
 	}
-
-	// Catch the User input.
-	input_manager.Update();
 
 	// The player should jump (INPUT = 'W').
 	if(input_manager.KeyDown(SDL_SCANCODE_W) && this->state == PlayerState::RUNNING){
@@ -36,7 +33,7 @@ bool PlayerCode::UpdateCode(){
 	if(this->state == PlayerState::JUMPING){
 		timer.DeltaTime();
 		if(timer.GetDeltaTime() <= 350.0f){
-			INFO("Tempo: " << timer.GetDeltaTime());
+			//INFO("Tempo: " << timer.GetDeltaTime());
 			game_object->y -= 13;
 		}else{
 			this->state = PlayerState::FALLING;
