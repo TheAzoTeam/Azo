@@ -6,15 +6,18 @@
 
 namespace engine {
 	class ImageComponent : public BackgroundComponent {
-		protected:
+		private:
+			int pos_x;
+			int pos_y;
 			SDL_Rect canvasQuad;
 		public:
 			ImageComponent();
-			ImageComponent(GameObject &game_object, std::string image_path);
+			ImageComponent(GameObject &game_object, std::string image_path, int pos_x, int pos_y);
 			bool Init();
 			bool Draw();
-			void UpdateQuad();
+		private:
 			void UpdateGameObjectMeasures();
+
 	};
 }
 

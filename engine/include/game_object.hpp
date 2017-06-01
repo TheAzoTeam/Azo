@@ -30,7 +30,7 @@ namespace engine {
 
 		protected:
 			std::string game_object_name;                                           // Game Object name.
-			std::unordered_map<std::type_index, Component *> component_map;         /* Map (List) that keep all Game Object's Components. */
+			std::unordered_multimap<std::type_index, Component *> component_map;    /* Map (List) that keep all Game Object's Components. */
 
 		public:
 			GameObject();

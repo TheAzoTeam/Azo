@@ -2,14 +2,14 @@
 #define ANIMATION_MANAGER_HPP
 
 #include "sdl2include.h"
-#include "image_component.hpp"
+#include "moving_image_component.hpp"
 #include "sprite.hpp"
 
 #include <vector>
 
 
 namespace engine {
-	class Animation : public ImageComponent {
+	class Animation : public MovingImageComponent {
 		private:
 			std::vector<Sprite *> sprite_list;
 			int current_sprite;

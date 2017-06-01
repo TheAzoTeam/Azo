@@ -1,31 +1,27 @@
-// TODO(Roger): Change all game objects (except menu_game_object) to components.
-//menu_game_object->AddComponent(*menu_theme);
-
-
 #include "menu.hpp"
 
 using namespace Azo;
 
 Menu::Menu(){}
 
-Menu::~Menu(){}
-
 Menu::Menu(std::string scene_name){
 	this->scene_name = scene_name;
 	SetMenuDependencies();
 }
 
+Menu::~Menu(){}
+
 void Menu::SetMenuDependencies(){
 	CreateGameObjects();
+
+	CreateBackgroundComponents();
+	SetBackgroundComponents();
 
 	CreateImageComponents();
 	SetImageComponents();
 
 	CreateAudioComponents();
 	SetAudioComponents();
-
-	CreateBackgroundComponents();
-	SetBackgroundComponents();
 
 	CreateCodeComponents();
 	SetCodeComponents();
@@ -34,15 +30,24 @@ void Menu::SetMenuDependencies(){
 }
 
 void Menu::CreateGameObjects(){
-	disable_sound_button = new engine::GameObject("disable_sound_button", 0, 500);
-	play_button_menu = new engine::GameObject("play_button_menu", 300, 300);
 	menu_game_object = new engine::GameObject("menu_game_object", 0, 0);
 }
 
 void Menu::CreateImageComponents(){
 	DEBUG("Creating Image Components");
-	disable_sound_image = new engine::ImageComponent(*disable_sound_button, "general_images/disable_sound.png");
-	play_button_image = new engine::ImageComponent(*play_button_menu, "backgrounds/play_button.png");
+	disable_sound_image = new engine::ImageComponent(
+		*menu_game_object,
+		"general_images/disable_sound.png",
+		0,
+		500
+		);
+
+	play_button_image = new engine::ImageComponent(
+		*menu_game_object,
+		"backgrounds/play_button.png",
+		300,
+		300
+		);
 }
 
 void Menu::CreateBackgroundComponents(){
@@ -54,7 +59,6 @@ void Menu::CreateBackgroundComponents(){
 void Menu::CreateCodeComponents(){
 	DEBUG("Creating Code Components");
 
-	disable_sound_code = new DisableSoundCode(*disable_sound_button);
 	menu_code = new MenuCode(*menu_game_object);
 }
 
@@ -62,10 +66,8 @@ void Menu::SetCodeComponents(){
 	DEBUG("Setting Code Components");
 
 	ASSERT(menu_code != NULL, "Menu Code can't be NULL.");
-	ASSERT(disable_sound_code != NULL, "Disable Sound Code can't be NULL.");
 
 	menu_game_object->AddComponent(*menu_code);
-	disable_sound_button->AddComponent(*disable_sound_code);
 }
 
 
@@ -81,34 +83,29 @@ void Menu::SetAudioComponents(){
 
 	ASSERT(menu_theme != NULL, "Menu Theme can't be NULL.");
 	ASSERT(audio_controller != NULL, "Audio controller can't be NULL.");
-	ASSERT(disable_sound_button != NULL, "Disable Sound button can't be NULL");
 	ASSERT(audio_controller != NULL, "Audio controller can't be null");
 
 	audio_controller->AddAudio("menu_theme", *menu_theme);
-	disable_sound_button->AddComponent(*audio_controller);
+	menu_game_object->AddComponent(*audio_controller);
 }
 
 void Menu::SetGameObjects(){
 	DEBUG("Setting Menu Game Objects");
-	ASSERT(play_button_menu != NULL, "Play button menu can't be NULL.");
 	ASSERT(menu_game_object != NULL, "Menu game object can't be NULL.");
-	ASSERT(disable_sound_button != NULL, "Disable sound button can't be NULL.");
 
-	this->AddGameObject(*disable_sound_button);
-	this->AddGameObject(*play_button_menu);
 	this->AddGameObject(*menu_game_object);
 }
 
 void Menu::SetImageComponents(){
 	DEBUG("Setting Image Components");
 
-	ASSERT(play_button_menu != NULL, "Play button menu can't be NULL.");
 	ASSERT(play_button_image != NULL, "Play button image object can't be NULL.");
 	ASSERT(disable_sound_image != NULL, "Disable Sound Image can't be NULL.");
 
-	play_button_menu->AddComponent(*play_button_image);
-	disable_sound_button->AddComponent(*disable_sound_image);
+	menu_game_object->AddComponent(*play_button_image);
+	menu_game_object->AddComponent(*disable_sound_image);
 }
+
 void Menu::SetBackgroundComponents(){
 	DEBUG("Setting Background Components");
 
@@ -152,9 +149,4 @@ void Menu::DestroyGameObjects(){
 	DEBUG("Freeing Menu pointer.");
 	menu_game_object = NULL;
 	DEBUG("Cleaning menu reference.");
-
-	free(play_button_menu);
-	DEBUG("Freeing play button menu.");
-	play_button_menu = NULL;
-	DEBUG("Cleaning play button reference.");
 }

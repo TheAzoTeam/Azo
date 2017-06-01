@@ -1,20 +1,16 @@
-#include "image_component.hpp"
+#include "moving_image_component.hpp"
 #include "game.hpp"
 
 using namespace engine;
 
-ImageComponent::ImageComponent(){}
+MovingImageComponent::MovingImageComponent(){}
 
-ImageComponent::ImageComponent(GameObject &game_object, std::string image_path, int pos_x, int pos_y){
-	DEBUG("Image path on Constructor: " << image_path);
+MovingImageComponent::MovingImageComponent(GameObject &game_object, std::string image_path){
 	this->game_object = &game_object;
 	this->image_path = image_path;
-	this->pos_x = pos_x;
-	this->pos_y = pos_y;
-
 }
 
-bool ImageComponent::Init(){
+bool MovingImageComponent::Init(){
 	// Check AssetsManager to see if image is already loaded.
 	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
 
@@ -27,15 +23,18 @@ bool ImageComponent::Init(){
 
 	game_object->game_object_height = component_height;
 
-	canvasQuad = {pos_x, pos_y, component_width, component_height};
+
+	canvasQuad = {game_object->x, game_object->y, component_width, component_height};
 	renderQuad = {0, 0, component_width, component_height};
-	UpdateGameObjectMeasures();
 
 	return true;
 }
 
-bool ImageComponent::Draw(){
-	DEBUG("Image path " << image_path);
+
+bool MovingImageComponent::Draw(){
+	UpdateQuad();
+	UpdateGameObjectMeasures();
+
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
@@ -46,7 +45,16 @@ bool ImageComponent::Draw(){
 	return true;
 }
 
-void ImageComponent::UpdateGameObjectMeasures(){
+void MovingImageComponent::UpdateQuad(){
+	canvasQuad = {
+		BackgroundComponent::game_object->x,
+		BackgroundComponent::game_object->y,
+		component_width,
+		component_height
+	};
+}
+
+void MovingImageComponent::UpdateGameObjectMeasures(){
 	// Before drawing, set the GameObject sizes so we can calculate collision.
 
 	game_object->left = game_object->x;

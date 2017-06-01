@@ -3,11 +3,12 @@
 
 #include "game_object.hpp"
 #include "wall_code.hpp"
+#include "moving_image_component.hpp"
 
 namespace Azo {
 	class Wall : public engine::GameObject {
 		private:
-			engine::ImageComponent *wall_image;
+			engine::MovingImageComponent *wall_image;
 
 			WallCode *wall_code;
 		public:

@@ -17,7 +17,7 @@ void Floor::SetDependencies(){
 }
 
 void Floor::CreateComponents(){
-	floor_image = new engine::ImageComponent(*this, "sprites/floor.png");
+	floor_image = new engine::MovingImageComponent(*this, "sprites/floor.png");
 	floor_code = new FloorCode(*this);
 }
 

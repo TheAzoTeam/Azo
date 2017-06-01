@@ -18,9 +18,10 @@ namespace engine {
 			SDL_Rect renderQuad;
 			int component_width;
 			int component_height;
-		public:
+		private:
 			void UpdateQuad();
 
+		public:
 			BackgroundComponent();
 
 			BackgroundComponent(std::string image_path);

@@ -17,7 +17,7 @@ void Wall::SetDependencies(){
 }
 
 void Wall::CreateComponents(){
-	wall_image = new engine::ImageComponent(*this, "sprites/wall.png");
+	wall_image = new engine::MovingImageComponent(*this, "sprites/wall.png");
 	wall_code = new WallCode(*this);
 }
 

@@ -10,7 +10,7 @@ AssetsManager::AssetsManager(){}
 // If it's already loaded, return it.
 Image* AssetsManager::LoadImage(std::string image_path){
 	DEBUG("Trying to load image " << image_path);
-	DEBUG("Image Map size before loading " << image_map.size());
+	//DEBUG("Image Map size before loading " << image_map.size());
 
 	if(image_map.find(image_path) == image_map.end()){
 		INFO("Loading a new image asset.");
