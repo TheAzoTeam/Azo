@@ -53,6 +53,10 @@ namespace Azo {
 
 			void Shutdown();
 
+			inline std::string GetClassName(){
+				return "Player";
+			}
+
 	};
 
 }

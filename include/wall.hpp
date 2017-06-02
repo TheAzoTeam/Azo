@@ -18,6 +18,9 @@ namespace Azo {
 			void CreateComponents();
 			void SetComponents();
 			void Shutdown();
+			inline std::string GetClassName(){
+				return "Wall";
+			}
 	};
 }
 

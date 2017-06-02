@@ -90,4 +90,3 @@ void engine::GameObject::Shutdown(){
 		component->Shutdown();
 	}
 }
-

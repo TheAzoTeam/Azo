@@ -63,6 +63,10 @@ namespace engine {
 
 			// Call all UpdateCode methods of the components of the Game Object.
 			virtual void UpdateCode();
+
+			virtual inline std::string GetClassName(){
+				return "GameObject";
+			}
 	};
 
 }

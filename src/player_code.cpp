@@ -18,8 +18,6 @@ void PlayerCode::FindAnimationController(){
 }
 
 void PlayerCode::UpdateCode(){
-	//DEBUG("Updating player code.");
-
 	if(state != PlayerState::JUMPING){
 		state = PlayerState::FALLING;
 		CheckCollisionWithFloor();
@@ -27,7 +25,19 @@ void PlayerCode::UpdateCode(){
 
 	CheckCollisionWithWall();
 
-	// The player should jump (INPUT = 'W').
+	CheckJump();
+
+	CheckSlide();
+
+	Gravity();
+
+	// Stop the player almost in the center of the page
+	if(game_object->x < engine::Game::instance.sdl_elements.GetWindowWidth() / 3){
+		Run();
+	}
+}
+
+void PlayerCode::CheckJump(){
 	if(engine::Game::instance.input_manager.KeyDown(engine::Button::W) && this->state == PlayerState::RUNNING){
 		timer.Step();
 		this->state = PlayerState::JUMPING;
@@ -51,28 +61,13 @@ void PlayerCode::UpdateCode(){
 		anim_controller.StartAnimation("walking_foward");
 	}
 
+}
+
+void PlayerCode::CheckSlide(){
 	// The player should slide (INPUT = 'S').
 	if(engine::Game::instance.input_manager.KeyDown(engine::Button::S)){
 		//game_object->y += 3;
 	}
-
-	// Gravity that pulls the player down.
-	if(state != PlayerState::RUNNING){
-		//DEBUG("Gravity!");
-		game_object->y += 6;
-	}
-
-	// // Verify if the player stopped to fall.
-	// if(game_object->y >= 380){
-	//      this->state = PlayerState::RUNNING;
-	// }
-
-	// Stop the player almost in the center of the page
-	if(game_object->x < engine::Game::instance.sdl_elements.GetWindowWidth() / 3){
-		Run();
-	}
-
-
 }
 
 void PlayerCode::Run(){
@@ -81,21 +76,25 @@ void PlayerCode::Run(){
 
 }
 
+void PlayerCode::Gravity(){
+	// Gravity that pulls the player down.
+	if(state != PlayerState::RUNNING){
+		game_object->y += 6;
+	}
+}
+
 
 void PlayerCode::CheckCollisionWithFloor(){
 	std::list<std::string>::iterator it;
 
 	for(it = game_object->collision_list.begin(); it != game_object->collision_list.end(); ++it){
 		auto collision = *it;
-		if(collision == "floor" || collision == "floor_2"){
+		if(collision == "Floor"){
 			state = PlayerState::RUNNING;
 			game_object->collision_list.erase(it);
 			break;
 		}
 	}
-
-	//DEBUG("List after clear: " << game_object->collision_list.size());
-
 }
 
 void PlayerCode::CheckCollisionWithWall(){
@@ -103,13 +102,11 @@ void PlayerCode::CheckCollisionWithWall(){
 
 	for(it = game_object->collision_list.begin(); it != game_object->collision_list.end(); ++it){
 		auto collision = *it;
-		if(collision == "wall"){
+		if(collision == "Wall"){
 			game_object->collision_list.erase(it);
 			LevelManager::level_manager.GoToMenu();
 			break;
 		}
 	}
-
-//	DEBUG("List after clear: " << game_object->collision_list.size());
 }
 

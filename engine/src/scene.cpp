@@ -102,9 +102,8 @@ void Scene::ResolveCollision(){
 
 				game_object_one->state = GameObjectState::COLLIDING;
 				game_object_two->state = GameObjectState::COLLIDING;
-
-				game_object_one->collision_list.push_back(game_object_two->GetGameObjectName());
-				game_object_two->collision_list.push_back(game_object_one->GetGameObjectName());
+				game_object_one->collision_list.push_back(game_object_two->GetClassName());
+				game_object_two->collision_list.push_back(game_object_one->GetClassName());
 
 			}
 		}

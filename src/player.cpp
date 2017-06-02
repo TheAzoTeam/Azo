@@ -140,4 +140,3 @@ void Player::DestroyComponents(){
 	free(jump_animation);
 	jump_animation = NULL;
 }
-

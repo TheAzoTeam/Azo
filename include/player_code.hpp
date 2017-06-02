@@ -7,6 +7,8 @@
 #include "code_component.hpp"
 #include "animation_controller.hpp"
 #include "timer.hpp"
+#include "floor.hpp"
+#include "wall.hpp"
 
 
 namespace Azo {
@@ -27,6 +29,9 @@ namespace Azo {
 			void CheckCollisionWithFloor();
 			void CheckCollisionWithWall();
 			void Run();
+			void CheckJump();
+			void CheckSlide();
+			void Gravity();
 
 		public:
 			PlayerCode();
