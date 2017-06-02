@@ -87,7 +87,7 @@ void PlayerCode::CheckCollisionWithFloor(){
 
 	for(it = game_object->collision_list.begin(); it != game_object->collision_list.end(); ++it){
 		auto collision = *it;
-		if(collision == "floor"){
+		if(collision == "floor" || collision == "floor_2"){
 			state = PlayerState::RUNNING;
 			game_object->collision_list.erase(it);
 			break;

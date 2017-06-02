@@ -43,7 +43,6 @@ void AudioController::PlayAudio(std::string audio_name){
 	auto audio_to_be_played = audio_map.find(audio_name);
 
 	if(audio_to_be_played != audio_map.end()){
-		DEBUG("PLAY AUDIO!");
 		audio_to_be_played->second->Play(-1, -1);
 
 	}else{

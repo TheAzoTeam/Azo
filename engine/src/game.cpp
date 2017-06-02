@@ -133,7 +133,6 @@ bool Game::StartAndStopScenes(){
 				INFO("Shuting down scene!");
 				scene_map.erase(last_scene->GetSceneName());
 				last_scene->Shutdown();
-				last_scene = NULL;
 			}else{
 				// Nothing to Do.
 			}

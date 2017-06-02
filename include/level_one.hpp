@@ -13,6 +13,7 @@ namespace Azo {
 		private:
 			Player *player;
 			Floor *floor_platform;
+			Floor *floor_plataform_two;
 			Wall *wall;
 		public:
 			LevelOne();
