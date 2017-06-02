@@ -10,7 +10,7 @@ MovingImageComponent::MovingImageComponent(GameObject &game_object, std::string 
 	this->image_path = image_path;
 }
 
-bool MovingImageComponent::Init(){
+void MovingImageComponent::Init(){
 	// Check AssetsManager to see if image is already loaded.
 	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
 
@@ -26,23 +26,23 @@ bool MovingImageComponent::Init(){
 
 	canvasQuad = {game_object->x, game_object->y, component_width, component_height};
 	renderQuad = {0, 0, component_width, component_height};
-
-	return true;
 }
 
 
-bool MovingImageComponent::Draw(){
+void MovingImageComponent::Draw(){
 	UpdateQuad();
 	UpdateGameObjectMeasures();
 
-	SDL_RenderCopy(
+	int successful_draw = SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
 		&renderQuad,
 		&canvasQuad
 		);
 
-	return true;
+	if(successful_draw < 0){
+		ERROR("Unable to draw.");
+	}
 }
 
 void MovingImageComponent::UpdateQuad(){

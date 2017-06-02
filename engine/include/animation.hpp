@@ -31,7 +31,7 @@ namespace engine {
 				std::vector<Sprite *> sprite_list,
 				int start_frame,
 				int end_frame);
-			bool Draw();
+			void Draw();
 
 		private:
 			void UpdateQuad();

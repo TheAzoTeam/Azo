@@ -8,9 +8,8 @@ FloorCode::FloorCode(engine::GameObject &game_object){
 	this->game_object = &game_object;
 }
 
-bool FloorCode::UpdateCode(){
+void FloorCode::UpdateCode(){
 	//INFO("Updating FloorCode");
 	this->game_object->collision_list.clear();
 	game_object->x -= 4;
-	return true;
 }

@@ -38,7 +38,7 @@ namespace Azo {
 			void SetAudioComponents();
 
 			void SetMenuDependencies();
-			bool Shutdown();
+			void Shutdown();
 			void DestroyComponents();
 			void DestroyGameObjects();
 	};

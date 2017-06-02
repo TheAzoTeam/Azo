@@ -15,7 +15,7 @@ void DisableSoundCode::FindAudioController(){
 	this->audio_controller = (game_object->GetAudioController(typeid(engine::AudioController)));
 }
 
-bool DisableSoundCode::UpdateCode(){
+void DisableSoundCode::UpdateCode(){
 	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::SPACE)){
 		if(audio_controller->GetAudioState("menu_theme") == engine::AudioState::PLAYING){
 			DEBUG("Stopping Audio");
@@ -25,6 +25,4 @@ bool DisableSoundCode::UpdateCode(){
 			audio_controller->PlayAudio("menu_theme");
 		}
 	}
-
-	return true;
 }

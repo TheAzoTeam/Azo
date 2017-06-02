@@ -20,13 +20,13 @@ namespace engine {
 
 			Component(GameObject &game_object);
 
-			virtual bool Init();
+			virtual void Init();
 
-			virtual bool Shutdown();
+			virtual void Shutdown();
 
-			virtual bool Draw();
+			virtual void Draw();
 
-			virtual bool UpdateCode();
+			virtual void UpdateCode();
 
 			void EnableComponent();
 

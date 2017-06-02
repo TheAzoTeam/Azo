@@ -1,4 +1,5 @@
 #include "player_code.hpp"
+#include "level_manager.hpp"
 
 
 using namespace Azo;
@@ -16,7 +17,7 @@ void PlayerCode::FindAnimationController(){
 	this->anim_controller = *(game_object->GetAnimationController(typeid(engine::AnimationController)));
 }
 
-bool PlayerCode::UpdateCode(){
+void PlayerCode::UpdateCode(){
 	//DEBUG("Updating player code.");
 
 	if(state != PlayerState::JUMPING){
@@ -57,7 +58,7 @@ bool PlayerCode::UpdateCode(){
 
 	// Gravity that pulls the player down.
 	if(state != PlayerState::RUNNING){
-		DEBUG("Gravity!");
+		//DEBUG("Gravity!");
 		game_object->y += 6;
 	}
 
@@ -72,7 +73,6 @@ bool PlayerCode::UpdateCode(){
 	}
 
 
-	return true;
 }
 
 void PlayerCode::Run(){
@@ -94,7 +94,7 @@ void PlayerCode::CheckCollisionWithFloor(){
 		}
 	}
 
-	DEBUG("List after clear: " << game_object->collision_list.size());
+	//DEBUG("List after clear: " << game_object->collision_list.size());
 
 }
 
@@ -104,14 +104,12 @@ void PlayerCode::CheckCollisionWithWall(){
 	for(it = game_object->collision_list.begin(); it != game_object->collision_list.end(); ++it){
 		auto collision = *it;
 		if(collision == "wall"){
-			DEBUG("Player died.");
 			game_object->collision_list.erase(it);
-			game_object->x = 0;
-			game_object->y = 300;
+			LevelManager::level_manager.GoToMenu();
 			break;
 		}
 	}
 
-	DEBUG("List after clear: " << game_object->collision_list.size());
+//	DEBUG("List after clear: " << game_object->collision_list.size());
 }
 

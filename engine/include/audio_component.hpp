@@ -31,11 +31,11 @@ namespace engine {
 
 			AudioComponent(GameObject & game_object, std::string path, bool is_music, bool play_on_start);
 
-			bool Init();
+			void Init();
 
-			bool Shutdown();
+			void Shutdown();
 
-			bool UpdateCode();
+			void UpdateCode();
 
 			void Play(int loops = -1, int channel = -1);
 

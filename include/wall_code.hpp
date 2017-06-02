@@ -10,7 +10,7 @@ namespace Azo {
 		public:
 			WallCode();
 			WallCode(engine::GameObject &game_object);
-			bool UpdateCode();
+			void UpdateCode();
 	};
 }
 

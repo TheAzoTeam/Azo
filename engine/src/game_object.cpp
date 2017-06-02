@@ -52,50 +52,42 @@ AudioController* GameObject::GetAudioController(std::type_index component_type){
 }
 
 // Call all Init methods of the components of the Game Object.
-bool engine::GameObject::Init(){
+void GameObject::Init(){
 	DEBUG("Initializing game_object");
 	for(auto each_pair : component_map){
 		auto component = each_pair.second;
-		if(component->IsEnabled() && component->Init() == false){
-			return false;
-		}else{
-			// Nothing to Do.
+		if(component->IsEnabled()){
+			component->Init();
 		}
 	}
-
-	return true;
 }
 
 // Call all Draw and Update methods of the components of the Game Object.
-bool engine::GameObject::Draw(){
+void GameObject::Draw(){
 	for(auto each_pair : component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled()){
 			component->Draw();
 		}
 	}
-	return true;
 }
 
-bool GameObject::UpdateCode(){
+
+void GameObject::UpdateCode(){
 	for(auto each_pair : component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled()){
 			component->UpdateCode();
 		}
 	}
-	return true;
 }
 
 
 // Call all Shutdowns methods of the components of the Game Object.
-bool engine::GameObject::Shutdown(){
+void engine::GameObject::Shutdown(){
 	for(auto each_pair : component_map){
 		auto component = each_pair.second;
-		if(component->Shutdown() == false){
-			return false;
-		}
+		component->Shutdown();
 	}
-
-	return true;
 }
+

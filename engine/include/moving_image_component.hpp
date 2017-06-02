@@ -12,8 +12,8 @@ namespace engine {
 			MovingImageComponent();
 			MovingImageComponent(GameObject &game_object, std::string image_path);
 		public:
-			bool Init();
-			bool Draw();
+			void Init();
+			void Draw();
 			void UpdateQuad();
 			void UpdateGameObjectMeasures();
 

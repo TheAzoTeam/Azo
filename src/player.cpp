@@ -116,10 +116,9 @@ void Player::SetCode(){
 	this->AddComponent(*player_code);
 }
 
-bool Player::Shutdown(){
+void Player::Shutdown(){
 	INFO("Shutting down player.");
 	DestroyComponents();
-	return true;
 }
 
 void Player::DestroyComponents(){

@@ -31,7 +31,7 @@ namespace Azo {
 		public:
 			PlayerCode();
 			PlayerCode(engine::GameObject &game_object);
-			bool UpdateCode();
+			void UpdateCode();
 			void FindAnimationController();
 	};
 

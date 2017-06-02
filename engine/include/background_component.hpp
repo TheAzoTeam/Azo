@@ -30,11 +30,11 @@ namespace engine {
 
 			~BackgroundComponent();
 
-			bool Init();
+			void Init();
 
-			bool Shutdown();
+			void Shutdown();
 
-			bool Draw();
+			void Draw();
 	};
 }
 #endif

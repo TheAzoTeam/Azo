@@ -51,7 +51,7 @@ namespace Azo {
 
 			void DestroyComponents();
 
-			bool Shutdown();
+			void Shutdown();
 
 	};
 

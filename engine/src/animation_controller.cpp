@@ -2,32 +2,28 @@
 
 using namespace engine;
 
-bool AnimationController::Init(){
+void AnimationController::Init(){
 	for(auto animation_row : animation_map){
 		auto animation = animation_row.second;
 		animation->Init();
 	}
-
-	return true;
 }
 
 
-bool AnimationController::Draw(){
+void AnimationController::Draw(){
 	for(auto animation_row : animation_map){
 		auto animation = animation_row.second;
 		if(animation->IsEnabled()){
 			animation->Draw();
 		}
 	}
-	return true;
 }
 
-bool AnimationController::Shutdown(){
+void AnimationController::Shutdown(){
 	for(auto animation_row : animation_map){
 		auto animation = animation_row.second;
 		animation->Shutdown();
 	}
-	return true;
 }
 
 AnimationController::AnimationController(){

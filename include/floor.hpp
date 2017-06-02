@@ -19,7 +19,7 @@ namespace Azo {
 			void SetDependencies();
 			void CreateComponents();
 			void SetComponents();
-			bool Shutdown();
+			void Shutdown();
 	};
 }
 

@@ -15,11 +15,11 @@ namespace engine {
 
 			CodeComponent(GameObject &game_object);
 
-			bool Init();
+			void Init();
 
-			bool Shutdown();
+			void Shutdown();
 
-			bool UpdateCode();
+			void UpdateCode();
 	};
 }
 

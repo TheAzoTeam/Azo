@@ -30,7 +30,7 @@ void Floor::SetComponents(){
 }
 
 
-bool Floor::Shutdown(){
+void Floor::Shutdown(){
 	ASSERT(floor_image != NULL, "Floor image can't be NULL while shutting down.");
 	ASSERT(floor_code != NULL, "Floor Code can't be NULL while shutting down.");
 
@@ -42,5 +42,4 @@ bool Floor::Shutdown(){
 	free(floor_code);
 	floor_code = NULL;
 
-	return true;
 }

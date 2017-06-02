@@ -117,11 +117,10 @@ void Menu::SetBackgroundComponents(){
 
 
 
-bool Menu::Shutdown(){
+void Menu::Shutdown(){
 	INFO("Destroying Menu.");
 	DestroyComponents();
 	DestroyGameObjects();
-	return true;
 }
 
 void Menu::DestroyComponents(){
@@ -138,9 +137,9 @@ void Menu::DestroyComponents(){
 	free(menu_code);
 	menu_image = NULL;
 
-	menu_theme->Shutdown();
-	free(menu_theme);
-	menu_theme = NULL;
+	audio_controller->Shutdown();
+	free(audio_controller);
+	audio_controller = NULL;
 }
 
 void Menu::DestroyGameObjects(){

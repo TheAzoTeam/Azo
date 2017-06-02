@@ -1,5 +1,6 @@
 #include "menu_code.hpp"
 #include "game.hpp"
+#include "level_manager.hpp"
 
 using namespace Azo;
 
@@ -16,16 +17,15 @@ void MenuCode::FindAudioController(){
 	this->audio_controller = (game_object->GetAudioController(typeid(engine::AudioController)));
 }
 
-bool MenuCode::UpdateCode(){
+void MenuCode::UpdateCode(){
 	NextScene();
 	DisableSound();
-	return true;
 }
 
 void MenuCode::NextScene(){
 	if(engine::Game::instance.input_manager.KeyDown(engine::Button::ENTER)){
 		DEBUG("Enter pressionado!");
-		engine::Game::instance.ChangeScene(global::player_scene);
+		LevelManager::level_manager.GoToLevelOne();
 	}
 }
 

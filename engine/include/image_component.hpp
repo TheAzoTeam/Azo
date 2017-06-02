@@ -13,8 +13,8 @@ namespace engine {
 		public:
 			ImageComponent();
 			ImageComponent(GameObject &game_object, std::string image_path, int pos_x, int pos_y);
-			bool Init();
-			bool Draw();
+			void Init();
+			void Draw();
 		private:
 			void UpdateGameObjectMeasures();
 

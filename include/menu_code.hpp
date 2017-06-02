@@ -18,7 +18,7 @@ namespace Azo {
 			MenuCode();
 			MenuCode(engine::GameObject &game_object);
 			~MenuCode();
-			bool UpdateCode();
+			void UpdateCode();
 		private:
 			void NextScene();
 			void DisableSound();

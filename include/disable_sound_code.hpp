@@ -12,7 +12,7 @@ namespace Azo {
 		public:
 			DisableSoundCode();
 			DisableSoundCode(engine::GameObject &game_object);
-			bool UpdateCode();
+			void UpdateCode();
 
 	};
 }

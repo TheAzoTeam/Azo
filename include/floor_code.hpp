@@ -8,7 +8,7 @@ namespace Azo {
 		public:
 			FloorCode();
 			FloorCode(engine::GameObject &game_object);
-			bool UpdateCode();
+			void UpdateCode();
 	};
 }
 

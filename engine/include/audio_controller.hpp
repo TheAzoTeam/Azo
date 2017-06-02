@@ -19,9 +19,9 @@ namespace engine {
 			void PlayAudio(std::string audio_name);
 			void StopAudio(std::string audio_name);
 			AudioState GetAudioState(std::string audio_name);
-			bool Init();
-			bool Shutdown();
-			bool UpdateCode();
+			void Init();
+			void Shutdown();
+			void UpdateCode();
 
 	};
 

@@ -30,7 +30,7 @@ void Wall::SetComponents(){
 }
 
 
-bool Wall::Shutdown(){
+void Wall::Shutdown(){
 	ASSERT(wall_image != NULL, "Wall image can't be NULL while shutting down.");
 	ASSERT(wall_code != NULL, "Wall Code can't be NULL while shutting down.");
 
@@ -42,5 +42,4 @@ bool Wall::Shutdown(){
 	free(wall_code);
 	wall_code = NULL;
 
-	return true;
 }

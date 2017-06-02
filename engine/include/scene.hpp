@@ -12,18 +12,18 @@ namespace engine {
 			Scene();
 			Scene(std::string scene_name);
 
-			virtual bool Init();
-			virtual bool Shutdown();
-			virtual bool Draw();
-			virtual bool UpdateCode();
+			virtual void Init();
+			virtual void Shutdown();
+			virtual void Draw();
+			virtual void UpdateCode();
 
 			inline std::string GetSceneName() {
 				return scene_name;
 			}
 
-			bool AddGameObject(engine::GameObject &game_object);
+			void AddGameObject(engine::GameObject &game_object);
 			engine::GameObject & GetGameObject(std::string & game_object_name);
-			bool RemoveGameObject(std::string &game_object_name);
+			void RemoveGameObject(std::string &game_object_name);
 			void ResolveCollision();
 
 		protected:
