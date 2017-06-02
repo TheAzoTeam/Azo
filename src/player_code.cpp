@@ -18,8 +18,8 @@ void PlayerCode::FindAnimationController(){
 }
 
 void PlayerCode::UpdateCode(){
-	if(state != PlayerState::JUMPING){
-		state = PlayerState::FALLING;
+	if(this->state != PlayerState::JUMPING){
+		this->state = PlayerState::FALLING;
 		CheckCollisionWithFloor();
 	}
 
@@ -48,9 +48,9 @@ void PlayerCode::CheckJump(){
 
 	if(this->state == PlayerState::JUMPING){
 		timer.DeltaTime();
-		if(timer.GetDeltaTime() <= 350.0f){
+		if(timer.GetDeltaTime() <= 400.0f){
 			//INFO("Tempo: " << timer.GetDeltaTime());
-			game_object->y -= 13;
+			game_object->y -= 15;
 		}else{
 			this->state = PlayerState::FALLING;
 		}
@@ -72,13 +72,13 @@ void PlayerCode::CheckSlide(){
 
 void PlayerCode::Run(){
 	// Continuous run to right.
-	game_object->x += 4;
+	game_object->x += 5;
 
 }
 
 void PlayerCode::Gravity(){
 	// Gravity that pulls the player down.
-	if(state != PlayerState::RUNNING){
+	if(this->state != PlayerState::RUNNING){
 		game_object->y += 6;
 	}
 }
@@ -90,7 +90,7 @@ void PlayerCode::CheckCollisionWithFloor(){
 	for(it = game_object->collision_list.begin(); it != game_object->collision_list.end(); ++it){
 		auto collision = *it;
 		if(collision == "Floor"){
-			state = PlayerState::RUNNING;
+			this->state = PlayerState::RUNNING;
 			game_object->collision_list.erase(it);
 			break;
 		}
@@ -109,4 +109,3 @@ void PlayerCode::CheckCollisionWithWall(){
 		}
 	}
 }
-

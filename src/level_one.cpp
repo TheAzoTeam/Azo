@@ -17,8 +17,8 @@ void LevelOne::SetDependencies(){
 void LevelOne::CreateGameObjects(){
 	player = new Player("McCree", 0, 300);
 	floor_platform = new Floor("floor", 0, 500);
-	wall = new Wall("wall", 500, 430);
-	floor_plataform_two = new Floor("floor_2", 1259, 500);
+	wall = new Wall("wall", 530, 450);
+	floor_plataform_two = new Floor("floor_1", 1100, 500);
 }
 
 void LevelOne::SetGameObjects(){
@@ -45,4 +45,23 @@ void LevelOne::DestroyGameObjects(){
 	free(wall);
 	wall = NULL;
 
+}
+
+void LevelOne::UpdateCode(){
+	for(auto each_game_object : game_object_map){
+		auto game_object = each_game_object.second;
+
+		if(game_object->GetClassName() == "Player"){
+			if(apply_update == false){
+				game_object->UpdateCode();
+			}
+			if(game_object->x >= engine::Game::instance.sdl_elements.GetWindowWidth() / 3){
+				apply_update = true;
+			}
+		}
+
+		if(apply_update){
+			game_object->UpdateCode();
+		}
+	}
 }

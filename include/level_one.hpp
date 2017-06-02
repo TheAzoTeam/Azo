@@ -18,6 +18,8 @@ namespace Azo {
 		public:
 			LevelOne();
 			LevelOne(std::string name);
+			void UpdateCode();
+			bool apply_update = false;
 		private:
 			void SetDependencies();
 			void CreateGameObjects();
