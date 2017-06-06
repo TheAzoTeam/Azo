@@ -7,6 +7,7 @@ using namespace Azo;
 PlayerCode::PlayerCode(){}
 
 PlayerCode::PlayerCode(engine::GameObject &game_object){
+	DEBUG("PlayerCode::PlayerCode method.");
 	this->game_object = &game_object;
 	this->component_state = engine::State::ENABLED;
 	this->state = PlayerState::FALLING;
@@ -18,6 +19,8 @@ void PlayerCode::FindAnimationController(){
 }
 
 void PlayerCode::UpdateCode(){
+	DEBUG("PlayerCode::UpdateCode method.");
+
 	if(this->state != PlayerState::JUMPING){
 		this->state = PlayerState::FALLING;
 		CheckCollisionWithFloor();
@@ -25,9 +28,9 @@ void PlayerCode::UpdateCode(){
 
 	CheckCollisionWithWall();
 
-	CheckJump();
+	//CheckJump();
 
-	CheckSlide();
+	//CheckSlide();
 
 	Gravity();
 
@@ -42,8 +45,7 @@ void PlayerCode::CheckJump(){
 		timer.Step();
 		this->state = PlayerState::JUMPING;
 		anim_controller.StartAnimation("jumping");
-		anim_controller.StopAnimation("walking_foward");
-		anim_controller.StopAnimation("walking_backward");
+		anim_controller.StopAnimation("walking");
 	}
 
 	if(this->state == PlayerState::JUMPING){
@@ -58,7 +60,7 @@ void PlayerCode::CheckJump(){
 
 	if(this->state == PlayerState::RUNNING){
 		anim_controller.StopAnimation("jumping");
-		anim_controller.StartAnimation("walking_foward");
+		anim_controller.StartAnimation("walking");
 	}
 
 }

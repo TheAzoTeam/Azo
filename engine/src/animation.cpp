@@ -26,9 +26,9 @@ Animation::~Animation(){}
 
 void Animation::Draw(){
 	UpdateFrameBasedOntime();
+	CheckLimits();
 	UpdateQuad();
 	UpdateGameObjectMeasures();
-	CheckLimits();
 
 	int successful_draw = SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),

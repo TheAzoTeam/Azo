@@ -2,141 +2,155 @@
 
 using namespace Azo;
 
-
 Player::Player(){}
 
-Player::Player(std::string player_name, int x, int y){
-	this->game_object_name = player_name;
+Player::Player(std::string name, int x, int y){
+	game_object_name = name;
 
-	// Setting the starting position of the game object.
 	this->x = x;
 	this->y = y;
 
-	SetPlayerDependencies();
+	CreateComponents();
 }
 
-void Player::SetPlayerDependencies(){
-	CreateAnimations();
-	SetAnimations();
-	CreateCode();
-	SetCode();
+void Player::CreateComponents(){
+	DEBUG("Creating Player Components.");
+	GenWalkingAnimation();
+	m_walking = new engine::Animation(*this, "sprites/CowboyRun.png", 1000.0f, m_walking_animation_sprites, 0, 22);
+
+	m_anim_controller = new engine::AnimationController();
+
+	DEBUG("Adding walking animation to animation controller.");
+	m_anim_controller->AddAnimation("walking", *m_walking);
+
+	DEBUG("Adding animation controller to Player.");
+	this->AddComponent(*m_anim_controller);
+
+	m_player_code = new PlayerCode(*this);
+
+	DEBUG("Adding player code to Player.");
+	this->AddComponent(*m_player_code);
 }
 
-void Player::CreateAnimations(){
-	int width = 0;
-
-	INFO("Entering Create Animations");
-	for(int i = 0; i < 16; i++){
-		sprite_list.push_back(new engine::Sprite());
+void Player::GenWalkingAnimation(){
+	DEBUG("Generating player walking animation.");
+	for(int i = 0; i < 23; i++){
+		m_walking_animation_sprites.push_back(new engine::Sprite());
 	}
 
+	m_walking_animation_sprites[0]->sprite_x = 2;
+	m_walking_animation_sprites[0]->sprite_y = 34;
+	m_walking_animation_sprites[0]->sprite_width = 67 - 2;
+	m_walking_animation_sprites[0]->sprite_height = 139 - 34;
 
-	for(int i = 0; i < 8; i++){
-		sprite_list[i]->sprite_x = width;
-		sprite_list[i]->sprite_y = 0;
-		sprite_list[i]->sprite_width = 108;
-		sprite_list[i]->sprite_height = 140;
-		width += 108;
-	}
+	m_walking_animation_sprites[1]->sprite_x = 71;
+	m_walking_animation_sprites[1]->sprite_y = 34;
+	m_walking_animation_sprites[1]->sprite_width = 136 - 71;
+	m_walking_animation_sprites[1]->sprite_height = 139 - 34;
 
-	width = 0;
-	for(int i = 8; i < 16; i++){
-		sprite_list[i]->sprite_x = width;
-		sprite_list[i]->sprite_y = 108;
-		sprite_list[i]->sprite_width = 108;
-		sprite_list[i]->sprite_height = 280;
-		width += 108;
-	}
+	m_walking_animation_sprites[2]->sprite_x = 137;
+	m_walking_animation_sprites[2]->sprite_y = 34;
+	m_walking_animation_sprites[2]->sprite_width = 202 - 137;
+	m_walking_animation_sprites[2]->sprite_height = 139 - 34;
 
-	// Creating a animation controller.
-	player_animation_controller = new engine::AnimationController();
+	m_walking_animation_sprites[3]->sprite_x = 203;
+	m_walking_animation_sprites[3]->sprite_y = 20;
+	m_walking_animation_sprites[3]->sprite_width = 273 - 203;
+	m_walking_animation_sprites[3]->sprite_height = 139 - 20;
 
-	DEBUG("Creating walking animation.");
-	// Creating the player's animation that runs to right looking to right.
-	walking_animation = new engine::Animation(
-		*this,                                                                  // Game Object
-		"sprites/scottpilgrim_multiple.png",                                    // Image Path
-		900.0f,                                                                 // Animation Time
-		sprite_list,
-		0,
-		7
-		);
+	m_walking_animation_sprites[4]->sprite_x = 274;
+	m_walking_animation_sprites[4]->sprite_y = 20;
+	m_walking_animation_sprites[4]->sprite_width = 344 - 274;
+	m_walking_animation_sprites[4]->sprite_height = 139 - 20;
 
-	DEBUG("Finished creating walking animation.");
+	m_walking_animation_sprites[5]->sprite_x = 345;
+	m_walking_animation_sprites[5]->sprite_y = 20;
+	m_walking_animation_sprites[5]->sprite_width = 415 - 345;
+	m_walking_animation_sprites[5]->sprite_height = 139 - 20;
 
-	// Creating the player's animation that runs to right looking to left.
-	walking_backwards_animation = new engine::Animation(
-		*this,                                                  // Game Object
-		"sprites/scottpilgrim_multiple.png",                    // Image Path
-		900.0f,                                                 // Animation Time
-		sprite_list,
-		8,
-		15
-		);
+	m_walking_animation_sprites[6]->sprite_x = 416;
+	m_walking_animation_sprites[6]->sprite_y = 26;
+	m_walking_animation_sprites[6]->sprite_width = 501 - 416;
+	m_walking_animation_sprites[6]->sprite_height = 139 - 26;
 
-	// Creating the player's animation that jump.
-	jump_animation = new engine::Animation(
-		*this,                                                  // Game Object
-		"sprites/scottpilgrim_multiple.png",                    // Image Path
-		500.0f,                                                 // Animation Time
-		sprite_list,
-		5,                                                      // Start Frame
-		5);                                                     // End frame
+	m_walking_animation_sprites[7]->sprite_x = 502;
+	m_walking_animation_sprites[7]->sprite_y = 26;
+	m_walking_animation_sprites[7]->sprite_width = 585 - 502;
+	m_walking_animation_sprites[7]->sprite_height = 139 - 26;
 
-	// Disable Animation Component.
-	walking_backwards_animation->DisableComponent();
-	jump_animation->DisableComponent();
-}
+	m_walking_animation_sprites[8]->sprite_x = 587;
+	m_walking_animation_sprites[8]->sprite_y = 26;
+	m_walking_animation_sprites[8]->sprite_width = 672 - 587;
+	m_walking_animation_sprites[8]->sprite_height = 139 - 26;
 
-void Player::CreateCode(){
-	player_code = new PlayerCode(*this);
-}
+	m_walking_animation_sprites[9]->sprite_x = 673;
+	m_walking_animation_sprites[9]->sprite_y = 26;
+	m_walking_animation_sprites[9]->sprite_width = 744 - 673;
+	m_walking_animation_sprites[9]->sprite_height = 139 - 26;
+
+	m_walking_animation_sprites[10]->sprite_x = 745;
+	m_walking_animation_sprites[10]->sprite_y = 26;
+	m_walking_animation_sprites[10]->sprite_width = 816 - 745;
+	m_walking_animation_sprites[10]->sprite_height = 139 - 26;
+
+	m_walking_animation_sprites[11]->sprite_x = 889;
+	m_walking_animation_sprites[11]->sprite_y = 26;
+	m_walking_animation_sprites[11]->sprite_width = 960 - 889;
+	m_walking_animation_sprites[11]->sprite_height = 139 - 26;
+
+	m_walking_animation_sprites[12]->sprite_x = 961;
+	m_walking_animation_sprites[12]->sprite_y = 34;
+	m_walking_animation_sprites[12]->sprite_width = 1029 - 961;
+	m_walking_animation_sprites[12]->sprite_height = 139 - 34;
+
+	m_walking_animation_sprites[13]->sprite_x = 1031;
+	m_walking_animation_sprites[13]->sprite_y = 34;
+	m_walking_animation_sprites[13]->sprite_width = 1099 - 1031;
+	m_walking_animation_sprites[13]->sprite_height = 139 - 34;
+
+	m_walking_animation_sprites[14]->sprite_x = 1100;
+	m_walking_animation_sprites[14]->sprite_y = 20;
+	m_walking_animation_sprites[14]->sprite_width = 1165 - 1100;
+	m_walking_animation_sprites[14]->sprite_height = 139 - 20;
+
+	m_walking_animation_sprites[15]->sprite_x = 1166;
+	m_walking_animation_sprites[15]->sprite_y = 20;
+	m_walking_animation_sprites[15]->sprite_width = 1231 - 1166;
+	m_walking_animation_sprites[15]->sprite_height = 139 - 20;
+
+	m_walking_animation_sprites[16]->sprite_x = 1232;
+	m_walking_animation_sprites[16]->sprite_y = 20;
+	m_walking_animation_sprites[16]->sprite_width = 1296 - 1232;
+	m_walking_animation_sprites[16]->sprite_height = 139 - 20;
+
+	m_walking_animation_sprites[17]->sprite_x = 1297;
+	m_walking_animation_sprites[17]->sprite_y = 26;
+	m_walking_animation_sprites[17]->sprite_width = 1382 - 1297;
+	m_walking_animation_sprites[17]->sprite_height = 139 - 26;
+
+	m_walking_animation_sprites[18]->sprite_x = 1383;
+	m_walking_animation_sprites[18]->sprite_y = 26;
+	m_walking_animation_sprites[18]->sprite_width = 1468 - 1383;
+	m_walking_animation_sprites[18]->sprite_height = 139 - 26;
+
+	m_walking_animation_sprites[19]->sprite_x = 1469;
+	m_walking_animation_sprites[19]->sprite_y = 26;
+	m_walking_animation_sprites[19]->sprite_width = 1554 - 1469;
+	m_walking_animation_sprites[19]->sprite_height = 139 - 26;
 
 
-void Player::SetAnimations(){
-	ASSERT(player_animation_controller != NULL, "Player Animation Controller can't be null when setting animations.");
-	ASSERT(walking_animation != NULL, "Walking animation can't be null when setting animations.");
-	ASSERT(walking_backwards_animation != NULL, "Walking backwards animation can't be null when setting animations.");
-	ASSERT(jump_animation != NULL, "Jump animation can't be null when setting animations.");
+	m_walking_animation_sprites[20]->sprite_x = 1555;
+	m_walking_animation_sprites[20]->sprite_y = 29;
+	m_walking_animation_sprites[20]->sprite_width = 1629 - 1555;
+	m_walking_animation_sprites[20]->sprite_height = 139 - 29;
 
-	// Add all animations to Game Object's Animation Controller's map (Animation name, Animation component).
-	player_animation_controller->AddAnimation("walking_foward", *walking_animation);
-	player_animation_controller->AddAnimation("walking_backward", *walking_backwards_animation);
-	player_animation_controller->AddAnimation("jumping", *jump_animation);
+	m_walking_animation_sprites[21]->sprite_x = 1631;
+	m_walking_animation_sprites[21]->sprite_y = 29;
+	m_walking_animation_sprites[21]->sprite_width = 1707 - 1631;
+	m_walking_animation_sprites[21]->sprite_height = 139 - 29;
 
-
-	// Animation Controller is added as a Component to the respective Game Object.
-	this->AddComponent(*player_animation_controller);
-}
-
-void Player::SetCode(){
-	ASSERT(player_code != NULL, "Player Code can't be null.");
-
-	// PlayerCode is added as a component to this GameObject.
-	this->AddComponent(*player_code);
-}
-
-void Player::Shutdown(){
-	INFO("Shutting down player.");
-	DestroyComponents();
-}
-
-void Player::DestroyComponents(){
-	INFO("Destroying components.");
-
-	ASSERT(walking_animation != NULL, "Walking animation can't be NULL when shutting down.");
-	ASSERT(walking_backwards_animation != NULL, "Walking backwards animation can't be NULL when shutting down.");
-	ASSERT(jump_animation != NULL, "Jump animation can't be NULL when shutting down.");
-
-	walking_animation->Shutdown();
-	free(walking_animation);
-	walking_animation = NULL;
-
-	walking_backwards_animation->Shutdown();
-	free(walking_backwards_animation);
-	walking_backwards_animation = NULL;
-
-	jump_animation->Shutdown();
-	free(jump_animation);
-	jump_animation = NULL;
+	m_walking_animation_sprites[22]->sprite_x = 1709;
+	m_walking_animation_sprites[22]->sprite_y = 29;
+	m_walking_animation_sprites[22]->sprite_width = 1784 - 1709;
+	m_walking_animation_sprites[22]->sprite_height = 139 - 29;
 }
