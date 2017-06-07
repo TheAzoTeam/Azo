@@ -12,13 +12,13 @@ namespace engine {
 	class Animation : public MovingImageComponent {
 		private:
 			std::vector<Sprite *> sprite_list;
-			int current_sprite;
 			int start_frame;
 			int end_frame;
 			float current_animation_time;
 			int each_frame_time;
 			float animation_time;
 		public:
+			int current_sprite;
 			std::string animation_name;
 
 		public:

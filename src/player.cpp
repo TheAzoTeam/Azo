@@ -16,12 +16,18 @@ Player::Player(std::string name, int x, int y){
 void Player::CreateComponents(){
 	DEBUG("Creating Player Components.");
 	GenWalkingAnimation();
-	m_walking = new engine::Animation(*this, "sprites/CowboyRun.png", 1000.0f, m_walking_animation_sprites, 0, 22);
+	m_walking = new engine::Animation(*this, "sprites/CowboyRun.png", 1000.0f, m_walking_animation_sprites, 1, 1);
 
 	m_anim_controller = new engine::AnimationController();
 
 	DEBUG("Adding walking animation to animation controller.");
 	m_anim_controller->AddAnimation("walking", *m_walking);
+
+	GenJumpingAnimation();
+	m_jumping = new engine::Animation(*this, "sprites/CowboyJump.png", 1000.0f, m_jumping_animation_sprites, 0, 7);
+	m_jumping->DisableComponent();
+	DEBUG("Adding jumping animation to animation controller");
+	m_anim_controller->AddAnimation("jumping", *m_jumping);
 
 	DEBUG("Adding animation controller to Player.");
 	this->AddComponent(*m_anim_controller);
@@ -153,4 +159,52 @@ void Player::GenWalkingAnimation(){
 	m_walking_animation_sprites[22]->sprite_y = 29;
 	m_walking_animation_sprites[22]->sprite_width = 1784 - 1709;
 	m_walking_animation_sprites[22]->sprite_height = 139 - 29;
+}
+
+void Player::GenJumpingAnimation(){
+	DEBUG("Generating Player Jumping Animation.");
+
+	for(int i = 0; i < 8; i++){
+		m_jumping_animation_sprites.push_back(new engine::Sprite());
+	}
+
+	m_jumping_animation_sprites[0]->sprite_x = 20;
+	m_jumping_animation_sprites[0]->sprite_y = 22;
+	m_jumping_animation_sprites[0]->sprite_width = 94 - 20;
+	m_jumping_animation_sprites[0]->sprite_height = 127 - 22;
+
+	m_jumping_animation_sprites[1]->sprite_x = 14;
+	m_jumping_animation_sprites[1]->sprite_y = 168;
+	m_jumping_animation_sprites[1]->sprite_width = 97 - 24;
+	m_jumping_animation_sprites[1]->sprite_height = 267 - 168;
+
+	m_jumping_animation_sprites[2]->sprite_x = 8;
+	m_jumping_animation_sprites[2]->sprite_y = 282;
+	m_jumping_animation_sprites[2]->sprite_width = 103 - 8;
+	m_jumping_animation_sprites[2]->sprite_height = 398 - 282;
+
+	m_jumping_animation_sprites[3]->sprite_x = 8;
+	m_jumping_animation_sprites[3]->sprite_y = 422;
+	m_jumping_animation_sprites[3]->sprite_width = 103 - 8;
+	m_jumping_animation_sprites[3]->sprite_height = 538 - 422;
+
+	m_jumping_animation_sprites[4]->sprite_x = 16;
+	m_jumping_animation_sprites[4]->sprite_y = 562;
+	m_jumping_animation_sprites[4]->sprite_width = 97 - 16;
+	m_jumping_animation_sprites[4]->sprite_height = 678 - 562;
+
+	m_jumping_animation_sprites[5]->sprite_x = 16;
+	m_jumping_animation_sprites[5]->sprite_y = 702;
+	m_jumping_animation_sprites[5]->sprite_width = 97 - 16;
+	m_jumping_animation_sprites[5]->sprite_height = 818 - 702;
+
+	m_jumping_animation_sprites[6]->sprite_x = 16;
+	m_jumping_animation_sprites[6]->sprite_y = 842;
+	m_jumping_animation_sprites[6]->sprite_width = 99 - 16;
+	m_jumping_animation_sprites[6]->sprite_height = 958 - 842;
+
+	m_jumping_animation_sprites[7]->sprite_x = 14;
+	m_jumping_animation_sprites[7]->sprite_y = 997;
+	m_jumping_animation_sprites[7]->sprite_width = 83 - 20;
+	m_jumping_animation_sprites[7]->sprite_height = 1107 - 997;
 }

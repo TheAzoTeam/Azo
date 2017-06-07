@@ -58,6 +58,7 @@ void AnimationController::StopAnimation(std::string animation_name){
 
 	if(animation_to_be_played != animation_map.end()){
 		animation_to_be_played->second->DisableComponent();
+		animation_to_be_played->second->current_sprite = 0;
 	}else{
 		ERROR("Animation couldn't be found!");
 	}

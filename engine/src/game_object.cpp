@@ -74,8 +74,6 @@ void GameObject::Draw(){
 
 
 void GameObject::UpdateCode(){
-	DEBUG("GameObject::UpdateCode method.");
-	DEBUG("Component map size: " << component_map.size());
 	for(auto each_pair : component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled()){

@@ -28,7 +28,7 @@ void PlayerCode::UpdateCode(){
 
 	CheckCollisionWithWall();
 
-	//CheckJump();
+	CheckJump();
 
 	//CheckSlide();
 
@@ -42,10 +42,11 @@ void PlayerCode::UpdateCode(){
 
 void PlayerCode::CheckJump(){
 	if(engine::Game::instance.input_manager.KeyDown(engine::Button::W) && this->state == PlayerState::RUNNING){
+		DEBUG("Player Jumped.");
 		timer.Step();
 		this->state = PlayerState::JUMPING;
-		anim_controller.StartAnimation("jumping");
 		anim_controller.StopAnimation("walking");
+		anim_controller.StartAnimation("jumping");
 	}
 
 	if(this->state == PlayerState::JUMPING){

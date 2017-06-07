@@ -25,10 +25,14 @@ Animation::Animation(GameObject & game_object, std::string image_path, float ani
 Animation::~Animation(){}
 
 void Animation::Draw(){
+	DEBUG("Animation::Draw method.");
+
 	UpdateFrameBasedOntime();
 	CheckLimits();
 	UpdateQuad();
 	UpdateGameObjectMeasures();
+
+	DEBUG("Current drawing: " << current_sprite)
 
 	int successful_draw = SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
