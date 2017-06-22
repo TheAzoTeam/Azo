@@ -18,23 +18,17 @@ namespace engine {
 			SDL_Rect renderQuad;
 			int component_width;
 			int component_height;
-		private:
-			void UpdateQuad();
-
 		public:
 			BackgroundComponent();
-
 			BackgroundComponent(std::string image_path);
-
 			BackgroundComponent(GameObject &game_object, std::string image_path);
-
 			~BackgroundComponent();
-
 			void Init();
-
 			void Shutdown();
-
 			void Draw();
+			inline std::string GetClassName(){
+				return "BackgroundComponent";
+			}
 	};
 }
 #endif

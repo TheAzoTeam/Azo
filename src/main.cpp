@@ -1,6 +1,6 @@
 #include "game.hpp"
 #include "game_globals.hpp"
-#include "level_manager.hpp"
+#include "player.hpp"
 
 using namespace Azo;
 
@@ -12,8 +12,15 @@ int main(int, char**) {
 		global::window_height,
 		global::frame_rate);
 
-	LevelManager::level_manager.GoToMenu();
-	// Starting game execution.
+	engine::Scene level_one("level_one");
+
+	Player new_player("new_player", std::make_pair(300, 300));
+
+	level_one.AddGameObject(new_player);
+
+	engine::Game::instance.AddScene(level_one);
+	engine::Game::instance.ChangeScene("level_one");
+
 	engine::Game::instance.Run();
 
 	return 0;

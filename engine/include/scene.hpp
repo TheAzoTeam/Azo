@@ -24,7 +24,6 @@ namespace engine {
 			void AddGameObject(engine::GameObject &game_object);
 			engine::GameObject & GetGameObject(std::string & game_object_name);
 			void RemoveGameObject(std::string &game_object_name);
-			void ResolveCollision();
 
 		protected:
 			std::unordered_map<std::string, engine::GameObject *> game_object_map;

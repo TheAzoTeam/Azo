@@ -1,6 +1,8 @@
 #ifndef ENGINE_COMPONENT_HPP
 #define ENGINE_COMPONENT_HPP
 
+#include <string>
+
 namespace engine {
 
 	class GameObject;
@@ -33,6 +35,10 @@ namespace engine {
 			void DisableComponent();
 
 			bool IsEnabled();
+
+			virtual inline std::string GetClassName(){
+				return "Component";
+			}
 	};
 }
 

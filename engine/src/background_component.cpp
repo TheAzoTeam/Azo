@@ -23,7 +23,7 @@ BackgroundComponent::BackgroundComponent(GameObject & game_object, std::string i
 BackgroundComponent::~BackgroundComponent(){}
 
 void BackgroundComponent::Init(){
-	// Check AssetsManager to see if image is already loaded.
+	DEBUG("BackgroundComponent::Init method.");
 	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
 
 	image_texture = assets_image->texture;
@@ -31,18 +31,8 @@ void BackgroundComponent::Init(){
 	component_width = assets_image->width;
 	component_height = assets_image->height;
 
-	renderQuad = {game_object->x, game_object->y, component_width, component_height};
+	renderQuad = {0, 0, component_width, component_height};
 }
-
-void BackgroundComponent::UpdateQuad(){
-	renderQuad = {
-		game_object->x,
-		game_object->y,
-		component_width,
-		component_height
-	};
-}
-
 
 void BackgroundComponent::Shutdown(){
 	/* Terminate Texture */
@@ -50,16 +40,12 @@ void BackgroundComponent::Shutdown(){
 }
 
 void BackgroundComponent::Draw(){
-	UpdateQuad();
-
-	int successful_draw = SDL_RenderCopy(
+	DEBUG("BackgroundComponent::Draw method.");
+	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
 		&renderQuad,
 		NULL
 		);
 
-	if(successful_draw < 0){
-		ERROR("Unable to draw.");
-	}
 }

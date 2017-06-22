@@ -3,10 +3,11 @@
 
 using namespace engine;
 
-
 Animation::Animation(){}
 
-Animation::Animation(GameObject & game_object, std::string image_path, float animation_time, std::vector<Sprite *> sprite_list, int start_frame, int end_frame){
+Animation::Animation(GameObject & game_object, std::string image_path,
+		     float animation_time, std::vector<Sprite *> sprite_list,
+		     int start_frame, int end_frame, bool loop, int zoom_factor){
 
 	ASSERT(image_path != "", "Animation::CreateAnimation, image_path is empty.");
 	ASSERT(animation_time > 0, "Animation time can't be zero or less.");
@@ -14,80 +15,77 @@ Animation::Animation(GameObject & game_object, std::string image_path, float ani
 
 	this->game_object = &game_object;
 	this->image_path = image_path;
-	this->animation_time = animation_time;
-	this->sprite_list = sprite_list;
-	this->start_frame = start_frame;
-	this->end_frame = end_frame;
-	this->each_frame_time = animation_time / (end_frame - start_frame + 1);
-	this->current_animation_time = 0.0f;
+	this->m_animation_time = animation_time;
+	this->m_sprite_list = sprite_list;
+	this->m_start_frame = start_frame;
+	this->m_end_frame = end_frame;
+	this->m_each_frame_time = animation_time / (end_frame - start_frame + 1);
+	this->m_current_animation_time = 0.0f;
+	this->m_loop = loop;
+	this->zoom_factor = zoom_factor;
 }
 
 Animation::~Animation(){}
 
 void Animation::Draw(){
-	DEBUG("Animation::Draw method.");
-
+	//DEBUG("Animation::Draw method.");
 	UpdateFrameBasedOntime();
 	CheckLimits();
 	UpdateQuad();
 	UpdateGameObjectMeasures();
 
-	DEBUG("Current drawing: " << current_sprite)
-
-	int successful_draw = SDL_RenderCopy(
+	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
 		&renderQuad,
 		&canvasQuad
 		);
 
-	if(successful_draw < 0){
-		ERROR("Unable to Draw.");
-	}
 
+	//DEBUG("Current drawing: " << m_current_sprite);
 }
 
 void Animation::UpdateQuad(){
 	renderQuad = {
-		sprite_list[current_sprite]->sprite_x,
-		sprite_list[current_sprite]->sprite_y,
-		sprite_list[current_sprite]->sprite_width,
-		sprite_list[current_sprite]->sprite_height
+		m_sprite_list[m_current_sprite]->sprite_x,
+		m_sprite_list[m_current_sprite]->sprite_y,
+		m_sprite_list[m_current_sprite]->sprite_width,
+		m_sprite_list[m_current_sprite]->sprite_height
 	};
 
 	canvasQuad = {
-		BackgroundComponent::game_object->x,
-		BackgroundComponent::game_object->y,
-		sprite_list[current_sprite]->sprite_width,
-		sprite_list[current_sprite]->sprite_height
+		(int)game_object->m_current_position.first,
+		(int)game_object->m_current_position.second,
+		m_sprite_list[m_current_sprite]->sprite_width * zoom_factor,
+		m_sprite_list[m_current_sprite]->sprite_height * zoom_factor
 	};
 }
 
 void Animation::CheckLimits(){
-	current_sprite++;
-
-	if(current_sprite > end_frame){
-		current_sprite = 0;
-		current_animation_time = 0.0f;
+	if(m_current_sprite > m_end_frame){
+		if(m_loop){
+			m_current_sprite = 0;
+			m_current_animation_time = 0.0f;
+			DisableComponent();
+			m_state = AnimationState::STOPPED;
+		}else{
+			m_current_sprite = m_end_frame;
+		}
 	}
 }
 
 void Animation::UpdateFrameBasedOntime(){
-	current_animation_time += Game::instance.GetTimer().GetDeltaTime();
-	current_sprite = current_animation_time / each_frame_time + start_frame;
+	m_current_animation_time += Game::instance.GetTimer().GetDeltaTime();
+	m_current_sprite = m_current_animation_time / m_each_frame_time + m_start_frame;
 }
 
 
 void Animation::UpdateGameObjectMeasures(){
-	// Before drawing, set the GameObject sizes so we can calculate collision.
-	game_object->game_object_width = sprite_list[current_sprite]->sprite_width;
+	game_object->m_half_size.first = m_sprite_list[m_current_sprite]->sprite_width * zoom_factor / 2.0f;
+	game_object->m_half_size.second = m_sprite_list[m_current_sprite]->sprite_height * zoom_factor / 2.0f;
 
-	game_object->game_object_height = sprite_list[current_sprite]->sprite_height;
+	game_object->m_center.first = game_object->m_current_position.first + game_object->m_half_size.first;
 
-	game_object->left = game_object->x;
-	game_object->right = game_object->x + game_object->game_object_width;
-	game_object->top = game_object->y;
-	game_object->bottom = game_object->y + game_object->game_object_height;
-
+	game_object->m_center.second = game_object->m_current_position.second + game_object->m_half_size.second;
 }
 

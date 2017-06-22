@@ -10,7 +10,7 @@ namespace engine {
 
 	class AnimationController : public Animation {
 		private:
-			std::map <std::string, Animation *> animation_map;
+			std::map <std::string, Animation *> m_animation_map;
 		public:
 			AnimationController();
 			AnimationController(GameObject &game_object);
@@ -18,9 +18,12 @@ namespace engine {
 			void StartAnimation(std::string animation_name);
 			void StopAnimation(std::string animation_name);
 			void Init();
-			void Draw();
 			void Shutdown();
-
+			void Draw();
+			void NextSprite(std::string name);
+			inline std::string GetClassName(){
+				return "AnimationController";
+			}
 	};
 
 }

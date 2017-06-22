@@ -4,19 +4,18 @@ using namespace Azo;
 
 Player::Player(){}
 
-Player::Player(std::string name, int x, int y){
-	game_object_name = name;
+Player::Player(std::string name, std::pair<double, double> current_position){
+	DEBUG("Player::Player method.");
 
-	this->x = x;
-	this->y = y;
-
+	m_name = name;
+	m_current_position = current_position;
 	CreateComponents();
 }
 
 void Player::CreateComponents(){
 	DEBUG("Creating Player Components.");
 	GenWalkingAnimation();
-	m_walking = new engine::Animation(*this, "sprites/CowboyRun.png", 1000.0f, m_walking_animation_sprites, 1, 1);
+	m_walking = new engine::Animation(*this, "sprites/CowboyRun.png", 1000.0f, m_walking_animation_sprites, 0, 22, false, 1);
 
 	m_anim_controller = new engine::AnimationController();
 
@@ -24,18 +23,13 @@ void Player::CreateComponents(){
 	m_anim_controller->AddAnimation("walking", *m_walking);
 
 	GenJumpingAnimation();
-	m_jumping = new engine::Animation(*this, "sprites/CowboyJump.png", 1000.0f, m_jumping_animation_sprites, 0, 7);
+	m_jumping = new engine::Animation(*this, "sprites/CowboyJump.png", 1000.0f, m_jumping_animation_sprites, 0, 7, true, 1);
 	m_jumping->DisableComponent();
 	DEBUG("Adding jumping animation to animation controller");
 	m_anim_controller->AddAnimation("jumping", *m_jumping);
 
 	DEBUG("Adding animation controller to Player.");
 	this->AddComponent(*m_anim_controller);
-
-	m_player_code = new PlayerCode(*this);
-
-	DEBUG("Adding player code to Player.");
-	this->AddComponent(*m_player_code);
 }
 
 void Player::GenWalkingAnimation(){
