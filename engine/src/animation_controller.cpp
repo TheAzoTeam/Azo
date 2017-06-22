@@ -43,6 +43,10 @@ void AnimationController::AddAnimation(std::string animation_name, Animation &an
 void AnimationController::StartAnimation(std::string animation_name){
 	auto animation_to_be_played = m_animation_map.find(animation_name);
 
+	if(animation_to_be_played == m_animation_map.end()){
+		ERROR("Animation " << animation_name << "doesn't exist!");
+	}
+
 	if(animation_to_be_played->second->m_state == AnimationState::STOPPED){
 		for(auto each_animation : m_animation_map){
 			each_animation.second->DisableComponent();

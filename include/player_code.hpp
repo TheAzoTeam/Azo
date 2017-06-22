@@ -12,7 +12,12 @@ namespace Azo {
 			Player *m_player;
 			engine::AnimationController *m_animation_controller;
 			void UpdateCode();
+			void UpdatePhysics();
 			void FindAnimationController();
+			bool HasGround(double *ground_y);
+			bool HasCeiling(double *ground_y);
+			bool HasWallOnRight(double *wall_x);
+			bool HasWallOnLeft(double *wall_x);
 		public:
 			PlayerCode();
 			PlayerCode(engine::GameObject &game_object);

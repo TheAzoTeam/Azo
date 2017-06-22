@@ -38,7 +38,7 @@ void SDL::CreateWindow(){
 		SDL_WINDOWPOS_CENTERED, // Window opening position y.
 		window_width,           // Window width.
 		window_height,          // Window height.
-		SDL_WINDOW_FULLSCREEN_DESKTOP
+		SDL_WINDOW_SHOWN
 		);
 
 	if(window == NULL){

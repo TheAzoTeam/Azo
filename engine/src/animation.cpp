@@ -29,7 +29,6 @@ Animation::~Animation(){}
 
 void Animation::Draw(){
 	//DEBUG("Animation::Draw method.");
-	UpdateFrameBasedOntime();
 	CheckLimits();
 	UpdateQuad();
 	UpdateGameObjectMeasures();
@@ -41,8 +40,9 @@ void Animation::Draw(){
 		&canvasQuad
 		);
 
+	UpdateFrameBasedOntime();
 
-	//DEBUG("Current drawing: " << m_current_sprite);
+	DEBUG("Current drawing: " << m_current_sprite);
 }
 
 void Animation::UpdateQuad(){

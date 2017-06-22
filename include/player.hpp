@@ -12,7 +12,6 @@
 namespace Azo {
 
 	enum class PlayerState {
-		STAND,
 		WALK,
 		JUMP,
 	};

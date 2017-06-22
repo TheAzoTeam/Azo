@@ -15,7 +15,7 @@ Player::Player(std::string name, std::pair<double, double> current_position){
 void Player::CreateComponents(){
 	DEBUG("Creating Player Components.");
 	GenWalkingAnimation();
-	m_walking = new engine::Animation(*this, "sprites/CowboyRun.png", 1000.0f, m_walking_animation_sprites, 0, 22, false, 1);
+	m_walking = new engine::Animation(*this, "sprites/CowboyRun.png", 1000.0f, m_walking_animation_sprites, 0, 22, true, 1);
 
 	m_anim_controller = new engine::AnimationController();
 
@@ -141,7 +141,6 @@ void Player::GenWalkingAnimation(){
 	m_walking_animation_sprites[19]->sprite_y = 26;
 	m_walking_animation_sprites[19]->sprite_width = 1554 - 1469;
 	m_walking_animation_sprites[19]->sprite_height = 139 - 26;
-
 
 	m_walking_animation_sprites[20]->sprite_x = 1555;
 	m_walking_animation_sprites[20]->sprite_y = 29;
