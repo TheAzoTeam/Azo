@@ -30,6 +30,10 @@ void Player::CreateComponents(){
 
 	DEBUG("Adding animation controller to Player.");
 	this->AddComponent(*m_anim_controller);
+
+	DEBUG("Creating Player Code.");
+	m_player_code = new PlayerCode(*this);
+	this->AddComponent(*m_player_code);
 }
 
 void Player::GenWalkingAnimation(){
