@@ -17,6 +17,10 @@ void LevelOne::CreateGameObjects(){
 
 	this->AddGameObject(*m_player);
 
+	m_obstacle = new Obstacle("obstacle", std::make_pair(800, 350));
+
+	this->AddGameObject(*m_obstacle);
+
 	m_level_one = new engine::GameObject("level_one", std::make_pair(0, 0));
 	AddLevelParents();
 	CreateLevelComponents();
@@ -38,4 +42,5 @@ void LevelOne::CreateLevelComponents(){
 
 void LevelOne::AddLevelParents(){
 	m_level_one->m_parent_list.push_back(m_player);
+	m_level_one->m_parent_list.push_back(m_obstacle);
 }

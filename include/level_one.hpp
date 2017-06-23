@@ -3,6 +3,7 @@
 
 #include "scene.hpp"
 #include "player.hpp"
+#include "obstacle.hpp"
 #include "level_one_code.hpp"
 
 namespace Azo {
@@ -13,6 +14,7 @@ namespace Azo {
 		private:
 			Player *m_player;
 			engine::GameObject *m_level_one;
+			Obstacle *m_obstacle;
 
 			engine::ImageComponent *m_level_background;
 			LevelOneCode *m_level_code;

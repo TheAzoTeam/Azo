@@ -12,6 +12,8 @@ void LevelOneCode::GetParents(){
 	for(auto parent : game_object->m_parent_list){
 		if(parent->GetClassName() == "Player"){
 			m_player = dynamic_cast<Player *>(parent);
+		}else if(parent->GetClassName() == "Obstacle"){
+			m_obstacle = dynamic_cast<Obstacle *>(parent);
 		}
 	}
 }
@@ -23,4 +25,11 @@ void LevelOneCode::UpdateCode(){
 		game_object->m_current_position.first -= 2.0f;
 		m_player->m_current_position.first = 299;
 	}
+
+	UpdateObstaclePosition();
+}
+
+void LevelOneCode::UpdateObstaclePosition(){
+	m_obstacle->m_current_position.first = game_object->m_current_position.first + m_obstacle->m_position_relative_to_parent.first;
+	m_obstacle->m_current_position.second = game_object->m_current_position.second + m_obstacle->m_position_relative_to_parent.second;
 }
