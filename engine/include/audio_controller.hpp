@@ -15,7 +15,7 @@ namespace engine {
 		public:
 			AudioController();
 			AudioController(GameObject &game_object);
-			void AddAudio(std::string audio_name, AudioComponent &animation);
+			void AddAudio(std::string audio_name, AudioComponent &audio);
 			void PlayAudio(std::string audio_name);
 			void StopAudio(std::string audio_name);
 			AudioState GetAudioState(std::string audio_name);

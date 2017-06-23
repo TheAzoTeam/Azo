@@ -19,6 +19,12 @@ void Menu::CreateGameObjects(){
 void Menu::CreateMenuComponents(){
 	m_background = new engine::BackgroundComponent(*m_menu, "backgrounds/menu.png");
 	m_menu->AddComponent(*m_background);
+
+	m_menu_theme = new engine::AudioComponent(*m_menu, "audios/TemaGame.ogg", true, true);
+	m_audio_controller = new engine::AudioController();
+	m_audio_controller->AddAudio("menu_theme", *m_menu_theme);
+	m_menu->AddComponent(*m_audio_controller);
+
 	m_code = new MenuCode(m_menu);
 	m_menu->AddComponent(*m_code);
 }

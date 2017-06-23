@@ -40,7 +40,7 @@ void BackgroundComponent::Shutdown(){
 }
 
 void BackgroundComponent::Draw(){
-	DEBUG("BackgroundComponent::Draw method.");
+	//DEBUG("BackgroundComponent::Draw method.");
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
