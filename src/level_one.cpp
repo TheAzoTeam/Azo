@@ -18,6 +18,7 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_player);
 
 	m_level_one = new engine::GameObject("level_one", std::make_pair(0, 0));
+	AddLevelParents();
 	CreateLevelComponents();
 
 	this->AddGameObject(*m_level_one);
@@ -29,4 +30,12 @@ void LevelOne::CreateLevelComponents(){
 	m_level_background = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_one.png", 1);
 
 	m_level_one->AddComponent(*m_level_background);
+
+	m_level_code = new LevelOneCode(*m_level_one);
+
+	m_level_one->AddComponent(*m_level_code);
+}
+
+void LevelOne::AddLevelParents(){
+	m_level_one->m_parent_list.push_back(m_player);
 }

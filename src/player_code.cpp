@@ -88,8 +88,9 @@ void PlayerCode::UpdatePhysics(){
 	m_player->m_current_position.first += delta_walked;
 	double wall_x = 0.0;
 
-	if(m_player->m_current_position.first >= 800){
-		m_player->m_current_position.first = 0;
+	//Limiting player position on canvas.
+	if(m_player->m_current_position.first >= 300){
+		m_player->m_current_position.first = 300;
 	}
 
 	if(HasWallOnRight(&wall_x)){

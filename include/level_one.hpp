@@ -3,6 +3,7 @@
 
 #include "scene.hpp"
 #include "player.hpp"
+#include "level_one_code.hpp"
 
 namespace Azo {
 	class LevelOne : public engine::Scene {
@@ -12,10 +13,13 @@ namespace Azo {
 		private:
 			Player *m_player;
 			engine::GameObject *m_level_one;
+
 			engine::ImageComponent *m_level_background;
+			LevelOneCode *m_level_code;
 		private:
 			void CreateGameObjects();
 			void CreateLevelComponents();
+			void AddLevelParents();
 	};
 }
 
