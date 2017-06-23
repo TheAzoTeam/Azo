@@ -30,7 +30,7 @@ Image* AssetsManager::LoadImage(std::string image_path){
 		SDL_Texture *image_texture = SDL_CreateTextureFromSurface(Game::instance.sdl_elements.GetCanvas(), image);
 
 		if(image_texture == NULL){
-			ERROR("Couldn't create texture from image.");
+			ERROR("Couldn't create texture from image: " << SDL_GetError());
 		}
 
 		InsertIntoImageMap(image_path, image, image_texture);
