@@ -19,4 +19,6 @@ void Menu::CreateGameObjects(){
 void Menu::CreateMenuComponents(){
 	m_background = new engine::BackgroundComponent(*m_menu, "backgrounds/menu.png");
 	m_menu->AddComponent(*m_background);
+	m_code = new MenuCode(m_menu);
+	m_menu->AddComponent(*m_code);
 }
