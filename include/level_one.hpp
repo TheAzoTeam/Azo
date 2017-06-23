@@ -5,6 +5,7 @@
 #include "player.hpp"
 #include "obstacle.hpp"
 #include "level_one_code.hpp"
+#include "audio_controller.hpp"
 
 namespace Azo {
 	class LevelOne : public engine::Scene {
@@ -18,6 +19,8 @@ namespace Azo {
 
 			engine::ImageComponent *m_level_background;
 			LevelOneCode *m_level_code;
+			engine::AudioController *m_audio_controller;
+			engine::AudioComponent *m_level_theme;
 		private:
 			void CreateGameObjects();
 			void CreateLevelComponents();

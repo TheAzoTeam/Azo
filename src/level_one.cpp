@@ -37,6 +37,14 @@ void LevelOne::CreateLevelComponents(){
 
 	m_level_one->AddComponent(*m_level_background);
 
+	m_audio_controller = new engine::AudioController();
+
+	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/tema_level_one.ogg", true, true);
+
+	m_audio_controller->AddAudio("tema_level_one", *m_level_theme);
+
+	m_level_one->AddComponent(*m_audio_controller);
+
 	m_level_code = new LevelOneCode(*m_level_one);
 
 	m_level_one->AddComponent(*m_level_code);

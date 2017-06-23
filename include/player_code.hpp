@@ -20,7 +20,7 @@ namespace Azo {
 			bool HasWallOnLeft(double *wall_x);
 		public:
 			PlayerCode();
-			PlayerCode(engine::GameObject &game_object);
+			PlayerCode(Player *player);
 	};
 }
 

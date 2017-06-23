@@ -32,7 +32,7 @@ void Player::CreateComponents(){
 	this->AddComponent(*m_anim_controller);
 
 	DEBUG("Creating Player Code.");
-	m_player_code = new PlayerCode(*this);
+	m_player_code = new PlayerCode(this);
 	this->AddComponent(*m_player_code);
 }
 
