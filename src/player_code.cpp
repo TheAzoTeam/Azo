@@ -174,42 +174,43 @@ bool PlayerCode::HasGround(double *ground_y){
 }
 
 bool PlayerCode::HasWallOnRight(double *wall_x){
-	// std::pair<double, double> player_bottom_left = m_player->CalcBottomLeft();
-	// std::pair<double, double> player_top_right = m_player->CalcTopRight();
-	//
-	// double player_top = player_top_right.second;
-	// double player_bottom = player_bottom_left.second;
-	// double player_left = player_bottom_left.first;
-	// double player_right = player_top_right.first;
-	//
-	// for(auto each_block : m_player->m_block_list){
-	//
-	//      std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
-	//      std::pair<double, double> block_top_right = each_block->CalcTopRight();
-	//
-	//      double block_right = block_top_right.first;
-	//      double block_left = block_bottom_left.first;
-	//      double block_top = block_top_right.second;
-	//      double block_bottom = block_bottom_left.second;
-	//
-	//      if(player_left < block_left && player_left < block_right){
-	//
-	//              if(player_top > block_bottom){
-	//                      return false;
-	//              }
-	//
-	//              if(player_bottom < block_top){
-	//                      return false;
-	//              }
-	//
-	//              if(player_right < block_left - 1){
-	//                      return false;
-	//              }
-	//
-	//              *wall_x = block_left - 1.0f;
-	//              return true;
-	//      }
-	// }
+	DEBUG("Block list: " << m_player->m_block_list.size());
+	std::pair<double, double> player_bottom_left = m_player->CalcBottomLeft();
+	std::pair<double, double> player_top_right = m_player->CalcTopRight();
+
+	double player_top = player_top_right.second;
+	double player_bottom = player_bottom_left.second;
+	double player_left = player_bottom_left.first;
+	double player_right = player_top_right.first;
+
+	for(auto each_block : m_player->m_block_list){
+
+		std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
+		std::pair<double, double> block_top_right = each_block->CalcTopRight();
+
+		double block_right = block_top_right.first;
+		double block_left = block_bottom_left.first;
+		double block_top = block_top_right.second;
+		double block_bottom = block_bottom_left.second;
+
+		if(player_left < block_left && player_left < block_right){
+
+			if(player_top > block_bottom){
+				return false;
+			}
+
+			if(player_bottom < block_top){
+				return false;
+			}
+
+			if(player_right < block_left - 1){
+				return false;
+			}
+
+			*wall_x = block_left - 1.0f;
+			return true;
+		}
+	}
 
 	return false;
 }

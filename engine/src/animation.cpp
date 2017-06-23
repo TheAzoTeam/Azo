@@ -42,7 +42,7 @@ void Animation::Draw(){
 
 	UpdateFrameBasedOntime();
 
-	DEBUG("Current drawing: " << m_current_sprite);
+	//DEBUG("Current drawing: " << m_current_sprite);
 }
 
 void Animation::UpdateQuad(){

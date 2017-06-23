@@ -21,6 +21,8 @@ void LevelOne::CreateGameObjects(){
 
 	this->AddGameObject(*m_obstacle);
 
+	m_player->m_block_list.push_back(m_obstacle);
+
 	m_level_one = new engine::GameObject("level_one", std::make_pair(0, 0));
 	AddLevelParents();
 	CreateLevelComponents();

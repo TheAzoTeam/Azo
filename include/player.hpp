@@ -38,6 +38,8 @@ namespace Azo {
 			std::pair<double, double> m_speed;
 			std::pair<double, double> m_old_speed;
 
+			std::list<engine::GameObject *> m_block_list;
+
 			bool m_pushed_right_wall;
 			bool m_pushes_right_wall;
 			bool m_pushed_left_wall;

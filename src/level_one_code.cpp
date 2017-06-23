@@ -8,7 +8,6 @@ LevelOneCode::LevelOneCode(engine::GameObject &game_object){
 }
 
 void LevelOneCode::GetParents(){
-	DEBUG("Parent list size: " << game_object->m_parent_list.size());
 	for(auto parent : game_object->m_parent_list){
 		if(parent->GetClassName() == "Player"){
 			m_player = dynamic_cast<Player *>(parent);
@@ -20,7 +19,6 @@ void LevelOneCode::GetParents(){
 
 
 void LevelOneCode::UpdateCode(){
-	DEBUG("Updating LeveOne Code.");
 	if(m_player->m_current_position.first >= 300.0f){
 		game_object->m_current_position.first -= 2.0f;
 		m_player->m_current_position.first = 299;
@@ -32,4 +30,8 @@ void LevelOneCode::UpdateCode(){
 void LevelOneCode::UpdateObstaclePosition(){
 	m_obstacle->m_current_position.first = game_object->m_current_position.first + m_obstacle->m_position_relative_to_parent.first;
 	m_obstacle->m_current_position.second = game_object->m_current_position.second + m_obstacle->m_position_relative_to_parent.second;
+
+	m_obstacle->m_center.first = m_obstacle->m_current_position.first + m_obstacle->m_half_size.first;
+	m_obstacle->m_center.second = m_obstacle->m_current_position.second + m_obstacle->m_half_size.second;
+
 }
