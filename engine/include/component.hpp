@@ -30,9 +30,9 @@ namespace engine {
 
 			virtual void UpdateCode();
 
-			void EnableComponent();
+			virtual void EnableComponent();
 
-			void DisableComponent();
+			virtual void DisableComponent();
 
 			bool IsEnabled();
 

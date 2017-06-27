@@ -23,7 +23,7 @@ void Player::CreateComponents(){
 	m_anim_controller->AddAnimation("walking", *m_walking);
 
 	GenJumpingAnimation();
-	m_jumping = new engine::Animation(*this, "sprites/CowboyJump.png", 1000.0f, m_jumping_animation_sprites, 0, 7, true, 1);
+	m_jumping = new engine::Animation(*this, "sprites/CowboyJump.png", 800.0f, m_jumping_animation_sprites, 0, 7, false, 1);
 	m_jumping->DisableComponent();
 	DEBUG("Adding jumping animation to animation controller");
 	m_anim_controller->AddAnimation("jumping", *m_jumping);

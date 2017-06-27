@@ -13,11 +13,11 @@ LevelOne::LevelOne(std::string name){
 void LevelOne::CreateGameObjects(){
 	DEBUG("Creating Level One Game Objects.");
 
-	m_player = new Player("player", std::make_pair(300, 300));
+	m_player = new Player("player", std::make_pair(0, 300));
 
 	this->AddGameObject(*m_player);
 
-	m_obstacle = new Obstacle("obstacle", std::make_pair(800, 350));
+	m_obstacle = new Obstacle("obstacle", std::make_pair(800, 250));
 
 	this->AddGameObject(*m_obstacle);
 

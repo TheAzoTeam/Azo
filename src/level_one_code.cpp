@@ -20,7 +20,7 @@ void LevelOneCode::GetParents(){
 
 void LevelOneCode::UpdateCode(){
 	if(m_player->m_current_position.first >= 300.0f){
-		game_object->m_current_position.first -= 2.0f;
+		game_object->m_current_position.first -= 4.0f;
 		m_player->m_current_position.first = 299;
 	}
 

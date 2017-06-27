@@ -17,4 +17,8 @@ void MenuCode::UpdateCode(){
 		m_audio_controller->StopAudio("menu_theme");
 		engine::Game::instance.ChangeScene("level_one");
 	}
+
+	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::SPACE)){
+		if(m_audio_controller->GetAudioState("menu_theme") == engine::AudioState::PLAYING){}
+	}
 }

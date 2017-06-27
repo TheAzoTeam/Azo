@@ -40,9 +40,10 @@ void Animation::Draw(){
 		&canvasQuad
 		);
 
+	DEBUG("Current drawing: " << m_current_sprite);
+
 	UpdateFrameBasedOntime();
 
-	//DEBUG("Current drawing: " << m_current_sprite);
 }
 
 void Animation::UpdateQuad(){
@@ -66,7 +67,6 @@ void Animation::CheckLimits(){
 		if(m_loop){
 			m_current_sprite = 0;
 			m_current_animation_time = 0.0f;
-			DisableComponent();
 			m_state = AnimationState::STOPPED;
 		}else{
 			m_current_sprite = m_end_frame;
@@ -89,3 +89,8 @@ void Animation::UpdateGameObjectMeasures(){
 	game_object->m_center.second = game_object->m_current_position.second + game_object->m_half_size.second;
 }
 
+void Animation::DisableComponent(){
+	this->component_state = State::DISABLED;
+	m_current_animation_time = 0.0f;
+	m_current_sprite = m_start_frame;
+}

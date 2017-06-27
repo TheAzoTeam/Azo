@@ -77,6 +77,9 @@ void Game::Run(){
 		if(frame_time > timer.GetDeltaTime()){
 			SDL_Delay(frame_time - timer.GetDeltaTime());
 		}
+
+		timer.DeltaTime();
+
 	}
 
 	INFO("Finishing Main Loop.");

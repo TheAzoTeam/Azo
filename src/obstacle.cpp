@@ -14,6 +14,6 @@ Obstacle::Obstacle(std::string name, std::pair<double, double> position_relative
 }
 
 void Obstacle::CreateComponents(){
-	m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
+	m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
 	this->AddComponent(*m_obstacle_image);
 }

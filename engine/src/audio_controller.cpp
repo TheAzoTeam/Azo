@@ -69,4 +69,3 @@ AudioState AudioController::GetAudioState(std::string audio_name){
 
 	return audio->second->audio_state;
 }
-
