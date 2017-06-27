@@ -8,6 +8,7 @@
 #include "sprite.hpp"
 
 #include "player_code.hpp"
+#include "obstacle.hpp"
 
 namespace Azo {
 
@@ -40,7 +41,7 @@ namespace Azo {
 			PlayerState m_state;
 			std::pair<double, double> m_speed;
 
-			std::list<engine::GameObject *> m_block_list;
+			std::list<Obstacle *> m_block_list;
 
 			bool m_pushes_right_wall;
 			bool m_pushes_left_wall;

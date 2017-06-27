@@ -15,7 +15,6 @@ namespace engine {
 			void Init();
 			void Draw();
 			void UpdateQuad();
-			void UpdateGameObjectMeasures();
 			inline std::string GetClassName(){
 				return "ImageComponent";
 			}
