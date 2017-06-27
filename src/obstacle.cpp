@@ -22,20 +22,9 @@ void Obstacle::CreateComponents(){
 void Obstacle::CreateBlocks(){
 	std::pair<double, double> block_position = m_current_position;
 
-	block_position.first += 43;
-	block_position.second += 28;
+	block_position.first += 59;
+	block_position.second += 25;
 
-	m_block_list.push_back(new InvisibleBlock(block_position, std::make_pair(14, 64)));
-
-	// Since the position is on left, we just need to  add the previous object size to get to the left
-	// Of the next block.
-
-	block_position.first += 14;
-
-	m_block_list.push_back(new InvisibleBlock(block_position, std::make_pair(58, 91)));
-
-	block_position.first += 58;
-
-	m_block_list.push_back(new InvisibleBlock(block_position, std::make_pair(15, 66)));
+	m_block_list.push_back(new InvisibleBlock("block_zero", block_position, std::make_pair(110, 64)));
 
 }

@@ -36,13 +36,20 @@ void LevelOneCode::UpdateObstaclePosition(){
 		block->m_current_position.first = game_object->m_current_position.first + block->m_position_relative_to_parent.first;
 		block->m_current_position.second = game_object->m_current_position.second + block->m_position_relative_to_parent.second;
 
-		block->m_center.first += game_object->m_current_position.first;
-		block->m_center.second += game_object->m_current_position.second;
+		block->m_center.first = block->m_current_position.first + block->m_half_size.first;
+		block->m_center.second = block->m_current_position.second + block->m_half_size.second;
+
+		DEBUG("BLock current position in X: " << block->m_current_position.first);
+		DEBUG("BLock current position in Y: " << block->m_current_position.second);
+		DEBUG("Block center in X: " << block->m_center.first);
+		DEBUG("Block center in Y: " << block->m_center.second);
+
 	}
 
 }
 
 void LevelOneCode::UpdatePhysics(){
+	DEBUG("Update Physics");
 	double delta_walked =  m_player->m_speed.first * engine::Game::instance.GetTimer().GetDeltaTime();
 
 	m_player->m_current_position.first += delta_walked;
@@ -55,7 +62,7 @@ void LevelOneCode::UpdatePhysics(){
 
 	if(m_player->m_speed.first > 0 &&
 	   HasWallOnRight(&wall_x)){
-		//DEBUG("Collision with the wall");
+//		DEBUG("Collision with the wall");
 		//DEBUG("Wall x: " << wall_x);
 		m_player->m_current_position.first = wall_x - (m_player->m_half_size.first * 2);
 		m_player->m_pushes_left_wall = true;
@@ -108,8 +115,8 @@ bool LevelOneCode::HasGround(double *ground_y){
 	std::pair<double, double> player_bottom_left = m_player->CalcBottomLeft();
 	std::pair<double, double> player_bottom_right = m_player->CalcBottomRight();
 	std::pair<double, double> player_top_right = m_player->CalcTopRight();
-	for(auto each_block : m_player->m_block_list){
 
+	for(auto each_block : m_obstacle->m_block_list){
 		std::pair<double, double> block_top_left = each_block->CalcTopLeft();
 		std::pair<double, double> block_top_right = each_block->CalcTopRight();
 
@@ -145,7 +152,7 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 	double player_left = player_bottom_left.first;
 	double player_right = player_top_right.first;
 
-	for(auto each_block : m_player->m_block_list){
+	for(auto each_block : m_obstacle->m_block_list){
 
 		std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
 		std::pair<double, double> block_top_right = each_block->CalcTopRight();
@@ -154,8 +161,17 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 		double block_left = block_bottom_left.first;
 		double block_top = block_top_right.second;
 		double block_bottom = block_bottom_left.second;
+		//
+		// DEBUG("Player left: " << player_left);
+		// DEBUG("Block left: " << block_left);
+		// DEBUG("Block right: " << block_right);
 
 		if(player_left < block_left && player_left < block_right){
+
+			DEBUG("Player top: " << player_top);
+			DEBUG("Block bottom: " << block_bottom);
+			DEBUG("Player right: " << player_right);
+			DEBUG("Block left: " << block_left);
 
 			if(player_top > block_bottom){
 				return false;
@@ -186,7 +202,7 @@ bool LevelOneCode::HasWallOnLeft(double *wall_x){
 	double player_left = player_bottom_left.first;
 	double player_right = player_top_right.first;
 
-	for(auto each_block : m_player->m_block_list){
+	for(auto each_block : m_obstacle->m_block_list){
 
 		std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
 		std::pair<double, double> block_top_right = each_block->CalcTopRight();
@@ -234,7 +250,7 @@ bool LevelOneCode::HasCeiling(double *ground_y){
 	double player_right = player_top_right.first;
 
 
-	for(auto each_block : m_player->m_block_list){
+	for(auto each_block : m_obstacle->m_block_list){
 		std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
 		std::pair<double, double> block_top_right = each_block->CalcTopRight();
 

@@ -4,8 +4,12 @@ using namespace Azo;
 
 InvisibleBlock::InvisibleBlock(){}
 
-InvisibleBlock::InvisibleBlock(std::pair<double, double> position_relative_to_parent, std::pair<double, double> size){
+InvisibleBlock::InvisibleBlock(std::string name,
+			       std::pair<double, double> position_relative_to_parent,
+			       std::pair<double, double> size){
 	DEBUG("Creating Blocks");
+
+	this->m_name = name;
 	m_position_relative_to_parent = position_relative_to_parent;
 	m_size = size;
 
@@ -13,4 +17,7 @@ InvisibleBlock::InvisibleBlock(std::pair<double, double> position_relative_to_pa
 	m_half_size.second = m_size.second / 2.0f;
 
 	m_center = m_half_size;
+
+	m_image =  new engine::ImageComponent(*this, "backgrounds/aabb.png", 1);
+	//this->AddComponent(*m_image);
 }
