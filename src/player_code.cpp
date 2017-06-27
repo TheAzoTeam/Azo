@@ -23,23 +23,26 @@ void PlayerCode::UpdateCode(){
 
 			m_animation_controller->StartAnimation("walking");
 
-			m_player->m_walking_right = true;
-
 			if(m_player->m_pushes_right_wall || m_player->m_pushes_left_wall){
 				//DEBUG("Update code method. Player Speed in X: " << m_player->m_speed.first);
 				m_player->m_speed.first = m_player->M_ZERO_VECTOR.first;
 			}else{
 				m_player->m_speed.first = m_player->M_WALKING_SPEED;
-				DEBUG("PLAYER SHOULD HAVE SPEED! PLAYER SPEED " << m_player->m_speed.first);
+				//DEBUG("PLAYER SHOULD HAVE SPEED! PLAYER SPEED " << m_player->m_speed.first);
 			}
 
 			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)){
 				//DEBUG("W pressed!");
-				m_player->m_speed.second = m_player->M_JUMPING_SPEED; // Jumping speed.
 				m_player->m_state = PlayerState::JUMP;
+				m_player->m_speed.second = m_player->M_JUMPING_SPEED; // Jumping speed.
+
 			}else if(!m_player->m_on_ground){
 				//DEBUG("Player isn't on ground. (WALK)");
 				m_player->m_state = PlayerState::JUMP;
+			}
+
+			if(engine::Game::instance.input_manager.KeyState(engine::Button::S)){
+				m_player->m_state = PlayerState::SLIDE;
 			}
 
 			break;
@@ -48,7 +51,6 @@ void PlayerCode::UpdateCode(){
 
 			if(m_player->m_on_ground){
 				m_player->m_state = PlayerState::WALK;
-				m_player->m_walking_right = true;
 			}
 
 			m_animation_controller->StartAnimation("jumping");
@@ -62,8 +64,28 @@ void PlayerCode::UpdateCode(){
 				m_player->m_speed.first = m_player->M_WALKING_SPEED;         // Walking speed.
 			}
 
-			if(m_player->m_pushes_left_wall){
+			// if(m_player->m_pushes_left_wall){
+			//      m_player->m_speed.first = m_player->M_ZERO_VECTOR.first;
+			// }
+
+			break;
+
+		case PlayerState::SLIDE:
+			if(!m_animation_controller->GetAnimationStatus("sliding")){
+				m_animation_controller->StartAnimation("sliding");
+			}
+
+			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
+			DEBUG("Player speed: " << m_player->m_speed.second);
+			if(m_player->m_pushes_right_wall){
 				m_player->m_speed.first = m_player->M_ZERO_VECTOR.first;
+				//TODO(Roger): Change this state to DEATH.
+				m_player->m_state = PlayerState::WALK;
+			}
+
+			if(m_player->m_on_ground){
+				DEBUG("Player is on ground.");
+				m_player->m_state = PlayerState::WALK;
 			}
 
 			break;
@@ -73,15 +95,6 @@ void PlayerCode::UpdateCode(){
 }
 
 void PlayerCode::UpdatePhysics(){
-
-	m_player->m_old_position = m_player->m_current_position;
-	m_player->m_old_speed = m_player->m_speed;
-
-	m_player->m_was_on_ground = m_player->m_on_ground;
-	m_player->m_pushed_right_wall = m_player->m_pushes_right_wall;
-	m_player->m_pushed_left_wall = m_player->m_pushed_left_wall;
-	m_player->m_was_at_ceiling = m_player->m_at_ceiling;
-
 	double delta_walked =  m_player->m_speed.first * engine::Game::instance.GetTimer().GetDeltaTime();
 
 	m_player->m_current_position.first += delta_walked;
@@ -124,7 +137,7 @@ void PlayerCode::UpdatePhysics(){
 		m_player->m_current_position.second = ground_y + 15;
 		m_player->m_at_ceiling = true;
 	}else if(m_player->m_speed.second >= 0.0f && HasGround(&ground_y)){
-		//DEBUG("Has Ground.");
+		DEBUG("Has Ground.");
 		//DEBUG("Ground y: " << ground_y);
 		m_player->m_current_position.second = ground_y - (m_player->m_half_size.second * 2.0f) + 15;
 		m_player->m_on_ground = true;

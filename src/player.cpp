@@ -28,6 +28,11 @@ void Player::CreateComponents(){
 	DEBUG("Adding jumping animation to animation controller");
 	m_anim_controller->AddAnimation("jumping", *m_jumping);
 
+	GenSlidingAnimation();
+	m_sliding = new engine::Animation(*this, "sprites/CowboyDesce.png", 800.0f, m_sliding_animation_sprites, 0, 20, true, 1);
+	m_sliding->DisableComponent();
+	m_anim_controller->AddAnimation("sliding", *m_sliding);
+
 	DEBUG("Adding animation controller to Player.");
 	this->AddComponent(*m_anim_controller);
 
@@ -204,4 +209,115 @@ void Player::GenJumpingAnimation(){
 	m_jumping_animation_sprites[7]->sprite_y = 997;
 	m_jumping_animation_sprites[7]->sprite_width = 83 - 20;
 	m_jumping_animation_sprites[7]->sprite_height = 1107 - 997;
+}
+
+void Player::GenSlidingAnimation(){
+	for(int i = 0; i < 21; i++){
+		m_sliding_animation_sprites.push_back(new engine::Sprite());
+	}
+
+	m_sliding_animation_sprites[0]->sprite_x = 1;
+	m_sliding_animation_sprites[0]->sprite_y = 59;
+	m_sliding_animation_sprites[0]->sprite_width = 107 - 1;
+	m_sliding_animation_sprites[0]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[1]->sprite_x = 109;
+	m_sliding_animation_sprites[1]->sprite_y = 59;
+	m_sliding_animation_sprites[1]->sprite_width = 215 - 109;
+	m_sliding_animation_sprites[1]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[2]->sprite_x = 217;
+	m_sliding_animation_sprites[2]->sprite_y = 59;
+	m_sliding_animation_sprites[2]->sprite_width = 323 - 217;
+	m_sliding_animation_sprites[2]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[3]->sprite_x = 325;
+	m_sliding_animation_sprites[3]->sprite_y = 59;
+	m_sliding_animation_sprites[3]->sprite_width = 431 - 325;
+	m_sliding_animation_sprites[3]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[4]->sprite_x = 433;
+	m_sliding_animation_sprites[4]->sprite_y = 59;
+	m_sliding_animation_sprites[4]->sprite_width = 539 - 433;
+	m_sliding_animation_sprites[4]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[5]->sprite_x = 541;
+	m_sliding_animation_sprites[5]->sprite_y = 59;
+	m_sliding_animation_sprites[5]->sprite_width = 647 - 541;
+	m_sliding_animation_sprites[5]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[6]->sprite_x = 649;
+	m_sliding_animation_sprites[6]->sprite_y = 59;
+	m_sliding_animation_sprites[6]->sprite_width = 755 - 649;
+	m_sliding_animation_sprites[6]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[7]->sprite_x = 757;
+	m_sliding_animation_sprites[7]->sprite_y = 59;
+	m_sliding_animation_sprites[7]->sprite_width = 863 - 757;
+	m_sliding_animation_sprites[7]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[8]->sprite_x = 865;
+	m_sliding_animation_sprites[8]->sprite_y = 59;
+	m_sliding_animation_sprites[8]->sprite_width = 971 - 865;
+	m_sliding_animation_sprites[8]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[9]->sprite_x = 979;
+	m_sliding_animation_sprites[9]->sprite_y = 59;
+	m_sliding_animation_sprites[9]->sprite_width = 1079 - 979;
+	m_sliding_animation_sprites[9]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[10]->sprite_x = 1087;
+	m_sliding_animation_sprites[10]->sprite_y = 59;
+	m_sliding_animation_sprites[10]->sprite_width = 1187 - 1087;
+	m_sliding_animation_sprites[10]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[11]->sprite_x = 1195;
+	m_sliding_animation_sprites[11]->sprite_y = 59;
+	m_sliding_animation_sprites[11]->sprite_width = 1295 - 1195;
+	m_sliding_animation_sprites[11]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[12]->sprite_x = 1303;
+	m_sliding_animation_sprites[12]->sprite_y = 59;
+	m_sliding_animation_sprites[12]->sprite_width = 1403 - 1303;
+	m_sliding_animation_sprites[12]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[13]->sprite_x = 1411;
+	m_sliding_animation_sprites[13]->sprite_y = 59;
+	m_sliding_animation_sprites[13]->sprite_width = 1511 - 1411;
+	m_sliding_animation_sprites[13]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[14]->sprite_x = 1519;
+	m_sliding_animation_sprites[14]->sprite_y = 59;
+	m_sliding_animation_sprites[14]->sprite_width = 1619 - 1519;
+	m_sliding_animation_sprites[14]->sprite_height = 139 - 59;
+
+	m_sliding_animation_sprites[15]->sprite_x = 1640;
+	m_sliding_animation_sprites[15]->sprite_y = 40;
+	m_sliding_animation_sprites[15]->sprite_width = 1727 - 1640;
+	m_sliding_animation_sprites[15]->sprite_height = 139 - 40;
+
+	m_sliding_animation_sprites[16]->sprite_x = 1748;
+	m_sliding_animation_sprites[16]->sprite_y = 40;
+	m_sliding_animation_sprites[16]->sprite_width = 1853 - 1748;
+	m_sliding_animation_sprites[16]->sprite_height = 139 - 40;
+
+	m_sliding_animation_sprites[17]->sprite_x = 1856;
+	m_sliding_animation_sprites[17]->sprite_y = 40;
+	m_sliding_animation_sprites[17]->sprite_width = 1943 - 1856;
+	m_sliding_animation_sprites[17]->sprite_height = 139 - 40;
+
+	m_sliding_animation_sprites[18]->sprite_x = 1964;
+	m_sliding_animation_sprites[18]->sprite_y = 40;
+	m_sliding_animation_sprites[18]->sprite_width = 2051 - 1964;
+	m_sliding_animation_sprites[18]->sprite_height = 139 - 40;
+
+	m_sliding_animation_sprites[19]->sprite_x = 2072;
+	m_sliding_animation_sprites[19]->sprite_y = 40;
+	m_sliding_animation_sprites[19]->sprite_width = 2159 - 2072;
+	m_sliding_animation_sprites[19]->sprite_height = 139 - 40;
+
+	m_sliding_animation_sprites[20]->sprite_x = 2180;
+	m_sliding_animation_sprites[20]->sprite_y = 40;
+	m_sliding_animation_sprites[20]->sprite_width = 2267 - 2180;
+	m_sliding_animation_sprites[20]->sprite_height = 139 - 40;
 }
