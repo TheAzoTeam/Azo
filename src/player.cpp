@@ -29,7 +29,7 @@ void Player::CreateComponents(){
 	m_anim_controller->AddAnimation("jumping", *m_jumping);
 
 	GenSlidingAnimation();
-	m_sliding = new engine::Animation(*this, "sprites/CowboyDesce.png", 800.0f, m_sliding_animation_sprites, 0, 20, true, 1);
+	m_sliding = new engine::Animation(*this, "sprites/CowboyDesce.png", 800.0f, m_sliding_animation_sprites, 0, 20, false, 1);
 	m_sliding->DisableComponent();
 	m_anim_controller->AddAnimation("sliding", *m_sliding);
 

@@ -17,7 +17,7 @@ namespace engine {
 			void AddAnimation(std::string animation_name, Animation &animation);
 			void StartAnimation(std::string animation_name);
 			void StopAnimation(std::string animation_name);
-			bool GetAnimationStatus(std::string animation_name);
+			AnimationState GetAnimationStatus(std::string animation_name);
 			void Init();
 			void Shutdown();
 			void Draw();

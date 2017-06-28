@@ -13,6 +13,7 @@ namespace engine {
 	enum class AnimationState {
 		PLAYING,
 		STOPPED,
+		FINISHED,
 	};
 
 	class Animation : public ImageComponent {

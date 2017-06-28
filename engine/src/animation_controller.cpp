@@ -69,15 +69,11 @@ void AnimationController::StopAnimation(std::string animation_name){
 	}
 }
 
-bool AnimationController::GetAnimationStatus(std::string animation_name){
+AnimationState AnimationController::GetAnimationStatus(std::string animation_name){
 	auto animation = m_animation_map.find(animation_name);
 
 	if(animation != m_animation_map.end()){
-		if(animation->second->m_state == AnimationState::STOPPED){
-			return false;
-		}else{
-			return true;
-		}
+		return animation->second->m_state;
 	}else{
 		ERROR("Animation couldn't be found!");
 	}

@@ -70,6 +70,7 @@ void Animation::CheckLimits(){
 			m_state = AnimationState::STOPPED;
 		}else{
 			m_current_sprite = m_end_frame;
+			m_state = AnimationState::FINISHED;
 		}
 	}
 }

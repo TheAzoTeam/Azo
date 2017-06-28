@@ -17,7 +17,7 @@ void LevelOne::CreateGameObjects(){
 
 	this->AddGameObject(*m_player);
 
-	m_obstacle = new Obstacle("obstacle", std::make_pair(800, 300));
+	m_obstacle = new Obstacle("obstacle", std::make_pair(800, 300), ObstacleType::WESTERN_CAR);
 
 	this->AddGameObject(*m_obstacle);
 

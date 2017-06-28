@@ -9,7 +9,7 @@ namespace Azo {
 	class LevelOneCode : public engine::CodeComponent {
 		private:
 			Player *m_player;
-			Obstacle *m_obstacle;
+			std::list<Obstacle *> m_obstacle_list;
 		public:
 			LevelOneCode(engine::GameObject &game_object);
 		private:

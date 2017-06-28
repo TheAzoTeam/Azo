@@ -71,21 +71,25 @@ void PlayerCode::UpdateCode(){
 			break;
 
 		case PlayerState::SLIDE:
-			if(!m_animation_controller->GetAnimationStatus("sliding")){
-				m_animation_controller->StartAnimation("sliding");
+			m_animation_controller->StartAnimation("sliding");
+
+			if(m_animation_controller->GetAnimationStatus("sliding") == engine::AnimationState::FINISHED){
+				m_player->m_state = PlayerState::WALK;
+				break;
 			}
 
 			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
-			DEBUG("Player speed: " << m_player->m_speed.second);
+			//DEBUG("Player speed: " << m_player->m_speed.second);
+
 			if(m_player->m_pushes_right_wall){
 				m_player->m_speed.first = m_player->M_ZERO_VECTOR.first;
 				//TODO(Roger): Change this state to DEATH.
 				m_player->m_state = PlayerState::WALK;
 			}
 
-			if(m_player->m_on_ground){
-				DEBUG("Player is on ground.");
-				m_player->m_state = PlayerState::WALK;
+			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)){
+				m_player->m_state = PlayerState::JUMP;
+				m_player->m_speed.second = m_player->M_JUMPING_SPEED;
 			}
 
 			break;
