@@ -15,7 +15,10 @@ namespace Azo {
 		private:
 			Player *m_player;
 			engine::GameObject *m_level_one;
+
 			Obstacle *m_obstacle;
+
+			Obstacle *m_ground;
 
 			engine::ImageComponent *m_level_background;
 			LevelOneCode *m_level_code;

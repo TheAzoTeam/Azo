@@ -90,20 +90,19 @@ void LevelOneCode::UpdatePhysics(){
 	//DEBUG("Player Speed in Y: " << m_player->m_speed.second);
 	//DEBUG("Before Collision Check. Player Position in Y: " << m_player->m_current_position.second);
 	double ground_y = 0.0f;
+	DEBUG("Player position: " << m_player->m_current_position.second);
 	if(m_player->m_speed.second < 0.0f && HasCeiling(&ground_y)){
 		//DEBUG("Has CEILING!");
 		m_player->m_current_position.second = ground_y + 15;
 		m_player->m_at_ceiling = true;
-	}else if(m_player->m_speed.second >= 0.0f && HasGround(&ground_y)){
-		//DEBUG("Has Ground.");
+	}else if((m_player->m_speed.second >= 0.0f || m_player->m_state == PlayerState::SLIDE) && HasGround(&ground_y)){
+		DEBUG("Has Ground.");
 		//DEBUG("Ground y: " << ground_y);
 		m_player->m_current_position.second = ground_y - (m_player->m_half_size.second * 2.0f) + 15;
+		m_player->m_speed.second = m_player->M_ZERO_VECTOR.second;
+		DEBUG("Player position ground: " << m_player->m_current_position.second);
+
 		m_player->m_on_ground = true;
-	}else if(m_player->m_current_position.second >= 300){
-		m_player->m_current_position.second = 300.0f;
-		//DEBUG("UpdatePhysics method.  Setting m_on_ground to true");
-		m_player->m_on_ground = true;
-		m_player->m_at_ceiling = false;
 	}else{
 		//DEBUG("UpdatePhysics method. Setting m_on_ground to false.");
 		m_player->m_on_ground = false;
@@ -127,11 +126,16 @@ bool LevelOneCode::HasGround(double *ground_y){
 
 			if(player_bottom_left.first <= block_top_right.first && player_bottom_right.first >= block_top_left.first){
 
+				DEBUG("Player top:" << player_top_right.second);
+				DEBUG("Block top: " << block_top_right.second);
+
 				if(player_bottom_right.first < block_top_left.first){
+					DEBUG("Here");
 					return false;
 				}
 
 				if(player_bottom_left.second < block_top_left.second){
+					//DEBUG("Here 2");
 					return false;
 				}
 
@@ -299,4 +303,9 @@ bool LevelOneCode::HasCeiling(double *ground_y){
 
 	return false;
 
+}
+
+void LevelOneCode::RecalculatePlayerCenter(){
+	m_player->m_center.first = m_player->m_current_position.first + m_player->m_half_size.first;
+	m_player->m_center.second = m_player->m_current_position.second + m_player->m_half_size.second;
 }
