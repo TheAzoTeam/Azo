@@ -21,7 +21,7 @@ namespace Azo {
 			bool HasWallOnRight(double *wall_x);
 			bool HasWallOnLeft(double *wall_x);
 			void UpdatePhysics();
-			void RecalculatePlayerCenter();
+
 	};
 }
 

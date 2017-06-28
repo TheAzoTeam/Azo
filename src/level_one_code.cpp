@@ -304,8 +304,3 @@ bool LevelOneCode::HasCeiling(double *ground_y){
 	return false;
 
 }
-
-void LevelOneCode::RecalculatePlayerCenter(){
-	m_player->m_center.first = m_player->m_current_position.first + m_player->m_half_size.first;
-	m_player->m_center.second = m_player->m_current_position.second + m_player->m_half_size.second;
-}
