@@ -32,7 +32,7 @@ void Obstacle::CreateBlocks(){
 		block_position.first += 59;
 		block_position.second += 25;
 
-		m_block_list.push_back(new InvisibleBlock("block_zero", block_position, std::make_pair(110, 64)));
+		m_block_list.push_back(new InvisibleBlock("block_zero", block_position, std::make_pair(119, 139)));
 	}
 
 }

@@ -13,18 +13,21 @@ void LevelOneCode::GetParents(){
 			m_player = dynamic_cast<Player *>(parent);
 		}else if(parent->GetClassName() == "Obstacle"){
 			m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
+		}else if(parent->GetClassName() == "MachinePart"){
+			m_part = dynamic_cast<MachinePart *>(parent);
 		}
 	}
 }
 
 
 void LevelOneCode::UpdateCode(){
-	if(m_player->m_current_position.first >= 300.0f){
+	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -7390){
 		game_object->m_current_position.first -= 4.0f;
 		m_player->m_current_position.first = 299;
 	}
 
 	UpdateObstaclePosition();
+	UpdateMachinePartPosition();
 	UpdatePhysics();
 }
 
@@ -47,9 +50,15 @@ void LevelOneCode::UpdateObstaclePosition(){
 
 		}
 	}
-
-
 }
+
+void LevelOneCode::UpdateMachinePartPosition(){
+	m_part->m_current_position.first = game_object->m_current_position.first +
+					   m_part->m_position_relative_to_parent.first;
+	m_part->m_current_position.second = game_object->m_current_position.second +
+					    m_part->m_position_relative_to_parent.second;
+}
+
 
 void LevelOneCode::UpdatePhysics(){
 	//DEBUG("Update Physics");
@@ -59,7 +68,7 @@ void LevelOneCode::UpdatePhysics(){
 	double wall_x = 0.0;
 
 	//Limiting player position on canvas.
-	if(m_player->m_current_position.first >= 300){
+	if(m_player->m_current_position.first >= 300 && game_object->m_current_position.first > -7390){
 		m_player->m_current_position.first = 300;
 	}
 
@@ -133,10 +142,13 @@ bool LevelOneCode::HasGround(double *ground_y){
 			double block_left = block_bottom_left.first;
 			double block_top = block_top_right.second;
 
-			// DEBUG("Player left: " << player_left);
-			// DEBUG("Block left: " << block_left);
-			// DEBUG("Block right: " << block_right);
-			// DEBUG("Player right: " << player_right);
+			DEBUG("Player left: " << player_left);
+			DEBUG("Block left: " << block_left);
+			DEBUG("Block right: " << block_right);
+			DEBUG("Player right: " << player_right);
+			DEBUG("Block top: " << block_top);
+			DEBUG("Player top: " << player_top);
+			DEBUG("Player bottom: " << player_bottom);
 
 			if(player_left <= block_right && player_right >= block_left && player_left >= block_left){
 
