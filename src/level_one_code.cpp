@@ -28,7 +28,10 @@ void LevelOneCode::UpdateCode(){
 
 	UpdateObstaclePosition();
 	UpdateMachinePartPosition();
-	UpdatePhysics();
+
+	if(m_player->m_state != PlayerState::DIE){
+		UpdatePhysics();
+	}
 }
 
 void LevelOneCode::UpdateObstaclePosition(){
@@ -61,10 +64,31 @@ void LevelOneCode::UpdateMachinePartPosition(){
 
 
 void LevelOneCode::UpdatePhysics(){
-	//DEBUG("Update Physics");
-	double delta_walked =  m_player->m_speed.first * engine::Game::instance.GetTimer().GetDeltaTime();
+	m_player->m_current_position.second += m_player->m_speed.second * engine::Game::instance.GetTimer().GetDeltaTime();
+	double ground_y = 0.0f;
+	if(m_player->m_speed.second < 0.0f && HasCeiling(&ground_y)){
+		m_player->m_current_position.second = ground_y + 15;
+		m_player->m_at_ceiling = true;
+	}else if((m_player->m_speed.second >= 0.0f || m_player->m_state == PlayerState::SLIDE) && HasGround(&ground_y)){
+		DEBUG("On ground!");
+		m_player->m_current_position.second = ground_y - m_player->m_half_size.second - m_player->m_half_size.second + 15;
+		m_player->m_speed.second = m_player->M_ZERO_VECTOR.second;
 
+		m_player->m_on_ground = true;
+
+		m_player->m_center.first = m_player->m_current_position.first + m_player->m_half_size.first;
+		m_player->m_center.second = m_player->m_current_position.second + m_player->m_half_size.second;
+
+		DEBUG("Player feet: " << m_player->m_center.second + m_player->m_half_size.second);
+
+	}else{
+		m_player->m_on_ground = false;
+		m_player->m_at_ceiling = false;
+	}
+
+	double delta_walked =  m_player->m_speed.first * engine::Game::instance.GetTimer().GetDeltaTime();
 	m_player->m_current_position.first += delta_walked;
+
 	double wall_x = 0.0;
 
 	//Limiting player position on canvas.
@@ -74,7 +98,7 @@ void LevelOneCode::UpdatePhysics(){
 
 	if(m_player->m_speed.first > 0 &&
 	   HasWallOnRight(&wall_x)){
-		//DEBUG("Collision with the wall");
+		DEBUG("Collision with the wall");
 		//DEBUG("Wall x: " << wall_x);
 		m_player->m_current_position.first = wall_x - (m_player->m_half_size.first * 2);
 		m_player->m_pushes_left_wall = true;
@@ -85,42 +109,10 @@ void LevelOneCode::UpdatePhysics(){
 
 	if(m_player->m_speed.first < 0.0f &&
 	   HasWallOnLeft(&wall_x)){
-		//DEBUG("Has Wall on Left.");
-		//m_player->m_current_position.first = wall_x;
-		//m_player->m_pushes_right_wall = true;
 		m_player->m_state = PlayerState::DIE;
 	}else{
 		m_player->m_pushes_right_wall = false;
 	}
-
-	//DEBUG("UpdatePhysics method. Player Speed in X: " << m_player->m_speed.first);
-	//DEBUG("UpdatePhysics method. Player Position in X: " << m_player->m_current_position.first);
-
-	// If position.second goes up, the character goes down on canvas.
-	m_player->m_current_position.second += m_player->m_speed.second * engine::Game::instance.GetTimer().GetDeltaTime();
-	//DEBUG("Player Speed in Y: " << m_player->m_speed.second);
-	//DEBUG("Before Collision Check. Player Position in Y: " << m_player->m_current_position.second);
-	double ground_y = 0.0f;
-	//DEBUG("Player position: " << m_player->m_current_position.second);
-	if(m_player->m_speed.second < 0.0f && HasCeiling(&ground_y)){
-		//DEBUG("Has CEILING!");
-		m_player->m_current_position.second = ground_y + 15;
-		m_player->m_at_ceiling = true;
-	}else if((m_player->m_speed.second >= 0.0f || m_player->m_state == PlayerState::SLIDE) && HasGround(&ground_y)){
-		//DEBUG("Has Ground.");
-		//DEBUG("Ground y: " << ground_y);
-		m_player->m_current_position.second = ground_y - m_player->m_half_size.second - m_player->m_half_size.second + 15;
-		m_player->m_speed.second = m_player->M_ZERO_VECTOR.second;
-
-		m_player->m_on_ground = true;
-	}else{
-		//DEBUG("UpdatePhysics method. Setting m_on_ground to false.");
-		m_player->m_on_ground = false;
-		m_player->m_at_ceiling = false;
-	}
-
-//DEBUG("Player Position in Y: " << m_player->m_current_position.second);
-//DEBUG("Update Physics END.");
 }
 
 bool LevelOneCode::HasGround(double *ground_y){
@@ -142,15 +134,15 @@ bool LevelOneCode::HasGround(double *ground_y){
 			double block_left = block_bottom_left.first;
 			double block_top = block_top_right.second;
 
-			DEBUG("Player left: " << player_left);
-			DEBUG("Block left: " << block_left);
-			DEBUG("Block right: " << block_right);
-			DEBUG("Player right: " << player_right);
-			DEBUG("Block top: " << block_top);
-			DEBUG("Player top: " << player_top);
-			DEBUG("Player bottom: " << player_bottom);
+			// DEBUG("Player left: " << player_left);
+			// DEBUG("Block left: " << block_left);
+			// DEBUG("Block right: " << block_right);
+			// DEBUG("Player right: " << player_right);
+			// DEBUG("Block top: " << block_top);
+			// DEBUG("Player top: " << player_top);
+			// DEBUG("Player bottom: " << player_bottom);
 
-			if(player_left <= block_right && player_right >= block_left && player_left >= block_left){
+			if(player_left <= block_right && player_right >= block_left){
 
 
 				if(player_bottom < block_top){
@@ -187,21 +179,24 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 			std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
 			std::pair<double, double> block_top_right = each_block->CalcTopRight();
 
-			double block_right = block_top_right.first;
-			double block_left = block_bottom_left.first;
-			double block_top = block_top_right.second;
-			double block_bottom = block_bottom_left.second;
-			//
-			// DEBUG("Player left: " << player_left);
-			// DEBUG("Block left: " << block_left);
-			// DEBUG("Block right: " << block_right);
+			// These magic numbers are used because the walls must be a bit at the front of the top.
+			double block_right = block_top_right.first + 5;
+			double block_left = block_bottom_left.first - 5;
+			double block_top = block_top_right.second + 16;
+			double block_bottom = block_bottom_left.second - 16;
+
+			DEBUG("Player left: " << player_left);
+			DEBUG("Block left: " << block_left);
+			DEBUG("Block right: " << block_right);
+			DEBUG("Player bottom: " << player_bottom);
+			DEBUG("Block top: " << block_top);
 
 			if(player_left < block_left && player_left < block_right){
 
-				// DEBUG("Player top: " << player_top);
-				// DEBUG("Block bottom: " << block_bottom);
-				// DEBUG("Player right: " << player_right);
-				// DEBUG("Block left: " << block_left);
+				DEBUG("Player top: " << player_top);
+				DEBUG("Block bottom: " << block_bottom);
+				DEBUG("Player right: " << player_right);
+				DEBUG("Block left: " << block_left);
 
 				if(player_top > block_bottom){
 					return false;

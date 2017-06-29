@@ -10,6 +10,8 @@ LevelOne::LevelOne(std::string name){
 	CreateGameObjects();
 }
 
+// Create new game objects for the level one here. Remember:
+// the order used to add they to the scene is important.
 void LevelOne::CreateGameObjects(){
 	DEBUG("Creating Level One Game Objects.");
 
@@ -17,17 +19,31 @@ void LevelOne::CreateGameObjects(){
 
 	this->AddGameObject(*m_player);
 
+	DEBUG("Creating ground.");
 	m_ground = new Obstacle("ground", std::make_pair(0, 404.5), ObstacleType::GROUND);
 
 	this->AddGameObject(*m_ground);
 
+	DEBUG("Creating obstacle one");
 	m_obstacle = new Obstacle("obstacle", std::make_pair(800, 300), ObstacleType::WESTERN_CAR);
 
 	this->AddGameObject(*m_obstacle);
 
+	//TODO(Roger): Remove this. This is used to see the invisbile blocks.
 	for(auto each_block : m_obstacle->m_block_list){
 		this->AddGameObject(*each_block);
 	}
+
+	DEBUG("Creating Obstacle 2");
+	m_obstacle_2 = new Obstacle("obstacle_2", std::make_pair(1300, 350), ObstacleType::WESTERN_BOX);
+
+	this->AddGameObject(*m_obstacle_2);
+
+	//TODO(Roger): Remove this. This is used to see the invisbile blocks.
+	for(auto each_block : m_obstacle_2->m_block_list){
+		this->AddGameObject(*each_block);
+	}
+
 
 	m_part = new MachinePart("part", std::make_pair(8000, 300));
 
@@ -49,7 +65,7 @@ void LevelOne::CreateLevelComponents(){
 
 	m_audio_controller = new engine::AudioController();
 
-	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/tema_level_one.ogg", true, true);
+	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/banjo.ogg", true, true);
 
 	m_audio_controller->AddAudio("tema_level_one", *m_level_theme);
 
@@ -64,5 +80,6 @@ void LevelOne::AddLevelParents(){
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_part);
 	m_level_one->m_parent_list.push_back(m_obstacle);
+	m_level_one->m_parent_list.push_back(m_obstacle_2);
 	m_level_one->m_parent_list.push_back(m_ground);
 }

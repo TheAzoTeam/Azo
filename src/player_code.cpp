@@ -95,7 +95,6 @@ void PlayerCode::UpdateCode(){
 			break;
 		case PlayerState::DIE:
 			m_animation_controller->StartAnimation("dying");
-			m_player->m_speed = m_player->M_ZERO_VECTOR;
 			break;
 	}
 }

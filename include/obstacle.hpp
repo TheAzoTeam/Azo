@@ -6,6 +6,7 @@
 
 namespace Azo {
 
+	// Add new Obstacle Types here.
 	enum class ObstacleType {
 		GROUND,
 		WESTERN_BOX,
