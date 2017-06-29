@@ -33,6 +33,11 @@ void Player::CreateComponents(){
 	m_sliding->DisableComponent();
 	m_anim_controller->AddAnimation("sliding", *m_sliding);
 
+	GenDyingAnimation();
+	m_dying = new engine::Animation(*this, "sprites/CowboyTonto.png", 2000.0f, m_dying_animation_sprites, 0, 35, false, 1);
+	m_dying->DisableComponent();
+	m_anim_controller->AddAnimation("dying", *m_dying);
+
 	DEBUG("Adding animation controller to Player.");
 	this->AddComponent(*m_anim_controller);
 
@@ -320,4 +325,190 @@ void Player::GenSlidingAnimation(){
 	m_sliding_animation_sprites[20]->sprite_y = 40;
 	m_sliding_animation_sprites[20]->sprite_width = 2267 - 2180;
 	m_sliding_animation_sprites[20]->sprite_height = 139 - 40;
+}
+
+void Player::GenDyingAnimation(){
+	for(int i = 0; i < 36; i++){
+		m_dying_animation_sprites.push_back(new engine::Sprite());
+	}
+
+	m_dying_animation_sprites[0]->sprite_x = 4;
+	m_dying_animation_sprites[0]->sprite_y = 47;
+	m_dying_animation_sprites[0]->sprite_width = 73 - 4;
+	m_dying_animation_sprites[0]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[1]->sprite_x = 112;
+	m_dying_animation_sprites[1]->sprite_y = 47;
+	m_dying_animation_sprites[1]->sprite_width = 181 - 112;
+	m_dying_animation_sprites[1]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[2]->sprite_x = 220;
+	m_dying_animation_sprites[2]->sprite_y = 47;
+	m_dying_animation_sprites[2]->sprite_width = 289 - 220;
+	m_dying_animation_sprites[2]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[3]->sprite_x = 328;
+	m_dying_animation_sprites[3]->sprite_y = 47;
+	m_dying_animation_sprites[3]->sprite_width = 397 - 328;
+	m_dying_animation_sprites[3]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[4]->sprite_x = 436;
+	m_dying_animation_sprites[4]->sprite_y = 47;
+	m_dying_animation_sprites[4]->sprite_width = 505 - 436;
+	m_dying_animation_sprites[4]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[5]->sprite_x = 544;
+	m_dying_animation_sprites[5]->sprite_y = 47;
+	m_dying_animation_sprites[5]->sprite_width = 613 - 544;
+	m_dying_animation_sprites[5]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[6]->sprite_x = 652;
+	m_dying_animation_sprites[6]->sprite_y = 47;
+	m_dying_animation_sprites[6]->sprite_width = 721 - 652;
+	m_dying_animation_sprites[6]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[7]->sprite_x = 760;
+	m_dying_animation_sprites[7]->sprite_y = 47;
+	m_dying_animation_sprites[7]->sprite_width = 829 - 760;
+	m_dying_animation_sprites[7]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[8]->sprite_x = 868;
+	m_dying_animation_sprites[8]->sprite_y = 47;
+	m_dying_animation_sprites[8]->sprite_width = 937 - 868;
+	m_dying_animation_sprites[8]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[9]->sprite_x = 976;
+	m_dying_animation_sprites[9]->sprite_y = 47;
+	m_dying_animation_sprites[9]->sprite_width = 1045 - 976;
+	m_dying_animation_sprites[9]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[10]->sprite_x = 1084;
+	m_dying_animation_sprites[10]->sprite_y = 47;
+	m_dying_animation_sprites[10]->sprite_width = 1153 - 1084;
+	m_dying_animation_sprites[10]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[11]->sprite_x = 1192;
+	m_dying_animation_sprites[11]->sprite_y = 47;
+	m_dying_animation_sprites[11]->sprite_width = 1261 - 1192;
+	m_dying_animation_sprites[11]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[12]->sprite_x = 1300;
+	m_dying_animation_sprites[12]->sprite_y = 47;
+	m_dying_animation_sprites[12]->sprite_width = 1369 - 1300;
+	m_dying_animation_sprites[12]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[13]->sprite_x = 1408;
+	m_dying_animation_sprites[13]->sprite_y = 47;
+	m_dying_animation_sprites[13]->sprite_width = 1477 - 1408;
+	m_dying_animation_sprites[13]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[14]->sprite_x = 1516;
+	m_dying_animation_sprites[14]->sprite_y = 47;
+	m_dying_animation_sprites[14]->sprite_width = 1585 - 1516;
+	m_dying_animation_sprites[14]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[15]->sprite_x = 1624;
+	m_dying_animation_sprites[15]->sprite_y = 47;
+	m_dying_animation_sprites[15]->sprite_width = 1693 - 1624;
+	m_dying_animation_sprites[15]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[16]->sprite_x = 1732;
+	m_dying_animation_sprites[16]->sprite_y = 47;
+	m_dying_animation_sprites[16]->sprite_width = 1801 - 1732;
+	m_dying_animation_sprites[16]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[17]->sprite_x = 1840;
+	m_dying_animation_sprites[17]->sprite_y = 47;
+	m_dying_animation_sprites[17]->sprite_width = 1909 - 1840;
+	m_dying_animation_sprites[17]->sprite_height = 138 - 47;
+
+	m_dying_animation_sprites[18]->sprite_x = 1948;
+	m_dying_animation_sprites[18]->sprite_y = 47;
+	m_dying_animation_sprites[18]->sprite_width = 2017 - 1948;
+	m_dying_animation_sprites[18]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[19]->sprite_x = 2056;
+	m_dying_animation_sprites[19]->sprite_y = 47;
+	m_dying_animation_sprites[19]->sprite_width = 2152 - 2056;
+	m_dying_animation_sprites[19]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[20]->sprite_x = 2164;
+	m_dying_animation_sprites[20]->sprite_y = 47;
+	m_dying_animation_sprites[20]->sprite_width = 2233 - 2164;
+	m_dying_animation_sprites[20]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[21]->sprite_x = 2272;
+	m_dying_animation_sprites[21]->sprite_y = 47;
+	m_dying_animation_sprites[21]->sprite_width = 2341 - 2272;
+	m_dying_animation_sprites[21]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[22]->sprite_x = 2380;
+	m_dying_animation_sprites[22]->sprite_y = 47;
+	m_dying_animation_sprites[22]->sprite_width = 2449 - 2380;
+	m_dying_animation_sprites[22]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[23]->sprite_x = 2488;
+	m_dying_animation_sprites[23]->sprite_y = 47;
+	m_dying_animation_sprites[23]->sprite_width = 2557 - 2488;
+	m_dying_animation_sprites[23]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[24]->sprite_x = 2596;
+	m_dying_animation_sprites[24]->sprite_y = 47;
+	m_dying_animation_sprites[24]->sprite_width = 2665 - 2596;
+	m_dying_animation_sprites[24]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[25]->sprite_x = 2704;
+	m_dying_animation_sprites[25]->sprite_y = 47;
+	m_dying_animation_sprites[25]->sprite_width = 2773 - 2704;
+	m_dying_animation_sprites[25]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[26]->sprite_x = 2812;
+	m_dying_animation_sprites[26]->sprite_y = 47;
+	m_dying_animation_sprites[26]->sprite_width = 2881 - 2812;
+	m_dying_animation_sprites[26]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[27]->sprite_x = 2920;
+	m_dying_animation_sprites[27]->sprite_y = 47;
+	m_dying_animation_sprites[27]->sprite_width = 2989 - 2920;
+	m_dying_animation_sprites[27]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[28]->sprite_x = 3028;
+	m_dying_animation_sprites[28]->sprite_y = 47;
+	m_dying_animation_sprites[28]->sprite_width = 3097 - 3028;
+	m_dying_animation_sprites[28]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[29]->sprite_x = 3136;
+	m_dying_animation_sprites[29]->sprite_y = 47;
+	m_dying_animation_sprites[29]->sprite_width = 3205 - 3136;
+	m_dying_animation_sprites[29]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[30]->sprite_x = 3244;
+	m_dying_animation_sprites[30]->sprite_y = 47;
+	m_dying_animation_sprites[30]->sprite_width = 3313 - 3244;
+	m_dying_animation_sprites[30]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[31]->sprite_x = 3352;
+	m_dying_animation_sprites[31]->sprite_y = 47;
+	m_dying_animation_sprites[31]->sprite_width = 3421 - 3352;
+	m_dying_animation_sprites[31]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[32]->sprite_x = 3460;
+	m_dying_animation_sprites[32]->sprite_y = 47;
+	m_dying_animation_sprites[32]->sprite_width = 3529 - 3460;
+	m_dying_animation_sprites[32]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[33]->sprite_x = 3568;
+	m_dying_animation_sprites[33]->sprite_y = 47;
+	m_dying_animation_sprites[33]->sprite_width = 3637 - 3568;
+	m_dying_animation_sprites[33]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[34]->sprite_x = 3676;
+	m_dying_animation_sprites[34]->sprite_y = 47;
+	m_dying_animation_sprites[34]->sprite_width = 3745 - 3676;
+	m_dying_animation_sprites[34]->sprite_height = 139 - 47;
+
+	m_dying_animation_sprites[35]->sprite_x = 3784;
+	m_dying_animation_sprites[35]->sprite_y = 47;
+	m_dying_animation_sprites[35]->sprite_width = 3853 - 3784;
+	m_dying_animation_sprites[35]->sprite_height = 139 - 47;
 }

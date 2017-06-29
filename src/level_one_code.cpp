@@ -65,10 +65,11 @@ void LevelOneCode::UpdatePhysics(){
 
 	if(m_player->m_speed.first > 0 &&
 	   HasWallOnRight(&wall_x)){
-//		DEBUG("Collision with the wall");
+		//DEBUG("Collision with the wall");
 		//DEBUG("Wall x: " << wall_x);
 		m_player->m_current_position.first = wall_x - (m_player->m_half_size.first * 2);
 		m_player->m_pushes_left_wall = true;
+		m_player->m_state = PlayerState::DIE;
 	}else{
 		m_player->m_pushes_left_wall = false;
 	}
@@ -76,8 +77,9 @@ void LevelOneCode::UpdatePhysics(){
 	if(m_player->m_speed.first < 0.0f &&
 	   HasWallOnLeft(&wall_x)){
 		//DEBUG("Has Wall on Left.");
-		m_player->m_current_position.first = wall_x;
-		m_player->m_pushes_right_wall = true;
+		//m_player->m_current_position.first = wall_x;
+		//m_player->m_pushes_right_wall = true;
+		m_player->m_state = PlayerState::DIE;
 	}else{
 		m_player->m_pushes_right_wall = false;
 	}
@@ -90,17 +92,16 @@ void LevelOneCode::UpdatePhysics(){
 	//DEBUG("Player Speed in Y: " << m_player->m_speed.second);
 	//DEBUG("Before Collision Check. Player Position in Y: " << m_player->m_current_position.second);
 	double ground_y = 0.0f;
-	DEBUG("Player position: " << m_player->m_current_position.second);
+	//DEBUG("Player position: " << m_player->m_current_position.second);
 	if(m_player->m_speed.second < 0.0f && HasCeiling(&ground_y)){
 		//DEBUG("Has CEILING!");
 		m_player->m_current_position.second = ground_y + 15;
 		m_player->m_at_ceiling = true;
 	}else if((m_player->m_speed.second >= 0.0f || m_player->m_state == PlayerState::SLIDE) && HasGround(&ground_y)){
-		DEBUG("Has Ground.");
+		//DEBUG("Has Ground.");
 		//DEBUG("Ground y: " << ground_y);
-		m_player->m_current_position.second = ground_y - (m_player->m_half_size.second * 2.0f) + 15;
+		m_player->m_current_position.second = ground_y - m_player->m_half_size.second - m_player->m_half_size.second + 15;
 		m_player->m_speed.second = m_player->M_ZERO_VECTOR.second;
-		DEBUG("Player position ground: " << m_player->m_current_position.second);
 
 		m_player->m_on_ground = true;
 	}else{
@@ -115,35 +116,40 @@ void LevelOneCode::UpdatePhysics(){
 
 bool LevelOneCode::HasGround(double *ground_y){
 	std::pair<double, double> player_bottom_left = m_player->CalcBottomLeft();
-	std::pair<double, double> player_bottom_right = m_player->CalcBottomRight();
 	std::pair<double, double> player_top_right = m_player->CalcTopRight();
+
+	double player_top = player_top_right.second;
+	double player_bottom = player_bottom_left.second;
+	double player_left = player_bottom_left.first;
+	double player_right = player_top_right.first;
 
 	for(auto each_obstacle : m_obstacle_list){
 
 		for(auto each_block : each_obstacle->m_block_list){
-			std::pair<double, double> block_top_left = each_block->CalcTopLeft();
+			std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
 			std::pair<double, double> block_top_right = each_block->CalcTopRight();
 
-			if(player_bottom_left.first <= block_top_right.first && player_bottom_right.first >= block_top_left.first){
+			double block_right = block_top_right.first;
+			double block_left = block_bottom_left.first;
+			double block_top = block_top_right.second;
 
-				DEBUG("Player top:" << player_top_right.second);
-				DEBUG("Block top: " << block_top_right.second);
+			// DEBUG("Player left: " << player_left);
+			// DEBUG("Block left: " << block_left);
+			// DEBUG("Block right: " << block_right);
+			// DEBUG("Player right: " << player_right);
 
-				if(player_bottom_right.first < block_top_left.first){
-					DEBUG("Here");
+			if(player_left <= block_right && player_right >= block_left && player_left >= block_left){
+
+
+				if(player_bottom < block_top){
 					return false;
 				}
 
-				if(player_bottom_left.second < block_top_left.second){
-					//DEBUG("Here 2");
+				if(player_top > block_top){
 					return false;
 				}
 
-				if(player_top_right.second > block_top_right.second){
-					return false;
-				}
-
-				*ground_y = block_top_left.second;
+				*ground_y = block_top;
 
 				return true;
 			}
