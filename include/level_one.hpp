@@ -23,10 +23,10 @@ namespace Azo {
 			Player *m_player;
 
 			// Add obstacles here
-			Obstacle *m_obstacle;
+			Obstacle *m_obstacle_car_1;
 			Obstacle *m_ground;
-			Obstacle *m_obstacle_2;
-			MachinePart *m_part;
+			Obstacle *m_obstacle_box_1;
+			MachinePart *m_part_1;
 
 		private:
 			//Don't forget to add the new objects using this function.

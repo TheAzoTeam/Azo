@@ -15,40 +15,40 @@ LevelOne::LevelOne(std::string name){
 void LevelOne::CreateGameObjects(){
 	DEBUG("Creating Level One Game Objects.");
 
+	DEBUG("Creating Player.");
 	m_player = new Player("player", std::make_pair(0, 300));
-
 	this->AddGameObject(*m_player);
+
 
 	DEBUG("Creating ground.");
 	m_ground = new Obstacle("ground", std::make_pair(0, 404.5), ObstacleType::GROUND);
-
 	this->AddGameObject(*m_ground);
 
-	DEBUG("Creating obstacle one");
-	m_obstacle = new Obstacle("obstacle", std::make_pair(800, 300), ObstacleType::WESTERN_CAR);
 
-	this->AddGameObject(*m_obstacle);
-
+	DEBUG("Creating obstacle car 1.");
+	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(930, 300), ObstacleType::WESTERN_CAR);
+	this->AddGameObject(*m_obstacle_car_1);
 	//TODO(Roger): Remove this. This is used to see the invisbile blocks.
-	for(auto each_block : m_obstacle->m_block_list){
-		this->AddGameObject(*each_block);
-	}
-
-	DEBUG("Creating Obstacle 2");
-	m_obstacle_2 = new Obstacle("obstacle_2", std::make_pair(1300, 350), ObstacleType::WESTERN_BOX);
-
-	this->AddGameObject(*m_obstacle_2);
-
-	//TODO(Roger): Remove this. This is used to see the invisbile blocks.
-	for(auto each_block : m_obstacle_2->m_block_list){
+	for(auto each_block : m_obstacle_car_1->m_block_list){
 		this->AddGameObject(*each_block);
 	}
 
 
-	m_part = new MachinePart("part", std::make_pair(8000, 300));
+	DEBUG("Creating part 1.");
+	m_part_1 = new MachinePart("part_1", std::make_pair(1200, 120));
+	this->AddGameObject(*m_part_1);
 
-	this->AddGameObject(*m_part);
 
+	DEBUG("Creating obstacle box 1.");
+	m_obstacle_box_1 = new Obstacle("obstacle_box_1", std::make_pair(1300, 250), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_box_1);
+	//TODO(Roger): Remove this. This is used to see the invisbile blocks.
+	for(auto each_block : m_obstacle_box_1->m_block_list){
+		this->AddGameObject(*each_block);
+	}
+
+
+	DEBUG("Creating level_one object.");
 	m_level_one = new engine::GameObject("level_one", std::make_pair(0, 0));
 	AddLevelParents();
 	CreateLevelComponents();
@@ -78,8 +78,8 @@ void LevelOne::CreateLevelComponents(){
 
 void LevelOne::AddLevelParents(){
 	m_level_one->m_parent_list.push_back(m_player);
-	m_level_one->m_parent_list.push_back(m_part);
-	m_level_one->m_parent_list.push_back(m_obstacle);
-	m_level_one->m_parent_list.push_back(m_obstacle_2);
+	m_level_one->m_parent_list.push_back(m_part_1);
+	m_level_one->m_parent_list.push_back(m_obstacle_car_1);
+	m_level_one->m_parent_list.push_back(m_obstacle_box_1);
 	m_level_one->m_parent_list.push_back(m_ground);
 }
