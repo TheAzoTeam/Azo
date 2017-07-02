@@ -26,6 +26,7 @@ namespace Azo {
 			Obstacle *m_obstacle_car_1;
 			Obstacle *m_obstacle_aerial_1;
 			MachinePart *m_part_1;
+			MachinePart *m_part_2;
 			Obstacle *m_obstacle_aerial_2;
 			Obstacle *m_obstacle_aerial_3;
 			Obstacle *m_obstacle_box_1;

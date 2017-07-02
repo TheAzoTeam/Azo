@@ -18,7 +18,7 @@ void LevelOneCode::GetParents(){
 				m_ground = dynamic_cast<Obstacle *>(parent);
 			}
 		}else if(parent->GetClassName() == "MachinePart"){
-			m_part = dynamic_cast<MachinePart *>(parent);
+			m_machine_part_list.push_back(dynamic_cast<MachinePart *>(parent));
 		}
 	}
 }
@@ -68,10 +68,12 @@ void LevelOneCode::UpdateObstaclePosition(){
 }
 
 void LevelOneCode::UpdateMachinePartPosition(){
-	m_part->m_current_position.first = game_object->m_current_position.first +
-					   m_part->m_position_relative_to_parent.first;
-	m_part->m_current_position.second = game_object->m_current_position.second +
-					    m_part->m_position_relative_to_parent.second;
+	for(auto each_part : m_machine_part_list){
+		each_part->m_current_position.first = game_object->m_current_position.first +
+						      each_part->m_position_relative_to_parent.first;
+		each_part->m_current_position.second = game_object->m_current_position.second +
+						       each_part->m_position_relative_to_parent.second;
+	}
 }
 
 
