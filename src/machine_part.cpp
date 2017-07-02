@@ -82,34 +82,34 @@ void MachinePart::GenTurningAnimation(){
 	m_turning_animation_sprites[11]->sprite_width = 456 - 425;
 	m_turning_animation_sprites[11]->sprite_height = 47 - 11;
 
-	m_turning_animation_sprites[12]->sprite_x = 477;
+	m_turning_animation_sprites[12]->sprite_x = 461;
 	m_turning_animation_sprites[12]->sprite_y = 11;
-	m_turning_animation_sprites[12]->sprite_width = 483 - 477;
+	m_turning_animation_sprites[12]->sprite_width = 497 - 461;
 	m_turning_animation_sprites[12]->sprite_height = 47 - 11;
 
-	m_turning_animation_sprites[13]->sprite_x = 477;
+	m_turning_animation_sprites[13]->sprite_x = 461;
 	m_turning_animation_sprites[13]->sprite_y = 11;
-	m_turning_animation_sprites[13]->sprite_width = 483 - 477;
+	m_turning_animation_sprites[13]->sprite_width = 497 - 461;
 	m_turning_animation_sprites[13]->sprite_height = 47 - 11;
 
-	m_turning_animation_sprites[14]->sprite_x = 477;
+	m_turning_animation_sprites[14]->sprite_x = 461;
 	m_turning_animation_sprites[14]->sprite_y = 11;
-	m_turning_animation_sprites[14]->sprite_width = 483 - 477;
+	m_turning_animation_sprites[14]->sprite_width = 497 - 461;
 	m_turning_animation_sprites[14]->sprite_height = 47 - 11;
 
-	m_turning_animation_sprites[15]->sprite_x = 477;
+	m_turning_animation_sprites[15]->sprite_x = 461;
 	m_turning_animation_sprites[15]->sprite_y = 11;
-	m_turning_animation_sprites[15]->sprite_width = 483 - 477;
+	m_turning_animation_sprites[15]->sprite_width = 497 - 461;
 	m_turning_animation_sprites[15]->sprite_height = 47 - 11;
 
-	m_turning_animation_sprites[16]->sprite_x = 477;
+	m_turning_animation_sprites[16]->sprite_x = 461;
 	m_turning_animation_sprites[16]->sprite_y = 11;
-	m_turning_animation_sprites[16]->sprite_width = 483 - 477;
+	m_turning_animation_sprites[16]->sprite_width = 497 - 461;
 	m_turning_animation_sprites[16]->sprite_height = 47 - 11;
 
-	m_turning_animation_sprites[17]->sprite_x = 477;
+	m_turning_animation_sprites[17]->sprite_x = 461;
 	m_turning_animation_sprites[17]->sprite_y = 11;
-	m_turning_animation_sprites[17]->sprite_width = 483 - 477;
+	m_turning_animation_sprites[17]->sprite_width = 497 - 461;
 	m_turning_animation_sprites[17]->sprite_height = 47 - 11;
 
 	m_turning_animation_sprites[18]->sprite_x = 689;
