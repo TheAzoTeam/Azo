@@ -24,9 +24,12 @@ namespace Azo {
 
 			// Add obstacles here
 			Obstacle *m_obstacle_car_1;
-			Obstacle *m_ground;
-			Obstacle *m_obstacle_box_1;
+			Obstacle *m_obstacle_aerial_1;
 			MachinePart *m_part_1;
+			Obstacle *m_obstacle_aerial_2;
+			Obstacle *m_obstacle_aerial_3;
+			Obstacle *m_obstacle_box_1;
+			Obstacle *m_ground;
 
 		private:
 			//Don't forget to add the new objects using this function.

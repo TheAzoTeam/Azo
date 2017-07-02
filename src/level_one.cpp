@@ -15,37 +15,44 @@ LevelOne::LevelOne(std::string name){
 void LevelOne::CreateGameObjects(){
 	DEBUG("Creating Level One Game Objects.");
 
-	DEBUG("Creating Player.");
-	m_player = new Player("player", std::make_pair(0, 300));
-	this->AddGameObject(*m_player);
-
-
 	DEBUG("Creating ground.");
 	m_ground = new Obstacle("ground", std::make_pair(0, 404.5), ObstacleType::GROUND);
 	this->AddGameObject(*m_ground);
 
 
 	DEBUG("Creating obstacle car 1.");
-	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(930, 300), ObstacleType::WESTERN_CAR);
+	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_CAR);
 	this->AddGameObject(*m_obstacle_car_1);
-	//TODO(Roger): Remove this. This is used to see the invisbile blocks.
-	for(auto each_block : m_obstacle_car_1->m_block_list){
-		this->AddGameObject(*each_block);
-	}
+
+
+	DEBUG("Creating obstacle aerial 1.");
+	m_obstacle_aerial_1 = new Obstacle("obstacle_aerial_1", std::make_pair(1320, 250), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_aerial_1);
 
 
 	DEBUG("Creating part 1.");
-	m_part_1 = new MachinePart("part_1", std::make_pair(1200, 120));
+	m_part_1 = new MachinePart("part_1", std::make_pair(1600, 150));
 	this->AddGameObject(*m_part_1);
 
 
+	DEBUG("Creating obstacle aerial 2.");
+	m_obstacle_aerial_2 = new Obstacle("obstacle_aerial_2", std::make_pair(1735, 245), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_aerial_2);
+
+
+	DEBUG("Creating obstacle aerial 3.");
+	m_obstacle_aerial_3 = new Obstacle("obstacle_aerial_3", std::make_pair(1900, 245), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_aerial_3);
+
+
 	DEBUG("Creating obstacle box 1.");
-	m_obstacle_box_1 = new Obstacle("obstacle_box_1", std::make_pair(1300, 250), ObstacleType::WESTERN_BOX);
+	m_obstacle_box_1 = new Obstacle("obstacle_box_1", std::make_pair(4000, 300), ObstacleType::WESTERN_BOX);
 	this->AddGameObject(*m_obstacle_box_1);
-	//TODO(Roger): Remove this. This is used to see the invisbile blocks.
-	for(auto each_block : m_obstacle_box_1->m_block_list){
-		this->AddGameObject(*each_block);
-	}
+
+
+	DEBUG("Creating Player.");
+	m_player = new Player("player", std::make_pair(0, 300));
+	this->AddGameObject(*m_player);
 
 
 	DEBUG("Creating level_one object.");
@@ -77,9 +84,12 @@ void LevelOne::CreateLevelComponents(){
 }
 
 void LevelOne::AddLevelParents(){
-	m_level_one->m_parent_list.push_back(m_player);
-	m_level_one->m_parent_list.push_back(m_part_1);
 	m_level_one->m_parent_list.push_back(m_obstacle_car_1);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_1);
+	m_level_one->m_parent_list.push_back(m_part_1);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_2);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_3);
 	m_level_one->m_parent_list.push_back(m_obstacle_box_1);
+	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }
