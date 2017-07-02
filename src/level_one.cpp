@@ -21,7 +21,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating obstacle car 1.");
-	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_ROCK);
+	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_CAR);
 	this->AddGameObject(*m_obstacle_car_1);
 
 
@@ -31,7 +31,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating part 1.");
-	m_part_1 = new MachinePart("part_1", std::make_pair(1600, 150));
+	m_part_1 = new MachinePart("part_1", std::make_pair(1530, 100));
 	this->AddGameObject(*m_part_1);
 
 
@@ -45,9 +45,39 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_obstacle_aerial_3);
 
 
+	DEBUG("Creating part 2.");
+	m_part_2 = new MachinePart("part_2", std::make_pair(2200, 200));
+	this->AddGameObject(*m_part_2);
+
+
 	DEBUG("Creating obstacle box 1.");
-	m_obstacle_box_1 = new Obstacle("obstacle_box_1", std::make_pair(4000, 300), ObstacleType::WESTERN_BOX);
+	m_obstacle_box_1 = new Obstacle("obstacle_box_1", std::make_pair(2200, 300), ObstacleType::WESTERN_BOX);
 	this->AddGameObject(*m_obstacle_box_1);
+
+
+	DEBUG("Creating obstacle box 2.");
+	m_obstacle_box_2 = new Obstacle("obstacle_box_2", std::make_pair(2600, 300), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_box_2);
+
+
+	DEBUG("Creating obstacle aerial 4.");
+	m_obstacle_aerial_4 = new Obstacle("obstacle_aerial_4", std::make_pair(2710, 230), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_aerial_4);
+
+
+	DEBUG("Creating part 3.")
+	m_part_3 = new MachinePart("part_3", std::make_pair(2900, 310));
+	this->AddGameObject(*m_part_3);
+
+
+	DEBUG("Creating obstacle car 2.");
+	m_obstacle_car_2 = new Obstacle("obstacle_car_2", std::make_pair(2970, 300), ObstacleType::WESTERN_CAR);
+	this->AddGameObject(*m_obstacle_car_2);
+
+
+	DEBUG("Creating part 4.");
+	m_part_4 = new MachinePart("part_4", std::make_pair(3210, 100));
+	this->AddGameObject(*m_part_4);
 
 
 	DEBUG("Creating Player.");
@@ -84,12 +114,20 @@ void LevelOne::CreateLevelComponents(){
 }
 
 void LevelOne::AddLevelParents(){
+	DEBUG("Adding level parents.");
+
 	m_level_one->m_parent_list.push_back(m_obstacle_car_1);
 	m_level_one->m_parent_list.push_back(m_obstacle_aerial_1);
 	m_level_one->m_parent_list.push_back(m_part_1);
 	m_level_one->m_parent_list.push_back(m_obstacle_aerial_2);
 	m_level_one->m_parent_list.push_back(m_obstacle_aerial_3);
+	m_level_one->m_parent_list.push_back(m_part_2);
 	m_level_one->m_parent_list.push_back(m_obstacle_box_1);
+	m_level_one->m_parent_list.push_back(m_obstacle_box_2);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_4);
+	m_level_one->m_parent_list.push_back(m_part_3);
+	m_level_one->m_parent_list.push_back(m_obstacle_car_2);
+	m_level_one->m_parent_list.push_back(m_part_4);
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }

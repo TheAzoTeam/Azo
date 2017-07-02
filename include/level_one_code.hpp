@@ -12,7 +12,7 @@ namespace Azo {
 			Player *m_player;
 			std::list<Obstacle *> m_obstacle_list;
 			Obstacle *m_ground;
-			MachinePart *m_part;
+			std::list<MachinePart *> m_machine_part_list;
 		public:
 			LevelOneCode(engine::GameObject &game_object);
 		private:
