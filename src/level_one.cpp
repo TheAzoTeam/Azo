@@ -21,7 +21,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating obstacle car 1.");
-	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_CAR);
+	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_ROCK);
 	this->AddGameObject(*m_obstacle_car_1);
 
 

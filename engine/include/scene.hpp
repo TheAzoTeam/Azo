@@ -26,7 +26,7 @@ namespace engine {
 			void RemoveGameObject(std::string &game_object_name);
 
 		protected:
-			std::unordered_map<std::string, engine::GameObject *> game_object_map;
+			std::map<std::string, engine::GameObject *> game_object_map;
 			std::string scene_name;
 	};
 }

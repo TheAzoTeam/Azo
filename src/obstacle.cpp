@@ -26,9 +26,11 @@ void Obstacle::CreateComponents(){
 		DEBUG("Obstacle is a WESTERN BOX!");
 		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
 		this->AddComponent(*m_obstacle_image);
+	}else if(m_obstacle_type == ObstacleType::WESTERN_ROCK){
+		DEBUG("Obstacle is a WESTERN ROCK");
+		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
+		this->AddComponent(*m_obstacle_image);
 	}
-
-
 }
 
 // Here we create the invisible objects that make the obstacle.
@@ -53,6 +55,11 @@ void Obstacle::CreateBlocks(){
 		block_position.second += 9;
 
 		m_block_list.push_back(new InvisibleBlock("block_two", block_position, std::make_pair(70, 68)));
+	}else if(m_obstacle_type == ObstacleType::WESTERN_ROCK){
+		block_position.first += 36;
+		block_position.second += 3;
+
+		m_block_list.push_back(new InvisibleBlock("block_two", block_position, std::make_pair(100, 101)));
 	}
 
 }

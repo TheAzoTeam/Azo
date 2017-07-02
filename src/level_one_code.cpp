@@ -178,6 +178,10 @@ bool LevelOneCode::HasGround(double *ground_y){
 
 				*ground_y = block_top;
 
+				if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_ROCK){
+					m_player->m_state = PlayerState::DIE;
+				}
+
 				return true;
 			}
 		}
