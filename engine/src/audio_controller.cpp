@@ -60,6 +60,16 @@ void AudioController::StopAudio(std::string audio_name){
 	}
 }
 
+void AudioController::PauseAudio(std::string audio_name){
+	auto audio_to_be_played = audio_map.find(audio_name);
+
+	if(audio_to_be_played != audio_map.end()){
+		audio_to_be_played->second->Pause(-1);
+	}else{
+		ERROR("Animation couldn't be found!");
+	}
+}
+
 AudioState AudioController::GetAudioState(std::string audio_name){
 	auto audio = audio_map.find(audio_name);
 

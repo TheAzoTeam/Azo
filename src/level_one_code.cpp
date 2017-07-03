@@ -5,6 +5,11 @@ using namespace Azo;
 LevelOneCode::LevelOneCode(engine::GameObject &game_object){
 	this->game_object = &game_object;
 	GetParents();
+	FindAudioController();
+}
+
+void LevelOneCode::FindAudioController(){
+	m_audio_controller = (game_object->GetAudioController(typeid(engine::AudioController)));
 }
 
 void LevelOneCode::GetParents(){
@@ -34,6 +39,8 @@ void LevelOneCode::UpdateCode(){
 
 	if(m_player->m_state != PlayerState::DIE){
 		UpdatePhysics();
+	}else{
+		m_audio_controller->StopAudio("tema_level_one");
 	}
 }
 

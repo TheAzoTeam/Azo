@@ -19,6 +19,10 @@ void MenuCode::UpdateCode(){
 	}
 
 	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::SPACE)){
-		if(m_audio_controller->GetAudioState("menu_theme") == engine::AudioState::PLAYING){}
+		if(m_audio_controller->GetAudioState("menu_theme") == engine::AudioState::PLAYING){
+			m_audio_controller->PauseAudio("menu_theme");
+		}else{
+			m_audio_controller->PlayAudio("menu_theme");
+		}
 	}
 }

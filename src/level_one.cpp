@@ -100,6 +100,9 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_obstacle_box_3);
 
 
+	DEBUG("Creating obstacle rock 1");
+	m_obstacle_rock_1 = new Obstacle("obstacle_rock_1", std::make_pair(4300, 340), ObstacleType::WESTERN_ROCK);
+	this->AddGameObject(*m_obstacle_rock_1);
 
 
 	DEBUG("Creating Player.");
@@ -125,19 +128,15 @@ void LevelOne::CreateLevelComponents(){
 	m_level_one->AddComponent(*m_level_background_2);
 
 	m_level_background_3 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_three.png", 1, std::make_pair(16379, 0));
-
 	m_level_one->AddComponent(*m_level_background_3);
 
 	m_audio_controller = new engine::AudioController();
 
 	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/banjo.ogg", true, true);
-
 	m_audio_controller->AddAudio("tema_level_one", *m_level_theme);
-
 	m_level_one->AddComponent(*m_audio_controller);
 
 	m_level_code = new LevelOneCode(*m_level_one);
-
 	m_level_one->AddComponent(*m_level_code);
 }
 
@@ -160,6 +159,7 @@ void LevelOne::AddLevelParents(){
 	m_level_one->m_parent_list.push_back(m_obstacle_aerial_6);
 	m_level_one->m_parent_list.push_back(m_part_5);
 	m_level_one->m_parent_list.push_back(m_obstacle_box_3);
+	m_level_one->m_parent_list.push_back(m_obstacle_rock_1);
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }

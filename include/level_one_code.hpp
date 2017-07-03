@@ -4,6 +4,7 @@
 #include "code_component.hpp"
 #include "player.hpp"
 #include "obstacle.hpp"
+#include "audio_controller.hpp"
 
 namespace Azo {
 	class LevelOneCode : public engine::CodeComponent {
@@ -11,9 +12,11 @@ namespace Azo {
 			Player *m_player;
 			std::list<Obstacle *> m_obstacle_list;
 			Obstacle *m_ground;
+			engine::AudioController *m_audio_controller;
 		public:
 			LevelOneCode(engine::GameObject &game_object);
 		private:
+			void FindAudioController();
 			void UpdateCode();
 			void UpdateObstaclePosition();
 			void GetParents();
