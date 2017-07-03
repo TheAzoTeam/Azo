@@ -66,7 +66,7 @@ void Obstacle::CreateBlocks(){
 
 	if(m_obstacle_type == ObstacleType::GROUND){
 		DEBUG("Creating invisible block for the ground.");
-		m_block_list.push_back(new InvisibleBlock("block_ground", block_position, std::make_pair(16384, 100)));
+		m_block_list.push_back(new InvisibleBlock("block_ground", block_position, std::make_pair(21000, 100)));
 		DEBUG("List size: " << m_block_list.size());
 	}else if(m_obstacle_type == ObstacleType::WESTERN_CAR){
 

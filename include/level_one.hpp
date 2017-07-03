@@ -16,7 +16,7 @@ namespace Azo {
 			// Add new components to level one here.
 			engine::ImageComponent *m_level_background_1;
 			engine::ImageComponent *m_level_background_2;
-			//engine::ImageComponent *m_level_background_3;
+			engine::ImageComponent *m_level_background_3;
 			engine::AudioController *m_audio_controller;
 			engine::AudioComponent *m_level_theme;
 			LevelOneCode *m_level_code;

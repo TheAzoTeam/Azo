@@ -50,6 +50,8 @@ namespace Azo {
 			bool m_at_ceiling;
 			bool m_on_ground;
 
+			int m_collected_parts = 0;
+
 		private:
 			// Don't forget to create new components inside this method.
 			void CreateComponents();
