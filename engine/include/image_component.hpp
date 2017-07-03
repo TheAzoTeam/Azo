@@ -12,7 +12,6 @@ namespace engine {
 			int zoom_factor;
 			SDL_Rect canvasQuad;
 		public:
-			std::string image_name = "LIXO";
 			ImageComponent();
 			ImageComponent(GameObject &game_object, std::string image_path, int zoom_factor);
 			ImageComponent(

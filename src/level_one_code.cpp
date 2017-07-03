@@ -17,8 +17,6 @@ void LevelOneCode::GetParents(){
 			}else{
 				m_ground = dynamic_cast<Obstacle *>(parent);
 			}
-		}else if(parent->GetClassName() == "MachinePart"){
-			m_machine_part_list.push_back(dynamic_cast<MachinePart *>(parent));
 		}
 	}
 }
@@ -31,7 +29,6 @@ void LevelOneCode::UpdateCode(){
 	}
 
 	UpdateObstaclePosition();
-	UpdateMachinePartPosition();
 
 	if(m_player->m_state != PlayerState::DIE){
 		UpdatePhysics();
@@ -66,16 +63,6 @@ void LevelOneCode::UpdateObstaclePosition(){
 		block->m_center.second = block->m_current_position.second + block->m_half_size.second;
 	}
 }
-
-void LevelOneCode::UpdateMachinePartPosition(){
-	for(auto each_part : m_machine_part_list){
-		each_part->m_current_position.first = game_object->m_current_position.first +
-						      each_part->m_position_relative_to_parent.first;
-		each_part->m_current_position.second = game_object->m_current_position.second +
-						       each_part->m_position_relative_to_parent.second;
-	}
-}
-
 
 void LevelOneCode::UpdatePhysics(){
 	m_player->m_current_position.second += m_player->m_speed.second * engine::Game::instance.GetTimer().GetDeltaTime();
@@ -152,9 +139,14 @@ bool LevelOneCode::HasGround(double *ground_y){
 
 	for(auto each_obstacle : m_obstacle_list){
 
-		for(auto each_block : each_obstacle->m_block_list){
-			std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
-			std::pair<double, double> block_top_right = each_block->CalcTopRight();
+		// If the obstacle is a machine part, we check the collision without invisible blocks (since it has animation).
+		// If it collides, we return false (so the position isn't updated) and change the state of the machine part.
+		// TODO(Roger): Update the collision methods so they return the colliding object.
+		// TODO(Roger): Create states to the machine parts.
+
+		if(each_obstacle->m_obstacle_type == ObstacleType::MACHINE_PART){
+			std::pair<double, double> block_bottom_left = each_obstacle->CalcBottomLeft();
+			std::pair<double, double> block_top_right = each_obstacle->CalcTopRight();
 
 			double block_right = block_top_right.first;
 			double block_left = block_bottom_left.first;
@@ -180,11 +172,43 @@ bool LevelOneCode::HasGround(double *ground_y){
 
 				*ground_y = block_top;
 
-				if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_ROCK){
-					m_player->m_state = PlayerState::DIE;
-				}
-
 				return true;
+			}
+		}else{
+			for(auto each_block : each_obstacle->m_block_list){
+				std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
+				std::pair<double, double> block_top_right = each_block->CalcTopRight();
+
+				double block_right = block_top_right.first;
+				double block_left = block_bottom_left.first;
+				double block_top = block_top_right.second;
+
+				// DEBUG("Player left: " << player_left);
+				// DEBUG("Block left: " << block_left);
+				// DEBUG("Block right: " << block_right);
+				// DEBUG("Player right: " << player_right);
+				// DEBUG("Block top: " << block_top);
+				// DEBUG("Player top: " << player_top);
+				// DEBUG("Player bottom: " << player_bottom);
+
+				if(player_left <= block_right && player_right >= block_left){
+
+					if(player_bottom < block_top){
+						return false;
+					}
+
+					if(player_top > block_top){
+						return false;
+					}
+
+					*ground_y = block_top;
+
+					if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_ROCK){
+						m_player->m_state = PlayerState::DIE;
+					}
+
+					return true;
+				}
 			}
 		}
 	}
@@ -197,6 +221,8 @@ bool LevelOneCode::CheckCollisionWithLevelGround(double player_top,
 						 double player_left,
 						 double player_right, double *ground_y){
 
+	//DEBUG("Checking collision with the level ground.");
+	//DEBUG("List size: " << m_ground->m_block_list.size());
 	for(auto each_block : m_ground->m_block_list){
 		std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
 		std::pair<double, double> block_top_right = each_block->CalcTopRight();
@@ -205,13 +231,13 @@ bool LevelOneCode::CheckCollisionWithLevelGround(double player_top,
 		double block_left = block_bottom_left.first;
 		double block_top = block_top_right.second;
 
-		DEBUG("Player left: " << player_left);
-		DEBUG("Block left: " << block_left);
-		DEBUG("Block right: " << block_right);
-		DEBUG("Player right: " << player_right);
-		DEBUG("Block top: " << block_top);
-		DEBUG("Player top: " << player_top);
-		DEBUG("Player bottom: " << player_bottom);
+		// DEBUG("Player left: " << player_left);
+		// DEBUG("Block left: " << block_left);
+		// DEBUG("Block right: " << block_right);
+		// DEBUG("Player right: " << player_right);
+		// DEBUG("Block top: " << block_top);
+		// DEBUG("Player top: " << player_top);
+		// DEBUG("Player bottom: " << player_bottom);
 
 		if(player_left <= block_right && player_right >= block_left){
 

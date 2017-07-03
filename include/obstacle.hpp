@@ -12,6 +12,7 @@ namespace Azo {
 		WESTERN_BOX,
 		WESTERN_CAR,
 		WESTERN_ROCK,
+		MACHINE_PART,
 	};
 
 	class Obstacle : public engine::GameObject {
@@ -21,6 +22,14 @@ namespace Azo {
 			ObstacleType m_obstacle_type;
 		private:
 			engine::ImageComponent *m_obstacle_image;
+
+			engine::AnimationController m_animation_controller; // For the machine part.
+
+			// If needed, add new animations here.
+			engine::Animation *m_turning; // For the machine part.
+
+			// If needed, add new animation vectors here.
+			std::vector<engine::Sprite *> m_turning_animation_sprites; // For the machine part.
 		public:
 			Obstacle();
 			Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type);
@@ -30,6 +39,8 @@ namespace Azo {
 		private:
 			void CreateComponents();
 			void CreateBlocks();
+			void GenTurningAnimation();
+
 	};
 }
 

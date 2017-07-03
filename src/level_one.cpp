@@ -31,7 +31,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating part 1.");
-	m_part_1 = new MachinePart("part_1", std::make_pair(1530, 100));
+	m_part_1 = new Obstacle("part_1", std::make_pair(1530, 200), ObstacleType::MACHINE_PART);
 	this->AddGameObject(*m_part_1);
 
 
@@ -46,7 +46,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating part 2.");
-	m_part_2 = new MachinePart("part_2", std::make_pair(2200, 200));
+	m_part_2 = new Obstacle("part_2", std::make_pair(2200, 200), ObstacleType::MACHINE_PART);
 	this->AddGameObject(*m_part_2);
 
 
@@ -66,7 +66,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating part 3.")
-	m_part_3 = new MachinePart("part_3", std::make_pair(2900, 310));
+	m_part_3 = new Obstacle("part_3", std::make_pair(2900, 310), ObstacleType::MACHINE_PART);
 	this->AddGameObject(*m_part_3);
 
 
@@ -76,7 +76,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating part 4.");
-	m_part_4 = new MachinePart("part_4", std::make_pair(3210, 100));
+	m_part_4 = new Obstacle("part_4", std::make_pair(3210, 100), ObstacleType::MACHINE_PART);
 	this->AddGameObject(*m_part_4);
 
 
@@ -97,12 +97,9 @@ void LevelOne::CreateLevelComponents(){
 	DEBUG("Creating Level Components.");
 
 	m_level_background_1 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_one.png", 1);
-	m_level_background_1->image_name = "background_1";
-
 	m_level_one->AddComponent(*m_level_background_1);
 
 	m_level_background_2 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_two.png", 1, std::make_pair(8188, 0));
-	m_level_background_2->image_name = "background_2";
 	m_level_one->AddComponent(*m_level_background_2);
 
 	// m_level_background_3 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_one.png", 1);
@@ -125,18 +122,18 @@ void LevelOne::CreateLevelComponents(){
 void LevelOne::AddLevelParents(){
 	DEBUG("Adding level parents.");
 
-	m_level_one->m_parent_list.push_back(m_obstacle_car_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_car_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_1);
 	m_level_one->m_parent_list.push_back(m_part_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_2);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_3);
-	m_level_one->m_parent_list.push_back(m_part_2);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_2);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_4);
-	m_level_one->m_parent_list.push_back(m_part_3);
-	m_level_one->m_parent_list.push_back(m_obstacle_car_2);
-	m_level_one->m_parent_list.push_back(m_part_4);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_2);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_3);
+	// m_level_one->m_parent_list.push_back(m_part_2);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_2);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_4);
+	// m_level_one->m_parent_list.push_back(m_part_3);
+	// m_level_one->m_parent_list.push_back(m_obstacle_car_2);
+	// m_level_one->m_parent_list.push_back(m_part_4);
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }

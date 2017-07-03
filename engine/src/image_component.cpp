@@ -46,7 +46,6 @@ void ImageComponent::Init(){
 
 
 void ImageComponent::Draw(){
-	DEBUG("Name: " << image_name);
 	UpdateQuad();
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),

@@ -6,7 +6,6 @@
 #include "obstacle.hpp"
 #include "level_one_code.hpp"
 #include "audio_controller.hpp"
-#include "machine_part.hpp"
 
 namespace Azo {
 	class LevelOne : public engine::Scene {
@@ -17,7 +16,7 @@ namespace Azo {
 			// Add new components to level one here.
 			engine::ImageComponent *m_level_background_1;
 			engine::ImageComponent *m_level_background_2;
-			engine::ImageComponent *m_level_background_3;
+			//engine::ImageComponent *m_level_background_3;
 			engine::AudioController *m_audio_controller;
 			engine::AudioComponent *m_level_theme;
 			LevelOneCode *m_level_code;
@@ -27,16 +26,16 @@ namespace Azo {
 			// Add obstacles here
 			Obstacle *m_obstacle_car_1;
 			Obstacle *m_obstacle_aerial_1;
-			MachinePart *m_part_1;
+			Obstacle *m_part_1;
 			Obstacle *m_obstacle_aerial_2;
 			Obstacle *m_obstacle_aerial_3;
-			MachinePart *m_part_2;
+			Obstacle *m_part_2;
 			Obstacle *m_obstacle_box_1;
 			Obstacle *m_obstacle_box_2;
 			Obstacle *m_obstacle_aerial_4;
-			MachinePart *m_part_3;
+			Obstacle *m_part_3;
 			Obstacle *m_obstacle_car_2;
-			MachinePart *m_part_4;
+			Obstacle *m_part_4;
 			Obstacle *m_ground;
 
 		private:
