@@ -36,7 +36,7 @@ namespace engine {
 			ObjectState m_object_state = ObjectState::ENABLED;
 
 		protected:
-			std::unordered_map<std::type_index, Component *> m_component_map;
+			std::unordered_multimap<std::type_index, Component *> m_component_map;
 
 		public:
 			GameObject();

@@ -43,7 +43,7 @@ void Obstacle::CreateBlocks(){
 	std::pair<double, double> block_position = m_position_relative_to_parent;
 
 	if(m_obstacle_type == ObstacleType::GROUND){
-		m_block_list.push_back(new InvisibleBlock("block_ground", block_position, std::make_pair(8192, 100)));
+		m_block_list.push_back(new InvisibleBlock("block_ground", block_position, std::make_pair(16384, 100)));
 	}else if(m_obstacle_type == ObstacleType::WESTERN_CAR){
 
 		block_position.first += 59;

@@ -96,9 +96,18 @@ void LevelOne::CreateGameObjects(){
 void LevelOne::CreateLevelComponents(){
 	DEBUG("Creating Level Components.");
 
-	m_level_background = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_one.png", 1);
+	m_level_background_1 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_one.png", 1);
+	m_level_background_1->image_name = "background_1";
 
-	m_level_one->AddComponent(*m_level_background);
+	m_level_one->AddComponent(*m_level_background_1);
+
+	m_level_background_2 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_two.png", 1, std::make_pair(8188, 0));
+	m_level_background_2->image_name = "background_2";
+	m_level_one->AddComponent(*m_level_background_2);
+
+	// m_level_background_3 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_one.png", 1);
+	//
+	// m_level_one->AddComponent(*m_level_background_1);
 
 	m_audio_controller = new engine::AudioController();
 

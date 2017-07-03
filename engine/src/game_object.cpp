@@ -54,7 +54,9 @@ void GameObject::Init(){
 }
 
 void GameObject::Draw(){
-	//DEBUG("GameObject::Draw method.");
+	DEBUG("GameObject::Draw method.");
+	DEBUG("Game object name: " << m_name);
+	DEBUG("Map size: " << m_component_map.size());
 	for(auto each_pair : m_component_map){
 		auto component = each_pair.second;
 
