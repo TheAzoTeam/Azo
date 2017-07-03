@@ -71,7 +71,6 @@ void LevelOneCode::UpdatePhysics(){
 		m_player->m_current_position.second = ground_y + 15;
 		m_player->m_at_ceiling = true;
 	}else if((m_player->m_speed.second >= 0.0f || m_player->m_state == PlayerState::SLIDE) && HasGround(&ground_y)){
-		DEBUG("On ground!");
 		m_player->m_current_position.second = ground_y - m_player->m_half_size.second - m_player->m_half_size.second + 15;
 		m_player->m_speed.second = m_player->M_ZERO_VECTOR.second;
 
@@ -79,8 +78,6 @@ void LevelOneCode::UpdatePhysics(){
 
 		m_player->m_center.first = m_player->m_current_position.first + m_player->m_half_size.first;
 		m_player->m_center.second = m_player->m_current_position.second + m_player->m_half_size.second;
-
-		DEBUG("Player feet: " << m_player->m_center.second + m_player->m_half_size.second);
 
 	}else{
 		m_player->m_on_ground = false;
@@ -133,9 +130,10 @@ bool LevelOneCode::HasGround(double *ground_y){
 
 	if(collision_with_level_ground){
 		return true;
-	}else{
-		DEBUG("Isn't colliding with the level ground.");
 	}
+	// }else{
+	//      DEBUG("Isn't colliding with the level ground.");
+	// }
 
 	for(auto each_obstacle : m_obstacle_list){
 
@@ -170,9 +168,11 @@ bool LevelOneCode::HasGround(double *ground_y){
 					return false;
 				}
 
-				*ground_y = block_top;
+				// Collided.
+				each_obstacle->m_machine_part_state = MachinePartState::COLLECTED;
+				m_obstacle_list.remove(each_obstacle);
 
-				return true;
+				return false;
 			}
 		}else{
 			for(auto each_block : each_obstacle->m_block_list){

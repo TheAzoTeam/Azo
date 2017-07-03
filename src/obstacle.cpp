@@ -37,9 +37,19 @@ void Obstacle::CreateComponents(){
 
 	}else if(m_obstacle_type == ObstacleType::MACHINE_PART){
 		DEBUG("Obstacle is a MACHINE PART");
+		m_machine_part_state = MachinePartState::NON_COLLECTED;
 		GenTurningAnimation();
 		m_turning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, m_turning_animation_sprites, 0, 23, true, 1);
 		this->AddComponent(*m_turning);
+
+		m_audio_controller = new engine::AudioController();
+		m_collected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
+		m_audio_controller->AddAudio("coleta", *m_collected);
+		this->AddComponent(*m_audio_controller);
+
+		m_machine_part_code = new MachinePartCode(this);
+		this->AddComponent(*m_machine_part_code);
+
 	}else if(m_obstacle_type == ObstacleType::GROUND){
 		CreateBlocks();
 	}

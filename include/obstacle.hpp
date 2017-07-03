@@ -3,6 +3,7 @@
 
 #include "game_object.hpp"
 #include "invisible_block.hpp"
+#include "machine_part_code.hpp"
 
 namespace Azo {
 
@@ -15,21 +16,31 @@ namespace Azo {
 		MACHINE_PART,
 	};
 
+	enum class MachinePartState {
+		COLLECTED,
+		NON_COLLECTED,
+		NON_MACHINE,
+		FINISHED,
+	};
+
 	class Obstacle : public engine::GameObject {
 		public:
 			std::pair<double, double> m_position_relative_to_parent;
 			std::list<InvisibleBlock *> m_block_list;
 			ObstacleType m_obstacle_type;
+			MachinePartState m_machine_part_state = MachinePartState::NON_MACHINE;
 		private:
 			engine::ImageComponent *m_obstacle_image;
 
-			engine::AnimationController m_animation_controller; // For the machine part.
+			engine::AudioController *m_audio_controller;
 
-			// If needed, add new animations here.
-			engine::Animation *m_turning; // For the machine part.
+			engine::Animation *m_turning;
 
-			// If needed, add new animation vectors here.
-			std::vector<engine::Sprite *> m_turning_animation_sprites; // For the machine part.
+			engine::AudioComponent *m_collected;
+
+			std::vector<engine::Sprite *> m_turning_animation_sprites;
+
+			MachinePartCode *m_machine_part_code;
 		public:
 			Obstacle();
 			Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type);

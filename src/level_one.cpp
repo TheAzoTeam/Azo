@@ -122,18 +122,18 @@ void LevelOne::CreateLevelComponents(){
 void LevelOne::AddLevelParents(){
 	DEBUG("Adding level parents.");
 
-	// m_level_one->m_parent_list.push_back(m_obstacle_car_1);
-	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_1);
+	m_level_one->m_parent_list.push_back(m_obstacle_car_1);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_1);
 	m_level_one->m_parent_list.push_back(m_part_1);
-	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_2);
-	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_3);
-	// m_level_one->m_parent_list.push_back(m_part_2);
-	// m_level_one->m_parent_list.push_back(m_obstacle_box_1);
-	// m_level_one->m_parent_list.push_back(m_obstacle_box_2);
-	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_4);
-	// m_level_one->m_parent_list.push_back(m_part_3);
-	// m_level_one->m_parent_list.push_back(m_obstacle_car_2);
-	// m_level_one->m_parent_list.push_back(m_part_4);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_2);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_3);
+	m_level_one->m_parent_list.push_back(m_part_2);
+	m_level_one->m_parent_list.push_back(m_obstacle_box_1);
+	m_level_one->m_parent_list.push_back(m_obstacle_box_2);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_4);
+	m_level_one->m_parent_list.push_back(m_part_3);
+	m_level_one->m_parent_list.push_back(m_obstacle_car_2);
+	m_level_one->m_parent_list.push_back(m_part_4);
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }
