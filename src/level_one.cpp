@@ -31,7 +31,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating part 1.");
-	m_part_1 = new Obstacle("part_1", std::make_pair(1530, 200), ObstacleType::MACHINE_PART);
+	m_part_1 = new Obstacle("part_1", std::make_pair(1500, 80), ObstacleType::MACHINE_PART);
 	this->AddGameObject(*m_part_1);
 
 
@@ -80,8 +80,30 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_4);
 
 
+	DEBUG("Creating obstacle aerial 5.");
+	m_obstacle_aerial_5 = new Obstacle("obstacle_aerial_5", std::make_pair(3510, 245), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_aerial_5);
+
+
+	DEBUG("Creating obstacle aerial 6.");
+	m_obstacle_aerial_6 = new Obstacle("obstacle_aerial_6", std::make_pair(3675, 245), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_aerial_6);
+
+
+	DEBUG("Creating part 5.");
+	m_part_5 = new Obstacle("part_5", std::make_pair(3975, 200), ObstacleType::MACHINE_PART);
+	this->AddGameObject(*m_part_5);
+
+
+	DEBUG("Creating obstacle box 3.");
+	m_obstacle_box_3 = new Obstacle("obstacle_box_3", std::make_pair(3975, 300), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_box_3);
+
+
+
+
 	DEBUG("Creating Player.");
-	m_player = new Player("player", std::make_pair(0, 300));
+	m_player = new Player("player", std::make_pair(-30, 300));
 	this->AddGameObject(*m_player);
 
 
@@ -134,6 +156,10 @@ void LevelOne::AddLevelParents(){
 	m_level_one->m_parent_list.push_back(m_part_3);
 	m_level_one->m_parent_list.push_back(m_obstacle_car_2);
 	m_level_one->m_parent_list.push_back(m_part_4);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_5);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_6);
+	m_level_one->m_parent_list.push_back(m_part_5);
+	m_level_one->m_parent_list.push_back(m_obstacle_box_3);
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }
