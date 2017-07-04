@@ -70,15 +70,15 @@ void Obstacle::CreateBlocks(){
 		DEBUG("List size: " << m_block_list.size());
 	}else if(m_obstacle_type == ObstacleType::WESTERN_CAR){
 
-		block_position.first += 59;
+		block_position.first += 69;
 		block_position.second += 25;
 
-		m_block_list.push_back(new InvisibleBlock("block_zero", block_position, std::make_pair(119, 139)));
+		m_block_list.push_back(new InvisibleBlock("block_zero", block_position, std::make_pair(109, 139)));
 	}else if(m_obstacle_type == ObstacleType::WESTERN_BOX){
-		block_position.first += 51;
+		block_position.first += 66;
 		block_position.second += 9;
 
-		m_block_list.push_back(new InvisibleBlock("block_two", block_position, std::make_pair(70, 68)));
+		m_block_list.push_back(new InvisibleBlock("block_two", block_position, std::make_pair(55, 68)));
 	}else if(m_obstacle_type == ObstacleType::WESTERN_ROCK){
 		block_position.first += 80;
 		block_position.second += 12;

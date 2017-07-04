@@ -40,7 +40,11 @@ void LevelOneCode::UpdateCode(){
 	if(m_player->m_state != PlayerState::DIE){
 		UpdatePhysics();
 	}else{
-		m_audio_controller->StopAudio("tema_level_one");
+		if(m_audio_controller->GetAudioState("tema_level_one") == engine::AudioState::PLAYING){
+			m_audio_controller->StopAudio("tema_level_one");
+		}else{
+			// Nothing to do.
+		}
 	}
 }
 
