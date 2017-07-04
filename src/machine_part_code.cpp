@@ -21,7 +21,6 @@ void MachinePartCode::UpdateCode(){
 			m_machine_part->m_machine_part_state = MachinePartState::FINISHED;
 			break;
 		case MachinePartState::FINISHED:
-			m_audio_controller->StopAudio("coleta");
 			m_machine_part->m_object_state = engine::ObjectState::DISABLED;
 		default:
 			break;

@@ -69,7 +69,7 @@ void AudioComponent::Play(int loops, int channel){
 
 	}else{
 		if(audio_state == AudioState::STOPPED){
-			Mix_PlayChannel(channel, sound, loops);
+			Mix_PlayChannel(channel, sound, 0);
 			INFO("Play sound: " << audio_path);
 		}else if(audio_state == AudioState::PAUSED){
 			Mix_Resume(channel);
