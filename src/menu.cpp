@@ -7,6 +7,11 @@ Menu::Menu(std::string name){
 	CreateGameObjects();
 }
 
+void Menu::Restart(){
+	game_object_map.clear();
+	CreateGameObjects();
+}
+
 void Menu::CreateGameObjects(){
 	DEBUG("Creating Menu GameObjects.");
 
@@ -27,4 +32,8 @@ void Menu::CreateMenuComponents(){
 
 	m_code = new MenuCode(m_menu);
 	m_menu->AddComponent(*m_code);
+}
+
+void Menu::Shutdown(){
+	DEBUG("Calling Menu::Shutdown.");
 }

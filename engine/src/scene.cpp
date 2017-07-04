@@ -43,6 +43,8 @@ void Scene::UpdateCode(){
 }
 
 
+void Scene::Restart(){}
+
 void Scene::AddGameObject(GameObject &game_object){
 	auto game_object_name = game_object.m_name;
 

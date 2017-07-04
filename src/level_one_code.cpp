@@ -45,6 +45,11 @@ void LevelOneCode::UpdateCode(){
 		}else{
 			// Nothing to do.
 		}
+
+		//TODO(Roger): Fix this KeyDownOnce method. Sometimes you need to press two times.
+		if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+			engine::Game::instance.ChangeScene("menu");
+		}
 	}
 }
 

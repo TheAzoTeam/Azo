@@ -58,11 +58,13 @@ void Game::Run(){
 		}
 
 		// Clean and Draw the Scene to refreh animations and objects.
+		// DEBUG("Drawing current scene.");
+		// DEBUG("Scene name: " << current_scene->GetSceneName());
 		SDL_RenderClear(sdl_elements.GetCanvas());
 		current_scene->Draw();
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
-		//INFO("Updating current scene: " << current_scene->GetSceneName() << " code.");
+		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
 		current_scene->UpdateCode();
 
 
@@ -106,6 +108,12 @@ bool Game::AddScene(Scene &scene){
 	return true;
 }
 
+void Game::RestartScene(std::string scene_name){
+	auto scene = scene_map[scene_name];
+
+	scene->Restart();
+}
+
 
 // Perform the necessary checks and prepare the structure to switch Scenes.
 void Game::ChangeScene(std::string scene_name){
@@ -130,11 +138,22 @@ bool Game::StartAndStopScenes(){
 			return false;
 		}else{
 
+			if(current_scene->m_state == SceneState::RUNNED){
+				current_scene->Restart();
+				current_scene->m_state = SceneState::FIRST_TIME;
+			}
+
+			if(current_scene->m_state == SceneState::FIRST_TIME){
+				current_scene->m_state = SceneState::RUNNED;
+			}
+
+
 			current_scene->Init();
 
 			if(last_scene != NULL){
 				INFO("Shuting down scene!");
-				scene_map.erase(last_scene->GetSceneName());
+				//DEBUG("Scene name: " << last_scene->GetSceneName());
+				//scene_map.erase(last_scene->GetSceneName());
 				last_scene->Shutdown();
 			}else{
 				// Nothing to Do.

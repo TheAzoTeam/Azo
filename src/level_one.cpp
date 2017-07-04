@@ -10,6 +10,11 @@ LevelOne::LevelOne(std::string name){
 	CreateGameObjects();
 }
 
+void LevelOne::Restart(){
+	game_object_map.clear();
+	CreateGameObjects();
+}
+
 // Create new game objects for the level one here. Remember:
 // the order used to add they to the scene is important.
 void LevelOne::CreateGameObjects(){

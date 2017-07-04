@@ -65,6 +65,7 @@ namespace Azo {
 		public:
 			LevelOne();
 			LevelOne(std::string name);
+			void Restart();
 	};
 }
 

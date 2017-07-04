@@ -23,16 +23,23 @@ Animation::Animation(GameObject & game_object, std::string image_path,
 	this->m_current_animation_time = 0.0f;
 	this->m_loop = loop;
 	this->zoom_factor = zoom_factor;
+	this->m_current_sprite = start_frame;
 }
 
 Animation::~Animation(){}
 
 void Animation::Draw(){
-	//DEBUG("Animation::Draw method.");
+	// DEBUG("Animation::Draw method.");
+	// DEBUG("Checking Limits");
 	CheckLimits();
+	//DEBUG("Updating Quad");
+
 	UpdateQuad();
+	//DEBUG("Updating Measures Limits");
+
 	UpdateGameObjectMeasures();
 
+	//DEBUG("Rendering");
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
@@ -41,18 +48,25 @@ void Animation::Draw(){
 		);
 
 	//DEBUG("Current drawing: " << m_current_sprite);
-
+	//DEBUG("Updating frame.");
 	UpdateFrameBasedOntime();
 
 }
 
 void Animation::UpdateQuad(){
+	// DEBUG("Updating render quad.")
+	// DEBUG("Something is wrong here.");
+	// DEBUG("m_current_sprite: " << m_current_sprite);
+	// DEBUG("m_sprite_list[m_current_sprite]->sprite_x" << m_sprite_list[m_current_sprite]->sprite_x);
+
 	renderQuad = {
 		m_sprite_list[m_current_sprite]->sprite_x,
 		m_sprite_list[m_current_sprite]->sprite_y,
 		m_sprite_list[m_current_sprite]->sprite_width,
 		m_sprite_list[m_current_sprite]->sprite_height
 	};
+
+	//DEBUG("Updating canvas quad.");
 
 	canvasQuad = {
 		(int)game_object->m_current_position.first,

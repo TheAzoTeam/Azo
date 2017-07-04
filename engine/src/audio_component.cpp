@@ -46,12 +46,14 @@ void AudioComponent::UpdateCode(){
 
 void AudioComponent::Shutdown(){
 	INFO("Shutdown audio component");
+	//TODO(Roger): Fix this shutdown. The memory corruption problem is here.
+	// To reproduce, just uncomment lines 53~56, run the game, kill yourself and press enter.
 
-	Stop(-1);
-	free(music);
-	music = NULL;
-	free(sound);
-	sound = NULL;
+	//Stop(-1);
+	// free(music);
+	// music = NULL;
+	// free(sound);
+	// sound = NULL;
 
 }
 

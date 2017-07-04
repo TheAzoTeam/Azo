@@ -49,6 +49,8 @@ namespace engine {
 			// Used to add a Scene to map that have all Game's Scenes.
 			bool AddScene(engine::Scene &scene);
 
+			void RestartScene(std::string scene_name);
+
 			/* Used to transfer the game_name, window_width and window_height to SDL instace through its method
 			   "SetSDLAttributes" and set Game's frame_rate. */
 			void SetAttributes(std::string game_name,

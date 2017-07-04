@@ -55,7 +55,7 @@ void GameObject::Init(){
 
 void GameObject::Draw(){
 	// DEBUG("GameObject::Draw method.");
-	// DEBUG("Game object name: " << m_name);
+	//DEBUG("Game object name: " << m_name);
 	// DEBUG("Map size: " << m_component_map.size());
 	for(auto each_pair : m_component_map){
 		auto component = each_pair.second;
@@ -63,10 +63,12 @@ void GameObject::Draw(){
 		ASSERT(component != NULL, "Component can't be NULL when drawing.");
 
 		if(component->IsEnabled()){
-			//DEBUG("Drawing Component. Component Class Name: " << component->GetClassName());
+			//	DEBUG("Drawing Component. Component Class Name: " << component->GetClassName());
 			component->Draw();
 		}
 	}
+
+	//DEBUG("Finished Drawing.");
 }
 
 void GameObject::UpdateCode(){
@@ -79,10 +81,10 @@ void GameObject::UpdateCode(){
 }
 
 void GameObject::Shutdown(){
-	for(auto each_pair : m_component_map){
-		auto component = each_pair.second;
-		component->Shutdown();
-	}
+	// for(auto each_pair : m_component_map){
+	//      auto component = each_pair.second;
+	//      component->Shutdown();
+	// }
 }
 
 std::pair<double, double> GameObject::CalcBottomLeft(){
