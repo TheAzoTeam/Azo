@@ -12,7 +12,10 @@ LevelOne::LevelOne(std::string name){
 
 void LevelOne::Restart(){
 	game_object_map.clear();
+
+	//TODO(Roger): Add objects to be recreated one by one, here, instead of recalling CreateGameObjects.
 	CreateGameObjects();
+
 }
 
 // Create new game objects for the level one here. Remember:
@@ -180,7 +183,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating Player.");
-	m_player = new Player("player", std::make_pair(0, 300));
+	m_player = new Player("player", std::make_pair(170, 300));
 	this->AddGameObject(*m_player);
 
 

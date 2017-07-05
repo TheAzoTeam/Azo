@@ -40,7 +40,7 @@ namespace Azo {
 			const std::pair<double, double> M_ZERO_VECTOR = std::make_pair(0.0f, 0.0f);
 			const double M_GRAVITY = 0.003f;
 			const double M_JUMPING_SPEED = -1.0f; //Vertical speed should be negative, so the character goes up on canvas.
-			const double M_WALKING_SPEED = 0.30f;
+			const double M_WALKING_SPEED = 4.8f;
 
 			PlayerState m_state;
 			std::pair<double, double> m_speed;
