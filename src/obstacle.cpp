@@ -29,6 +29,12 @@ void Obstacle::CreateComponents(){
 		this->AddComponent(*m_obstacle_image);
 		CreateBlocks();
 
+	}else if(m_obstacle_type == ObstacleType::WESTERN_RAISED_BOX){
+		DEBUG("Obstacle is a WESTERN RAISED BOX!");
+		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
+		this->AddComponent(*m_obstacle_image);
+		CreateBlocks();
+
 	}else if(m_obstacle_type == ObstacleType::WESTERN_ROCK){
 		DEBUG("Obstacle is a WESTERN ROCK");
 		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
@@ -74,7 +80,7 @@ void Obstacle::CreateBlocks(){
 		block_position.second += 25;
 
 		m_block_list.push_back(new InvisibleBlock("block_zero", block_position, std::make_pair(109, 139)));
-	}else if(m_obstacle_type == ObstacleType::WESTERN_BOX){
+	}else if(m_obstacle_type == ObstacleType::WESTERN_BOX || m_obstacle_type == ObstacleType::WESTERN_RAISED_BOX){
 		block_position.first += 66;
 		block_position.second += 9;
 

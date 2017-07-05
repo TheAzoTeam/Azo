@@ -11,6 +11,7 @@ namespace Azo {
 	enum class ObstacleType {
 		GROUND,
 		WESTERN_BOX,
+		WESTERN_RAISED_BOX,
 		WESTERN_CAR,
 		WESTERN_ROCK,
 		MACHINE_PART,
