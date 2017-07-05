@@ -8,6 +8,16 @@ LevelOneCode::LevelOneCode(engine::GameObject &game_object){
 	FindAudioController();
 }
 
+void LevelOneCode::Shutdown(){
+	for(auto obstacle : m_obstacle_list){
+		obstacle = nullptr;
+	}
+
+	m_audio_controller = nullptr;
+
+	m_player = nullptr;
+}
+
 void LevelOneCode::FindAudioController(){
 	m_audio_controller = (game_object->GetAudioController(typeid(engine::AudioController)));
 }

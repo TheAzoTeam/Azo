@@ -14,6 +14,7 @@ namespace Azo {
 			engine::AudioController *m_audio_controller;
 		public:
 			LevelOneCode(engine::GameObject &game_object);
+			void Shutdown();
 		private:
 			void FindAudioController();
 			void UpdateCode();

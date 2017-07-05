@@ -9,6 +9,7 @@ Obstacle::~Obstacle(){}
 void Obstacle::Shutdown(){
 	for(auto each_block : m_block_list){
 		if(each_block != NULL){
+			each_block->Shutdown();
 			delete(each_block);
 			each_block = NULL;
 		}
@@ -29,8 +30,13 @@ void Obstacle::Shutdown(){
 	}
 
 	if(m_audio_controller != NULL){
+		m_audio_controller->Shutdown();
 		delete(m_audio_controller);
 		m_audio_controller = NULL;
+	}
+
+	if(m_collected != NULL){
+		m_collected = NULL;
 	}
 
 	if(m_turning != NULL){
@@ -38,10 +44,6 @@ void Obstacle::Shutdown(){
 		m_turning = NULL;
 	}
 
-	if(m_collected != NULL){
-		delete(m_collected);
-		m_collected = NULL;
-	}
 
 	if(m_machine_part_code != NULL){
 		m_machine_part_code->Shutdown();

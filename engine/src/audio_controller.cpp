@@ -15,6 +15,7 @@ void AudioController::Shutdown(){
 	for(auto audio_row : audio_map){
 		auto audio = audio_row.second;
 		audio->Shutdown();
+		audio = NULL;
 	}
 }
 

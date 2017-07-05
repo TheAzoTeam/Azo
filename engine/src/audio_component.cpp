@@ -15,8 +15,8 @@ AudioComponent::AudioComponent(GameObject & game_object, std::string path, bool 
 	this->is_music = is_music;
 	this->play_on_start = play_on_start;
 	this->audio_state = AudioState::STOPPED;
-	this->music = NULL;
-	this->sound = NULL;
+	this->music = nullptr;
+	this->sound = nullptr;
 }
 
 void AudioComponent::Init(){
@@ -48,14 +48,18 @@ void AudioComponent::UpdateCode(){
 
 void AudioComponent::Shutdown(){
 	INFO("Shutdown audio component");
-	//TODO(Roger): Fix this shutdown. The memory corruption problem is here.
-	// To reproduce, just uncomment lines 53~56, run the game, kill yourself and press enter.
 
-	//Stop(-1);
-	// free(music);
-	// music = NULL;
-	// free(sound);
-	// sound = NULL;
+	Stop(-1);
+	if(music != nullptr){
+		Mix_FreeMusic(music);
+		music = nullptr;
+	}
+
+	if(sound != nullptr){
+		//TODO(Roger): For unkown reasons, the Mix_FreeChunk doesn't work. Find out why.
+		//Mix_FreeChunk(sound);
+		sound = nullptr;
+	}
 
 }
 
