@@ -28,6 +28,15 @@ Animation::Animation(GameObject & game_object, std::string image_path,
 
 Animation::~Animation(){}
 
+void Animation::Shutdown(){
+	if(m_sprite_list.size() > 0){
+		for(auto each_sprite : m_sprite_list){
+			delete(each_sprite);
+			each_sprite = NULL;
+		}
+	}
+}
+
 void Animation::Draw(){
 	// DEBUG("Animation::Draw method.");
 	// DEBUG("Checking Limits");

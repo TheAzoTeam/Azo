@@ -13,38 +13,38 @@ Player::Player(std::string name, std::pair<double, double> current_position){
 }
 
 void Player::Shutdown(){
+
+	if(m_anim_controller != NULL){
+		DEBUG("Shutting down m_anim_controller");
+		m_anim_controller->Shutdown();
+		delete(m_anim_controller);
+		m_anim_controller = NULL;
+	}
+
 	for(auto each_sprite : m_walking_animation_sprites){
 		if(each_sprite != NULL){
-			delete(each_sprite);
 			each_sprite = NULL;
 		}
 	}
 
 	for(auto each_sprite : m_jumping_animation_sprites){
 		if(each_sprite != NULL){
-			delete(each_sprite);
 			each_sprite = NULL;
 		}
 	}
 
 	for(auto each_sprite : m_sliding_animation_sprites){
 		if(each_sprite != NULL){
-			delete(each_sprite);
 			each_sprite = NULL;
 		}
 	}
 
 	for(auto each_sprite : m_dying_animation_sprites){
 		if(each_sprite != NULL){
-			delete(each_sprite);
 			each_sprite = NULL;
 		}
 	}
 
-	if(m_anim_controller != NULL){
-		delete(m_anim_controller);
-		m_anim_controller = NULL;
-	}
 
 	if(m_walking != NULL){
 		delete(m_walking);
