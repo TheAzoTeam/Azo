@@ -110,7 +110,7 @@ void Obstacle::CreateComponents(){
 	}else if(m_obstacle_type == ObstacleType::WESTERN_SPIKE){
 		DEBUG("Obstacle is a WESTERN SPIKE");
 
-		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/Espinhos.png", 1.5);
+		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
 		this->AddComponent(*m_obstacle_image);
 		CreateBlocks();
 	}
@@ -151,10 +151,10 @@ void Obstacle::CreateBlocks(){
 
 		m_block_list.push_back(new InvisibleBlock(block_position, std::make_pair(4, 100)));
 	}else if(m_obstacle_type == ObstacleType::WESTERN_SPIKE){
-		block_position.first += 7;
-		block_position.second += 14;
+		block_position.first += 19;
+		block_position.second += 23;
 
-		m_block_list.push_back(new InvisibleBlock(block_position, std::make_pair(355, 83)));
+		m_block_list.push_back(new InvisibleBlock(block_position, std::make_pair(210, 92)));
 	}
 
 }
