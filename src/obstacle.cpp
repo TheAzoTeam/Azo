@@ -81,10 +81,10 @@ void Obstacle::CreateBlocks(){
 
 		m_block_list.push_back(new InvisibleBlock("block_zero", block_position, std::make_pair(109, 139)));
 	}else if(m_obstacle_type == ObstacleType::WESTERN_BOX || m_obstacle_type == ObstacleType::WESTERN_RAISED_BOX){
-		block_position.first += 66;
+		block_position.first += 58;
 		block_position.second += 9;
 
-		m_block_list.push_back(new InvisibleBlock("block_two", block_position, std::make_pair(55, 68)));
+		m_block_list.push_back(new InvisibleBlock("block_two", block_position, std::make_pair(63, 68)));
 	}else if(m_obstacle_type == ObstacleType::WESTERN_ROCK){
 		block_position.first += 80;
 		block_position.second += 12;
