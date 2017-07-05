@@ -69,6 +69,7 @@ namespace Azo {
 		public:
 			Player();
 			Player(std::string name, std::pair<double, double> current_position);
+			void Shutdown();
 	};
 }
 

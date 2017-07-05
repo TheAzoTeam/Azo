@@ -17,7 +17,9 @@ namespace Azo {
 
 		public:
 			PlayerCode();
+			virtual ~PlayerCode();
 			PlayerCode(Player *player);
+			void Shutdown();
 	};
 }
 

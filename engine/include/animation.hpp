@@ -31,7 +31,7 @@ namespace engine {
 			AnimationState m_state = AnimationState::STOPPED;
 		public:
 			Animation();
-			~Animation();
+			virtual ~Animation();
 			Animation(
 				GameObject & game_object,
 				std::string image_path,

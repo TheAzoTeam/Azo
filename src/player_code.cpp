@@ -6,6 +6,8 @@ using namespace Azo;
 
 PlayerCode::PlayerCode(){}
 
+PlayerCode::~PlayerCode(){}
+
 PlayerCode::PlayerCode(Player *player){
 	m_player = player;
 	m_player->m_state = PlayerState::WALK;
@@ -16,6 +18,13 @@ PlayerCode::PlayerCode(Player *player){
 void PlayerCode::FindAnimationController(){
 	m_animation_controller = (m_player->GetAnimationController(typeid(engine::AnimationController)));
 }
+
+void PlayerCode::Shutdown(){
+	if(m_animation_controller != NULL){
+		m_animation_controller = NULL;
+	}
+}
+
 
 void PlayerCode::UpdateCode(){
 	switch(m_player->m_state){

@@ -12,6 +12,68 @@ Player::Player(std::string name, std::pair<double, double> current_position){
 	CreateComponents();
 }
 
+void Player::Shutdown(){
+	for(auto each_sprite : m_walking_animation_sprites){
+		if(each_sprite != NULL){
+			delete(each_sprite);
+			each_sprite = NULL;
+		}
+	}
+
+	for(auto each_sprite : m_jumping_animation_sprites){
+		if(each_sprite != NULL){
+			delete(each_sprite);
+			each_sprite = NULL;
+		}
+	}
+
+	for(auto each_sprite : m_sliding_animation_sprites){
+		if(each_sprite != NULL){
+			delete(each_sprite);
+			each_sprite = NULL;
+		}
+	}
+
+	for(auto each_sprite : m_dying_animation_sprites){
+		if(each_sprite != NULL){
+			delete(each_sprite);
+			each_sprite = NULL;
+		}
+	}
+
+	if(m_anim_controller != NULL){
+		delete(m_anim_controller);
+		m_anim_controller = NULL;
+	}
+
+	if(m_walking != NULL){
+		delete(m_walking);
+		m_walking = NULL;
+	}
+
+	if(m_jumping != NULL){
+		delete(m_jumping);
+		m_jumping = NULL;
+	}
+
+	if(m_sliding != NULL){
+		delete(m_sliding);
+		m_sliding = NULL;
+	}
+
+	if(m_dying != NULL){
+		delete(m_dying);
+		m_dying = NULL;
+	}
+
+	if(m_player_code != NULL){
+		m_player_code->Shutdown();
+		delete(m_player_code);
+		m_player_code = NULL;
+	}
+}
+
+
 void Player::CreateComponents(){
 	DEBUG("Creating Player Components.");
 	GenWalkingAnimation();
