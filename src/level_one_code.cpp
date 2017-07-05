@@ -28,7 +28,7 @@ void LevelOneCode::GetParents(){
 
 
 void LevelOneCode::UpdateCode(){
-	//DEBUG("Position: " << game_object->m_current_position.first );
+	DEBUG("Position: " << game_object->m_current_position.first );
 	//DEBUG("Collected parts: " << m_player->m_collected_parts);
 	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -20198){
 		game_object->m_current_position.first -= 4.0f;

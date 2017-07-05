@@ -35,9 +35,12 @@ void LevelOne::CreateGameObjects(){
 	m_level_background_3 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_three.png", 1, std::make_pair(16379, 0));
 	m_level_one->AddComponent(*m_level_background_3);
 
+	m_audio_controller = new engine::AudioController();
+	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/banjo.ogg", true, true);
+	m_audio_controller->AddAudio("tema_level_one", *m_level_theme);
+	m_level_one->AddComponent(*m_audio_controller);
+
 	this->AddGameObject(*m_level_one);
-
-
 
 
 
@@ -50,13 +53,16 @@ void LevelOne::CreateGameObjects(){
 	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_CAR);
 	this->AddGameObject(*m_obstacle_car_1);
 
+
 	DEBUG("Creating obstacle box 0_1.");
-	m_obstacle_box_0_1 = new Obstacle("obstacle_box_0_1", std::make_pair(1310, 310), ObstacleType::WESTERN_BOX);
+	m_obstacle_box_0_1 = new Obstacle("obstacle_box_0_1", std::make_pair(1309, 310), ObstacleType::WESTERN_BOX);
 	this->AddGameObject(*m_obstacle_box_0_1);
+
 
 	DEBUG("Creating obstacle aerial 1.");
 	m_obstacle_aerial_1 = new Obstacle("obstacle_aerial_1", std::make_pair(1350, 250), ObstacleType::WESTERN_RAISED_BOX);
 	this->AddGameObject(*m_obstacle_aerial_1);
+
 
 	DEBUG("Creating part 1.");
 	m_part_1 = new Obstacle("part_1", std::make_pair(1500, 80), ObstacleType::MACHINE_PART);
@@ -93,8 +99,13 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_obstacle_box_2);
 
 
+	DEBUG("Creating obstacle box 2_1.");
+	m_obstacle_box_2_1 = new Obstacle("obstacle_box_2_1", std::make_pair(2730, 300), ObstacleType::WESTERN_RAISED_BOX);
+	this->AddGameObject(*m_obstacle_box_2_1);
+
+
 	DEBUG("Creating obstacle aerial 4.");
-	m_obstacle_aerial_4 = new Obstacle("obstacle_aerial_4", std::make_pair(2710, 230), ObstacleType::WESTERN_BOX);
+	m_obstacle_aerial_4 = new Obstacle("obstacle_aerial_4", std::make_pair(2730, 240), ObstacleType::WESTERN_RAISED_BOX);
 	this->AddGameObject(*m_obstacle_aerial_4);
 
 
@@ -104,7 +115,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating obstacle car 2.");
-	m_obstacle_car_2 = new Obstacle("obstacle_car_2", std::make_pair(2970, 300), ObstacleType::WESTERN_CAR);
+	m_obstacle_car_2 = new Obstacle("obstacle_car_2", std::make_pair(2975, 300), ObstacleType::WESTERN_CAR);
 	this->AddGameObject(*m_obstacle_car_2);
 
 
@@ -203,12 +214,6 @@ void LevelOne::CreateGameObjects(){
 
 	AddLevelParents();
 
-	m_audio_controller = new engine::AudioController();
-
-	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/banjo.ogg", true, true);
-	m_audio_controller->AddAudio("tema_level_one", *m_level_theme);
-	m_level_one->AddComponent(*m_audio_controller);
-
 	m_level_code = new LevelOneCode(*m_level_one);
 	m_level_one->AddComponent(*m_level_code);
 
@@ -228,6 +233,7 @@ void LevelOne::AddLevelParents(){
 	m_level_one->m_parent_list.push_back(m_obstacle_box_1);
 	m_level_one->m_parent_list.push_back(m_obstacle_box_2);
 	m_level_one->m_parent_list.push_back(m_obstacle_aerial_4);
+	m_level_one->m_parent_list.push_back(m_obstacle_box_2_1);
 	m_level_one->m_parent_list.push_back(m_part_3);
 	m_level_one->m_parent_list.push_back(m_obstacle_car_2);
 	m_level_one->m_parent_list.push_back(m_part_4);

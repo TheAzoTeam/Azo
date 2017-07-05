@@ -55,6 +55,7 @@ namespace Azo {
 			Obstacle *m_obstacle_aerial_10;
 			Obstacle *m_part_10;
 			Obstacle *m_obstacle_box_0_1;
+			Obstacle *m_obstacle_box_2_1;
 			Obstacle *m_ground;
 
 		private:
