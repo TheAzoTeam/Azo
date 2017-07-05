@@ -13,6 +13,7 @@ namespace engine {
 			SDL_Rect canvasQuad;
 		public:
 			ImageComponent();
+			virtual ~ImageComponent();
 			ImageComponent(GameObject &game_object, std::string image_path, double zoom_factor);
 			ImageComponent(
 				GameObject &game_object,

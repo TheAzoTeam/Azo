@@ -5,6 +5,8 @@ using namespace engine;
 
 ImageComponent::ImageComponent(){}
 
+ImageComponent::~ImageComponent(){}
+
 ImageComponent::ImageComponent(GameObject &game_object, std::string image_path, double zoom_factor){
 	this->game_object = &game_object;
 	this->image_path = image_path;

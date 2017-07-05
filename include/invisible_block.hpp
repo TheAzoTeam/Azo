@@ -12,7 +12,7 @@ namespace Azo {
 			std::pair<double, double> m_position_relative_to_parent;
 		public:
 			InvisibleBlock();
-			//TODO(Roger): Remove this name attribute.
+			virtual ~InvisibleBlock();
 			InvisibleBlock(std::pair<double, double> position_relative_to_parent,
 				       std::pair<double, double> size);
 			inline std::string GetClassName(){

@@ -13,6 +13,8 @@ namespace Azo {
 			engine::AudioController *m_audio_controller;
 		public:
 			MachinePartCode(Obstacle *machine_part);
+			virtual ~MachinePartCode();
+			void Shutdown();
 		private:
 			void UpdateCode();
 			void FindAudioController();

@@ -2,6 +2,8 @@
 
 using namespace engine;
 
+AudioController::~AudioController(){}
+
 void AudioController::Init(){
 	for(auto audio_row : audio_map){
 		auto audio = audio_row.second;

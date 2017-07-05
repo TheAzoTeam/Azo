@@ -7,6 +7,8 @@ using namespace engine;
 
 AudioComponent::AudioComponent(){}
 
+AudioComponent::~AudioComponent(){}
+
 AudioComponent::AudioComponent(GameObject & game_object, std::string path, bool is_music, bool play_on_start){
 	this->game_object = &game_object;
 	this->audio_path = path;

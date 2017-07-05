@@ -8,6 +8,13 @@ MachinePartCode::MachinePartCode(Obstacle *machine_part){
 	FindAudioController();
 }
 
+MachinePartCode::~MachinePartCode(){}
+
+void MachinePartCode::Shutdown(){
+	if(m_audio_controller != NULL){
+		m_audio_controller = NULL;
+	}
+}
 
 void MachinePartCode::FindAudioController(){
 	m_audio_controller = (m_machine_part->GetAudioController(typeid(engine::AudioController)));

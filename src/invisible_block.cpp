@@ -4,6 +4,8 @@ using namespace Azo;
 
 InvisibleBlock::InvisibleBlock(){}
 
+InvisibleBlock::~InvisibleBlock(){}
+
 InvisibleBlock::InvisibleBlock(std::pair<double, double> position_relative_to_parent,
 			       std::pair<double, double> size){
 	DEBUG("Creating Blocks");

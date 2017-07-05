@@ -4,6 +4,53 @@ using namespace Azo;
 
 Obstacle::Obstacle(){}
 
+Obstacle::~Obstacle(){}
+
+void Obstacle::Shutdown(){
+	for(auto each_block : m_block_list){
+		if(each_block != NULL){
+			delete(each_block);
+			each_block = NULL;
+		}
+	}
+
+	if(m_turning_animation_sprites.size() > 0){
+		for(auto each_animation : m_turning_animation_sprites){
+			if(each_animation != NULL){
+				delete(each_animation);
+				each_animation = NULL;
+			}
+		}
+	}
+
+	if(m_obstacle_image != NULL){
+		delete(m_obstacle_image);
+		m_obstacle_image = NULL;
+	}
+
+	if(m_audio_controller != NULL){
+		delete(m_audio_controller);
+		m_audio_controller = NULL;
+	}
+
+	if(m_turning != NULL){
+		delete(m_turning);
+		m_turning = NULL;
+	}
+
+	if(m_collected != NULL){
+		delete(m_collected);
+		m_collected = NULL;
+	}
+
+	if(m_machine_part_code != NULL){
+		m_machine_part_code->Shutdown();
+		delete(m_machine_part_code);
+		m_machine_part_code = NULL;
+	}
+}
+
+
 Obstacle::Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type){
 	m_name = name;
 	m_position_relative_to_parent = position_relative_to_parent;
