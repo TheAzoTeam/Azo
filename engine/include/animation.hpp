@@ -40,7 +40,7 @@ namespace engine {
 				int start_frame,
 				int end_frame,
 				bool loop,
-				int zoom_factor);
+				double zoom_factor);
 			void Draw();
 			inline std::string GetClassName(){
 				return "Animation";

@@ -7,7 +7,7 @@ Animation::Animation(){}
 
 Animation::Animation(GameObject & game_object, std::string image_path,
 		     float animation_time, std::vector<Sprite *> sprite_list,
-		     int start_frame, int end_frame, bool loop, int zoom_factor){
+		     int start_frame, int end_frame, bool loop, double zoom_factor){
 
 	ASSERT(image_path != "", "Animation::CreateAnimation, image_path is empty.");
 	ASSERT(animation_time > 0, "Animation time can't be zero or less.");
@@ -71,8 +71,8 @@ void Animation::UpdateQuad(){
 	canvasQuad = {
 		(int)game_object->m_current_position.first,
 		(int)game_object->m_current_position.second,
-		m_sprite_list[m_current_sprite]->sprite_width * zoom_factor,
-		m_sprite_list[m_current_sprite]->sprite_height * zoom_factor
+		(int)(m_sprite_list[m_current_sprite]->sprite_width * zoom_factor),
+		(int)(m_sprite_list[m_current_sprite]->sprite_height * zoom_factor)
 	};
 }
 

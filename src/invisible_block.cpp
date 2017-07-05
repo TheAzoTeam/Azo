@@ -4,12 +4,10 @@ using namespace Azo;
 
 InvisibleBlock::InvisibleBlock(){}
 
-InvisibleBlock::InvisibleBlock(std::string name,
-			       std::pair<double, double> position_relative_to_parent,
+InvisibleBlock::InvisibleBlock(std::pair<double, double> position_relative_to_parent,
 			       std::pair<double, double> size){
 	DEBUG("Creating Blocks");
 
-	this->m_name = name;
 	m_position_relative_to_parent = position_relative_to_parent;
 	m_size = size;
 

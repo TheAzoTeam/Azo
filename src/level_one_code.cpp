@@ -174,7 +174,8 @@ bool LevelOneCode::HasGround(double *ground_y){
 
 					*ground_y = block_top;
 
-					if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_ROCK){
+					if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_ROCK ||
+					   each_obstacle->m_obstacle_type == ObstacleType::WESTERN_SPIKE){
 						m_player->m_state = PlayerState::DIE;
 					}
 
@@ -208,6 +209,8 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 			double block_top = block_top_right.second + 16;
 			double block_bottom = block_bottom_left.second - 16;
 
+
+
 			if(player_left < block_left &&
 			   player_left < block_right &&
 			   player_top <= block_bottom &&
@@ -234,14 +237,14 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 				double block_bottom = block_bottom_left.second - 16;
 
 				// DEBUG("Obstacle: " << each_obstacle->m_name);
-				// DEBUG("Player left " << player_left);
-				// DEBUG("Player right " << player_right);
-				// DEBUG("Player top " << player_top);
-				// DEBUG("Player bottom " << player_bottom)
-				// DEBUG("Block left " << block_left);
-				// DEBUG("Block right " << block_right);
-				// DEBUG("Block top " << block_top);
-				// DEBUG("Block bottom " << block_bottom);
+				// DEBUG("Player left: " << player_left);
+				// DEBUG("Player right: " << player_right);
+				// DEBUG("Player top: " << player_top);
+				// DEBUG("Player bottom: " << player_bottom);
+				// DEBUG("Block left: " << block_left);
+				// DEBUG("Block right: " << block_right);
+				// DEBUG("Block top: " << block_top);
+				// DEBUG("Block bottom: " << block_bottom);
 
 				if(player_left < block_left &&
 				   player_left < block_right &&

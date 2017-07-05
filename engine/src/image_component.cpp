@@ -5,7 +5,7 @@ using namespace engine;
 
 ImageComponent::ImageComponent(){}
 
-ImageComponent::ImageComponent(GameObject &game_object, std::string image_path, int zoom_factor){
+ImageComponent::ImageComponent(GameObject &game_object, std::string image_path, double zoom_factor){
 	this->game_object = &game_object;
 	this->image_path = image_path;
 	this->zoom_factor = zoom_factor;
@@ -13,7 +13,7 @@ ImageComponent::ImageComponent(GameObject &game_object, std::string image_path, 
 
 ImageComponent::ImageComponent(GameObject &game_object,
 			       std::string image_path,
-			       int zoom_factor,
+			       double zoom_factor,
 			       std::pair<double, double> position_relative_to_object){
 	this->game_object = &game_object;
 	this->image_path = image_path;
