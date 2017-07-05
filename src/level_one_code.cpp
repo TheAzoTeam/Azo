@@ -17,11 +17,7 @@ void LevelOneCode::GetParents(){
 		if(parent->GetClassName() == "Player"){
 			m_player = dynamic_cast<Player *>(parent);
 		}else if(parent->GetClassName() == "Obstacle"){
-			if(parent->m_name != "ground"){
-				m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
-			}else{
-				m_ground = dynamic_cast<Obstacle *>(parent);
-			}
+			m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
 		}
 	}
 }
@@ -71,14 +67,6 @@ void LevelOneCode::UpdateObstaclePosition(){
 			// DEBUG("Block center in Y: " << block->m_center.second);
 
 		}
-	}
-
-	for(auto block : m_ground->m_block_list){
-		block->m_current_position.first = game_object->m_current_position.first + block->m_position_relative_to_parent.first;
-		block->m_current_position.second = game_object->m_current_position.second + block->m_position_relative_to_parent.second;
-
-		block->m_center.first = block->m_current_position.first + block->m_half_size.first;
-		block->m_center.second = block->m_current_position.second + block->m_half_size.second;
 	}
 }
 
@@ -143,16 +131,6 @@ bool LevelOneCode::HasGround(double *ground_y){
 	double player_left = player_bottom_left.first;
 	double player_right = player_top_right.first;
 
-	// First, we check the collision with the level's ground. If it's true, then we return
-	// true imediatly. The ground's top is calculated at the CheckCollisionWithLevelGround method.
-	bool collision_with_level_ground = CheckCollisionWithLevelGround(player_top,
-									 player_bottom,
-									 player_left, player_right, ground_y);
-
-	if(collision_with_level_ground){
-		return true;
-	}
-
 	for(auto each_obstacle : m_obstacle_list){
 
 		// If the obstacle is a machine part, we check the collision without invisible blocks (since it has animation).
@@ -168,15 +146,10 @@ bool LevelOneCode::HasGround(double *ground_y){
 			double block_left = block_bottom_left.first;
 			double block_top = block_top_right.second;
 
-			if(player_left <= block_right && player_right >= block_left){
-
-				if(player_bottom < block_top){
-					return false;
-				}
-
-				if(player_top > block_top){
-					return false;
-				}
+			if(player_left <= block_right &&
+			   player_right >= block_left &&
+			   player_bottom > block_top &&
+			   player_top < block_top){
 
 				// Collided.
 				each_obstacle->m_machine_part_state = MachinePartState::COLLECTED;
@@ -194,15 +167,10 @@ bool LevelOneCode::HasGround(double *ground_y){
 				double block_left = block_bottom_left.first;
 				double block_top = block_top_right.second;
 
-				if(player_left <= block_right && player_right >= block_left){
-
-					if(player_bottom < block_top){
-						return false;
-					}
-
-					if(player_top > block_top){
-						return false;
-					}
+				if(player_left <= block_right &&
+				   player_right >= block_left &&
+				   player_bottom > block_top &&
+				   player_top < block_top){
 
 					*ground_y = block_top;
 
@@ -213,38 +181,6 @@ bool LevelOneCode::HasGround(double *ground_y){
 					return true;
 				}
 			}
-		}
-	}
-
-	return false;
-}
-
-bool LevelOneCode::CheckCollisionWithLevelGround(double player_top,
-						 double player_bottom,
-						 double player_left,
-						 double player_right, double *ground_y){
-
-	for(auto each_block : m_ground->m_block_list){
-		std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
-		std::pair<double, double> block_top_right = each_block->CalcTopRight();
-
-		double block_right = block_top_right.first;
-		double block_left = block_bottom_left.first;
-		double block_top = block_top_right.second;
-
-		if(player_left <= block_right && player_right >= block_left){
-
-			if(player_bottom < block_top){
-				return false;
-			}
-
-			if(player_top > block_top){
-				return false;
-			}
-
-			*ground_y = block_top;
-
-			return true;
 		}
 	}
 
@@ -272,19 +208,11 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 			double block_top = block_top_right.second + 16;
 			double block_bottom = block_bottom_left.second - 16;
 
-			if(player_left < block_left && player_left < block_right){
-
-				if(player_top > block_bottom){
-					return false;
-				}
-
-				if(player_bottom < block_top){
-					return false;
-				}
-
-				if(player_right < block_left - 1){
-					return false;
-				}
+			if(player_left < block_left &&
+			   player_left < block_right &&
+			   player_top <= block_bottom &&
+			   player_bottom >= block_top &&
+			   player_right >= block_left){
 
 				each_obstacle->m_machine_part_state = MachinePartState::COLLECTED;
 				m_player->m_collected_parts++;
@@ -305,23 +233,26 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 				double block_top = block_top_right.second + 16;
 				double block_bottom = block_bottom_left.second - 16;
 
-				if(player_left < block_left && player_left < block_right){
+				// DEBUG("Obstacle: " << each_obstacle->m_name);
+				// DEBUG("Player left " << player_left);
+				// DEBUG("Player right " << player_right);
+				// DEBUG("Player top " << player_top);
+				// DEBUG("Player bottom " << player_bottom)
+				// DEBUG("Block left " << block_left);
+				// DEBUG("Block right " << block_right);
+				// DEBUG("Block top " << block_top);
+				// DEBUG("Block bottom " << block_bottom);
 
-					if(player_top > block_bottom){
-						return false;
-					}
-
-					if(player_bottom < block_top){
-						return false;
-					}
-
-					if(player_right < block_left - 1){
-						return false;
-					}
+				if(player_left < block_left &&
+				   player_left < block_right &&
+				   player_top <= block_bottom &&
+				   player_bottom >= block_top &&
+				   player_right >= block_left){
 
 					*wall_x = block_left - 1.0f;
 					return true;
 				}
+
 			}
 		}
 	}
@@ -346,25 +277,17 @@ bool LevelOneCode::HasWallOnLeft(double *wall_x){
 			std::pair<double, double> block_top_right = each_block->CalcTopRight();
 
 			double block_right = block_top_right.first;
-
-			if(player_left <= block_right && player_right > block_right){
-
-				double block_top = block_top_right.second;
-				double block_bottom = block_bottom_left.second;
+			double block_top = block_top_right.second;
+			double block_bottom = block_bottom_left.second;
 
 
-				if(player_top > block_bottom){
-					return false;
-				}
+			if(player_left <= block_right &&
+			   player_right > block_right &&
+			   player_top <= block_bottom &&
+			   player_bottom >= block_top){
 
-				if(player_bottom < block_top){
-					return false;
-				}
-
-				if(player_right > block_right + 1){
-					*wall_x = block_right + 1.0f;
-					return true;
-				}
+				*wall_x = block_right + 1.0f;
+				return true;
 			}
 
 		}
@@ -391,24 +314,17 @@ bool LevelOneCode::HasCeiling(double *ground_y){
 
 			double block_left = block_bottom_left.first;
 			double block_right = block_top_right.first;
+			double block_top = block_top_right.second;
+			double block_bottom = block_bottom_left.second;
 
-			if(player_left >= block_left && player_right <= block_right){
+			if(player_left >= block_left &&
+			   player_right <= block_right &&
+			   player_top <= block_bottom &&
+			   player_bottom >= block_top &&
+			   player_top >= block_top){
 
-				double block_top = block_top_right.second;
-				double block_bottom = block_bottom_left.second;
-
-				if(player_top > block_bottom){
-					return false;
-				}
-
-				if(player_bottom < block_top){
-					return false;
-				}
-
-				if(player_top < block_bottom && player_top > block_top){
-					*ground_y = block_bottom;
-					return true;
-				}
+				*ground_y = block_bottom;
+				return true;
 			}
 		}
 	}

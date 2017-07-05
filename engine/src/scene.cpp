@@ -25,7 +25,6 @@ void Scene::Shutdown(){
 
 void Scene::Draw(){
 	for(auto each_key : m_key_list){
-		DEBUG("Key Order: " << each_key);
 		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
 			game_object_map[each_key]->Draw();
 		}
