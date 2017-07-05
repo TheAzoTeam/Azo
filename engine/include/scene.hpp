@@ -35,6 +35,7 @@ namespace engine {
 
 		protected:
 			std::map<std::string, engine::GameObject *> game_object_map;
+			std::list<std::string> m_key_list;
 			std::string scene_name;
 	};
 }

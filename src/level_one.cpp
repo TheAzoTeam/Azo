@@ -23,6 +23,24 @@ void LevelOne::Restart(){
 void LevelOne::CreateGameObjects(){
 	DEBUG("Creating Level One Game Objects.");
 
+	DEBUG("Creating level_one object.");
+	m_level_one = new engine::GameObject("level_one", std::make_pair(0, 0));
+
+	m_level_background_1 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_one.png", 1);
+	m_level_one->AddComponent(*m_level_background_1);
+
+	m_level_background_2 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_two.png", 1, std::make_pair(8188, 0));
+	m_level_one->AddComponent(*m_level_background_2);
+
+	m_level_background_3 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_three.png", 1, std::make_pair(16379, 0));
+	m_level_one->AddComponent(*m_level_background_3);
+
+	this->AddGameObject(*m_level_one);
+
+
+
+
+
 	DEBUG("Creating ground.");
 	m_ground = new Obstacle("ground", std::make_pair(0, 404.5), ObstacleType::GROUND);
 	this->AddGameObject(*m_ground);
@@ -32,16 +50,13 @@ void LevelOne::CreateGameObjects(){
 	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_CAR);
 	this->AddGameObject(*m_obstacle_car_1);
 
-
-	DEBUG("Creating obstacle aerial 1.");
-	m_obstacle_aerial_1 = new Obstacle("obstacle_aerial_1", std::make_pair(1350, 250), ObstacleType::WESTERN_RAISED_BOX);
-	this->AddGameObject(*m_obstacle_aerial_1);
-
-
 	DEBUG("Creating obstacle box 0_1.");
 	m_obstacle_box_0_1 = new Obstacle("obstacle_box_0_1", std::make_pair(1310, 310), ObstacleType::WESTERN_BOX);
 	this->AddGameObject(*m_obstacle_box_0_1);
 
+	DEBUG("Creating obstacle aerial 1.");
+	m_obstacle_aerial_1 = new Obstacle("obstacle_aerial_1", std::make_pair(1350, 250), ObstacleType::WESTERN_RAISED_BOX);
+	this->AddGameObject(*m_obstacle_aerial_1);
 
 	DEBUG("Creating part 1.");
 	m_part_1 = new Obstacle("part_1", std::make_pair(1500, 80), ObstacleType::MACHINE_PART);
@@ -182,35 +197,11 @@ void LevelOne::CreateGameObjects(){
 	m_part_10 = new Obstacle("part_10", std::make_pair(6340, 200), ObstacleType::MACHINE_PART);
 	this->AddGameObject(*m_part_10);
 
-
-
-
-
-
 	DEBUG("Creating Player.");
 	m_player = new Player("player", std::make_pair(165, 300));
 	this->AddGameObject(*m_player);
 
-
-	DEBUG("Creating level_one object.");
-	m_level_one = new engine::GameObject("level_one", std::make_pair(0, 0));
 	AddLevelParents();
-	CreateLevelComponents();
-
-	this->AddGameObject(*m_level_one);
-}
-
-void LevelOne::CreateLevelComponents(){
-	DEBUG("Creating Level Components.");
-
-	m_level_background_1 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_one.png", 1);
-	m_level_one->AddComponent(*m_level_background_1);
-
-	m_level_background_2 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_two.png", 1, std::make_pair(8188, 0));
-	m_level_one->AddComponent(*m_level_background_2);
-
-	m_level_background_3 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_three.png", 1, std::make_pair(16379, 0));
-	m_level_one->AddComponent(*m_level_background_3);
 
 	m_audio_controller = new engine::AudioController();
 
@@ -220,6 +211,7 @@ void LevelOne::CreateLevelComponents(){
 
 	m_level_code = new LevelOneCode(*m_level_one);
 	m_level_one->AddComponent(*m_level_code);
+
 }
 
 void LevelOne::AddLevelParents(){

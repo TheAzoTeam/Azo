@@ -61,9 +61,6 @@ namespace Azo {
 			//Don't forget to add the new objects using this function.
 			void CreateGameObjects();
 
-			// If we're going to add something to the level game object, do it in this function.
-			void CreateLevelComponents();
-
 			// After adding things that collide (obstacles, for exemple), add they as paren'ts here.
 			void AddLevelParents();
 		public:
