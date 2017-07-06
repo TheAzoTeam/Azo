@@ -164,7 +164,7 @@ void Obstacle::CreateBlocks(){
 		block_position.first += 48;
 		block_position.second += 32;
 
-		m_block_list.push_back(new InvisibleBlock("block_7", block_position, std::make_pair(23, 105)));
+		m_block_list.push_back(new InvisibleBlock("block_7", block_position, std::make_pair(23, 106)));
 	}
 
 }

@@ -49,11 +49,6 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_ground);
 
 
-	DEBUG("Creating post 1");
-	m_post_1 = new Obstacle("obstacle_post_1", std::make_pair(850, 185), ObstacleType::WESTERN_POST);
-	this->AddGameObject(*m_post_1);
-
-
 	DEBUG("Creating obstacle car 1.");
 	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_CAR);
 	this->AddGameObject(*m_obstacle_car_1);
@@ -69,7 +64,7 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_obstacle_box_0_1);
 
 
-	DEBUG("Creating obstacle aerial 1.");
+	DEBUG("Creating obstacle aerial 1 - box.");
 	m_obstacle_aerial_1 = new Obstacle("obstacle_aerial_1", std::make_pair(1350, 250), ObstacleType::WESTERN_RAISED_BOX);
 	this->AddGameObject(*m_obstacle_aerial_1);
 
@@ -79,8 +74,8 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_1);
 
 
-	DEBUG("Creating obstacle aerial 2.");
-	m_obstacle_aerial_2 = new Obstacle("obstacle_aerial_2", std::make_pair(1755, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 2 - post.");
+	m_obstacle_aerial_2 = new Obstacle("obstacle_aerial_2", std::make_pair(1755, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_2);
 
 
@@ -89,8 +84,8 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_1_1);
 
 
-	DEBUG("Creating obstacle aerial 3.");
-	m_obstacle_aerial_3 = new Obstacle("obstacle_aerial_3", std::make_pair(2030, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 3 - post.");
+	m_obstacle_aerial_3 = new Obstacle("obstacle_aerial_3", std::make_pair(2030, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_3);
 
 
@@ -134,8 +129,8 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_4);
 
 
-	DEBUG("Creating obstacle aerial 5.");
-	m_obstacle_aerial_5 = new Obstacle("obstacle_aerial_5", std::make_pair(3510, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 5 - post.");
+	m_obstacle_aerial_5 = new Obstacle("obstacle_aerial_5", std::make_pair(3510, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_5);
 
 
@@ -144,8 +139,8 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_4_1);
 
 
-	DEBUG("Creating obstacle aerial 6.");
-	m_obstacle_aerial_6 = new Obstacle("obstacle_aerial_6", std::make_pair(3675, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 6 - post.");
+	m_obstacle_aerial_6 = new Obstacle("obstacle_aerial_6", std::make_pair(3675, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_6);
 
 
@@ -169,8 +164,8 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_6);
 
 
-	DEBUG("Creating obstacle aerial 7.");
-	m_obstacle_aerial_7 = new Obstacle("obstacle_aerial_7", std::make_pair(4660, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 7 - post.");
+	m_obstacle_aerial_7 = new Obstacle("obstacle_aerial_7", std::make_pair(4660, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_7);
 
 
@@ -184,8 +179,8 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_7);
 
 
-	DEBUG("Creating obstacle aerial 8.");
-	m_obstacle_aerial_8 = new Obstacle("obstacle_aerial_8", std::make_pair(5215, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 8 - post.");
+	m_obstacle_aerial_8 = new Obstacle("obstacle_aerial_8", std::make_pair(5215, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_8);
 
 
@@ -194,8 +189,8 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_7_1);
 
 
-	DEBUG("Creating obstacle aerial 9.");
-	m_obstacle_aerial_9 = new Obstacle("obstacle_aerial_9", std::make_pair(5380, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 9 - post.");
+	m_obstacle_aerial_9 = new Obstacle("obstacle_aerial_9", std::make_pair(5380, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_9);
 
 
@@ -209,8 +204,8 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_9);
 
 
-	DEBUG("Creating obstacle aerial 10.");
-	m_obstacle_aerial_10 = new Obstacle("obstacle_aerial_10", std::make_pair(6150, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 10 - post.");
+	m_obstacle_aerial_10 = new Obstacle("obstacle_aerial_10", std::make_pair(6150, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_10);
 
 
@@ -225,22 +220,22 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating part 11.");
-	m_part_11 = new Obstacle("part_11", std::make_pair(6880, 80), ObstacleType::MACHINE_PART);
+	m_part_11 = new Obstacle("part_11", std::make_pair(6890, 80), ObstacleType::MACHINE_PART);
 	this->AddGameObject(*m_part_11);
 
 
-	DEBUG("Creating obstacle aerial 11.");
-	m_obstacle_aerial_11 = new Obstacle("obstacle_aerial_11", std::make_pair(7000, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 11 - post.");
+	m_obstacle_aerial_11 = new Obstacle("obstacle_aerial_11", std::make_pair(7005, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_11);
 
 
 	DEBUG("Creating part 12.");
-	m_part_12 = new Obstacle("part_12", std::make_pair(7145, 370), ObstacleType::MACHINE_PART);
+	m_part_12 = new Obstacle("part_12", std::make_pair(7160, 370), ObstacleType::MACHINE_PART);
 	this->AddGameObject(*m_part_12);
 
 
-	DEBUG("Creating obstacle aerial 12.");
-	m_obstacle_aerial_12 = new Obstacle("obstacle_aerial_12", std::make_pair(7165, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 12 - post.");
+	m_obstacle_aerial_12 = new Obstacle("obstacle_aerial_12", std::make_pair(7180, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_12);
 
 
@@ -264,8 +259,8 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_16);
 
 
-	DEBUG("Creating obstacle aerial 13.");
-	m_obstacle_aerial_13 = new Obstacle("obstacle_aerial_13", std::make_pair(8570, 245), ObstacleType::WESTERN_BOX);
+	DEBUG("Creating obstacle aerial 13 - post.");
+	m_obstacle_aerial_13 = new Obstacle("obstacle_aerial_13", std::make_pair(8570, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_13);
 
 
@@ -314,6 +309,32 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_obstacle_aerial_15);
 
 
+	DEBUG("Creating part 17.");
+	m_part_17 = new Obstacle("part_17", std::make_pair(9770, 350), ObstacleType::MACHINE_PART);
+	this->AddGameObject(*m_part_17);
+
+
+	DEBUG("Creating obstacle rock 3");
+	m_obstacle_rock_3 = new Obstacle("obstacle_rock_3", std::make_pair(10070, 340), ObstacleType::WESTERN_ROCK);
+	this->AddGameObject(*m_obstacle_rock_3);
+
+
+	DEBUG("Creating obstacle box 8.");
+	m_obstacle_box_8 = new Obstacle("obstacle_box_8", std::make_pair(10480, 310), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_box_8);
+
+
+	DEBUG("Creating part 18.");
+	m_part_18 = new Obstacle("part_18", std::make_pair(10560, 200), ObstacleType::MACHINE_PART);
+	this->AddGameObject(*m_part_18);
+
+
+	DEBUG("Creating obstacle aerial 16 - post.");
+	m_obstacle_aerial_16 = new Obstacle("obstacle_aerial_16", std::make_pair(10730, 185), ObstacleType::WESTERN_POST);
+	this->AddGameObject(*m_obstacle_aerial_16);
+
+
+
 
 
 
@@ -335,7 +356,6 @@ void LevelOne::CreateGameObjects(){
 void LevelOne::AddLevelParents(){
 	DEBUG("Adding level parents.");
 
-	m_level_one->m_parent_list.push_back(m_post_1);
 	m_level_one->m_parent_list.push_back(m_obstacle_car_1);
 	m_level_one->m_parent_list.push_back(m_obstacle_aerial_1);
 	m_level_one->m_parent_list.push_back(m_obstacle_box_0_1);
@@ -388,6 +408,11 @@ void LevelOne::AddLevelParents(){
 	m_level_one->m_parent_list.push_back(m_obstacle_aerial_14);
 	m_level_one->m_parent_list.push_back(m_obstacle_box_7);
 	m_level_one->m_parent_list.push_back(m_obstacle_aerial_15);
+	m_level_one->m_parent_list.push_back(m_part_17);
+	m_level_one->m_parent_list.push_back(m_obstacle_rock_3);
+	m_level_one->m_parent_list.push_back(m_obstacle_box_8);
+	m_level_one->m_parent_list.push_back(m_part_18);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_16);
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }
