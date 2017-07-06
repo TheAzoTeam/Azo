@@ -49,7 +49,7 @@ void AudioController::PlayAudio(std::string audio_name){
 		audio_to_be_played->second->Play(-1, -1);
 
 	}else{
-		// Nothing to do.
+		ERROR("This audio doesn't exist.");
 	}
 }
 
@@ -59,7 +59,7 @@ void AudioController::StopAudio(std::string audio_name){
 	if(audio_to_be_played != audio_map.end()){
 		audio_to_be_played->second->Stop(-1);
 	}else{
-		ERROR("Animation couldn't be found!");
+		ERROR("Audio couldn't be found!");
 	}
 }
 

@@ -38,6 +38,8 @@ AudioController* GameObject::GetAudioController(std::type_index component_type){
 	auto component_to_be_found = m_component_map.find(component_type);
 
 	if(component_to_be_found != m_component_map.end()){
+		DEBUG("AudioController found. Class name: " << component_to_be_found->second->GetClassName());
+
 		return dynamic_cast <AudioController * > (component_to_be_found->second);
 	}else{
 		ERROR("Audio Controller couldn't be found!");

@@ -103,6 +103,11 @@ void Player::CreateComponents(){
 	DEBUG("Adding animation controller to Player.");
 	this->AddComponent(*m_anim_controller);
 
+	m_lost = new engine::AudioComponent(*this, "audios/derrota.ogg", false, false);
+	m_audio_controller = new engine::AudioController();
+	m_audio_controller->AddAudio("lost", *m_lost);
+	this->AddComponent(*m_audio_controller);
+
 	DEBUG("Creating Player Code.");
 	m_player_code = new PlayerCode(this);
 	this->AddComponent(*m_player_code);

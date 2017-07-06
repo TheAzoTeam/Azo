@@ -13,10 +13,16 @@ PlayerCode::PlayerCode(Player *player){
 	m_player->m_state = PlayerState::WALK;
 	m_player->m_on_ground = true;
 	FindAnimationController();
+	FindAudioController();
 }
+
 
 void PlayerCode::FindAnimationController(){
 	m_animation_controller = (m_player->GetAnimationController(typeid(engine::AnimationController)));
+}
+
+void PlayerCode::FindAudioController(){
+	m_audio_controller = (m_player->GetAudioController(typeid(engine::AudioController)));
 }
 
 void PlayerCode::Shutdown(){
@@ -104,6 +110,10 @@ void PlayerCode::UpdateCode(){
 			break;
 		case PlayerState::DIE:
 			m_animation_controller->StartAnimation("dying");
+
+			m_audio_controller->PlayAudio("lost");
+
+
 			break;
 	}
 }
