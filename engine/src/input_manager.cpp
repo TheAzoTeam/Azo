@@ -26,26 +26,12 @@ bool InputManager::KeyDown(Button button){
 }
 
 bool InputManager::KeyDownOnce(Button button){
-	for(auto each_event : m_event_list){
-		switch(each_event.type){
-
-			//  Case start.
-			case SDL_KEYDOWN :
-
-				if(each_event.key.keysym.scancode == (SDL_Scancode)button && m_last_event_type != SDL_KEYDOWN){
-					m_last_event_type = each_event.type;
-					return true;
-				}
-
-				break;
-			// Case end
-
-			default:
-				m_last_event_type = each_event.type;
-				break;
+	if(keyboard_states[button]){
+		SDL_PumpEvents();
+		if(!keyboard_states[button]){
+			return true;
 		}
 	}
-
 	return false;
 }
 
