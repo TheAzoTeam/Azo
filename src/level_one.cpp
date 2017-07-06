@@ -48,9 +48,11 @@ void LevelOne::CreateGameObjects(){
 	m_ground = new Obstacle("ground", std::make_pair(0, 404.5), ObstacleType::GROUND);
 	this->AddGameObject(*m_ground);
 
+
 	DEBUG("Creating post 1");
-	m_post_1 = new Obstacle("obstacle_post_1", std::make_pair(600, 300), ObstacleType::WESTERN_POST);
+	m_post_1 = new Obstacle("obstacle_post_1", std::make_pair(850, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_post_1);
+
 
 	DEBUG("Creating obstacle car 1.");
 	m_obstacle_car_1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_CAR);

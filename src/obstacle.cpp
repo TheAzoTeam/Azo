@@ -105,8 +105,6 @@ void Obstacle::CreateComponents(){
 		m_machine_part_code = new MachinePartCode(this);
 		this->AddComponent(*m_machine_part_code);
 
-	}else if(m_obstacle_type == ObstacleType::GROUND){
-		CreateBlocks();
 	}else if(m_obstacle_type == ObstacleType::WESTERN_SPIKE){
 		DEBUG("Obstacle is a WESTERN SPIKE");
 
@@ -114,8 +112,12 @@ void Obstacle::CreateComponents(){
 		this->AddComponent(*m_obstacle_image);
 		CreateBlocks();
 	}else if(m_obstacle_type == ObstacleType::WESTERN_POST){
-		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer.png", 1);
+		DEBUG("Obstacle is a WESTERN POST");
+
+		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
 		this->AddComponent(*m_obstacle_image);
+		CreateBlocks();
+	}else if(m_obstacle_type == ObstacleType::GROUND){
 		CreateBlocks();
 	}
 }
@@ -160,10 +162,9 @@ void Obstacle::CreateBlocks(){
 		m_block_list.push_back(new InvisibleBlock("block_6", block_position, std::make_pair(210, 92)));
 	}else if(m_obstacle_type == ObstacleType::WESTERN_POST){
 		block_position.first += 48;
-		block_position.second += 87;
+		block_position.second += 32;
 
-		m_block_list.push_back(new InvisibleBlock("block_7", block_position, std::make_pair(23, 31)));
-
+		m_block_list.push_back(new InvisibleBlock("block_7", block_position, std::make_pair(23, 105)));
 	}
 
 }
