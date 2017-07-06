@@ -16,6 +16,7 @@ namespace Azo {
 		WESTERN_ROCK,
 		WESTERN_SPIKE,
 		MACHINE_PART,
+		WESTERN_POST
 	};
 
 	enum class MachinePartState {

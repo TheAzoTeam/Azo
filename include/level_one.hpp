@@ -24,6 +24,7 @@ namespace Azo {
 			Player *m_player;
 
 			// Add obstacles here
+			Obstacle *m_post_1;
 			Obstacle *m_obstacle_car_1;
 			Obstacle *m_spike_1;
 			Obstacle *m_obstacle_aerial_1;

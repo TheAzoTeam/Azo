@@ -177,6 +177,15 @@ bool LevelOneCode::HasGround(double *ground_y){
 				double block_left = block_bottom_left.first;
 				double block_top = block_top_right.second;
 
+				// DEBUG("Obstacle: " << each_obstacle->m_name);
+				// DEBUG("Player left: " << player_left);
+				// DEBUG("Player right: " << player_right);
+				// DEBUG("Player top: " << player_top);
+				// DEBUG("Player bottom: " << player_bottom);
+				// DEBUG("Block left: " << block_left);
+				// DEBUG("Block right: " << block_right);
+				// DEBUG("Block top: " << block_top);
+
 				if(player_left <= block_right &&
 				   player_right >= block_left &&
 				   player_bottom > block_top &&
@@ -185,7 +194,8 @@ bool LevelOneCode::HasGround(double *ground_y){
 					*ground_y = block_top;
 
 					if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_ROCK ||
-					   each_obstacle->m_obstacle_type == ObstacleType::WESTERN_SPIKE){
+					   each_obstacle->m_obstacle_type == ObstacleType::WESTERN_SPIKE ||
+					   each_obstacle->m_obstacle_type == ObstacleType::WESTERN_POST){
 						m_player->m_state = PlayerState::DIE;
 					}
 
@@ -247,6 +257,12 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 				double block_bottom = block_bottom_left.second - 16;
 
 				// DEBUG("Obstacle: " << each_obstacle->m_name);
+				// DEBUG("Game object position x: " << game_object->m_current_position.first);
+				// DEBUG("Game object position y: " << game_object->m_current_position.second);
+				//
+				// DEBUG("Obstacle position x: " << each_obstacle->m_current_position.first);
+				// DEBUG("Obstacle position y: " << each_obstacle->m_current_position.second);
+				//
 				// DEBUG("Player left: " << player_left);
 				// DEBUG("Player right: " << player_right);
 				// DEBUG("Player top: " << player_top);
@@ -261,6 +277,10 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 				   player_top <= block_bottom &&
 				   player_bottom >= block_top &&
 				   player_right >= block_left){
+
+					if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_POST){
+						m_player->m_state = PlayerState::DIE;
+					}
 
 					*wall_x = block_left - 1.0f;
 					return true;
@@ -335,6 +355,10 @@ bool LevelOneCode::HasCeiling(double *ground_y){
 			   player_top <= block_bottom &&
 			   player_bottom >= block_top &&
 			   player_top >= block_top){
+
+				if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_POST){
+					m_player->m_state = PlayerState::DIE;
+				}
 
 				*ground_y = block_bottom;
 				return true;
