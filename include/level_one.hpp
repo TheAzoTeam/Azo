@@ -94,6 +94,11 @@ namespace Azo {
 			Obstacle *m_obstacle_rock_8;
 			Obstacle *m_obstacle_car_4;
 			Obstacle *m_part_20;
+			Obstacle *m_obstacle_car_5;
+			Obstacle *m_spike_5;
+			Obstacle *m_obstacle_box_11;
+			Obstacle *m_obstacle_aerial_20;
+			Obstacle *m_part_21;
 			Obstacle *m_ground;
 
 		private:
