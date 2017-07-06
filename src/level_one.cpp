@@ -109,7 +109,7 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_obstacle_box_2_1);
 
 
-	DEBUG("Creating obstacle aerial 4.");
+	DEBUG("Creating obstacle aerial 4 - box.");
 	m_obstacle_aerial_4 = new Obstacle("obstacle_aerial_4", std::make_pair(2820, 240), ObstacleType::WESTERN_RAISED_BOX);
 	this->AddGameObject(*m_obstacle_aerial_4);
 
@@ -294,7 +294,7 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_obstacle_box_6);
 
 
-	DEBUG("Creating obstacle aerial 14.");
+	DEBUG("Creating obstacle aerial 14 - box.");
 	m_obstacle_aerial_14 = new Obstacle("obstacle_aerial_14", std::make_pair(9358, 240), ObstacleType::WESTERN_RAISED_BOX);
 	this->AddGameObject(*m_obstacle_aerial_14);
 
@@ -304,7 +304,7 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_obstacle_box_7);
 
 
-	DEBUG("Creating obstacle aerial 15.");
+	DEBUG("Creating obstacle aerial 15 - box.");
 	m_obstacle_aerial_15 = new Obstacle("obstacle_aerial_15", std::make_pair(9599, 240), ObstacleType::WESTERN_RAISED_BOX);
 	this->AddGameObject(*m_obstacle_aerial_15);
 
@@ -332,6 +332,72 @@ void LevelOne::CreateGameObjects(){
 	DEBUG("Creating obstacle aerial 16 - post.");
 	m_obstacle_aerial_16 = new Obstacle("obstacle_aerial_16", std::make_pair(10730, 185), ObstacleType::WESTERN_POST);
 	this->AddGameObject(*m_obstacle_aerial_16);
+
+
+	DEBUG("Creating obstacle rock 4");
+	m_obstacle_rock_4 = new Obstacle("obstacle_rock_4", std::make_pair(10930, 340), ObstacleType::WESTERN_ROCK);
+	this->AddGameObject(*m_obstacle_rock_4);
+
+
+	DEBUG("Creating obstacle rock 5");
+	m_obstacle_rock_5 = new Obstacle("obstacle_rock_5", std::make_pair(11180, 340), ObstacleType::WESTERN_ROCK);
+	this->AddGameObject(*m_obstacle_rock_5);
+
+
+	DEBUG("Creating obstacle aerial 17 - post.");
+	m_obstacle_aerial_17 = new Obstacle("obstacle_aerial_17", std::make_pair(11465, 185), ObstacleType::WESTERN_POST);
+	this->AddGameObject(*m_obstacle_aerial_17);
+
+
+	DEBUG("Creating obstacle box 9.");
+	m_obstacle_box_9 = new Obstacle("obstacle_box_9", std::make_pair(11850, 300), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_box_9);
+
+
+	DEBUG("Creating obstacle box 10.");
+	m_obstacle_box_10 = new Obstacle("obstacle_box_10", std::make_pair(11984, 300), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*m_obstacle_box_10);
+
+
+	DEBUG("Creating obstacle aerial 18 - box.");
+	m_obstacle_aerial_18 = new Obstacle("obstacle_aerial_18", std::make_pair(12025, 240), ObstacleType::WESTERN_RAISED_BOX);
+	this->AddGameObject(*m_obstacle_aerial_18);
+
+
+	DEBUG("Creating part 19.");
+	m_part_19 = new Obstacle("part_19", std::make_pair(12180, 340), ObstacleType::MACHINE_PART);
+	this->AddGameObject(*m_part_19);
+
+
+	DEBUG("Creating obstacle aerial 19 - post.");
+	m_obstacle_aerial_19 = new Obstacle("obstacle_aerial_19", std::make_pair(12370, 185), ObstacleType::WESTERN_POST);
+	this->AddGameObject(*m_obstacle_aerial_19);
+
+
+	DEBUG("Creating obstacle rock 6");
+	m_obstacle_rock_6 = new Obstacle("obstacle_rock_6", std::make_pair(12600, 340), ObstacleType::WESTERN_ROCK);
+	this->AddGameObject(*m_obstacle_rock_6);
+
+
+	DEBUG("Creating obstacle rock 7");
+	m_obstacle_rock_7 = new Obstacle("obstacle_rock_7", std::make_pair(12850, 340), ObstacleType::WESTERN_ROCK);
+	this->AddGameObject(*m_obstacle_rock_7);
+
+
+	DEBUG("Creating obstacle rock 8");
+	m_obstacle_rock_8 = new Obstacle("obstacle_rock_8", std::make_pair(13100, 340), ObstacleType::WESTERN_ROCK);
+	this->AddGameObject(*m_obstacle_rock_8);
+
+
+	DEBUG("Creating obstacle car 4.");
+	m_obstacle_car_4 = new Obstacle("obstacle_car_4", std::make_pair(13570, 300), ObstacleType::WESTERN_CAR);
+	this->AddGameObject(*m_obstacle_car_4);
+
+
+	DEBUG("Creating part 20.");
+	m_part_20 = new Obstacle("part_20", std::make_pair(13810, 80), ObstacleType::MACHINE_PART);
+	this->AddGameObject(*m_part_20);
+
 
 
 
@@ -413,6 +479,19 @@ void LevelOne::AddLevelParents(){
 	m_level_one->m_parent_list.push_back(m_obstacle_box_8);
 	m_level_one->m_parent_list.push_back(m_part_18);
 	m_level_one->m_parent_list.push_back(m_obstacle_aerial_16);
+	m_level_one->m_parent_list.push_back(m_obstacle_rock_4);
+	m_level_one->m_parent_list.push_back(m_obstacle_rock_5);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_17);
+	m_level_one->m_parent_list.push_back(m_obstacle_box_9);
+	m_level_one->m_parent_list.push_back(m_obstacle_box_10);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_18);
+	m_level_one->m_parent_list.push_back(m_part_19);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_19);
+	m_level_one->m_parent_list.push_back(m_obstacle_rock_6);
+	m_level_one->m_parent_list.push_back(m_obstacle_rock_7);
+	m_level_one->m_parent_list.push_back(m_obstacle_rock_8);
+	m_level_one->m_parent_list.push_back(m_obstacle_car_4);
+	m_level_one->m_parent_list.push_back(m_part_20);
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }

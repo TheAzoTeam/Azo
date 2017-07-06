@@ -81,6 +81,19 @@ namespace Azo {
 			Obstacle *m_obstacle_box_8;
 			Obstacle *m_part_18;
 			Obstacle *m_obstacle_aerial_16;
+			Obstacle *m_obstacle_rock_4;
+			Obstacle *m_obstacle_rock_5;
+			Obstacle *m_obstacle_aerial_17;
+			Obstacle *m_obstacle_box_9;
+			Obstacle *m_obstacle_box_10;
+			Obstacle *m_obstacle_aerial_18;
+			Obstacle *m_obstacle_aerial_19;
+			Obstacle *m_part_19;
+			Obstacle *m_obstacle_rock_6;
+			Obstacle *m_obstacle_rock_7;
+			Obstacle *m_obstacle_rock_8;
+			Obstacle *m_obstacle_car_4;
+			Obstacle *m_part_20;
 			Obstacle *m_ground;
 
 		private:
