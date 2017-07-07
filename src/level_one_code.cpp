@@ -34,7 +34,7 @@ void LevelOneCode::GetParents(){
 
 
 void LevelOneCode::UpdateCode(){
-	DEBUG("Position: " << game_object->m_current_position.first );
+	//DEBUG("Position: " << game_object->m_current_position.first );
 	//DEBUG("Collected parts: " << m_player->m_collected_parts);
 	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -17600){
 		game_object->m_current_position.first -= 4.0f;
@@ -60,8 +60,13 @@ void LevelOneCode::UpdateCode(){
 			// Nothing to do.
 		}
 
-		if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+		if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::SPACE)){
 			engine::Game::instance.ChangeScene("menu");
+		}
+
+		if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+			m_audio_controller->StopAllAudios();
+			engine::Game::instance.ChangeScene("level_one");
 		}
 	}
 }

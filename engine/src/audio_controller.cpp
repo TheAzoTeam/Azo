@@ -63,6 +63,12 @@ void AudioController::StopAudio(std::string audio_name){
 	}
 }
 
+void AudioController::StopAllAudios(){
+	Mix_HaltChannel(-1);
+	Mix_HaltMusic();
+}
+
+
 void AudioController::PauseAudio(std::string audio_name){
 	auto audio_to_be_played = audio_map.find(audio_name);
 

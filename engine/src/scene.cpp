@@ -20,8 +20,13 @@ void Scene::Shutdown(){
 		game_object_map[each_key]->Shutdown();
 	}
 
+	DeleteKeyList();
+}
+
+void Scene::DeleteKeyList(){
 	m_key_list.erase(m_key_list.begin(), m_key_list.end());
 }
+
 
 void Scene::Draw(){
 	for(auto each_key : m_key_list){

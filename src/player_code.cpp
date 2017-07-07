@@ -113,7 +113,6 @@ void PlayerCode::UpdateCode(){
 
 			m_audio_controller->PlayAudio("lost");
 
-
 			break;
 		case PlayerState::END:
 			if(m_player->m_collected_parts < m_player->M_TOTAL_PARTS){
