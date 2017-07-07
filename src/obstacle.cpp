@@ -137,9 +137,9 @@ void Obstacle::CreateBlocks(){
 	}else if(m_obstacle_type == ObstacleType::WESTERN_CAR){
 
 		block_position.first += 69;
-		block_position.second += 25;
+		block_position.second += 20;
 
-		m_block_list.push_back(new InvisibleBlock("block_2", block_position, std::make_pair(109, 139)));
+		m_block_list.push_back(new InvisibleBlock("block_2", block_position, std::make_pair(109, 143)));
 	}else if(m_obstacle_type == ObstacleType::WESTERN_BOX){
 		block_position.first += 58;
 		block_position.second += 6;

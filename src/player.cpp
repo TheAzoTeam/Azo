@@ -106,7 +106,7 @@ void Player::CreateComponents(){
 	m_anim_controller->AddAnimation("dying", *m_dying);
 
 	GenLosingAnimation();
-	m_losing = new engine::Animation(*this, "sprites/CowBoyDerrota.png", 8000.0f, m_losing_animation_sprites, 0, 6, false, 1);
+	m_losing = new engine::Animation(*this, "sprites/CowBoyDerrota.png", 10000.0f, m_losing_animation_sprites, 0, 6, false, 1);
 	m_losing->DisableComponent();
 	m_anim_controller->AddAnimation("losing", *m_losing);
 
