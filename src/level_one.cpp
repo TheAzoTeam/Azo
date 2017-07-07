@@ -444,11 +444,6 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_22);
 
 
-
-
-
-
-
 	DEBUG("Creating Player.");
 	m_player = new Player("player", std::make_pair(165, 300));
 	this->AddGameObject(*m_player);

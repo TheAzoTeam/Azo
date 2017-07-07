@@ -17,6 +17,7 @@ namespace Azo {
 		JUMP,
 		SLIDE,
 		DIE,
+		END,
 	};
 
 	class Player : public engine::GameObject {
@@ -32,12 +33,18 @@ namespace Azo {
 			engine::Animation *m_jumping;
 			engine::Animation *m_sliding;
 			engine::Animation *m_dying;
+			engine::Animation *m_losing;
+			engine::Animation *m_victory;
+
 
 			// Add new sprite vectors here.
 			std::vector<engine::Sprite *> m_walking_animation_sprites;
 			std::vector<engine::Sprite *> m_jumping_animation_sprites;
 			std::vector<engine::Sprite *> m_sliding_animation_sprites;
 			std::vector<engine::Sprite *> m_dying_animation_sprites;
+			std::vector<engine::Sprite *> m_losing_animation_sprites;
+			std::vector<engine::Sprite *> m_victory_animation_sprites;
+
 
 			PlayerCode *m_player_code;
 		public:
@@ -45,6 +52,7 @@ namespace Azo {
 			const double M_GRAVITY = 0.003f;
 			const double M_JUMPING_SPEED = -1.0f; //Vertical speed should be negative, so the character goes up on canvas.
 			const double M_WALKING_SPEED = 4.8f;
+			const int M_TOTAL_PARTS = 25;
 
 			PlayerState m_state;
 			std::pair<double, double> m_speed;
@@ -65,6 +73,9 @@ namespace Azo {
 			void GenJumpingAnimation();
 			void GenSlidingAnimation();
 			void GenDyingAnimation();
+			void GenLosingAnimation();
+			void GenVictoryAnimation();
+
 
 			inline std::string GetClassName(){
 				return "Player";

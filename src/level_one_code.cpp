@@ -36,9 +36,13 @@ void LevelOneCode::GetParents(){
 void LevelOneCode::UpdateCode(){
 	DEBUG("Position: " << game_object->m_current_position.first );
 	//DEBUG("Collected parts: " << m_player->m_collected_parts);
-	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -20198){
+	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -17600){
 		game_object->m_current_position.first -= 4.0f;
 		m_player->m_current_position.first = 299;
+	}else if(m_player->m_current_position.first >= 300.0f){
+		m_player->m_speed.first = 0;
+		m_audio_controller->StopAudio("tema_level_one");
+		m_player->m_state = PlayerState::END;
 	}
 
 	UpdateObstaclePosition();

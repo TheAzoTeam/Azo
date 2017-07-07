@@ -115,6 +115,18 @@ void PlayerCode::UpdateCode(){
 
 
 			break;
+		case PlayerState::END:
+			if(m_player->m_collected_parts < m_player->M_TOTAL_PARTS){
+				m_animation_controller->StartAnimation("losing");
+
+				if(m_animation_controller->GetAnimationStatus("losing") == engine::AnimationState::FINISHED){
+					m_audio_controller->PlayAudio("lost");
+				}
+			}else{
+				m_animation_controller->StartAnimation("victory");
+			}
+
+			break;
 	}
 }
 
