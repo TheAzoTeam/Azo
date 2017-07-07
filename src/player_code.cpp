@@ -36,7 +36,7 @@ void PlayerCode::UpdateCode(){
 	switch(m_player->m_state){
 		case PlayerState::WALK:
 
-			m_animation_controller->StartAnimation("walking");
+			m_animation_controller->StartUniqueAnimation("walking");
 
 			if(m_player->m_pushes_right_wall || m_player->m_pushes_left_wall){
 				//DEBUG("Update code method. Player Speed in X: " << m_player->m_speed.first);
@@ -68,7 +68,7 @@ void PlayerCode::UpdateCode(){
 				m_player->m_state = PlayerState::WALK;
 			}
 
-			m_animation_controller->StartAnimation("jumping");
+			m_animation_controller->StartUniqueAnimation("jumping");
 
 			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
 			//DEBUG("UpdateCode method. Player Speed in Y: " << m_player->m_speed.second);
@@ -86,7 +86,7 @@ void PlayerCode::UpdateCode(){
 			break;
 
 		case PlayerState::SLIDE:
-			m_animation_controller->StartAnimation("sliding");
+			m_animation_controller->StartUniqueAnimation("sliding");
 
 			if(m_animation_controller->GetAnimationStatus("sliding") == engine::AnimationState::FINISHED){
 				m_player->m_state = PlayerState::WALK;
@@ -109,20 +109,20 @@ void PlayerCode::UpdateCode(){
 
 			break;
 		case PlayerState::DIE:
-			m_animation_controller->StartAnimation("dying");
+			m_animation_controller->StartUniqueAnimation("dying");
 
 			m_audio_controller->PlayAudio("lost");
 
 			break;
 		case PlayerState::END:
 			if(m_player->m_collected_parts < m_player->M_TOTAL_PARTS){
-				m_animation_controller->StartAnimation("losing");
+				m_animation_controller->StartUniqueAnimation("losing");
 
 				if(m_animation_controller->GetAnimationStatus("losing") == engine::AnimationState::FINISHED){
 					m_audio_controller->PlayAudio("lost");
 				}
 			}else{
-				m_animation_controller->StartAnimation("victory");
+				m_animation_controller->StartUniqueAnimation("victory");
 				m_audio_controller->PlayAudio("victory");
 			}
 
