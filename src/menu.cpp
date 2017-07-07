@@ -89,7 +89,7 @@ void Menu::CreateMenuComponents(){
 						      1,
 						      std::make_pair(708, 40));
 
-	m_animation_controller->AddAnimation("sound_enable_button", *m_sound_enable_button);
+	m_animation_controller->AddAnimation("sound_enabled_button", *m_sound_enable_button);
 
 	m_sound_disabled_button = new engine::Animation(*m_menu,
 							"general_images/textos.png",

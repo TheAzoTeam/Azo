@@ -19,15 +19,29 @@ void MenuCode::FindAudioController(){
 
 void MenuCode::UpdateCode(){
 	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
-		m_audio_controller->StopAudio("menu_theme");
-		engine::Game::instance.ChangeScene("level_one");
-	}
 
-	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::SPACE)){
-		if(m_audio_controller->GetAudioState("menu_theme") == engine::AudioState::PLAYING){
-			m_audio_controller->PauseAudio("menu_theme");
-		}else{
-			m_audio_controller->PlayAudio("menu_theme");
+		switch(m_current_button){
+			case 1:
+				m_audio_controller->StopAudio("menu_theme");
+				engine::Game::instance.ChangeScene("level_one");
+				break;
+			case 2:
+				engine::Game::instance.game_state = engine::GameState::EXIT;
+				break;
+			case 3:
+
+				if(m_audio_controller->GetAudioState("menu_theme") == engine::AudioState::PLAYING){
+					m_audio_controller->PauseAudio("menu_theme");
+					m_animation_controller->StopAnimation("sound_enabled_button");
+					m_animation_controller->StartAnimation("sound_disabled_button");
+				}else{
+					m_audio_controller->PlayAudio("menu_theme");
+					m_animation_controller->StartAnimation("sound_enabled_button");
+					m_animation_controller->StopAnimation("sound_disabled_button");
+				}
+
+				break;
+
 		}
 	}
 

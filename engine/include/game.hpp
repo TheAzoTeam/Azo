@@ -24,11 +24,11 @@ namespace engine {
 	// Generic Game class. It's how the engine'll see all games that will try to use it.
 	class Game {
 		public:
-			static Game instance;           /* Global game instance that allow access to public attributes and methods in any part of the code.*/
-			SDL sdl_elements;               // Used to access SDL class to take care of sdl elements in game Initialize.
+			static Game instance;                           /* Global game instance that allow access to public attributes and methods in any part of the code.*/
+			SDL sdl_elements;                               // Used to access SDL class to take care of sdl elements in game Initialize.
 			InputManager input_manager;
-		private:
 			GameState game_state;                           // Define Game States to control Loops and other strutuctures.
+		private:
 			bool need_to_change_scene;                      // Used to define if there's a Change Scene to occur.
 			std::map<std::string, Scene *> scene_map;       // All Scenes of the Game.
 			engine::Scene *current_scene;                   // Current Scene.
