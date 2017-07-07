@@ -54,10 +54,21 @@ void LevelOneCode::UpdateCode(){
 		m_audio_controller->StopAudio("tema_level_one");
 		m_player->m_state = PlayerState::END;
 
-		if(m_player->m_collected_parts != m_player->M_TOTAL_PARTS && m_waiting_time >= 8000.0f){
+		if(m_player->m_collected_parts != m_player->M_TOTAL_PARTS && m_waiting_time >= 10000.0f){
 			m_losing_parts->m_object_state = engine::ObjectState::ENABLED;
+			ChangeOption();
+
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+				ChooseOption();
+			}
+
 		}else if(m_player->m_collected_parts == m_player->M_TOTAL_PARTS && m_waiting_time >= 5000.0f){
 			m_winning_screen->m_object_state = engine::ObjectState::ENABLED;
+			ChangeOption();
+
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+				ChooseOption();
+			}
 		}
 
 	}
@@ -71,6 +82,10 @@ void LevelOneCode::UpdateCode(){
 
 		if(m_waiting_time >= 2300.0f){
 			m_losing_death->m_object_state = engine::ObjectState::ENABLED;
+			ChangeOption();
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+				ChooseOption();
+			}
 		}
 
 		if(m_audio_controller->GetAudioState("tema_level_one") == engine::AudioState::PLAYING){
@@ -79,16 +94,46 @@ void LevelOneCode::UpdateCode(){
 			// Nothing to do.
 		}
 
-		if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::SPACE)){
-			engine::Game::instance.ChangeScene("menu");
-		}
-
-		if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
-			m_audio_controller->StopAllAudios();
-			engine::Game::instance.ChangeScene("level_one");
-		}
 	}
 }
+
+void LevelOneCode::ChangeOption(){
+	switch(m_current_option){
+		case 1:
+			m_arrow->m_object_state = engine::ObjectState::ENABLED;
+
+			m_arrow->m_current_position = std::make_pair(70, 260);
+
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
+				m_current_option = 2;
+			}
+
+			break;
+		case 2:
+
+			m_arrow->m_current_position = std::make_pair(515, 260);
+
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
+				m_current_option = 1;
+			}
+
+			break;
+	}
+}
+
+void LevelOneCode::ChooseOption(){
+	switch(m_current_option){
+		case 1:
+			m_audio_controller->StopAllAudios();
+			engine::Game::instance.ChangeScene("level_one");
+			break;
+		case 2:
+			engine::Game::instance.ChangeScene("menu");
+			break;
+	}
+}
+
+
 
 void LevelOneCode::UpdateObstaclePosition(){
 	for(auto each_obstacle : m_obstacle_list){

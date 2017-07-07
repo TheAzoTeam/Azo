@@ -18,12 +18,15 @@ namespace Azo {
 			engine::GameObject *m_arrow;
 
 			double m_waiting_time = 0.0f;
+			int m_current_option = 1;
 		public:
 			LevelOneCode(engine::GameObject &game_object);
 			void Shutdown();
 		private:
 			void FindAudioController();
 			void UpdateCode();
+			void ChangeOption();
+			void ChooseOption();
 			void UpdateObstaclePosition();
 			void GetParents();
 			bool HasGround(double *ground_y);
