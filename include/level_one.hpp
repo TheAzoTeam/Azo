@@ -10,13 +10,26 @@
 namespace Azo {
 	class LevelOne : public engine::Scene {
 		private:
+
+			engine::BackgroundComponent *m_winning_screen;
+			engine::BackgroundComponent *m_losing_parts_screen;
+			engine::BackgroundComponent *m_losing_death_screen;
+
+			engine::GameObject *m_winning_screen_object;
+			engine::GameObject *m_losing_parts_screen_object;
+			engine::GameObject *m_losing_death_screen_object;
+			engine::GameObject *m_arrow;
+			engine::ImageComponent *m_arrow_image;
+
+			engine::ImageComponent *m_level_background_1;
+			engine::ImageComponent *m_level_background_2;
+			engine::ImageComponent *m_level_background_3;
+
 			// This is the level game object. It contains things such as background, theme, etc.
 			engine::GameObject *m_level_one;
 
 			// Add new components to level one here.
-			engine::ImageComponent *m_level_background_1;
-			engine::ImageComponent *m_level_background_2;
-			engine::ImageComponent *m_level_background_3;
+
 			engine::AudioController *m_audio_controller;
 			engine::AudioComponent *m_level_theme;
 			LevelOneCode *m_level_code;
@@ -108,6 +121,7 @@ namespace Azo {
 		private:
 			//Don't forget to add the new objects using this function.
 			void CreateGameObjects();
+			void CreateEndingScreen();
 
 			// After adding things that collide (obstacles, for exemple), add they as paren'ts here.
 			void AddLevelParents();

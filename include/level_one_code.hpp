@@ -12,6 +12,12 @@ namespace Azo {
 			Player *m_player;
 			std::list<Obstacle *> m_obstacle_list;
 			engine::AudioController *m_audio_controller;
+			engine::GameObject *m_losing_parts;
+			engine::GameObject *m_losing_death;
+			engine::GameObject *m_winning_screen;
+			engine::GameObject *m_arrow;
+
+			double m_waiting_time = 0.0f;
 		public:
 			LevelOneCode(engine::GameObject &game_object);
 			void Shutdown();

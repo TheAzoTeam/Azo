@@ -445,10 +445,10 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating Player.");
-	m_player = new Player("player", std::make_pair(165, 300));
+	m_player = new Player("player", std::make_pair(165, 280));
 	this->AddGameObject(*m_player);
 
-
+	CreateEndingScreen();
 	AddLevelParents();
 
 	m_level_code = new LevelOneCode(*m_level_one);
@@ -456,88 +456,129 @@ void LevelOne::CreateGameObjects(){
 
 }
 
+void LevelOne::CreateEndingScreen(){
+	m_winning_screen_object = new engine::GameObject("winning_screen", std::make_pair(0, 0));
+	m_winning_screen_object->m_object_state = engine::ObjectState::DISABLED;
+
+	m_winning_screen = new engine::BackgroundComponent(*m_winning_screen_object, "general_images/tela_vitoria.png");
+
+	m_winning_screen_object->AddComponent(*m_winning_screen);
+	this->AddGameObject(*m_winning_screen_object);
+
+	m_losing_parts_screen_object = new engine::GameObject("losing_parts", std::make_pair(0, 0));
+	m_losing_parts_screen_object->m_object_state = engine::ObjectState::DISABLED;
+
+	m_losing_parts_screen = new engine::BackgroundComponent(*m_losing_parts_screen_object, "general_images/tela_derrota.png");
+
+	m_losing_parts_screen_object->AddComponent(*m_losing_parts_screen);
+	this->AddGameObject(*m_losing_parts_screen_object);
+
+	m_losing_death_screen_object = new engine::GameObject("losing_death", std::make_pair(0, 0));
+	m_losing_death_screen_object->m_object_state = engine::ObjectState::DISABLED;
+
+	m_losing_death_screen = new engine::BackgroundComponent(*m_losing_death_screen_object, "general_images/tela_morte.png");
+
+	m_losing_death_screen_object->AddComponent(*m_losing_death_screen);
+	this->AddGameObject(*m_losing_death_screen_object);
+
+	m_arrow = new engine::GameObject("arrow", std::make_pair(0, 0));
+	m_arrow->m_object_state = engine::ObjectState::DISABLED;
+
+	m_arrow_image = new engine::ImageComponent(*m_arrow, "general_images/arrow.png", 1);
+
+	m_arrow->AddComponent(*m_arrow_image);
+	this->AddGameObject(*m_arrow);
+}
+
+
 void LevelOne::AddLevelParents(){
 	DEBUG("Adding level parents.");
 
-	m_level_one->m_parent_list.push_back(m_obstacle_car_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_0_1);
-	m_level_one->m_parent_list.push_back(m_spike_1);
-	m_level_one->m_parent_list.push_back(m_part_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_2);
-	m_level_one->m_parent_list.push_back(m_part_1_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_3);
-	m_level_one->m_parent_list.push_back(m_part_2);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_2);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_4);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_2_1);
-	m_level_one->m_parent_list.push_back(m_part_3);
-	m_level_one->m_parent_list.push_back(m_obstacle_car_2);
-	m_level_one->m_parent_list.push_back(m_part_4);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_5);
-	m_level_one->m_parent_list.push_back(m_part_4_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_6);
-	m_level_one->m_parent_list.push_back(m_part_5);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_3);
-	m_level_one->m_parent_list.push_back(m_obstacle_rock_1);
-	m_level_one->m_parent_list.push_back(m_part_6);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_7);
-	m_level_one->m_parent_list.push_back(m_obstacle_rock_2);
-	m_level_one->m_parent_list.push_back(m_part_7);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_8);
-	m_level_one->m_parent_list.push_back(m_part_7_1);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_9);
-	m_level_one->m_parent_list.push_back(m_part_8);
-	m_level_one->m_parent_list.push_back(m_part_9);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_10);
-	m_level_one->m_parent_list.push_back(m_part_10);
-	m_level_one->m_parent_list.push_back(m_obstacle_car_3);
-	m_level_one->m_parent_list.push_back(m_part_11);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_11);
-	m_level_one->m_parent_list.push_back(m_part_12);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_12);
-	m_level_one->m_parent_list.push_back(m_part_13);
-	m_level_one->m_parent_list.push_back(m_part_14);
-	m_level_one->m_parent_list.push_back(m_part_15);
-	m_level_one->m_parent_list.push_back(m_part_16);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_13);
-	m_level_one->m_parent_list.push_back(m_spike_2);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_4);
-	m_level_one->m_parent_list.push_back(m_spike_3);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_5);
-	m_level_one->m_parent_list.push_back(m_spike_4);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_6);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_14);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_7);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_15);
-	m_level_one->m_parent_list.push_back(m_part_17);
-	m_level_one->m_parent_list.push_back(m_obstacle_rock_3);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_8);
-	m_level_one->m_parent_list.push_back(m_part_18);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_16);
-	m_level_one->m_parent_list.push_back(m_obstacle_rock_4);
-	m_level_one->m_parent_list.push_back(m_obstacle_rock_5);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_17);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_9);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_10);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_18);
-	m_level_one->m_parent_list.push_back(m_part_19);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_19);
-	m_level_one->m_parent_list.push_back(m_obstacle_rock_6);
-	m_level_one->m_parent_list.push_back(m_obstacle_rock_7);
-	m_level_one->m_parent_list.push_back(m_obstacle_rock_8);
-	m_level_one->m_parent_list.push_back(m_obstacle_car_4);
-	m_level_one->m_parent_list.push_back(m_part_20);
-	m_level_one->m_parent_list.push_back(m_obstacle_car_5);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_20);
-	m_level_one->m_parent_list.push_back(m_obstacle_box_11);
-	m_level_one->m_parent_list.push_back(m_spike_5);
-	m_level_one->m_parent_list.push_back(m_part_21);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_21);
-	m_level_one->m_parent_list.push_back(m_obstacle_rock_9);
-	m_level_one->m_parent_list.push_back(m_obstacle_aerial_22);
-	m_level_one->m_parent_list.push_back(m_part_22);
+	// m_level_one->m_parent_list.push_back(m_obstacle_car_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_0_1);
+	// m_level_one->m_parent_list.push_back(m_spike_1);
+	// m_level_one->m_parent_list.push_back(m_part_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_2);
+	// m_level_one->m_parent_list.push_back(m_part_1_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_3);
+	// m_level_one->m_parent_list.push_back(m_part_2);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_2);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_4);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_2_1);
+	// m_level_one->m_parent_list.push_back(m_part_3);
+	// m_level_one->m_parent_list.push_back(m_obstacle_car_2);
+	// m_level_one->m_parent_list.push_back(m_part_4);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_5);
+	// m_level_one->m_parent_list.push_back(m_part_4_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_6);
+	// m_level_one->m_parent_list.push_back(m_part_5);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_3);
+	// m_level_one->m_parent_list.push_back(m_obstacle_rock_1);
+	// m_level_one->m_parent_list.push_back(m_part_6);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_7);
+	// m_level_one->m_parent_list.push_back(m_obstacle_rock_2);
+	// m_level_one->m_parent_list.push_back(m_part_7);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_8);
+	// m_level_one->m_parent_list.push_back(m_part_7_1);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_9);
+	// m_level_one->m_parent_list.push_back(m_part_8);
+	// m_level_one->m_parent_list.push_back(m_part_9);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_10);
+	// m_level_one->m_parent_list.push_back(m_part_10);
+	// m_level_one->m_parent_list.push_back(m_obstacle_car_3);
+	// m_level_one->m_parent_list.push_back(m_part_11);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_11);
+	// m_level_one->m_parent_list.push_back(m_part_12);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_12);
+	// m_level_one->m_parent_list.push_back(m_part_13);
+	// m_level_one->m_parent_list.push_back(m_part_14);
+	// m_level_one->m_parent_list.push_back(m_part_15);
+	// m_level_one->m_parent_list.push_back(m_part_16);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_13);
+	// m_level_one->m_parent_list.push_back(m_spike_2);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_4);
+	// m_level_one->m_parent_list.push_back(m_spike_3);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_5);
+	// m_level_one->m_parent_list.push_back(m_spike_4);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_6);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_14);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_7);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_15);
+	// m_level_one->m_parent_list.push_back(m_part_17);
+	// m_level_one->m_parent_list.push_back(m_obstacle_rock_3);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_8);
+	// m_level_one->m_parent_list.push_back(m_part_18);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_16);
+	// m_level_one->m_parent_list.push_back(m_obstacle_rock_4);
+	// m_level_one->m_parent_list.push_back(m_obstacle_rock_5);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_17);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_9);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_10);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_18);
+	// m_level_one->m_parent_list.push_back(m_part_19);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_19);
+	// m_level_one->m_parent_list.push_back(m_obstacle_rock_6);
+	// m_level_one->m_parent_list.push_back(m_obstacle_rock_7);
+	// m_level_one->m_parent_list.push_back(m_obstacle_rock_8);
+	// m_level_one->m_parent_list.push_back(m_obstacle_car_4);
+	// m_level_one->m_parent_list.push_back(m_part_20);
+	// m_level_one->m_parent_list.push_back(m_obstacle_car_5);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_20);
+	// m_level_one->m_parent_list.push_back(m_obstacle_box_11);
+	// m_level_one->m_parent_list.push_back(m_spike_5);
+	// m_level_one->m_parent_list.push_back(m_part_21);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_21);
+	// m_level_one->m_parent_list.push_back(m_obstacle_rock_9);
+	// m_level_one->m_parent_list.push_back(m_obstacle_aerial_22);
+	// m_level_one->m_parent_list.push_back(m_part_22);
+
+	m_level_one->m_parent_list.push_back(m_winning_screen_object);
+	m_level_one->m_parent_list.push_back(m_losing_parts_screen_object);
+	m_level_one->m_parent_list.push_back(m_losing_death_screen_object);
+	m_level_one->m_parent_list.push_back(m_arrow);
+
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }
