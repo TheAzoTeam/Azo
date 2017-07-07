@@ -42,6 +42,17 @@ namespace engine {
 				int end_frame,
 				bool loop,
 				double zoom_factor);
+
+			Animation(
+				GameObject & game_object,
+				std::string image_path,
+				float animation_time,
+				std::vector<Sprite *> sprite_list,
+				int start_frame,
+				int end_frame,
+				bool loop,
+				double zoom_factor,
+				std::pair<double, double> position_relative_to_object);
 			void Draw();
 			inline std::string GetClassName(){
 				return "Animation";

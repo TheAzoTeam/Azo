@@ -6,6 +6,11 @@ using namespace Azo;
 MenuCode::MenuCode(engine::GameObject *game_object){
 	this->game_object = game_object;
 	FindAudioController();
+	FindAnimationController();
+}
+
+void MenuCode::FindAnimationController(){
+	m_animation_controller = (game_object->GetAnimationController(typeid(engine::AnimationController)));
 }
 
 void MenuCode::FindAudioController(){

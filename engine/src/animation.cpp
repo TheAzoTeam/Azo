@@ -26,6 +26,29 @@ Animation::Animation(GameObject & game_object, std::string image_path,
 	this->m_current_sprite = start_frame;
 }
 
+Animation::Animation(GameObject & game_object, std::string image_path,
+		     float animation_time, std::vector<Sprite *> sprite_list,
+		     int start_frame, int end_frame, bool loop, double zoom_factor,
+		     std::pair<double, double> position_relative_to_object){
+
+	ASSERT(image_path != "", "Animation::CreateAnimation, image_path is empty.");
+	ASSERT(animation_time > 0, "Animation time can't be zero or less.");
+	ASSERT(&game_object != NULL, "The game_object can't be null.");
+
+	this->game_object = &game_object;
+	this->image_path = image_path;
+	this->m_animation_time = animation_time;
+	this->m_sprite_list = sprite_list;
+	this->m_start_frame = start_frame;
+	this->m_end_frame = end_frame;
+	this->m_each_frame_time = animation_time / (end_frame - start_frame + 1);
+	this->m_current_animation_time = 0.0f;
+	this->m_loop = loop;
+	this->zoom_factor = zoom_factor;
+	this->m_current_sprite = start_frame;
+	this->m_position_relative_to_object = position_relative_to_object;
+}
+
 Animation::~Animation(){}
 
 void Animation::Shutdown(){
@@ -78,10 +101,10 @@ void Animation::UpdateQuad(){
 	//DEBUG("Updating canvas quad.");
 
 	canvasQuad = {
-		(int)game_object->m_current_position.first,
-		(int)game_object->m_current_position.second,
+		(int)(game_object->m_current_position.first + m_position_relative_to_object.first),
+		(int)(game_object->m_current_position.second + m_position_relative_to_object.second),
 		(int)(m_sprite_list[m_current_sprite]->sprite_width * zoom_factor),
-		(int)(m_sprite_list[m_current_sprite]->sprite_height * zoom_factor)
+		(int)(m_sprite_list[m_current_sprite]->sprite_height * zoom_factor),
 	};
 }
 
