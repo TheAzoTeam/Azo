@@ -395,10 +395,8 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating part 20.");
-	m_part_20 = new Obstacle("part_20", std::make_pair(13810, 80), ObstacleType::MACHINE_PART);
+	m_part_20 = new Obstacle("part_20", std::make_pair(13860, 70), ObstacleType::MACHINE_PART);
 	this->AddGameObject(*m_part_20);
-
-
 
 
 	DEBUG("Creating obstacle car 5.");
@@ -426,25 +424,72 @@ void LevelOne::CreateGameObjects(){
 	this->AddGameObject(*m_part_21);
 
 
+	DEBUG("Creating obstacle aerial 21 - post.");
+	m_obstacle_aerial_21 = new Obstacle("obstacle_aerial_21", std::make_pair(14820, 185), ObstacleType::WESTERN_POST);
+	this->AddGameObject(*m_obstacle_aerial_21);
 
 
+	DEBUG("Creating obstacle rock 9");
+	m_obstacle_rock_9 = new Obstacle("obstacle_rock_9", std::make_pair(15000, 340), ObstacleType::WESTERN_ROCK);
+	this->AddGameObject(*m_obstacle_rock_9);
 
 
+	DEBUG("Creating obstacle aerial 22 - post.");
+	m_obstacle_aerial_22 = new Obstacle("obstacle_aerial_22", std::make_pair(15300, 185), ObstacleType::WESTERN_POST);
+	this->AddGameObject(*m_obstacle_aerial_22);
 
 
+	DEBUG("Creating part 22.");
+	m_part_22 = new Obstacle("part_22", std::make_pair(15530, 140), ObstacleType::MACHINE_PART);
+	this->AddGameObject(*m_part_22);
 
 
 	DEBUG("Creating Player.");
-	m_player = new Player("player", std::make_pair(165, 300));
+	m_player = new Player("player", std::make_pair(165, 280));
 	this->AddGameObject(*m_player);
 
-
+	CreateEndingScreen();
 	AddLevelParents();
 
 	m_level_code = new LevelOneCode(*m_level_one);
 	m_level_one->AddComponent(*m_level_code);
 
 }
+
+void LevelOne::CreateEndingScreen(){
+	m_winning_screen_object = new engine::GameObject("winning_screen", std::make_pair(0, 0));
+	m_winning_screen_object->m_object_state = engine::ObjectState::DISABLED;
+
+	m_winning_screen = new engine::BackgroundComponent(*m_winning_screen_object, "general_images/tela_vitoria.png");
+
+	m_winning_screen_object->AddComponent(*m_winning_screen);
+	this->AddGameObject(*m_winning_screen_object);
+
+	m_losing_parts_screen_object = new engine::GameObject("losing_parts", std::make_pair(0, 0));
+	m_losing_parts_screen_object->m_object_state = engine::ObjectState::DISABLED;
+
+	m_losing_parts_screen = new engine::BackgroundComponent(*m_losing_parts_screen_object, "general_images/tela_derrota.png");
+
+	m_losing_parts_screen_object->AddComponent(*m_losing_parts_screen);
+	this->AddGameObject(*m_losing_parts_screen_object);
+
+	m_losing_death_screen_object = new engine::GameObject("losing_death", std::make_pair(0, 0));
+	m_losing_death_screen_object->m_object_state = engine::ObjectState::DISABLED;
+
+	m_losing_death_screen = new engine::BackgroundComponent(*m_losing_death_screen_object, "general_images/tela_morte.png");
+
+	m_losing_death_screen_object->AddComponent(*m_losing_death_screen);
+	this->AddGameObject(*m_losing_death_screen_object);
+
+	m_arrow = new engine::GameObject("arrow", std::make_pair(0, 0));
+	m_arrow->m_object_state = engine::ObjectState::DISABLED;
+
+	m_arrow_image = new engine::ImageComponent(*m_arrow, "general_images/arrow.png", 1);
+
+	m_arrow->AddComponent(*m_arrow_image);
+	this->AddGameObject(*m_arrow);
+}
+
 
 void LevelOne::AddLevelParents(){
 	DEBUG("Adding level parents.");
@@ -524,6 +569,16 @@ void LevelOne::AddLevelParents(){
 	m_level_one->m_parent_list.push_back(m_obstacle_box_11);
 	m_level_one->m_parent_list.push_back(m_spike_5);
 	m_level_one->m_parent_list.push_back(m_part_21);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_21);
+	m_level_one->m_parent_list.push_back(m_obstacle_rock_9);
+	m_level_one->m_parent_list.push_back(m_obstacle_aerial_22);
+	m_level_one->m_parent_list.push_back(m_part_22);
+
+	m_level_one->m_parent_list.push_back(m_winning_screen_object);
+	m_level_one->m_parent_list.push_back(m_losing_parts_screen_object);
+	m_level_one->m_parent_list.push_back(m_losing_death_screen_object);
+	m_level_one->m_parent_list.push_back(m_arrow);
+
 	m_level_one->m_parent_list.push_back(m_player);
 	m_level_one->m_parent_list.push_back(m_ground);
 }

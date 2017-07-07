@@ -14,62 +14,67 @@ Player::Player(std::string name, std::pair<double, double> current_position){
 
 void Player::Shutdown(){
 
-	if(m_anim_controller != NULL){
+	if(m_anim_controller != nullptr){
 		DEBUG("Shutting down m_anim_controller");
 		m_anim_controller->Shutdown();
 		delete(m_anim_controller);
-		m_anim_controller = NULL;
+		m_anim_controller = nullptr;
 	}
 
 	for(auto each_sprite : m_walking_animation_sprites){
-		if(each_sprite != NULL){
-			each_sprite = NULL;
+		if(each_sprite != nullptr){
+			each_sprite = nullptr;
 		}
 	}
 
 	for(auto each_sprite : m_jumping_animation_sprites){
-		if(each_sprite != NULL){
-			each_sprite = NULL;
+		if(each_sprite != nullptr){
+			each_sprite = nullptr;
 		}
 	}
 
 	for(auto each_sprite : m_sliding_animation_sprites){
-		if(each_sprite != NULL){
-			each_sprite = NULL;
+		if(each_sprite != nullptr){
+			each_sprite = nullptr;
 		}
 	}
 
 	for(auto each_sprite : m_dying_animation_sprites){
-		if(each_sprite != NULL){
-			each_sprite = NULL;
+		if(each_sprite != nullptr){
+			each_sprite = nullptr;
 		}
 	}
 
 
-	if(m_walking != NULL){
+	if(m_walking != nullptr){
 		delete(m_walking);
-		m_walking = NULL;
+		m_walking = nullptr;
 	}
 
-	if(m_jumping != NULL){
+	if(m_jumping != nullptr){
 		delete(m_jumping);
-		m_jumping = NULL;
+		m_jumping = nullptr;
 	}
 
-	if(m_sliding != NULL){
+	if(m_sliding != nullptr){
 		delete(m_sliding);
-		m_sliding = NULL;
+		m_sliding = nullptr;
 	}
 
-	if(m_dying != NULL){
+	if(m_dying != nullptr){
 		delete(m_dying);
-		m_dying = NULL;
+		m_dying = nullptr;
 	}
 
-	if(m_player_code != NULL){
+	if(m_losing != nullptr){
+		delete(m_losing);
+		m_losing = nullptr;
+	}
+
+	if(m_player_code != nullptr){
 		m_player_code->Shutdown();
 		delete(m_player_code);
-		m_player_code = NULL;
+		m_player_code = nullptr;
 	}
 }
 
@@ -100,18 +105,83 @@ void Player::CreateComponents(){
 	m_dying->DisableComponent();
 	m_anim_controller->AddAnimation("dying", *m_dying);
 
+	GenLosingAnimation();
+	m_losing = new engine::Animation(*this, "sprites/CowBoyDerrota.png", 10000.0f, m_losing_animation_sprites, 0, 6, false, 1);
+	m_losing->DisableComponent();
+	m_anim_controller->AddAnimation("losing", *m_losing);
+
+	GenVictoryAnimation();
+	m_victory = new engine::Animation(*this, "sprites/victory.png", 10.0f, m_victory_animation_sprites, 0, 0, false, 1);
+	m_victory->DisableComponent();
+	m_anim_controller->AddAnimation("victory", *m_victory);
+
 	DEBUG("Adding animation controller to Player.");
 	this->AddComponent(*m_anim_controller);
 
 	m_lost = new engine::AudioComponent(*this, "audios/derrota.ogg", false, false);
+	m_victory_song = new engine::AudioComponent(*this, "audios/victory.ogg", false, false);
 	m_audio_controller = new engine::AudioController();
 	m_audio_controller->AddAudio("lost", *m_lost);
+	m_audio_controller->AddAudio("victory", *m_victory_song);
+
 	this->AddComponent(*m_audio_controller);
 
 	DEBUG("Creating Player Code.");
 	m_player_code = new PlayerCode(this);
 	this->AddComponent(*m_player_code);
 }
+
+void Player::GenVictoryAnimation(){
+	m_victory_animation_sprites.push_back(new engine::Sprite());
+
+	m_victory_animation_sprites[0]->sprite_x = 0;
+	m_victory_animation_sprites[0]->sprite_y = 0;
+	m_victory_animation_sprites[0]->sprite_width = 180;
+	m_victory_animation_sprites[0]->sprite_height = 140;
+}
+
+
+void Player::GenLosingAnimation(){
+	for(int i = 0; i < 7; i++){
+		m_losing_animation_sprites.push_back(new engine::Sprite());
+	}
+
+	m_losing_animation_sprites[0]->sprite_x = 1;
+	m_losing_animation_sprites[0]->sprite_y = 1;
+	m_losing_animation_sprites[0]->sprite_width = 70 - 1;
+	m_losing_animation_sprites[0]->sprite_height = 111 - 1;
+
+	m_losing_animation_sprites[1]->sprite_x = 72;
+	m_losing_animation_sprites[1]->sprite_y = 1;
+	m_losing_animation_sprites[1]->sprite_width = 141 - 72;
+	m_losing_animation_sprites[1]->sprite_height = 111 - 1;
+
+	m_losing_animation_sprites[2]->sprite_x = 1;
+	m_losing_animation_sprites[2]->sprite_y = 1;
+	m_losing_animation_sprites[2]->sprite_width = 70 - 1;
+	m_losing_animation_sprites[2]->sprite_height = 111 - 1;
+
+	m_losing_animation_sprites[3]->sprite_x = 72;
+	m_losing_animation_sprites[3]->sprite_y = 1;
+	m_losing_animation_sprites[3]->sprite_width = 141 - 72;
+	m_losing_animation_sprites[3]->sprite_height = 111 - 1;
+
+	m_losing_animation_sprites[4]->sprite_x = 1;
+	m_losing_animation_sprites[4]->sprite_y = 1;
+	m_losing_animation_sprites[4]->sprite_width = 70 - 1;
+	m_losing_animation_sprites[4]->sprite_height = 111 - 1;
+
+	m_losing_animation_sprites[5]->sprite_x = 72;
+	m_losing_animation_sprites[5]->sprite_y = 1;
+	m_losing_animation_sprites[5]->sprite_width = 141 - 72;
+	m_losing_animation_sprites[5]->sprite_height = 111 - 1;
+
+	m_losing_animation_sprites[6]->sprite_x = 147;
+	m_losing_animation_sprites[6]->sprite_y = 4;
+	m_losing_animation_sprites[6]->sprite_width = 209 - 147;
+	m_losing_animation_sprites[6]->sprite_height = 111 - 4;
+}
+
 
 void Player::GenWalkingAnimation(){
 	DEBUG("Generating player walking animation.");

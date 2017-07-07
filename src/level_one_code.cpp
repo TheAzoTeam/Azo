@@ -28,17 +28,49 @@ void LevelOneCode::GetParents(){
 			m_player = dynamic_cast<Player *>(parent);
 		}else if(parent->GetClassName() == "Obstacle"){
 			m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
+		}else if(parent->m_name == "winning_screen"){
+			m_winning_screen = parent;
+		}else if(parent->m_name == "losing_parts"){
+			m_losing_parts = parent;
+		}else if(parent->m_name == "losing_death"){
+			m_losing_death = parent;
+		}else if(parent->m_name == "arrow"){
+			m_arrow = parent;
 		}
+
 	}
 }
 
 
 void LevelOneCode::UpdateCode(){
-	DEBUG("Position: " << game_object->m_current_position.first );
+	//DEBUG("Position: " << game_object->m_current_position.first );
 	//DEBUG("Collected parts: " << m_player->m_collected_parts);
-	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -20198){
+	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -17600){
 		game_object->m_current_position.first -= 4.0f;
 		m_player->m_current_position.first = 299;
+	}else if(m_player->m_current_position.first >= 300.0f){
+		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
+		m_player->m_speed.first = 0;
+		m_audio_controller->StopAudio("tema_level_one");
+		m_player->m_state = PlayerState::END;
+
+		if(m_player->m_collected_parts != m_player->M_TOTAL_PARTS && m_waiting_time >= 10000.0f){
+			m_losing_parts->m_object_state = engine::ObjectState::ENABLED;
+			ChangeOption();
+
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+				ChooseOption();
+			}
+
+		}else if(m_player->m_collected_parts == m_player->M_TOTAL_PARTS && m_waiting_time >= 5000.0f){
+			m_winning_screen->m_object_state = engine::ObjectState::ENABLED;
+			ChangeOption();
+
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+				ChooseOption();
+			}
+		}
+
 	}
 
 	UpdateObstaclePosition();
@@ -46,18 +78,62 @@ void LevelOneCode::UpdateCode(){
 	if(m_player->m_state != PlayerState::DIE){
 		UpdatePhysics();
 	}else{
+		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
+
+		if(m_waiting_time >= 2300.0f){
+			m_losing_death->m_object_state = engine::ObjectState::ENABLED;
+			ChangeOption();
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+				ChooseOption();
+			}
+		}
+
 		if(m_audio_controller->GetAudioState("tema_level_one") == engine::AudioState::PLAYING){
 			m_audio_controller->StopAudio("tema_level_one");
 		}else{
 			// Nothing to do.
 		}
 
-		//TODO(Roger): Fix this KeyDownOnce method. Sometimes you need to press two times.
-		if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
-			engine::Game::instance.ChangeScene("menu");
-		}
 	}
 }
+
+void LevelOneCode::ChangeOption(){
+	switch(m_current_option){
+		case 1:
+			m_arrow->m_object_state = engine::ObjectState::ENABLED;
+
+			m_arrow->m_current_position = std::make_pair(70, 260);
+
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
+				m_current_option = 2;
+			}
+
+			break;
+		case 2:
+
+			m_arrow->m_current_position = std::make_pair(515, 260);
+
+			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
+				m_current_option = 1;
+			}
+
+			break;
+	}
+}
+
+void LevelOneCode::ChooseOption(){
+	switch(m_current_option){
+		case 1:
+			m_audio_controller->StopAllAudios();
+			engine::Game::instance.ChangeScene("level_one");
+			break;
+		case 2:
+			engine::Game::instance.ChangeScene("menu");
+			break;
+	}
+}
+
+
 
 void LevelOneCode::UpdateObstaclePosition(){
 	for(auto each_obstacle : m_obstacle_list){

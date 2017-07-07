@@ -20,6 +20,7 @@ namespace engine {
 			void PlayAudio(std::string audio_name);
 			void StopAudio(std::string audio_name);
 			void PauseAudio(std::string audio_name);
+			void StopAllAudios();
 			AudioState GetAudioState(std::string audio_name);
 			void Init();
 			void Shutdown();

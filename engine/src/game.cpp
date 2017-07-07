@@ -138,6 +138,12 @@ bool Game::StartAndStopScenes(){
 			return false;
 		}else{
 
+			// If the last scene is equal the current scene, we still need
+			// to delete all keys from the game object map on scene.
+			if(last_scene != NULL && last_scene->GetSceneName() == current_scene->GetSceneName()){
+				current_scene->DeleteKeyList();
+			}
+
 			if(current_scene->m_state == SceneState::RUNNED){
 				current_scene->Restart();
 				current_scene->m_state = SceneState::FIRST_TIME;
@@ -152,9 +158,11 @@ bool Game::StartAndStopScenes(){
 
 			if(last_scene != NULL){
 				INFO("Shuting down scene!");
+				if(last_scene->GetSceneName() != current_scene->GetSceneName()){
+					last_scene->Shutdown();
+				}
 				//DEBUG("Scene name: " << last_scene->GetSceneName());
 				//scene_map.erase(last_scene->GetSceneName());
-				last_scene->Shutdown();
 			}else{
 				// Nothing to Do.
 			}

@@ -27,6 +27,8 @@ namespace engine {
 				return scene_name;
 			}
 
+			void DeleteKeyList();
+
 			void AddGameObject(engine::GameObject &game_object);
 			engine::GameObject & GetGameObject(std::string & game_object_name);
 			void RemoveGameObject(std::string &game_object_name);

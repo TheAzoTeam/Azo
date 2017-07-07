@@ -6,9 +6,8 @@
 
 namespace engine {
 	class ImageComponent : public BackgroundComponent {
-		private:
-			std::pair<double, double> m_position_relative_to_object = std::make_pair(0, 0);
 		protected:
+			std::pair<double, double> m_position_relative_to_object = std::make_pair(0, 0);
 			double zoom_factor;
 			SDL_Rect canvasQuad;
 		public:
