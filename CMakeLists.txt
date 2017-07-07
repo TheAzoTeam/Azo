@@ -40,14 +40,16 @@ if(UNIX)
 
   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Roger Lenke")
   set(CPACK_SET_DESTDIR ON)
-
+  
   set(AUDIOS_DIR "assets/audios")
   set(SPRITES_DIR "assets/sprites")
   set(BACKGROUNDS_DIR "assets/backgrounds")
+  set(GENERAL_IMAGES_DIR "assets/general_images")
 
-  install(TARGETS Azo RUNTIME DESTINATION /home/rdlenke/AzoGame/)
-  install(DIRECTORY ${AUDIOS_DIR} DESTINATION /home/rdlenke/AzoGame/)
-  install(DIRECTORY ${SPRITES_DIR} DESTINATION /home/rdlenke/AzoGame/)
-  install(DIRECTORY ${BACKGROUNDS_DIR} DESTINATION /home/rdlenke/AzoGame/)
+  install(TARGETS Azo RUNTIME DESTINATION AzoGame/)
+  install(DIRECTORY ${AUDIOS_DIR} DESTINATION AzoGame/)
+  install(DIRECTORY ${SPRITES_DIR} DESTINATION AzoGame/)
+  install(DIRECTORY ${BACKGROUNDS_DIR} DESTINATION AzoGame/)
+  install(DIRECTORY ${GENERAL_IMAGES_DIR} DESTINATION AzoGame/)
 endif(UNIX)
   include(CPack)
