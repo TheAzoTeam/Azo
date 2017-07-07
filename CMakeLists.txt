@@ -16,3 +16,38 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME} SDL2_Engine 
                       SDL2 SDL2_image SDL2_ttf SDL2_mixer)
+
+
+if(WIN32)
+  set(CPACK_GENERATOR "NSIS")
+  set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Roger Lenke")
+  set(CPACK_PACKAGE_FILE_NAME "Azo")
+
+
+  set(AUDIOS_DIR "assets/audios")
+  set(SPRITES_DIR "assets/sprites")
+  set(BACKGROUNDS_DIR "assets/backgrounds")
+  set(INSTALLATION_DIR "/home/rdlenke/AzoGame")
+
+  install(TARGETS Azo RUNTIME DESTINATION AzoGame)
+  install(DIRECTORY ${AUDIOS_DIR} DESTINATION AzoGame)
+  install(DIRECTORY ${SPRITES_DIR} DESTINATION AzoGame)
+  install(DIRECTORY ${BACKGROUNDS_DIR} DESTINATION AzoGame)
+endif(WIN32)
+if(UNIX)
+  set(CPACK_GENERATOR "DEB")
+  set(CPACK_SOURCE_GENERATOR "TGZ")
+
+  set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Roger Lenke")
+  set(CPACK_SET_DESTDIR ON)
+
+  set(AUDIOS_DIR "assets/audios")
+  set(SPRITES_DIR "assets/sprites")
+  set(BACKGROUNDS_DIR "assets/backgrounds")
+
+  install(TARGETS Azo RUNTIME DESTINATION /home/rdlenke/AzoGame/)
+  install(DIRECTORY ${AUDIOS_DIR} DESTINATION /home/rdlenke/AzoGame/)
+  install(DIRECTORY ${SPRITES_DIR} DESTINATION /home/rdlenke/AzoGame/)
+  install(DIRECTORY ${BACKGROUNDS_DIR} DESTINATION /home/rdlenke/AzoGame/)
+endif(UNIX)
+  include(CPack)
