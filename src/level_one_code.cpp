@@ -43,6 +43,10 @@ void LevelOneCode::UpdateCode(){
 		m_player->m_speed.first = 0;
 		m_audio_controller->StopAudio("tema_level_one");
 		m_player->m_state = PlayerState::END;
+
+		if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+			engine::Game::instance.ChangeScene("menu");
+		}
 	}
 
 	UpdateObstaclePosition();
@@ -56,7 +60,6 @@ void LevelOneCode::UpdateCode(){
 			// Nothing to do.
 		}
 
-		//TODO(Roger): Fix this KeyDownOnce method. Sometimes you need to press two times.
 		if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
 			engine::Game::instance.ChangeScene("menu");
 		}

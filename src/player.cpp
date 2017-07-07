@@ -119,8 +119,11 @@ void Player::CreateComponents(){
 	this->AddComponent(*m_anim_controller);
 
 	m_lost = new engine::AudioComponent(*this, "audios/derrota.ogg", false, false);
+	m_victory_song = new engine::AudioComponent(*this, "audios/victory.ogg", false, false);
 	m_audio_controller = new engine::AudioController();
 	m_audio_controller->AddAudio("lost", *m_lost);
+	m_audio_controller->AddAudio("victory", *m_victory_song);
+
 	this->AddComponent(*m_audio_controller);
 
 	DEBUG("Creating Player Code.");

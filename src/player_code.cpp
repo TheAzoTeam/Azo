@@ -124,6 +124,7 @@ void PlayerCode::UpdateCode(){
 				}
 			}else{
 				m_animation_controller->StartAnimation("victory");
+				m_audio_controller->PlayAudio("victory");
 			}
 
 			break;

@@ -27,6 +27,7 @@ namespace Azo {
 
 			// Add new audios here.
 			engine::AudioComponent *m_lost;
+			engine::AudioComponent *m_victory_song;
 
 			// Add new animations here.
 			engine::Animation *m_walking;
@@ -35,7 +36,6 @@ namespace Azo {
 			engine::Animation *m_dying;
 			engine::Animation *m_losing;
 			engine::Animation *m_victory;
-
 
 			// Add new sprite vectors here.
 			std::vector<engine::Sprite *> m_walking_animation_sprites;
