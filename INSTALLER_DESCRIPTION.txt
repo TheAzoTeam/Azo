@@ -1,0 +1,8 @@
+Instalador para o jogo Azo.
+
+O jogo será instalado no diretório /usr/local/AzoGame. Para a execução do jogo,
+é necessário que o sistema possua o SDL instalado. Visite www.libsdl.org para mais
+informações
+
+O projeto Azo é um projeto de código aberto. Visite https://github.com/TheAzoTeam/Azo
+para mais informações sobre o jogo e sobre como adquirir o código fonte.
