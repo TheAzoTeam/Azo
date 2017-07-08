@@ -81,7 +81,6 @@ Para executar o jogo com sucesso é necessário possuir instaladas tais dependê
 * SDL_image 2
 * SDL_ttf 2
 * SDL_mixer 2
-* How to build
 
 ### Como executar
 
@@ -101,6 +100,22 @@ $ make
 ```
 $ ./Azo
 ```
+
+Também é possível criar um instalador .deb para o projeto com os seguintes comandos:
+```
+$ mkdir build
+```
+```
+$ cd build
+```
+```
+$ cmake ..
+```
+```
+$ make package
+```
+
+O instalador estará localizado na pasta build.
 
 ### Produto final
 
