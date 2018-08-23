@@ -1,11 +1,20 @@
 # Azo
 
-
-Repositório para o desenvolvimento do jogo _Azo_ na matéria de Introdução à Jogos Eletrônicos, Universidade de Brasília.
+Repositório para a matéria de Técnicas de Programação, Universidade de Brasília-FGA, para refatoração do projeto _Azo_, que foi desenvolvido na matéria de Introdução à Jogos Eletrônicos, Universidade de Brasília.
 
 
 ### Envolvidos no Projeto
+#### Refatoração
+* Miguel Alves (Desenvolvedor - UnB FGA);
+* Kamila Costa (Desenvolvedor - UnB FGA);
+* Igor Aragão (Desenvolvedor - UnB FGA);
+* Lucas Vitor (Desenvolvedor - UnB FGA);
+* Samuel Borges (Desenvolvedor - UnB FGA);
+* Lude Ribeiro (Desenvolvedor - UnB FGA);
+* Eduardo Lima (Desenvolvedor - UnB FGA);
+* Nathalia Lorena (Desenvolvedor - UnB FGA);
 
+#### Projeto Original
 * Allan Jefrey (Desenvolvedor - UnB FGA);
 * Hugo Alves (Desenvolvedor - UnB FGA);
 * Roger Lenke (Desenvolvedor - UnB FGA);
@@ -15,7 +24,9 @@ Repositório para o desenvolvimento do jogo _Azo_ na matéria de Introdução à
 
 ### Introdução e Objetivos
 
-Azo é um jogo onde o jogador deve controlar três diferentes personagens em diferentes épocas, para corrigir a distorção nas linhas temporais!
+Aplicar sobre o projeto _Azo_ as Técnicas de Programação aprendidas no decorrer da matéria Técnicas de Programação. Evoluir o código e arquitetura visando melhorar a qualidade do código e aplicar os conhecimentos adiquiridos.
+
+"Azo é um jogo onde o jogador deve controlar três diferentes personagens em diferentes épocas, para corrigir a distorção nas linhas temporais!"
 
 ### História
 
