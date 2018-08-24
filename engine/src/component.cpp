@@ -4,33 +4,39 @@ using namespace engine;
 
 Component::Component(){}
 
+
 Component::Component(GameObject &game_object){
 	this->game_object = &game_object;
 	this->component_state = State::ENABLED;
 }
 
-void Component::Init(){}
 
-void Component::Shutdown(){}
-
-
-void Component::Draw(){}
+void Component::init(){}
 
 
-void Component::UpdateCode(){}
+void Component::shutdown(){}
 
-void Component::EnableComponent(){
+
+void Component::draw(){}
+
+
+void Component::updateCode(){}
+
+
+void Component::enableComponent(){
 	this->component_state = State::ENABLED;
 }
 
-void Component::DisableComponent(){
+
+void Component::disableComponent(){
 	this->component_state = State::DISABLED;
 }
 
-bool Component::IsEnabled(){
-	if(component_state == State::ENABLED){
+
+bool Component::isEnabled(){
+	if( component_state == State::ENABLED){
 		return true;
-	}else{
+	} else {
 		return false;
 	}
 }
