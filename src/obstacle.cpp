@@ -69,25 +69,25 @@ void Obstacle::CreateComponents(){
 	if(m_obstacle_type == ObstacleType::WESTERN_CAR){
 		DEBUG("Obstacle is a WESTERN CAR!");
 		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
-		this->AddComponent(*m_obstacle_image);
+		this->addComponent(*m_obstacle_image);
 		CreateBlocks();
 
 	}else if(m_obstacle_type == ObstacleType::WESTERN_BOX){
 		DEBUG("Obstacle is a WESTERN BOX!");
 		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
-		this->AddComponent(*m_obstacle_image);
+		this->addComponent(*m_obstacle_image);
 		CreateBlocks();
 
 	}else if(m_obstacle_type == ObstacleType::WESTERN_RAISED_BOX){
 		DEBUG("Obstacle is a WESTERN RAISED BOX!");
 		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
-		this->AddComponent(*m_obstacle_image);
+		this->addComponent(*m_obstacle_image);
 		CreateBlocks();
 
 	}else if(m_obstacle_type == ObstacleType::WESTERN_ROCK){
 		DEBUG("Obstacle is a WESTERN ROCK");
 		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
-		this->AddComponent(*m_obstacle_image);
+		this->addComponent(*m_obstacle_image);
 		CreateBlocks();
 
 	}else if(m_obstacle_type == ObstacleType::MACHINE_PART){
@@ -95,27 +95,27 @@ void Obstacle::CreateComponents(){
 		m_machine_part_state = MachinePartState::NON_COLLECTED;
 		GenTurningAnimation();
 		m_turning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, m_turning_animation_sprites, 0, 23, true, 1);
-		this->AddComponent(*m_turning);
+		this->addComponent(*m_turning);
 
 		m_audio_controller = new engine::AudioController();
 		m_collected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
 		m_audio_controller->AddAudio("coleta", *m_collected);
-		this->AddComponent(*m_audio_controller);
+		this->addComponent(*m_audio_controller);
 
 		m_machine_part_code = new MachinePartCode(this);
-		this->AddComponent(*m_machine_part_code);
+		this->addComponent(*m_machine_part_code);
 
 	}else if(m_obstacle_type == ObstacleType::WESTERN_SPIKE){
 		DEBUG("Obstacle is a WESTERN SPIKE");
 
 		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
-		this->AddComponent(*m_obstacle_image);
+		this->addComponent(*m_obstacle_image);
 		CreateBlocks();
 	}else if(m_obstacle_type == ObstacleType::WESTERN_POST){
 		DEBUG("Obstacle is a WESTERN POST");
 
 		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
-		this->AddComponent(*m_obstacle_image);
+		this->addComponent(*m_obstacle_image);
 		CreateBlocks();
 	}else if(m_obstacle_type == ObstacleType::GROUND){
 		CreateBlocks();

@@ -27,18 +27,18 @@ void LevelOne::CreateGameObjects(){
 	m_level_one = new engine::GameObject("level_one", std::make_pair(0, 0));
 
 	m_level_background_1 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_one.png", 1);
-	m_level_one->AddComponent(*m_level_background_1);
+	m_level_one->addComponent(*m_level_background_1);
 
 	m_level_background_2 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_two.png", 1, std::make_pair(8188, 0));
-	m_level_one->AddComponent(*m_level_background_2);
+	m_level_one->addComponent(*m_level_background_2);
 
 	m_level_background_3 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_three.png", 1, std::make_pair(16379, 0));
-	m_level_one->AddComponent(*m_level_background_3);
+	m_level_one->addComponent(*m_level_background_3);
 
 	m_audio_controller = new engine::AudioController();
 	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/banjo.ogg", true, true);
 	m_audio_controller->AddAudio("tema_level_one", *m_level_theme);
-	m_level_one->AddComponent(*m_audio_controller);
+	m_level_one->addComponent(*m_audio_controller);
 
 	this->AddGameObject(*m_level_one);
 
@@ -452,7 +452,7 @@ void LevelOne::CreateGameObjects(){
 	AddLevelParents();
 
 	m_level_code = new LevelOneCode(*m_level_one);
-	m_level_one->AddComponent(*m_level_code);
+	m_level_one->addComponent(*m_level_code);
 
 }
 
@@ -462,7 +462,7 @@ void LevelOne::CreateEndingScreen(){
 
 	m_winning_screen = new engine::BackgroundComponent(*m_winning_screen_object, "general_images/tela_vitoria.png");
 
-	m_winning_screen_object->AddComponent(*m_winning_screen);
+	m_winning_screen_object->addComponent(*m_winning_screen);
 	this->AddGameObject(*m_winning_screen_object);
 
 	m_losing_parts_screen_object = new engine::GameObject("losing_parts", std::make_pair(0, 0));
@@ -470,7 +470,7 @@ void LevelOne::CreateEndingScreen(){
 
 	m_losing_parts_screen = new engine::BackgroundComponent(*m_losing_parts_screen_object, "general_images/tela_derrota.png");
 
-	m_losing_parts_screen_object->AddComponent(*m_losing_parts_screen);
+	m_losing_parts_screen_object->addComponent(*m_losing_parts_screen);
 	this->AddGameObject(*m_losing_parts_screen_object);
 
 	m_losing_death_screen_object = new engine::GameObject("losing_death", std::make_pair(0, 0));
@@ -478,7 +478,7 @@ void LevelOne::CreateEndingScreen(){
 
 	m_losing_death_screen = new engine::BackgroundComponent(*m_losing_death_screen_object, "general_images/tela_morte.png");
 
-	m_losing_death_screen_object->AddComponent(*m_losing_death_screen);
+	m_losing_death_screen_object->addComponent(*m_losing_death_screen);
 	this->AddGameObject(*m_losing_death_screen_object);
 
 	m_arrow = new engine::GameObject("arrow", std::make_pair(0, 0));
@@ -486,7 +486,7 @@ void LevelOne::CreateEndingScreen(){
 
 	m_arrow_image = new engine::ImageComponent(*m_arrow, "general_images/arrow.png", 1);
 
-	m_arrow->AddComponent(*m_arrow_image);
+	m_arrow->addComponent(*m_arrow_image);
 	this->AddGameObject(*m_arrow);
 }
 

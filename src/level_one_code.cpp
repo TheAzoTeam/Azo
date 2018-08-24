@@ -19,14 +19,14 @@ void LevelOneCode::Shutdown(){
 }
 
 void LevelOneCode::FindAudioController(){
-	m_audio_controller = (game_object->GetAudioController(typeid(engine::AudioController)));
+	m_audio_controller = (game_object->getAudioController(typeid(engine::AudioController)));
 }
 
 void LevelOneCode::GetParents(){
 	for(auto parent : game_object->m_parent_list){
-		if(parent->GetClassName() == "Player"){
+		if(parent->getClassName() == "Player"){
 			m_player = dynamic_cast<Player *>(parent);
-		}else if(parent->GetClassName() == "Obstacle"){
+		}else if(parent->getClassName() == "Obstacle"){
 			m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
 		}else if(parent->m_name == "winning_screen"){
 			m_winning_screen = parent;
@@ -209,8 +209,8 @@ void LevelOneCode::UpdatePhysics(){
 }
 
 bool LevelOneCode::HasGround(double *ground_y){
-	std::pair<double, double> player_bottom_left = m_player->CalcBottomLeft();
-	std::pair<double, double> player_top_right = m_player->CalcTopRight();
+	std::pair<double, double> player_bottom_left = m_player->calcBottomLeft();
+	std::pair<double, double> player_top_right = m_player->calcTopRight();
 
 	double player_top = player_top_right.second;
 	double player_bottom = player_bottom_left.second;
@@ -225,8 +225,8 @@ bool LevelOneCode::HasGround(double *ground_y){
 		// TODO(Roger): Create states to the machine parts.
 
 		if(each_obstacle->m_obstacle_type == ObstacleType::MACHINE_PART){
-			std::pair<double, double> block_bottom_left = each_obstacle->CalcBottomLeft();
-			std::pair<double, double> block_top_right = each_obstacle->CalcTopRight();
+			std::pair<double, double> block_bottom_left = each_obstacle->calcBottomLeft();
+			std::pair<double, double> block_top_right = each_obstacle->calcTopRight();
 
 			double block_right = block_top_right.first;
 			double block_left = block_bottom_left.first;
@@ -246,8 +246,8 @@ bool LevelOneCode::HasGround(double *ground_y){
 			}
 		}else{
 			for(auto each_block : each_obstacle->m_block_list){
-				std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
-				std::pair<double, double> block_top_right = each_block->CalcTopRight();
+				std::pair<double, double> block_bottom_left = each_block->calcBottomLeft();
+				std::pair<double, double> block_top_right = each_block->calcTopRight();
 
 				double block_right = block_top_right.first;
 				double block_left = block_bottom_left.first;
@@ -285,8 +285,8 @@ bool LevelOneCode::HasGround(double *ground_y){
 }
 
 bool LevelOneCode::HasWallOnRight(double *wall_x){
-	std::pair<double, double> player_bottom_left = m_player->CalcBottomLeft();
-	std::pair<double, double> player_top_right = m_player->CalcTopRight();
+	std::pair<double, double> player_bottom_left = m_player->calcBottomLeft();
+	std::pair<double, double> player_top_right = m_player->calcTopRight();
 
 	double player_top = player_top_right.second;
 	double player_bottom = player_bottom_left.second;
@@ -296,8 +296,8 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 	for(auto each_obstacle : m_obstacle_list){
 
 		if(each_obstacle->m_obstacle_type == ObstacleType::MACHINE_PART){
-			std::pair<double, double> block_bottom_left = each_obstacle->CalcBottomLeft();
-			std::pair<double, double> block_top_right = each_obstacle->CalcTopRight();
+			std::pair<double, double> block_bottom_left = each_obstacle->calcBottomLeft();
+			std::pair<double, double> block_top_right = each_obstacle->calcTopRight();
 
 			// These magic numbers are used because the walls must be a bit at the front of the top.
 			double block_right = block_top_right.first + 5;
@@ -323,8 +323,8 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 
 			for(auto each_block : each_obstacle->m_block_list){
 
-				std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
-				std::pair<double, double> block_top_right = each_block->CalcTopRight();
+				std::pair<double, double> block_bottom_left = each_block->calcBottomLeft();
+				std::pair<double, double> block_top_right = each_block->calcTopRight();
 
 				// These magic numbers are used because the walls must be a bit at the front of the top.
 				double block_right = block_top_right.first + 5;
@@ -370,8 +370,8 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 }
 
 bool LevelOneCode::HasWallOnLeft(double *wall_x){
-	std::pair<double, double> player_bottom_left = m_player->CalcBottomLeft();
-	std::pair<double, double> player_top_right = m_player->CalcTopRight();
+	std::pair<double, double> player_bottom_left = m_player->calcBottomLeft();
+	std::pair<double, double> player_top_right = m_player->calcTopRight();
 
 	double player_top = player_top_right.second;
 	double player_bottom = player_bottom_left.second;
@@ -382,8 +382,8 @@ bool LevelOneCode::HasWallOnLeft(double *wall_x){
 
 		for(auto each_block : each_obstacle->m_block_list){
 
-			std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
-			std::pair<double, double> block_top_right = each_block->CalcTopRight();
+			std::pair<double, double> block_bottom_left = each_block->calcBottomLeft();
+			std::pair<double, double> block_top_right = each_block->calcTopRight();
 
 			double block_right = block_top_right.first;
 			double block_top = block_top_right.second;
@@ -406,8 +406,8 @@ bool LevelOneCode::HasWallOnLeft(double *wall_x){
 }
 
 bool LevelOneCode::HasCeiling(double *ground_y){
-	std::pair<double, double> player_bottom_left = m_player->CalcBottomLeft();
-	std::pair<double, double> player_top_right = m_player->CalcTopRight();
+	std::pair<double, double> player_bottom_left = m_player->calcBottomLeft();
+	std::pair<double, double> player_top_right = m_player->calcTopRight();
 
 	double player_top = player_top_right.second;
 	double player_bottom = player_bottom_left.second;
@@ -418,8 +418,8 @@ bool LevelOneCode::HasCeiling(double *ground_y){
 	for(auto each_obstacle : m_obstacle_list){
 
 		for(auto each_block : each_obstacle->m_block_list){
-			std::pair<double, double> block_bottom_left = each_block->CalcBottomLeft();
-			std::pair<double, double> block_top_right = each_block->CalcTopRight();
+			std::pair<double, double> block_bottom_left = each_block->calcBottomLeft();
+			std::pair<double, double> block_top_right = each_block->calcTopRight();
 
 			double block_left = block_bottom_left.first;
 			double block_right = block_top_right.first;

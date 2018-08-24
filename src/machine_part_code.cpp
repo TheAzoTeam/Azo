@@ -17,7 +17,7 @@ void MachinePartCode::Shutdown(){
 }
 
 void MachinePartCode::FindAudioController(){
-	m_audio_controller = (m_machine_part->GetAudioController(typeid(engine::AudioController)));
+	m_audio_controller = (m_machine_part->getAudioController(typeid(engine::AudioController)));
 }
 
 void MachinePartCode::UpdateCode(){

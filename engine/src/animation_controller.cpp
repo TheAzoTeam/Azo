@@ -12,7 +12,7 @@ void AnimationController::Init(){
 void AnimationController::Draw(){
 	for(auto animation_row : m_animation_map){
 		auto animation = animation_row.second;
-		if(animation->IsEnabled()){
+		if(animation->isEnabled()){
 			animation->Draw();
 		}
 	}
@@ -53,7 +53,7 @@ void AnimationController::StartUniqueAnimation(std::string animation_name){
 			each_animation.second->m_state = AnimationState::STOPPED;
 		}
 		if(animation_to_be_played != m_animation_map.end()){
-			animation_to_be_played->second->EnableComponent();
+			animation_to_be_played->second->enableComponent();
 			animation_to_be_played->second->m_state = AnimationState::PLAYING;
 		}
 	}
@@ -66,8 +66,8 @@ void AnimationController::StartAnimation(std::string animation_name){
 		ERROR("Animation " << animation_name << "doesn't exist!");
 	}
 
-	if(!animation_to_be_played->second->IsEnabled()){
-		animation_to_be_played->second->EnableComponent();
+	if(!animation_to_be_played->second->isEnabled()){
+		animation_to_be_played->second->enableComponent();
 		animation_to_be_played->second->m_state = AnimationState::PLAYING;
 	}
 }
