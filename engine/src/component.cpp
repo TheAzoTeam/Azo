@@ -5,9 +5,9 @@ using namespace engine;
 Component::Component(){}
 
 
-Component::Component(GameObject &game_object){
-	this->game_object = &game_object;
-	this->component_state = State::ENABLED;
+Component::Component(GameObject &gameObject){
+	this->gameObject = &gameObject;
+	this->componentState = State::ENABLED;
 }
 
 
@@ -24,17 +24,17 @@ void Component::updateCode(){}
 
 
 void Component::enableComponent(){
-	this->component_state = State::ENABLED;
+	this->componentState = State::ENABLED;
 }
 
 
 void Component::disableComponent(){
-	this->component_state = State::DISABLED;
+	this->componentState = State::DISABLED;
 }
 
 
 bool Component::isEnabled(){
-	if( component_state == State::ENABLED){
+	if( componentState == State::ENABLED){
 		return true;
 	} else {
 		return false;
