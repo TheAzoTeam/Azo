@@ -13,9 +13,9 @@ GameObject::GameObject(){
 }
 
 
-GameObject::GameObject(std::string game_object_name, std::pair<double, double> current_position){
-	this->mName = game_object_name;
-	this->mCurrentPosition = current_position;
+GameObject::GameObject(std::string gameObjectName, std::pair<double, double> currentPosition){
+	this->mName = gameObjectName;
+	this->mCurrentPosition = currentPosition;
 }
 
 
