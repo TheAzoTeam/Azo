@@ -25,7 +25,7 @@ namespace engine {
 		Mix_Chunk * sound;
 
 	public:
-		AudioState audio_state;
+		AudioState audioState;
 		AudioComponent();
 		virtual ~AudioComponent();
 		AudioComponent(GameObject & gameObject, std::string path, bool isMusic, bool playOnStart);

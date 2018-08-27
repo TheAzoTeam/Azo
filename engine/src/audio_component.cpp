@@ -15,7 +15,7 @@ AudioComponent::AudioComponent(GameObject & gameObject, std::string path, bool i
 	this->audioPath = path;
 	this->isMusic = isMusic;
 	this->playOnStart = playOnStart;
-	this->audio_state = AudioState::STOPPED;
+	this->audioState = AudioState::STOPPED;
 	this->music = nullptr;
 	this->sound = nullptr;
 }
@@ -68,25 +68,25 @@ void AudioComponent::play(int loops, int channel){
 	INFO("AudioComponent::Play audio: " << audioPath);
 
 	if (isMusic){
-		if (audio_state == AudioState::STOPPED){
+		if (audioState == AudioState::STOPPED){
 			Mix_PlayMusic (music, loops);
 			INFO("Play music: " << audioPath);
-		} else if (audio_state == AudioState::PAUSED){
+		} else if (audioState == AudioState::PAUSED){
 			Mix_ResumeMusic();
 			INFO("Resume music: " << audioPath);
 		}
 
 	} else {
-		if (audio_state == AudioState::STOPPED){
+		if (audioState == AudioState::STOPPED){
 			Mix_PlayChannel(channel, sound, 0);
 			INFO("Play sound: " << audioPath);
-		} else if (audio_state == AudioState::PAUSED){
+		} else if (audioState == AudioState::PAUSED){
 			Mix_Resume(channel);
 			INFO("Resume sound: " << audioPath);
 		}
 	}
 
-	audio_state = AudioState::PLAYING;
+	audioState = AudioState::PLAYING;
 }
 
 
@@ -101,7 +101,7 @@ void AudioComponent::stop(int channel){
 		INFO("Stop sound: " << audioPath);
 	}
 
-	audio_state = AudioState::STOPPED;
+	audioState = AudioState::STOPPED;
 }
 
 
@@ -116,5 +116,5 @@ void AudioComponent::pause(int channel){
 		INFO("Pause sound: " << audioPath);
 	}
 
-	audio_state = AudioState::PAUSED;
+	audioState = AudioState::PAUSED;
 }

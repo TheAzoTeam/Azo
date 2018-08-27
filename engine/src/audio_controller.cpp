@@ -86,5 +86,5 @@ AudioState AudioController::GetAudioState(std::string audio_name){
 		ERROR("Audio doesn't exist");
 	}
 
-	return audio->second->audio_state;
+	return audio->second->audioState;
 }
