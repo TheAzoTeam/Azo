@@ -17,9 +17,9 @@ namespace engine {
 	
 	class AudioComponent : public Component {
 	private:
-		std::string audio_path;
-		bool is_music;
-		bool play_on_start;
+		std::string audioPath;
+		bool isMusic;
+		bool playOnStart;
 
 		Mix_Music * music;
 		Mix_Chunk * sound;
@@ -28,16 +28,14 @@ namespace engine {
 		AudioState audio_state;
 		AudioComponent();
 		virtual ~AudioComponent();
-		AudioComponent(GameObject & game_object, std::string path, bool is_music, bool play_on_start);
+		AudioComponent(GameObject & gameObject, std::string path, bool isMusic, bool playOnStart);
 		void init();
 		void shutdown();
 		void updateCode();
 		void play(int loops = -1, int channel = -1);
 		void stop(int channel = -1);
 		void pause(int channel = -1);
-		inline bool getIsMusic(){
-			return is_music;
-		}
+		inline bool getIsMusic(){ return isMusic; }
 	};
 
 }
