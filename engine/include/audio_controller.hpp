@@ -11,7 +11,7 @@ namespace engine {
 
 	class AudioController : public AudioComponent {
 		private:
-			std::map <std::string, AudioComponent *> audio_map;
+			std::map <std::string, AudioComponent *> audioMap;
 		public:
 			AudioController();
 			virtual ~AudioController();
