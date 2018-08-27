@@ -6,60 +6,66 @@ using namespace engine;
 
 
 GameObject::GameObject(){
-	m_center.first = 0;
-	m_center.second = 0;
-	m_half_size.first = 0;
-	m_half_size.second = 0;
+	mCenter.first = 0;
+	mCenter.second = 0;
+	mHalfSize.first = 0;
+	mHalfSize.second = 0;
 }
+
 
 GameObject::GameObject(std::string game_object_name, std::pair<double, double> current_position){
-	this->m_name = game_object_name;
-	this->m_current_position = current_position;
+	this->mName = game_object_name;
+	this->mCurrentPosition = current_position;
 }
+
 
 void GameObject::addComponent(Component &component){
-	std::pair <std::type_index, Component *> component_pair(typeid(component), &component);
-	m_component_map.insert(component_pair);
+	std::pair <std::type_index, Component *> componentPair(typeid(component), &component);
+	mComponentMap.insert(componentPair);
 }
 
-AnimationController* GameObject::getAnimationController(std::type_index component_type){
-	auto component_to_be_found = m_component_map.find(component_type);
 
-	if (component_to_be_found != m_component_map.end()){
-		DEBUG("AnimationController found. Class name: " << component_to_be_found->second->getClassName());
-		return dynamic_cast <AnimationController * > (component_to_be_found->second);
+AnimationController* GameObject::getAnimationController(std::type_index componentType){
+	auto componentToBeFound = mComponentMap.find(componentType);
+
+	if (componentToBeFound != mComponentMap.end()){
+		DEBUG("AnimationController found. Class name: " << componentToBeFound->second->getClassName());
+		return dynamic_cast <AnimationController * > (componentToBeFound->second);
 	} else {
 		ERROR("Animation Controller couldn't be found!");
 	}
 }
 
-AudioController* GameObject::getAudioController(std::type_index component_type){
-	auto component_to_be_found = m_component_map.find(component_type);
 
-	if (component_to_be_found != m_component_map.end()){
-		DEBUG("AudioController found. Class name: " << component_to_be_found->second->getClassName());
+AudioController* GameObject::getAudioController(std::type_index componentType){
+	auto componentToBeFound = mComponentMap.find(componentType);
 
-		return dynamic_cast <AudioController * > (component_to_be_found->second);
+	if (componentToBeFound != mComponentMap.end()){
+		DEBUG("AudioController found. Class name: " << componentToBeFound->second->getClassName());
+
+		return dynamic_cast <AudioController * > (componentToBeFound->second);
 	} else {
 		ERROR("Audio Controller couldn't be found!");
 	}
 }
 
+
 void GameObject::init(){
-	for (auto each_pair : m_component_map){
-		auto component = each_pair.second;
+	for (auto eachPair : mComponentMap){
+		auto component = eachPair.second;
 		if (component->isEnabled()){
 			component->init();
 		}
 	}
 }
 
+
 void GameObject::draw(){
 	// DEBUG("GameObject::Draw method.");
 	//DEBUG("Game object name: " << m_name);
 	// DEBUG("Map size: " << m_component_map.size());
-	for (auto each_pair : m_component_map){
-		auto component = each_pair.second;
+	for (auto eachPair : mComponentMap){
+		auto component = eachPair.second;
 
 		ASSERT(component != NULL, "Component can't be NULL when drawing.");
 
@@ -72,14 +78,16 @@ void GameObject::draw(){
 	//DEBUG("Finished Drawing.");
 }
 
+
 void GameObject::updateCode(){
-	for (auto each_pair : m_component_map){
-		auto component = each_pair.second;
+	for (auto eachPair : mComponentMap){
+		auto component = eachPair.second;
 		if (component->isEnabled()){
 			component->updateCode();
 		}
 	}
 }
+
 
 void GameObject::shutdown(){
 	// for(auto each_pair : m_component_map){
@@ -88,45 +96,53 @@ void GameObject::shutdown(){
 	// }
 }
 
+
 std::pair<double, double> GameObject::calcBottomLeft(){
-	std::pair<double, double> bottom_left;
-	bottom_left.first = m_center.first - m_half_size.first;
-	bottom_left.second = m_center.second + m_half_size.second;
-	return bottom_left;
+	std::pair<double, double> bottomLeft;
+	bottomLeft.first = mCenter.first - mHalfSize.first;
+	bottomLeft.second = mCenter.second + mHalfSize.second;
+	return bottomLeft;
 }
+
 
 std::pair<double, double> GameObject::calcBottomRight(){
-	std::pair<double, double> bottom_right;
-	bottom_right.first = m_center.first + m_half_size.first;
-	bottom_right.second = m_center.second + m_half_size.second;
-	return bottom_right;
+	std::pair<double, double> bottomRight;
+	bottomRight.first = mCenter.first + mHalfSize.first;
+	bottomRight.second = mCenter.second + mHalfSize.second;
+	return bottomRight;
 }
+
 
 std::pair<double, double> GameObject::calcTopLeft(){
-	std::pair<double, double> top_left;
-	top_left.first = m_center.first - m_half_size.first;
-	top_left.second = m_center.second - m_half_size.second;
-	return top_left;
+	std::pair<double, double> topLeft;
+	topLeft.first = mCenter.first - mHalfSize.first;
+	topLeft.second = mCenter.second - mHalfSize.second;
+	return topLeft;
 }
 
+
 std::pair<double, double> GameObject::calcTopRight(){
-	std::pair<double, double> top_right;
-	top_right.first = m_center.first + m_half_size.first;
-	top_right.second = m_center.second - m_half_size.second;
-	return top_right;
+	std::pair<double, double> topRight;
+	topRight.first = mCenter.first + mHalfSize.first;
+	topRight.second = mCenter.second - mHalfSize.second;
+	return topRight;
 }
+
 
 std::pair<double, double> GameObject::calcRightUp(){
 	return calcTopRight();
 }
 
+
 std::pair<double, double> GameObject::calcRightDown(){
 	return calcBottomRight();
 }
 
+
 std::pair<double, double> GameObject::calcLeftUp(){
 	return calcTopLeft();
 }
+
 
 std::pair<double, double> GameObject::calcLeftDown(){
 	return calcBottomLeft();

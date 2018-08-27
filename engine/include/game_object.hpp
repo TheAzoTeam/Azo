@@ -23,28 +23,28 @@ namespace engine {
 	class GameObject {
 
 	public:
-		std::pair<double, double> m_current_position; 
+		std::pair<double, double> mCurrentPosition; 
 		/* m_current_position is the left upper corner of the game object, 
 		in coordinates. */
-		std::pair<double, double> m_size; 
+		std::pair<double, double> mSize; 
 		/* m_size.first and m_size.second correspond to the X and Y sizes, 
 		respectively. */
-		std::pair<double, double> m_center; // Center position of game object.
-		std::pair<double, double> m_half_size; // Same as m_size.
-		std::list<GameObject *> m_parent_list;
-		std::string m_name;
-		ObjectState m_object_state = ObjectState::ENABLED;
+		std::pair<double, double> mCenter; // Center position of game object.
+		std::pair<double, double> mHalfSize; // Same as m_size.
+		std::list<GameObject *> mParentList;
+		std::string mName;
+		ObjectState mObjectState = ObjectState::ENABLED;
 
 	protected:
-		std::unordered_multimap<std::type_index, Component *> m_component_map;
+		std::unordered_multimap<std::type_index, Component *> mComponentMap;
 
 	public:
 		GameObject();
-		GameObject(std::string game_object_name, 
-				   std::pair<double, double> current_position);
+		GameObject(std::string gameObjectName, 
+				   std::pair<double, double> currentPosition);
 		void addComponent(Component &component);
-		AnimationController* getAnimationController(std::type_index component_type);
-		AudioController* getAudioController(std::type_index component_type);
+		AnimationController* getAnimationController(std::type_index componentType);
+		AudioController* getAudioController(std::type_index componentType);
 		virtual void init();
 		virtual void draw();
 		virtual void shutdown();
