@@ -30,7 +30,7 @@ void Scene::DeleteKeyList(){
 
 void Scene::Draw(){
 	for(auto each_key : m_key_list){
-		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
+		if(game_object_map[each_key]->mObjectState == ObjectState::ENABLED){
 			game_object_map[each_key]->draw();
 		}
 	}
@@ -38,7 +38,7 @@ void Scene::Draw(){
 
 void Scene::UpdateCode(){
 	for(auto each_key : m_key_list){
-		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
+		if(game_object_map[each_key]->mObjectState == ObjectState::ENABLED){
 			game_object_map[each_key]->updateCode();
 		}
 	}
@@ -47,7 +47,7 @@ void Scene::UpdateCode(){
 void Scene::Restart(){}
 
 void Scene::AddGameObject(GameObject &game_object){
-	auto game_object_name = game_object.m_name;
+	auto game_object_name = game_object.mName;
 
 	if(game_object_map.find(game_object_name) != game_object_map.end()){
 		ERROR("Game object already exists!");

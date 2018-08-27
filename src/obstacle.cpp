@@ -54,9 +54,9 @@ void Obstacle::Shutdown(){
 
 
 Obstacle::Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type){
-	m_name = name;
+	mName = name;
 	m_position_relative_to_parent = position_relative_to_parent;
-	m_current_position = m_position_relative_to_parent;
+	mCurrentPosition = m_position_relative_to_parent;
 
 	m_obstacle_type = obstacle_type;
 

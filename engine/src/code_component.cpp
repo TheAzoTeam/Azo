@@ -6,8 +6,8 @@ using namespace engine;
 CodeComponent::CodeComponent(){}
 
 CodeComponent::CodeComponent(GameObject &game_object){
-	this->game_object = &game_object;
-	this->component_state = State::ENABLED;
+	this->gameObject = &game_object;
+	this->componentState = State::ENABLED;
 }
 
 void CodeComponent::Init(){}

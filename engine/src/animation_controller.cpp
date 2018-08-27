@@ -26,12 +26,12 @@ void AnimationController::Shutdown(){
 }
 
 AnimationController::AnimationController(){
-	this->component_state = State::ENABLED;
+	this->componentState = State::ENABLED;
 }
 
-AnimationController::AnimationController(GameObject &game_object){
-	this->game_object = &game_object;
-	this->component_state = State::ENABLED;
+AnimationController::AnimationController(GameObject &gameObject){
+	this->gameObject = &gameObject;
+	this->componentState = State::ENABLED;
 }
 
 void AnimationController::AddAnimation(std::string animation_name, Animation &animation){
