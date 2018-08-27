@@ -5,23 +5,23 @@ using namespace engine;
 AudioController::~AudioController(){}
 
 void AudioController::Init(){
-	for(auto audio_row : audioMap){
-		auto audio = audio_row.second;
+	for(auto audioRow : audioMap){
+		auto audio = audioRow.second;
 		audio->Init();
 	}
 }
 
 void AudioController::Shutdown(){
-	for(auto audio_row : audioMap){
-		auto audio = audio_row.second;
+	for(auto audioRow : audioMap){
+		auto audio = audioRow.second;
 		audio->Shutdown();
 		audio = NULL;
 	}
 }
 
 void AudioController::UpdateCode(){
-	for(auto audio_row : audioMap){
-		auto audio = audio_row.second;
+	for(auto audioRow : audioMap){
+		auto audio = audioRow.second;
 		if(audio->IsEnabled()){
 			audio->UpdateCode();
 		}
@@ -37,50 +37,50 @@ AudioController::AudioController(GameObject &game_object){
 	this->component_state = State::ENABLED;
 }
 
-void AudioController::AddAudio(std::string audio_name, AudioComponent &audio){
-	audioMap[audio_name] = &audio;
+void AudioController::AddAudio(std::string audioName, AudioComponent &audio){
+	audioMap[audioName] = &audio;
 }
 
-void AudioController::PlayAudio(std::string audio_name){
+void AudioController::PlayAudio(std::string audioName){
 
-	auto audio_to_be_played = audioMap.find(audio_name);
+	auto audioToBePlayed = audioMap.find(audioName);
 
-	if(audio_to_be_played != audioMap.end()){
-		audio_to_be_played->second->Play(-1, -1);
+	if(audioToBePlayed != audioMap.end()){
+		audioToBePlayed->second->Play(false, false);
 
 	}else{
 		ERROR("This audio doesn't exist.");
 	}
 }
 
-void AudioController::StopAudio(std::string audio_name){
-	auto audio_to_be_played = audioMap.find(audio_name);
+void AudioController::StopAudio(std::string audioName){
+	auto audioToBePlayed = audioMap.find(audioName);
 
-	if(audio_to_be_played != audioMap.end()){
-		audio_to_be_played->second->Stop(-1);
+	if(audioToBePlayed != audioMap.end()){
+		audioToBePlayed->second->Stop(false);
 	}else{
 		ERROR("Audio couldn't be found!");
 	}
 }
 
 void AudioController::StopAllAudios(){
-	Mix_HaltChannel(-1);
+	Mix_HaltChannel(false);
 	Mix_HaltMusic();
 }
 
 
-void AudioController::PauseAudio(std::string audio_name){
-	auto audio_to_be_played = audioMap.find(audio_name);
+void AudioController::PauseAudio(std::string audioName){
+	auto audioToBePlayed = audioMap.find(audioName);
 
-	if(audio_to_be_played != audioMap.end()){
-		audio_to_be_played->second->Pause(-1);
+	if(audioToBePlayed != audioMap.end()){
+		audioToBePlayed->second->Pause(false);
 	}else{
 		ERROR("Animation couldn't be found!");
 	}
 }
 
-AudioState AudioController::GetAudioState(std::string audio_name){
-	auto audio = audioMap.find(audio_name);
+AudioState AudioController::GetAudioState(std::string audioName){
+	auto audio = audioMap.find(audioName);
 
 	if(audio == audioMap.end()){
 		ERROR("Audio doesn't exist");
