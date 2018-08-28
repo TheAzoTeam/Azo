@@ -12,7 +12,7 @@ namespace Azo {
 			Player *mPlayer;
 			std::list<Obstacle *> mObstacleList;
 			engine::AudioController *mAudioController;
-			engine::GameObject *mLosingParts;
+			engine::GameObject *mLosingParts;		
 			engine::GameObject *mLosingDeath;
 			engine::GameObject *mWinningScreen;
 			engine::GameObject *mArrow;
