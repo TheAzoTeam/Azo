@@ -33,11 +33,11 @@ void SDL::InitSDL(){
 void SDL::CreateWindow(){
 	INFO("Creating Window.");
 	window = SDL_CreateWindow(
-		game_name.c_str(),      // Game window title.
+		gameName.c_str(),      // Game window title.
 		SDL_WINDOWPOS_CENTERED, // Window opening position x.
 		SDL_WINDOWPOS_CENTERED, // Window opening position y.
-		window_width,           // Window width.
-		window_height,          // Window height.
+		windowWidth,           // Window width.
+		windowHeight,          // Window height.
 		SDL_WINDOW_SHOWN
 		);
 
@@ -45,7 +45,7 @@ void SDL::CreateWindow(){
 		ERROR( "Couldn't create window.");
 	}
 
-	SDL_GetWindowSize(window, &window_width, &window_height);
+	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
 
 	INFO("Creating canvas.");
 	canvas = SDL_CreateRenderer(
@@ -92,8 +92,8 @@ void SDL::TerminateSDL(){
 
 
 // Receive attributes of the Game instance, throught "SetGameAttributes" method.
-void SDL::SetSDLAttributes(std::string game_name, int window_width, int window_height){
-	this->game_name = game_name;
-	this->window_width = window_width;
-	this->window_height = window_height;
+void SDL::SetSDLAttributes(std::string gameName, int windowWidth, int windowHeight){
+	this->gameName = gameName;
+	this->windowWidth = windowWidth;
+	this->windowHeight = windowHeight;
 }
