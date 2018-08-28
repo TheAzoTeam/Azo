@@ -7,13 +7,13 @@
 namespace Azo {
 	class obstacle;
 
-	class MachinePartCode : public engine::CodeComponent {
+	class machinePartCode : public engine::CodeComponent {
 		private:
-			obstacle *m_machine_part;
+			obstacle *mMachinePart;
 			engine::AudioController *mAudioController;
 		public:
-			MachinePartCode(obstacle *machine_part);
-			virtual ~MachinePartCode();
+			machinePartCode(obstacle *machinePart);
+			virtual ~machinePartCode();
 			void shutDown();
 		private:
 			void updateCode();

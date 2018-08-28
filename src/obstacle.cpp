@@ -45,10 +45,10 @@ void obstacle::shutDown(){
 	}
 
 
-	if(mMachinePartCode != NULL){
-		mMachinePartCode->shutDown();
-		delete(mMachinePartCode);
-		mMachinePartCode = NULL;
+	if(mmachinePartCode != NULL){
+		mmachinePartCode->shutDown();
+		delete(mmachinePartCode);
+		mmachinePartCode = NULL;
 	}
 }
 
@@ -94,7 +94,7 @@ void obstacle::createComponents(){
 		DEBUG("obstacle is a MACHINE PART");
 		mMachinePartState = MachinePartState::NON_COLLECTED;
 		genTurningAnimation();
-		mTurning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, mTurningAnimationSprites, 0, 23, true, 1);
+		mTurning = new engine::Animation(*this, "sprites/machinePart.png", 1200.0f, mTurningAnimationSprites, 0, 23, true, 1);
 		this->AddComponent(*mTurning);
 
 		mAudioController = new engine::AudioController();
@@ -102,8 +102,8 @@ void obstacle::createComponents(){
 		mAudioController->AddAudio("coleta", *mCollected);
 		this->AddComponent(*mAudioController);
 
-		mMachinePartCode = new MachinePartCode(this);
-		this->AddComponent(*mMachinePartCode);
+		mmachinePartCode = new machinePartCode(this);
+		this->AddComponent(*mmachinePartCode);
 
 	}else if(mobstacleType == obstacleType::WESTERN_SPIKE){
 		DEBUG("obstacle is a WESTERN SPIKE");
