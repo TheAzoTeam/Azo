@@ -101,8 +101,8 @@ void Animation::UpdateQuad(){
 	//DEBUG("Updating canvas quad.");
 
 	canvasQuad = {
-		(int)(game_object->m_current_position.first + m_position_relative_to_object.first),
-		(int)(game_object->m_current_position.second + m_position_relative_to_object.second),
+		(int)(game_object->mCurrentPosition.first + m_position_relative_to_object.first),
+		(int)(game_object->mCurrentPosition.second + m_position_relative_to_object.second),
 		(int)(m_sprite_list[m_current_sprite]->sprite_width * zoom_factor),
 		(int)(m_sprite_list[m_current_sprite]->sprite_height * zoom_factor),
 	};
@@ -113,10 +113,10 @@ void Animation::CheckLimits(){
 		if(m_loop){
 			m_current_sprite = 0;
 			m_current_animation_time = 0.0f;
-			m_state = AnimationState::STOPPED;
+			mState = AnimationState::STOPPED;
 		}else{
 			m_current_sprite = m_end_frame;
-			m_state = AnimationState::FINISHED;
+			mState = AnimationState::FINISHED;
 		}
 	}
 }
@@ -128,12 +128,12 @@ void Animation::UpdateFrameBasedOntime(){
 
 
 void Animation::UpdateGameObjectMeasures(){
-	game_object->m_half_size.first = m_sprite_list[m_current_sprite]->sprite_width * zoom_factor / 2.0f;
-	game_object->m_half_size.second = m_sprite_list[m_current_sprite]->sprite_height * zoom_factor / 2.0f;
+	game_object->mHalfSize.first = m_sprite_list[m_current_sprite]->sprite_width * zoom_factor / 2.0f;
+	game_object->mHalfSize.second = m_sprite_list[m_current_sprite]->sprite_height * zoom_factor / 2.0f;
 
-	game_object->m_center.first = game_object->m_current_position.first + game_object->m_half_size.first;
+	game_object->mCenter.first = game_object->mCurrentPosition.first + game_object->mHalfSize.first;
 
-	game_object->m_center.second = game_object->m_current_position.second + game_object->m_half_size.second;
+	game_object->mCenter.second = game_object->mCurrentPosition.second + game_object->mHalfSize.second;
 }
 
 void Animation::DisableComponent(){

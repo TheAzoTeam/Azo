@@ -22,7 +22,7 @@ namespace engine {
 			void Init();
 			void Draw();
 			void UpdateQuad();
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "ImageComponent";
 			}
 	};

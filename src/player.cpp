@@ -7,8 +7,8 @@ Player::Player(){}
 Player::Player(std::string name, std::pair<double, double> current_position){
 	DEBUG("Player::Player method.");
 
-	m_name = name;
-	m_current_position = current_position;
+	mName = name;
+	mCurrentPosition = current_position;
 	CreateComponents();
 }
 

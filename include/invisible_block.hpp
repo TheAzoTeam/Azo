@@ -9,14 +9,14 @@ namespace Azo {
 		private:
 			engine::ImageComponent *m_image;
 		public:
-			std::pair<double, double> m_position_relative_to_parent;
+			std::pair<double, double> mPositionRelativeToParent;
 		public:
 			InvisibleBlock();
 			virtual ~InvisibleBlock();
 			InvisibleBlock(std::string name, std::pair<double, double> position_relative_to_parent,
 				       std::pair<double, double> size);
 			void Shutdown();
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "InvisibleBlock";
 			}
 	};

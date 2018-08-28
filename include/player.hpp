@@ -54,15 +54,15 @@ namespace Azo {
 			const double M_WALKING_SPEED = 4.8f;
 			const int M_TOTAL_PARTS = 25;
 
-			PlayerState m_state;
-			std::pair<double, double> m_speed;
+			PlayerState mState;
+			std::pair<double, double> mSpeed;
 
-			bool m_pushes_right_wall;
-			bool m_pushes_left_wall;
-			bool m_at_ceiling;
-			bool m_on_ground;
+			bool mPushesRightWall;
+			bool mPushesLeftWall;
+			bool mAtCeiling;
+			bool mOnGround;
 
-			int m_collected_parts = 0;
+			int mCollectedParts = 0;
 
 		private:
 			// Don't forget to create new components inside this method.
@@ -77,7 +77,7 @@ namespace Azo {
 			void GenVictoryAnimation();
 
 
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "Player";
 			}
 

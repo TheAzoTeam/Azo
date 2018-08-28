@@ -17,7 +17,7 @@ void Component::Shutdown(){}
 void Component::Draw(){}
 
 
-void Component::UpdateCode(){}
+void Component::updateCode(){}
 
 void Component::EnableComponent(){
 	this->component_state = State::ENABLED;

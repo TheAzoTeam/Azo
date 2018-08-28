@@ -36,8 +36,8 @@ void ImageComponent::Init(){
 	game_object->m_size.second = component_height;
 
 	canvasQuad = {
-		(int)(game_object->m_current_position.first + m_position_relative_to_object.first),
-		(int)(game_object->m_current_position.second + m_position_relative_to_object.second),
+		(int)(game_object->mCurrentPosition.first + m_position_relative_to_object.first),
+		(int)(game_object->mCurrentPosition.second + m_position_relative_to_object.second),
 		component_width,
 		component_height
 	};
@@ -59,8 +59,8 @@ void ImageComponent::Draw(){
 
 void ImageComponent::UpdateQuad(){
 	canvasQuad = {
-		(int)(game_object->m_current_position.first + m_position_relative_to_object.first),
-		(int)(game_object->m_current_position.second + m_position_relative_to_object.second),
+		(int)(game_object->mCurrentPosition.first + m_position_relative_to_object.first),
+		(int)(game_object->mCurrentPosition.second + m_position_relative_to_object.second),
 		component_width,
 		component_height
 	};

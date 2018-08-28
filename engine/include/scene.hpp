@@ -20,7 +20,7 @@ namespace engine {
 			virtual void Init();
 			virtual void Shutdown();
 			virtual void Draw();
-			virtual void UpdateCode();
+			virtual void updateCode();
 			virtual void Restart();
 
 			inline std::string GetSceneName() {
@@ -33,7 +33,7 @@ namespace engine {
 			engine::GameObject & GetGameObject(std::string & game_object_name);
 			void RemoveGameObject(std::string &game_object_name);
 
-			SceneState m_state = SceneState::FIRST_TIME;
+			SceneState mState = SceneState::FIRST_TIME;
 
 		protected:
 			std::map<std::string, engine::GameObject *> game_object_map;

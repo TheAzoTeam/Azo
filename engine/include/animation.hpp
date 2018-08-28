@@ -28,7 +28,7 @@ namespace engine {
 			bool m_loop;
 		public:
 			std::string animation_name;
-			AnimationState m_state = AnimationState::STOPPED;
+			AnimationState mState = AnimationState::STOPPED;
 		public:
 			Animation();
 			virtual ~Animation();
@@ -54,7 +54,7 @@ namespace engine {
 				double zoom_factor,
 				std::pair<double, double> position_relative_to_object);
 			void Draw();
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "Animation";
 			}
 			void DisableComponent();

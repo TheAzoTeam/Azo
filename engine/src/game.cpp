@@ -65,7 +65,7 @@ void Game::Run(){
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
 		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
-		current_scene->UpdateCode();
+		current_scene->updateCode();
 
 
 		//INFO("Clearing user input from InputManager.");
@@ -144,13 +144,13 @@ bool Game::StartAndStopScenes(){
 				current_scene->DeleteKeyList();
 			}
 
-			if(current_scene->m_state == SceneState::RUNNED){
+			if(current_scene->mState == SceneState::RUNNED){
 				current_scene->Restart();
-				current_scene->m_state = SceneState::FIRST_TIME;
+				current_scene->mState = SceneState::FIRST_TIME;
 			}
 
-			if(current_scene->m_state == SceneState::FIRST_TIME){
-				current_scene->m_state = SceneState::RUNNED;
+			if(current_scene->mState == SceneState::FIRST_TIME){
+				current_scene->mState = SceneState::RUNNED;
 			}
 
 

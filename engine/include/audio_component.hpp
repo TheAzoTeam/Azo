@@ -38,7 +38,7 @@ namespace engine {
 
 			void Shutdown();
 
-			void UpdateCode();
+			void updateCode();
 
 			void Play(int loops = -1, int channel = -1);
 

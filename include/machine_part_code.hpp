@@ -16,8 +16,8 @@ namespace Azo {
 			virtual ~MachinePartCode();
 			void Shutdown();
 		private:
-			void UpdateCode();
-			void FindAudioController();
+			void updateCode();
+			void findAudioController();
 	};
 }
 #endif

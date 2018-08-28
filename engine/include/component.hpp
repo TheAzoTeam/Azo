@@ -28,7 +28,7 @@ namespace engine {
 
 			virtual void Draw();
 
-			virtual void UpdateCode();
+			virtual void updateCode();
 
 			virtual void EnableComponent();
 
@@ -36,7 +36,7 @@ namespace engine {
 
 			bool IsEnabled();
 
-			virtual inline std::string GetClassName(){
+			virtual inline std::string getClassName(){
 				return "Component";
 			}
 	};

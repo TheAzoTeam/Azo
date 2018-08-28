@@ -26,7 +26,7 @@ namespace engine {
 			void Init();
 			void Shutdown();
 			void Draw();
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "BackgroundComponent";
 			}
 	};
