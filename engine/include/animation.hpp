@@ -34,7 +34,7 @@ namespace engine {
 			virtual ~Animation();
 			void Shutdown();
 			Animation(
-				GameObject & game_object,
+				GameObject & gameObject,
 				std::string image_path,
 				float animation_time,
 				std::vector<Sprite *> sprite_list,
@@ -44,7 +44,7 @@ namespace engine {
 				double zoom_factor);
 
 			Animation(
-				GameObject & game_object,
+				GameObject & gameObject,
 				std::string image_path,
 				float animation_time,
 				std::vector<Sprite *> sprite_list,

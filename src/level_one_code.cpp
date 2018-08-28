@@ -2,8 +2,8 @@
 
 using namespace Azo;
 
-LevelOneCode::LevelOneCode(engine::GameObject &game_object){
-	this->game_object = &game_object;
+LevelOneCode::LevelOneCode(engine::GameObject &gameObject){
+	this->gameObject = &gameObject;
 	getParents();
 	findAudioController();
 }
@@ -19,11 +19,11 @@ void LevelOneCode::shutDown(){
 }
 
 void LevelOneCode::findAudioController(){
-	mAudioController = (game_object->getAudioController(typeid(engine::AudioController)));
+	mAudioController = (gameObject->getAudioController(typeid(engine::AudioController)));
 }
 
 void LevelOneCode::getParents(){
-	for(auto parent : game_object->mParentList){
+	for(auto parent : gameObject->mParentList){
 		if(parent->getClassName() == "Player"){
 			mPlayer = dynamic_cast<Player *>(parent);
 		}else if(parent->getClassName() == "Obstacle"){
@@ -43,10 +43,10 @@ void LevelOneCode::getParents(){
 
 
 void LevelOneCode::updateCode(){
-	//DEBUG("Position: " << game_object->mCurrentPosition.first );
+	//DEBUG("Position: " << gameObject->mCurrentPosition.first );
 	//DEBUG("Collected parts: " << mPlayer->mCollectedParts);
-	if(mPlayer->mCurrentPosition.first >= 300.0f && game_object->mCurrentPosition.first > -17600){
-		game_object->mCurrentPosition.first -= 4.0f;
+	if(mPlayer->mCurrentPosition.first >= 300.0f && gameObject->mCurrentPosition.first > -17600){
+		gameObject->mCurrentPosition.first -= 4.0f;
 		mPlayer->mCurrentPosition.first = 299;
 	}else if(mPlayer->mCurrentPosition.first >= 300.0f){
 		mWaitingTime += engine::Game::instance.GetTimer().GetDeltaTime();
@@ -137,12 +137,12 @@ void LevelOneCode::chooseOption(){
 
 void LevelOneCode::updateObstaclePosition(){
 	for(auto eachObstacle : mObstacleList){
-		eachObstacle->mCurrentPosition.first = game_object->mCurrentPosition.first + eachObstacle->mPositionRelativeToParent.first;
-		eachObstacle->mCurrentPosition.second = game_object->mCurrentPosition.second + eachObstacle->mPositionRelativeToParent.second;
+		eachObstacle->mCurrentPosition.first = gameObject->mCurrentPosition.first + eachObstacle->mPositionRelativeToParent.first;
+		eachObstacle->mCurrentPosition.second = gameObject->mCurrentPosition.second + eachObstacle->mPositionRelativeToParent.second;
 
 		for(auto block : eachObstacle->mBlockList){
-			block->mCurrentPosition.first = game_object->mCurrentPosition.first + block->mPositionRelativeToParent.first;
-			block->mCurrentPosition.second = game_object->mCurrentPosition.second + block->mPositionRelativeToParent.second;
+			block->mCurrentPosition.first = gameObject->mCurrentPosition.first + block->mPositionRelativeToParent.first;
+			block->mCurrentPosition.second = gameObject->mCurrentPosition.second + block->mPositionRelativeToParent.second;
 
 			block->mCenter.first = block->mCurrentPosition.first + block->mHalfSize.first;
 			block->mCenter.second = block->mCurrentPosition.second + block->mHalfSize.second;
@@ -176,24 +176,24 @@ void LevelOneCode::updatePhysics(){
 		mPlayer->mAtCeiling = false;
 	}
 
-	//double delta_walked =  mPlayer->mSpeed.first * engine::Game::instance.GetTimer().GetDeltaTime();
-	double delta_walked =  mPlayer->mSpeed.first;
+	//double deltaWalked =  mPlayer->mSpeed.first * engine::Game::instance.GetTimer().GetDeltaTime();
+	double deltaWalked =  mPlayer->mSpeed.first;
 	// DEBUG("Speed: " << mPlayer->mSpeed.first);
-	// DEBUG("Delta walked: " << delta_walked);
+	// DEBUG("Delta walked: " << deltaWalked);
 
-	mPlayer->mCurrentPosition.first += delta_walked;
+	mPlayer->mCurrentPosition.first += deltaWalked;
 
-	double wall_x = 0.0;
+	double wallX = 0.0;
 
 	//Limiting player position on canvas.
-	if(mPlayer->mCurrentPosition.first >= 300 && game_object->mCurrentPosition.first > -7390){
+	if(mPlayer->mCurrentPosition.first >= 300 && gameObject->mCurrentPosition.first > -7390){
 		mPlayer->mCurrentPosition.first = 300;
 	}
 
 	if(mPlayer->mSpeed.first > 0 &&
-	   hasWallOnRight(&wall_x)){
+	   hasWallOnRight(&wallX)){
 		DEBUG("Collision with the wall");
-		mPlayer->mCurrentPosition.first = wall_x - (mPlayer->mHalfSize.first * 2);
+		mPlayer->mCurrentPosition.first = wallX - (mPlayer->mHalfSize.first * 2);
 		mPlayer->mPushesLeftWall = true;
 		mPlayer->mState = PlayerState::DIE;
 	}else{
@@ -201,7 +201,7 @@ void LevelOneCode::updatePhysics(){
 	}
 
 	if(mPlayer->mSpeed.first < 0.0f &&
-	   hasWallOnLeft(&wall_x)){
+	   hasWallOnLeft(&wallX)){
 		mPlayer->mState = PlayerState::DIE;
 	}else{
 		mPlayer->mPushesRightWall = false;
@@ -284,7 +284,7 @@ bool LevelOneCode::hasGround(double *groundY){
 	return false;
 }
 
-bool LevelOneCode::hasWallOnRight(double *wall_x){
+bool LevelOneCode::hasWallOnRight(double *wallX){
 	std::pair<double, double> playerBottomLeft = mPlayer->calcBottomLeft();
 	std::pair<double, double> playerTopRight = mPlayer->calcTopRight();
 
@@ -294,16 +294,20 @@ bool LevelOneCode::hasWallOnRight(double *wall_x){
 	double playerRight = playerTopRight.first;
 
 	for(auto eachObstacle : mObstacleList){
+		const int DISTANCE_RIGHT = 5;
+		const int DISTANCE_LEFT = 5;
+		const int DISTANCE_TOP = 16;
+		const int DISTANCE_BOTTOM = 16;
 
 		if(eachObstacle->mObstacleType == ObstacleType::MACHINE_PART){
 			std::pair<double, double> blockBottomLeft = eachObstacle->calcBottomLeft();
 			std::pair<double, double> blockTopRight = eachObstacle->calcTopRight();
 
-			// These magic numbers are used because the walls must be a bit at the front of the top.
-			double blockRight = blockTopRight.first + 5;
-			double blockLeft = blockBottomLeft.first - 5;
-			double blockTop = blockTopRight.second + 16;
-			double blockBottom = blockBottomLeft.second - 16;
+			// These magic numbers are used because the walls must be a bit at the front of the top
+			double blockRight = blockTopRight.first + DISTANCE_RIGHT;
+			double blockLeft = blockBottomLeft.first - DISTANCE_LEFT;
+			double blockTop = blockTopRight.second + DISTANCE_TOP;
+			double blockBottom = blockBottomLeft.second - DISTANCE_BOTTOM;
 
 
 
@@ -327,14 +331,14 @@ bool LevelOneCode::hasWallOnRight(double *wall_x){
 				std::pair<double, double> blockTopRight = eachBlock->calcTopRight();
 
 				// These magic numbers are used because the walls must be a bit at the front of the top.
-				double blockRight = blockTopRight.first + 5;
-				double blockLeft = blockBottomLeft.first - 5;
-				double blockTop = blockTopRight.second + 16;
-				double blockBottom = blockBottomLeft.second - 16;
+				double blockRight = blockTopRight.first + DISTANCE_RIGHT;
+				double blockLeft = blockBottomLeft.first - DISTANCE_LEFT;
+				double blockTop = blockTopRight.second + DISTANCE_TOP;
+				double blockBottom = blockBottomLeft.second - DISTANCE_BOTTOM;
 
 				// DEBUG("Obstacle: " << eachObstacle->mName);
-				// DEBUG("Game object position x: " << game_object->mCurrentPosition.first);
-				// DEBUG("Game object position y: " << game_object->mCurrentPosition.second);
+				// DEBUG("Game object position x: " << gameObject->mCurrentPosition.first);
+				// DEBUG("Game object position y: " << gameObject->mCurrentPosition.second);
 				//
 				// DEBUG("Obstacle position x: " << eachObstacle->mCurrentPosition.first);
 				// DEBUG("Obstacle position y: " << eachObstacle->mCurrentPosition.second);
@@ -358,7 +362,7 @@ bool LevelOneCode::hasWallOnRight(double *wall_x){
 						mPlayer->mState = PlayerState::DIE;
 					}
 
-					*wall_x = blockLeft - 1.0f;
+					*wallX = blockLeft - 1.0f;
 					return true;
 				}
 
@@ -369,7 +373,7 @@ bool LevelOneCode::hasWallOnRight(double *wall_x){
 	return false;
 }
 
-bool LevelOneCode::hasWallOnLeft(double *wall_x){
+bool LevelOneCode::hasWallOnLeft(double *wallX){
 	std::pair<double, double> playerBottomLeft = mPlayer->calcBottomLeft();
 	std::pair<double, double> playerTopRight = mPlayer->calcTopRight();
 
@@ -395,7 +399,7 @@ bool LevelOneCode::hasWallOnLeft(double *wall_x){
 			   playerTop <= blockBottom &&
 			   playerBottom >= blockTop){
 
-				*wall_x = blockRight + 1.0f;
+				*wallX = blockRight + 1.0f;
 				return true;
 			}
 

@@ -3,18 +3,18 @@
 
 using namespace Azo;
 
-MenuCode::MenuCode(engine::GameObject *game_object){
-	this->game_object = game_object;
+MenuCode::MenuCode(engine::GameObject *gameObject){
+	this->gameObject = gameObject;
 	findAudioController();
 	FindAnimationController();
 }
 
 void MenuCode::FindAnimationController(){
-	m_animation_controller = (game_object->GetAnimationController(typeid(engine::AnimationController)));
+	m_animation_controller = (gameObject->GetAnimationController(typeid(engine::AnimationController)));
 }
 
 void MenuCode::findAudioController(){
-	m_audio_controller = (game_object->getAudioController(typeid(engine::AudioController)));
+	m_audio_controller = (gameObject->getAudioController(typeid(engine::AudioController)));
 }
 
 void MenuCode::updateCode(){

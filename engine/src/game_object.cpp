@@ -13,8 +13,8 @@ GameObject::GameObject(){
 	mHalfSize.second = 0;
 }
 
-GameObject::GameObject(std::string game_object_name, std::pair<double, double> current_position){
-	this->mName = game_object_name;
+GameObject::GameObject(std::string gameObject_name, std::pair<double, double> current_position){
+	this->mName = gameObject_name;
 	this->mCurrentPosition = current_position;
 }
 

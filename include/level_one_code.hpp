@@ -20,7 +20,7 @@ namespace Azo {
 			double mWaitingTime = 0.0f;
 			int mCurrentOption = 1;
 		public:
-			LevelOneCode(engine::GameObject &game_object);
+			LevelOneCode(engine::GameObject &gameObject);
 			void shutDown();
 		private:
 			void findAudioController();
@@ -31,8 +31,8 @@ namespace Azo {
 			void getParents();
 			bool hasGround(double *groundY);
 			bool hasCeiling(double *groundY);
-			bool hasWallOnRight(double *wall_x);
-			bool hasWallOnLeft(double *wall_x);
+			bool hasWallOnRight(double *wallX);
+			bool hasWallOnLeft(double *wallX);
 			void updatePhysics();
 
 	};

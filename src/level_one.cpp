@@ -11,7 +11,7 @@ LevelOne::LevelOne(std::string name){
 }
 
 void LevelOne::Restart(){
-	game_object_map.clear();
+	gameObject_map.clear();
 
 	//TODO(Roger): Add objects to be recreated one by one, here, instead of recalling CreateGameObjects.
 	CreateGameObjects();

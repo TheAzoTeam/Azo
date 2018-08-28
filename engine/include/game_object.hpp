@@ -40,7 +40,7 @@ namespace engine {
 
 		public:
 			GameObject();
-			GameObject(std::string game_object_name, std::pair<double, double> current_position);
+			GameObject(std::string gameObject_name, std::pair<double, double> current_position);
 			void AddComponent(Component &component);
 			AnimationController* GetAnimationController(std::type_index component_type);
 			AudioController* getAudioController(std::type_index component_type);
