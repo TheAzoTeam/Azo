@@ -14,7 +14,7 @@ void MenuCode::FindAnimationController(){
 }
 
 void MenuCode::findAudioController(){
-	m_audio_controller = (gameObject->getAudioController(typeid(engine::AudioController)));
+	mAudioController = (gameObject->getAudioController(typeid(engine::AudioController)));
 }
 
 void MenuCode::updateCode(){
@@ -22,7 +22,7 @@ void MenuCode::updateCode(){
 
 		switch(m_current_button){
 			case 1:
-				m_audio_controller->stopAudio("menu_theme");
+				mAudioController->stopAudio("menu_theme");
 				engine::Game::instance.ChangeScene("level_one");
 				break;
 			case 2:
@@ -30,12 +30,12 @@ void MenuCode::updateCode(){
 				break;
 			case 3:
 
-				if(m_audio_controller->getAudioState("menu_theme") == engine::AudioState::PLAYING){
-					m_audio_controller->PauseAudio("menu_theme");
+				if(mAudioController->getAudioState("menu_theme") == engine::AudioState::PLAYING){
+					mAudioController->PauseAudio("menu_theme");
 					m_animation_controller->StopAnimation("sound_enabled_button");
 					m_animation_controller->StartAnimation("sound_disabled_button");
 				}else{
-					m_audio_controller->PlayAudio("menu_theme");
+					mAudioController->PlayAudio("menu_theme");
 					m_animation_controller->StartAnimation("sound_enabled_button");
 					m_animation_controller->StopAnimation("sound_disabled_button");
 				}

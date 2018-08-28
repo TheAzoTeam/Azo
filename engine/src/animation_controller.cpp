@@ -18,10 +18,10 @@ void AnimationController::Draw(){
 	}
 }
 
-void AnimationController::Shutdown(){
+void AnimationController::shutDown(){
 	for(auto animation_row : m_animation_map){
 		auto animation = animation_row.second;
-		animation->Shutdown();
+		animation->shutDown();
 	}
 }
 
@@ -48,9 +48,9 @@ void AnimationController::StartUniqueAnimation(std::string animation_name){
 	}
 
 	if(animation_to_be_played->second->mState == AnimationState::STOPPED){
-		for(auto each_animation : m_animation_map){
-			each_animation.second->DisableComponent();
-			each_animation.second->mState = AnimationState::STOPPED;
+		for(auto eachAnimation : m_animation_map){
+			eachAnimation.second->DisableComponent();
+			eachAnimation.second->mState = AnimationState::STOPPED;
 		}
 		if(animation_to_be_played != m_animation_map.end()){
 			animation_to_be_played->second->EnableComponent();

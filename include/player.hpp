@@ -23,7 +23,7 @@ namespace Azo {
 	class Player : public engine::GameObject {
 		private:
 			engine::AnimationController * m_anim_controller;
-			engine::AudioController *m_audio_controller;
+			engine::AudioController *mAudioController;
 
 			// Add new audios here.
 			engine::AudioComponent *m_lost;
@@ -66,7 +66,7 @@ namespace Azo {
 
 		private:
 			// Don't forget to create new components inside this method.
-			void CreateComponents();
+			void createComponents();
 
 			// Add new methods to generate the sprite vectors here.
 			void GenWalkingAnimation();
@@ -84,7 +84,7 @@ namespace Azo {
 		public:
 			Player();
 			Player(std::string name, std::pair<double, double> current_position);
-			void Shutdown();
+			void shutDown();
 	};
 }
 

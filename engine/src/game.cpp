@@ -159,7 +159,7 @@ bool Game::StartAndStopScenes(){
 			if(last_scene != NULL){
 				INFO("Shuting down scene!");
 				if(last_scene->GetSceneName() != current_scene->GetSceneName()){
-					last_scene->Shutdown();
+					last_scene->shutDown();
 				}
 				//DEBUG("Scene name: " << last_scene->GetSceneName());
 				//scene_map.erase(last_scene->GetSceneName());

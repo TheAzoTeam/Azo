@@ -46,7 +46,7 @@ namespace engine {
 			AudioController* getAudioController(std::type_index component_type);
 			virtual void Init();
 			virtual void Draw();
-			virtual void Shutdown();
+			virtual void shutDown();
 			virtual void updateCode();
 			virtual inline std::string getClassName(){
 				return "GameObject";

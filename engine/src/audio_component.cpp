@@ -46,8 +46,8 @@ void AudioComponent::updateCode(){
 	}
 }
 
-void AudioComponent::Shutdown(){
-	INFO("Shutdown audio component");
+void AudioComponent::shutDown(){
+	INFO("shutDown audio component");
 
 	Stop(-1);
 	if(music != nullptr){

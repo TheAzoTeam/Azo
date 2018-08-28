@@ -23,7 +23,7 @@ namespace engine {
 			void stopAllAudios();
 			AudioState getAudioState(std::string audio_name);
 			void Init();
-			void Shutdown();
+			void shutDown();
 			void updateCode();
 
 	};

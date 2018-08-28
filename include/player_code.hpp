@@ -11,7 +11,7 @@ namespace Azo {
 		private:
 			Player *m_player = nullptr;
 			engine::AnimationController *m_animation_controller = nullptr;
-			engine::AudioController *m_audio_controller = nullptr;
+			engine::AudioController *mAudioController = nullptr;
 
 			void updateCode();
 			void updatePhysics();
@@ -22,7 +22,7 @@ namespace Azo {
 			PlayerCode();
 			virtual ~PlayerCode();
 			PlayerCode(Player *player);
-			void Shutdown();
+			void shutDown();
 	};
 }
 

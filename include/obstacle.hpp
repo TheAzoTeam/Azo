@@ -7,8 +7,8 @@
 
 namespace Azo {
 
-	// Add new Obstacle Types here.
-	enum class ObstacleType {
+	// Add new obstacle Types here.
+	enum class obstacleType {
 		GROUND,
 		WESTERN_BOX,
 		WESTERN_RAISED_BOX,
@@ -26,36 +26,36 @@ namespace Azo {
 		FINISHED,
 	};
 
-	class Obstacle : public engine::GameObject {
+	class obstacle : public engine::GameObject {
 		public:
 			std::pair<double, double> mPositionRelativeToParent;
 			std::list<InvisibleBlock *> mBlockList;
-			ObstacleType mObstacleType;
+			obstacleType mobstacleType;
 			MachinePartState mMachinePartState = MachinePartState::NON_MACHINE;
 		private:
-			engine::ImageComponent *m_obstacle_image = NULL;
+			engine::ImageComponent *mobstacleImage = NULL;
 
-			engine::AudioController *m_audio_controller = NULL;
+			engine::AudioController *mAudioController = NULL;
 
-			engine::Animation *m_turning = NULL;
+			engine::Animation *mTurning = NULL;
 
-			engine::AudioComponent *m_collected = NULL;
+			engine::AudioComponent *mCollected = NULL;
 
-			std::vector<engine::Sprite *> m_turning_animation_sprites;
+			std::vector<engine::Sprite *> mTurningAnimationSprites;
 
-			MachinePartCode *m_machine_part_code = NULL;
+			MachinePartCode *mMachinePartCode = NULL;
 		public:
-			Obstacle();
-			virtual ~Obstacle();
-			Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type);
-			void Shutdown();
+			obstacle();
+			virtual ~obstacle();
+			obstacle(std::string name, std::pair<double, double> positionRelativeToParent, obstacleType obstacleType);
+			void shutDown();
 			inline std::string getClassName(){
-				return "Obstacle";
+				return "obstacle";
 			}
 		private:
-			void CreateComponents();
-			void CreateBlocks();
-			void GenTurningAnimation();
+			void createComponents();
+			void createBlocks();
+			void genTurningAnimation();
 
 	};
 }

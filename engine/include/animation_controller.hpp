@@ -20,7 +20,7 @@ namespace engine {
 			void StopAnimation(std::string animation_name);
 			AnimationState GetAnimationStatus(std::string animation_name);
 			void Init();
-			void Shutdown();
+			void shutDown();
 			void Draw();
 			void NextSprite(std::string name);
 			inline std::string getClassName(){

@@ -11,7 +11,7 @@ Component::Component(GameObject &gameObject){
 
 void Component::Init(){}
 
-void Component::Shutdown(){}
+void Component::shutDown(){}
 
 
 void Component::Draw(){}

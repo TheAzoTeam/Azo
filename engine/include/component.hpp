@@ -24,7 +24,7 @@ namespace engine {
 
 			virtual void Init();
 
-			virtual void Shutdown();
+			virtual void shutDown();
 
 			virtual void Draw();
 

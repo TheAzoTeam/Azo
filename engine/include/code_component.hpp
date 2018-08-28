@@ -17,7 +17,7 @@ namespace engine {
 
 			void Init();
 
-			void Shutdown();
+			void shutDown();
 
 			void updateCode();
 	};

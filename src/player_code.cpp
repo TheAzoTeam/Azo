@@ -22,10 +22,10 @@ void PlayerCode::FindAnimationController(){
 }
 
 void PlayerCode::findAudioController(){
-	m_audio_controller = (m_player->getAudioController(typeid(engine::AudioController)));
+	mAudioController = (m_player->getAudioController(typeid(engine::AudioController)));
 }
 
-void PlayerCode::Shutdown(){
+void PlayerCode::shutDown(){
 	if(m_animation_controller != NULL){
 		m_animation_controller = NULL;
 	}
@@ -111,7 +111,7 @@ void PlayerCode::updateCode(){
 		case PlayerState::DIE:
 			m_animation_controller->StartUniqueAnimation("dying");
 
-			m_audio_controller->PlayAudio("lost");
+			mAudioController->PlayAudio("lost");
 
 			break;
 		case PlayerState::END:
@@ -119,11 +119,11 @@ void PlayerCode::updateCode(){
 				m_animation_controller->StartUniqueAnimation("losing");
 
 				if(m_animation_controller->GetAnimationStatus("losing") == engine::AnimationState::FINISHED){
-					m_audio_controller->PlayAudio("lost");
+					mAudioController->PlayAudio("lost");
 				}
 			}else{
 				m_animation_controller->StartUniqueAnimation("victory");
-				m_audio_controller->PlayAudio("victory");
+				mAudioController->PlayAudio("victory");
 			}
 
 			break;

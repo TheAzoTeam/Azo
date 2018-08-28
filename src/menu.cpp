@@ -23,9 +23,9 @@ void Menu::CreateGameObjects(){
 
 void Menu::CreateMenuComponents(){
 	m_menu_theme = new engine::AudioComponent(*m_menu, "audios/TemaGame.ogg", true, true);
-	m_audio_controller = new engine::AudioController();
-	m_audio_controller->AddAudio("menu_theme", *m_menu_theme);
-	m_menu->AddComponent(*m_audio_controller);
+	mAudioController = new engine::AudioController();
+	mAudioController->AddAudio("menu_theme", *m_menu_theme);
+	m_menu->AddComponent(*mAudioController);
 
 	m_animation_controller = new engine::AnimationController(*m_menu);
 
@@ -166,6 +166,6 @@ void Menu::GenButtonsAnimation(){
 }
 
 
-void Menu::Shutdown(){
-	DEBUG("Calling Menu::Shutdown.");
+void Menu::shutDown(){
+	DEBUG("Calling Menu::shutDown.");
 }

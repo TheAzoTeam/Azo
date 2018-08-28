@@ -6,12 +6,12 @@ InvisibleBlock::InvisibleBlock(){}
 
 InvisibleBlock::~InvisibleBlock(){}
 
-InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> position_relative_to_parent,
+InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> positionRelativeToParent,
 			       std::pair<double, double> size){
 	DEBUG("Creating Blocks");
 
 	mName = name;
-	mPositionRelativeToParent = position_relative_to_parent;
+	mPositionRelativeToParent = positionRelativeToParent;
 	m_size = size;
 
 	mHalfSize.first = m_size.first / 2.0f;
@@ -23,7 +23,7 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 	this->AddComponent(*m_image);
 }
 
-void InvisibleBlock::Shutdown(){
-	m_image->Shutdown();
+void InvisibleBlock::shutDown(){
+	m_image->shutDown();
 	m_image = NULL;
 }

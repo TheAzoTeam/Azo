@@ -82,10 +82,10 @@ void GameObject::updateCode(){
 	}
 }
 
-void GameObject::Shutdown(){
+void GameObject::shutDown(){
 	// for(auto each_pair : m_component_map){
 	//      auto component = each_pair.second;
-	//      component->Shutdown();
+	//      component->shutDown();
 	// }
 }
 
