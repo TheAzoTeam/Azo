@@ -14,11 +14,11 @@ GameObject::GameObject(){
 }
 
 GameObject::GameObject(std::string game_object_name, std::pair<double, double> current_position){
-	this->m_name = game_object_name;
-	this->m_current_position = current_position;
+	this->mName = game_object_name;
+	this->mCurrentPosition = current_position;
 }
 
-void GameObject::AddComponent(Component &component){
+void GameObject::addComponent(Component &component){
 	std::pair <std::type_index, Component *> component_pair(typeid(component), &component);
 	m_component_map.insert(component_pair);
 }
@@ -57,7 +57,7 @@ void GameObject::Init(){
 
 void GameObject::Draw(){
 	// DEBUG("GameObject::Draw method.");
-	//DEBUG("Game object name: " << m_name);
+	//DEBUG("Game object name: " << mName);
 	// DEBUG("Map size: " << m_component_map.size());
 	for(auto each_pair : m_component_map){
 		auto component = each_pair.second;
@@ -82,10 +82,10 @@ void GameObject::UpdateCode(){
 	}
 }
 
-void GameObject::Shutdown(){
+void GameObject::shutdown(){
 	// for(auto each_pair : m_component_map){
 	//      auto component = each_pair.second;
-	//      component->Shutdown();
+	//      component->shutdown();
 	// }
 }
 

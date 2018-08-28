@@ -34,7 +34,7 @@ void BackgroundComponent::Init(){
 	renderQuad = {0, 0, component_width, component_height};
 }
 
-void BackgroundComponent::Shutdown(){
+void BackgroundComponent::shutdown(){
 	/* Terminate Texture */
 	image_texture = NULL;
 }

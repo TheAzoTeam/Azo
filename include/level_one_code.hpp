@@ -11,7 +11,7 @@ namespace Azo {
 		private:
 			Player *m_player;
 			std::list<Obstacle *> m_obstacle_list;
-			engine::AudioController *m_audio_controller;
+			engine::AudioController * mAudioController;
 			engine::GameObject *m_losing_parts;
 			engine::GameObject *m_losing_death;
 			engine::GameObject *m_winning_screen;
@@ -21,7 +21,7 @@ namespace Azo {
 			int m_current_option = 1;
 		public:
 			LevelOneCode(engine::GameObject &game_object);
-			void Shutdown();
+			void shutdown();
 		private:
 			void FindAudioController();
 			void UpdateCode();

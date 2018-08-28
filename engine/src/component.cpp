@@ -11,7 +11,7 @@ Component::Component(GameObject &game_object){
 
 void Component::Init(){}
 
-void Component::Shutdown(){}
+void Component::shutdown(){}
 
 
 void Component::Draw(){}
@@ -23,7 +23,7 @@ void Component::EnableComponent(){
 	this->component_state = State::ENABLED;
 }
 
-void Component::DisableComponent(){
+void Component::disableComponent(){
 	this->component_state = State::DISABLED;
 }
 

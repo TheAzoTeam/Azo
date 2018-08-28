@@ -32,7 +32,7 @@ namespace engine {
 		public:
 			Animation();
 			virtual ~Animation();
-			void Shutdown();
+			void shutdown();
 			Animation(
 				GameObject & game_object,
 				std::string image_path,
@@ -57,7 +57,7 @@ namespace engine {
 			inline std::string GetClassName(){
 				return "Animation";
 			}
-			void DisableComponent();
+			void disableComponent();
 
 		private:
 			void CheckLimits();

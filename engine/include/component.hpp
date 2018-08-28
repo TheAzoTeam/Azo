@@ -24,7 +24,7 @@ namespace engine {
 
 			virtual void Init();
 
-			virtual void Shutdown();
+			virtual void shutdown();
 
 			virtual void Draw();
 
@@ -32,7 +32,7 @@ namespace engine {
 
 			virtual void EnableComponent();
 
-			virtual void DisableComponent();
+			virtual void disableComponent();
 
 			bool IsEnabled();
 

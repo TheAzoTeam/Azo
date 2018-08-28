@@ -18,10 +18,10 @@ void AnimationController::Draw(){
 	}
 }
 
-void AnimationController::Shutdown(){
+void AnimationController::shutdown(){
 	for(auto animation_row : m_animation_map){
 		auto animation = animation_row.second;
-		animation->Shutdown();
+		animation->shutdown();
 	}
 }
 
@@ -34,7 +34,7 @@ AnimationController::AnimationController(GameObject &game_object){
 	this->component_state = State::ENABLED;
 }
 
-void AnimationController::AddAnimation(std::string animation_name, Animation &animation){
+void AnimationController::addAnimation(std::string animation_name, Animation &animation){
 	std::pair<std::string, Animation *> new_animation(animation_name, &animation);
 
 	m_animation_map.insert(new_animation);
@@ -49,7 +49,7 @@ void AnimationController::StartUniqueAnimation(std::string animation_name){
 
 	if(animation_to_be_played->second->m_state == AnimationState::STOPPED){
 		for(auto each_animation : m_animation_map){
-			each_animation.second->DisableComponent();
+			each_animation.second->disableComponent();
 			each_animation.second->m_state = AnimationState::STOPPED;
 		}
 		if(animation_to_be_played != m_animation_map.end()){
@@ -77,7 +77,7 @@ void AnimationController::StopAnimation(std::string animation_name){
 	auto animation_to_be_played = m_animation_map.find(animation_name);
 
 	if(animation_to_be_played != m_animation_map.end()){
-		animation_to_be_played->second->DisableComponent();
+		animation_to_be_played->second->disableComponent();
 	}else{
 		ERROR("Animation couldn't be found!");
 	}

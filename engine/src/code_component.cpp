@@ -12,6 +12,6 @@ CodeComponent::CodeComponent(GameObject &game_object){
 
 void CodeComponent::Init(){}
 
-void CodeComponent::Shutdown(){}
+void CodeComponent::shutdown(){}
 
 void CodeComponent::UpdateCode(){}

@@ -15,16 +15,16 @@ namespace engine {
 	class Scene {
 		public:
 			Scene();
-			Scene(std::string scene_name);
+			Scene(std::string sceneName);
 
 			virtual void Init();
-			virtual void Shutdown();
+			virtual void shutdown();
 			virtual void Draw();
 			virtual void UpdateCode();
 			virtual void Restart();
 
 			inline std::string GetSceneName() {
-				return scene_name;
+				return sceneName;
 			}
 
 			void DeleteKeyList();
@@ -36,9 +36,9 @@ namespace engine {
 			SceneState m_state = SceneState::FIRST_TIME;
 
 		protected:
-			std::map<std::string, engine::GameObject *> game_object_map;
+			std::map<std::string, engine::GameObject *>  gameObjectMap;
 			std::list<std::string> m_key_list;
-			std::string scene_name;
+			std::string sceneName;
 	};
 }
 

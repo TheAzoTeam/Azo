@@ -11,10 +11,10 @@ void AudioController::Init(){
 	}
 }
 
-void AudioController::Shutdown(){
+void AudioController::shutdown(){
 	for(auto audio_row : audio_map){
 		auto audio = audio_row.second;
-		audio->Shutdown();
+		audio->shutdown();
 		audio = NULL;
 	}
 }
@@ -37,7 +37,7 @@ AudioController::AudioController(GameObject &game_object){
 	this->component_state = State::ENABLED;
 }
 
-void AudioController::AddAudio(std::string audio_name, AudioComponent &audio){
+void AudioController::addAudio(std::string audio_name, AudioComponent &audio){
 	audio_map[audio_name] = &audio;
 }
 

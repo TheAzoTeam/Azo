@@ -14,13 +14,13 @@ namespace engine {
 		public:
 			AnimationController();
 			AnimationController(GameObject &game_object);
-			void AddAnimation(std::string animation_name, Animation &animation);
+			void addAnimation(std::string animation_name, Animation &animation);
 			void StartUniqueAnimation(std::string animation_name);
 			void StartAnimation(std::string animation_name);
 			void StopAnimation(std::string animation_name);
 			AnimationState GetAnimationStatus(std::string animation_name);
 			void Init();
-			void Shutdown();
+			void shutdown();
 			void Draw();
 			void NextSprite(std::string name);
 			inline std::string GetClassName(){
