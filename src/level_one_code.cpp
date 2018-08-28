@@ -8,18 +8,18 @@ LevelOneCode::LevelOneCode(engine::GameObject &game_object){
 	FindAudioController();
 }
 
-void LevelOneCode::Shutdown(){
+void LevelOneCode::shutdown(){
 	for(auto obstacle : m_obstacle_list){
 		obstacle = nullptr;
 	}
 
-	m_audio_controller = nullptr;
+	 mAudioController = nullptr;
 
 	m_player = nullptr;
 }
 
 void LevelOneCode::FindAudioController(){
-	m_audio_controller = (game_object->GetAudioController(typeid(engine::AudioController)));
+	 mAudioController = (game_object->GetAudioController(typeid(engine::AudioController)));
 }
 
 void LevelOneCode::GetParents(){
@@ -28,13 +28,13 @@ void LevelOneCode::GetParents(){
 			m_player = dynamic_cast<Player *>(parent);
 		}else if(parent->GetClassName() == "Obstacle"){
 			m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
-		}else if(parent->m_name == "winning_screen"){
+		}else if(parent->mName == "winning_screen"){
 			m_winning_screen = parent;
-		}else if(parent->m_name == "losing_parts"){
+		}else if(parent->mName == "losing_parts"){
 			m_losing_parts = parent;
-		}else if(parent->m_name == "losing_death"){
+		}else if(parent->mName == "losing_death"){
 			m_losing_death = parent;
-		}else if(parent->m_name == "arrow"){
+		}else if(parent->mName == "arrow"){
 			m_arrow = parent;
 		}
 
@@ -43,15 +43,15 @@ void LevelOneCode::GetParents(){
 
 
 void LevelOneCode::UpdateCode(){
-	//DEBUG("Position: " << game_object->m_current_position.first );
+	//DEBUG("Position: " << game_object->mCurrentPosition.first );
 	//DEBUG("Collected parts: " << m_player->m_collected_parts);
-	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -17600){
-		game_object->m_current_position.first -= 4.0f;
-		m_player->m_current_position.first = 299;
-	}else if(m_player->m_current_position.first >= 300.0f){
+	if(m_player->mCurrentPosition.first >= 300.0f && game_object->mCurrentPosition.first > -17600){
+		game_object->mCurrentPosition.first -= 4.0f;
+		m_player->mCurrentPosition.first = 299;
+	}else if(m_player->mCurrentPosition.first >= 300.0f){
 		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
 		m_player->m_speed.first = 0;
-		m_audio_controller->StopAudio("tema_level_one");
+		 mAudioController->StopAudio("tema_level_one");
 		m_player->m_state = PlayerState::END;
 
 		if(m_player->m_collected_parts != m_player->M_TOTAL_PARTS && m_waiting_time >= 10000.0f){
@@ -88,8 +88,8 @@ void LevelOneCode::UpdateCode(){
 			}
 		}
 
-		if(m_audio_controller->GetAudioState("tema_level_one") == engine::AudioState::PLAYING){
-			m_audio_controller->StopAudio("tema_level_one");
+		if( mAudioController->GetAudioState("tema_level_one") == engine::AudioState::PLAYING){
+			 mAudioController->StopAudio("tema_level_one");
 		}else{
 			// Nothing to do.
 		}
@@ -102,7 +102,7 @@ void LevelOneCode::ChangeOption(){
 		case 1:
 			m_arrow->m_object_state = engine::ObjectState::ENABLED;
 
-			m_arrow->m_current_position = std::make_pair(70, 260);
+			m_arrow->mCurrentPosition = std::make_pair(70, 260);
 
 			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
 				m_current_option = 2;
@@ -111,7 +111,7 @@ void LevelOneCode::ChangeOption(){
 			break;
 		case 2:
 
-			m_arrow->m_current_position = std::make_pair(515, 260);
+			m_arrow->mCurrentPosition = std::make_pair(515, 260);
 
 			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
 				m_current_option = 1;
@@ -124,7 +124,7 @@ void LevelOneCode::ChangeOption(){
 void LevelOneCode::ChooseOption(){
 	switch(m_current_option){
 		case 1:
-			m_audio_controller->StopAllAudios();
+			 mAudioController->StopAllAudios();
 			engine::Game::instance.ChangeScene("level_one");
 			break;
 		case 2:
@@ -137,18 +137,18 @@ void LevelOneCode::ChooseOption(){
 
 void LevelOneCode::UpdateObstaclePosition(){
 	for(auto each_obstacle : m_obstacle_list){
-		each_obstacle->m_current_position.first = game_object->m_current_position.first + each_obstacle->m_position_relative_to_parent.first;
-		each_obstacle->m_current_position.second = game_object->m_current_position.second + each_obstacle->m_position_relative_to_parent.second;
+		each_obstacle->mCurrentPosition.first = game_object->mCurrentPosition.first + each_obstacle->m_position_relative_to_parent.first;
+		each_obstacle->mCurrentPosition.second = game_object->mCurrentPosition.second + each_obstacle->m_position_relative_to_parent.second;
 
 		for(auto block : each_obstacle->m_block_list){
-			block->m_current_position.first = game_object->m_current_position.first + block->m_position_relative_to_parent.first;
-			block->m_current_position.second = game_object->m_current_position.second + block->m_position_relative_to_parent.second;
+			block->mCurrentPosition.first = game_object->mCurrentPosition.first + block->m_position_relative_to_parent.first;
+			block->mCurrentPosition.second = game_object->mCurrentPosition.second + block->m_position_relative_to_parent.second;
 
-			block->m_center.first = block->m_current_position.first + block->m_half_size.first;
-			block->m_center.second = block->m_current_position.second + block->m_half_size.second;
+			block->m_center.first = block->mCurrentPosition.first + block->m_half_size.first;
+			block->m_center.second = block->mCurrentPosition.second + block->m_half_size.second;
 
-			// DEBUG("BLock current position in X: " << block->m_current_position.first);
-			// DEBUG("BLock current position in Y: " << block->m_current_position.second);
+			// DEBUG("BLock current position in X: " << block->mCurrentPosition.first);
+			// DEBUG("BLock current position in Y: " << block->mCurrentPosition.second);
 			// DEBUG("Block center in X: " << block->m_center.first);
 			// DEBUG("Block center in Y: " << block->m_center.second);
 
@@ -157,19 +157,19 @@ void LevelOneCode::UpdateObstaclePosition(){
 }
 
 void LevelOneCode::UpdatePhysics(){
-	m_player->m_current_position.second += m_player->m_speed.second * engine::Game::instance.GetTimer().GetDeltaTime();
+	m_player->mCurrentPosition.second += m_player->m_speed.second * engine::Game::instance.GetTimer().GetDeltaTime();
 	double ground_y = 0.0f;
 	if(m_player->m_speed.second < 0.0f && HasCeiling(&ground_y)){
-		m_player->m_current_position.second = ground_y + 15;
+		m_player->mCurrentPosition.second = ground_y + 15;
 		m_player->m_at_ceiling = true;
 	}else if((m_player->m_speed.second >= 0.0f || m_player->m_state == PlayerState::SLIDE) && HasGround(&ground_y)){
-		m_player->m_current_position.second = ground_y - m_player->m_half_size.second - m_player->m_half_size.second + 15;
+		m_player->mCurrentPosition.second = ground_y - m_player->m_half_size.second - m_player->m_half_size.second + 15;
 		m_player->m_speed.second = m_player->M_ZERO_VECTOR.second;
 
 		m_player->m_on_ground = true;
 
-		m_player->m_center.first = m_player->m_current_position.first + m_player->m_half_size.first;
-		m_player->m_center.second = m_player->m_current_position.second + m_player->m_half_size.second;
+		m_player->m_center.first = m_player->mCurrentPosition.first + m_player->m_half_size.first;
+		m_player->m_center.second = m_player->mCurrentPosition.second + m_player->m_half_size.second;
 
 	}else{
 		m_player->m_on_ground = false;
@@ -181,19 +181,19 @@ void LevelOneCode::UpdatePhysics(){
 	// DEBUG("Speed: " << m_player->m_speed.first);
 	// DEBUG("Delta walked: " << delta_walked);
 
-	m_player->m_current_position.first += delta_walked;
+	m_player->mCurrentPosition.first += delta_walked;
 
 	double wall_x = 0.0;
 
-	//Limiting player position on canvas.
-	if(m_player->m_current_position.first >= 300 && game_object->m_current_position.first > -7390){
-		m_player->m_current_position.first = 300;
+	//Limiting Player position on canvas.
+	if(m_player->mCurrentPosition.first >= 300 && game_object->mCurrentPosition.first > -7390){
+		m_player->mCurrentPosition.first = 300;
 	}
 
 	if(m_player->m_speed.first > 0 &&
 	   HasWallOnRight(&wall_x)){
 		DEBUG("Collision with the wall");
-		m_player->m_current_position.first = wall_x - (m_player->m_half_size.first * 2);
+		m_player->mCurrentPosition.first = wall_x - (m_player->m_half_size.first * 2);
 		m_player->m_pushes_left_wall = true;
 		m_player->m_state = PlayerState::DIE;
 	}else{
@@ -253,7 +253,7 @@ bool LevelOneCode::HasGround(double *ground_y){
 				double block_left = block_bottom_left.first;
 				double block_top = block_top_right.second;
 
-				// DEBUG("Obstacle: " << each_obstacle->m_name);
+				// DEBUG("Obstacle: " << each_obstacle->mName);
 				// DEBUG("Player left: " << player_left);
 				// DEBUG("Player right: " << player_right);
 				// DEBUG("Player top: " << player_top);
@@ -332,12 +332,12 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 				double block_top = block_top_right.second + 16;
 				double block_bottom = block_bottom_left.second - 16;
 
-				// DEBUG("Obstacle: " << each_obstacle->m_name);
-				// DEBUG("Game object position x: " << game_object->m_current_position.first);
-				// DEBUG("Game object position y: " << game_object->m_current_position.second);
+				// DEBUG("Obstacle: " << each_obstacle->mName);
+				// DEBUG("Game object position x: " << game_object->mCurrentPosition.first);
+				// DEBUG("Game object position y: " << game_object->mCurrentPosition.second);
 				//
-				// DEBUG("Obstacle position x: " << each_obstacle->m_current_position.first);
-				// DEBUG("Obstacle position y: " << each_obstacle->m_current_position.second);
+				// DEBUG("Obstacle position x: " << each_obstacle->mCurrentPosition.first);
+				// DEBUG("Obstacle position y: " << each_obstacle->mCurrentPosition.second);
 				//
 				// DEBUG("Player left: " << player_left);
 				// DEBUG("Player right: " << player_right);

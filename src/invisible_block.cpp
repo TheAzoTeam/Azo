@@ -10,7 +10,7 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 			       std::pair<double, double> size){
 	DEBUG("Creating Blocks");
 
-	m_name = name;
+	mName = name;
 	m_position_relative_to_parent = position_relative_to_parent;
 	m_size = size;
 
@@ -20,10 +20,10 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 	m_center = m_half_size;
 
 	m_image =  new engine::ImageComponent(*this, "backgrounds/test_invisible_1.png", 1);
-	this->AddComponent(*m_image);
+	this->addComponent(*m_image);
 }
 
-void InvisibleBlock::Shutdown(){
-	m_image->Shutdown();
+void InvisibleBlock::shutdown(){
+	m_image->shutdown();
 	m_image = NULL;
 }

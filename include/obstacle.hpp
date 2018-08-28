@@ -35,7 +35,7 @@ namespace Azo {
 		private:
 			engine::ImageComponent *m_obstacle_image = NULL;
 
-			engine::AudioController *m_audio_controller = NULL;
+			engine::AudioController * mAudioController = NULL;
 
 			engine::Animation *m_turning = NULL;
 
@@ -48,7 +48,7 @@ namespace Azo {
 			Obstacle();
 			virtual ~Obstacle();
 			Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type);
-			void Shutdown();
+			void shutdown();
 			inline std::string GetClassName(){
 				return "Obstacle";
 			}

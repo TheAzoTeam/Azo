@@ -8,8 +8,8 @@ PlayerCode::PlayerCode(){}
 
 PlayerCode::~PlayerCode(){}
 
-PlayerCode::PlayerCode(Player *player){
-	m_player = player;
+PlayerCode::PlayerCode(Player *Player){
+	m_player = Player;
 	m_player->m_state = PlayerState::WALK;
 	m_player->m_on_ground = true;
 	FindAnimationController();
@@ -18,16 +18,16 @@ PlayerCode::PlayerCode(Player *player){
 
 
 void PlayerCode::FindAnimationController(){
-	m_animation_controller = (m_player->GetAnimationController(typeid(engine::AnimationController)));
+	 mAnimationController = (m_player->GetAnimationController(typeid(engine::AnimationController)));
 }
 
 void PlayerCode::FindAudioController(){
-	m_audio_controller = (m_player->GetAudioController(typeid(engine::AudioController)));
+	 mAudioController = (m_player->GetAudioController(typeid(engine::AudioController)));
 }
 
-void PlayerCode::Shutdown(){
-	if(m_animation_controller != NULL){
-		m_animation_controller = NULL;
+void PlayerCode::shutdown(){
+	if( mAnimationController != NULL){
+		 mAnimationController = NULL;
 	}
 }
 
@@ -36,7 +36,7 @@ void PlayerCode::UpdateCode(){
 	switch(m_player->m_state){
 		case PlayerState::WALK:
 
-			m_animation_controller->StartUniqueAnimation("walking");
+			 mAnimationController->StartUniqueAnimation("walking");
 
 			if(m_player->m_pushes_right_wall || m_player->m_pushes_left_wall){
 				//DEBUG("Update code method. Player Speed in X: " << m_player->m_speed.first);
@@ -68,7 +68,7 @@ void PlayerCode::UpdateCode(){
 				m_player->m_state = PlayerState::WALK;
 			}
 
-			m_animation_controller->StartUniqueAnimation("jumping");
+			 mAnimationController->StartUniqueAnimation("jumping");
 
 			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
 			//DEBUG("UpdateCode method. Player Speed in Y: " << m_player->m_speed.second);
@@ -86,9 +86,9 @@ void PlayerCode::UpdateCode(){
 			break;
 
 		case PlayerState::SLIDE:
-			m_animation_controller->StartUniqueAnimation("sliding");
+			 mAnimationController->StartUniqueAnimation("sliding");
 
-			if(m_animation_controller->GetAnimationStatus("sliding") == engine::AnimationState::FINISHED){
+			if( mAnimationController->GetAnimationStatus("sliding") == engine::AnimationState::FINISHED){
 				m_player->m_state = PlayerState::WALK;
 				break;
 			}
@@ -109,21 +109,21 @@ void PlayerCode::UpdateCode(){
 
 			break;
 		case PlayerState::DIE:
-			m_animation_controller->StartUniqueAnimation("dying");
+			 mAnimationController->StartUniqueAnimation("dying");
 
-			m_audio_controller->PlayAudio("lost");
+			 mAudioController->PlayAudio("lost");
 
 			break;
 		case PlayerState::END:
 			if(m_player->m_collected_parts < m_player->M_TOTAL_PARTS){
-				m_animation_controller->StartUniqueAnimation("losing");
+				 mAnimationController->StartUniqueAnimation("losing");
 
-				if(m_animation_controller->GetAnimationStatus("losing") == engine::AnimationState::FINISHED){
-					m_audio_controller->PlayAudio("lost");
+				if( mAnimationController->GetAnimationStatus("losing") == engine::AnimationState::FINISHED){
+					 mAudioController->PlayAudio("lost");
 				}
 			}else{
-				m_animation_controller->StartUniqueAnimation("victory");
-				m_audio_controller->PlayAudio("victory");
+				 mAnimationController->StartUniqueAnimation("victory");
+				 mAudioController->PlayAudio("victory");
 			}
 
 			break;
