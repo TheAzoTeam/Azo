@@ -128,12 +128,12 @@ void Animation::UpdateFrameBasedOntime(){
 
 
 void Animation::UpdateGameObjectMeasures(){
-	game_object->m_half_size.first = m_sprite_list[m_current_sprite]->spriteWidth * zoom_factor / 2.0f;
-	game_object->m_half_size.second = m_sprite_list[m_current_sprite]->spriteHeight * zoom_factor / 2.0f;
+	game_object->mHalfSize.first = m_sprite_list[m_current_sprite]->spriteWidth * zoom_factor / 2.0f;
+	game_object->mHalfSize.second = m_sprite_list[m_current_sprite]->spriteHeight * zoom_factor / 2.0f;
 
-	game_object->m_center.first = game_object->mCurrentPosition.first + game_object->m_half_size.first;
+	game_object->mCenter.first = game_object->mCurrentPosition.first + game_object->mHalfSize.first;
 
-	game_object->m_center.second = game_object->mCurrentPosition.second + game_object->m_half_size.second;
+	game_object->mCenter.second = game_object->mCurrentPosition.second + game_object->mHalfSize.second;
 }
 
 void Animation::disableComponent(){

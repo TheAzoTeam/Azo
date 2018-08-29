@@ -137,20 +137,20 @@ void LevelOneCode::ChooseOption(){
 
 void LevelOneCode::UpdateObstaclePosition(){
 	for(auto each_obstacle : m_obstacle_list){
-		each_obstacle->mCurrentPosition.first = game_object->mCurrentPosition.first + each_obstacle->m_position_relative_to_parent.first;
-		each_obstacle->mCurrentPosition.second = game_object->mCurrentPosition.second + each_obstacle->m_position_relative_to_parent.second;
+		each_obstacle->mCurrentPosition.first = game_object->mCurrentPosition.first + each_obstacle->mPositionRelativeToParent.first;
+		each_obstacle->mCurrentPosition.second = game_object->mCurrentPosition.second + each_obstacle->mPositionRelativeToParent.second;
 
 		for(auto block : each_obstacle->m_block_list){
-			block->mCurrentPosition.first = game_object->mCurrentPosition.first + block->m_position_relative_to_parent.first;
-			block->mCurrentPosition.second = game_object->mCurrentPosition.second + block->m_position_relative_to_parent.second;
+			block->mCurrentPosition.first = game_object->mCurrentPosition.first + block->mPositionRelativeToParent.first;
+			block->mCurrentPosition.second = game_object->mCurrentPosition.second + block->mPositionRelativeToParent.second;
 
-			block->m_center.first = block->mCurrentPosition.first + block->m_half_size.first;
-			block->m_center.second = block->mCurrentPosition.second + block->m_half_size.second;
+			block->mCenter.first = block->mCurrentPosition.first + block->mHalfSize.first;
+			block->mCenter.second = block->mCurrentPosition.second + block->mHalfSize.second;
 
 			// DEBUG("BLock current position in X: " << block->mCurrentPosition.first);
 			// DEBUG("BLock current position in Y: " << block->mCurrentPosition.second);
-			// DEBUG("Block center in X: " << block->m_center.first);
-			// DEBUG("Block center in Y: " << block->m_center.second);
+			// DEBUG("Block center in X: " << block->mCenter.first);
+			// DEBUG("Block center in Y: " << block->mCenter.second);
 
 		}
 	}
@@ -163,13 +163,13 @@ void LevelOneCode::UpdatePhysics(){
 		m_player->mCurrentPosition.second = ground_y + 15;
 		m_player->m_at_ceiling = true;
 	}else if((m_player->m_speed.second >= 0.0f || m_player->m_state == PlayerState::SLIDE) && HasGround(&ground_y)){
-		m_player->mCurrentPosition.second = ground_y - m_player->m_half_size.second - m_player->m_half_size.second + 15;
+		m_player->mCurrentPosition.second = ground_y - m_player->mHalfSize.second - m_player->mHalfSize.second + 15;
 		m_player->m_speed.second = m_player->M_ZERO_VECTOR.second;
 
 		m_player->m_on_ground = true;
 
-		m_player->m_center.first = m_player->mCurrentPosition.first + m_player->m_half_size.first;
-		m_player->m_center.second = m_player->mCurrentPosition.second + m_player->m_half_size.second;
+		m_player->mCenter.first = m_player->mCurrentPosition.first + m_player->mHalfSize.first;
+		m_player->mCenter.second = m_player->mCurrentPosition.second + m_player->mHalfSize.second;
 
 	}else{
 		m_player->m_on_ground = false;
@@ -193,7 +193,7 @@ void LevelOneCode::UpdatePhysics(){
 	if(m_player->m_speed.first > 0 &&
 	   HasWallOnRight(&wall_x)){
 		DEBUG("Collision with the wall");
-		m_player->mCurrentPosition.first = wall_x - (m_player->m_half_size.first * 2);
+		m_player->mCurrentPosition.first = wall_x - (m_player->mHalfSize.first * 2);
 		m_player->m_pushes_left_wall = true;
 		m_player->m_state = PlayerState::DIE;
 	}else{

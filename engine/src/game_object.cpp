@@ -6,11 +6,11 @@ using namespace engine;
 
 
 GameObject::GameObject(){
-	m_center.first = 0;
-	m_center.second = 0;
+	mCenter.first = 0;
+	mCenter.second = 0;
 
-	m_half_size.first = 0;
-	m_half_size.second = 0;
+	mHalfSize.first = 0;
+	mHalfSize.second = 0;
 }
 
 GameObject::GameObject(std::string game_object_name, std::pair<double, double> current_position){
@@ -91,29 +91,29 @@ void GameObject::shutdown(){
 
 std::pair<double, double> GameObject::CalcBottomLeft(){
 	std::pair<double, double> bottom_left;
-	bottom_left.first = m_center.first - m_half_size.first;
-	bottom_left.second = m_center.second + m_half_size.second;
+	bottom_left.first = mCenter.first - mHalfSize.first;
+	bottom_left.second = mCenter.second + mHalfSize.second;
 	return bottom_left;
 }
 
 std::pair<double, double> GameObject::CalcBottomRight(){
 	std::pair<double, double> bottom_right;
-	bottom_right.first = m_center.first + m_half_size.first;
-	bottom_right.second = m_center.second + m_half_size.second;
+	bottom_right.first = mCenter.first + mHalfSize.first;
+	bottom_right.second = mCenter.second + mHalfSize.second;
 	return bottom_right;
 }
 
 std::pair<double, double> GameObject::CalcTopLeft(){
 	std::pair<double, double> top_left;
-	top_left.first = m_center.first - m_half_size.first;
-	top_left.second = m_center.second - m_half_size.second;
+	top_left.first = mCenter.first - mHalfSize.first;
+	top_left.second = mCenter.second - mHalfSize.second;
 	return top_left;
 }
 
 std::pair<double, double> GameObject::CalcTopRight(){
 	std::pair<double, double> top_right;
-	top_right.first = m_center.first + m_half_size.first;
-	top_right.second = m_center.second - m_half_size.second;
+	top_right.first = mCenter.first + mHalfSize.first;
+	top_right.second = mCenter.second - mHalfSize.second;
 	return top_right;
 }
 

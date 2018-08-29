@@ -24,13 +24,13 @@ namespace engine {
 		public:
 			// mCurrentPosition is the left upper corner of the game object, in coordinates.
 			std::pair<double, double> mCurrentPosition;
-			// m_size.first is the X size.
+			// mSize.first is the X size.
 			// m_sisze.second is the Y size.
-			std::pair<double, double> m_size;
-			std::pair<double, double> m_center;
-			// m_half_size.first is the x distance from center to the border.
-			// m_half_size.second is the y distance from center to the border.
-			std::pair<double, double> m_half_size;
+			std::pair<double, double> mSize;
+			std::pair<double, double> mCenter;
+			// mHalfSize.first is the x distance from center to the border.
+			// mHalfSize.second is the y distance from center to the border.
+			std::pair<double, double> mHalfSize;
 			std::list<GameObject *> m_parent_list;
 			std::string mName;
 			ObjectState m_object_state = ObjectState::ENABLED;

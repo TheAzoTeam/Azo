@@ -32,8 +32,8 @@ void ImageComponent::Init(){
 	component_width = assets_image->width * zoom_factor;
 	component_height = assets_image->height * zoom_factor;
 
-	game_object->m_size.first = component_width;
-	game_object->m_size.second = component_height;
+	game_object->mSize.first = component_width;
+	game_object->mSize.second = component_height;
 
 	canvasQuad = {
 		(int)(game_object->mCurrentPosition.first + m_position_relative_to_object.first),

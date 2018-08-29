@@ -28,7 +28,7 @@ namespace Azo {
 
 	class Obstacle : public engine::GameObject {
 		public:
-			std::pair<double, double> m_position_relative_to_parent;
+			std::pair<double, double> mPositionRelativeToParent;
 			std::list<InvisibleBlock *> m_block_list;
 			ObstacleType m_obstacle_type;
 			MachinePartState m_machine_part_state = MachinePartState::NON_MACHINE;
@@ -47,7 +47,7 @@ namespace Azo {
 		public:
 			Obstacle();
 			virtual ~Obstacle();
-			Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type);
+			Obstacle(std::string name, std::pair<double, double> positionRelativeToParent, ObstacleType obstacle_type);
 			void shutdown();
 			inline std::string GetClassName(){
 				return "Obstacle";

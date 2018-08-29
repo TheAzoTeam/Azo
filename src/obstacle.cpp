@@ -53,10 +53,10 @@ void Obstacle::shutdown(){
 }
 
 
-Obstacle::Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type){
+Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeToParent, ObstacleType obstacle_type){
 	mName = name;
-	m_position_relative_to_parent = position_relative_to_parent;
-	mCurrentPosition = m_position_relative_to_parent;
+	mPositionRelativeToParent = positionRelativeToParent;
+	mCurrentPosition = mPositionRelativeToParent;
 
 	m_obstacle_type = obstacle_type;
 
@@ -129,7 +129,7 @@ void Obstacle::CreateBlocks(){
 
 	// We initialize the block' position as the position relative to parent of the obstacle.
 	// This way we can position things inside the obstacle just by adding values.
-	std::pair<double, double> block_position = m_position_relative_to_parent;
+	std::pair<double, double> block_position = mPositionRelativeToParent;
 	if(m_obstacle_type == ObstacleType::GROUND){
 		//	DEBUG("Creating invisible block for the ground.");
 		m_block_list.push_back(new InvisibleBlock("block_1", block_position, std::make_pair(21000, 100)));
