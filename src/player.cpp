@@ -82,47 +82,167 @@ void Player::shutdown(){
 void Player::createComponents(){
 	DEBUG("Creating Player Components.");
 	genWalkingAnimation();
-	mWalking = new engine::Animation(*this, "sprites/CowboyRun.png", 1000.0f, mWalkingAnimationSprites, 0, 22, true, 1);
+
+	const std::string WALKING_IMAGE_PATH = "sprites/CowboyRun.png";
+	const float WALKING_ANIMATION_TIME = 1000.0f; 
+	const int WALKING_START_FRAME = 0;
+	const int WALKING_END_FRAME = 22;
+	const bool WALKING_LOOP = true;
+	const double WALKING_ZOOM_FACTOR = 1;
+
+	mWalking = new engine::Animation(*this, 
+									WALKING_IMAGE_PATH, 
+									WALKING_ANIMATION_TIME, 
+									mWalkingAnimationSprites, 
+									WALKING_START_FRAME, 
+									WALKING_END_FRAME, 
+									WALKING_LOOP, 
+									WALKING_ZOOM_FACTOR);
 
 	mAnimController = new engine::AnimationController();
 
 	DEBUG("Adding walking animation to animation controller.");
-	mAnimController->addAnimation("walking", *mWalking);
+	const std::string WALKING_ANIMATION_NAME = "walking";
+	mAnimController->addAnimation(WALKING_ANIMATION_NAME, *mWalking);
 
 	genJumpingAnimation();
-	mJumping = new engine::Animation(*this, "sprites/CowboyJump.png", 800.0f, mJumpingAnimationSprites, 0, 7, false, 1);
+
+	const std::string JUMPING_IMAGE_PATH = "sprites/CowboyJump.png";
+	const float JUMPING_ANIMATION_TIME = 800.0f; 
+	const int JUMPING_START_FRAME = 0;
+	const int JUMPING_END_FRAME = 7;
+	const bool JUMPING_LOOP = false;
+	const double JUMPING_ZOOM_FACTOR = 1;
+
+	mJumping = new engine::Animation(*this, 
+									JUMPING_IMAGE_PATH, 
+									JUMPING_ANIMATION_TIME, 
+									mJumpingAnimationSprites, 
+									JUMPING_START_FRAME, 
+									JUMPING_END_FRAME, 
+									JUMPING_LOOP, 
+									JUMPING_ZOOM_FACTOR);
 	mJumping->disableComponent();
 	DEBUG("Adding jumping animation to animation controller");
-	mAnimController->addAnimation("jumping", *mJumping);
+	const std::string JUMPING_ANIMATION_NAME = "jumping";
+	mAnimController->addAnimation(JUMPING_ANIMATION_NAME, *mJumping);
 
 	genSlidingAnimation();
-	mSliding = new engine::Animation(*this, "sprites/CowboyDesce.png", 800.0f, mSlidingAnimationSprites, 0, 20, false, 1);
+
+	const std::string SLIDING_IMAGE_PATH = "sprites/CowboyDesce.png";
+	const float SLIDING_ANIMATION_TIME = 800.0f; 
+	const int SLIDING_START_FRAME = 0;
+	const int SLIDING_END_FRAME = 20;
+	const bool SLIDING_LOOP = false;
+	const double SLIDING_ZOOM_FACTOR = 1;
+
+	mSliding = new engine::Animation(*this,
+									SLIDING_IMAGE_PATH, 
+									SLIDING_ANIMATION_TIME, 
+									mSlidingAnimationSprites, 
+									SLIDING_START_FRAME, 
+									SLIDING_END_FRAME, 
+									SLIDING_LOOP, 
+									SLIDING_ZOOM_FACTOR);
 	mSliding->disableComponent();
-	mAnimController->addAnimation("sliding", *mSliding);
+
+	const std::string SLIDING_ANIMATION_NAME = "sliding";
+	mAnimController->addAnimation(SLIDING_ANIMATION_NAME, *mSliding);
 
 	genDyingAnimation();
-	mDying = new engine::Animation(*this, "sprites/CowboyTonto.png", 2000.0f, mDyingAnimationSprites, 0, 35, false, 1);
+
+	const std::string DYING_IMAGE_PATH = "sprites/CowboyTonto.png";
+	const float DYING_ANIMATION_TIME = 2000.0f; 
+	const int DYING_START_FRAME = 0;
+	const int DYING_END_FRAME = 35;
+	const bool DYING_LOOP = false;
+	const double DYING_ZOOM_FACTOR = 1;
+	
+	mDying = new engine::Animation(*this, 
+								    DYING_IMAGE_PATH, 
+									DYING_ANIMATION_TIME, 
+									mDyingAnimationSprites, 
+									DYING_START_FRAME, 
+									DYING_END_FRAME, 
+									DYING_LOOP, 
+									DYING_ZOOM_FACTOR);
 	mDying->disableComponent();
-	mAnimController->addAnimation("dying", *mDying);
+
+	const std::string DYING_ANIMATION_NAME = "dying";
+	mAnimController->addAnimation(DYING_ANIMATION_NAME, *mDying);
 
 	genLosingAnimation();
-	mLosing = new engine::Animation(*this, "sprites/CowBoyDerrota.png", 10000.0f, mLosingAnimationSprites, 0, 6, false, 1);
+
+	const std::string LOSING_IMAGE_PATH = "sprites/CowBoyDerrota.png";
+	const float LOSING_ANIMATION_TIME = 10000.0f; 
+	const int LOSING_START_FRAME = 0;
+	const int LOSING_END_FRAME = 6;
+	const bool LOSING_LOOP = false;
+	const double LOSING_ZOOM_FACTOR = 1;
+
+	mLosing = new engine::Animation(*this, 
+									LOSING_IMAGE_PATH, 
+									LOSING_ANIMATION_TIME, 
+									mLosingAnimationSprites, 
+									LOSING_START_FRAME, 
+									LOSING_END_FRAME, 
+									LOSING_LOOP, 
+									LOSING_ZOOM_FACTOR);
 	mLosing->disableComponent();
-	mAnimController->addAnimation("losing", *mLosing);
+
+	const std::string LOSING_ANIMATION_NAME = "losing";
+	mAnimController->addAnimation(LOSING_ANIMATION_NAME, *mLosing);
 
 	genVictoryAnimation();
-	mVictory = new engine::Animation(*this, "sprites/victory.png", 10.0f, mVictoryAnimationSprites, 0, 0, false, 1);
+
+	const std::string VICTORY_IMAGE_PATH = "sprites/victory.png";
+	const float VICTORY_ANIMATION_TIME = 10.0f; 
+	const int VICTORY_START_FRAME = 0;
+	const int VICTORY_END_FRAME = 0;
+	const bool VICTORY_LOOP = false;
+	const double VICTORY_ZOOM_FACTOR = 1;
+
+	mVictory = new engine::Animation(*this, 
+									VICTORY_IMAGE_PATH, 
+									VICTORY_ANIMATION_TIME, 
+									mVictoryAnimationSprites, 
+									VICTORY_START_FRAME, 
+									VICTORY_END_FRAME, 
+									VICTORY_LOOP, 
+									VICTORY_ZOOM_FACTOR);
 	mVictory->disableComponent();
-	mAnimController->addAnimation("victory", *mVictory);
+
+	const std::string VICTORY_ANIMATION_NAME = "victory";
+	mAnimController->addAnimation(VICTORY_ANIMATION_NAME, *mVictory);
 
 	DEBUG("Adding animation controller to Player.");
 	this->addComponent(*mAnimController);
 
-	mLost = new engine::AudioComponent(*this, "audios/derrota.ogg", false, false);
-	mVictorySong = new engine::AudioComponent(*this, "audios/victory.ogg", false, false);
+	const std::string LOSING_AUDIO_PATH = "audios/derrota.ogg";
+	const bool LOSING_AUDIO_IS_MUSIC = false;
+	const bool LOSING_AUDIO_PLAY_ON_START = false;
+
+	mLost = new engine::AudioComponent(*this, 
+										LOSING_AUDIO_PATH, 
+										LOSING_AUDIO_IS_MUSIC, 
+										LOSING_AUDIO_PLAY_ON_START);
+
+	const std::string VICTORY_AUDIO_PATH = "audios/victory.ogg";
+	const bool VICTORY_AUDIO_IS_MUSIC = false;
+	const bool VICTORY_AUDIO_PLAY_ON_START = false;
+
+	mVictorySong = new engine::AudioComponent(*this, 
+												VICTORY_AUDIO_PATH, 
+												VICTORY_AUDIO_IS_MUSIC, 
+												VICTORY_AUDIO_PLAY_ON_START);
+
 	mAudioController = new engine::AudioController();
-	mAudioController->addAudio("lost", *mLost);
-	mAudioController->addAudio("victory", *mVictorySong);
+
+	const std::string LOSING_AUDIO_NAME = "lost";
+	mAudioController->addAudio(LOSING_AUDIO_NAME, *mLost);
+
+	const std::string VICTORY_AUDIO_NAME = "victory";
+	mAudioController->addAudio(VICTORY_AUDIO_NAME, *mVictorySong);
 
 	this->addComponent(*mAudioController);
 
@@ -134,6 +254,11 @@ void Player::createComponents(){
 void Player::genVictoryAnimation(){
 	mVictoryAnimationSprites.push_back(new engine::Sprite());
 
+	/*
+		Set the animation sprites coordinates (x, y) 
+		and its Width and Height based on its coordinates
+		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	*/
 	mVictoryAnimationSprites[0]->spriteX = 0;
 	mVictoryAnimationSprites[0]->spriteY = 0;
 	mVictoryAnimationSprites[0]->spriteWidth = 180;
@@ -142,10 +267,16 @@ void Player::genVictoryAnimation(){
 
 
 void Player::genLosingAnimation(){
-	for(int i = 0; i < 7; i++){
+	const int LOSING_SPRITES = 7;
+	for(int i = 0; i < LOSING_SPRITES; i++){
 		mLosingAnimationSprites.push_back(new engine::Sprite());
 	}
 
+	/*
+		Set the animation sprites coordinates (x, y) 
+		and its Width and Height based on its coordinates
+		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	*/
 	mLosingAnimationSprites[0]->spriteX = 1;
 	mLosingAnimationSprites[0]->spriteY = 1;
 	mLosingAnimationSprites[0]->spriteWidth = 70 - 1;
@@ -185,10 +316,16 @@ void Player::genLosingAnimation(){
 
 void Player::genWalkingAnimation(){
 	DEBUG("Generating Player walking animation.");
-	for(int i = 0; i < 23; i++){
+	const int WALKING_SPRITES = 23;
+	for(int i = 0; i < WALKING_SPRITES; i++){
 		mWalkingAnimationSprites.push_back(new engine::Sprite());
 	}
 
+	/*
+		Set the animation sprites coordinates (x, y) 
+		and its Width and Height based on its coordinates
+		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	*/
 	mWalkingAnimationSprites[0]->spriteX = 2;
 	mWalkingAnimationSprites[0]->spriteY = 34;
 	mWalkingAnimationSprites[0]->spriteWidth = 67 - 2;
@@ -307,11 +444,16 @@ void Player::genWalkingAnimation(){
 
 void Player::genJumpingAnimation(){
 	DEBUG("Generating Player Jumping Animation.");
-
-	for(int i = 0; i < 8; i++){
+	const int JUMPING_SPRITES = 8;
+	for(int i = 0; i < JUMPING_SPRITES; i++){
 		mJumpingAnimationSprites.push_back(new engine::Sprite());
 	}
 
+	/*
+		Set the animation sprites coordinates (x, y) 
+		and its Width and Height based on its coordinates
+		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	*/
 	mJumpingAnimationSprites[0]->spriteX = 20;
 	mJumpingAnimationSprites[0]->spriteY = 22;
 	mJumpingAnimationSprites[0]->spriteWidth = 94 - 20;
@@ -354,10 +496,16 @@ void Player::genJumpingAnimation(){
 }
 
 void Player::genSlidingAnimation(){
-	for(int i = 0; i < 21; i++){
+	const int SLIDING_SPRITES = 21;
+	for(int i = 0; i < SLIDING_SPRITES; i++){
 		mSlidingAnimationSprites.push_back(new engine::Sprite());
 	}
 
+	/*
+		Set the animation sprites coordinates (x, y) 
+		and its Width and Height based on its coordinates
+		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	*/
 	mSlidingAnimationSprites[0]->spriteX = 1;
 	mSlidingAnimationSprites[0]->spriteY = 59;
 	mSlidingAnimationSprites[0]->spriteWidth = 107 - 1;
@@ -465,10 +613,16 @@ void Player::genSlidingAnimation(){
 }
 
 void Player::genDyingAnimation(){
-	for(int i = 0; i < 36; i++){
+	const int DYING_SPRITES = 36;
+	for(int i = 0; i < DYING_SPRITES; i++){
 		mDyingAnimationSprites.push_back(new engine::Sprite());
 	}
 
+	/*
+		Set the animation sprites coordinates (x, y) 
+		and its Width and Height based on its coordinates
+		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	*/
 	mDyingAnimationSprites[0]->spriteX = 4;
 	mDyingAnimationSprites[0]->spriteY = 47;
 	mDyingAnimationSprites[0]->spriteWidth = 73 - 4;
