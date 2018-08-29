@@ -9,18 +9,18 @@
 namespace Azo {
 	class LevelOneCode : public engine::CodeComponent {
 		private:
-			Player *m_player;
+			Player *mPlayer;
 			std::list<Obstacle *> m_obstacle_list;
-			engine::AudioController *m_audio_controller;
+			engine::AudioController *mAudioController;
 			engine::GameObject *m_losing_parts;
 			engine::GameObject *m_losing_death;
-			engine::GameObject *m_winning_screen;
-			engine::GameObject *m_arrow;
+			engine::GameObject *mWinningScreen;
+			engine::GameObject *mArrow;
 
 			double m_waiting_time = 0.0f;
 			int m_current_option = 1;
 		public:
-			LevelOneCode(engine::GameObject &game_object);
+			LevelOneCode(engine::GameObject &gameObject);
 			void Shutdown();
 		private:
 			void FindAudioController();

@@ -32,8 +32,8 @@ AudioController::AudioController(){
 	this->component_state = State::ENABLED;
 }
 
-AudioController::AudioController(GameObject &game_object){
-	this->game_object = &game_object;
+AudioController::AudioController(GameObject &gameObject){
+	this->gameObject = &gameObject;
 	this->component_state = State::ENABLED;
 }
 

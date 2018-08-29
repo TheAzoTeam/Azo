@@ -71,10 +71,10 @@ void Player::Shutdown(){
 		m_losing = nullptr;
 	}
 
-	if(m_player_code != nullptr){
-		m_player_code->Shutdown();
-		delete(m_player_code);
-		m_player_code = nullptr;
+	if(mPlayer_code != nullptr){
+		mPlayer_code->Shutdown();
+		delete(mPlayer_code);
+		mPlayer_code = nullptr;
 	}
 }
 
@@ -120,15 +120,15 @@ void Player::CreateComponents(){
 
 	m_lost = new engine::AudioComponent(*this, "audios/derrota.ogg", false, false);
 	m_victory_song = new engine::AudioComponent(*this, "audios/victory.ogg", false, false);
-	m_audio_controller = new engine::AudioController();
-	m_audio_controller->AddAudio("lost", *m_lost);
-	m_audio_controller->AddAudio("victory", *m_victory_song);
+	mAudioController = new engine::AudioController();
+	mAudioController->AddAudio("lost", *m_lost);
+	mAudioController->AddAudio("victory", *m_victory_song);
 
-	this->AddComponent(*m_audio_controller);
+	this->AddComponent(*mAudioController);
 
 	DEBUG("Creating Player Code.");
-	m_player_code = new PlayerCode(this);
-	this->AddComponent(*m_player_code);
+	mPlayer_code = new PlayerCode(this);
+	this->AddComponent(*mPlayer_code);
 }
 
 void Player::GenVictoryAnimation(){

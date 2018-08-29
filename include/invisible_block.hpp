@@ -1,7 +1,7 @@
 #ifndef INVISIBLE_BLOCK
 #define INVISIBLE_BLOCK
 
-#include "game_object.hpp"
+#include "gameObject.hpp"
 
 namespace Azo {
 	class InvisibleBlock : public engine::GameObject {

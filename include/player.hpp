@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-#include "game_object.hpp"
+#include "gameObject.hpp"
 #include "sprite.hpp"
 
 #include "player_code.hpp"
@@ -23,7 +23,7 @@ namespace Azo {
 	class Player : public engine::GameObject {
 		private:
 			engine::AnimationController * m_anim_controller;
-			engine::AudioController *m_audio_controller;
+			engine::AudioController *mAudioController;
 
 			// Add new audios here.
 			engine::AudioComponent *m_lost;
@@ -46,7 +46,7 @@ namespace Azo {
 			std::vector<engine::Sprite *> m_victory_animation_sprites;
 
 
-			PlayerCode *m_player_code;
+			PlayerCode *mPlayer_code;
 		public:
 			const std::pair<double, double> M_ZERO_VECTOR = std::make_pair(0.0f, 0.0f);
 			const double M_GRAVITY = 0.003f;

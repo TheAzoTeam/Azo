@@ -1,6 +1,6 @@
 #include "background_component.hpp"
 #include "game.hpp"
-#include "game_object.hpp"
+#include "gameObject.hpp"
 #include "sdl.hpp"
 
 using namespace engine;
@@ -14,8 +14,8 @@ BackgroundComponent::BackgroundComponent(std::string image_path){
 }
 
 
-BackgroundComponent::BackgroundComponent(GameObject & game_object, std::string image_path){
-	this->game_object = &game_object;
+BackgroundComponent::BackgroundComponent(GameObject & gameObject, std::string image_path){
+	this->gameObject = &gameObject;
 	this->image_path = image_path;
 	this->component_state = State::ENABLED;
 }

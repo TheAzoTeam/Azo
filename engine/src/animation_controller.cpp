@@ -29,8 +29,8 @@ AnimationController::AnimationController(){
 	this->component_state = State::ENABLED;
 }
 
-AnimationController::AnimationController(GameObject &game_object){
-	this->game_object = &game_object;
+AnimationController::AnimationController(GameObject &gameObject){
+	this->gameObject = &gameObject;
 	this->component_state = State::ENABLED;
 }
 

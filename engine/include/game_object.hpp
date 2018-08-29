@@ -1,5 +1,5 @@
-#ifndef GAME_OBJECT_HPP
-#define GAME_OBJECT_HPP
+#ifndef gameObject_HPP
+#define gameObject_HPP
 
 #include <iostream>
 #include <typeinfo>
@@ -40,7 +40,7 @@ namespace engine {
 
 		public:
 			GameObject();
-			GameObject(std::string game_object_name, std::pair<double, double> current_position);
+			GameObject(std::string gameObject_name, std::pair<double, double> current_position);
 			void AddComponent(Component &component);
 			AnimationController* GetAnimationController(std::type_index component_type);
 			AudioController* GetAudioController(std::type_index component_type);

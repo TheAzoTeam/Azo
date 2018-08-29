@@ -1,7 +1,7 @@
 #ifndef OBSTACLE
 #define OBSTACLE
 
-#include "game_object.hpp"
+#include "gameObject.hpp"
 #include "invisible_block.hpp"
 #include "machine_part_code.hpp"
 
@@ -35,7 +35,7 @@ namespace Azo {
 		private:
 			engine::ImageComponent *m_obstacle_image = NULL;
 
-			engine::AudioController *m_audio_controller = NULL;
+			engine::AudioController *mAudioController = NULL;
 
 			engine::Animation *m_turning = NULL;
 

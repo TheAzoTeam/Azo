@@ -10,7 +10,7 @@ namespace Azo {
 	class MachinePartCode : public engine::CodeComponent {
 		private:
 			Obstacle *m_machine_part;
-			engine::AudioController *m_audio_controller;
+			engine::AudioController *mAudioController;
 		public:
 			MachinePartCode(Obstacle *machine_part);
 			virtual ~MachinePartCode();

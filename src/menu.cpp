@@ -8,7 +8,7 @@ Menu::Menu(std::string name){
 }
 
 void Menu::Restart(){
-	game_object_map.clear();
+	gameObjectMap.clear();
 	CreateGameObjects();
 }
 
@@ -23,11 +23,11 @@ void Menu::CreateGameObjects(){
 
 void Menu::CreateMenuComponents(){
 	m_menu_theme = new engine::AudioComponent(*m_menu, "audios/TemaGame.ogg", true, true);
-	m_audio_controller = new engine::AudioController();
-	m_audio_controller->AddAudio("menu_theme", *m_menu_theme);
-	m_menu->AddComponent(*m_audio_controller);
+	mAudioController = new engine::AudioController();
+	mAudioController->AddAudio("menu_theme", *m_menu_theme);
+	m_menu->AddComponent(*mAudioController);
 
-	m_animation_controller = new engine::AnimationController(*m_menu);
+	mAnimationController = new engine::AnimationController(*m_menu);
 
 	GenButtonsAnimation();
 	m_start_button = new engine::Animation(*m_menu,
@@ -40,19 +40,19 @@ void Menu::CreateMenuComponents(){
 					       1,
 					       std::make_pair(205, 162));
 
-	m_animation_controller->AddAnimation("start_button", *m_start_button);
+	mAnimationController->AddAnimation("start_button", *m_start_button);
 
-	m_arrow_start = new engine::Animation(*m_menu,
+	mArrow_start = new engine::Animation(*m_menu,
 					      "general_images/textos.png",
 					      1.0f,
-					      m_arrow_sprites,
+					      mArrow_sprites,
 					      0,
 					      0,
 					      false,
 					      1,
 					      std::make_pair(168, 162));
 
-	m_animation_controller->AddAnimation("arrow_start", *m_arrow_start);
+	mAnimationController->AddAnimation("arrow_start", *mArrow_start);
 
 	m_exit_button = new engine::Animation(*m_menu,
 					      "general_images/textos.png",
@@ -64,20 +64,20 @@ void Menu::CreateMenuComponents(){
 					      1,
 					      std::make_pair(551, 162));
 
-	m_animation_controller->AddAnimation("exit_button", *m_exit_button);
+	mAnimationController->AddAnimation("exit_button", *m_exit_button);
 
-	m_arrow_exit = new engine::Animation(*m_menu,
+	mArrow_exit = new engine::Animation(*m_menu,
 					     "general_images/textos.png",
 					     1.0f,
-					     m_arrow_sprites,
+					     mArrow_sprites,
 					     0,
 					     0,
 					     false,
 					     1,
 					     std::make_pair(514, 162));
 
-	m_arrow_exit->DisableComponent();
-	m_animation_controller->AddAnimation("arrow_exit", *m_arrow_exit);
+	mArrow_exit->DisableComponent();
+	mAnimationController->AddAnimation("arrow_exit", *mArrow_exit);
 
 	m_sound_enable_button = new engine::Animation(*m_menu,
 						      "general_images/textos.png",
@@ -89,7 +89,7 @@ void Menu::CreateMenuComponents(){
 						      1,
 						      std::make_pair(708, 40));
 
-	m_animation_controller->AddAnimation("sound_enabled_button", *m_sound_enable_button);
+	mAnimationController->AddAnimation("sound_enabled_button", *m_sound_enable_button);
 
 	m_sound_disabled_button = new engine::Animation(*m_menu,
 							"general_images/textos.png",
@@ -103,23 +103,23 @@ void Menu::CreateMenuComponents(){
 
 	m_sound_disabled_button->DisableComponent();
 
-	m_animation_controller->AddAnimation("sound_disabled_button", *m_sound_disabled_button);
+	mAnimationController->AddAnimation("sound_disabled_button", *m_sound_disabled_button);
 
-	m_arrow_sound = new engine::Animation(*m_menu,
+	mArrow_sound = new engine::Animation(*m_menu,
 					      "general_images/textos.png",
 					      1.0f,
-					      m_arrow_sprites,
+					      mArrow_sprites,
 					      0,
 					      0,
 					      false,
 					      1,
 					      std::make_pair(676, 40));
 
-	m_arrow_sound->DisableComponent();
+	mArrow_sound->DisableComponent();
 
-	m_animation_controller->AddAnimation("arrow_sound", *m_arrow_sound);
+	mAnimationController->AddAnimation("arrow_sound", *mArrow_sound);
 
-	m_menu->AddComponent(*m_animation_controller);
+	m_menu->AddComponent(*mAnimationController);
 
 	m_background = new engine::BackgroundComponent(*m_menu, "backgrounds/menu.png");
 	m_menu->AddComponent(*m_background);
@@ -157,12 +157,12 @@ void Menu::GenButtonsAnimation(){
 	m_sound_disabled_button_sprites[0]->sprite_width = 646 - 608;
 	m_sound_disabled_button_sprites[0]->sprite_height = 77 - 46;
 
-	m_arrow_sprites.push_back(new engine::Sprite());
+	mArrow_sprites.push_back(new engine::Sprite());
 
-	m_arrow_sprites[0]->sprite_x = 582;
-	m_arrow_sprites[0]->sprite_y = 433;
-	m_arrow_sprites[0]->sprite_width = 598 - 582;
-	m_arrow_sprites[0]->sprite_height = 459 - 433;
+	mArrow_sprites[0]->sprite_x = 582;
+	mArrow_sprites[0]->sprite_y = 433;
+	mArrow_sprites[0]->sprite_width = 598 - 582;
+	mArrow_sprites[0]->sprite_height = 459 - 433;
 }
 
 

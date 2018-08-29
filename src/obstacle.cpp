@@ -29,10 +29,10 @@ void Obstacle::Shutdown(){
 		m_obstacle_image = NULL;
 	}
 
-	if(m_audio_controller != NULL){
-		m_audio_controller->Shutdown();
-		delete(m_audio_controller);
-		m_audio_controller = NULL;
+	if(mAudioController != NULL){
+		mAudioController->Shutdown();
+		delete(mAudioController);
+		mAudioController = NULL;
 	}
 
 	if(m_collected != NULL){
@@ -97,10 +97,10 @@ void Obstacle::CreateComponents(){
 		m_turning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, m_turning_animation_sprites, 0, 23, true, 1);
 		this->AddComponent(*m_turning);
 
-		m_audio_controller = new engine::AudioController();
+		mAudioController = new engine::AudioController();
 		m_collected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
-		m_audio_controller->AddAudio("coleta", *m_collected);
-		this->AddComponent(*m_audio_controller);
+		mAudioController->AddAudio("coleta", *m_collected);
+		this->AddComponent(*mAudioController);
 
 		m_machine_part_code = new MachinePartCode(this);
 		this->AddComponent(*m_machine_part_code);

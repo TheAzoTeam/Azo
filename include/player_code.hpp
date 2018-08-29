@@ -9,9 +9,9 @@ namespace Azo {
 
 	class PlayerCode : public engine::CodeComponent {
 		private:
-			Player *m_player = nullptr;
-			engine::AnimationController *m_animation_controller = nullptr;
-			engine::AudioController *m_audio_controller = nullptr;
+			Player *mPlayer = nullptr;
+			engine::AnimationController *mAnimationController = nullptr;
+			engine::AudioController *mAudioController = nullptr;
 
 			void UpdateCode();
 			void UpdatePhysics();

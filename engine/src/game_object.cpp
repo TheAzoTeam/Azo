@@ -1,4 +1,4 @@
-#include "game_object.hpp"
+#include "gameObject.hpp"
 #include "game.hpp"
 #include "code_component.hpp"
 
@@ -13,8 +13,8 @@ GameObject::GameObject(){
 	m_half_size.second = 0;
 }
 
-GameObject::GameObject(std::string game_object_name, std::pair<double, double> current_position){
-	this->m_name = game_object_name;
+GameObject::GameObject(std::string gameObject_name, std::pair<double, double> current_position){
+	this->m_name = gameObject_name;
 	this->m_current_position = current_position;
 }
 
