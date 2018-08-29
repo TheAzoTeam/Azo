@@ -6,7 +6,8 @@ InvisibleBlock::InvisibleBlock(){}
 
 InvisibleBlock::~InvisibleBlock(){}
 
-InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> positionRelativeToParent,
+InvisibleBlock::InvisibleBlock(std::string name, 
+								std::pair<double, double> positionRelativeToParent,
 			       				std::pair<double, double> size){
 	DEBUG("Creating Blocks");
 
@@ -19,7 +20,9 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 
 	mCenter = mHalfSize;
 
-	mImage =  new engine::ImageComponent(*this, "backgrounds/test_invisible_1.png", 1);
+	const std::string IMAGE_PATH = "backgrounds/test_invisible_1.png";
+	const double ZOOM_FACTOR = 1;
+	mImage =  new engine::ImageComponent(*this, IMAGE_PATH, ZOOM_FACTOR);
 	this->addComponent(*mImage);
 }
 
