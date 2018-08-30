@@ -113,10 +113,10 @@ void Animation::CheckLimits(){
 		if(m_loop){
 			m_current_sprite = 0;
 			m_current_animation_time = 0.0f;
-			m_state = AnimationState::STOPPED;
+			mState = AnimationState::STOPPED;
 		}else{
 			m_current_sprite = m_end_frame;
-			m_state = AnimationState::FINISHED;
+			mState = AnimationState::FINISHED;
 		}
 	}
 }

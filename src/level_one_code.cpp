@@ -44,17 +44,17 @@ void LevelOneCode::GetParents(){
 
 void LevelOneCode::UpdateCode(){
 	//DEBUG("Position: " << game_object->mCurrentPosition.first );
-	//DEBUG("Collected parts: " << m_player->m_collected_parts);
+	//DEBUG("Collected parts: " << m_player->mCollectedParts);
 	if(m_player->mCurrentPosition.first >= 300.0f && game_object->mCurrentPosition.first > -17600){
 		game_object->mCurrentPosition.first -= 4.0f;
 		m_player->mCurrentPosition.first = 299;
 	}else if(m_player->mCurrentPosition.first >= 300.0f){
 		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
-		m_player->m_speed.first = 0;
+		m_player->mSpeed.first = 0;
 		 mAudioController->StopAudio("tema_level_one");
-		m_player->m_state = PlayerState::END;
+		m_player->mState = PlayerState::END;
 
-		if(m_player->m_collected_parts != m_player->M_TOTAL_PARTS && m_waiting_time >= 10000.0f){
+		if(m_player->mCollectedParts != m_player->M_TOTAL_PARTS && m_waiting_time >= 10000.0f){
 			m_losing_parts->m_object_state = engine::ObjectState::ENABLED;
 			ChangeOption();
 
@@ -62,7 +62,7 @@ void LevelOneCode::UpdateCode(){
 				ChooseOption();
 			}
 
-		}else if(m_player->m_collected_parts == m_player->M_TOTAL_PARTS && m_waiting_time >= 5000.0f){
+		}else if(m_player->mCollectedParts == m_player->M_TOTAL_PARTS && m_waiting_time >= 5000.0f){
 			m_winning_screen->m_object_state = engine::ObjectState::ENABLED;
 			ChangeOption();
 
@@ -75,7 +75,7 @@ void LevelOneCode::UpdateCode(){
 
 	UpdateObstaclePosition();
 
-	if(m_player->m_state != PlayerState::DIE){
+	if(m_player->mState != PlayerState::DIE){
 		UpdatePhysics();
 	}else{
 		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
@@ -157,28 +157,28 @@ void LevelOneCode::UpdateObstaclePosition(){
 }
 
 void LevelOneCode::UpdatePhysics(){
-	m_player->mCurrentPosition.second += m_player->m_speed.second * engine::Game::instance.GetTimer().GetDeltaTime();
+	m_player->mCurrentPosition.second += m_player->mSpeed.second * engine::Game::instance.GetTimer().GetDeltaTime();
 	double ground_y = 0.0f;
-	if(m_player->m_speed.second < 0.0f && HasCeiling(&ground_y)){
+	if(m_player->mSpeed.second < 0.0f && HasCeiling(&ground_y)){
 		m_player->mCurrentPosition.second = ground_y + 15;
-		m_player->m_at_ceiling = true;
-	}else if((m_player->m_speed.second >= 0.0f || m_player->m_state == PlayerState::SLIDE) && HasGround(&ground_y)){
+		m_player->mAtCeiling = true;
+	}else if((m_player->mSpeed.second >= 0.0f || m_player->mState == PlayerState::SLIDE) && HasGround(&ground_y)){
 		m_player->mCurrentPosition.second = ground_y - m_player->mHalfSize.second - m_player->mHalfSize.second + 15;
-		m_player->m_speed.second = m_player->M_ZERO_VECTOR.second;
+		m_player->mSpeed.second = m_player->M_ZERO_VECTOR.second;
 
-		m_player->m_on_ground = true;
+		m_player->mOnGround = true;
 
 		m_player->mCenter.first = m_player->mCurrentPosition.first + m_player->mHalfSize.first;
 		m_player->mCenter.second = m_player->mCurrentPosition.second + m_player->mHalfSize.second;
 
 	}else{
-		m_player->m_on_ground = false;
-		m_player->m_at_ceiling = false;
+		m_player->mOnGround = false;
+		m_player->mAtCeiling = false;
 	}
 
-	//double delta_walked =  m_player->m_speed.first * engine::Game::instance.GetTimer().GetDeltaTime();
-	double delta_walked =  m_player->m_speed.first;
-	// DEBUG("Speed: " << m_player->m_speed.first);
+	//double delta_walked =  m_player->mSpeed.first * engine::Game::instance.GetTimer().GetDeltaTime();
+	double delta_walked =  m_player->mSpeed.first;
+	// DEBUG("Speed: " << m_player->mSpeed.first);
 	// DEBUG("Delta walked: " << delta_walked);
 
 	m_player->mCurrentPosition.first += delta_walked;
@@ -190,21 +190,21 @@ void LevelOneCode::UpdatePhysics(){
 		m_player->mCurrentPosition.first = 300;
 	}
 
-	if(m_player->m_speed.first > 0 &&
+	if(m_player->mSpeed.first > 0 &&
 	   HasWallOnRight(&wall_x)){
 		DEBUG("Collision with the wall");
 		m_player->mCurrentPosition.first = wall_x - (m_player->mHalfSize.first * 2);
-		m_player->m_pushes_left_wall = true;
-		m_player->m_state = PlayerState::DIE;
+		m_player->mPushesLeftWall = true;
+		m_player->mState = PlayerState::DIE;
 	}else{
-		m_player->m_pushes_left_wall = false;
+		m_player->mPushesLeftWall = false;
 	}
 
-	if(m_player->m_speed.first < 0.0f &&
+	if(m_player->mSpeed.first < 0.0f &&
 	   HasWallOnLeft(&wall_x)){
-		m_player->m_state = PlayerState::DIE;
+		m_player->mState = PlayerState::DIE;
 	}else{
-		m_player->m_pushes_right_wall = false;
+		m_player->mPushesRightWall = false;
 	}
 }
 
@@ -239,7 +239,7 @@ bool LevelOneCode::HasGround(double *ground_y){
 
 				// Collided.
 				each_obstacle->m_machine_part_state = MachinePartState::COLLECTED;
-				m_player->m_collected_parts++;
+				m_player->mCollectedParts++;
 				m_obstacle_list.remove(each_obstacle);
 
 				return false;
@@ -272,7 +272,7 @@ bool LevelOneCode::HasGround(double *ground_y){
 					if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_ROCK ||
 					   each_obstacle->m_obstacle_type == ObstacleType::WESTERN_SPIKE ||
 					   each_obstacle->m_obstacle_type == ObstacleType::WESTERN_POST){
-						m_player->m_state = PlayerState::DIE;
+						m_player->mState = PlayerState::DIE;
 					}
 
 					return true;
@@ -314,7 +314,7 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 			   player_right >= block_left){
 
 				each_obstacle->m_machine_part_state = MachinePartState::COLLECTED;
-				m_player->m_collected_parts++;
+				m_player->mCollectedParts++;
 				m_obstacle_list.remove(each_obstacle);
 
 				return false;
@@ -355,7 +355,7 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 				   player_right >= block_left){
 
 					if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_POST){
-						m_player->m_state = PlayerState::DIE;
+						m_player->mState = PlayerState::DIE;
 					}
 
 					*wall_x = block_left - 1.0f;
@@ -433,7 +433,7 @@ bool LevelOneCode::HasCeiling(double *ground_y){
 			   player_top >= block_top){
 
 				if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_POST){
-					m_player->m_state = PlayerState::DIE;
+					m_player->mState = PlayerState::DIE;
 				}
 
 				*ground_y = block_bottom;

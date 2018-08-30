@@ -28,7 +28,7 @@ namespace engine {
 			bool m_loop;
 		public:
 			std::string animation_name;
-			AnimationState m_state = AnimationState::STOPPED;
+			AnimationState mState = AnimationState::STOPPED;
 		public:
 			Animation();
 			virtual ~Animation();
