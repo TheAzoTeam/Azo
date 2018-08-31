@@ -79,7 +79,7 @@ void Player::shutdown() {
 
 void Player::createComponents() {
 	DEBUG("Creating Player Components.");
-	genWalkingAnimation();
+	generateWalkingAnimation();
 
 	mWalking = new engine::Animation(*this, 
 									"sprites/CowboyRun.png", 
@@ -96,7 +96,7 @@ void Player::createComponents() {
 	const std::string WALKING_ANIMATION_NAME = "walking";
 	mAnimationController->addAnimation(WALKING_ANIMATION_NAME, *mWalking);
 
-	genJumpingAnimation();
+	generateJumpingAnimation();
 
 	mJumping = new engine::Animation(*this, 
 									"sprites/CowboyJump.png", 
@@ -110,7 +110,7 @@ void Player::createComponents() {
 	DEBUG("Adding jumping animation to animation controller");
 	mAnimationController->addAnimation("jumping", *mJumping);
 
-	genSlidingAnimation();
+	generateSlidingAnimation();
 
 	mSliding = new engine::Animation(*this,
 									"sprites/CowboyDesce.png", 
@@ -124,7 +124,7 @@ void Player::createComponents() {
 
 	mAnimationController->addAnimation("sliding", *mSliding);
 
-	genDyingAnimation();
+	generateDyingAnimation();
 	
 	mDying = new engine::Animation(*this, 
 								    "sprites/CowboyTonto.png", 
@@ -138,7 +138,7 @@ void Player::createComponents() {
 
 	mAnimationController->addAnimation("dying", *mDying);
 
-	genLosingAnimation();
+	generateLosingAnimation();
 
 	mLosing = new engine::Animation(*this, 
 									"sprites/CowBoyDerrota.png", 
@@ -152,7 +152,7 @@ void Player::createComponents() {
 
 	mAnimationController->addAnimation("losing", *mLosing);
 
-	genVictoryAnimation();
+	generateVictoryAnimation();
 
 	mVictory = new engine::Animation(*this, 
 									"sprites/victory.png", 
@@ -192,7 +192,7 @@ void Player::createComponents() {
 	this->addComponent(*mPlayerCode);
 }
 
-void Player::genVictoryAnimation() {
+void Player::generateVictoryAnimation() {
 	mVictoryAnimationSprites.push_back(new engine::Sprite());
 
 	/*
@@ -208,7 +208,7 @@ void Player::genVictoryAnimation() {
 }
 
 
-void Player::genLosingAnimation() {
+void Player::generateLosingAnimation() {
 	const int LOSING_SPRITES = 7;
 	for (int i = 0; i < LOSING_SPRITES; i++) {
 		mLosingAnimationSprites.push_back(new engine::Sprite());
@@ -257,7 +257,7 @@ void Player::genLosingAnimation() {
 }
 
 
-void Player::genWalkingAnimation(){
+void Player::generateWalkingAnimation(){
 	DEBUG("Generating Player walking animation.");
 	const int WALKING_SPRITES = 23;
 	for (int i = 0; i < WALKING_SPRITES; i++) {
@@ -386,7 +386,7 @@ void Player::genWalkingAnimation(){
 	mWalkingAnimationSprites[22]->spriteHeight = 139 - 29;
 }
 
-void Player::genJumpingAnimation() {
+void Player::generateJumpingAnimation() {
 	DEBUG("Generating Player Jumping Animation.");
 	const int JUMPING_SPRITES = 8;
 	for (int i = 0; i < JUMPING_SPRITES; i++) {
@@ -440,7 +440,7 @@ void Player::genJumpingAnimation() {
 	mJumpingAnimationSprites[7]->spriteHeight = 1107 - 997;
 }
 
-void Player::genSlidingAnimation() {
+void Player::generateSlidingAnimation() {
 	const int SLIDING_SPRITES = 21;
 	for (int i = 0; i < SLIDING_SPRITES; i++) {
 		mSlidingAnimationSprites.push_back(new engine::Sprite());
@@ -558,7 +558,7 @@ void Player::genSlidingAnimation() {
 	mSlidingAnimationSprites[20]->spriteHeight = 139 - 40;
 }
 
-void Player::genDyingAnimation() {
+void Player::generateDyingAnimation() {
 	const int DYING_SPRITES = 36;
 	for (int i = 0; i < DYING_SPRITES; i++) {
 		mDyingAnimationSprites.push_back(new engine::Sprite());

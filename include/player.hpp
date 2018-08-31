@@ -69,12 +69,12 @@ namespace Azo {
 			void createComponents();
 
 			// Add new methods to generate the sprite vectors here.
-			void genWalkingAnimation();
-			void genJumpingAnimation();
-			void genSlidingAnimation();
-			void genDyingAnimation();
-			void genLosingAnimation();
-			void genVictoryAnimation();
+			void generateWalkingAnimation();
+			void generateJumpingAnimation();
+			void generateSlidingAnimation();
+			void generateDyingAnimation();
+			void generateLosingAnimation();
+			void generateVictoryAnimation();
 
 
 			inline std::string GetClassName(){

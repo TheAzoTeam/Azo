@@ -40,7 +40,7 @@ namespace Azo {
 		private:
 			void createGameObjects();
 			void createMenuComponents();
-			void genButtonsAnimation();
+			void generateButtonsAnimation();
 
 	};
 }

@@ -31,7 +31,7 @@ void Menu::createMenuComponents() {
 
 	mAnimationController = new engine::AnimationController(*mMenu);
 
-	genButtonsAnimation();
+	generateButtonsAnimation();
 	mStartButton = new engine::Animation(*mMenu,
 					       				 "general_images/textos.png",
 					       				 1.0f,
@@ -129,7 +129,7 @@ void Menu::createMenuComponents() {
 	mMenu->addComponent(*mCode);
 }
 
-void Menu::genButtonsAnimation() {
+void Menu::generateButtonsAnimation() {
 	 mStartButtonSprites.push_back(new engine::Sprite());
 
 	/*
