@@ -28,13 +28,13 @@ namespace engine {
 		AudioState audioState;
 		AudioComponent();
 		virtual ~AudioComponent();
-		AudioComponent(GameObject & gameObject, std::string path, bool isMusic, bool playOnStart);
+		AudioComponent(GameObject &gameObject, std::string audioPath, bool isMusic, bool playOnStart);
 		void init();
 		void shutdown();
 		void updateCode();
-		void play(int loops = -1, int channel = -1);
-		void stop(int channel = -1);
-		void pause(int channel = -1);
+		void play(int loops, int channel);
+		void stop(int channel);
+		void pause(int channel);
 		inline bool getIsMusic(){ return isMusic; }
 	};
 

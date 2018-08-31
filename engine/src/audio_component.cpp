@@ -10,9 +10,9 @@ AudioComponent::AudioComponent(){}
 AudioComponent::~AudioComponent(){}
 
 
-AudioComponent::AudioComponent(GameObject & gameObject, std::string path, bool isMusic, bool playOnStart){
+AudioComponent::AudioComponent(GameObject &gameObject, std::string audioPath, bool isMusic, bool playOnStart){
 	this->gameObject = &gameObject;
-	this->audioPath = path;
+	this->audioPath = audioPath;
 	this->isMusic = isMusic;
 	this->playOnStart = playOnStart;
 	this->audioState = AudioState::STOPPED;
@@ -41,7 +41,7 @@ void AudioComponent::init(){
 
 void AudioComponent::updateCode(){
 	if(playOnStart){
-		play(); // Plays audio once until end
+		play(-1, -1); // Plays audio once until end
 		playOnStart = false;
 	}
 }
