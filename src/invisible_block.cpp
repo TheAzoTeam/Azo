@@ -2,8 +2,6 @@
 
 using namespace Azo;
 
-InvisibleBlock::InvisibleBlock(){}
-
 InvisibleBlock::~InvisibleBlock(){}
 
 InvisibleBlock::InvisibleBlock(std::string name, 

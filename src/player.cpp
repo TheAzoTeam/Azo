@@ -2,8 +2,6 @@
 
 using namespace Azo;
 
-// Player::Player(){}
-
 Player::Player(std::string name, std::pair<double, double> currentPosition){
 	DEBUG("Player::Player method.");
 
