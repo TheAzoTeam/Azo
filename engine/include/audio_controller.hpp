@@ -22,9 +22,9 @@ namespace engine {
 			void PauseAudio(std::string audio_name);
 			void StopAllAudios();
 			AudioState GetAudioState(std::string audio_name);
-			void Init();
-			void Shutdown();
-			void UpdateCode();
+			void init();
+			void shutdown();
+			void updateCode();
 
 	};
 

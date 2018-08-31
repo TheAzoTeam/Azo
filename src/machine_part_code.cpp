@@ -10,7 +10,7 @@ MachinePartCode::MachinePartCode(Obstacle *machine_part){
 
 MachinePartCode::~MachinePartCode(){}
 
-void MachinePartCode::Shutdown(){
+void MachinePartCode::shutdown(){
 	if(m_audio_controller != NULL){
 		m_audio_controller = NULL;
 	}
@@ -20,7 +20,7 @@ void MachinePartCode::FindAudioController(){
 	m_audio_controller = (m_machine_part->getAudioController(typeid(engine::AudioController)));
 }
 
-void MachinePartCode::UpdateCode(){
+void MachinePartCode::updateCode(){
 	switch(m_machine_part->m_machine_part_state){
 		case MachinePartState::COLLECTED:
 			m_audio_controller->PlayAudio("coleta");

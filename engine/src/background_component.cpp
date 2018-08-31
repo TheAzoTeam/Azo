@@ -22,8 +22,8 @@ BackgroundComponent::BackgroundComponent(GameObject & gameObject, std::string im
 
 BackgroundComponent::~BackgroundComponent(){}
 
-void BackgroundComponent::Init(){
-	//DEBUG("BackgroundComponent::Init method.");
+void BackgroundComponent::init(){
+	//DEBUG("BackgroundComponent::init method.");
 	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
 
 	image_texture = assets_image->texture;
@@ -34,13 +34,13 @@ void BackgroundComponent::Init(){
 	renderQuad = {0, 0, component_width, component_height};
 }
 
-void BackgroundComponent::Shutdown(){
+void BackgroundComponent::shutdown(){
 	/* Terminate Texture */
 	image_texture = NULL;
 }
 
-void BackgroundComponent::Draw(){
-	//DEBUG("BackgroundComponent::Draw method.");
+void BackgroundComponent::draw(){
+	//DEBUG("BackgroundComponent::draw method.");
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,

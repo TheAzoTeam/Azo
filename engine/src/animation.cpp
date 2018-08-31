@@ -51,7 +51,7 @@ Animation::Animation(GameObject & gameObject, std::string image_path,
 
 Animation::~Animation(){}
 
-void Animation::Shutdown(){
+void Animation::shutdown(){
 	if(m_sprite_list.size() > 0){
 		for(auto each_sprite : m_sprite_list){
 			delete(each_sprite);
@@ -60,8 +60,8 @@ void Animation::Shutdown(){
 	}
 }
 
-void Animation::Draw(){
-	// DEBUG("Animation::Draw method.");
+void Animation::draw(){
+	// DEBUG("Animation::draw method.");
 	// DEBUG("Checking Limits");
 	CheckLimits();
 	//DEBUG("Updating Quad");
@@ -136,7 +136,7 @@ void Animation::UpdateGameObjectMeasures(){
 	gameObject->mCenter.second = gameObject->mCurrentPosition.second + gameObject->mHalfSize.second;
 }
 
-void Animation::DisableComponent(){
+void Animation::disableComponent(){
 	this->componentState = State::DISABLED;
 	m_current_animation_time = 0.0f;
 	m_current_sprite = m_start_frame;

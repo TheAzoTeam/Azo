@@ -23,7 +23,7 @@ ImageComponent::ImageComponent(GameObject &gameObject,
 	m_position_relative_to_object = position_relative_to_object;
 }
 
-void ImageComponent::Init(){
+void ImageComponent::init(){
 	// Check AssetsManager to see if image is already loaded.
 	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
 
@@ -47,7 +47,7 @@ void ImageComponent::Init(){
 }
 
 
-void ImageComponent::Draw(){
+void ImageComponent::draw(){
 	UpdateQuad();
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),

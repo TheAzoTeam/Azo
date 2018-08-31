@@ -61,7 +61,7 @@ void GameObject::init(){
 
 
 void GameObject::draw(){
-	// DEBUG("GameObject::Draw method.");
+	// DEBUG("GameObject::draw method.");
 	//DEBUG("Game object name: " << m_name);
 	// DEBUG("Map size: " << m_component_map.size());
 	for (auto eachPair : mComponentMap){
@@ -70,12 +70,12 @@ void GameObject::draw(){
 		ASSERT(component != NULL, "Component can't be NULL when drawing.");
 
 		if (component->isEnabled()){
-			//	DEBUG("Drawing Component. Component Class Name: " << component->GetClassName());
+			//	DEBUG("drawing Component. Component Class Name: " << component->GetClassName());
 			component->draw();
 		}
 	}
 
-	//DEBUG("Finished Drawing.");
+	//DEBUG("Finished drawing.");
 }
 
 
@@ -92,7 +92,7 @@ void GameObject::updateCode(){
 void GameObject::shutdown(){
 	// for(auto each_pair : m_component_map){
 	//      auto component = each_pair.second;
-	//      component->Shutdown();
+	//      component->shutdown();
 	// }
 }
 

@@ -8,7 +8,7 @@ LevelOneCode::LevelOneCode(engine::GameObject &gameObject){
 	FindAudioController();
 }
 
-void LevelOneCode::Shutdown(){
+void LevelOneCode::shutdown(){
 	for(auto obstacle : m_obstacle_list){
 		obstacle = nullptr;
 	}
@@ -42,7 +42,7 @@ void LevelOneCode::GetParents(){
 }
 
 
-void LevelOneCode::UpdateCode(){
+void LevelOneCode::updateCode(){
 	//DEBUG("Position: " << gameObject->mCurrentPosition.first );
 	//DEBUG("Collected parts: " << m_player->m_collected_parts);
 	if(m_player->mCurrentPosition.first >= 300.0f && gameObject->mCurrentPosition.first > -17600){

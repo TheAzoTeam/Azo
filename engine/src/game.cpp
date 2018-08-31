@@ -5,7 +5,7 @@
 
 using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.
 
-Game Game::instance;    // Used to Initialize in fact the static instance of game;
+Game Game::instance;    // Used to initialize in fact the static instance of game;
 
 Game::Game(){
 	this->need_to_change_scene = false;
@@ -14,10 +14,10 @@ Game::Game(){
 	this->frame_rate = 60;
 }
 
-// Main Game Loop and SDL Initiators.
+// Main Game Loop and SDL initiators.
 void Game::Run(){
 
-	// (SDL) Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
+	// (SDL) initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
 	sdl_elements.InitSDL();
 
 	// (SDL) Create Window and Canvas.
@@ -57,15 +57,15 @@ void Game::Run(){
 			}
 		}
 
-		// Clean and Draw the Scene to refreh animations and objects.
-		// DEBUG("Drawing current scene.");
+		// Clean and draw the Scene to refreh animations and objects.
+		// DEBUG("drawing current scene.");
 		// DEBUG("Scene name: " << current_scene->GetSceneName());
 		SDL_RenderClear(sdl_elements.GetCanvas());
-		current_scene->Draw();
+		current_scene->draw();
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
 		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
-		current_scene->UpdateCode();
+		current_scene->updateCode();
 
 
 		//INFO("Clearing user input from InputManager.");
@@ -154,12 +154,12 @@ bool Game::StartAndStopScenes(){
 			}
 
 
-			current_scene->Init();
+			current_scene->init();
 
 			if(last_scene != NULL){
 				INFO("Shuting down scene!");
 				if(last_scene->GetSceneName() != current_scene->GetSceneName()){
-					last_scene->Shutdown();
+					last_scene->shutdown();
 				}
 				//DEBUG("Scene name: " << last_scene->GetSceneName());
 				//scene_map.erase(last_scene->GetSceneName());

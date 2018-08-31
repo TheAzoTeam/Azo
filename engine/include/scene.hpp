@@ -17,10 +17,10 @@ namespace engine {
 			Scene();
 			Scene(std::string scene_name);
 
-			virtual void Init();
-			virtual void Shutdown();
-			virtual void Draw();
-			virtual void UpdateCode();
+			virtual void init();
+			virtual void shutdown();
+			virtual void draw();
+			virtual void updateCode();
 			virtual void Restart();
 
 			inline std::string GetSceneName() {
