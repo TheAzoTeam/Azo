@@ -2,8 +2,8 @@
 
 using namespace Azo;
 
-LevelOneCode::LevelOneCode(engine::GameObject &game_object){
-	this->game_object = &game_object;
+LevelOneCode::LevelOneCode(engine::GameObject &gameObject){
+	this->gameObject = &gameObject;
 	GetParents();
 	FindAudioController();
 }
@@ -19,11 +19,11 @@ void LevelOneCode::Shutdown(){
 }
 
 void LevelOneCode::FindAudioController(){
-	m_audio_controller = (game_object->GetAudioController(typeid(engine::AudioController)));
+	m_audio_controller = (gameObject->GetAudioController(typeid(engine::AudioController)));
 }
 
 void LevelOneCode::GetParents(){
-	for(auto parent : game_object->m_parent_list){
+	for(auto parent : gameObject->m_parent_list){
 		if(parent->GetClassName() == "Player"){
 			m_player = dynamic_cast<Player *>(parent);
 		}else if(parent->GetClassName() == "Obstacle"){
@@ -43,10 +43,10 @@ void LevelOneCode::GetParents(){
 
 
 void LevelOneCode::UpdateCode(){
-	//DEBUG("Position: " << game_object->m_current_position.first );
+	//DEBUG("Position: " << gameObject->m_current_position.first );
 	//DEBUG("Collected parts: " << m_player->m_collected_parts);
-	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -17600){
-		game_object->m_current_position.first -= 4.0f;
+	if(m_player->m_current_position.first >= 300.0f && gameObject->m_current_position.first > -17600){
+		gameObject->m_current_position.first -= 4.0f;
 		m_player->m_current_position.first = 299;
 	}else if(m_player->m_current_position.first >= 300.0f){
 		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
@@ -137,12 +137,12 @@ void LevelOneCode::ChooseOption(){
 
 void LevelOneCode::UpdateObstaclePosition(){
 	for(auto each_obstacle : m_obstacle_list){
-		each_obstacle->m_current_position.first = game_object->m_current_position.first + each_obstacle->m_position_relative_to_parent.first;
-		each_obstacle->m_current_position.second = game_object->m_current_position.second + each_obstacle->m_position_relative_to_parent.second;
+		each_obstacle->m_current_position.first = gameObject->m_current_position.first + each_obstacle->m_position_relative_to_parent.first;
+		each_obstacle->m_current_position.second = gameObject->m_current_position.second + each_obstacle->m_position_relative_to_parent.second;
 
 		for(auto block : each_obstacle->m_block_list){
-			block->m_current_position.first = game_object->m_current_position.first + block->m_position_relative_to_parent.first;
-			block->m_current_position.second = game_object->m_current_position.second + block->m_position_relative_to_parent.second;
+			block->m_current_position.first = gameObject->m_current_position.first + block->m_position_relative_to_parent.first;
+			block->m_current_position.second = gameObject->m_current_position.second + block->m_position_relative_to_parent.second;
 
 			block->m_center.first = block->m_current_position.first + block->m_half_size.first;
 			block->m_center.second = block->m_current_position.second + block->m_half_size.second;
@@ -186,7 +186,7 @@ void LevelOneCode::UpdatePhysics(){
 	double wall_x = 0.0;
 
 	//Limiting player position on canvas.
-	if(m_player->m_current_position.first >= 300 && game_object->m_current_position.first > -7390){
+	if(m_player->m_current_position.first >= 300 && gameObject->m_current_position.first > -7390){
 		m_player->m_current_position.first = 300;
 	}
 
@@ -333,8 +333,8 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 				double block_bottom = block_bottom_left.second - 16;
 
 				// DEBUG("Obstacle: " << each_obstacle->m_name);
-				// DEBUG("Game object position x: " << game_object->m_current_position.first);
-				// DEBUG("Game object position y: " << game_object->m_current_position.second);
+				// DEBUG("Game object position x: " << gameObject->m_current_position.first);
+				// DEBUG("Game object position y: " << gameObject->m_current_position.second);
 				//
 				// DEBUG("Obstacle position x: " << each_obstacle->m_current_position.first);
 				// DEBUG("Obstacle position y: " << each_obstacle->m_current_position.second);

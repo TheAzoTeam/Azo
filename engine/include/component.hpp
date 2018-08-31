@@ -14,13 +14,13 @@ namespace engine {
 
 	class Component {
 		protected:
-			GameObject *game_object;
-			State component_state = State::ENABLED;
+			GameObject *gameObject;
+			State componentState = State::ENABLED;
 
 		public:
 			Component();
 
-			Component(GameObject &game_object);
+			Component(GameObject &gameObject);
 
 			virtual void Init();
 
