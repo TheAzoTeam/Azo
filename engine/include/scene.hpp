@@ -29,7 +29,7 @@ namespace engine {
 
 			void DeleteKeyList();
 
-			void AddGameObject(engine::GameObject &game_object);
+			void AddGameObject(engine::GameObject &gameObject);
 			engine::GameObject & GetGameObject(std::string & game_object_name);
 			void RemoveGameObject(std::string &game_object_name);
 

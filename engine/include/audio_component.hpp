@@ -17,7 +17,7 @@ namespace engine {
 
 	class AudioComponent : public Component {
 		private:
-			std::string audio_path;
+			std::string audioPath;
 			bool is_music;
 			bool play_on_start;
 
@@ -32,7 +32,7 @@ namespace engine {
 			virtual ~AudioComponent();
 
 
-			AudioComponent(GameObject & game_object, std::string path, bool is_music, bool play_on_start);
+			AudioComponent(GameObject & gameObject, std::string path, bool is_music, bool play_on_start);
 
 			void Init();
 

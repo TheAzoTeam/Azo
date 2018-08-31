@@ -27,32 +27,32 @@ namespace engine {
 			float m_animation_time;
 			bool m_loop;
 		public:
-			std::string animation_name;
+			std::string animationName;
 			AnimationState m_state = AnimationState::STOPPED;
 		public:
 			Animation();
 			virtual ~Animation();
 			void Shutdown();
 			Animation(
-				GameObject & game_object,
-				std::string image_path,
+				GameObject & gameObject,
+				std::string imagePath,
 				float animation_time,
 				std::vector<Sprite *> sprite_list,
 				int start_frame,
 				int end_frame,
 				bool loop,
-				double zoom_factor);
+				double zoomFactor);
 
 			Animation(
-				GameObject & game_object,
-				std::string image_path,
+				GameObject & gameObject,
+				std::string imagePath,
 				float animation_time,
 				std::vector<Sprite *> sprite_list,
 				int start_frame,
 				int end_frame,
 				bool loop,
-				double zoom_factor,
-				std::pair<double, double> position_relative_to_object);
+				double zoomFactor,
+				std::pair<double, double> positionRelativeToObject);
 			void Draw();
 			inline std::string GetClassName(){
 				return "Animation";

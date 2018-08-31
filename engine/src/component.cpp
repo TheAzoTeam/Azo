@@ -4,8 +4,8 @@ using namespace engine;
 
 Component::Component(){}
 
-Component::Component(GameObject &game_object){
-	this->game_object = &game_object;
+Component::Component(GameObject &gameObject){
+	this->gameObject = &gameObject;
 	this->component_state = State::ENABLED;
 }
 
@@ -34,4 +34,3 @@ bool Component::IsEnabled(){
 		return false;
 	}
 }
-
