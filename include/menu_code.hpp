@@ -11,9 +11,9 @@ namespace Azo {
 			engine::AnimationController *m_animation_controller;
 			int m_current_button = 1;
 		public:
-			MenuCode(engine::GameObject *game_object);
+			MenuCode(engine::GameObject *gameObject);
 		private:
-			void UpdateCode();
+			void updateCode();
 			void FindAudioController();
 			void FindAnimationController();
 			void ChangeOption();

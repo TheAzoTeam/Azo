@@ -20,11 +20,11 @@ namespace Azo {
 			double m_waiting_time = 0.0f;
 			int m_current_option = 1;
 		public:
-			LevelOneCode(engine::GameObject &game_object);
-			void Shutdown();
+			LevelOneCode(engine::GameObject &gameObject);
+			void shutdown();
 		private:
 			void FindAudioController();
-			void UpdateCode();
+			void updateCode();
 			void ChangeOption();
 			void ChooseOption();
 			void UpdateObstaclePosition();

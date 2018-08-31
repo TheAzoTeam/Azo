@@ -77,14 +77,14 @@ namespace Azo {
 			void GenVictoryAnimation();
 
 
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "Player";
 			}
 
 		public:
 			Player();
 			Player(std::string name, std::pair<double, double> current_position);
-			void Shutdown();
+			void shutdown();
 	};
 }
 

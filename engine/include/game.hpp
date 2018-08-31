@@ -25,7 +25,7 @@ namespace engine {
 	class Game {
 		public:
 			static Game instance;                           /* Global game instance that allow access to public attributes and methods in any part of the code.*/
-			SDL sdl_elements;                               // Used to access SDL class to take care of sdl elements in game Initialize.
+			SDL sdl_elements;                               // Used to access SDL class to take care of sdl elements in game initialize.
 			InputManager input_manager;
 			GameState game_state;                           // Define Game States to control Loops and other strutuctures.
 		private:
@@ -43,7 +43,7 @@ namespace engine {
 			// Constructor Default with default values.
 			Game();
 
-			// Used to Initialize the Game in fact (Main Loop).
+			// Used to initialize the Game in fact (Main Loop).
 			void Run();
 
 			// Used to add a Scene to map that have all Game's Scenes.

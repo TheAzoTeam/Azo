@@ -8,7 +8,7 @@ Menu::Menu(std::string name){
 }
 
 void Menu::Restart(){
-	game_object_map.clear();
+	gameObject_map.clear();
 	CreateGameObjects();
 }
 
@@ -25,7 +25,7 @@ void Menu::CreateMenuComponents(){
 	m_menu_theme = new engine::AudioComponent(*m_menu, "audios/TemaGame.ogg", true, true);
 	m_audio_controller = new engine::AudioController();
 	m_audio_controller->AddAudio("menu_theme", *m_menu_theme);
-	m_menu->AddComponent(*m_audio_controller);
+	m_menu->addComponent(*m_audio_controller);
 
 	m_animation_controller = new engine::AnimationController(*m_menu);
 
@@ -119,13 +119,13 @@ void Menu::CreateMenuComponents(){
 
 	m_animation_controller->AddAnimation("arrow_sound", *m_arrow_sound);
 
-	m_menu->AddComponent(*m_animation_controller);
+	m_menu->addComponent(*m_animation_controller);
 
 	m_background = new engine::BackgroundComponent(*m_menu, "backgrounds/menu.png");
-	m_menu->AddComponent(*m_background);
+	m_menu->addComponent(*m_background);
 
 	m_code = new MenuCode(m_menu);
-	m_menu->AddComponent(*m_code);
+	m_menu->addComponent(*m_code);
 }
 
 void Menu::GenButtonsAnimation(){
@@ -166,6 +166,6 @@ void Menu::GenButtonsAnimation(){
 }
 
 
-void Menu::Shutdown(){
-	DEBUG("Calling Menu::Shutdown.");
+void Menu::shutdown(){
+	DEBUG("Calling Menu::shutdown.");
 }

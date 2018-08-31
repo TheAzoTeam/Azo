@@ -18,21 +18,21 @@ PlayerCode::PlayerCode(Player *player){
 
 
 void PlayerCode::FindAnimationController(){
-	m_animation_controller = (m_player->GetAnimationController(typeid(engine::AnimationController)));
+	m_animation_controller = (m_player->getAnimationController(typeid(engine::AnimationController)));
 }
 
 void PlayerCode::FindAudioController(){
-	m_audio_controller = (m_player->GetAudioController(typeid(engine::AudioController)));
+	m_audio_controller = (m_player->getAudioController(typeid(engine::AudioController)));
 }
 
-void PlayerCode::Shutdown(){
+void PlayerCode::shutdown(){
 	if(m_animation_controller != NULL){
 		m_animation_controller = NULL;
 	}
 }
 
 
-void PlayerCode::UpdateCode(){
+void PlayerCode::updateCode(){
 	switch(m_player->m_state){
 		case PlayerState::WALK:
 
@@ -71,7 +71,7 @@ void PlayerCode::UpdateCode(){
 			m_animation_controller->StartUniqueAnimation("jumping");
 
 			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
-			//DEBUG("UpdateCode method. Player Speed in Y: " << m_player->m_speed.second);
+			//DEBUG("updateCode method. Player Speed in Y: " << m_player->m_speed.second);
 
 			if(m_player->m_pushes_right_wall){
 				m_player->m_speed.first = m_player->M_ZERO_VECTOR.first;

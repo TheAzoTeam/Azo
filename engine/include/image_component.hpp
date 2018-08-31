@@ -13,16 +13,16 @@ namespace engine {
 		public:
 			ImageComponent();
 			virtual ~ImageComponent();
-			ImageComponent(GameObject &game_object, std::string image_path, double zoom_factor);
+			ImageComponent(GameObject &gameObject, std::string image_path, double zoom_factor);
 			ImageComponent(
-				GameObject &game_object,
+				GameObject &gameObject,
 				std::string image_path,
 				double zoom_factor,
 				std::pair<double, double> position_relative_to_object);
-			void Init();
-			void Draw();
+			void init();
+			void draw();
 			void UpdateQuad();
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "ImageComponent";
 			}
 	};

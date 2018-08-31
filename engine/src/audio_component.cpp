@@ -4,52 +4,53 @@
 
 using namespace engine;
 
-
 AudioComponent::AudioComponent(){}
+
 
 AudioComponent::~AudioComponent(){}
 
-AudioComponent::AudioComponent(GameObject & game_object, std::string path, bool is_music, bool play_on_start){
-	this->game_object = &game_object;
-	this->audio_path = path;
-	this->is_music = is_music;
-	this->play_on_start = play_on_start;
-	this->audio_state = AudioState::STOPPED;
+
+AudioComponent::AudioComponent(GameObject &gameObject, std::string audioPath, bool isMusic, bool playOnStart){
+	this->gameObject = &gameObject;
+	this->audioPath = audioPath;
+	this->isMusic = isMusic;
+	this->playOnStart = playOnStart;
+	this->audioState = AudioState::STOPPED;
 	this->music = nullptr;
 	this->sound = nullptr;
 }
 
-void AudioComponent::Init(){
-	INFO("Init audio component");
 
-	if(is_music){
-		music = Game::instance.GetAssetsManager().LoadMusic(audio_path);
+void AudioComponent::init(){
+	INFO("init audio component");
 
-		if(music == NULL){
-			ERROR("Invalid Music Path (Music = NULL): " << audio_path);
+	if(isMusic){
+		music = Game::instance.GetAssetsManager().LoadMusic(audioPath);
+		if (music == NULL){
+			ERROR("Invalid Music Path (Music = NULL): " << audioPath);
 		}
-
 	}else {
-		sound = Game::instance.GetAssetsManager().LoadSound(audio_path);
-
-		if(sound == NULL){
-			ERROR("Invalid Sound Path (Sound = NULL): " << audio_path);
+		sound = Game::instance.GetAssetsManager().LoadSound(audioPath);
+		if (sound == NULL){
+			ERROR("Invalid Sound Path (Sound = NULL): " << audioPath);
 		}
 	}
 
 }
 
-void AudioComponent::UpdateCode(){
-	if(play_on_start){
-		Play();
-		play_on_start = false;
+
+void AudioComponent::updateCode(){
+	if(playOnStart){
+		play(-1, -1); // Plays audio once until end
+		playOnStart = false;
 	}
 }
 
-void AudioComponent::Shutdown(){
-	INFO("Shutdown audio component");
 
-	Stop(-1);
+void AudioComponent::shutdown(){
+	INFO("shutdown audio component");
+
+	stop(-1);
 	if(music != nullptr){
 		Mix_FreeMusic(music);
 		music = nullptr;
@@ -60,58 +61,60 @@ void AudioComponent::Shutdown(){
 		//Mix_FreeChunk(sound);
 		sound = nullptr;
 	}
-
 }
 
-void AudioComponent::Play(int loops, int channel){
-	INFO("AudioComponent::Play audio: " << audio_path);
 
-	if(is_music){
-		if(audio_state == AudioState::STOPPED){
-			Mix_PlayMusic(music, loops);
-			INFO("Play music: " << audio_path);
-		}else if(audio_state == AudioState::PAUSED){
+void AudioComponent::play(int loops, int channel){
+	INFO("AudioComponent::Play audio: " << audioPath);
+
+	if (isMusic){
+		if (audioState == AudioState::STOPPED){
+			Mix_PlayMusic (music, loops);
+			INFO("Play music: " << audioPath);
+		} else if (audioState == AudioState::PAUSED){
 			Mix_ResumeMusic();
-			INFO("Resume music: " << audio_path);
+			INFO("Resume music: " << audioPath);
 		}
 
-	}else{
-		if(audio_state == AudioState::STOPPED){
+	} else {
+		if (audioState == AudioState::STOPPED){
 			Mix_PlayChannel(channel, sound, 0);
-			INFO("Play sound: " << audio_path);
-		}else if(audio_state == AudioState::PAUSED){
+			INFO("Play sound: " << audioPath);
+		} else if (audioState == AudioState::PAUSED){
 			Mix_Resume(channel);
-			INFO("Resume sound: " << audio_path);
+			INFO("Resume sound: " << audioPath);
 		}
 	}
 
-	audio_state = AudioState::PLAYING;
+	audioState = AudioState::PLAYING;
 }
 
-void AudioComponent::Stop(int channel){
-	INFO("AudioComponent::Stop audio: " << audio_path);
 
-	if(is_music){
+void AudioComponent::stop(int channel){
+	INFO("AudioComponent::Stop audio: " << audioPath);
+
+	if (isMusic){
 		Mix_HaltMusic();
-		INFO("Stop music: " << audio_path);
-	} else{
+		INFO("Stop music: " << audioPath);
+	} else {
 		Mix_HaltChannel(channel);
-		INFO("Stop sound: " << audio_path);
+		INFO("Stop sound: " << audioPath);
 	}
 
-	audio_state = AudioState::STOPPED;
+	audioState = AudioState::STOPPED;
 }
 
-void AudioComponent::Pause(int channel){
-	INFO("AudioComponent::Pause audio: " << audio_path);
 
-	if(is_music){
+void AudioComponent::pause(int channel){
+	INFO("AudioComponent::Pause audio: " << audioPath);
+
+	if (isMusic){
 		Mix_PauseMusic();
-		INFO("Pause music: " << audio_path);
-	} else{
+		INFO("Pause music: " << audioPath);
+	} else {
 		Mix_Pause(channel);
-		INFO("Pause sound: " << audio_path);
+		INFO("Pause sound: " << audioPath);
 	}
 
-	audio_state = AudioState::PAUSED;
+	audioState = AudioState::PAUSED;
 }

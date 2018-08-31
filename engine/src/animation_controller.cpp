@@ -2,36 +2,36 @@
 
 using namespace engine;
 
-void AnimationController::Init(){
+void AnimationController::init(){
 	for(auto animation_row : m_animation_map){
 		auto animation = animation_row.second;
-		animation->Init();
+		animation->init();
 	}
 }
 
-void AnimationController::Draw(){
+void AnimationController::draw(){
 	for(auto animation_row : m_animation_map){
 		auto animation = animation_row.second;
-		if(animation->IsEnabled()){
-			animation->Draw();
+		if(animation->isEnabled()){
+			animation->draw();
 		}
 	}
 }
 
-void AnimationController::Shutdown(){
+void AnimationController::shutdown(){
 	for(auto animation_row : m_animation_map){
 		auto animation = animation_row.second;
-		animation->Shutdown();
+		animation->shutdown();
 	}
 }
 
 AnimationController::AnimationController(){
-	this->component_state = State::ENABLED;
+	this->componentState = State::ENABLED;
 }
 
-AnimationController::AnimationController(GameObject &game_object){
-	this->game_object = &game_object;
-	this->component_state = State::ENABLED;
+AnimationController::AnimationController(GameObject &gameObject){
+	this->gameObject = &gameObject;
+	this->componentState = State::ENABLED;
 }
 
 void AnimationController::AddAnimation(std::string animation_name, Animation &animation){
@@ -53,7 +53,7 @@ void AnimationController::StartUniqueAnimation(std::string animation_name){
 			each_animation.second->m_state = AnimationState::STOPPED;
 		}
 		if(animation_to_be_played != m_animation_map.end()){
-			animation_to_be_played->second->EnableComponent();
+			animation_to_be_played->second->enableComponent();
 			animation_to_be_played->second->m_state = AnimationState::PLAYING;
 		}
 	}
@@ -66,8 +66,8 @@ void AnimationController::StartAnimation(std::string animation_name){
 		ERROR("Animation " << animation_name << "doesn't exist!");
 	}
 
-	if(!animation_to_be_played->second->IsEnabled()){
-		animation_to_be_played->second->EnableComponent();
+	if(!animation_to_be_played->second->isEnabled()){
+		animation_to_be_played->second->enableComponent();
 		animation_to_be_played->second->m_state = AnimationState::PLAYING;
 	}
 }
