@@ -18,7 +18,7 @@ void MenuCode::FindAudioController(){
 }
 
 void MenuCode::UpdateCode(){
-	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+	if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::ENTER)){
 
 		switch(m_current_button){
 			case 1:
@@ -26,7 +26,7 @@ void MenuCode::UpdateCode(){
 				engine::Game::instance.ChangeScene("level_one");
 				break;
 			case 2:
-				engine::Game::instance.game_state = engine::GameState::EXIT;
+				engine::Game::instance.gameState = engine::GameState::EXIT;
 				break;
 			case 3:
 
@@ -58,14 +58,14 @@ void MenuCode::ChangeOption(){
 			m_animation_controller->StartAnimation("arrow_start");
 
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
 				m_animation_controller->StopAnimation("arrow_start");
 
 				m_current_button = 2;
 
 			}
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::LEFT_ARROW)){
 				m_animation_controller->StopAnimation("arrow_start");
 				m_current_button = 3;
 			}
@@ -78,13 +78,13 @@ void MenuCode::ChangeOption(){
 
 			m_animation_controller->StartAnimation("arrow_exit");
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
 				m_animation_controller->StopAnimation("arrow_exit");
 
 				m_current_button = 3;
 			}
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::LEFT_ARROW)){
 				m_animation_controller->StopAnimation("arrow_exit");
 
 				m_current_button = 1;
@@ -97,7 +97,7 @@ void MenuCode::ChangeOption(){
 
 			m_animation_controller->StartAnimation("arrow_sound");
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
 				m_animation_controller->StopAnimation("arrow_sound");
 
 				// Go back to the first option.
@@ -105,7 +105,7 @@ void MenuCode::ChangeOption(){
 
 			}
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::LEFT_ARROW)){
 				m_animation_controller->StopAnimation("arrow_sound");
 
 				m_current_button = 2;

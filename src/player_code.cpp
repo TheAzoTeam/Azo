@@ -46,7 +46,7 @@ void PlayerCode::UpdateCode(){
 				//DEBUG("PLAYER SHOULD HAVE SPEED! PLAYER SPEED " << m_player->m_speed.first);
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)){
+			if(engine::Game::instance.inputManager.KeyState(engine::Button::W)){
 				//DEBUG("W pressed!");
 				m_player->m_state = PlayerState::JUMP;
 				m_player->m_speed.second = m_player->M_JUMPING_SPEED; // Jumping speed.
@@ -56,7 +56,7 @@ void PlayerCode::UpdateCode(){
 				m_player->m_state = PlayerState::JUMP;
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::S)){
+			if(engine::Game::instance.inputManager.KeyState(engine::Button::S)){
 				m_player->m_state = PlayerState::SLIDE;
 			}
 
@@ -102,7 +102,7 @@ void PlayerCode::UpdateCode(){
 				m_player->m_state = PlayerState::WALK;
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)){
+			if(engine::Game::instance.inputManager.KeyState(engine::Button::W)){
 				m_player->m_state = PlayerState::JUMP;
 				m_player->m_speed.second = m_player->M_JUMPING_SPEED;
 			}

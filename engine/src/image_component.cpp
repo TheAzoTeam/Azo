@@ -50,7 +50,7 @@ void ImageComponent::Init(){
 void ImageComponent::Draw(){
 	UpdateQuad();
 	SDL_RenderCopy(
-		Game::instance.sdl_elements.GetCanvas(),
+		Game::instance.sdlElements.GetCanvas(),
 		image_texture,
 		&renderQuad,
 		&canvasQuad

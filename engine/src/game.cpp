@@ -8,30 +8,30 @@ using namespace engine; // Used to avoid write engine::Game engine::Game::instan
 Game Game::instance;    // Used to Initialize in fact the static instance of game;
 
 Game::Game(){
-	this->need_to_change_scene = false;
+	this->needToChangeScene = false;
 	this->current_scene = NULL;
 	this->last_scene = NULL;
-	this->frame_rate = 60;
+	this->frameRate = 60;
 }
 
 // Main Game Loop and SDL Initiators.
 void Game::Run(){
 
 	// (SDL) Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
-	sdl_elements.InitSDL();
+	sdlElements.InitSDL();
 
 	// (SDL) Create Window and Canvas.
-	sdl_elements.CreateWindow();
+	sdlElements.CreateWindow();
 
 	// (STATE) Set game state to show that it's running.
-	game_state = engine::GameState::PLAY;
+	gameState = engine::GameState::PLAY;
 
 	// Calculate how many time will have one frame of the Game (miliseconds).
-	frame_time = 1000.0f / frame_rate;
+	frameTime = 1000.0f / frameRate;
 
 
 	INFO("Starting Main Loop Game.");
-	while(game_state == engine::GameState::PLAY){
+	while(gameState == engine::GameState::PLAY){
 
 		// Get the current time.
 		timer.Step();
@@ -48,11 +48,11 @@ void Game::Run(){
 			switch(_event.type){
 				case SDL_QUIT:
 					// (STATE) Set game state to show that it'll Die.
-					game_state = engine::GameState::EXIT;
+					gameState = engine::GameState::EXIT;
 					break;
 				default:
 					// Check for user inputs.
-					input_manager.Update(_event);
+					inputManager.Update(_event);
 					break;
 			}
 		}
@@ -60,24 +60,24 @@ void Game::Run(){
 		// Clean and Draw the Scene to refreh animations and objects.
 		// DEBUG("Drawing current scene.");
 		// DEBUG("Scene name: " << current_scene->GetSceneName());
-		SDL_RenderClear(sdl_elements.GetCanvas());
+		SDL_RenderClear(sdlElements.GetCanvas());
 		current_scene->Draw();
-		SDL_RenderPresent(sdl_elements.GetCanvas());
+		SDL_RenderPresent(sdlElements.GetCanvas());
 
 		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
 		current_scene->UpdateCode();
 
 
 		//INFO("Clearing user input from InputManager.");
-		input_manager.Clear();
+		inputManager.Clear();
 
 		//INFO("Calculating elapsed time from the start of this frame until now");
 		timer.DeltaTime();
 
 		/* If the time that has passed until now was faster than the frame's time, is needed wait
 		   the time necessary to complete a frame's time.*/
-		if(frame_time > timer.GetDeltaTime()){
-			SDL_Delay(frame_time - timer.GetDeltaTime());
+		if(frameTime > timer.GetDeltaTime()){
+			SDL_Delay(frameTime - timer.GetDeltaTime());
 		}
 
 		timer.DeltaTime();
@@ -87,7 +87,7 @@ void Game::Run(){
 	INFO("Finishing Main Loop.");
 
 	INFO("Shutting down SDL.");
-	sdl_elements.TerminateSDL();
+	sdlElements.TerminateSDL();
 }
 
 
@@ -126,13 +126,13 @@ void Game::ChangeScene(std::string scene_name){
 
 	last_scene = current_scene;
 	current_scene = scene_map[scene_name];
-	need_to_change_scene = true;
+	needToChangeScene = true;
 }
 
 
 // Perform scene switching effectively.
 bool Game::StartAndStopScenes(){
-	if(need_to_change_scene){
+	if(needToChangeScene){
 		if(current_scene == NULL){
 			ERROR("No scenes to run!");
 			return false;
@@ -167,7 +167,7 @@ bool Game::StartAndStopScenes(){
 				// Nothing to Do.
 			}
 
-			need_to_change_scene = false;
+			needToChangeScene = false;
 		}
 	}
 
@@ -175,9 +175,9 @@ bool Game::StartAndStopScenes(){
 }
 
 
-/* Transfer the game_name, window_width and window_height to SDL instace through its method "SetSDLAttributes"
-   and set Game's frame_rate. */
-void Game::SetAttributes(std::string game_name, int window_width, int window_height, int frame_rate){
-	sdl_elements.SetSDLAttributes(game_name, window_width, window_height);
-	this->frame_rate = frame_rate;
+/* Transfer the game_name, windowWidth and windowHeight to SDL instace through its method "SetSDLAttributes"
+   and set Game's frameRate. */
+void Game::SetAttributes(std::string game_name, int windowWidth, int windowHeight, int frameRate){
+	sdlElements.SetSDLAttributes(game_name, windowWidth, windowHeight);
+	this->frameRate = frameRate;
 }

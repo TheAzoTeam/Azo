@@ -27,7 +27,7 @@ Image* AssetsManager::LoadImage(std::string image_path){
 			ERROR("Couldn't load sprite.");
 		}
 
-		SDL_Texture *image_texture = SDL_CreateTextureFromSurface(Game::instance.sdl_elements.GetCanvas(), image);
+		SDL_Texture *image_texture = SDL_CreateTextureFromSurface(Game::instance.sdlElements.GetCanvas(), image);
 
 		if(image_texture == NULL){
 			ERROR("Couldn't create texture from image: " << SDL_GetError());

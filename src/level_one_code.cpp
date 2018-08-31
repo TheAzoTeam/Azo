@@ -58,7 +58,7 @@ void LevelOneCode::UpdateCode(){
 			m_losing_parts->m_object_state = engine::ObjectState::ENABLED;
 			ChangeOption();
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::ENTER)){
 				ChooseOption();
 			}
 
@@ -66,7 +66,7 @@ void LevelOneCode::UpdateCode(){
 			m_winning_screen->m_object_state = engine::ObjectState::ENABLED;
 			ChangeOption();
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::ENTER)){
 				ChooseOption();
 			}
 		}
@@ -83,7 +83,7 @@ void LevelOneCode::UpdateCode(){
 		if(m_waiting_time >= 2300.0f){
 			m_losing_death->m_object_state = engine::ObjectState::ENABLED;
 			ChangeOption();
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::ENTER)){
 				ChooseOption();
 			}
 		}
@@ -104,7 +104,7 @@ void LevelOneCode::ChangeOption(){
 
 			m_arrow->m_current_position = std::make_pair(70, 260);
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
 				m_current_option = 2;
 			}
 
@@ -113,7 +113,7 @@ void LevelOneCode::ChangeOption(){
 
 			m_arrow->m_current_position = std::make_pair(515, 260);
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
+			if(engine::Game::instance.inputManager.KeyDownOnce(engine::Button::LEFT_ARROW)){
 				m_current_option = 1;
 			}
 
