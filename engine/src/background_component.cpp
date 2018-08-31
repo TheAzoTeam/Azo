@@ -1,6 +1,6 @@
 #include "background_component.hpp"
 #include "game.hpp"
-#include "gameObject.hpp"
+#include "game_object.hpp"
 #include "sdl.hpp"
 
 using namespace engine;

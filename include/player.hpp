@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-#include "gameObject.hpp"
+#include "game_object.hpp"
 #include "sprite.hpp"
 
 #include "player_code.hpp"

@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "sdl2include.h"
-#include "gameObject.hpp"
+#include "game_object.hpp"
 #include <unordered_map>
 
 namespace engine {

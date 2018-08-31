@@ -1,7 +1,7 @@
 #ifndef OBSTACLE
 #define OBSTACLE
 
-#include "gameObject.hpp"
+#include "game_object.hpp"
 #include "invisible_block.hpp"
 #include "machine_part_code.hpp"
 

@@ -2,25 +2,26 @@
 
 using namespace Azo;
 
-LevelOne::LevelOne(){}
+LevelOne::LevelOne() {}
 
-LevelOne::LevelOne(std::string name){
+LevelOne::LevelOne(std::string name) {
 	this->scene_name = name;
 
 	CreateGameObjects();
 }
 
-void LevelOne::Restart(){
+void LevelOne::Restart() {
 	gameObjectMap.clear();
 
-	//TODO(Roger): Add objects to be recreated one by one, here, instead of recalling CreateGameObjects.
+	/*TODO(Roger): Add objects to be recreated one by one,
+	here, instead of recalling CreateGameObjects.*/
 	CreateGameObjects();
 
 }
 
 // Create new game objects for the level one here. Remember:
 // the order used to add they to the scene is important.
-void LevelOne::CreateGameObjects(){
+void LevelOne::CreateGameObjects() {
 	DEBUG("Creating Level One Game Objects.");
 
 	DEBUG("Creating level_one object.");
@@ -105,8 +106,8 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating obstacle box 2_1.");
-	mObstacleBox2_1 = new Obstacle("obstacle_box_2_1", std::make_pair(2779, 300), ObstacleType::WESTERN_BOX);
-	this->AddGameObject(*mObstacleBox2_1);
+	mObstacleBox21 = new Obstacle("obstacle_box_2_1", std::make_pair(2779, 300), ObstacleType::WESTERN_BOX);
+	this->AddGameObject(*mObstacleBox21);
 
 
 	DEBUG("Creating obstacle aerial 4 - box.");
@@ -135,8 +136,8 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating part 4_1.");
-	mPart4_1 = new Obstacle("part_4_1", std::make_pair(3655, 370), ObstacleType::MACHINE_PART);
-	this->AddGameObject(*mPart4_1);
+	mPart41 = new Obstacle("part_4_1", std::make_pair(3655, 370), ObstacleType::MACHINE_PART);
+	this->AddGameObject(*mPart41);
 
 
 	DEBUG("Creating obstacle aerial 6 - post.");
@@ -468,9 +469,9 @@ void LevelOne::CreateEndingScreen(){
 	mLosingPartsScreenObject = new engine::GameObject("losing_parts", std::make_pair(0, 0));
 	mLosingPartsScreenObject->m_object_state = engine::ObjectState::DISABLED;
 
-	mLosingPartsScreenObject = new engine::BackgroundComponent(*mLosingPartsScreenObject, "general_images/tela_derrota.png");
+	mLosingPartsScreen = new engine::BackgroundComponent(*mLosingPartsScreenObject, "general_images/tela_derrota.png");
 
-	mLosingPartsScreenObject->AddComponent(*mLosingPartsScreenObject);
+	mLosingPartsScreenObject->AddComponent(*mLosingPartsScreen);
 	this->AddGameObject(*mLosingPartsScreenObject);
 
 	mLosingDeathScreenObject = new engine::GameObject("losing_death", std::make_pair(0, 0));
@@ -484,17 +485,17 @@ void LevelOne::CreateEndingScreen(){
 	mArrow = new engine::GameObject("arrow", std::make_pair(0, 0));
 	mArrow->m_object_state = engine::ObjectState::DISABLED;
 
-	mArrow_image = new engine::ImageComponent(*mArrow, "general_images/arrow.png", 1);
+	mArrowImage = new engine::ImageComponent(*mArrow, "general_images/arrow.png", 1);
 
-	mArrow->AddComponent(*mArrow_image);
+	mArrow->AddComponent(*mArrowImage);
 	this->AddGameObject(*mArrow);
 }
 
 
-void LevelOne::AddLevelParents(){
+void LevelOne::AddLevelParents() {
 	DEBUG("Adding level parents.");
-
 	mLevelOne->m_parent_list.push_back(mObstacleCar1);
+	DEBUG ("A MERDA ROLOU AQUI! - 1");
 	mLevelOne->m_parent_list.push_back(mObstacleAerial1);
 	mLevelOne->m_parent_list.push_back(mObstacleBox01);
 	mLevelOne->m_parent_list.push_back(mSpike1);
@@ -506,17 +507,18 @@ void LevelOne::AddLevelParents(){
 	mLevelOne->m_parent_list.push_back(mObstacleBox1);
 	mLevelOne->m_parent_list.push_back(mObstacleBox2);
 	mLevelOne->m_parent_list.push_back(mObstacleAerial4);
-	mLevelOne->m_parent_list.push_back(mObstacleBox2_1);
+	mLevelOne->m_parent_list.push_back(mObstacleBox21);
 	mLevelOne->m_parent_list.push_back(mPart3);
 	mLevelOne->m_parent_list.push_back(mObstacleCar2);
 	mLevelOne->m_parent_list.push_back(mPart4);
 	mLevelOne->m_parent_list.push_back(mObstacleAerial5);
-	mLevelOne->m_parent_list.push_back(mPart4_1);
+	mLevelOne->m_parent_list.push_back(mPart41);
 	mLevelOne->m_parent_list.push_back(mObstacleAerial6);
 	mLevelOne->m_parent_list.push_back(mPart5);
 	mLevelOne->m_parent_list.push_back(mObstacleBox3);
 	mLevelOne->m_parent_list.push_back(mObstacleRock1);
 	mLevelOne->m_parent_list.push_back(mPart6);
+	DEBUG ("A MERDA ROLOU AQUI! - 2");
 	mLevelOne->m_parent_list.push_back(mObstacleAerial7);
 	mLevelOne->m_parent_list.push_back(mObstacleRock2);
 	mLevelOne->m_parent_list.push_back(mPart7);
@@ -550,6 +552,7 @@ void LevelOne::AddLevelParents(){
 	mLevelOne->m_parent_list.push_back(mObstacleRock3);
 	mLevelOne->m_parent_list.push_back(mObstacleBox8);
 	mLevelOne->m_parent_list.push_back(mPart18);
+	DEBUG ("A MERDA ROLOU AQUI! - 3");
 	mLevelOne->m_parent_list.push_back(mObstacleAerial16);
 	mLevelOne->m_parent_list.push_back(mObstacleRock4);
 	mLevelOne->m_parent_list.push_back(mObstacleRock5);
@@ -565,6 +568,7 @@ void LevelOne::AddLevelParents(){
 	mLevelOne->m_parent_list.push_back(mObstacleCar4);
 	mLevelOne->m_parent_list.push_back(mPart20);
 	mLevelOne->m_parent_list.push_back(mObstacleCar5);
+	DEBUG ("A MERDA ROLOU AQUI! - 4");
 	mLevelOne->m_parent_list.push_back(mObstacleAerial20);
 	mLevelOne->m_parent_list.push_back(mObstacleBox11);
 	mLevelOne->m_parent_list.push_back(mSpike5);
@@ -581,4 +585,5 @@ void LevelOne::AddLevelParents(){
 
 	mLevelOne->m_parent_list.push_back(mPlayer);
 	mLevelOne->m_parent_list.push_back(mGround);
+	DEBUG ("A MERDA ROLOU AQUI! - 5");
 }

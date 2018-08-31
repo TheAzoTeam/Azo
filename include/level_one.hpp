@@ -63,13 +63,13 @@ namespace Azo {
 			Obstacle *mObstacleAerial9;
 			Obstacle *mPart8;
 			Obstacle *mPart1_1;
-			Obstacle *mPart4_1;
+			Obstacle *mPart41;
 			Obstacle *mPart7_1;
 			Obstacle *mPart9;
 			Obstacle *mObstacleAerial10;
 			Obstacle *mPart10;
 			Obstacle *mObstacleBox01;
-			Obstacle *mObstacleBox2_1;
+			Obstacle *mObstacleBox21;
 			Obstacle *mObstacleCar3;
 			Obstacle *mPart11;
 			Obstacle *mObstacleAerial11;

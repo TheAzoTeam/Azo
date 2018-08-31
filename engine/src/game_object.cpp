@@ -1,4 +1,4 @@
-#include "gameObject.hpp"
+#include "game_object.hpp"
 #include "game.hpp"
 #include "code_component.hpp"
 

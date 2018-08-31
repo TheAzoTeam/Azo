@@ -1,7 +1,7 @@
 #ifndef CODE_COMPONENT_HPP
 #define CODE_COMPONENT_HPP
 
-#include "gameObject.hpp"
+#include "game_object.hpp"
 #include "component.hpp"
 #include "game.hpp"
 #include "timer.hpp"

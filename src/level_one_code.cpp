@@ -4,7 +4,9 @@ using namespace Azo;
 
 LevelOneCode::LevelOneCode(engine::GameObject &gameObject){
 	this->gameObject = &gameObject;
+	DEBUG ("A MERDA ROLOU AQUI! - 5,5");
 	GetParents();
+	DEBUG ("A MERDA ROLOU AQUI! - 6");
 	FindAudioController();
 }
 
@@ -23,19 +25,27 @@ void LevelOneCode::FindAudioController(){
 }
 
 void LevelOneCode::GetParents(){
+	DEBUG ("A MERDA ROLOU AQUI! - 7");
 	for(auto parent : gameObject->m_parent_list){
+		DEBUG ("A MERDA ROLOU AQUI! - 8");
 		if(parent->GetClassName() == "Player"){
 			mPlayer = dynamic_cast<Player *>(parent);
+			DEBUG ("A MERDA ROLOU AQUI! - 9");
 		}else if(parent->GetClassName() == "Obstacle"){
+			DEBUG ("A MERDA ROLOU AQUI! - 10");
 			m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
 		}else if(parent->m_name == "winning_screen"){
 			mWinningScreen = parent;
+			DEBUG ("A MERDA ROLOU AQUI! - 11");
 		}else if(parent->m_name == "losing_parts"){
 			m_losing_parts = parent;
+			DEBUG ("A MERDA ROLOU AQUI! - 12");
 		}else if(parent->m_name == "losing_death"){
 			m_losing_death = parent;
+			DEBUG ("A MERDA ROLOU AQUI! - 13");
 		}else if(parent->m_name == "arrow"){
 			mArrow = parent;
+			DEBUG ("A MERDA ROLOU AQUI! - 14");
 		}
 
 	}
