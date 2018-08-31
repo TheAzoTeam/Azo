@@ -2,7 +2,7 @@
 
 using namespace Azo;
 
-Player::Player(std::string name, std::pair<double, double> currentPosition){
+Player::Player(std::string name, std::pair<double, double> currentPosition) {
 	DEBUG("Player::Player method.");
 
 	mName = name;
@@ -10,66 +10,66 @@ Player::Player(std::string name, std::pair<double, double> currentPosition){
 	createComponents();
 }
 
-void Player::shutdown(){
+void Player::shutdown() {
 
-	if(mAnimationController != nullptr){
+	if (mAnimationController != nullptr) {
 		DEBUG("Shutting down mAnimationController");
 		mAnimationController->shutdown();
 		delete(mAnimationController);
 		mAnimationController = nullptr;
 	}
 
-	for(auto eachSprite : mWalkingAnimationSprites){
-		if(eachSprite != nullptr){
+	for (auto eachSprite : mWalkingAnimationSprites) {
+		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
-	for(auto eachSprite : mJumpingAnimationSprites){
-		if(eachSprite != nullptr){
+	for (auto eachSprite : mJumpingAnimationSprites) {
+		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
-	for(auto eachSprite : mSlidingAnimationSprites){
-		if(eachSprite != nullptr){
+	for (auto eachSprite : mSlidingAnimationSprites) {
+		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
-	for(auto eachSprite : mDyingAnimationSprites){
-		if(eachSprite != nullptr){
+	for (auto eachSprite : mDyingAnimationSprites) {
+		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
 
-	if(mWalking != nullptr){
+	if (mWalking != nullptr) {
 		delete(mWalking);
 		mWalking = nullptr;
 	}
 
-	if(mJumping != nullptr){
+	if (mJumping != nullptr) {
 		delete(mJumping);
 		mJumping = nullptr;
 	}
 
-	if(mSliding != nullptr){
+	if (mSliding != nullptr) {
 		delete(mSliding);
 		mSliding = nullptr;
 	}
 
-	if(mDying != nullptr){
+	if (mDying != nullptr) {
 		delete(mDying);
 		mDying = nullptr;
 	}
 
-	if(mLosing != nullptr){
+	if (mLosing != nullptr) {
 		delete(mLosing);
 		mLosing = nullptr;
 	}
 
-	if(mPlayerCode != nullptr){
+	if (mPlayerCode != nullptr) {
 		mPlayerCode->shutdown();
 		delete(mPlayerCode);
 		mPlayerCode = nullptr;
@@ -77,7 +77,7 @@ void Player::shutdown(){
 }
 
 
-void Player::createComponents(){
+void Player::createComponents() {
 	DEBUG("Creating Player Components.");
 	genWalkingAnimation();
 
@@ -192,7 +192,7 @@ void Player::createComponents(){
 	this->addComponent(*mPlayerCode);
 }
 
-void Player::genVictoryAnimation(){
+void Player::genVictoryAnimation() {
 	mVictoryAnimationSprites.push_back(new engine::Sprite());
 
 	/*
@@ -208,9 +208,9 @@ void Player::genVictoryAnimation(){
 }
 
 
-void Player::genLosingAnimation(){
+void Player::genLosingAnimation() {
 	const int LOSING_SPRITES = 7;
-	for(int i = 0; i < LOSING_SPRITES; i++){
+	for (int i = 0; i < LOSING_SPRITES; i++) {
 		mLosingAnimationSprites.push_back(new engine::Sprite());
 	}
 
@@ -260,7 +260,7 @@ void Player::genLosingAnimation(){
 void Player::genWalkingAnimation(){
 	DEBUG("Generating Player walking animation.");
 	const int WALKING_SPRITES = 23;
-	for(int i = 0; i < WALKING_SPRITES; i++){
+	for (int i = 0; i < WALKING_SPRITES; i++) {
 		mWalkingAnimationSprites.push_back(new engine::Sprite());
 	}
 
@@ -386,10 +386,10 @@ void Player::genWalkingAnimation(){
 	mWalkingAnimationSprites[22]->spriteHeight = 139 - 29;
 }
 
-void Player::genJumpingAnimation(){
+void Player::genJumpingAnimation() {
 	DEBUG("Generating Player Jumping Animation.");
 	const int JUMPING_SPRITES = 8;
-	for(int i = 0; i < JUMPING_SPRITES; i++){
+	for (int i = 0; i < JUMPING_SPRITES; i++) {
 		mJumpingAnimationSprites.push_back(new engine::Sprite());
 	}
 
@@ -440,9 +440,9 @@ void Player::genJumpingAnimation(){
 	mJumpingAnimationSprites[7]->spriteHeight = 1107 - 997;
 }
 
-void Player::genSlidingAnimation(){
+void Player::genSlidingAnimation() {
 	const int SLIDING_SPRITES = 21;
-	for(int i = 0; i < SLIDING_SPRITES; i++){
+	for (int i = 0; i < SLIDING_SPRITES; i++) {
 		mSlidingAnimationSprites.push_back(new engine::Sprite());
 	}
 
@@ -558,9 +558,9 @@ void Player::genSlidingAnimation(){
 	mSlidingAnimationSprites[20]->spriteHeight = 139 - 40;
 }
 
-void Player::genDyingAnimation(){
+void Player::genDyingAnimation() {
 	const int DYING_SPRITES = 36;
-	for(int i = 0; i < DYING_SPRITES; i++){
+	for (int i = 0; i < DYING_SPRITES; i++) {
 		mDyingAnimationSprites.push_back(new engine::Sprite());
 	}
 

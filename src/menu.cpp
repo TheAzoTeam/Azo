@@ -2,7 +2,7 @@
 
 using namespace Azo;
 
-Menu::Menu(std::string name){
+Menu::Menu(std::string name) {
 	this->sceneName = name;
 	createGameObjects();
 }
@@ -12,7 +12,7 @@ void Menu::restart(){
 	createGameObjects();
 }
 
-void Menu::createGameObjects(){
+void Menu::createGameObjects() {
 	DEBUG("Creating Menu GameObjects.");
 
 	mMenu = new engine::GameObject("menu", std::make_pair(0, 0));
@@ -21,7 +21,7 @@ void Menu::createGameObjects(){
 	this->AddGameObject(*mMenu);
 }
 
-void Menu::createMenuComponents(){
+void Menu::createMenuComponents() {
 
 	mMenuTheme = new engine::AudioComponent(*mMenu, "audios/TemaGame.ogg", true, true);
 	mAudioController = new engine::AudioController();
@@ -129,7 +129,7 @@ void Menu::createMenuComponents(){
 	mMenu->addComponent(*mCode);
 }
 
-void Menu::genButtonsAnimation(){
+void Menu::genButtonsAnimation() {
 	 mStartButtonSprites.push_back(new engine::Sprite());
 
 	/*
@@ -173,6 +173,6 @@ void Menu::genButtonsAnimation(){
 }
 
 
-void Menu::shutdown(){
+void Menu::shutdown() {
 	DEBUG("Calling Menu::shutdown.");
 }
