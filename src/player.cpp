@@ -12,11 +12,11 @@ Player::Player(std::string name, std::pair<double, double> currentPosition){
 
 void Player::shutdown(){
 
-	if(mAnimController != nullptr){
-		DEBUG("Shutting down mAnimController");
-		mAnimController->shutdown();
-		delete(mAnimController);
-		mAnimController = nullptr;
+	if(mAnimationController != nullptr){
+		DEBUG("Shutting down mAnimationController");
+		mAnimationController->shutdown();
+		delete(mAnimationController);
+		mAnimationController = nullptr;
 	}
 
 	for(auto eachSprite : mWalkingAnimationSprites){
@@ -90,11 +90,11 @@ void Player::createComponents(){
 									true, 
 									1);
 
-	mAnimController = new engine::AnimationController();
+	mAnimationController = new engine::AnimationController();
 
 	DEBUG("Adding walking animation to animation controller.");
 	const std::string WALKING_ANIMATION_NAME = "walking";
-	mAnimController->addAnimation(WALKING_ANIMATION_NAME, *mWalking);
+	mAnimationController->addAnimation(WALKING_ANIMATION_NAME, *mWalking);
 
 	genJumpingAnimation();
 
@@ -108,7 +108,7 @@ void Player::createComponents(){
 									1);
 	mJumping->disableComponent();
 	DEBUG("Adding jumping animation to animation controller");
-	mAnimController->addAnimation("jumping", *mJumping);
+	mAnimationController->addAnimation("jumping", *mJumping);
 
 	genSlidingAnimation();
 
@@ -122,7 +122,7 @@ void Player::createComponents(){
 									1);
 	mSliding->disableComponent();
 
-	mAnimController->addAnimation("sliding", *mSliding);
+	mAnimationController->addAnimation("sliding", *mSliding);
 
 	genDyingAnimation();
 	
@@ -136,7 +136,7 @@ void Player::createComponents(){
 									1);
 	mDying->disableComponent();
 
-	mAnimController->addAnimation("dying", *mDying);
+	mAnimationController->addAnimation("dying", *mDying);
 
 	genLosingAnimation();
 
@@ -150,7 +150,7 @@ void Player::createComponents(){
 									1);
 	mLosing->disableComponent();
 
-	mAnimController->addAnimation("losing", *mLosing);
+	mAnimationController->addAnimation("losing", *mLosing);
 
 	genVictoryAnimation();
 
@@ -164,10 +164,10 @@ void Player::createComponents(){
 									1);
 	mVictory->disableComponent();
 
-	mAnimController->addAnimation("victory", *mVictory);
+	mAnimationController->addAnimation("victory", *mVictory);
 
 	DEBUG("Adding animation controller to Player.");
-	this->addComponent(*mAnimController);
+	this->addComponent(*mAnimationController);
 
 	mLost = new engine::AudioComponent(*this, 
 										"audios/derrota.ogg", 

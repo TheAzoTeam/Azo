@@ -22,7 +22,7 @@ namespace Azo {
 
 	class Player : public engine::GameObject {
 		private:
-			engine::AnimationController * mAnimController;
+			engine::AnimationController * mAnimationController;
 			engine::AudioController *mAudioController;
 
 			// Add new audios here.
