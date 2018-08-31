@@ -25,7 +25,7 @@ ImageComponent::ImageComponent(GameObject &gameObject,
 
 void ImageComponent::Init(){
 	// Check AssetsManager to see if image is already loaded.
-	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
+	auto assets_image = Game::instance.getAssetsManager().LoadImage(image_path);
 
 	image_texture = assets_image->texture;
 

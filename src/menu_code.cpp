@@ -23,7 +23,7 @@ void MenuCode::UpdateCode(){
 		switch(m_current_button){
 			case 1:
 				m_audio_controller->StopAudio("menu_theme");
-				engine::Game::instance.ChangeScene("level_one");
+				engine::Game::instance.changeScene("level_one");
 				break;
 			case 2:
 				engine::Game::instance.gameState = engine::GameState::EXIT;

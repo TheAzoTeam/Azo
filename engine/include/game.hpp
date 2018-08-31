@@ -30,51 +30,51 @@ namespace engine {
 			GameState gameState;                           // Define Game States to control Loops and other strutuctures.
 		private:
 			bool needToChangeScene;                      // Used to define if there's a Change Scene to occur.
-			std::map<std::string, Scene *> scene_map;       // All Scenes of the Game.
-			engine::Scene *current_scene;                   // Current Scene.
-			engine::Scene *last_scene;                      // Last Scene.
+			std::map<std::string, Scene *> sceneMap;       // All Scenes of the Game.
+			engine::Scene *currentScene;                   // Current Scene.
+			engine::Scene *lastScene;                      // Last Scene.
 			Timer timer;                                    // Timer to control all Game's Time.
 			int frameRate;                                 // Frames per Second of the Game (FPS).
 			float frameTime;                               // How many time will have one frame of the Game (miliseconds).
 			// TODO(Roger): Move Assets Manager to Scene.
-			AssetsManager assets_manager;                   // Manager to load, unload and reference assets.
+			AssetsManager assetsManager;                   // Manager to load, unload and reference assets.
 
 		public:
 			// Constructor Default with default values.
 			Game();
 
 			// Used to Initialize the Game in fact (Main Loop).
-			void Run();
+			void run();
 
 			// Used to add a Scene to map that have all Game's Scenes.
-			bool AddScene(engine::Scene &scene);
+			bool addScene(engine::Scene &scene);
 
-			void RestartScene(std::string scene_name);
+			void restartScene(std::string sceneName);
 
-			/* Used to transfer the game_name, windowWidth and windowHeight to SDL instace through its method
+			/* Used to transfer the gameName, windowWidth and windowHeight to SDL instace through its method
 			   "SetSDLAttributes" and set Game's frameRate. */
-			void SetAttributes(std::string game_name,
+			void setAttributes(std::string gameName,
 					   int windowWidth,
 					   int windowHeight,
 					   int frameRate);
 
 			// Used to use the private attribute Timer.
-			inline Timer& GetTimer(){
+			inline Timer& getTimer(){
 				return timer;
 			}
 
 			// Used to get the private attribute AssetsManager.
-			inline AssetsManager& GetAssetsManager(){
-				return assets_manager;
+			inline AssetsManager& getAssetsManager(){
+				return assetsManager;
 			}
 
 
 			// Perform the necessary checks and prepare the structure to switch Scenes.
-			void ChangeScene(std::string scene_name);
+			void changeScene(std::string sceneName);
 
 		private:
 			// Perform scene switching effectively.
-			bool StartAndStopScenes();
+			bool startAndStopScenes();
 
 	};
 }

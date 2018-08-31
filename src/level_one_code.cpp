@@ -49,7 +49,7 @@ void LevelOneCode::UpdateCode(){
 		gameObject->m_current_position.first -= 4.0f;
 		m_player->m_current_position.first = 299;
 	}else if(m_player->m_current_position.first >= 300.0f){
-		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
+		m_waiting_time += engine::Game::instance.getTimer().GetDeltaTime();
 		m_player->m_speed.first = 0;
 		m_audio_controller->StopAudio("tema_level_one");
 		m_player->m_state = PlayerState::END;
@@ -78,7 +78,7 @@ void LevelOneCode::UpdateCode(){
 	if(m_player->m_state != PlayerState::DIE){
 		UpdatePhysics();
 	}else{
-		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
+		m_waiting_time += engine::Game::instance.getTimer().GetDeltaTime();
 
 		if(m_waiting_time >= 2300.0f){
 			m_losing_death->m_object_state = engine::ObjectState::ENABLED;
@@ -125,10 +125,10 @@ void LevelOneCode::ChooseOption(){
 	switch(m_current_option){
 		case 1:
 			m_audio_controller->StopAllAudios();
-			engine::Game::instance.ChangeScene("level_one");
+			engine::Game::instance.changeScene("level_one");
 			break;
 		case 2:
-			engine::Game::instance.ChangeScene("menu");
+			engine::Game::instance.changeScene("menu");
 			break;
 	}
 }
@@ -157,7 +157,7 @@ void LevelOneCode::UpdateObstaclePosition(){
 }
 
 void LevelOneCode::UpdatePhysics(){
-	m_player->m_current_position.second += m_player->m_speed.second * engine::Game::instance.GetTimer().GetDeltaTime();
+	m_player->m_current_position.second += m_player->m_speed.second * engine::Game::instance.getTimer().GetDeltaTime();
 	double ground_y = 0.0f;
 	if(m_player->m_speed.second < 0.0f && HasCeiling(&ground_y)){
 		m_player->m_current_position.second = ground_y + 15;
@@ -176,7 +176,7 @@ void LevelOneCode::UpdatePhysics(){
 		m_player->m_at_ceiling = false;
 	}
 
-	//double delta_walked =  m_player->m_speed.first * engine::Game::instance.GetTimer().GetDeltaTime();
+	//double delta_walked =  m_player->m_speed.first * engine::Game::instance.getTimer().GetDeltaTime();
 	double delta_walked =  m_player->m_speed.first;
 	// DEBUG("Speed: " << m_player->m_speed.first);
 	// DEBUG("Delta walked: " << delta_walked);

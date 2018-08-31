@@ -24,7 +24,7 @@ BackgroundComponent::~BackgroundComponent(){}
 
 void BackgroundComponent::Init(){
 	//DEBUG("BackgroundComponent::Init method.");
-	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
+	auto assets_image = Game::instance.getAssetsManager().LoadImage(image_path);
 
 	image_texture = assets_image->texture;
 
