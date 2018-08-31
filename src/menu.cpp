@@ -76,7 +76,7 @@ void Menu::CreateMenuComponents(){
 					     1,
 					     std::make_pair(514, 162));
 
-	m_arrow_exit->DisableComponent();
+	m_arrow_exit->disableComponent();
 	m_animation_controller->AddAnimation("arrow_exit", *m_arrow_exit);
 
 	m_sound_enable_button = new engine::Animation(*m_menu,
@@ -101,7 +101,7 @@ void Menu::CreateMenuComponents(){
 							1,
 							std::make_pair(708, 40));
 
-	m_sound_disabled_button->DisableComponent();
+	m_sound_disabled_button->disableComponent();
 
 	m_animation_controller->AddAnimation("sound_disabled_button", *m_sound_disabled_button);
 
@@ -115,7 +115,7 @@ void Menu::CreateMenuComponents(){
 					      1,
 					      std::make_pair(676, 40));
 
-	m_arrow_sound->DisableComponent();
+	m_arrow_sound->disableComponent();
 
 	m_animation_controller->AddAnimation("arrow_sound", *m_arrow_sound);
 

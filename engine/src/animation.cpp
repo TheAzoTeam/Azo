@@ -136,7 +136,7 @@ void Animation::UpdateGameObjectMeasures(){
 	gameObject->mCenter.second = gameObject->mCurrentPosition.second + gameObject->mHalfSize.second;
 }
 
-void Animation::DisableComponent(){
+void Animation::disableComponent(){
 	this->componentState = State::DISABLED;
 	m_current_animation_time = 0.0f;
 	m_current_sprite = m_start_frame;

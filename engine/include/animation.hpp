@@ -57,7 +57,7 @@ namespace engine {
 			inline std::string getClassName(){
 				return "Animation";
 			}
-			void DisableComponent();
+			void disableComponent();
 
 		private:
 			void CheckLimits();
