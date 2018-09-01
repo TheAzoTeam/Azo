@@ -40,7 +40,7 @@ bool InputManager::KeyState(Button button){
 }
 
 
-void InputManager::Clear(){
+void InputManager::clear(){
 	m_event_list.clear();
 }
 

@@ -32,7 +32,7 @@ namespace engine {
 			bool KeyDown(Button button);
 			bool KeyDownOnce(Button button);
 			bool KeyState(Button button);
-			void Clear();
+			void clear();
 
 		private:
 	};

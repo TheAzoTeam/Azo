@@ -69,7 +69,7 @@ void Game::run(){
 
 
 		//INFO("Clearing user input from InputManager.");
-		inputManager.Clear();
+		inputManager.clear();
 
 		//INFO("Calculating elapsed time from the start of this frame until now");
 		timer.deltaTime();
@@ -141,7 +141,7 @@ bool Game::startAndStopScenes(){
 			// If the last scene is equal the current scene, we still need
 			// to delete all keys from the game object map on scene.
 			if(lastScene != NULL && lastScene->getSceneName() == currentScene->getSceneName()){
-				currentScene->DeleteKeyList();
+				currentScene->deleteKeyList();
 			}
 
 			if(currentScene->m_state == SceneState::RUNNED){
