@@ -70,7 +70,7 @@ void PlayerCode::UpdateCode(){
 
 			m_animation_controller->StartUniqueAnimation("jumping");
 
-			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.getTimer().GetDeltaTime());
+			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.getTimer().getDeltaTime());
 			//DEBUG("UpdateCode method. Player Speed in Y: " << m_player->m_speed.second);
 
 			if(m_player->m_pushes_right_wall){
@@ -93,7 +93,7 @@ void PlayerCode::UpdateCode(){
 				break;
 			}
 
-			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.getTimer().GetDeltaTime());
+			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.getTimer().getDeltaTime());
 			//DEBUG("Player speed: " << m_player->m_speed.second);
 
 			if(m_player->m_pushes_right_wall){

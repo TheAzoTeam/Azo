@@ -28,7 +28,7 @@ void Scene::DeleteKeyList(){
 }
 
 
-void Scene::Draw(){
+void Scene::draw(){
 	for(auto each_key : m_key_list){
 		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
 			game_object_map[each_key]->Draw();
@@ -36,7 +36,7 @@ void Scene::Draw(){
 	}
 }
 
-void Scene::UpdateCode(){
+void Scene::updateCode(){
 	for(auto each_key : m_key_list){
 		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
 			game_object_map[each_key]->UpdateCode();

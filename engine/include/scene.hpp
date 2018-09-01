@@ -19,11 +19,11 @@ namespace engine {
 
 			virtual void Init();
 			virtual void Shutdown();
-			virtual void Draw();
-			virtual void UpdateCode();
+			virtual void draw();
+			virtual void updateCode();
 			virtual void Restart();
 
-			inline std::string GetSceneName() {
+			inline std::string getSceneName() {
 				return scene_name;
 			}
 

@@ -44,7 +44,7 @@ void InputManager::Clear(){
 	m_event_list.clear();
 }
 
-void InputManager::Update(SDL_Event _event){
+void InputManager::update(SDL_Event _event){
 	m_event_list.push_back(_event);
 	keyboard_states = SDL_GetKeyboardState(NULL);
 }

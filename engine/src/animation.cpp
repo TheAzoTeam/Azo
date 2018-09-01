@@ -122,7 +122,7 @@ void Animation::CheckLimits(){
 }
 
 void Animation::UpdateFrameBasedOntime(){
-	m_current_animation_time += Game::instance.getTimer().GetDeltaTime();
+	m_current_animation_time += Game::instance.getTimer().getDeltaTime();
 	m_current_sprite = m_current_animation_time / m_each_frame_time + m_start_frame;
 }
 

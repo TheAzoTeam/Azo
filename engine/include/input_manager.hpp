@@ -28,7 +28,7 @@ namespace engine {
 		public:
 			InputManager();
 			~InputManager();
-			void Update(SDL_Event _event);
+			void update(SDL_Event _event);
 			bool KeyDown(Button button);
 			bool KeyDownOnce(Button button);
 			bool KeyState(Button button);
