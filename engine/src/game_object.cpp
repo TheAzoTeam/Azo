@@ -27,7 +27,7 @@ AnimationController* GameObject::GetAnimationController(std::type_index componen
 	auto component_to_be_found = m_component_map.find(component_type);
 
 	if(component_to_be_found != m_component_map.end()){
-		DEBUG("AnimationController found. Class name: " << component_to_be_found->second->GetClassName());
+		DEBUG("AnimationController found. Class name: " << component_to_be_found->second->getClassName());
 		return dynamic_cast <AnimationController * > (component_to_be_found->second);
 	}else{
 		ERROR("Animation Controller couldn't be found!");
@@ -38,7 +38,7 @@ AudioController* GameObject::GetAudioController(std::type_index component_type){
 	auto component_to_be_found = m_component_map.find(component_type);
 
 	if(component_to_be_found != m_component_map.end()){
-		DEBUG("AudioController found. Class name: " << component_to_be_found->second->GetClassName());
+		DEBUG("AudioController found. Class name: " << component_to_be_found->second->getClassName());
 
 		return dynamic_cast <AudioController * > (component_to_be_found->second);
 	}else{
@@ -65,7 +65,7 @@ void GameObject::Draw(){
 		ASSERT(component != NULL, "Component can't be NULL when drawing.");
 
 		if(component->IsEnabled()){
-			//	DEBUG("Drawing Component. Component Class Name: " << component->GetClassName());
+			//	DEBUG("Drawing Component. Component Class Name: " << component->getClassName());
 			component->Draw();
 		}
 	}

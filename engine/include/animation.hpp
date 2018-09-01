@@ -54,7 +54,7 @@ namespace engine {
 				double zoom_factor,
 				std::pair<double, double> position_relative_to_object);
 			void Draw();
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "Animation";
 			}
 			void disableComponent();

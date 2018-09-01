@@ -19,8 +19,8 @@ InvisibleBlock::InvisibleBlock(std::string name,
 	mCenter = mHalfSize;
 
 	mImage = new engine::ImageComponent(*this, 
-										 "backgrounds/test_invisible_1.png",
-										 1);
+										"backgrounds/test_invisible_1.png",
+										1);
 	this->addComponent(*mImage);
 }
 

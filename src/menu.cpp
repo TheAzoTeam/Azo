@@ -81,7 +81,7 @@ void Menu::createMenuComponents() {
 	mArrowExit->disableComponent();
 
 	mAnimationController->addAnimation("arrow_exit", *mArrowExit);
-	mSoundEnableButton = new engine::Animation(*mMenu,
+	mSoundEnabledButton = new engine::Animation(*mMenu,
 						      				   "general_images/textos.png",
 						      				   1.0f,
 						      				   mSoundEnabledButtonSprites,
@@ -91,7 +91,7 @@ void Menu::createMenuComponents() {
 						      				   1,
 						      				   std::make_pair(708, 40));
 
-	mAnimationController->addAnimation("sound_enabled_button", *mSoundEnableButton);
+	mAnimationController->addAnimation("sound_enabled_button", *mSoundEnabledButton);
 
 	mSoundDisabledButton = new engine::Animation(*mMenu,
 												 "general_images/textos.png",

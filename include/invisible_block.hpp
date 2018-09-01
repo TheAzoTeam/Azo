@@ -5,18 +5,19 @@
 
 namespace Azo {
 	class InvisibleBlock : public engine::GameObject {
-		//TODO(Roger): Remove this image.
 		private:
 			engine::ImageComponent *mImage;
+
 		public:
 			std::pair<double, double> mPositionRelativeToParent;
+
 		public:
 			InvisibleBlock();
 			virtual ~InvisibleBlock();
 			InvisibleBlock(std::string name, std::pair<double, double> positionRelativeToParent,
-				       		std::pair<double, double> size);
+				       	   std::pair<double, double> size);
 			void shutdown();
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "InvisibleBlock";
 			}
 	};

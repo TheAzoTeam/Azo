@@ -23,7 +23,7 @@ namespace engine {
 			void shutdown();
 			void Draw();
 			void NextSprite(std::string name);
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "AnimationController";
 			}
 	};

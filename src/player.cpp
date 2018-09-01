@@ -93,8 +93,7 @@ void Player::createComponents() {
 	mAnimationController = new engine::AnimationController();
 
 	DEBUG("Adding walking animation to animation controller.");
-	const std::string WALKING_ANIMATION_NAME = "walking";
-	mAnimationController->addAnimation(WALKING_ANIMATION_NAME, *mWalking);
+	mAnimationController->addAnimation("walking", *mWalking);
 
 	generateJumpingAnimation();
 

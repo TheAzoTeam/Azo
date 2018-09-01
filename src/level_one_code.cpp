@@ -24,9 +24,9 @@ void LevelOneCode::FindAudioController(){
 
 void LevelOneCode::GetParents(){
 	for(auto parent : game_object->m_parent_list){
-		if(parent->GetClassName() == "Player"){
+		if(parent->getClassName() == "Player"){
 			m_player = dynamic_cast<Player *>(parent);
-		}else if(parent->GetClassName() == "Obstacle"){
+		}else if(parent->getClassName() == "Obstacle"){
 			m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
 		}else if(parent->mName == "winning_screen"){
 			m_winning_screen = parent;

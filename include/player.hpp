@@ -22,7 +22,7 @@ namespace Azo {
 
 	class Player : public engine::GameObject {
 		private:
-			engine::AnimationController * mAnimationController;
+			engine::AnimationController *mAnimationController;
 			engine::AudioController *mAudioController;
 
 			// Add new audios here.
@@ -45,8 +45,8 @@ namespace Azo {
 			std::vector<engine::Sprite *> mLosingAnimationSprites;
 			std::vector<engine::Sprite *> mVictoryAnimationSprites;
 
-
 			PlayerCode *mPlayerCode;
+
 		public:
 			const std::pair<double, double> M_ZERO_VECTOR = std::make_pair(0.0f, 0.0f);
 			const double M_GRAVITY = 0.003f;
@@ -76,8 +76,7 @@ namespace Azo {
 			void generateLosingAnimation();
 			void generateVictoryAnimation();
 
-
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "Player";
 			}
 
