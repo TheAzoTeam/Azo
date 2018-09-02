@@ -31,7 +31,7 @@ void MenuCode::UpdateCode(){
 			case 3:
 
 				if(m_audio_controller->GetAudioState("menu_theme") == engine::AudioState::PLAYING){
-					m_audio_controller->PauseAudio("menu_theme");
+					m_audio_controller->pauseAudio("menu_theme");
 					m_animation_controller->StopAnimation("sound_enabled_button");
 					m_animation_controller->StartAnimation("sound_disabled_button");
 				}else{

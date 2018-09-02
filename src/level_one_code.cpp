@@ -124,7 +124,7 @@ void LevelOneCode::ChangeOption(){
 void LevelOneCode::ChooseOption(){
 	switch(m_current_option){
 		case 1:
-			m_audio_controller->StopAllAudios();
+			m_audio_controller->stopAllAudios();
 			engine::Game::instance.changeScene("level_one");
 			break;
 		case 2:
