@@ -55,7 +55,7 @@ namespace Azo {
 		private:
 			void createComponents();
 			void createBlocks();
-			void genTurningAnimation();
+			void generateTurningAnimation();
 
 	};
 }

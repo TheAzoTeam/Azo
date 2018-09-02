@@ -93,7 +93,7 @@ void obstacle::createComponents() {
 	} else if (mobstacleType == obstacleType::MACHINE_PART) {
 		DEBUG("obstacle is a MACHINE PART");
 		mMachinePartState = MachinePartState::NON_COLLECTED;
-		genTurningAnimation();
+		generateTurningAnimation();
 		mTurning = new engine::Animation(*this, "sprites/machinePart.png", 1200.0f, mTurningAnimationSprites, 0, 23, true, 1);
 		this->AddComponent(*mTurning);
 
@@ -172,7 +172,7 @@ void obstacle::createBlocks() {
 
 }
 
-void obstacle::genTurningAnimation() {
+void obstacle::generateTurningAnimation() {
 	const int NUMBER_SPRITES_TURNING_ANIMATION = 24;
 	for (int i = 0; i < NUMBER_SPRITES_TURNING_ANIMATION; i++) {
 		mTurningAnimationSprites.push_back(new engine::Sprite());
@@ -183,124 +183,124 @@ void obstacle::genTurningAnimation() {
     and its Width and Height based on its coordinates (width - spriteX) and (Height - spriteY)
   */
 
-	mTurningAnimationSprites[0]->sprite_x = 13;
-	mTurningAnimationSprites[0]->sprite_y = 11;
-	mTurningAnimationSprites[0]->sprite_width = 49 - 13;
-	mTurningAnimationSprites[0]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[0]->spriteX = 13;
+	mTurningAnimationSprites[0]->spriteY = 11;
+	mTurningAnimationSprites[0]->spriteWidth = 49 - 13;
+	mTurningAnimationSprites[0]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[1]->sprite_x = 50;
-	mTurningAnimationSprites[1]->sprite_y = 11;
-	mTurningAnimationSprites[1]->sprite_width = 86 - 50;
-	mTurningAnimationSprites[1]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[1]->spriteX = 50;
+	mTurningAnimationSprites[1]->spriteY = 11;
+	mTurningAnimationSprites[1]->spriteWidth = 86 - 50;
+	mTurningAnimationSprites[1]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[2]->sprite_x = 87;
-	mTurningAnimationSprites[2]->sprite_y = 11;
-	mTurningAnimationSprites[2]->sprite_width = 123 - 87;
-	mTurningAnimationSprites[2]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[2]->spriteX = 87;
+	mTurningAnimationSprites[2]->spriteY = 11;
+	mTurningAnimationSprites[2]->spriteWidth = 123 - 87;
+	mTurningAnimationSprites[2]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[3]->sprite_x = 124;
-	mTurningAnimationSprites[3]->sprite_y = 11;
-	mTurningAnimationSprites[3]->sprite_width = 160 - 124;
-	mTurningAnimationSprites[3]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[3]->spriteX = 124;
+	mTurningAnimationSprites[3]->spriteY = 11;
+	mTurningAnimationSprites[3]->spriteWidth = 160 - 124;
+	mTurningAnimationSprites[3]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[4]->sprite_x = 161;
-	mTurningAnimationSprites[4]->sprite_y = 11;
-	mTurningAnimationSprites[4]->sprite_width = 197 - 161;
-	mTurningAnimationSprites[4]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[4]->spriteX = 161;
+	mTurningAnimationSprites[4]->spriteY = 11;
+	mTurningAnimationSprites[4]->spriteWidth = 197 - 161;
+	mTurningAnimationSprites[4]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[5]->sprite_x = 198;
-	mTurningAnimationSprites[5]->sprite_y = 11;
-	mTurningAnimationSprites[5]->sprite_width = 234 - 198;
-	mTurningAnimationSprites[5]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[5]->spriteX = 198;
+	mTurningAnimationSprites[5]->spriteY = 11;
+	mTurningAnimationSprites[5]->spriteWidth = 234 - 198;
+	mTurningAnimationSprites[5]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[6]->sprite_x = 240;
-	mTurningAnimationSprites[6]->sprite_y = 11;
-	mTurningAnimationSprites[6]->sprite_width = 271 - 240;
-	mTurningAnimationSprites[6]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[6]->spriteX = 240;
+	mTurningAnimationSprites[6]->spriteY = 11;
+	mTurningAnimationSprites[6]->spriteWidth = 271 - 240;
+	mTurningAnimationSprites[6]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[7]->sprite_x = 277;
-	mTurningAnimationSprites[7]->sprite_y = 11;
-	mTurningAnimationSprites[7]->sprite_width = 308 - 277;
-	mTurningAnimationSprites[7]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[7]->spriteX = 277;
+	mTurningAnimationSprites[7]->spriteY = 11;
+	mTurningAnimationSprites[7]->spriteWidth = 308 - 277;
+	mTurningAnimationSprites[7]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[8]->sprite_x = 314;
-	mTurningAnimationSprites[8]->sprite_y = 11;
-	mTurningAnimationSprites[8]->sprite_width = 345 - 314;
-	mTurningAnimationSprites[8]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[8]->spriteX = 314;
+	mTurningAnimationSprites[8]->spriteY = 11;
+	mTurningAnimationSprites[8]->spriteWidth = 345 - 314;
+	mTurningAnimationSprites[8]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[9]->sprite_x = 351;
-	mTurningAnimationSprites[9]->sprite_y = 11;
-	mTurningAnimationSprites[9]->sprite_width = 382 - 351;
-	mTurningAnimationSprites[9]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[9]->spriteX = 351;
+	mTurningAnimationSprites[9]->spriteY = 11;
+	mTurningAnimationSprites[9]->spriteWidth = 382 - 351;
+	mTurningAnimationSprites[9]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[10]->sprite_x = 388;
-	mTurningAnimationSprites[10]->sprite_y = 11;
-	mTurningAnimationSprites[10]->sprite_width = 419 - 388;
-	mTurningAnimationSprites[10]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[10]->spriteX = 388;
+	mTurningAnimationSprites[10]->spriteY = 11;
+	mTurningAnimationSprites[10]->spriteWidth = 419 - 388;
+	mTurningAnimationSprites[10]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[11]->sprite_x = 425;
-	mTurningAnimationSprites[11]->sprite_y = 11;
-	mTurningAnimationSprites[11]->sprite_width = 456 - 425;
-	mTurningAnimationSprites[11]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[11]->spriteX = 425;
+	mTurningAnimationSprites[11]->spriteY = 11;
+	mTurningAnimationSprites[11]->spriteWidth = 456 - 425;
+	mTurningAnimationSprites[11]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[12]->sprite_x = 461;
-	mTurningAnimationSprites[12]->sprite_y = 11;
-	mTurningAnimationSprites[12]->sprite_width = 497 - 461;
-	mTurningAnimationSprites[12]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[12]->spriteX = 461;
+	mTurningAnimationSprites[12]->spriteY = 11;
+	mTurningAnimationSprites[12]->spriteWidth = 497 - 461;
+	mTurningAnimationSprites[12]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[13]->sprite_x = 461;
-	mTurningAnimationSprites[13]->sprite_y = 11;
-	mTurningAnimationSprites[13]->sprite_width = 497 - 461;
-	mTurningAnimationSprites[13]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[13]->spriteX = 461;
+	mTurningAnimationSprites[13]->spriteY = 11;
+	mTurningAnimationSprites[13]->spriteWidth = 497 - 461;
+	mTurningAnimationSprites[13]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[14]->sprite_x = 461;
-	mTurningAnimationSprites[14]->sprite_y = 11;
-	mTurningAnimationSprites[14]->sprite_width = 497 - 461;
-	mTurningAnimationSprites[14]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[14]->spriteX = 461;
+	mTurningAnimationSprites[14]->spriteY = 11;
+	mTurningAnimationSprites[14]->spriteWidth = 497 - 461;
+	mTurningAnimationSprites[14]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[15]->sprite_x = 461;
-	mTurningAnimationSprites[15]->sprite_y = 11;
-	mTurningAnimationSprites[15]->sprite_width = 497 - 461;
-	mTurningAnimationSprites[15]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[15]->spriteX = 461;
+	mTurningAnimationSprites[15]->spriteY = 11;
+	mTurningAnimationSprites[15]->spriteWidth = 497 - 461;
+	mTurningAnimationSprites[15]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[16]->sprite_x = 461;
-	mTurningAnimationSprites[16]->sprite_y = 11;
-	mTurningAnimationSprites[16]->sprite_width = 497 - 461;
-	mTurningAnimationSprites[16]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[16]->spriteX = 461;
+	mTurningAnimationSprites[16]->spriteY = 11;
+	mTurningAnimationSprites[16]->spriteWidth = 497 - 461;
+	mTurningAnimationSprites[16]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[17]->sprite_x = 461;
-	mTurningAnimationSprites[17]->sprite_y = 11;
-	mTurningAnimationSprites[17]->sprite_width = 497 - 461;
-	mTurningAnimationSprites[17]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[17]->spriteX = 461;
+	mTurningAnimationSprites[17]->spriteY = 11;
+	mTurningAnimationSprites[17]->spriteWidth = 497 - 461;
+	mTurningAnimationSprites[17]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[18]->sprite_x = 689;
-	mTurningAnimationSprites[18]->sprite_y = 11;
-	mTurningAnimationSprites[18]->sprite_width = 720 - 689;
-	mTurningAnimationSprites[18]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[18]->spriteX = 689;
+	mTurningAnimationSprites[18]->spriteY = 11;
+	mTurningAnimationSprites[18]->spriteWidth = 720 - 689;
+	mTurningAnimationSprites[18]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[19]->sprite_x = 726;
-	mTurningAnimationSprites[19]->sprite_y = 11;
-	mTurningAnimationSprites[19]->sprite_width = 757 - 726;
-	mTurningAnimationSprites[19]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[19]->spriteX = 726;
+	mTurningAnimationSprites[19]->spriteY = 11;
+	mTurningAnimationSprites[19]->spriteWidth = 757 - 726;
+	mTurningAnimationSprites[19]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[20]->sprite_x = 763;
-	mTurningAnimationSprites[20]->sprite_y = 11;
-	mTurningAnimationSprites[20]->sprite_width = 794 - 763;
-	mTurningAnimationSprites[20]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[20]->spriteX = 763;
+	mTurningAnimationSprites[20]->spriteY = 11;
+	mTurningAnimationSprites[20]->spriteWidth = 794 - 763;
+	mTurningAnimationSprites[20]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[21]->sprite_x = 800;
-	mTurningAnimationSprites[21]->sprite_y = 11;
-	mTurningAnimationSprites[21]->sprite_width = 831 - 800;
-	mTurningAnimationSprites[21]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[21]->spriteX = 800;
+	mTurningAnimationSprites[21]->spriteY = 11;
+	mTurningAnimationSprites[21]->spriteWidth = 831 - 800;
+	mTurningAnimationSprites[21]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[22]->sprite_x = 837;
-	mTurningAnimationSprites[22]->sprite_y = 11;
-	mTurningAnimationSprites[22]->sprite_width = 868 - 837;
-	mTurningAnimationSprites[22]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[22]->spriteX = 837;
+	mTurningAnimationSprites[22]->spriteY = 11;
+	mTurningAnimationSprites[22]->spriteWidth = 868 - 837;
+	mTurningAnimationSprites[22]->spriteHeight = 47 - 11;
 
-	mTurningAnimationSprites[23]->sprite_x = 874;
-	mTurningAnimationSprites[23]->sprite_y = 11;
-	mTurningAnimationSprites[23]->sprite_width = 905 - 874;
-	mTurningAnimationSprites[23]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[23]->spriteX = 874;
+	mTurningAnimationSprites[23]->spriteY = 11;
+	mTurningAnimationSprites[23]->spriteWidth = 905 - 874;
+	mTurningAnimationSprites[23]->spriteHeight = 47 - 11;
 
 }
