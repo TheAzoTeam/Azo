@@ -43,7 +43,7 @@ namespace Azo {
 
 			std::vector<engine::Sprite *> mTurningAnimationSprites;
 
-			machinePartCode *mmachinePartCode = NULL;
+			machinePartCode *mMachinePartCode = NULL;
 		public:
 			obstacle();
 			virtual ~obstacle();

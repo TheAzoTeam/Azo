@@ -1,4 +1,4 @@
-#ifndef MACHINE_PART_CODE
+	#ifndef MACHINE_PART_CODE
 #define MACHINE_PART_CODE
 
 #include "code_component.hpp"

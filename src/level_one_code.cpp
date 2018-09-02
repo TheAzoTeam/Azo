@@ -45,67 +45,51 @@ void LevelOneCode::getParents(){
 void LevelOneCode::updateCode(){
 	//DEBUG("Position: " << gameObject->mCurrentPosition.first );
 	//DEBUG("Collected parts: " << mPlayer->mCollectedParts);
-	if(mPlayer->mCurrentPosition.first >= 300.0f && gameObject->mCurrentPosition.first > -17600){
-		gameObject->mCurrentPosition.first -= 4.0f;
-		mPlayer->mCurrentPosition.first = 299;
-	}else if(mPlayer->mCurrentPosition.first >= 300.0f){
+	const float PLAYER_MAX_POSITION = 300.0f;
+	const float GAME_OBJECT_MAX_POSITION = -17600;
+	if(mPlayer->mCurrentPosition.first >= PLAYER_MAX_POSITION && gameObject->mCurrentPosition.first > GAME_OBJECT_MAX_POSITION){
+		const float CONTROLLER_POSITION_GAME_OBJECT = 4.0f;
+		gameObject->mCurrentPosition.first -= CONTROLLER_POSITION_GAME_OBJECT;
+		const float CONTROLLER_POSITION_PLAYER = 299;
+		mPlayer->mCurrentPosition.first = CONTROLLER_POSITION_PLAYER;
+	}else if(mPlayer->mCurrentPosition.first >= PLAYER_MAX_POSITION){
 		mWaitingTime += engine::Game::instance.GetTimer().GetDeltaTime();
 		mPlayer->mSpeed.first = 0;
 		mAudioController->stopAudio("tema_level_one");
 		mPlayer->mState = PlayerState::END;
 
-		if(mPlayer->mCollectedParts != mPlayer->M_TOTAL_PARTS && mWaitingTime >= 10000.0f){
+		const float MAX_LOSING_WAITING = 10000.0f;
+		if(mPlayer->mCollectedParts != mPlayer->M_TOTAL_PARTS && mWaitingTime >= MAX_LOSING_WAITING){
 			mLosingParts->mObjectState = engine::ObjectState::ENABLED;
 			changeOption();
 
 			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
 				chooseOption();
 			}
+			const float MAX_WAITING_TIME = 2300.0f;
+			if(mWaitingTime >= MAX_WAITING_TIME){
+				mLosingDeath->mObjectState = engine::ObjectState::ENABLED;
+				changeOption();
+				if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+					chooseOption();
+				}
+			}
 
-		}else if(mPlayer->mCollectedParts == mPlayer->M_TOTAL_PARTS && mWaitingTime >= 5000.0f){
-			mWinningScreen->mObjectState = engine::ObjectState::ENABLED;
-			changeOption();
-
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
-				chooseOption();
+			if(mAudioController->getAudioState("tema_level_one") == engine::AudioState::PLAYING){
+				mAudioController->stopAudio("tema_level_one");
 			}
 		}
-
-	}
-
-	updateobstaclePosition();
-
-	if(mPlayer->mState != PlayerState::DIE){
-		updatePhysics();
-	}else{
-		mWaitingTime += engine::Game::instance.GetTimer().GetDeltaTime();
-
-		if(mWaitingTime >= 2300.0f){
-			mLosingDeath->mObjectState = engine::ObjectState::ENABLED;
-			changeOption();
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
-				chooseOption();
-			}
-		}
-
-		if(mAudioController->getAudioState("tema_level_one") == engine::AudioState::PLAYING){
-			mAudioController->stopAudio("tema_level_one");
-		}else{
-			// Nothing to do.
-		}
-
 	}
 }
 
 void LevelOneCode::changeOption(){
 	switch(mCurrentOption){
 		case 1:
-			mArrow->mObjectState = engine::ObjectState::ENABLED;
-
+				mArrow->mObjectState = engine::ObjectState::ENABLED;
 			mArrow->mCurrentPosition = std::make_pair(70, 260);
 
 			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
-				mCurrentOption = 2;
+				mCurrentOption = 2; // CurrentOption = 2 means Exit
 			}
 
 			break;
@@ -114,7 +98,7 @@ void LevelOneCode::changeOption(){
 			mArrow->mCurrentPosition = std::make_pair(515, 260);
 
 			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
-				mCurrentOption = 1;
+				mCurrentOption = 1; //CurrentOption = 1 means Play
 			}
 
 			break;
@@ -159,11 +143,12 @@ void LevelOneCode::updateobstaclePosition(){
 void LevelOneCode::updatePhysics(){
 	mPlayer->mCurrentPosition.second += mPlayer->mSpeed.second * engine::Game::instance.GetTimer().GetDeltaTime();
 	double groundY = 0.0f;
+	const int PLAYER_RELATIVE_POSITION = 15;
 	if(mPlayer->mSpeed.second < 0.0f && hasCeiling(&groundY)){
-		mPlayer->mCurrentPosition.second = groundY + 15;
+		mPlayer->mCurrentPosition.second = groundY + PLAYER_RELATIVE_POSITION;
 		mPlayer->mAtCeiling = true;
 	}else if((mPlayer->mSpeed.second >= 0.0f || mPlayer->mState == PlayerState::SLIDE) && hasGround(&groundY)){
-		mPlayer->mCurrentPosition.second = groundY - mPlayer->mHalfSize.second - mPlayer->mHalfSize.second + 15;
+		mPlayer->mCurrentPosition.second = groundY - mPlayer->mHalfSize.second - mPlayer->mHalfSize.second + PLAYER_RELATIVE_POSITION;
 		mPlayer->mSpeed.second = mPlayer->M_ZERO_VECTOR.second;
 
 		mPlayer->mOnGround = true;
@@ -186,8 +171,10 @@ void LevelOneCode::updatePhysics(){
 	double wallX = 0.0;
 
 	//Limiting player position on canvas.
-	if(mPlayer->mCurrentPosition.first >= 300 && gameObject->mCurrentPosition.first > -7390){
-		mPlayer->mCurrentPosition.first = 300;
+	const int PLAYER_MAX_POSITION_CANVAS = 300;
+	const int  GAME_OBJECT_MAX_POSITION_CANVAS = -7390;
+	if(mPlayer->mCurrentPosition.first >= PLAYER_MAX_POSITION_CANVAS && gameObject->mCurrentPosition.first > GAME_OBJECT_MAX_POSITION_CANVAS){
+		mPlayer->mCurrentPosition.first = PLAYER_MAX_POSITION_CANVAS;
 	}
 
 	if(mPlayer->mSpeed.first > 0 &&
@@ -447,5 +434,4 @@ bool LevelOneCode::hasCeiling(double *groundY){
 	}
 
 	return false;
-
-}
+	}

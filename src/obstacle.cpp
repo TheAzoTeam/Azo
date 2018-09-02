@@ -45,10 +45,10 @@ void obstacle::shutDown(){
 	}
 
 
-	if(mmachinePartCode != NULL){
-		mmachinePartCode->shutDown();
-		delete(mmachinePartCode);
-		mmachinePartCode = NULL;
+	if(mMachinePartCode != NULL){
+		mMachinePartCode->shutDown();
+		delete(mMachinePartCode);
+		mMachinePartCode = NULL;
 	}
 }
 
@@ -102,8 +102,8 @@ void obstacle::createComponents(){
 		mAudioController->AddAudio("coleta", *mCollected);
 		this->AddComponent(*mAudioController);
 
-		mmachinePartCode = new machinePartCode(this);
-		this->AddComponent(*mmachinePartCode);
+		mMachinePartCode = new machinePartCode(this);
+		this->AddComponent(*mMachinePartCode);
 
 	}else if(mobstacleType == obstacleType::WESTERN_SPIKE){
 		DEBUG("obstacle is a WESTERN SPIKE");
@@ -130,9 +130,12 @@ void obstacle::createBlocks(){
 	// We initialize the block' position as the position relative to parent of the obstacle.
 	// This way we can position things inside the obstacle just by adding values.
 	std::pair<double, double> blockPosition = mPositionRelativeToParent;
+
+	//setting obstacle position based on its type
+
 	if(mobstacleType == obstacleType::GROUND){
 		//	DEBUG("Creating invisible block for the ground.");
-		mBlockList.push_back(new InvisibleBlock("block_1", blockPosition, std::make_pair(21000, 100)));
+		mBlockList.push_back(new InvisibleBlock("block_1", blockPosition, std::make_pair(21000, 100))); //obstacle size
 		//	DEBUG("List size: " << mBlockList.size());
 	}else if(mobstacleType == obstacleType::WESTERN_CAR){
 
@@ -173,6 +176,11 @@ void obstacle::genTurningAnimation(){
 	for(int i = 0; i < 24; i++){
 		mTurningAnimationSprites.push_back(new engine::Sprite());
 	}
+
+	/*
+    Set the animation sprite coordinates (x, y)
+    and its Width and Height based on its coordinates (width - spriteX) and (Height - spriteY)
+  */
 
 	mTurningAnimationSprites[0]->sprite_x = 13;
 	mTurningAnimationSprites[0]->sprite_y = 11;
