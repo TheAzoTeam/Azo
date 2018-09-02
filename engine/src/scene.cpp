@@ -15,7 +15,7 @@ void Scene::Init(){
 	}
 }
 
-void Scene::Shutdown(){
+void Scene::shutdown(){
 	for(auto each_key : m_key_list){
 		game_object_map[each_key]->Shutdown();
 	}

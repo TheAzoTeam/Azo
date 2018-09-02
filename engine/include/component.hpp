@@ -34,7 +34,7 @@ namespace engine {
 
 			virtual void DisableComponent();
 
-			bool IsEnabled();
+			bool isEnabled();
 
 			virtual inline std::string GetClassName(){
 				return "Component";

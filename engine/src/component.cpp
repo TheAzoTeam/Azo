@@ -27,7 +27,7 @@ void Component::DisableComponent(){
 	this->componentState = State::DISABLED;
 }
 
-bool Component::IsEnabled(){
+bool Component::isEnabled(){
 	if(componentState == State::ENABLED){
 		return true;
 	}else{

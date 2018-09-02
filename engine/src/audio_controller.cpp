@@ -22,7 +22,7 @@ void AudioController::Shutdown(){
 void AudioController::UpdateCode(){
 	for(auto audioRow : audioMap){
 		auto audio = audioRow.second;
-		if(audio->IsEnabled()){
+		if(audio->isEnabled()){
 			audio->UpdateCode();
 		}
 	}
@@ -46,7 +46,7 @@ void AudioController::playAudio(std::string audioName){
 	auto audioToBePlayed = audioMap.find(audioName);
 
 	if(audioToBePlayed != audioMap.end()){
-		audioToBePlayed->second->Play(false, false);
+		audioToBePlayed->second->play(-1, -1);
 
 	}else{
 		ERROR("This audio doesn't exist.");
@@ -57,14 +57,14 @@ void AudioController::stopAudio(std::string audioName){
 	auto audioToBePlayed = audioMap.find(audioName);
 
 	if(audioToBePlayed != audioMap.end()){
-		audioToBePlayed->second->Stop(false);
+		audioToBePlayed->second->stop(-1);
 	}else{
 		ERROR("Audio couldn't be found!");
 	}
 }
 
 void AudioController::stopAllAudios(){
-	Mix_HaltChannel(false);
+	Mix_HaltChannel(-1);
 	Mix_HaltMusic();
 }
 
@@ -73,7 +73,7 @@ void AudioController::pauseAudio(std::string audioName){
 	auto audioToBePlayed = audioMap.find(audioName);
 
 	if(audioToBePlayed != audioMap.end()){
-		audioToBePlayed->second->Pause(false);
+		audioToBePlayed->second->pause(-1);
 	}else{
 		ERROR("Animation couldn't be found!");
 	}
@@ -86,5 +86,5 @@ AudioState AudioController::GetAudioState(std::string audioName){
 		ERROR("Audio doesn't exist");
 	}
 
-	return audio->second->audio_state;
+	return audio->second->audioState;
 }

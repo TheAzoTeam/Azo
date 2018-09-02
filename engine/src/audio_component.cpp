@@ -14,7 +14,7 @@ AudioComponent::AudioComponent(GameObject & gameObject, std::string path, bool i
 	this->audio_path = path;
 	this->is_music = is_music;
 	this->play_on_start = play_on_start;
-	this->audio_state = AudioState::STOPPED;
+	this->audioState = AudioState::STOPPED;
 	this->music = nullptr;
 	this->sound = nullptr;
 }
@@ -41,7 +41,7 @@ void AudioComponent::Init(){
 
 void AudioComponent::UpdateCode(){
 	if(play_on_start){
-		Play();
+		play();
 		play_on_start = false;
 	}
 }
@@ -49,7 +49,7 @@ void AudioComponent::UpdateCode(){
 void AudioComponent::Shutdown(){
 	INFO("Shutdown audio component");
 
-	Stop(-1);
+	stop(-1);
 	if(music != nullptr){
 		Mix_FreeMusic(music);
 		music = nullptr;
@@ -63,32 +63,32 @@ void AudioComponent::Shutdown(){
 
 }
 
-void AudioComponent::Play(int loops, int channel){
+void AudioComponent::play(int loops, int channel){
 	INFO("AudioComponent::Play audio: " << audio_path);
 
 	if(is_music){
-		if(audio_state == AudioState::STOPPED){
+		if(audioState == AudioState::STOPPED){
 			Mix_PlayMusic(music, loops);
 			INFO("Play music: " << audio_path);
-		}else if(audio_state == AudioState::PAUSED){
+		}else if(audioState == AudioState::PAUSED){
 			Mix_ResumeMusic();
 			INFO("Resume music: " << audio_path);
 		}
 
 	}else{
-		if(audio_state == AudioState::STOPPED){
+		if(audioState == AudioState::STOPPED){
 			Mix_PlayChannel(channel, sound, 0);
 			INFO("Play sound: " << audio_path);
-		}else if(audio_state == AudioState::PAUSED){
+		}else if(audioState == AudioState::PAUSED){
 			Mix_Resume(channel);
 			INFO("Resume sound: " << audio_path);
 		}
 	}
 
-	audio_state = AudioState::PLAYING;
+	audioState = AudioState::PLAYING;
 }
 
-void AudioComponent::Stop(int channel){
+void AudioComponent::stop(int channel){
 	INFO("AudioComponent::Stop audio: " << audio_path);
 
 	if(is_music){
@@ -99,10 +99,10 @@ void AudioComponent::Stop(int channel){
 		INFO("Stop sound: " << audio_path);
 	}
 
-	audio_state = AudioState::STOPPED;
+	audioState = AudioState::STOPPED;
 }
 
-void AudioComponent::Pause(int channel){
+void AudioComponent::pause(int channel){
 	INFO("AudioComponent::Pause audio: " << audio_path);
 
 	if(is_music){
@@ -113,5 +113,5 @@ void AudioComponent::Pause(int channel){
 		INFO("Pause sound: " << audio_path);
 	}
 
-	audio_state = AudioState::PAUSED;
+	audioState = AudioState::PAUSED;
 }

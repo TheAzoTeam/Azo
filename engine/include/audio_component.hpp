@@ -25,7 +25,7 @@ namespace engine {
 			Mix_Chunk * sound;
 
 		public:
-			AudioState audio_state;
+			AudioState audioState;
 
 			AudioComponent();
 
@@ -40,11 +40,11 @@ namespace engine {
 
 			void UpdateCode();
 
-			void Play(int loops = -1, int channel = -1);
+			void play(int loops = -1, int channel = -1);
 
-			void Stop(int channel = -1);
+			void stop(int channel = -1);
 
-			void Pause(int channel = -1);
+			void pause(int channel = -1);
 
 			inline bool GetIsMusic(){
 				return is_music;

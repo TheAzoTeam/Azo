@@ -18,7 +18,7 @@ namespace engine {
 			Scene(std::string scene_name);
 
 			virtual void Init();
-			virtual void Shutdown();
+			virtual void shutdown();
 			virtual void draw();
 			virtual void updateCode();
 			virtual void Restart();
