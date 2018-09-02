@@ -10,7 +10,10 @@ AudioComponent::AudioComponent(){}
 AudioComponent::~AudioComponent(){}
 
 
-AudioComponent::AudioComponent(GameObject &gameObject, std::string audioPath, bool isMusic, bool playOnStart){
+AudioComponent::AudioComponent(GameObject &gameObject, 
+							   std::string audioPath, 
+							   bool isMusic, 
+							   bool playOnStart){
 	this->gameObject = &gameObject;
 	this->audioPath = audioPath;
 	this->isMusic = isMusic;
@@ -24,7 +27,7 @@ AudioComponent::AudioComponent(GameObject &gameObject, std::string audioPath, bo
 void AudioComponent::init(){
 	INFO("init audio component");
 
-	if(isMusic){
+	if (isMusic){
 		music = Game::instance.GetAssetsManager().LoadMusic(audioPath);
 		if (music == NULL){
 			ERROR("Invalid Music Path (Music = NULL): " << audioPath);
@@ -40,8 +43,8 @@ void AudioComponent::init(){
 
 
 void AudioComponent::updateCode(){
-	if(playOnStart){
-		play(-1, -1); // Plays audio once until end
+	if (playOnStart){
+		play (-1, -1); // Plays audio once until end
 		playOnStart = false;
 	}
 }

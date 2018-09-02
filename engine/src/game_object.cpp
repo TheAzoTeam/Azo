@@ -52,7 +52,7 @@ AudioController* GameObject::getAudioController(std::type_index componentType){
 
 void GameObject::init(){
 	for (auto eachPair : mComponentMap){
-		auto component = eachPair.second;
+		auto component = eachPair.second; 
 		if (component->isEnabled()){
 			component->init();
 		}
@@ -69,7 +69,7 @@ void GameObject::draw(){
 
 		ASSERT(component != NULL, "Component can't be NULL when drawing.");
 
-		if (component->isEnabled()){
+		if (component->isEnabled()){ 
 			//	DEBUG("drawing Component. Component Class Name: " << component->getClassName());
 			component->draw();
 		}
