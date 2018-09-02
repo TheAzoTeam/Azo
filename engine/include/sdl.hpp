@@ -17,13 +17,13 @@ namespace engine {
             SDL_Renderer *canvas;
             int windowWidth;
             int windowHeight;
-            std::string gameName;
+            std::string GAME_NAME;
 
         public:
             SDL();
 
             // Receive attributes of the Game instance, through "SetGameAttributes" method.
-            void SetSDLAttributes(std::string gameName, int windowWidth, int windowHeight);
+            void SetSDLAttributes(std::string GAME_NAME, int windowWidth, int windowHeight);
 
             // Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
             void InitSDL();

@@ -3,25 +3,25 @@
 
 using namespace Azo;
 
-machinePartCode::machinePartCode(obstacle *machinePart){
+machinePartCode::machinePartCode(obstacle *machinePart) {
 	mMachinePart = machinePart;
 	findAudioController();
 }
 
-machinePartCode::~machinePartCode(){}
+machinePartCode::~machinePartCode() {}
 
 void machinePartCode::shutDown(){
-	if(mAudioController != NULL){
+	if (mAudioController != NULL) {
 		mAudioController = NULL;
 	}
 }
 
-void machinePartCode::findAudioController(){
+void machinePartCode::findAudioController() {
 	mAudioController = (mMachinePart->getAudioController(typeid(engine::AudioController)));
 }
 
-void machinePartCode::updateCode(){
-	switch(mMachinePart->mMachinePartState){
+void machinePartCode::updateCode() {
+	switch(mMachinePart->mMachinePartState) {
 		case MachinePartState::COLLECTED:
 			mAudioController->PlayAudio("coleta");
 

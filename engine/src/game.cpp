@@ -11,7 +11,7 @@ Game::Game(){
 	this->need_to_change_scene = false;
 	this->current_scene = NULL;
 	this->last_scene = NULL;
-	this->frameRate = 60;
+	this->FRAME_RATE = 60;
 }
 
 // Main Game Loop and SDL Initiators.
@@ -27,7 +27,7 @@ void Game::Run(){
 	game_state = engine::GameState::PLAY;
 
 	// Calculate how many time will have one frame of the Game (miliseconds).
-	frame_time = 1000.0f / frameRate;
+	frame_time = 1000.0f / FRAME_RATE;
 
 
 	INFO("Starting Main Loop Game.");
@@ -175,9 +175,9 @@ bool Game::StartAndStopScenes(){
 }
 
 
-/* Transfer the gameName, windowWidth and windowHeight to SDL instace through its method "SetSDLAttributes"
-   and set Game's frameRate. */
-void Game::SetAttributes(std::string gameName, int windowWidth, int windowHeight, int frameRate){
-	sdl_elements.SetSDLAttributes(gameName, windowWidth, windowHeight);
-	this->frameRate = frameRate;
+/* Transfer the GAME_NAME, windowWidth and windowHeight to SDL instace through its method "SetSDLAttributes"
+   and set Game's FRAME_RATE. */
+void Game::SetAttributes(std::string GAME_NAME, int windowWidth, int windowHeight, int FRAME_RATE){
+	sdl_elements.SetSDLAttributes(GAME_NAME, windowWidth, windowHeight);
+	this->FRAME_RATE = FRAME_RATE;
 }

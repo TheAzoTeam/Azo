@@ -33,7 +33,7 @@ void SDL::InitSDL(){
 void SDL::CreateWindow(){
 	INFO("Creating Window.");
 	window = SDL_CreateWindow(
-		gameName.c_str(),      // Game window title.
+		GAME_NAME.c_str(),      // Game window title.
 		SDL_WINDOWPOS_CENTERED, // Window opening position x.
 		SDL_WINDOWPOS_CENTERED, // Window opening position y.
 		windowWidth,           // Window width.
@@ -92,8 +92,8 @@ void SDL::TerminateSDL(){
 
 
 // Receive attributes of the Game instance, throught "SetGameAttributes" method.
-void SDL::SetSDLAttributes(std::string gameName, int windowWidth, int windowHeight){
-	this->gameName = gameName;
+void SDL::SetSDLAttributes(std::string GAME_NAME, int windowWidth, int windowHeight){
+	this->GAME_NAME = GAME_NAME;
 	this->windowWidth = windowWidth;
 	this->windowHeight = windowHeight;
 }
