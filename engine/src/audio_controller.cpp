@@ -79,7 +79,7 @@ void AudioController::pauseAudio(std::string audioName){
 	}
 }
 
-AudioState AudioController::GetAudioState(std::string audioName){
+AudioState AudioController::getAudioState(std::string audioName){
 	auto audio = audioMap.find(audioName);
 
 	if(audio == audioMap.end()){
