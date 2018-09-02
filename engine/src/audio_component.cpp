@@ -19,7 +19,7 @@ AudioComponent::AudioComponent(GameObject & gameObject, std::string path, bool i
 	this->sound = nullptr;
 }
 
-void AudioComponent::Init(){
+void AudioComponent::init(){
 	INFO("Init audio component");
 
 	if(is_music){
@@ -39,14 +39,14 @@ void AudioComponent::Init(){
 
 }
 
-void AudioComponent::UpdateCode(){
+void AudioComponent::updateCode(){
 	if(play_on_start){
 		play();
 		play_on_start = false;
 	}
 }
 
-void AudioComponent::Shutdown(){
+void AudioComponent::shutdown(){
 	INFO("Shutdown audio component");
 
 	stop(-1);

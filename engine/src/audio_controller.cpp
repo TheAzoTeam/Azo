@@ -7,14 +7,14 @@ AudioController::~AudioController(){}
 void AudioController::Init(){
 	for(auto audioRow : audioMap){
 		auto audio = audioRow.second;
-		audio->Init();
+		audio->init();
 	}
 }
 
 void AudioController::Shutdown(){
 	for(auto audioRow : audioMap){
 		auto audio = audioRow.second;
-		audio->Shutdown();
+		audio->shutdown();
 		audio = NULL;
 	}
 }
@@ -23,7 +23,7 @@ void AudioController::UpdateCode(){
 	for(auto audioRow : audioMap){
 		auto audio = audioRow.second;
 		if(audio->isEnabled()){
-			audio->UpdateCode();
+			audio->updateCode();
 		}
 	}
 }
