@@ -37,11 +37,11 @@ AudioController::AudioController(GameObject &gameObject){
 	this->componentState = State::ENABLED;
 }
 
-void AudioController::AddAudio(std::string audioName, AudioComponent &audio){
+void AudioController::addAudio(std::string audioName, AudioComponent &audio){
 	audioMap[audioName] = &audio;
 }
 
-void AudioController::PlayAudio(std::string audioName){
+void AudioController::playAudio(std::string audioName){
 
 	auto audioToBePlayed = audioMap.find(audioName);
 
@@ -53,7 +53,7 @@ void AudioController::PlayAudio(std::string audioName){
 	}
 }
 
-void AudioController::StopAudio(std::string audioName){
+void AudioController::stopAudio(std::string audioName){
 	auto audioToBePlayed = audioMap.find(audioName);
 
 	if(audioToBePlayed != audioMap.end()){

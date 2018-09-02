@@ -37,7 +37,7 @@ void LevelOne::CreateGameObjects(){
 
 	m_audio_controller = new engine::AudioController();
 	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/banjo.ogg", true, true);
-	m_audio_controller->AddAudio("tema_level_one", *m_level_theme);
+	m_audio_controller->addAudio("tema_level_one", *m_level_theme);
 	m_level_one->AddComponent(*m_audio_controller);
 
 	this->AddGameObject(*m_level_one);

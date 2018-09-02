@@ -22,7 +22,7 @@ void MenuCode::UpdateCode(){
 
 		switch(m_current_button){
 			case 1:
-				m_audio_controller->StopAudio("menu_theme");
+				m_audio_controller->stopAudio("menu_theme");
 				engine::Game::instance.changeScene("level_one");
 				break;
 			case 2:
@@ -35,7 +35,7 @@ void MenuCode::UpdateCode(){
 					m_animation_controller->StopAnimation("sound_enabled_button");
 					m_animation_controller->StartAnimation("sound_disabled_button");
 				}else{
-					m_audio_controller->PlayAudio("menu_theme");
+					m_audio_controller->playAudio("menu_theme");
 					m_animation_controller->StartAnimation("sound_enabled_button");
 					m_animation_controller->StopAnimation("sound_disabled_button");
 				}

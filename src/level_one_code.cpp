@@ -51,7 +51,7 @@ void LevelOneCode::UpdateCode(){
 	}else if(m_player->m_current_position.first >= 300.0f){
 		m_waiting_time += engine::Game::instance.getTimer().getDeltaTime();
 		m_player->m_speed.first = 0;
-		m_audio_controller->StopAudio("tema_level_one");
+		m_audio_controller->stopAudio("tema_level_one");
 		m_player->m_state = PlayerState::END;
 
 		if(m_player->m_collected_parts != m_player->M_TOTAL_PARTS && m_waiting_time >= 10000.0f){
@@ -89,7 +89,7 @@ void LevelOneCode::UpdateCode(){
 		}
 
 		if(m_audio_controller->GetAudioState("tema_level_one") == engine::AudioState::PLAYING){
-			m_audio_controller->StopAudio("tema_level_one");
+			m_audio_controller->stopAudio("tema_level_one");
 		}else{
 			// Nothing to do.
 		}

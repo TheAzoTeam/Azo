@@ -111,7 +111,7 @@ void PlayerCode::UpdateCode(){
 		case PlayerState::DIE:
 			m_animation_controller->StartUniqueAnimation("dying");
 
-			m_audio_controller->PlayAudio("lost");
+			m_audio_controller->playAudio("lost");
 
 			break;
 		case PlayerState::END:
@@ -119,11 +119,11 @@ void PlayerCode::UpdateCode(){
 				m_animation_controller->StartUniqueAnimation("losing");
 
 				if(m_animation_controller->GetAnimationStatus("losing") == engine::AnimationState::FINISHED){
-					m_audio_controller->PlayAudio("lost");
+					m_audio_controller->playAudio("lost");
 				}
 			}else{
 				m_animation_controller->StartUniqueAnimation("victory");
-				m_audio_controller->PlayAudio("victory");
+				m_audio_controller->playAudio("victory");
 			}
 
 			break;

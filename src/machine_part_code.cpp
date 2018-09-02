@@ -23,7 +23,7 @@ void MachinePartCode::FindAudioController(){
 void MachinePartCode::UpdateCode(){
 	switch(m_machine_part->m_machine_part_state){
 		case MachinePartState::COLLECTED:
-			m_audio_controller->PlayAudio("coleta");
+			m_audio_controller->playAudio("coleta");
 
 			m_machine_part->m_machine_part_state = MachinePartState::FINISHED;
 			break;
