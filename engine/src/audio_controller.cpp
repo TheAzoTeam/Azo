@@ -4,14 +4,14 @@ using namespace engine;
 
 AudioController::~AudioController(){}
 
-void AudioController::Init(){
+void AudioController::init(){
 	for(auto audioRow : audioMap){
 		auto audio = audioRow.second;
 		audio->init();
 	}
 }
 
-void AudioController::Shutdown(){
+void AudioController::shutdown(){
 	for(auto audioRow : audioMap){
 		auto audio = audioRow.second;
 		audio->shutdown();
@@ -19,7 +19,7 @@ void AudioController::Shutdown(){
 	}
 }
 
-void AudioController::UpdateCode(){
+void AudioController::updateCode(){
 	for(auto audioRow : audioMap){
 		auto audio = audioRow.second;
 		if(audio->isEnabled()){

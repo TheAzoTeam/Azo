@@ -111,7 +111,7 @@ bool Game::addScene(Scene &scene){
 void Game::restartScene(std::string sceneName){
 	auto scene = sceneMap[sceneName];
 
-	scene->Restart();
+	scene->restart();
 }
 
 
@@ -144,17 +144,17 @@ bool Game::startAndStopScenes(){
 				currentScene->deleteKeyList();
 			}
 
-			if(currentScene->m_state == SceneState::RUNNED){
-				currentScene->Restart();
-				currentScene->m_state = SceneState::FIRST_TIME;
+			if(currentScene->mState == SceneState::RUNNED){
+				currentScene->restart();
+				currentScene->mState = SceneState::FIRST_TIME;
 			}
 
-			if(currentScene->m_state == SceneState::FIRST_TIME){
-				currentScene->m_state = SceneState::RUNNED;
+			if(currentScene->mState == SceneState::FIRST_TIME){
+				currentScene->mState = SceneState::RUNNED;
 			}
 
 
-			currentScene->Init();
+			currentScene->init();
 
 			if(lastScene != NULL){
 				INFO("Shuting down scene!");
