@@ -9,7 +9,7 @@ Component::Component(GameObject &gameObject){
 	this->componentState = State::ENABLED;
 }
 
-void Component::Init(){}
+void Component::init(){}
 
 void Component::shutdown(){}
 
@@ -17,7 +17,7 @@ void Component::shutdown(){}
 void Component::draw(){}
 
 
-void Component::UpdateCode(){}
+void Component::updateCode(){}
 
 void Component::EnableComponent(){
 	this->componentState = State::ENABLED;

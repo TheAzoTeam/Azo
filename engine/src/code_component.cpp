@@ -10,8 +10,8 @@ CodeComponent::CodeComponent(GameObject &gameObject){
 	this->componentState = State::ENABLED;
 }
 
-void CodeComponent::Init(){}
+void CodeComponent::init(){}
 
 void CodeComponent::shutdown(){}
 
-void CodeComponent::UpdateCode(){}
+void CodeComponent::updateCode(){}

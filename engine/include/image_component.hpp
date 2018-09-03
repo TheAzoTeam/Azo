@@ -19,7 +19,7 @@ namespace engine {
 				std::string imagePath,
 				double zoomFactor,
 				std::pair<double, double> positionRelativeToObject);
-			void Init();
+			void init();
 			void draw();
 			void UpdateQuad();
 			inline std::string getClassName(){

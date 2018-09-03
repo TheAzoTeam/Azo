@@ -10,7 +10,7 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 			       std::pair<double, double> size){
 	DEBUG("Creating Blocks");
 
-	m_name = name;
+	mName = name;
 	m_position_relative_to_parent = position_relative_to_parent;
 	m_size = size;
 

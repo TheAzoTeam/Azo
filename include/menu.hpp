@@ -35,7 +35,7 @@ namespace Azo {
 		public:
 			Menu();
 			Menu(std::string name);
-			void Restart();
+			void restart();
 			void shutdown();
 		private:
 			void CreateGameObjects();

@@ -24,7 +24,7 @@ namespace Azo {
 			void shutdown();
 		private:
 			void FindAudioController();
-			void UpdateCode();
+			void updateCode();
 			void ChangeOption();
 			void ChooseOption();
 			void UpdateObstaclePosition();

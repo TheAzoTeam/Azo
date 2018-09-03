@@ -32,7 +32,7 @@ void PlayerCode::shutdown(){
 }
 
 
-void PlayerCode::UpdateCode(){
+void PlayerCode::updateCode(){
 	switch(m_player->mState){
 		case PlayerState::WALK:
 
@@ -71,7 +71,7 @@ void PlayerCode::UpdateCode(){
 			m_animation_controller->StartUniqueAnimation("jumping");
 
 			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
-			//DEBUG("UpdateCode method. Player Speed in Y: " << m_player->m_speed.second);
+			//DEBUG("updateCode method. Player Speed in Y: " << m_player->m_speed.second);
 
 			if(m_player->m_pushes_right_wall){
 				m_player->m_speed.first = m_player->M_ZERO_VECTOR.first;

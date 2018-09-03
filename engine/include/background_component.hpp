@@ -23,7 +23,7 @@ namespace engine {
 			BackgroundComponent(std::string imagePath);
 			BackgroundComponent(GameObject &gameObject, std::string imagePath);
 			~BackgroundComponent();
-			void Init();
+			void init();
 			void shutdown();
 			void draw();
 			inline std::string getClassName(){

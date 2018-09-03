@@ -22,8 +22,8 @@ BackgroundComponent::BackgroundComponent(GameObject & gameObject, std::string im
 
 BackgroundComponent::~BackgroundComponent(){}
 
-void BackgroundComponent::Init(){
-	//DEBUG("BackgroundComponent::Init method.");
+void BackgroundComponent::init(){
+	//DEBUG("BackgroundComponent::init method.");
 	auto assets_image = Game::instance.GetAssetsManager().LoadImage(imagePath);
 
 	imageTexture = assets_image->texture;

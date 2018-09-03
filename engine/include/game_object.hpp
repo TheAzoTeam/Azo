@@ -32,22 +32,22 @@ namespace engine {
 			// mHalfSize.second is the y distance from center to the border.
 			std::pair<double, double> mHalfSize;
 			std::list<GameObject *> m_parent_list;
-			std::string m_name;
-			ObjectState m_object_state = ObjectState::ENABLED;
+			std::string mName;
+			ObjectState mObjectState = ObjectState::ENABLED;
 
 		protected:
 			std::unordered_multimap<std::type_index, Component *> m_component_map;
 
 		public:
 			GameObject();
-			GameObject(std::string game_object_name, std::pair<double, double> current_position);
+			GameObject(std::string gameObjectName, std::pair<double, double> current_position);
 			void AddComponent(Component &component);
 			AnimationController* GetAnimationController(std::type_index component_type);
 			AudioController* GetAudioController(std::type_index component_type);
-			virtual void Init();
+			virtual void init();
 			virtual void draw();
 			virtual void shutdown();
-			virtual void UpdateCode();
+			virtual void updateCode();
 			virtual inline std::string getClassName(){
 				return "GameObject";
 			}

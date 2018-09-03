@@ -28,13 +28,13 @@ void LevelOneCode::GetParents(){
 			m_player = dynamic_cast<Player *>(parent);
 		}else if(parent->getClassName() == "Obstacle"){
 			m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
-		}else if(parent->m_name == "winning_screen"){
+		}else if(parent->mName == "winning_screen"){
 			m_winning_screen = parent;
-		}else if(parent->m_name == "losing_parts"){
+		}else if(parent->mName == "losing_parts"){
 			m_losing_parts = parent;
-		}else if(parent->m_name == "losing_death"){
+		}else if(parent->mName == "losing_death"){
 			m_losing_death = parent;
-		}else if(parent->m_name == "arrow"){
+		}else if(parent->mName == "arrow"){
 			m_arrow = parent;
 		}
 
@@ -42,7 +42,7 @@ void LevelOneCode::GetParents(){
 }
 
 
-void LevelOneCode::UpdateCode(){
+void LevelOneCode::updateCode(){
 	//DEBUG("Position: " << gameObject->mCurrentPosition.first );
 	//DEBUG("Collected parts: " << m_player->m_collected_parts);
 	if(m_player->mCurrentPosition.first >= 300.0f && gameObject->mCurrentPosition.first > -17600){
@@ -55,7 +55,7 @@ void LevelOneCode::UpdateCode(){
 		m_player->mState = PlayerState::END;
 
 		if(m_player->m_collected_parts != m_player->M_TOTAL_PARTS && m_waiting_time >= 10000.0f){
-			m_losing_parts->m_object_state = engine::ObjectState::ENABLED;
+			m_losing_parts->mObjectState = engine::ObjectState::ENABLED;
 			ChangeOption();
 
 			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
@@ -63,7 +63,7 @@ void LevelOneCode::UpdateCode(){
 			}
 
 		}else if(m_player->m_collected_parts == m_player->M_TOTAL_PARTS && m_waiting_time >= 5000.0f){
-			m_winning_screen->m_object_state = engine::ObjectState::ENABLED;
+			m_winning_screen->mObjectState = engine::ObjectState::ENABLED;
 			ChangeOption();
 
 			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
@@ -81,7 +81,7 @@ void LevelOneCode::UpdateCode(){
 		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
 
 		if(m_waiting_time >= 2300.0f){
-			m_losing_death->m_object_state = engine::ObjectState::ENABLED;
+			m_losing_death->mObjectState = engine::ObjectState::ENABLED;
 			ChangeOption();
 			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
 				ChooseOption();
@@ -100,7 +100,7 @@ void LevelOneCode::UpdateCode(){
 void LevelOneCode::ChangeOption(){
 	switch(m_current_option){
 		case 1:
-			m_arrow->m_object_state = engine::ObjectState::ENABLED;
+			m_arrow->mObjectState = engine::ObjectState::ENABLED;
 
 			m_arrow->mCurrentPosition = std::make_pair(70, 260);
 
@@ -253,7 +253,7 @@ bool LevelOneCode::HasGround(double *ground_y){
 				double block_left = block_bottom_left.first;
 				double block_top = block_top_right.second;
 
-				// DEBUG("Obstacle: " << each_obstacle->m_name);
+				// DEBUG("Obstacle: " << each_obstacle->mName);
 				// DEBUG("Player left: " << player_left);
 				// DEBUG("Player right: " << player_right);
 				// DEBUG("Player top: " << player_top);
@@ -332,7 +332,7 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 				double block_top = block_top_right.second + 16;
 				double block_bottom = block_bottom_left.second - 16;
 
-				// DEBUG("Obstacle: " << each_obstacle->m_name);
+				// DEBUG("Obstacle: " << each_obstacle->mName);
 				// DEBUG("Game object position x: " << gameObject->mCurrentPosition.first);
 				// DEBUG("Game object position y: " << gameObject->mCurrentPosition.second);
 				//

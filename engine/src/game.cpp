@@ -59,13 +59,13 @@ void Game::Run(){
 
 		// Clean and draw the Scene to refreh animations and objects.
 		// DEBUG("Drawing current scene.");
-		// DEBUG("Scene name: " << current_scene->GetSceneName());
+		// DEBUG("Scene name: " << current_scene->getSceneName());
 		SDL_RenderClear(sdl_elements.GetCanvas());
 		current_scene->draw();
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
-		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
-		current_scene->UpdateCode();
+		//DEBUG("Updating current scene: " << current_scene->getSceneName() << " code.");
+		current_scene->updateCode();
 
 
 		//INFO("Clearing user input from InputManager.");
@@ -93,39 +93,39 @@ void Game::Run(){
 
 // Used to add a Scene to map that have all Game's Scenes.
 bool Game::AddScene(Scene &scene){
-	auto scene_name = scene.GetSceneName();
+	auto sceneName = scene.getSceneName();
 
 
-	if(scene_map.find(scene_name) != scene_map.end()){
+	if(scene_map.find(sceneName) != scene_map.end()){
 		ERROR("Scene already exists!");
 		return false;
 	}else{
 		// Nothing to Do.
 	}
 
-	scene_map[scene_name] = &scene;
+	scene_map[sceneName] = &scene;
 
 	return true;
 }
 
-void Game::RestartScene(std::string scene_name){
-	auto scene = scene_map[scene_name];
+void Game::RestartScene(std::string sceneName){
+	auto scene = scene_map[sceneName];
 
-	scene->Restart();
+	scene->restart();
 }
 
 
 // Perform the necessary checks and prepare the structure to switch Scenes.
-void Game::ChangeScene(std::string scene_name){
+void Game::ChangeScene(std::string sceneName){
 	INFO("Changing Scenes.");
-	if(scene_map.find(scene_name) == scene_map.end()){
+	if(scene_map.find(sceneName) == scene_map.end()){
 		ERROR("Scene not found!");
 	}else{
 		// Nothing to Do.
 	}
 
 	last_scene = current_scene;
-	current_scene = scene_map[scene_name];
+	current_scene = scene_map[sceneName];
 	need_to_change_scene = true;
 }
 
@@ -140,12 +140,12 @@ bool Game::StartAndStopScenes(){
 
 			// If the last scene is equal the current scene, we still need
 			// to delete all keys from the game object map on scene.
-			if(last_scene != NULL && last_scene->GetSceneName() == current_scene->GetSceneName()){
-				current_scene->DeleteKeyList();
+			if(last_scene != NULL && last_scene->getSceneName() == current_scene->getSceneName()){
+				current_scene->deleteKeyList();
 			}
 
 			if(current_scene->mState == SceneState::RUNNED){
-				current_scene->Restart();
+				current_scene->restart();
 				current_scene->mState = SceneState::FIRST_TIME;
 			}
 
@@ -154,15 +154,15 @@ bool Game::StartAndStopScenes(){
 			}
 
 
-			current_scene->Init();
+			current_scene->init();
 
 			if(last_scene != NULL){
 				INFO("Shuting down scene!");
-				if(last_scene->GetSceneName() != current_scene->GetSceneName()){
+				if(last_scene->getSceneName() != current_scene->getSceneName()){
 					last_scene->shutdown();
 				}
-				//DEBUG("Scene name: " << last_scene->GetSceneName());
-				//scene_map.erase(last_scene->GetSceneName());
+				//DEBUG("Scene name: " << last_scene->getSceneName());
+				//scene_map.erase(last_scene->getSceneName());
 			}else{
 				// Nothing to Do.
 			}

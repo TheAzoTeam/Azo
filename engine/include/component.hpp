@@ -22,13 +22,13 @@ namespace engine {
 
 			Component(GameObject &gameObject);
 
-			virtual void Init();
+			virtual void init();
 
 			virtual void shutdown();
 
 			virtual void draw();
 
-			virtual void UpdateCode();
+			virtual void updateCode();
 
 			virtual void EnableComponent();
 

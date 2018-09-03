@@ -13,8 +13,8 @@ GameObject::GameObject(){
 	mHalfSize.second = 0;
 }
 
-GameObject::GameObject(std::string game_object_name, std::pair<double, double> current_position){
-	this->m_name = game_object_name;
+GameObject::GameObject(std::string gameObjectName, std::pair<double, double> current_position){
+	this->mName = gameObjectName;
 	this->mCurrentPosition = current_position;
 }
 
@@ -46,18 +46,18 @@ AudioController* GameObject::GetAudioController(std::type_index component_type){
 	}
 }
 
-void GameObject::Init(){
+void GameObject::init(){
 	for(auto each_pair : m_component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled()){
-			component->Init();
+			component->init();
 		}
 	}
 }
 
 void GameObject::draw(){
 	// DEBUG("GameObject::draw method.");
-	//DEBUG("Game object name: " << m_name);
+	//DEBUG("Game object name: " << mName);
 	// DEBUG("Map size: " << m_component_map.size());
 	for(auto each_pair : m_component_map){
 		auto component = each_pair.second;
@@ -73,11 +73,11 @@ void GameObject::draw(){
 	//DEBUG("Finished Drawing.");
 }
 
-void GameObject::UpdateCode(){
+void GameObject::updateCode(){
 	for(auto each_pair : m_component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled()){
-			component->UpdateCode();
+			component->updateCode();
 		}
 	}
 }

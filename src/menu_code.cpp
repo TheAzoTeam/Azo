@@ -17,7 +17,7 @@ void MenuCode::FindAudioController(){
 	m_audio_controller = (gameObject->GetAudioController(typeid(engine::AudioController)));
 }
 
-void MenuCode::UpdateCode(){
+void MenuCode::updateCode(){
 	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
 
 		switch(m_current_button){

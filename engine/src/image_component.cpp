@@ -23,7 +23,7 @@ ImageComponent::ImageComponent(GameObject &gameObject,
 	mPositionRelativeToObject = positionRelativeToObject;
 }
 
-void ImageComponent::Init(){
+void ImageComponent::init(){
 	// Check AssetsManager to see if image is already loaded.
 	auto assets_image = Game::instance.GetAssetsManager().LoadImage(imagePath);
 

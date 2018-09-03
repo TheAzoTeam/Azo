@@ -20,7 +20,7 @@ void MachinePartCode::FindAudioController(){
 	m_audio_controller = (m_machine_part->GetAudioController(typeid(engine::AudioController)));
 }
 
-void MachinePartCode::UpdateCode(){
+void MachinePartCode::updateCode(){
 	switch(m_machine_part->m_machine_part_state){
 		case MachinePartState::COLLECTED:
 			m_audio_controller->PlayAudio("coleta");
@@ -28,7 +28,7 @@ void MachinePartCode::UpdateCode(){
 			m_machine_part->m_machine_part_state = MachinePartState::FINISHED;
 			break;
 		case MachinePartState::FINISHED:
-			m_machine_part->m_object_state = engine::ObjectState::DISABLED;
+			m_machine_part->mObjectState = engine::ObjectState::DISABLED;
 		default:
 			break;
 	}

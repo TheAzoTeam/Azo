@@ -2,10 +2,10 @@
 
 using namespace engine;
 
-void AnimationController::Init(){
+void AnimationController::init(){
 	for(auto animation_row : m_animation_map){
 		auto animation = animation_row.second;
-		animation->Init();
+		animation->init();
 	}
 }
 

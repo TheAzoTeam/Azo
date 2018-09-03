@@ -3,12 +3,12 @@
 using namespace Azo;
 
 Menu::Menu(std::string name){
-	this->scene_name = name;
+	this->sceneName = name;
 	CreateGameObjects();
 }
 
-void Menu::Restart(){
-	game_object_map.clear();
+void Menu::restart(){
+	gameObjectMap.clear();
 	CreateGameObjects();
 }
 
@@ -18,7 +18,7 @@ void Menu::CreateGameObjects(){
 	m_menu = new engine::GameObject("menu", std::make_pair(0, 0));
 	CreateMenuComponents();
 
-	this->AddGameObject(*m_menu);
+	this->addGameObject(*m_menu);
 }
 
 void Menu::CreateMenuComponents(){

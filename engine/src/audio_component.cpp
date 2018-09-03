@@ -19,8 +19,8 @@ AudioComponent::AudioComponent(GameObject & gameObject, std::string path, bool i
 	this->sound = nullptr;
 }
 
-void AudioComponent::Init(){
-	INFO("Init audio component");
+void AudioComponent::init(){
+	INFO("init audio component");
 
 	if(is_music){
 		music = Game::instance.GetAssetsManager().LoadMusic(audio_path);
@@ -39,7 +39,7 @@ void AudioComponent::Init(){
 
 }
 
-void AudioComponent::UpdateCode(){
+void AudioComponent::updateCode(){
 	if(play_on_start){
 		Play();
 		play_on_start = false;
