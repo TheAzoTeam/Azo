@@ -25,24 +25,24 @@ ImageComponent::ImageComponent(GameObject &gameObject,
 
 void ImageComponent::init(){
 	// Check AssetsManager to see if image is already loaded.
-	auto assets_image = Game::instance.GetAssetsManager().LoadImage(imagePath);
+	auto assetsImage = Game::instance.GetAssetsManager().LoadImage(imagePath);
 
-	imageTexture = assets_image->texture;
+	imageTexture = assetsImage->texture;
 
-	component_width = assets_image->width * zoomFactor;
-	component_height = assets_image->height * zoomFactor;
+	componentWidth = assetsImage->width * zoomFactor;
+	componentHeight = assetsImage->height * zoomFactor;
 
-	gameObject->m_size.first = component_width;
-	gameObject->m_size.second = component_height;
+	gameObject->m_size.first = componentWidth;
+	gameObject->m_size.second = componentHeight;
 
 	canvasQuad = {
 		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
 		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
-		component_width,
-		component_height
+		componentWidth,
+		componentHeight
 	};
 
-	renderQuad = {0, 0, component_width, component_height};
+	renderQuad = {0, 0, componentWidth, componentHeight};
 
 }
 
@@ -61,7 +61,7 @@ void ImageComponent::UpdateQuad(){
 	canvasQuad = {
 		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
 		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
-		component_width,
-		component_height
+		componentWidth,
+		componentHeight
 	};
 }

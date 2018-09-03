@@ -5,14 +5,12 @@
 
 using namespace engine;
 
-
 BackgroundComponent::BackgroundComponent(){}
 
 BackgroundComponent::BackgroundComponent(std::string imagePath){
 	this->imagePath = imagePath;
 	this->componentState = State::ENABLED;
 }
-
 
 BackgroundComponent::BackgroundComponent(GameObject & gameObject, std::string imagePath){
 	this->gameObject = &gameObject;
@@ -24,14 +22,11 @@ BackgroundComponent::~BackgroundComponent(){}
 
 void BackgroundComponent::init(){
 	//DEBUG("BackgroundComponent::init method.");
-	auto assets_image = Game::instance.GetAssetsManager().LoadImage(imagePath);
-
-	imageTexture = assets_image->texture;
-
-	component_width = assets_image->width;
-	component_height = assets_image->height;
-
-	renderQuad = {0, 0, component_width, component_height};
+	auto assetsImage = Game::instance.GetAssetsManager().LoadImage(imagePath);
+	imageTexture = assetsImage->texture;
+	componentWidth = assetsImage->width;
+	componentHeight = assetsImage->height;
+	renderQuad = {0, 0, componentWidth, componentHeight};
 }
 
 void BackgroundComponent::shutdown(){
@@ -46,6 +41,5 @@ void BackgroundComponent::draw(){
 		imageTexture,
 		&renderQuad,
 		NULL
-		);
-
+	);
 }
