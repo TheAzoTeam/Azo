@@ -39,7 +39,7 @@ void AudioComponent::Init(){
 
 }
 
-void AudioComponent::UpdateCode(){
+void AudioComponent::updateCode(){
 	if(play_on_start){
 		Play();
 		play_on_start = false;

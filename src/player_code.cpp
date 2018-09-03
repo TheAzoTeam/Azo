@@ -32,21 +32,21 @@ void PlayerCode::Shutdown(){
 }
 
 
-void PlayerCode::UpdateCode(){
+void PlayerCode::updateCode(){
 	switch(m_player->m_state){
 		case PlayerState::WALK:
 
 			m_animation_controller->StartUniqueAnimation("walking");
 
 			if(m_player->m_pushes_right_wall || m_player->m_pushes_left_wall){
-				//DEBUG("Update code method. Player Speed in X: " << m_player->m_speed.first);
+				//DEBUG("update code method. Player Speed in X: " << m_player->m_speed.first);
 				m_player->m_speed.first = m_player->M_ZERO_VECTOR.first;
 			}else{
 				m_player->m_speed.first = m_player->M_WALKING_SPEED;
 				//DEBUG("PLAYER SHOULD HAVE SPEED! PLAYER SPEED " << m_player->m_speed.first);
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)){
+			if(engine::Game::instance.input_manager.keyState(engine::Button::W)){
 				//DEBUG("W pressed!");
 				m_player->m_state = PlayerState::JUMP;
 				m_player->m_speed.second = m_player->M_JUMPING_SPEED; // Jumping speed.
@@ -56,7 +56,7 @@ void PlayerCode::UpdateCode(){
 				m_player->m_state = PlayerState::JUMP;
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::S)){
+			if(engine::Game::instance.input_manager.keyState(engine::Button::S)){
 				m_player->m_state = PlayerState::SLIDE;
 			}
 
@@ -71,7 +71,7 @@ void PlayerCode::UpdateCode(){
 			m_animation_controller->StartUniqueAnimation("jumping");
 
 			m_player->m_speed.second += (m_player->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
-			//DEBUG("UpdateCode method. Player Speed in Y: " << m_player->m_speed.second);
+			//DEBUG("updateCode method. Player Speed in Y: " << m_player->m_speed.second);
 
 			if(m_player->m_pushes_right_wall){
 				m_player->m_speed.first = m_player->M_ZERO_VECTOR.first;
@@ -102,7 +102,7 @@ void PlayerCode::UpdateCode(){
 				m_player->m_state = PlayerState::WALK;
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)){
+			if(engine::Game::instance.input_manager.keyState(engine::Button::W)){
 				m_player->m_state = PlayerState::JUMP;
 				m_player->m_speed.second = m_player->M_JUMPING_SPEED;
 			}

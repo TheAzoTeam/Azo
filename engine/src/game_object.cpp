@@ -73,11 +73,11 @@ void GameObject::Draw(){
 	//DEBUG("Finished Drawing.");
 }
 
-void GameObject::UpdateCode(){
+void GameObject::updateCode(){
 	for(auto each_pair : m_component_map){
 		auto component = each_pair.second;
 		if(component->IsEnabled()){
-			component->UpdateCode();
+			component->updateCode();
 		}
 	}
 }

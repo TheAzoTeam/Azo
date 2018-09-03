@@ -61,9 +61,9 @@ namespace engine {
 
 		private:
 			void CheckLimits();
-			void UpdateQuad();
-			void UpdateFrameBasedOntime();
-			void UpdateGameObjectMeasures();
+			void updateQuad();
+			void updateFrameBasedOntime();
+			void updateGameObjectMeasures();
 	};
 
 }

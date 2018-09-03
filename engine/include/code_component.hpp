@@ -19,7 +19,7 @@ namespace engine {
 
 			void Shutdown();
 
-			void UpdateCode();
+			void updateCode();
 	};
 }
 

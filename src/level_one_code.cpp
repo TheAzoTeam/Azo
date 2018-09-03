@@ -42,7 +42,7 @@ void LevelOneCode::GetParents(){
 }
 
 
-void LevelOneCode::UpdateCode(){
+void LevelOneCode::updateCode(){
 	//DEBUG("Position: " << game_object->m_current_position.first );
 	//DEBUG("Collected parts: " << m_player->m_collected_parts);
 	if(m_player->m_current_position.first >= 300.0f && game_object->m_current_position.first > -17600){
@@ -58,7 +58,7 @@ void LevelOneCode::UpdateCode(){
 			m_losing_parts->m_object_state = engine::ObjectState::ENABLED;
 			ChangeOption();
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+			if(engine::Game::instance.input_manager.keyDownOnce(engine::Button::ENTER)){
 				ChooseOption();
 			}
 
@@ -66,24 +66,24 @@ void LevelOneCode::UpdateCode(){
 			m_winning_screen->m_object_state = engine::ObjectState::ENABLED;
 			ChangeOption();
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+			if(engine::Game::instance.input_manager.keyDownOnce(engine::Button::ENTER)){
 				ChooseOption();
 			}
 		}
 
 	}
 
-	UpdateObstaclePosition();
+	updateObstaclePosition();
 
 	if(m_player->m_state != PlayerState::DIE){
-		UpdatePhysics();
+		updatePhysics();
 	}else{
 		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
 
 		if(m_waiting_time >= 2300.0f){
 			m_losing_death->m_object_state = engine::ObjectState::ENABLED;
 			ChangeOption();
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+			if(engine::Game::instance.input_manager.keyDownOnce(engine::Button::ENTER)){
 				ChooseOption();
 			}
 		}
@@ -104,7 +104,7 @@ void LevelOneCode::ChangeOption(){
 
 			m_arrow->m_current_position = std::make_pair(70, 260);
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
+			if(engine::Game::instance.input_manager.keyDownOnce(engine::Button::RIGHT_ARROW)){
 				m_current_option = 2;
 			}
 
@@ -113,7 +113,7 @@ void LevelOneCode::ChangeOption(){
 
 			m_arrow->m_current_position = std::make_pair(515, 260);
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
+			if(engine::Game::instance.input_manager.keyDownOnce(engine::Button::LEFT_ARROW)){
 				m_current_option = 1;
 			}
 
@@ -135,7 +135,7 @@ void LevelOneCode::ChooseOption(){
 
 
 
-void LevelOneCode::UpdateObstaclePosition(){
+void LevelOneCode::updateObstaclePosition(){
 	for(auto each_obstacle : m_obstacle_list){
 		each_obstacle->m_current_position.first = game_object->m_current_position.first + each_obstacle->m_position_relative_to_parent.first;
 		each_obstacle->m_current_position.second = game_object->m_current_position.second + each_obstacle->m_position_relative_to_parent.second;
@@ -156,7 +156,7 @@ void LevelOneCode::UpdateObstaclePosition(){
 	}
 }
 
-void LevelOneCode::UpdatePhysics(){
+void LevelOneCode::updatePhysics(){
 	m_player->m_current_position.second += m_player->m_speed.second * engine::Game::instance.GetTimer().GetDeltaTime();
 	double ground_y = 0.0f;
 	if(m_player->m_speed.second < 0.0f && HasCeiling(&ground_y)){
@@ -221,7 +221,7 @@ bool LevelOneCode::HasGround(double *ground_y){
 
 		// If the obstacle is a machine part, we check the collision without invisible blocks (since it has animation).
 		// If it collides, we return false (so the position isn't updated) and change the state of the machine part.
-		// TODO(Roger): Update the collision methods so they return the colliding object.
+		// TODO(Roger): update the collision methods so they return the colliding object.
 		// TODO(Roger): Create states to the machine parts.
 
 		if(each_obstacle->m_obstacle_type == ObstacleType::MACHINE_PART){

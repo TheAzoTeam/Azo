@@ -52,7 +52,7 @@ void Game::Run(){
 					break;
 				default:
 					// Check for user inputs.
-					input_manager.Update(_event);
+					input_manager.update(_event);
 					break;
 			}
 		}
@@ -65,11 +65,11 @@ void Game::Run(){
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
 		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
-		current_scene->UpdateCode();
+		current_scene->updateCode();
 
 
 		//INFO("Clearing user input from InputManager.");
-		input_manager.Clear();
+		input_manager.clear();
 
 		//INFO("Calculating elapsed time from the start of this frame until now");
 		timer.DeltaTime();

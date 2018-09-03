@@ -20,7 +20,7 @@ namespace engine {
 			virtual void Init();
 			virtual void Shutdown();
 			virtual void Draw();
-			virtual void UpdateCode();
+			virtual void updateCode();
 			virtual void Restart();
 
 			inline std::string GetSceneName() {

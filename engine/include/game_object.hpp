@@ -47,7 +47,7 @@ namespace engine {
 			virtual void Init();
 			virtual void Draw();
 			virtual void Shutdown();
-			virtual void UpdateCode();
+			virtual void updateCode();
 			virtual inline std::string GetClassName(){
 				return "GameObject";
 			}

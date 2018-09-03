@@ -28,7 +28,7 @@ namespace engine {
 
 			virtual void Draw();
 
-			virtual void UpdateCode();
+			virtual void updateCode();
 
 			virtual void EnableComponent();
 

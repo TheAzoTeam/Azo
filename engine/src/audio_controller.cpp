@@ -19,11 +19,11 @@ void AudioController::Shutdown(){
 	}
 }
 
-void AudioController::UpdateCode(){
+void AudioController::updateCode(){
 	for(auto audio_row : audio_map){
 		auto audio = audio_row.second;
 		if(audio->IsEnabled()){
-			audio->UpdateCode();
+			audio->updateCode();
 		}
 	}
 }

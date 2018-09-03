@@ -24,16 +24,16 @@ namespace Azo {
 			void Shutdown();
 		private:
 			void FindAudioController();
-			void UpdateCode();
+			void updateCode();
 			void ChangeOption();
 			void ChooseOption();
-			void UpdateObstaclePosition();
+			void updateObstaclePosition();
 			void GetParents();
 			bool HasGround(double *ground_y);
 			bool HasCeiling(double *ground_y);
 			bool HasWallOnRight(double *wall_x);
 			bool HasWallOnLeft(double *wall_x);
-			void UpdatePhysics();
+			void updatePhysics();
 
 	};
 }

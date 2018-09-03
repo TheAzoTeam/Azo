@@ -24,7 +24,7 @@ namespace engine {
 			AudioState GetAudioState(std::string audio_name);
 			void Init();
 			void Shutdown();
-			void UpdateCode();
+			void updateCode();
 
 	};
 

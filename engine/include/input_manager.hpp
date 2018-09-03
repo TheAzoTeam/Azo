@@ -22,17 +22,17 @@ namespace engine {
 
 	class InputManager {
 		private:
-			unsigned int m_last_event_type;
-			std::list<SDL_Event> m_event_list;
-			const Uint8 *keyboard_states;
+			unsigned int mLastEventType;
+			std::list<SDL_Event> mEventList;
+			const Uint8 *keyboardStates;
 		public:
 			InputManager();
 			~InputManager();
-			void Update(SDL_Event _event);
-			bool KeyDown(Button button);
-			bool KeyDownOnce(Button button);
-			bool KeyState(Button button);
-			void Clear();
+			void update(SDL_Event _event);
+			bool keyDown(Button button);
+			bool keyDownOnce(Button button);
+			bool keyState(Button button);
+			void clear();
 
 		private:
 	};

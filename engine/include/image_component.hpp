@@ -21,7 +21,7 @@ namespace engine {
 				std::pair<double, double> position_relative_to_object);
 			void Init();
 			void Draw();
-			void UpdateQuad();
+			void updateQuad();
 			inline std::string GetClassName(){
 				return "ImageComponent";
 			}

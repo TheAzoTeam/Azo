@@ -14,4 +14,4 @@ void CodeComponent::Init(){}
 
 void CodeComponent::Shutdown(){}
 
-void CodeComponent::UpdateCode(){}
+void CodeComponent::updateCode(){}

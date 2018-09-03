@@ -48,7 +48,7 @@ void ImageComponent::Init(){
 
 
 void ImageComponent::Draw(){
-	UpdateQuad();
+	updateQuad();
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
@@ -57,7 +57,7 @@ void ImageComponent::Draw(){
 		);
 }
 
-void ImageComponent::UpdateQuad(){
+void ImageComponent::updateQuad(){
 	canvasQuad = {
 		(int)(game_object->m_current_position.first + m_position_relative_to_object.first),
 		(int)(game_object->m_current_position.second + m_position_relative_to_object.second),
