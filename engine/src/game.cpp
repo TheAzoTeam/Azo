@@ -11,7 +11,7 @@ Game::Game(){
 	this->need_to_change_scene = false;
 	this->current_scene = NULL;
 	this->last_scene = NULL;
-	this->frame_rate = 60;
+	this->FRAME_RATE = 60;
 }
 
 // Main Game Loop and SDL Initiators.
@@ -27,7 +27,7 @@ void Game::Run(){
 	game_state = engine::GameState::PLAY;
 
 	// Calculate how many time will have one frame of the Game (miliseconds).
-	frame_time = 1000.0f / frame_rate;
+	frame_time = 1000.0f / FRAME_RATE;
 
 
 	INFO("Starting Main Loop Game.");
@@ -65,7 +65,7 @@ void Game::Run(){
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
 		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
-		current_scene->UpdateCode();
+		current_scene->updateCode();
 
 
 		//INFO("Clearing user input from InputManager.");
@@ -144,13 +144,13 @@ bool Game::StartAndStopScenes(){
 				current_scene->DeleteKeyList();
 			}
 
-			if(current_scene->m_state == SceneState::RUNNED){
+			if(current_scene->mState == SceneState::RUNNED){
 				current_scene->Restart();
-				current_scene->m_state = SceneState::FIRST_TIME;
+				current_scene->mState = SceneState::FIRST_TIME;
 			}
 
-			if(current_scene->m_state == SceneState::FIRST_TIME){
-				current_scene->m_state = SceneState::RUNNED;
+			if(current_scene->mState == SceneState::FIRST_TIME){
+				current_scene->mState = SceneState::RUNNED;
 			}
 
 
@@ -159,7 +159,7 @@ bool Game::StartAndStopScenes(){
 			if(last_scene != NULL){
 				INFO("Shuting down scene!");
 				if(last_scene->GetSceneName() != current_scene->GetSceneName()){
-					last_scene->Shutdown();
+					last_scene->shutDown();
 				}
 				//DEBUG("Scene name: " << last_scene->GetSceneName());
 				//scene_map.erase(last_scene->GetSceneName());
@@ -175,9 +175,9 @@ bool Game::StartAndStopScenes(){
 }
 
 
-/* Transfer the game_name, window_width and window_height to SDL instace through its method "SetSDLAttributes"
-   and set Game's frame_rate. */
-void Game::SetAttributes(std::string game_name, int window_width, int window_height, int frame_rate){
-	sdl_elements.SetSDLAttributes(game_name, window_width, window_height);
-	this->frame_rate = frame_rate;
+/* Transfer the GAME_NAME, windowWidth and windowHeight to SDL instace through its method "SetSDLAttributes"
+   and set Game's FRAME_RATE. */
+void Game::SetAttributes(std::string GAME_NAME, int windowWidth, int windowHeight, int FRAME_RATE){
+	sdl_elements.SetSDLAttributes(GAME_NAME, windowWidth, windowHeight);
+	this->FRAME_RATE = FRAME_RATE;
 }

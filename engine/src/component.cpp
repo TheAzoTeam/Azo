@@ -4,20 +4,20 @@ using namespace engine;
 
 Component::Component(){}
 
-Component::Component(GameObject &game_object){
-	this->game_object = &game_object;
+Component::Component(GameObject &gameObject){
+	this->gameObject = &gameObject;
 	this->component_state = State::ENABLED;
 }
 
 void Component::Init(){}
 
-void Component::Shutdown(){}
+void Component::shutDown(){}
 
 
 void Component::Draw(){}
 
 
-void Component::UpdateCode(){}
+void Component::updateCode(){}
 
 void Component::EnableComponent(){
 	this->component_state = State::ENABLED;

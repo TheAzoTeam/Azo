@@ -13,17 +13,17 @@ namespace engine {
 			std::map <std::string, Animation *> m_animation_map;
 		public:
 			AnimationController();
-			AnimationController(GameObject &game_object);
+			AnimationController(GameObject &gameObject);
 			void AddAnimation(std::string animation_name, Animation &animation);
 			void StartUniqueAnimation(std::string animation_name);
 			void StartAnimation(std::string animation_name);
 			void StopAnimation(std::string animation_name);
 			AnimationState GetAnimationStatus(std::string animation_name);
 			void Init();
-			void Shutdown();
+			void shutDown();
 			void Draw();
 			void NextSprite(std::string name);
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "AnimationController";
 			}
 	};

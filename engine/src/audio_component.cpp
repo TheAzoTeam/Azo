@@ -9,8 +9,8 @@ AudioComponent::AudioComponent(){}
 
 AudioComponent::~AudioComponent(){}
 
-AudioComponent::AudioComponent(GameObject & game_object, std::string path, bool is_music, bool play_on_start){
-	this->game_object = &game_object;
+AudioComponent::AudioComponent(GameObject & gameObject, std::string path, bool is_music, bool play_on_start){
+	this->gameObject = &gameObject;
 	this->audio_path = path;
 	this->is_music = is_music;
 	this->play_on_start = play_on_start;
@@ -39,15 +39,15 @@ void AudioComponent::Init(){
 
 }
 
-void AudioComponent::UpdateCode(){
+void AudioComponent::updateCode(){
 	if(play_on_start){
 		Play();
 		play_on_start = false;
 	}
 }
 
-void AudioComponent::Shutdown(){
-	INFO("Shutdown audio component");
+void AudioComponent::shutDown(){
+	INFO("shutDown audio component");
 
 	Stop(-1);
 	if(music != nullptr){

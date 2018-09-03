@@ -30,13 +30,13 @@ namespace Azo {
 
 			engine::BackgroundComponent *m_background;
 			MenuCode *m_code;
-			engine::AudioController *m_audio_controller;
+			engine::AudioController *mAudioController;
 			engine::AudioComponent *m_menu_theme;
 		public:
 			Menu();
 			Menu(std::string name);
 			void Restart();
-			void Shutdown();
+			void shutDown();
 		private:
 			void CreateGameObjects();
 			void CreateMenuComponents();
