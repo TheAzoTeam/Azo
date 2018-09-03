@@ -25,7 +25,9 @@ namespace Azo {
 			engine::ImageComponent *mLevelBackground2;
 			engine::ImageComponent *mLevelBackground3;
 
-			// This is the level game object. It contains things such as background, theme, etc.
+			/*This is the level game object.
+			It contains things such as background, theme, etc.*/
+
 			engine::GameObject *mLevelOne;
 
 			// Add new components to level one here.
@@ -123,7 +125,9 @@ namespace Azo {
 			void CreateGameObjects();
 			void CreateEndingScreen();
 
-			// After adding things that collide (obstacles, for exemple), add they as paren'ts here.
+			/*After adding things that collide (obstacles, for exemple),
+			 add they as paren'ts here.*/
+
 			void AddLevelParents();
 		public:
 			LevelOne();

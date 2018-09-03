@@ -54,13 +54,13 @@ namespace Azo {
 			const double M_WALKING_SPEED = 4.8f;
 			const int M_TOTAL_PARTS = 25;
 
-			PlayerState m_state;
+			PlayerState mState;
 			std::pair<double, double> m_speed;
 
 			bool m_pushes_right_wall;
 			bool m_pushes_left_wall;
 			bool m_at_ceiling;
-			bool m_on_ground;
+			bool mOnGround;
 
 			int m_collected_parts = 0;
 

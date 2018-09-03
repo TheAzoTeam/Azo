@@ -4,36 +4,36 @@
 
 using namespace Azo;
 
-PlayerCode::PlayerCode(){}
+PlayerCode::PlayerCode() {}
 
-PlayerCode::~PlayerCode(){}
+PlayerCode::~PlayerCode() {}
 
-PlayerCode::PlayerCode(Player *player){
+PlayerCode::PlayerCode(Player *player) {
 	mPlayer = player;
-	mPlayer->m_state = PlayerState::WALK;
-	mPlayer->m_on_ground = true;
+	mPlayer->mState = PlayerState::WALK;
+	mPlayer->mOnGround = true;
 	FindAnimationController();
 	FindAudioController();
 }
 
 
-void PlayerCode::FindAnimationController(){
+void PlayerCode::FindAnimationController() {
 	mAnimationController = (mPlayer->GetAnimationController(typeid(engine::AnimationController)));
 }
 
-void PlayerCode::FindAudioController(){
+void PlayerCode::FindAudioController() {
 	mAudioController = (mPlayer->GetAudioController(typeid(engine::AudioController)));
 }
 
-void PlayerCode::Shutdown(){
-	if(mAnimationController != NULL){
+void PlayerCode::Shutdown() {
+	if(mAnimationController != NULL) {
 		mAnimationController = NULL;
 	}
 }
 
 
-void PlayerCode::UpdateCode(){
-	switch(mPlayer->m_state){
+void PlayerCode::UpdateCode() {
+	switch(mPlayer->mState) {
 		case PlayerState::WALK:
 
 			mAnimationController->StartUniqueAnimation("walking");
@@ -41,31 +41,31 @@ void PlayerCode::UpdateCode(){
 			if(mPlayer->m_pushes_right_wall || mPlayer->m_pushes_left_wall){
 				//DEBUG("Update code method. Player Speed in X: " << mPlayer->m_speed.first);
 				mPlayer->m_speed.first = mPlayer->M_ZERO_VECTOR.first;
-			}else{
+			} else {
 				mPlayer->m_speed.first = mPlayer->M_WALKING_SPEED;
 				//DEBUG("PLAYER SHOULD HAVE SPEED! PLAYER SPEED " << mPlayer->m_speed.first);
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)){
+			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)) {
 				//DEBUG("W pressed!");
-				mPlayer->m_state = PlayerState::JUMP;
+				mPlayer->mState = PlayerState::JUMP;
 				mPlayer->m_speed.second = mPlayer->M_JUMPING_SPEED; // Jumping speed.
 
-			}else if(!mPlayer->m_on_ground){
+			} else if(!mPlayer->mOnGround) {
 				//DEBUG("Player isn't on ground. (WALK)");
-				mPlayer->m_state = PlayerState::JUMP;
+				mPlayer->mState = PlayerState::JUMP;
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::S)){
-				mPlayer->m_state = PlayerState::SLIDE;
+			if(engine::Game::instance.input_manager.KeyState(engine::Button::S)) {
+				mPlayer->mState = PlayerState::SLIDE;
 			}
 
 			break;
 
 		case PlayerState::JUMP:
 
-			if(mPlayer->m_on_ground){
-				mPlayer->m_state = PlayerState::WALK;
+			if(mPlayer->mOnGround) {
+				mPlayer->mState = PlayerState::WALK;
 			}
 
 			mAnimationController->StartUniqueAnimation("jumping");
@@ -73,9 +73,9 @@ void PlayerCode::UpdateCode(){
 			mPlayer->m_speed.second += (mPlayer->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
 			//DEBUG("UpdateCode method. Player Speed in Y: " << mPlayer->m_speed.second);
 
-			if(mPlayer->m_pushes_right_wall){
+			if(mPlayer->m_pushes_right_wall) {
 				mPlayer->m_speed.first = mPlayer->M_ZERO_VECTOR.first;
-			}else{
+			} else {
 				mPlayer->m_speed.first = mPlayer->M_WALKING_SPEED;         // Walking speed.
 			}
 
@@ -88,22 +88,23 @@ void PlayerCode::UpdateCode(){
 		case PlayerState::SLIDE:
 			mAnimationController->StartUniqueAnimation("sliding");
 
-			if(mAnimationController->GetAnimationStatus("sliding") == engine::AnimationState::FINISHED){
-				mPlayer->m_state = PlayerState::WALK;
+			if(mAnimationController->
+				GetAnimationStatus("sliding") == engine::AnimationState::FINISHED) {
+				mPlayer->mState = PlayerState::WALK;
 				break;
 			}
 
 			mPlayer->m_speed.second += (mPlayer->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
 			//DEBUG("Player speed: " << mPlayer->m_speed.second);
 
-			if(mPlayer->m_pushes_right_wall){
+			if(mPlayer->m_pushes_right_wall) {
 				mPlayer->m_speed.first = mPlayer->M_ZERO_VECTOR.first;
 				//TODO(Roger): Change this state to DEATH.
-				mPlayer->m_state = PlayerState::WALK;
+				mPlayer->mState = PlayerState::WALK;
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)){
-				mPlayer->m_state = PlayerState::JUMP;
+			if(engine::Game::instance.input_manager.KeyState(engine::Button::W)) {
+				mPlayer->mState = PlayerState::JUMP;
 				mPlayer->m_speed.second = mPlayer->M_JUMPING_SPEED;
 			}
 
@@ -115,13 +116,13 @@ void PlayerCode::UpdateCode(){
 
 			break;
 		case PlayerState::END:
-			if(mPlayer->m_collected_parts < mPlayer->M_TOTAL_PARTS){
+			if(mPlayer->m_collected_parts < mPlayer->M_TOTAL_PARTS) {
 				mAnimationController->StartUniqueAnimation("losing");
 
-				if(mAnimationController->GetAnimationStatus("losing") == engine::AnimationState::FINISHED){
+				if(mAnimationController->GetAnimationStatus("losing") == engine::AnimationState::FINISHED) {
 					mAudioController->PlayAudio("lost");
 				}
-			}else{
+			} else {
 				mAnimationController->StartUniqueAnimation("victory");
 				mAudioController->PlayAudio("victory");
 			}

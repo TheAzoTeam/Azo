@@ -4,9 +4,8 @@ using namespace Azo;
 
 LevelOneCode::LevelOneCode(engine::GameObject &gameObject){
 	this->gameObject = &gameObject;
-	DEBUG ("A MERDA ROLOU AQUI! - 5,5");
+
 	GetParents();
-	DEBUG ("A MERDA ROLOU AQUI! - 6");
 	FindAudioController();
 }
 
@@ -25,27 +24,26 @@ void LevelOneCode::FindAudioController(){
 }
 
 void LevelOneCode::GetParents(){
-	DEBUG ("A MERDA ROLOU AQUI! - 7");
+
 	for(auto parent : gameObject->m_parent_list){
-		DEBUG ("A MERDA ROLOU AQUI! - 8");
 		if(parent->GetClassName() == "Player"){
 			mPlayer = dynamic_cast<Player *>(parent);
-			DEBUG ("A MERDA ROLOU AQUI! - 9");
+
 		}else if(parent->GetClassName() == "Obstacle"){
-			DEBUG ("A MERDA ROLOU AQUI! - 10");
+
 			m_obstacle_list.push_back(dynamic_cast<Obstacle *>(parent));
 		}else if(parent->m_name == "winning_screen"){
 			mWinningScreen = parent;
-			DEBUG ("A MERDA ROLOU AQUI! - 11");
+
 		}else if(parent->m_name == "losing_parts"){
 			m_losing_parts = parent;
-			DEBUG ("A MERDA ROLOU AQUI! - 12");
+
 		}else if(parent->m_name == "losing_death"){
 			m_losing_death = parent;
-			DEBUG ("A MERDA ROLOU AQUI! - 13");
+
 		}else if(parent->m_name == "arrow"){
 			mArrow = parent;
-			DEBUG ("A MERDA ROLOU AQUI! - 14");
+
 		}
 
 	}
@@ -62,7 +60,7 @@ void LevelOneCode::UpdateCode(){
 		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
 		mPlayer->m_speed.first = 0;
 		mAudioController->StopAudio("tema_level_one");
-		mPlayer->m_state = PlayerState::END;
+		mPlayer->mState = PlayerState::END;
 
 		if(mPlayer->m_collected_parts != mPlayer->M_TOTAL_PARTS && m_waiting_time >= 10000.0f){
 			m_losing_parts->m_object_state = engine::ObjectState::ENABLED;
@@ -85,7 +83,7 @@ void LevelOneCode::UpdateCode(){
 
 	UpdateObstaclePosition();
 
-	if(mPlayer->m_state != PlayerState::DIE){
+	if(mPlayer->mState != PlayerState::DIE){
 		UpdatePhysics();
 	}else{
 		m_waiting_time += engine::Game::instance.GetTimer().GetDeltaTime();
@@ -172,17 +170,17 @@ void LevelOneCode::UpdatePhysics(){
 	if(mPlayer->m_speed.second < 0.0f && HasCeiling(&ground_y)){
 		mPlayer->m_current_position.second = ground_y + 15;
 		mPlayer->m_at_ceiling = true;
-	}else if((mPlayer->m_speed.second >= 0.0f || mPlayer->m_state == PlayerState::SLIDE) && HasGround(&ground_y)){
+	}else if((mPlayer->m_speed.second >= 0.0f || mPlayer->mState == PlayerState::SLIDE) && HasGround(&ground_y)){
 		mPlayer->m_current_position.second = ground_y - mPlayer->m_half_size.second - mPlayer->m_half_size.second + 15;
 		mPlayer->m_speed.second = mPlayer->M_ZERO_VECTOR.second;
 
-		mPlayer->m_on_ground = true;
+		mPlayer->mOnGround = true;
 
 		mPlayer->m_center.first = mPlayer->m_current_position.first + mPlayer->m_half_size.first;
 		mPlayer->m_center.second = mPlayer->m_current_position.second + mPlayer->m_half_size.second;
 
 	}else{
-		mPlayer->m_on_ground = false;
+		mPlayer->mOnGround = false;
 		mPlayer->m_at_ceiling = false;
 	}
 
@@ -205,14 +203,14 @@ void LevelOneCode::UpdatePhysics(){
 		DEBUG("Collision with the wall");
 		mPlayer->m_current_position.first = wall_x - (mPlayer->m_half_size.first * 2);
 		mPlayer->m_pushes_left_wall = true;
-		mPlayer->m_state = PlayerState::DIE;
+		mPlayer->mState = PlayerState::DIE;
 	}else{
 		mPlayer->m_pushes_left_wall = false;
 	}
 
 	if(mPlayer->m_speed.first < 0.0f &&
 	   HasWallOnLeft(&wall_x)){
-		mPlayer->m_state = PlayerState::DIE;
+		mPlayer->mState = PlayerState::DIE;
 	}else{
 		mPlayer->m_pushes_right_wall = false;
 	}
@@ -282,7 +280,7 @@ bool LevelOneCode::HasGround(double *ground_y){
 					if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_ROCK ||
 					   each_obstacle->m_obstacle_type == ObstacleType::WESTERN_SPIKE ||
 					   each_obstacle->m_obstacle_type == ObstacleType::WESTERN_POST){
-						mPlayer->m_state = PlayerState::DIE;
+						mPlayer->mState = PlayerState::DIE;
 					}
 
 					return true;
@@ -365,7 +363,7 @@ bool LevelOneCode::HasWallOnRight(double *wall_x){
 				   player_right >= block_left){
 
 					if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_POST){
-						mPlayer->m_state = PlayerState::DIE;
+						mPlayer->mState = PlayerState::DIE;
 					}
 
 					*wall_x = block_left - 1.0f;
@@ -443,7 +441,7 @@ bool LevelOneCode::HasCeiling(double *ground_y){
 			   player_top >= block_top){
 
 				if(each_obstacle->m_obstacle_type == ObstacleType::WESTERN_POST){
-					mPlayer->m_state = PlayerState::DIE;
+					mPlayer->mState = PlayerState::DIE;
 				}
 
 				*ground_y = block_bottom;

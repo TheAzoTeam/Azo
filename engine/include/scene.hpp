@@ -33,7 +33,7 @@ namespace engine {
 			engine::GameObject & GetGameObject(std::string & gameObject_name);
 			void RemoveGameObject(std::string &gameObject_name);
 
-			SceneState m_state = SceneState::FIRST_TIME;
+			SceneState mState = SceneState::FIRST_TIME;
 
 		protected:
 			std::map<std::string, engine::GameObject *> gameObjectMap;
