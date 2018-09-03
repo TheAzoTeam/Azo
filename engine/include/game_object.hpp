@@ -22,15 +22,15 @@ namespace engine {
 
 	class GameObject {
 		public:
-			// m_current_position is the left upper corner of the game object, in coordinates.
-			std::pair<double, double> m_current_position;
+			// mCurrentPosition is the left upper corner of the game object, in coordinates.
+			std::pair<double, double> mCurrentPosition;
 			// m_size.first is the X size.
 			// m_sisze.second is the Y size.
 			std::pair<double, double> m_size;
-			std::pair<double, double> m_center;
-			// m_half_size.first is the x distance from center to the border.
-			// m_half_size.second is the y distance from center to the border.
-			std::pair<double, double> m_half_size;
+			std::pair<double, double> mCenter;
+			// mHalfSize.first is the x distance from center to the border.
+			// mHalfSize.second is the y distance from center to the border.
+			std::pair<double, double> mHalfSize;
 			std::list<GameObject *> m_parent_list;
 			std::string m_name;
 			ObjectState m_object_state = ObjectState::ENABLED;
@@ -45,10 +45,10 @@ namespace engine {
 			AnimationController* GetAnimationController(std::type_index component_type);
 			AudioController* GetAudioController(std::type_index component_type);
 			virtual void Init();
-			virtual void Draw();
-			virtual void Shutdown();
+			virtual void draw();
+			virtual void shutdown();
 			virtual void UpdateCode();
-			virtual inline std::string GetClassName(){
+			virtual inline std::string getClassName(){
 				return "GameObject";
 			}
 			std::pair<double, double> CalcBottomLeft();

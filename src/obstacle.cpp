@@ -6,10 +6,10 @@ Obstacle::Obstacle(){}
 
 Obstacle::~Obstacle(){}
 
-void Obstacle::Shutdown(){
+void Obstacle::shutdown(){
 	for(auto each_block : m_block_list){
 		if(each_block != NULL){
-			each_block->Shutdown();
+			each_block->shutdown();
 			delete(each_block);
 			each_block = NULL;
 		}
@@ -30,7 +30,7 @@ void Obstacle::Shutdown(){
 	}
 
 	if(m_audio_controller != NULL){
-		m_audio_controller->Shutdown();
+		m_audio_controller->shutdown();
 		delete(m_audio_controller);
 		m_audio_controller = NULL;
 	}
@@ -46,7 +46,7 @@ void Obstacle::Shutdown(){
 
 
 	if(m_machine_part_code != NULL){
-		m_machine_part_code->Shutdown();
+		m_machine_part_code->shutdown();
 		delete(m_machine_part_code);
 		m_machine_part_code = NULL;
 	}
@@ -56,7 +56,7 @@ void Obstacle::Shutdown(){
 Obstacle::Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type){
 	m_name = name;
 	m_position_relative_to_parent = position_relative_to_parent;
-	m_current_position = m_position_relative_to_parent;
+	mCurrentPosition = m_position_relative_to_parent;
 
 	m_obstacle_type = obstacle_type;
 
@@ -174,124 +174,124 @@ void Obstacle::GenTurningAnimation(){
 		m_turning_animation_sprites.push_back(new engine::Sprite());
 	}
 
-	m_turning_animation_sprites[0]->sprite_x = 13;
-	m_turning_animation_sprites[0]->sprite_y = 11;
-	m_turning_animation_sprites[0]->sprite_width = 49 - 13;
-	m_turning_animation_sprites[0]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[0]->spriteX = 13;
+	m_turning_animation_sprites[0]->spriteY = 11;
+	m_turning_animation_sprites[0]->spriteWidth = 49 - 13;
+	m_turning_animation_sprites[0]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[1]->sprite_x = 50;
-	m_turning_animation_sprites[1]->sprite_y = 11;
-	m_turning_animation_sprites[1]->sprite_width = 86 - 50;
-	m_turning_animation_sprites[1]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[1]->spriteX = 50;
+	m_turning_animation_sprites[1]->spriteY = 11;
+	m_turning_animation_sprites[1]->spriteWidth = 86 - 50;
+	m_turning_animation_sprites[1]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[2]->sprite_x = 87;
-	m_turning_animation_sprites[2]->sprite_y = 11;
-	m_turning_animation_sprites[2]->sprite_width = 123 - 87;
-	m_turning_animation_sprites[2]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[2]->spriteX = 87;
+	m_turning_animation_sprites[2]->spriteY = 11;
+	m_turning_animation_sprites[2]->spriteWidth = 123 - 87;
+	m_turning_animation_sprites[2]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[3]->sprite_x = 124;
-	m_turning_animation_sprites[3]->sprite_y = 11;
-	m_turning_animation_sprites[3]->sprite_width = 160 - 124;
-	m_turning_animation_sprites[3]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[3]->spriteX = 124;
+	m_turning_animation_sprites[3]->spriteY = 11;
+	m_turning_animation_sprites[3]->spriteWidth = 160 - 124;
+	m_turning_animation_sprites[3]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[4]->sprite_x = 161;
-	m_turning_animation_sprites[4]->sprite_y = 11;
-	m_turning_animation_sprites[4]->sprite_width = 197 - 161;
-	m_turning_animation_sprites[4]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[4]->spriteX = 161;
+	m_turning_animation_sprites[4]->spriteY = 11;
+	m_turning_animation_sprites[4]->spriteWidth = 197 - 161;
+	m_turning_animation_sprites[4]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[5]->sprite_x = 198;
-	m_turning_animation_sprites[5]->sprite_y = 11;
-	m_turning_animation_sprites[5]->sprite_width = 234 - 198;
-	m_turning_animation_sprites[5]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[5]->spriteX = 198;
+	m_turning_animation_sprites[5]->spriteY = 11;
+	m_turning_animation_sprites[5]->spriteWidth = 234 - 198;
+	m_turning_animation_sprites[5]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[6]->sprite_x = 240;
-	m_turning_animation_sprites[6]->sprite_y = 11;
-	m_turning_animation_sprites[6]->sprite_width = 271 - 240;
-	m_turning_animation_sprites[6]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[6]->spriteX = 240;
+	m_turning_animation_sprites[6]->spriteY = 11;
+	m_turning_animation_sprites[6]->spriteWidth = 271 - 240;
+	m_turning_animation_sprites[6]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[7]->sprite_x = 277;
-	m_turning_animation_sprites[7]->sprite_y = 11;
-	m_turning_animation_sprites[7]->sprite_width = 308 - 277;
-	m_turning_animation_sprites[7]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[7]->spriteX = 277;
+	m_turning_animation_sprites[7]->spriteY = 11;
+	m_turning_animation_sprites[7]->spriteWidth = 308 - 277;
+	m_turning_animation_sprites[7]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[8]->sprite_x = 314;
-	m_turning_animation_sprites[8]->sprite_y = 11;
-	m_turning_animation_sprites[8]->sprite_width = 345 - 314;
-	m_turning_animation_sprites[8]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[8]->spriteX = 314;
+	m_turning_animation_sprites[8]->spriteY = 11;
+	m_turning_animation_sprites[8]->spriteWidth = 345 - 314;
+	m_turning_animation_sprites[8]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[9]->sprite_x = 351;
-	m_turning_animation_sprites[9]->sprite_y = 11;
-	m_turning_animation_sprites[9]->sprite_width = 382 - 351;
-	m_turning_animation_sprites[9]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[9]->spriteX = 351;
+	m_turning_animation_sprites[9]->spriteY = 11;
+	m_turning_animation_sprites[9]->spriteWidth = 382 - 351;
+	m_turning_animation_sprites[9]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[10]->sprite_x = 388;
-	m_turning_animation_sprites[10]->sprite_y = 11;
-	m_turning_animation_sprites[10]->sprite_width = 419 - 388;
-	m_turning_animation_sprites[10]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[10]->spriteX = 388;
+	m_turning_animation_sprites[10]->spriteY = 11;
+	m_turning_animation_sprites[10]->spriteWidth = 419 - 388;
+	m_turning_animation_sprites[10]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[11]->sprite_x = 425;
-	m_turning_animation_sprites[11]->sprite_y = 11;
-	m_turning_animation_sprites[11]->sprite_width = 456 - 425;
-	m_turning_animation_sprites[11]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[11]->spriteX = 425;
+	m_turning_animation_sprites[11]->spriteY = 11;
+	m_turning_animation_sprites[11]->spriteWidth = 456 - 425;
+	m_turning_animation_sprites[11]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[12]->sprite_x = 461;
-	m_turning_animation_sprites[12]->sprite_y = 11;
-	m_turning_animation_sprites[12]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[12]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[12]->spriteX = 461;
+	m_turning_animation_sprites[12]->spriteY = 11;
+	m_turning_animation_sprites[12]->spriteWidth = 497 - 461;
+	m_turning_animation_sprites[12]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[13]->sprite_x = 461;
-	m_turning_animation_sprites[13]->sprite_y = 11;
-	m_turning_animation_sprites[13]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[13]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[13]->spriteX = 461;
+	m_turning_animation_sprites[13]->spriteY = 11;
+	m_turning_animation_sprites[13]->spriteWidth = 497 - 461;
+	m_turning_animation_sprites[13]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[14]->sprite_x = 461;
-	m_turning_animation_sprites[14]->sprite_y = 11;
-	m_turning_animation_sprites[14]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[14]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[14]->spriteX = 461;
+	m_turning_animation_sprites[14]->spriteY = 11;
+	m_turning_animation_sprites[14]->spriteWidth = 497 - 461;
+	m_turning_animation_sprites[14]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[15]->sprite_x = 461;
-	m_turning_animation_sprites[15]->sprite_y = 11;
-	m_turning_animation_sprites[15]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[15]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[15]->spriteX = 461;
+	m_turning_animation_sprites[15]->spriteY = 11;
+	m_turning_animation_sprites[15]->spriteWidth = 497 - 461;
+	m_turning_animation_sprites[15]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[16]->sprite_x = 461;
-	m_turning_animation_sprites[16]->sprite_y = 11;
-	m_turning_animation_sprites[16]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[16]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[16]->spriteX = 461;
+	m_turning_animation_sprites[16]->spriteY = 11;
+	m_turning_animation_sprites[16]->spriteWidth = 497 - 461;
+	m_turning_animation_sprites[16]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[17]->sprite_x = 461;
-	m_turning_animation_sprites[17]->sprite_y = 11;
-	m_turning_animation_sprites[17]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[17]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[17]->spriteX = 461;
+	m_turning_animation_sprites[17]->spriteY = 11;
+	m_turning_animation_sprites[17]->spriteWidth = 497 - 461;
+	m_turning_animation_sprites[17]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[18]->sprite_x = 689;
-	m_turning_animation_sprites[18]->sprite_y = 11;
-	m_turning_animation_sprites[18]->sprite_width = 720 - 689;
-	m_turning_animation_sprites[18]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[18]->spriteX = 689;
+	m_turning_animation_sprites[18]->spriteY = 11;
+	m_turning_animation_sprites[18]->spriteWidth = 720 - 689;
+	m_turning_animation_sprites[18]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[19]->sprite_x = 726;
-	m_turning_animation_sprites[19]->sprite_y = 11;
-	m_turning_animation_sprites[19]->sprite_width = 757 - 726;
-	m_turning_animation_sprites[19]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[19]->spriteX = 726;
+	m_turning_animation_sprites[19]->spriteY = 11;
+	m_turning_animation_sprites[19]->spriteWidth = 757 - 726;
+	m_turning_animation_sprites[19]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[20]->sprite_x = 763;
-	m_turning_animation_sprites[20]->sprite_y = 11;
-	m_turning_animation_sprites[20]->sprite_width = 794 - 763;
-	m_turning_animation_sprites[20]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[20]->spriteX = 763;
+	m_turning_animation_sprites[20]->spriteY = 11;
+	m_turning_animation_sprites[20]->spriteWidth = 794 - 763;
+	m_turning_animation_sprites[20]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[21]->sprite_x = 800;
-	m_turning_animation_sprites[21]->sprite_y = 11;
-	m_turning_animation_sprites[21]->sprite_width = 831 - 800;
-	m_turning_animation_sprites[21]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[21]->spriteX = 800;
+	m_turning_animation_sprites[21]->spriteY = 11;
+	m_turning_animation_sprites[21]->spriteWidth = 831 - 800;
+	m_turning_animation_sprites[21]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[22]->sprite_x = 837;
-	m_turning_animation_sprites[22]->sprite_y = 11;
-	m_turning_animation_sprites[22]->sprite_width = 868 - 837;
-	m_turning_animation_sprites[22]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[22]->spriteX = 837;
+	m_turning_animation_sprites[22]->spriteY = 11;
+	m_turning_animation_sprites[22]->spriteWidth = 868 - 837;
+	m_turning_animation_sprites[22]->spriteHeight = 47 - 11;
 
-	m_turning_animation_sprites[23]->sprite_x = 874;
-	m_turning_animation_sprites[23]->sprite_y = 11;
-	m_turning_animation_sprites[23]->sprite_width = 905 - 874;
-	m_turning_animation_sprites[23]->sprite_height = 47 - 11;
+	m_turning_animation_sprites[23]->spriteX = 874;
+	m_turning_animation_sprites[23]->spriteY = 11;
+	m_turning_animation_sprites[23]->spriteWidth = 905 - 874;
+	m_turning_animation_sprites[23]->spriteHeight = 47 - 11;
 
 }

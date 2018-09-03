@@ -32,11 +32,11 @@ namespace engine {
 			virtual ~AudioComponent();
 
 
-			AudioComponent(GameObject & game_object, std::string path, bool is_music, bool play_on_start);
+			AudioComponent(GameObject & gameObject, std::string path, bool is_music, bool play_on_start);
 
 			void Init();
 
-			void Shutdown();
+			void shutdown();
 
 			void UpdateCode();
 

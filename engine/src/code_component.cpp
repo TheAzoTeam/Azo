@@ -5,13 +5,13 @@ using namespace engine;
 
 CodeComponent::CodeComponent(){}
 
-CodeComponent::CodeComponent(GameObject &game_object){
-	this->game_object = &game_object;
-	this->component_state = State::ENABLED;
+CodeComponent::CodeComponent(GameObject &gameObject){
+	this->gameObject = &gameObject;
+	this->componentState = State::ENABLED;
 }
 
 void CodeComponent::Init(){}
 
-void CodeComponent::Shutdown(){}
+void CodeComponent::shutdown(){}
 
 void CodeComponent::UpdateCode(){}

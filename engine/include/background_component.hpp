@@ -13,20 +13,20 @@ namespace engine {
 
 	class BackgroundComponent : public Component {
 		protected:
-			std::string image_path;
-			SDL_Texture *image_texture;
+			std::string imagePath;
+			SDL_Texture *imageTexture;
 			SDL_Rect renderQuad;
 			int component_width;
 			int component_height;
 		public:
 			BackgroundComponent();
-			BackgroundComponent(std::string image_path);
-			BackgroundComponent(GameObject &game_object, std::string image_path);
+			BackgroundComponent(std::string imagePath);
+			BackgroundComponent(GameObject &gameObject, std::string imagePath);
 			~BackgroundComponent();
 			void Init();
-			void Shutdown();
-			void Draw();
-			inline std::string GetClassName(){
+			void shutdown();
+			void draw();
+			inline std::string getClassName(){
 				return "BackgroundComponent";
 			}
 	};

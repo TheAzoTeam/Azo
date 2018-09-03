@@ -11,10 +11,10 @@ void AudioController::Init(){
 	}
 }
 
-void AudioController::Shutdown(){
+void AudioController::shutdown(){
 	for(auto audio_row : audio_map){
 		auto audio = audio_row.second;
-		audio->Shutdown();
+		audio->shutdown();
 		audio = NULL;
 	}
 }
@@ -29,12 +29,12 @@ void AudioController::UpdateCode(){
 }
 
 AudioController::AudioController(){
-	this->component_state = State::ENABLED;
+	this->componentState = State::ENABLED;
 }
 
-AudioController::AudioController(GameObject &game_object){
-	this->game_object = &game_object;
-	this->component_state = State::ENABLED;
+AudioController::AudioController(GameObject &gameObject){
+	this->gameObject = &gameObject;
+	this->componentState = State::ENABLED;
 }
 
 void AudioController::AddAudio(std::string audio_name, AudioComponent &audio){

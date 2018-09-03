@@ -8,25 +8,25 @@ using namespace engine;
 
 BackgroundComponent::BackgroundComponent(){}
 
-BackgroundComponent::BackgroundComponent(std::string image_path){
-	this->image_path = image_path;
-	this->component_state = State::ENABLED;
+BackgroundComponent::BackgroundComponent(std::string imagePath){
+	this->imagePath = imagePath;
+	this->componentState = State::ENABLED;
 }
 
 
-BackgroundComponent::BackgroundComponent(GameObject & game_object, std::string image_path){
-	this->game_object = &game_object;
-	this->image_path = image_path;
-	this->component_state = State::ENABLED;
+BackgroundComponent::BackgroundComponent(GameObject & gameObject, std::string imagePath){
+	this->gameObject = &gameObject;
+	this->imagePath = imagePath;
+	this->componentState = State::ENABLED;
 }
 
 BackgroundComponent::~BackgroundComponent(){}
 
 void BackgroundComponent::Init(){
 	//DEBUG("BackgroundComponent::Init method.");
-	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
+	auto assets_image = Game::instance.GetAssetsManager().LoadImage(imagePath);
 
-	image_texture = assets_image->texture;
+	imageTexture = assets_image->texture;
 
 	component_width = assets_image->width;
 	component_height = assets_image->height;
@@ -34,16 +34,16 @@ void BackgroundComponent::Init(){
 	renderQuad = {0, 0, component_width, component_height};
 }
 
-void BackgroundComponent::Shutdown(){
+void BackgroundComponent::shutdown(){
 	/* Terminate Texture */
-	image_texture = NULL;
+	imageTexture = NULL;
 }
 
-void BackgroundComponent::Draw(){
-	//DEBUG("BackgroundComponent::Draw method.");
+void BackgroundComponent::draw(){
+	//DEBUG("BackgroundComponent::draw method.");
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
-		image_texture,
+		imageTexture,
 		&renderQuad,
 		NULL
 		);

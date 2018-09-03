@@ -8,56 +8,56 @@ AssetsManager::AssetsManager(){}
 
 // Load image into image map if we couldn't find it isn't loaded yet.
 // If it's already loaded, return it.
-Image* AssetsManager::LoadImage(std::string image_path){
-	DEBUG("Trying to load image " << image_path);
+Image* AssetsManager::LoadImage(std::string imagePath){
+	DEBUG("Trying to load image " << imagePath);
 	//DEBUG("Image Map size before loading " << image_map.size());
 
-	if(image_map.find(image_path) == image_map.end()){
+	if(image_map.find(imagePath) == image_map.end()){
 		INFO("Loading a new image asset.");
 
 		SDL_Surface *image = NULL;
 
-		if(image_path == ""){
-			ERROR("Invalid Image Path: " << image_path);
+		if(imagePath == ""){
+			ERROR("Invalid Image Path: " << imagePath);
 		}
 
-		image = IMG_Load(image_path.c_str());
+		image = IMG_Load(imagePath.c_str());
 
 		if(image == NULL){
 			ERROR("Couldn't load sprite.");
 		}
 
-		SDL_Texture *image_texture = SDL_CreateTextureFromSurface(Game::instance.sdl_elements.GetCanvas(), image);
+		SDL_Texture *imageTexture = SDL_CreateTextureFromSurface(Game::instance.sdl_elements.GetCanvas(), image);
 
-		if(image_texture == NULL){
+		if(imageTexture == NULL){
 			ERROR("Couldn't create texture from image: " << SDL_GetError());
 		}
 
-		InsertIntoImageMap(image_path, image, image_texture);
+		InsertIntoImageMap(imagePath, image, imageTexture);
 
 		SDL_FreeSurface(image);
 
 	}else{
 		// Nothing to do.
-		DEBUG("Image: " << image_path << " already loaded!");
+		DEBUG("Image: " << imagePath << " already loaded!");
 	}
 
-	return image_map[image_path];
+	return image_map[imagePath];
 }
 
 // Create a new Struct Image variable, which whom we will add to the map.
-void AssetsManager::InsertIntoImageMap(std::string image_path, SDL_Surface* image, SDL_Texture *image_texture){
-	ASSERT(image_path != "", "Image path can't be empty.");
+void AssetsManager::InsertIntoImageMap(std::string imagePath, SDL_Surface* image, SDL_Texture *imageTexture){
+	ASSERT(imagePath != "", "Image path can't be empty.");
 	ASSERT(image != NULL, "SDL_Suface pointer can't be null.");
 
 	Image *assets_manager_image = new Image;
 
-	assets_manager_image->texture = image_texture;
+	assets_manager_image->texture = imageTexture;
 	assets_manager_image->width = image->w;
 	assets_manager_image->height = image->h;
 
 	// Insert image into image map.
-	image_map[image_path] = assets_manager_image;
+	image_map[imagePath] = assets_manager_image;
 	DEBUG("Image Map size after inserting " << image_map.size());
 }
 
