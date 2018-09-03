@@ -51,11 +51,11 @@ namespace engine {
 
 			void RestartScene(std::string sceneName);
 
-			/* Used to transfer the game_name, window_width and window_height to SDL instace through its method
-			   "SetSDLAttributes" and set Game's frame_rate. */
-			void SetAttributes(std::string game_name,
-					   int window_width,
-					   int window_height,
+			/* Used to transfer the gameName, windowWidth and windowHeight to SDL instace through its method
+			   "setSDLAttributes" and set Game's frame_rate. */
+			void SetAttributes(std::string gameName,
+					   int windowWidth,
+					   int windowHeight,
 					   int frame_rate);
 
 			// Used to use the private attribute Timer.

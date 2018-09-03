@@ -5,7 +5,7 @@ using namespace engine;
 SDL::SDL(){}
 
 // Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
-void SDL::InitSDL(){
+void SDL::initSDL(){
 	INFO("Initializing SDL.");
 	INFO("Initializing Audio and Video.");
 	if((SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)){
@@ -13,9 +13,9 @@ void SDL::InitSDL(){
 	}
 
 	INFO("Initializing SDL Image.");
-	int image_flags = IMG_INIT_PNG;
+	int imageFlags = IMG_INIT_PNG;
 
-	if(!(IMG_Init(image_flags) & image_flags)){
+	if(!(IMG_Init(imageFlags) & imageFlags)){
 		ERROR("SDL Image could't be started.");
 	}
 
@@ -26,22 +26,22 @@ void SDL::InitSDL(){
 }
 
 // Used inside "Run" method of the Game, creating the Window and Canvas.
-void SDL::CreateWindow(){
+void SDL::createWindow(){
 	INFO("Creating Window.");
 	window = SDL_CreateWindow(
-		game_name.c_str(),      // Game window title.
+		gameName.c_str(),      // Game window title.
 		SDL_WINDOWPOS_CENTERED, // Window opening position x.
 		SDL_WINDOWPOS_CENTERED, // Window opening position y.
-		window_width,           // Window width.
-		window_height,          // Window height.
+		windowWidth,           // Window width.
+		windowHeight,          // Window height.
 		SDL_WINDOW_SHOWN
 	);
 
 	if(window == NULL){
-		ERROR( "Couldn't create window.");
+		ERROR("Couldn't create window.");
 	}
 
-	SDL_GetWindowSize(window, &window_width, &window_height);
+	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
 
 	INFO("Creating canvas.");
 	canvas = SDL_CreateRenderer(
@@ -64,7 +64,7 @@ void SDL::CreateWindow(){
 	}
 
 	// Used in the Main Loop's End.
-	void SDL::TerminateSDL(){
+	void SDL::terminateSDL(){
 		INFO("Terminating SDL.");
 		DEBUG("Destroying Renderer");
 		SDL_DestroyRenderer(canvas);
@@ -85,8 +85,8 @@ void SDL::CreateWindow(){
 	}
 
 	// Receive attributes of the Game instance, throught "SetGameAttributes" method.
-	void SDL::SetSDLAttributes(std::string game_name, int window_width, int window_height){
-		this->game_name = game_name;
-		this->window_width = window_width;
-		this->window_height = window_height;
+	void SDL::setSDLAttributes(std::string gameName, int windowWidth, int windowHeight){
+		this->gameName = gameName;
+		this->windowWidth = windowWidth;
+		this->windowHeight = windowHeight;
 	}

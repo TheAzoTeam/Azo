@@ -71,7 +71,7 @@ void Animation::draw(){
 
 	//DEBUG("Rendering");
 	SDL_RenderCopy(
-		Game::instance.sdl_elements.GetCanvas(),
+		Game::instance.sdl_elements.getCanvas(),
 		imageTexture,
 		&renderQuad,
 		&canvasQuad
