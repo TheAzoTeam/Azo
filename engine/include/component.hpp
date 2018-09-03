@@ -15,28 +15,28 @@ namespace engine {
 	class Component {
 		protected:
 			GameObject *game_object;
-			State component_state = State::ENABLED;
+			State componentState = State::ENABLED;
 
 		public:
 			Component();
 
 			Component(GameObject &game_object);
 
-			virtual void Init();
+			virtual void init();
 
-			virtual void Shutdown();
+			virtual void shutdown();
 
-			virtual void Draw();
+			virtual void draw();
 
 			virtual void updateCode();
 
-			virtual void EnableComponent();
+			virtual void enableComponent();
 
-			virtual void DisableComponent();
+			virtual void disableComponent();
 
-			bool IsEnabled();
+			bool isEnabled();
 
-			virtual inline std::string GetClassName(){
+			virtual inline std::string getClassName(){
 				return "Component";
 			}
 	};

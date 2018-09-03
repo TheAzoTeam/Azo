@@ -2,7 +2,6 @@
 #define INPUT_MANAGER_HPP
 
 #include "sdl2include.h"
-
 #include <string>
 #include <list>
 

@@ -23,7 +23,7 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 	this->AddComponent(*m_image);
 }
 
-void InvisibleBlock::Shutdown(){
-	m_image->Shutdown();
+void InvisibleBlock::shutdown(){
+	m_image->shutdown();
 	m_image = NULL;
 }

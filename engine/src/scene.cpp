@@ -9,15 +9,15 @@ Scene::Scene(std::string scene_name){
 }
 
 
-void Scene::Init(){
+void Scene::init(){
 	for(auto each_key : m_key_list){
-		game_object_map[each_key]->Init();
+		game_object_map[each_key]->init();
 	}
 }
 
-void Scene::Shutdown(){
+void Scene::shutdown(){
 	for(auto each_key : m_key_list){
-		game_object_map[each_key]->Shutdown();
+		game_object_map[each_key]->shutdown();
 	}
 
 	DeleteKeyList();
@@ -28,10 +28,10 @@ void Scene::DeleteKeyList(){
 }
 
 
-void Scene::Draw(){
+void Scene::draw(){
 	for(auto each_key : m_key_list){
 		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
-			game_object_map[each_key]->Draw();
+			game_object_map[each_key]->draw();
 		}
 	}
 }

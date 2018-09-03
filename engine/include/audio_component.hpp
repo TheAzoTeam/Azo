@@ -34,9 +34,9 @@ namespace engine {
 
 			AudioComponent(GameObject & game_object, std::string path, bool is_music, bool play_on_start);
 
-			void Init();
+			void init();
 
-			void Shutdown();
+			void shutdown();
 
 			void updateCode();
 

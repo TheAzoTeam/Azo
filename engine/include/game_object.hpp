@@ -44,11 +44,11 @@ namespace engine {
 			void AddComponent(Component &component);
 			AnimationController* GetAnimationController(std::type_index component_type);
 			AudioController* GetAudioController(std::type_index component_type);
-			virtual void Init();
-			virtual void Draw();
-			virtual void Shutdown();
+			virtual void init();
+			virtual void draw();
+			virtual void shutdown();
 			virtual void updateCode();
-			virtual inline std::string GetClassName(){
+			virtual inline std::string getClassName(){
 				return "GameObject";
 			}
 			std::pair<double, double> CalcBottomLeft();

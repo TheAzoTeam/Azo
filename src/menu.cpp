@@ -40,7 +40,7 @@ void Menu::CreateMenuComponents(){
 					       1,
 					       std::make_pair(205, 162));
 
-	m_animation_controller->AddAnimation("start_button", *m_start_button);
+	m_animation_controller->addAnimation("start_button", *m_start_button);
 
 	m_arrow_start = new engine::Animation(*m_menu,
 					      "general_images/textos.png",
@@ -52,7 +52,7 @@ void Menu::CreateMenuComponents(){
 					      1,
 					      std::make_pair(168, 162));
 
-	m_animation_controller->AddAnimation("arrow_start", *m_arrow_start);
+	m_animation_controller->addAnimation("arrow_start", *m_arrow_start);
 
 	m_exit_button = new engine::Animation(*m_menu,
 					      "general_images/textos.png",
@@ -64,7 +64,7 @@ void Menu::CreateMenuComponents(){
 					      1,
 					      std::make_pair(551, 162));
 
-	m_animation_controller->AddAnimation("exit_button", *m_exit_button);
+	m_animation_controller->addAnimation("exit_button", *m_exit_button);
 
 	m_arrow_exit = new engine::Animation(*m_menu,
 					     "general_images/textos.png",
@@ -76,8 +76,8 @@ void Menu::CreateMenuComponents(){
 					     1,
 					     std::make_pair(514, 162));
 
-	m_arrow_exit->DisableComponent();
-	m_animation_controller->AddAnimation("arrow_exit", *m_arrow_exit);
+	m_arrow_exit->disableComponent();
+	m_animation_controller->addAnimation("arrow_exit", *m_arrow_exit);
 
 	m_sound_enable_button = new engine::Animation(*m_menu,
 						      "general_images/textos.png",
@@ -89,7 +89,7 @@ void Menu::CreateMenuComponents(){
 						      1,
 						      std::make_pair(708, 40));
 
-	m_animation_controller->AddAnimation("sound_enabled_button", *m_sound_enable_button);
+	m_animation_controller->addAnimation("sound_enabled_button", *m_sound_enable_button);
 
 	m_sound_disabled_button = new engine::Animation(*m_menu,
 							"general_images/textos.png",
@@ -101,9 +101,9 @@ void Menu::CreateMenuComponents(){
 							1,
 							std::make_pair(708, 40));
 
-	m_sound_disabled_button->DisableComponent();
+	m_sound_disabled_button->disableComponent();
 
-	m_animation_controller->AddAnimation("sound_disabled_button", *m_sound_disabled_button);
+	m_animation_controller->addAnimation("sound_disabled_button", *m_sound_disabled_button);
 
 	m_arrow_sound = new engine::Animation(*m_menu,
 					      "general_images/textos.png",
@@ -115,9 +115,9 @@ void Menu::CreateMenuComponents(){
 					      1,
 					      std::make_pair(676, 40));
 
-	m_arrow_sound->DisableComponent();
+	m_arrow_sound->disableComponent();
 
-	m_animation_controller->AddAnimation("arrow_sound", *m_arrow_sound);
+	m_animation_controller->addAnimation("arrow_sound", *m_arrow_sound);
 
 	m_menu->AddComponent(*m_animation_controller);
 
@@ -166,6 +166,6 @@ void Menu::GenButtonsAnimation(){
 }
 
 
-void Menu::Shutdown(){
-	DEBUG("Calling Menu::Shutdown.");
+void Menu::shutdown(){
+	DEBUG("Calling Menu::shutdown.");
 }

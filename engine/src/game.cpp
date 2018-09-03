@@ -57,11 +57,11 @@ void Game::Run(){
 			}
 		}
 
-		// Clean and Draw the Scene to refreh animations and objects.
+		// Clean and draw the Scene to refreh animations and objects.
 		// DEBUG("Drawing current scene.");
 		// DEBUG("Scene name: " << current_scene->GetSceneName());
 		SDL_RenderClear(sdl_elements.GetCanvas());
-		current_scene->Draw();
+		current_scene->draw();
 		SDL_RenderPresent(sdl_elements.GetCanvas());
 
 		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
@@ -144,22 +144,22 @@ bool Game::StartAndStopScenes(){
 				current_scene->DeleteKeyList();
 			}
 
-			if(current_scene->m_state == SceneState::RUNNED){
+			if(current_scene->mState == SceneState::RUNNED){
 				current_scene->Restart();
-				current_scene->m_state = SceneState::FIRST_TIME;
+				current_scene->mState = SceneState::FIRST_TIME;
 			}
 
-			if(current_scene->m_state == SceneState::FIRST_TIME){
-				current_scene->m_state = SceneState::RUNNED;
+			if(current_scene->mState == SceneState::FIRST_TIME){
+				current_scene->mState = SceneState::RUNNED;
 			}
 
 
-			current_scene->Init();
+			current_scene->init();
 
 			if(last_scene != NULL){
 				INFO("Shuting down scene!");
 				if(last_scene->GetSceneName() != current_scene->GetSceneName()){
-					last_scene->Shutdown();
+					last_scene->shutdown();
 				}
 				//DEBUG("Scene name: " << last_scene->GetSceneName());
 				//scene_map.erase(last_scene->GetSceneName());

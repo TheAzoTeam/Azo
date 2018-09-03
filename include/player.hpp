@@ -54,7 +54,7 @@ namespace Azo {
 			const double M_WALKING_SPEED = 4.8f;
 			const int M_TOTAL_PARTS = 25;
 
-			PlayerState m_state;
+			PlayerState mState;
 			std::pair<double, double> m_speed;
 
 			bool m_pushes_right_wall;
@@ -77,14 +77,14 @@ namespace Azo {
 			void GenVictoryAnimation();
 
 
-			inline std::string GetClassName(){
+			inline std::string getClassName(){
 				return "Player";
 			}
 
 		public:
 			Player();
 			Player(std::string name, std::pair<double, double> current_position);
-			void Shutdown();
+			void shutdown();
 	};
 }
 

@@ -27,7 +27,7 @@ AnimationController* GameObject::GetAnimationController(std::type_index componen
 	auto component_to_be_found = m_component_map.find(component_type);
 
 	if(component_to_be_found != m_component_map.end()){
-		DEBUG("AnimationController found. Class name: " << component_to_be_found->second->GetClassName());
+		DEBUG("AnimationController found. Class name: " << component_to_be_found->second->getClassName());
 		return dynamic_cast <AnimationController * > (component_to_be_found->second);
 	}else{
 		ERROR("Animation Controller couldn't be found!");
@@ -38,7 +38,7 @@ AudioController* GameObject::GetAudioController(std::type_index component_type){
 	auto component_to_be_found = m_component_map.find(component_type);
 
 	if(component_to_be_found != m_component_map.end()){
-		DEBUG("AudioController found. Class name: " << component_to_be_found->second->GetClassName());
+		DEBUG("AudioController found. Class name: " << component_to_be_found->second->getClassName());
 
 		return dynamic_cast <AudioController * > (component_to_be_found->second);
 	}else{
@@ -46,17 +46,17 @@ AudioController* GameObject::GetAudioController(std::type_index component_type){
 	}
 }
 
-void GameObject::Init(){
+void GameObject::init(){
 	for(auto each_pair : m_component_map){
 		auto component = each_pair.second;
-		if(component->IsEnabled()){
-			component->Init();
+		if(component->isEnabled()){
+			component->init();
 		}
 	}
 }
 
-void GameObject::Draw(){
-	// DEBUG("GameObject::Draw method.");
+void GameObject::draw(){
+	// DEBUG("GameObject::draw method.");
 	//DEBUG("Game object name: " << m_name);
 	// DEBUG("Map size: " << m_component_map.size());
 	for(auto each_pair : m_component_map){
@@ -64,9 +64,9 @@ void GameObject::Draw(){
 
 		ASSERT(component != NULL, "Component can't be NULL when drawing.");
 
-		if(component->IsEnabled()){
-			//	DEBUG("Drawing Component. Component Class Name: " << component->GetClassName());
-			component->Draw();
+		if(component->isEnabled()){
+			//	DEBUG("Drawing Component. Component Class Name: " << component->getClassName());
+			component->draw();
 		}
 	}
 
@@ -76,16 +76,16 @@ void GameObject::Draw(){
 void GameObject::updateCode(){
 	for(auto each_pair : m_component_map){
 		auto component = each_pair.second;
-		if(component->IsEnabled()){
+		if(component->isEnabled()){
 			component->updateCode();
 		}
 	}
 }
 
-void GameObject::Shutdown(){
+void GameObject::shutdown(){
 	// for(auto each_pair : m_component_map){
 	//      auto component = each_pair.second;
-	//      component->Shutdown();
+	//      component->shutdown();
 	// }
 }
 

@@ -22,7 +22,7 @@ namespace Azo {
 			PlayerCode();
 			virtual ~PlayerCode();
 			PlayerCode(Player *player);
-			void Shutdown();
+			void shutdown();
 	};
 }
 

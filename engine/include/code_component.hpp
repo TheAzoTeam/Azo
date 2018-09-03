@@ -15,9 +15,9 @@ namespace engine {
 
 			CodeComponent(GameObject &game_object);
 
-			void Init();
+			void init();
 
-			void Shutdown();
+			void shutdown();
 
 			void updateCode();
 	};

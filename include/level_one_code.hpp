@@ -21,7 +21,7 @@ namespace Azo {
 			int m_current_option = 1;
 		public:
 			LevelOneCode(engine::GameObject &game_object);
-			void Shutdown();
+			void shutdown();
 		private:
 			void FindAudioController();
 			void updateCode();

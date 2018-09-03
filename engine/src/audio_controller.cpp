@@ -4,17 +4,17 @@ using namespace engine;
 
 AudioController::~AudioController(){}
 
-void AudioController::Init(){
+void AudioController::init(){
 	for(auto audio_row : audio_map){
 		auto audio = audio_row.second;
-		audio->Init();
+		audio->init();
 	}
 }
 
-void AudioController::Shutdown(){
+void AudioController::shutdown(){
 	for(auto audio_row : audio_map){
 		auto audio = audio_row.second;
-		audio->Shutdown();
+		audio->shutdown();
 		audio = NULL;
 	}
 }
@@ -22,19 +22,19 @@ void AudioController::Shutdown(){
 void AudioController::updateCode(){
 	for(auto audio_row : audio_map){
 		auto audio = audio_row.second;
-		if(audio->IsEnabled()){
+		if(audio->isEnabled()){
 			audio->updateCode();
 		}
 	}
 }
 
 AudioController::AudioController(){
-	this->component_state = State::ENABLED;
+	this->componentState = State::ENABLED;
 }
 
 AudioController::AudioController(GameObject &game_object){
 	this->game_object = &game_object;
-	this->component_state = State::ENABLED;
+	this->componentState = State::ENABLED;
 }
 
 void AudioController::AddAudio(std::string audio_name, AudioComponent &audio){

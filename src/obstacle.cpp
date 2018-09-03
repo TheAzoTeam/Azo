@@ -6,20 +6,20 @@ Obstacle::Obstacle(){}
 
 Obstacle::~Obstacle(){}
 
-void Obstacle::Shutdown(){
+void Obstacle::shutdown(){
 	for(auto each_block : m_block_list){
 		if(each_block != NULL){
-			each_block->Shutdown();
+			each_block->shutdown();
 			delete(each_block);
 			each_block = NULL;
 		}
 	}
 
 	if(m_turning_animation_sprites.size() > 0){
-		for(auto each_animation : m_turning_animation_sprites){
-			if(each_animation != NULL){
-				delete(each_animation);
-				each_animation = NULL;
+		for(auto eachAnimation : m_turning_animation_sprites){
+			if(eachAnimation != NULL){
+				delete(eachAnimation);
+				eachAnimation = NULL;
 			}
 		}
 	}
@@ -30,7 +30,7 @@ void Obstacle::Shutdown(){
 	}
 
 	if(m_audio_controller != NULL){
-		m_audio_controller->Shutdown();
+		m_audio_controller->shutdown();
 		delete(m_audio_controller);
 		m_audio_controller = NULL;
 	}
@@ -46,7 +46,7 @@ void Obstacle::Shutdown(){
 
 
 	if(m_machine_part_code != NULL){
-		m_machine_part_code->Shutdown();
+		m_machine_part_code->shutdown();
 		delete(m_machine_part_code);
 		m_machine_part_code = NULL;
 	}

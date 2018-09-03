@@ -27,12 +27,12 @@ namespace engine {
 			float m_animation_time;
 			bool m_loop;
 		public:
-			std::string animation_name;
-			AnimationState m_state = AnimationState::STOPPED;
+			std::string animationName;
+			AnimationState mState = AnimationState::STOPPED;
 		public:
 			Animation();
 			virtual ~Animation();
-			void Shutdown();
+			void shutdown();
 			Animation(
 				GameObject & game_object,
 				std::string image_path,
@@ -53,11 +53,11 @@ namespace engine {
 				bool loop,
 				double zoom_factor,
 				std::pair<double, double> position_relative_to_object);
-			void Draw();
-			inline std::string GetClassName(){
+			void draw();
+			inline std::string getClassName(){
 				return "Animation";
 			}
-			void DisableComponent();
+			void disableComponent();
 
 		private:
 			void CheckLimits();

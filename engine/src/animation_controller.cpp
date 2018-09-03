@@ -2,93 +2,93 @@
 
 using namespace engine;
 
-void AnimationController::Init(){
-	for(auto animation_row : m_animation_map){
-		auto animation = animation_row.second;
-		animation->Init();
+void AnimationController::init(){
+	for (auto animationRow : mAnimationMap) {
+		auto animation = animationRow.second;
+		animation->init();
 	}
 }
 
-void AnimationController::Draw(){
-	for(auto animation_row : m_animation_map){
-		auto animation = animation_row.second;
-		if(animation->IsEnabled()){
-			animation->Draw();
+void AnimationController::draw(){
+	for (auto animationRow : mAnimationMap) {
+		auto animation = animationRow.second;
+		if (animation->isEnabled()) {
+			animation->draw();
 		}
 	}
 }
 
-void AnimationController::Shutdown(){
-	for(auto animation_row : m_animation_map){
-		auto animation = animation_row.second;
-		animation->Shutdown();
+void AnimationController::shutdown(){
+	for (auto animationRow : mAnimationMap) {
+		auto animation = animationRow.second;
+		animation->shutdown();
 	}
 }
 
 AnimationController::AnimationController(){
-	this->component_state = State::ENABLED;
+	this->componentState = State::ENABLED;
 }
 
 AnimationController::AnimationController(GameObject &game_object){
 	this->game_object = &game_object;
-	this->component_state = State::ENABLED;
+	this->componentState = State::ENABLED;
 }
 
-void AnimationController::AddAnimation(std::string animation_name, Animation &animation){
-	std::pair<std::string, Animation *> new_animation(animation_name, &animation);
+void AnimationController::addAnimation(std::string animationName, Animation &animation){
+	std::pair<std::string, Animation *> new_animation(animationName, &animation);
 
-	m_animation_map.insert(new_animation);
+	mAnimationMap.insert(new_animation);
 }
 
-void AnimationController::StartUniqueAnimation(std::string animation_name){
-	auto animation_to_be_played = m_animation_map.find(animation_name);
+void AnimationController::startUniqueAnimation(std::string animationName){
+	auto animationToBePlayed = mAnimationMap.find(animationName);
 
-	if(animation_to_be_played == m_animation_map.end()){
-		ERROR("Animation " << animation_name << "doesn't exist!");
+	if (animationToBePlayed == mAnimationMap.end()) {
+		ERROR("Animation " << animationName << "doesn't exist!");
 	}
 
-	if(animation_to_be_played->second->m_state == AnimationState::STOPPED){
-		for(auto each_animation : m_animation_map){
-			each_animation.second->DisableComponent();
-			each_animation.second->m_state = AnimationState::STOPPED;
+	if (animationToBePlayed->second->mState == AnimationState::STOPPED) {
+		for (auto eachAnimation : mAnimationMap) {
+			eachAnimation.second->disableComponent();
+			eachAnimation.second->mState = AnimationState::STOPPED;
 		}
-		if(animation_to_be_played != m_animation_map.end()){
-			animation_to_be_played->second->EnableComponent();
-			animation_to_be_played->second->m_state = AnimationState::PLAYING;
+		if (animationToBePlayed != mAnimationMap.end()) {
+			animationToBePlayed->second->enableComponent();
+			animationToBePlayed->second->mState = AnimationState::PLAYING;
 		}
 	}
 }
 
-void AnimationController::StartAnimation(std::string animation_name){
-	auto animation_to_be_played = m_animation_map.find(animation_name);
+void AnimationController::startAnimation(std::string animationName){
+	auto animationToBePlayed = mAnimationMap.find(animationName);
 
-	if(animation_to_be_played == m_animation_map.end()){
-		ERROR("Animation " << animation_name << "doesn't exist!");
+	if (animationToBePlayed == mAnimationMap.end()) {
+		ERROR("Animation " << animationName << "doesn't exist!");
 	}
 
-	if(!animation_to_be_played->second->IsEnabled()){
-		animation_to_be_played->second->EnableComponent();
-		animation_to_be_played->second->m_state = AnimationState::PLAYING;
+	if (!animationToBePlayed->second->isEnabled()) {
+		animationToBePlayed->second->enableComponent();
+		animationToBePlayed->second->mState = AnimationState::PLAYING;
 	}
 }
 
 
-void AnimationController::StopAnimation(std::string animation_name){
-	auto animation_to_be_played = m_animation_map.find(animation_name);
+void AnimationController::stopAnimation(std::string animationName){
+	auto animationToBePlayed = mAnimationMap.find(animationName);
 
-	if(animation_to_be_played != m_animation_map.end()){
-		animation_to_be_played->second->DisableComponent();
-	}else{
+	if (animationToBePlayed != mAnimationMap.end()) {
+		animationToBePlayed->second->disableComponent();
+	} else {
 		ERROR("Animation couldn't be found!");
 	}
 }
 
-AnimationState AnimationController::GetAnimationStatus(std::string animation_name){
-	auto animation = m_animation_map.find(animation_name);
+AnimationState AnimationController::getAnimationStatus(std::string animationName){
+	auto animation = mAnimationMap.find(animationName);
 
-	if(animation != m_animation_map.end()){
-		return animation->second->m_state;
-	}else{
+	if (animation != mAnimationMap.end()) {
+		return animation->second->mState;
+	} else {
 		ERROR("Animation couldn't be found!");
 	}
 }

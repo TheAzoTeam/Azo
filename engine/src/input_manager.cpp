@@ -13,7 +13,7 @@ bool InputManager::keyDown(Button button) {
 			//  Case start.
 			case SDL_KEYDOWN:
 
-				if(eachEvent.key.keysym.scancode == (SDL_Scancode)button){
+				if (eachEvent.key.keysym.scancode == (SDL_Scancode)button) {
 					return true;
 				}
 

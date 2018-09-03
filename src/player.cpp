@@ -12,11 +12,11 @@ Player::Player(std::string name, std::pair<double, double> current_position){
 	CreateComponents();
 }
 
-void Player::Shutdown(){
+void Player::shutdown(){
 
 	if(m_anim_controller != nullptr){
 		DEBUG("Shutting down m_anim_controller");
-		m_anim_controller->Shutdown();
+		m_anim_controller->shutdown();
 		delete(m_anim_controller);
 		m_anim_controller = nullptr;
 	}
@@ -72,7 +72,7 @@ void Player::Shutdown(){
 	}
 
 	if(m_player_code != nullptr){
-		m_player_code->Shutdown();
+		m_player_code->shutdown();
 		delete(m_player_code);
 		m_player_code = nullptr;
 	}
@@ -87,33 +87,33 @@ void Player::CreateComponents(){
 	m_anim_controller = new engine::AnimationController();
 
 	DEBUG("Adding walking animation to animation controller.");
-	m_anim_controller->AddAnimation("walking", *m_walking);
+	m_anim_controller->addAnimation("walking", *m_walking);
 
 	GenJumpingAnimation();
 	m_jumping = new engine::Animation(*this, "sprites/CowboyJump.png", 800.0f, m_jumping_animation_sprites, 0, 7, false, 1);
-	m_jumping->DisableComponent();
+	m_jumping->disableComponent();
 	DEBUG("Adding jumping animation to animation controller");
-	m_anim_controller->AddAnimation("jumping", *m_jumping);
+	m_anim_controller->addAnimation("jumping", *m_jumping);
 
 	GenSlidingAnimation();
 	m_sliding = new engine::Animation(*this, "sprites/CowboyDesce.png", 800.0f, m_sliding_animation_sprites, 0, 20, false, 1);
-	m_sliding->DisableComponent();
-	m_anim_controller->AddAnimation("sliding", *m_sliding);
+	m_sliding->disableComponent();
+	m_anim_controller->addAnimation("sliding", *m_sliding);
 
 	GenDyingAnimation();
 	m_dying = new engine::Animation(*this, "sprites/CowboyTonto.png", 2000.0f, m_dying_animation_sprites, 0, 35, false, 1);
-	m_dying->DisableComponent();
-	m_anim_controller->AddAnimation("dying", *m_dying);
+	m_dying->disableComponent();
+	m_anim_controller->addAnimation("dying", *m_dying);
 
 	GenLosingAnimation();
 	m_losing = new engine::Animation(*this, "sprites/CowBoyDerrota.png", 10000.0f, m_losing_animation_sprites, 0, 6, false, 1);
-	m_losing->DisableComponent();
-	m_anim_controller->AddAnimation("losing", *m_losing);
+	m_losing->disableComponent();
+	m_anim_controller->addAnimation("losing", *m_losing);
 
 	GenVictoryAnimation();
 	m_victory = new engine::Animation(*this, "sprites/victory.png", 10.0f, m_victory_animation_sprites, 0, 0, false, 1);
-	m_victory->DisableComponent();
-	m_anim_controller->AddAnimation("victory", *m_victory);
+	m_victory->disableComponent();
+	m_anim_controller->addAnimation("victory", *m_victory);
 
 	DEBUG("Adding animation controller to Player.");
 	this->AddComponent(*m_anim_controller);
