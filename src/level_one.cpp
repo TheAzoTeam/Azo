@@ -67,7 +67,7 @@ void LevelOne::CreateGameObjects() {
 
 
 	DEBUG("Creating obstacle box 0_1.");
-	mObstacleBox01 = new Obstacle("obstacle_box_0_1",       
+	mObstacleBox01 = new Obstacle("obstacle_box_0_1",
 								  std::make_pair(1309, 310),
 								  ObstacleType::WESTERN_BOX);
 	this->AddGameObject(*mObstacleBox01);
