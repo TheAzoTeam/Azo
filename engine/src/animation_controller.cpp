@@ -35,9 +35,9 @@ AnimationController::AnimationController(GameObject &game_object){
 }
 
 void AnimationController::addAnimation(std::string animationName, Animation &animation){
-	std::pair<std::string, Animation *> new_animation(animationName, &animation);
+	std::pair<std::string, Animation *> newAnimation(animationName, &animation);
 
-	mAnimationMap.insert(new_animation);
+	mAnimationMap.insert(newAnimation);
 }
 
 void AnimationController::startUniqueAnimation(std::string animationName){
