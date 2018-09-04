@@ -25,9 +25,10 @@ namespace engine {
 		float mAnimationTime;
 		bool mLoop;
 
-	public:
-		std::string animationName;
-		AnimationState mState = AnimationState::STOPPED;
+		void checkLimits();
+		void updateQuad();
+		void updateFrameBasedOntime();
+		void updateGameObjectMeasures();
 
 	public:
 		Animation();
@@ -40,18 +41,14 @@ namespace engine {
 				  std::pair<double, double> positionRelativeToObject);
 		virtual ~Animation();
 
+		std::string animationName;
+		AnimationState mState = AnimationState::STOPPED;
 		void shutdown();
 		void draw();
 		void disableComponent();
 		inline std::string getClassName(){
 			return "Animation";
 		}
-
-	private:
-		void checkLimits();
-		void updateQuad();
-		void updateFrameBasedOntime();
-		void updateGameObjectMeasures();
 	};
 
 }
