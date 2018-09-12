@@ -2,6 +2,11 @@
 
 using namespace engine;
 
+const int FIRST_RENDERING_DRIVER = -1;
+const int AUDIO_CHANNELS = 2;
+const int AUDIO_CHUNKSIZE = 2048;
+const int AUDIO_RESULT_NULL = 0;
+
 SDL::SDL(){}
 
 // Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
@@ -20,7 +25,7 @@ void SDL::initSDL(){
 	}
 
 	INFO("Initializing SDL Mixer.");
-	if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 2048) < 0){
+	if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, AUDIO_CHANNELS, AUDIO_CHUNKSIZE) < AUDIO_RESULT_NULL){
 		ERROR("SDL MIXER could't be started.");
 	}
 }
@@ -46,7 +51,7 @@ void SDL::createWindow(){
 	INFO("Creating canvas.");
 	canvas = SDL_CreateRenderer(
 		window,                                                 // Window pointer
-		-1,                                                     // The index to the rendering driver, or -1 to the first one
+		FIRST_RENDERING_DRIVER,                        			// The index to the rendering driver, or -1 to the first one
 		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC    // Flag. The renderer will use hardware acceleration
 	);
 

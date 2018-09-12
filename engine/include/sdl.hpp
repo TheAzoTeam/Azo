@@ -15,7 +15,6 @@ namespace engine {
 		int windowWidth;
 		int windowHeight;
 		std::string gameName;
-
 	public:
 		SDL();
 

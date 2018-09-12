@@ -50,7 +50,6 @@ namespace engine {
 			return "Animation";
 		}
 	};
-
 }
 
 #endif

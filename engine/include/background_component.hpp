@@ -3,14 +3,14 @@
 
 #include <string>
 #include <iostream>
+#include "input_manager.hpp"
+#include "component.hpp"
 #include "sdl2include.h"
 #include "log.h"
-#include "component.hpp"
-#include "input_manager.hpp"
 
 namespace engine {
 
-	class BackgroundComponent : public Component {
+    class BackgroundComponent : public Component {
 	protected:
 		std::string imagePath;
 		SDL_Texture *imageTexture;
@@ -22,7 +22,6 @@ namespace engine {
 		BackgroundComponent(std::string imagePath);
 		BackgroundComponent(GameObject &gameObject, std::string imagePath);
 		~BackgroundComponent();
-		
 		void init();
 		void shutdown();
 		void draw();
@@ -31,4 +30,5 @@ namespace engine {
 		}
 	};
 }
+
 #endif

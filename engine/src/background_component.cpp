@@ -1,9 +1,12 @@
 #include "background_component.hpp"
-#include "game.hpp"
 #include "game_object.hpp"
+#include "game.hpp"
 #include "sdl.hpp"
 
 using namespace engine;
+
+const int COMPONENT_X = 0;
+const int COMPONENT_Y = 0;
 
 BackgroundComponent::BackgroundComponent(){}
 
@@ -26,11 +29,11 @@ void BackgroundComponent::init(){
 	imageTexture = assetsImage->texture;
 	componentWidth = assetsImage->width;
 	componentHeight = assetsImage->height;
-	renderQuad = {0, 0, componentWidth, componentHeight};
+	renderQuad = {COMPONENT_X, COMPONENT_Y, componentWidth, componentHeight};
 }
 
 void BackgroundComponent::shutdown(){
-	/* Terminate Texture */
+	// Terminate Texture
 	imageTexture = NULL;
 }
 
