@@ -15,7 +15,7 @@ namespace Azo {
 			virtual ~InvisibleBlock();
 			InvisibleBlock(std::string name, std::pair<double, double> positionRelativeToParent,
 				       std::pair<double, double> size);
-			void shutDown();
+			void shutdown();
 			inline std::string getClassName(){
 				return "InvisibleBlock";
 			}

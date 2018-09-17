@@ -23,7 +23,7 @@ ImageComponent::ImageComponent(GameObject &gameObject,
 	m_position_relative_to_object = position_relative_to_object;
 }
 
-void ImageComponent::Init(){
+void ImageComponent::init(){
 	// Check AssetsManager to see if image is already loaded.
 	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
 
@@ -32,8 +32,8 @@ void ImageComponent::Init(){
 	component_width = assets_image->width * zoom_factor;
 	component_height = assets_image->height * zoom_factor;
 
-	gameObject->m_size.first = component_width;
-	gameObject->m_size.second = component_height;
+	gameObject->mSize.first = component_width;
+	gameObject->mSize.second = component_height;
 
 	canvasQuad = {
 		(int)(gameObject->mCurrentPosition.first + m_position_relative_to_object.first),
@@ -47,7 +47,7 @@ void ImageComponent::Init(){
 }
 
 
-void ImageComponent::Draw(){
+void ImageComponent::draw(){
 	UpdateQuad();
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),

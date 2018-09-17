@@ -18,14 +18,14 @@ PlayerCode::PlayerCode(Player *player){
 
 
 void PlayerCode::FindAnimationController(){
-	m_animation_controller = (m_player->GetAnimationController(typeid(engine::AnimationController)));
+	m_animation_controller = (m_player->getAnimationController(typeid(engine::AnimationController)));
 }
 
 void PlayerCode::findAudioController(){
 	mAudioController = (m_player->getAudioController(typeid(engine::AudioController)));
 }
 
-void PlayerCode::shutDown(){
+void PlayerCode::shutdown(){
 	if(m_animation_controller != NULL){
 		m_animation_controller = NULL;
 	}

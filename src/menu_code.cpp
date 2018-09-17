@@ -10,7 +10,7 @@ MenuCode::MenuCode(engine::GameObject *gameObject){
 }
 
 void MenuCode::FindAnimationController(){
-	m_animation_controller = (gameObject->GetAnimationController(typeid(engine::AnimationController)));
+	m_animation_controller = (gameObject->getAnimationController(typeid(engine::AnimationController)));
 }
 
 void MenuCode::findAudioController(){

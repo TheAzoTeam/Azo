@@ -25,7 +25,7 @@ void Menu::CreateMenuComponents(){
 	m_menu_theme = new engine::AudioComponent(*m_menu, "audios/TemaGame.ogg", true, true);
 	mAudioController = new engine::AudioController();
 	mAudioController->AddAudio("menu_theme", *m_menu_theme);
-	m_menu->AddComponent(*mAudioController);
+	m_menu->addComponent(*mAudioController);
 
 	m_animation_controller = new engine::AnimationController(*m_menu);
 
@@ -76,7 +76,7 @@ void Menu::CreateMenuComponents(){
 					     1,
 					     std::make_pair(514, 162));
 
-	m_arrow_exit->DisableComponent();
+	m_arrow_exit->disableComponent();
 	m_animation_controller->AddAnimation("arrow_exit", *m_arrow_exit);
 
 	m_sound_enable_button = new engine::Animation(*m_menu,
@@ -101,7 +101,7 @@ void Menu::CreateMenuComponents(){
 							1,
 							std::make_pair(708, 40));
 
-	m_sound_disabled_button->DisableComponent();
+	m_sound_disabled_button->disableComponent();
 
 	m_animation_controller->AddAnimation("sound_disabled_button", *m_sound_disabled_button);
 
@@ -115,17 +115,17 @@ void Menu::CreateMenuComponents(){
 					      1,
 					      std::make_pair(676, 40));
 
-	m_arrow_sound->DisableComponent();
+	m_arrow_sound->disableComponent();
 
 	m_animation_controller->AddAnimation("arrow_sound", *m_arrow_sound);
 
-	m_menu->AddComponent(*m_animation_controller);
+	m_menu->addComponent(*m_animation_controller);
 
 	m_background = new engine::BackgroundComponent(*m_menu, "backgrounds/menu.png");
-	m_menu->AddComponent(*m_background);
+	m_menu->addComponent(*m_background);
 
 	m_code = new MenuCode(m_menu);
-	m_menu->AddComponent(*m_code);
+	m_menu->addComponent(*m_code);
 }
 
 void Menu::GenButtonsAnimation(){
@@ -166,6 +166,6 @@ void Menu::GenButtonsAnimation(){
 }
 
 
-void Menu::shutDown(){
-	DEBUG("Calling Menu::shutDown.");
+void Menu::shutdown(){
+	DEBUG("Calling Menu::shutdown.");
 }

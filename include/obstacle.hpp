@@ -48,7 +48,7 @@ namespace Azo {
 			Obstacle();
 			virtual ~Obstacle();
 			Obstacle(std::string name, std::pair<double, double> positionRelativeToParent, ObstacleType obstacleType);
-			void shutDown();
+			void shutdown();
 			inline std::string getClassName(){
 				return "obstacle";
 			}

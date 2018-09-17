@@ -14,7 +14,7 @@ namespace Azo {
 		public:
 			MachinePartCode(Obstacle *machinePart);
 			virtual ~MachinePartCode();
-			void shutDown();
+			void shutdown();
 		private:
 			void updateCode();
 			void findAudioController();

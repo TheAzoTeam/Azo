@@ -10,7 +10,7 @@ MachinePartCode::MachinePartCode(Obstacle *machinePart) {
 
 MachinePartCode::~MachinePartCode() {}
 
-void MachinePartCode::shutDown(){
+void MachinePartCode::shutdown(){
 	if (mAudioController != NULL) {
 		mAudioController = NULL;
 	}

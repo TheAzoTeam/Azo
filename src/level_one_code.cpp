@@ -8,7 +8,7 @@ LevelOneCode::LevelOneCode(engine::GameObject &gameObject){
 	findAudioController();
 }
 
-void LevelOneCode::shutDown() {
+void LevelOneCode::shutdown() {
 	for (auto Obstacle : mObstacleList) {
 		Obstacle = nullptr;
 	}
@@ -454,4 +454,4 @@ bool LevelOneCode::hasCeiling(double *groundY) {
 		}
 	}
 	return false;
-	}
+}

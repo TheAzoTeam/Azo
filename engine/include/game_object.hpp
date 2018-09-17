@@ -21,44 +21,43 @@ namespace engine {
 	};
 
 	class GameObject {
-		public:
-			// mCurrentPosition is the left upper corner of the game object, in coordinates.
-			std::pair<double, double> mCurrentPosition;
-			// m_size.first is the X size.
-			// m_sisze.second is the Y size.
-			std::pair<double, double> m_size;
-			std::pair<double, double> mCenter;
-			// mHalfSize.first is the x distance from center to the border.
-			// mHalfSize.second is the y distance from center to the border.
-			std::pair<double, double> mHalfSize;
-			std::list<GameObject *> mParentList;
-			std::string mName;
-			ObjectState mObjectState = ObjectState::ENABLED;
 
-		protected:
-			std::unordered_multimap<std::type_index, Component *> m_component_map;
+	public:		
+		std::pair<double, double> mCurrentPosition; 	
+		/* mCurrentPosition is the left upper corner of the game object, 
+		in coordinates. */
+		std::pair<double, double> mSize; 				
+		/* mSize.first and mSize.second correspond to the X and Y sizes, 
+		respectively. */
+		std::pair<double, double> mCenter; // Center position of game object.
+		std::pair<double, double> mHalfSize; // Same as mSize. 
+		std::list<GameObject *> mParentList; 
+		std::string mName;	
+		ObjectState mObjectState = ObjectState::ENABLED; 
 
-		public:
-			GameObject();
-			GameObject(std::string gameObject_name, std::pair<double, double> current_position);
-			void AddComponent(Component &component);
-			AnimationController* GetAnimationController(std::type_index component_type);
-			AudioController* getAudioController(std::type_index component_type);
-			virtual void Init();
-			virtual void Draw();
-			virtual void shutDown();
-			virtual void updateCode();
-			virtual inline std::string getClassName(){
-				return "GameObject";
-			}
-			std::pair<double, double> calcBottomLeft();
-			std::pair<double, double> CalcBottomRight();
-			std::pair<double, double> CalcTopLeft();
-			std::pair<double, double> calcTopRight();
-			std::pair<double, double> CalcRightUp();
-			std::pair<double, double> CalcRightDown();
-			std::pair<double, double> CalcLeftUp();
-			std::pair<double, double> CalcLeftDown();
+	protected: 
+		std::unordered_multimap<std::type_index, Component *> mComponentMap; 
+
+	public:
+		GameObject(); 
+		GameObject(std::string gameObjectName, 
+				   std::pair<double, double> currentPosition);
+		void addComponent(Component &component); 
+		AnimationController* getAnimationController(std::type_index componentType); 
+		AudioController* getAudioController(std::type_index componentType); 
+		virtual void init(); 
+		virtual void draw(); 
+		virtual void shutdown(); 
+		virtual void updateCode(); 
+		virtual inline std::string getClassName(){ return "GameObject";} 
+		std::pair<double, double> calcBottomLeft(); 
+		std::pair<double, double> calcBottomRight(); 
+		std::pair<double, double> calcTopLeft(); 
+		std::pair<double, double> calcTopRight(); 
+		std::pair<double, double> calcRightUp(); 
+		std::pair<double, double> calcRightDown(); 
+		std::pair<double, double> calcLeftUp(); 
+		std::pair<double, double> calcLeftDown(); 
 	};
 
 }

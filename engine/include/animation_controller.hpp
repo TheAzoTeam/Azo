@@ -19,9 +19,9 @@ namespace engine {
 			void StartAnimation(std::string animation_name);
 			void StopAnimation(std::string animation_name);
 			AnimationState GetAnimationStatus(std::string animation_name);
-			void Init();
-			void shutDown();
-			void Draw();
+			void init();
+			void shutdown();
+			void draw();
 			void NextSprite(std::string name);
 			inline std::string getClassName(){
 				return "AnimationController";

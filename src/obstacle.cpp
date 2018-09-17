@@ -6,10 +6,10 @@ Obstacle::Obstacle() {}
 
 Obstacle::~Obstacle(){}
 
-void Obstacle::shutDown() {
+void Obstacle::shutdown() {
 	for (auto eachBlock : mBlockList) {
 		if (eachBlock != NULL) {
-			eachBlock->shutDown();
+			eachBlock->shutdown();
 			delete(eachBlock);
 			eachBlock = NULL;
 		}
@@ -30,7 +30,7 @@ void Obstacle::shutDown() {
 	}
 
 	if (mAudioController != NULL) {
-		mAudioController->shutDown();
+		mAudioController->shutdown();
 		delete(mAudioController);
 		mAudioController = NULL;
 	}
@@ -46,7 +46,7 @@ void Obstacle::shutDown() {
 
 
 	if (mMachinePartCode != NULL) {
-		mMachinePartCode->shutDown();
+		mMachinePartCode->shutdown();
 		delete(mMachinePartCode);
 		mMachinePartCode = NULL;
 	}
@@ -69,25 +69,25 @@ void Obstacle::createComponents() {
 	if (mObstacleType == ObstacleType::WESTERN_CAR) {
 		DEBUG("obstacle is a WESTERN CAR!");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
-		this->AddComponent(*mObstacleImage);
+		this->addComponent(*mObstacleImage);
 		createBlocks();
 
 	} else if (mObstacleType == ObstacleType::WESTERN_BOX) {
 		DEBUG("obstacle is a WESTERN BOX!");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
-		this->AddComponent(*mObstacleImage);
+		this->addComponent(*mObstacleImage);
 		createBlocks();
 
 	} else if (mObstacleType == ObstacleType::WESTERN_RAISED_BOX) {
 		DEBUG("obstacle is a WESTERN RAISED BOX!");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
-		this->AddComponent(*mObstacleImage);
+		this->addComponent(*mObstacleImage);
 		createBlocks();
 
 	} else if (mObstacleType == ObstacleType::WESTERN_ROCK) {
 		DEBUG("obstacle is a WESTERN ROCK");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
-		this->AddComponent(*mObstacleImage);
+		this->addComponent(*mObstacleImage);
 		createBlocks();
 
 	} else if (mObstacleType == ObstacleType::MACHINE_PART) {
@@ -95,27 +95,27 @@ void Obstacle::createComponents() {
 		mMachinePartState = MachinePartState::NON_COLLECTED;
 		generateTurningAnimation();
 		mTurning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, mTurningAnimationSprites, 0, 23, true, 1);
-		this->AddComponent(*mTurning);
+		this->addComponent(*mTurning);
 
 		mAudioController = new engine::AudioController();
 		mCollected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
 		mAudioController->AddAudio("coleta", *mCollected);
-		this->AddComponent(*mAudioController);
+		this->addComponent(*mAudioController);
 
 		mMachinePartCode = new MachinePartCode(this);
-		this->AddComponent(*mMachinePartCode);
+		this->addComponent(*mMachinePartCode);
 
 	} else if (mObstacleType == ObstacleType::WESTERN_SPIKE) {
 		DEBUG("obstacle is a WESTERN SPIKE");
 
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
-		this->AddComponent(*mObstacleImage);
+		this->addComponent(*mObstacleImage);
 		createBlocks();
 	} else if (mObstacleType == ObstacleType::WESTERN_POST) {
 		DEBUG("obstacle is a WESTERN POST");
 
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
-		this->AddComponent(*mObstacleImage);
+		this->addComponent(*mObstacleImage);
 		createBlocks();
 	} else if (mObstacleType == ObstacleType::GROUND) {
 		createBlocks();
