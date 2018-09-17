@@ -47,14 +47,14 @@ void AnimationController::StartUniqueAnimation(std::string animation_name){
 		ERROR("Animation " << animation_name << "doesn't exist!");
 	}
 
-	if(animation_to_be_played->second->m_state == AnimationState::STOPPED){
-		for(auto each_animation : m_animation_map){
-			each_animation.second->disableComponent();
-			each_animation.second->m_state = AnimationState::STOPPED;
+	if(animation_to_be_played->second->mState == AnimationState::STOPPED){
+		for(auto eachAnimation : m_animation_map){
+			eachAnimation.second->disableComponent();
+			eachAnimation.second->mState = AnimationState::STOPPED;
 		}
 		if(animation_to_be_played != m_animation_map.end()){
 			animation_to_be_played->second->enableComponent();
-			animation_to_be_played->second->m_state = AnimationState::PLAYING;
+			animation_to_be_played->second->mState = AnimationState::PLAYING;
 		}
 	}
 }
@@ -68,7 +68,7 @@ void AnimationController::StartAnimation(std::string animation_name){
 
 	if(!animation_to_be_played->second->isEnabled()){
 		animation_to_be_played->second->enableComponent();
-		animation_to_be_played->second->m_state = AnimationState::PLAYING;
+		animation_to_be_played->second->mState = AnimationState::PLAYING;
 	}
 }
 
@@ -87,7 +87,7 @@ AnimationState AnimationController::GetAnimationStatus(std::string animation_nam
 	auto animation = m_animation_map.find(animation_name);
 
 	if(animation != m_animation_map.end()){
-		return animation->second->m_state;
+		return animation->second->mState;
 	}else{
 		ERROR("Animation couldn't be found!");
 	}

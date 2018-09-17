@@ -34,7 +34,7 @@ namespace engine {
 			engine::Scene *current_scene;                   // Current Scene.
 			engine::Scene *last_scene;                      // Last Scene.
 			Timer timer;                                    // Timer to control all Game's Time.
-			int frame_rate;                                 // Frames per Second of the Game (FPS).
+			int FRAME_RATE;                                 // Frames per Second of the Game (FPS).
 			float frame_time;                               // How many time will have one frame of the Game (miliseconds).
 			// TODO(Roger): Move Assets Manager to Scene.
 			AssetsManager assets_manager;                   // Manager to load, unload and reference assets.
@@ -51,12 +51,12 @@ namespace engine {
 
 			void RestartScene(std::string scene_name);
 
-			/* Used to transfer the game_name, window_width and window_height to SDL instace through its method
-			   "SetSDLAttributes" and set Game's frame_rate. */
-			void SetAttributes(std::string game_name,
-					   int window_width,
-					   int window_height,
-					   int frame_rate);
+			/* Used to transfer the GAME_NAME, windowWidth and windowHeight to SDL instace through its method
+			   "SetSDLAttributes" and set Game's FRAME_RATE. */
+			void SetAttributes(std::string GAME_NAME,
+					   int windowWidth,
+					   int windowHeight,
+					   int FRAME_RATE);
 
 			// Used to use the private attribute Timer.
 			inline Timer& GetTimer(){

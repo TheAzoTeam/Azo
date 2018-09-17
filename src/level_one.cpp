@@ -35,10 +35,10 @@ void LevelOne::CreateGameObjects(){
 	m_level_background_3 = new engine::ImageComponent(*m_level_one, "backgrounds/level_one_part_three.png", 1, std::make_pair(16379, 0));
 	m_level_one->addComponent(*m_level_background_3);
 
-	m_audio_controller = new engine::AudioController();
+	mAudioController = new engine::AudioController();
 	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/banjo.ogg", true, true);
-	m_audio_controller->AddAudio("tema_level_one", *m_level_theme);
-	m_level_one->addComponent(*m_audio_controller);
+	mAudioController->AddAudio("tema_level_one", *m_level_theme);
+	m_level_one->addComponent(*mAudioController);
 
 	this->AddGameObject(*m_level_one);
 
