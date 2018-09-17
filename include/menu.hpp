@@ -30,7 +30,7 @@ namespace Azo {
 
 			engine::BackgroundComponent *m_background;
 			MenuCode *m_code;
-			engine::AudioController *m_audio_controller;
+			engine::AudioController *mAudioController;
 			engine::AudioComponent *m_menu_theme;
 		public:
 			Menu();

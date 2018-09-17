@@ -11,13 +11,13 @@ Scene::Scene(std::string scene_name){
 
 void Scene::init(){
 	for(auto each_key : m_key_list){
-		game_object_map[each_key]->init();
+		gameObject_map[each_key]->init();
 	}
 }
 
 void Scene::shutdown(){
 	for(auto each_key : m_key_list){
-		game_object_map[each_key]->shutdown();
+		gameObject_map[each_key]->shutdown();
 	}
 
 	DeleteKeyList();
@@ -30,50 +30,50 @@ void Scene::DeleteKeyList(){
 
 void Scene::draw(){
 	for(auto each_key : m_key_list){
-		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
-			game_object_map[each_key]->draw();
+		if(gameObject_map[each_key]->mObjectState == ObjectState::ENABLED){
+			gameObject_map[each_key]->draw();
 		}
 	}
 }
 
 void Scene::updateCode(){
 	for(auto each_key : m_key_list){
-		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
-			game_object_map[each_key]->updateCode();
+		if(gameObject_map[each_key]->mObjectState == ObjectState::ENABLED){
+			gameObject_map[each_key]->updateCode();
 		}
 	}
 }
 
 void Scene::Restart(){}
 
-void Scene::AddGameObject(GameObject &game_object){
-	auto game_object_name = game_object.m_name;
+void Scene::AddGameObject(GameObject &gameObject){
+	auto gameObject_name = gameObject.mName;
 
-	if(game_object_map.find(game_object_name) != game_object_map.end()){
+	if(gameObject_map.find(gameObject_name) != gameObject_map.end()){
 		ERROR("Game object already exists!");
 	}
 
-	game_object_map[game_object_name] = &game_object;
-	m_key_list.push_back(game_object_name);
+	gameObject_map[gameObject_name] = &gameObject;
+	m_key_list.push_back(gameObject_name);
 }
 
-GameObject & Scene::GetGameObject(std::string &game_object_name){
+GameObject & Scene::GetGameObject(std::string &gameObject_name){
 
-	if(game_object_map.find(game_object_name) == game_object_map.end()){
+	if(gameObject_map.find(gameObject_name) == gameObject_map.end()){
 		ERROR("Game object doesn't exist!");
 	}
 
-	return *game_object_map[game_object_name];
+	return *gameObject_map[gameObject_name];
 
 }
 
-void Scene::RemoveGameObject(std::string &game_object_name){
-	if(game_object_map.find(game_object_name) == game_object_map.end()){
+void Scene::RemoveGameObject(std::string &gameObject_name){
+	if(gameObject_map.find(gameObject_name) == gameObject_map.end()){
 		ERROR("Game object doesn't exist!");
 	}
 
-	game_object_map.erase(game_object_name);
+	gameObject_map.erase(gameObject_name);
 
-	m_key_list.remove(game_object_name);
+	m_key_list.remove(gameObject_name);
 
 }

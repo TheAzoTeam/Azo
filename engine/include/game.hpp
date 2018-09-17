@@ -25,7 +25,7 @@ namespace engine {
 	class Game {
 		public:
 			static Game instance;                           /* Global game instance that allow access to public attributes and methods in any part of the code.*/
-			SDL sdl_elements;                               // Used to access SDL class to take care of sdl elements in game Initialize.
+			SDL sdl_elements;                               // Used to access SDL class to take care of sdl elements in game initialize.
 			InputManager input_manager;
 			GameState game_state;                           // Define Game States to control Loops and other strutuctures.
 		private:
@@ -34,7 +34,7 @@ namespace engine {
 			engine::Scene *current_scene;                   // Current Scene.
 			engine::Scene *last_scene;                      // Last Scene.
 			Timer timer;                                    // Timer to control all Game's Time.
-			int frame_rate;                                 // Frames per Second of the Game (FPS).
+			int FRAME_RATE;                                 // Frames per Second of the Game (FPS).
 			float frame_time;                               // How many time will have one frame of the Game (miliseconds).
 			// TODO(Roger): Move Assets Manager to Scene.
 			AssetsManager assets_manager;                   // Manager to load, unload and reference assets.
@@ -43,7 +43,7 @@ namespace engine {
 			// Constructor Default with default values.
 			Game();
 
-			// Used to Initialize the Game in fact (Main Loop).
+			// Used to initialize the Game in fact (Main Loop).
 			void Run();
 
 			// Used to add a Scene to map that have all Game's Scenes.
@@ -51,12 +51,12 @@ namespace engine {
 
 			void RestartScene(std::string scene_name);
 
-			/* Used to transfer the game_name, window_width and window_height to SDL instace through its method
-			   "SetSDLAttributes" and set Game's frame_rate. */
-			void SetAttributes(std::string game_name,
-					   int window_width,
-					   int window_height,
-					   int frame_rate);
+			/* Used to transfer the GAME_NAME, windowWidth and windowHeight to SDL instace through its method
+			   "SetSDLAttributes" and set Game's FRAME_RATE. */
+			void SetAttributes(std::string GAME_NAME,
+					   int windowWidth,
+					   int windowHeight,
+					   int FRAME_RATE);
 
 			// Used to use the private attribute Timer.
 			inline Timer& GetTimer(){

@@ -15,15 +15,15 @@ namespace engine {
         private:
             SDL_Window *window;
             SDL_Renderer *canvas;
-            int window_width;
-            int window_height;
-            std::string game_name;
+            int windowWidth;
+            int windowHeight;
+            std::string GAME_NAME;
 
         public:
             SDL();
 
             // Receive attributes of the Game instance, through "SetGameAttributes" method.
-            void SetSDLAttributes(std::string game_name, int window_width, int window_height);
+            void SetSDLAttributes(std::string GAME_NAME, int windowWidth, int windowHeight);
 
             // Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
             void InitSDL();
@@ -39,14 +39,14 @@ namespace engine {
             // Used in the Main Loop's End.
             void TerminateSDL();
 
-			// Used to use the private attribute "window_width".
+			// Used to use the private attribute "windowWidth".
 		    inline int GetWindowWidth(){
-				return window_width;
+				return windowWidth;
 			}
 
-			// Used to use the private attribute "window_height".
+			// Used to use the private attribute "windowHeight".
 		    inline int GetWindowHeight(){
-				return window_height;
+				return windowHeight;
 			}
     };
 }

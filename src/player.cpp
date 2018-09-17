@@ -7,9 +7,9 @@ Player::Player(){}
 Player::Player(std::string name, std::pair<double, double> current_position){
 	DEBUG("Player::Player method.");
 
-	m_name = name;
-	m_current_position = current_position;
-	CreateComponents();
+	mName = name;
+	mCurrentPosition = current_position;
+	createComponents();
 }
 
 void Player::shutdown(){
@@ -79,7 +79,7 @@ void Player::shutdown(){
 }
 
 
-void Player::CreateComponents(){
+void Player::createComponents(){
 	DEBUG("Creating Player Components.");
 	GenWalkingAnimation();
 	m_walking = new engine::Animation(*this, "sprites/CowboyRun.png", 1000.0f, m_walking_animation_sprites, 0, 22, true, 1);
@@ -116,19 +116,19 @@ void Player::CreateComponents(){
 	m_anim_controller->addAnimation("victory", *m_victory);
 
 	DEBUG("Adding animation controller to Player.");
-	this->AddComponent(*m_anim_controller);
+	this->addComponent(*m_anim_controller);
 
 	m_lost = new engine::AudioComponent(*this, "audios/derrota.ogg", false, false);
 	m_victory_song = new engine::AudioComponent(*this, "audios/victory.ogg", false, false);
-	m_audio_controller = new engine::AudioController();
-	m_audio_controller->AddAudio("lost", *m_lost);
-	m_audio_controller->AddAudio("victory", *m_victory_song);
+	mAudioController = new engine::AudioController();
+	mAudioController->AddAudio("lost", *m_lost);
+	mAudioController->AddAudio("victory", *m_victory_song);
 
-	this->AddComponent(*m_audio_controller);
+	this->addComponent(*mAudioController);
 
 	DEBUG("Creating Player Code.");
 	m_player_code = new PlayerCode(this);
-	this->AddComponent(*m_player_code);
+	this->addComponent(*m_player_code);
 }
 
 void Player::GenVictoryAnimation(){
