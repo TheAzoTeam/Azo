@@ -1,3 +1,5 @@
+
+
 #include "image_component.hpp"
 #include "game.hpp"
 
@@ -7,23 +9,23 @@ ImageComponent::ImageComponent(){}
 
 ImageComponent::~ImageComponent(){}
 
-ImageComponent::ImageComponent(GameObject &game_object, std::string image_path, double zoom_factor){
-	this->game_object = &game_object;
+ImageComponent::ImageComponent(GameObject &gameObject, std::string image_path, double zoom_factor){
+	this->gameObject = &gameObject;
 	this->image_path = image_path;
 	this->zoom_factor = zoom_factor;
 }
 
-ImageComponent::ImageComponent(GameObject &game_object,
+ImageComponent::ImageComponent(GameObject &gameObject,
 			       std::string image_path,
 			       double zoom_factor,
 			       std::pair<double, double> position_relative_to_object){
-	this->game_object = &game_object;
+	this->gameObject = &gameObject;
 	this->image_path = image_path;
 	this->zoom_factor = zoom_factor;
 	m_position_relative_to_object = position_relative_to_object;
 }
 
-void ImageComponent::Init(){
+void ImageComponent::init(){
 	// Check AssetsManager to see if image is already loaded.
 	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
 
@@ -32,12 +34,12 @@ void ImageComponent::Init(){
 	component_width = assets_image->width * zoom_factor;
 	component_height = assets_image->height * zoom_factor;
 
-	game_object->mSize.first = component_width;
-	game_object->mSize.second = component_height;
+	gameObject->mSize.first = component_width;
+	gameObject->mSize.second = component_height;
 
 	canvasQuad = {
-		(int)(game_object->mCurrentPosition.first + m_position_relative_to_object.first),
-		(int)(game_object->mCurrentPosition.second + m_position_relative_to_object.second),
+		(int)(gameObject->mCurrentPosition.first + m_position_relative_to_object.first),
+		(int)(gameObject->mCurrentPosition.second + m_position_relative_to_object.second),
 		component_width,
 		component_height
 	};
@@ -47,8 +49,8 @@ void ImageComponent::Init(){
 }
 
 
-void ImageComponent::Draw(){
-	UpdateQuad();
+void ImageComponent::draw(){
+	updateQuad();
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.GetCanvas(),
 		image_texture,
@@ -57,10 +59,10 @@ void ImageComponent::Draw(){
 		);
 }
 
-void ImageComponent::UpdateQuad(){
+void ImageComponent::updateQuad(){
 	canvasQuad = {
-		(int)(game_object->mCurrentPosition.first + m_position_relative_to_object.first),
-		(int)(game_object->mCurrentPosition.second + m_position_relative_to_object.second),
+		(int)(gameObject->mCurrentPosition.first + m_position_relative_to_object.first),
+		(int)(gameObject->mCurrentPosition.second + m_position_relative_to_object.second),
 		component_width,
 		component_height
 	};

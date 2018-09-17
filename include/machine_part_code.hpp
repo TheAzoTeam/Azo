@@ -1,4 +1,4 @@
-#ifndef MACHINE_PART_CODE
+	#ifndef MACHINE_PART_CODE
 #define MACHINE_PART_CODE
 
 #include "code_component.hpp"
@@ -9,15 +9,15 @@ namespace Azo {
 
 	class MachinePartCode : public engine::CodeComponent {
 		private:
-			Obstacle *m_machine_part;
-			engine::AudioController * mAudioController;
+			Obstacle *mMachinePart;
+			engine::AudioController *mAudioController;
 		public:
-			MachinePartCode(Obstacle *machine_part);
+			MachinePartCode(Obstacle *machinePart);
 			virtual ~MachinePartCode();
 			void shutdown();
 		private:
-			void UpdateCode();
-			void FindAudioController();
+			void updateCode();
+			void findAudioController();
 	};
 }
 #endif

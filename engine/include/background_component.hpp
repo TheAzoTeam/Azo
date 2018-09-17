@@ -21,11 +21,11 @@ namespace engine {
 		public:
 			BackgroundComponent();
 			BackgroundComponent(std::string image_path);
-			BackgroundComponent(GameObject &game_object, std::string image_path);
+			BackgroundComponent(GameObject &gameObject, std::string image_path);
 			~BackgroundComponent();
-			void Init();
+			void init();
 			void shutdown();
-			void Draw();
+			void draw();
 			inline std::string getClassName(){
 				return "BackgroundComponent";
 			}

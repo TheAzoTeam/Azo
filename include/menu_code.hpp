@@ -11,12 +11,12 @@ namespace Azo {
 			engine::AnimationController * mAnimationController;
 			int m_current_button = 1;
 		public:
-			MenuCode(engine::GameObject *game_object);
+			MenuCode(engine::GameObject *gameObject);
 		private:
-			void UpdateCode();
-			void FindAudioController();
+			void updateCode();
+			void findAudioController();
 			void FindAnimationController();
-			void ChangeOption();
+			void changeOption();
 	};
 }
 

@@ -13,15 +13,15 @@ namespace Azo {
 			engine::AnimationController * mAnimationController = nullptr;
 			engine::AudioController * mAudioController = nullptr;
 
-			void UpdateCode();
-			void UpdatePhysics();
+			void updateCode();
+			void updatePhysics();
 			void FindAnimationController();
-			void FindAudioController();
+			void findAudioController();
 
 		public:
 			PlayerCode();
 			virtual ~PlayerCode();
-			PlayerCode(Player *Player);
+			PlayerCode(Player *player);
 			void shutdown();
 	};
 }

@@ -5,15 +5,15 @@ using namespace engine;
 
 Animation::Animation(){}
 
-Animation::Animation(GameObject & game_object, std::string image_path,
+Animation::Animation(GameObject & gameObject, std::string image_path,
 		     float animation_time, std::vector<Sprite *> sprite_list,
 		     int start_frame, int end_frame, bool loop, double zoom_factor){
 
 	ASSERT(image_path != "", "Animation::CreateAnimation, image_path is empty.");
 	ASSERT(animation_time > 0, "Animation time can't be zero or less.");
-	ASSERT(&game_object != NULL, "The game_object can't be null.");
+	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
 
-	this->game_object = &game_object;
+	this->gameObject = &gameObject;
 	this->image_path = image_path;
 	this->m_animation_time = animation_time;
 	this->m_sprite_list = sprite_list;
@@ -26,16 +26,16 @@ Animation::Animation(GameObject & game_object, std::string image_path,
 	this->m_current_sprite = start_frame;
 }
 
-Animation::Animation(GameObject & game_object, std::string image_path,
+Animation::Animation(GameObject & gameObject, std::string image_path,
 		     float animation_time, std::vector<Sprite *> sprite_list,
 		     int start_frame, int end_frame, bool loop, double zoom_factor,
 		     std::pair<double, double> position_relative_to_object){
 
 	ASSERT(image_path != "", "Animation::CreateAnimation, image_path is empty.");
 	ASSERT(animation_time > 0, "Animation time can't be zero or less.");
-	ASSERT(&game_object != NULL, "The game_object can't be null.");
+	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
 
-	this->game_object = &game_object;
+	this->gameObject = &gameObject;
 	this->image_path = image_path;
 	this->m_animation_time = animation_time;
 	this->m_sprite_list = sprite_list;
@@ -60,16 +60,16 @@ void Animation::shutdown(){
 	}
 }
 
-void Animation::Draw(){
-	// DEBUG("Animation::Draw method.");
+void Animation::draw(){
+	// DEBUG("Animation::draw method.");
 	// DEBUG("Checking Limits");
 	CheckLimits();
 	//DEBUG("Updating Quad");
 
-	UpdateQuad();
+	updateQuad();
 	//DEBUG("Updating Measures Limits");
 
-	UpdateGameObjectMeasures();
+	updateGameObjectMeasures();
 
 	//DEBUG("Rendering");
 	SDL_RenderCopy(
@@ -81,11 +81,11 @@ void Animation::Draw(){
 
 	//DEBUG("Current drawing: " << m_current_sprite);
 	//DEBUG("Updating frame.");
-	UpdateFrameBasedOntime();
+	updateFrameBasedOntime();
 
 }
 
-void Animation::UpdateQuad(){
+void Animation::updateQuad(){
 	// DEBUG("Updating render quad.")
 	// DEBUG("Something is wrong here.");
 	// DEBUG("m_current_sprite: " << m_current_sprite);
@@ -101,8 +101,8 @@ void Animation::UpdateQuad(){
 	//DEBUG("Updating canvas quad.");
 
 	canvasQuad = {
-		(int)(game_object->mCurrentPosition.first + m_position_relative_to_object.first),
-		(int)(game_object->mCurrentPosition.second + m_position_relative_to_object.second),
+		(int)(gameObject->mCurrentPosition.first + m_position_relative_to_object.first),
+		(int)(gameObject->mCurrentPosition.second + m_position_relative_to_object.second),
 		(int)(m_sprite_list[m_current_sprite]->spriteWidth * zoom_factor),
 		(int)(m_sprite_list[m_current_sprite]->spriteHeight * zoom_factor),
 	};
@@ -121,23 +121,23 @@ void Animation::CheckLimits(){
 	}
 }
 
-void Animation::UpdateFrameBasedOntime(){
+void Animation::updateFrameBasedOntime(){
 	m_current_animation_time += Game::instance.GetTimer().GetDeltaTime();
 	m_current_sprite = m_current_animation_time / m_each_frame_time + m_start_frame;
 }
 
 
-void Animation::UpdateGameObjectMeasures(){
-	game_object->mHalfSize.first = m_sprite_list[m_current_sprite]->spriteWidth * zoom_factor / 2.0f;
-	game_object->mHalfSize.second = m_sprite_list[m_current_sprite]->spriteHeight * zoom_factor / 2.0f;
+void Animation::updateGameObjectMeasures(){
+	gameObject->mHalfSize.first = m_sprite_list[m_current_sprite]->spriteWidth * zoom_factor / 2.0f;
+	gameObject->mHalfSize.second = m_sprite_list[m_current_sprite]->spriteHeight * zoom_factor / 2.0f;
 
-	game_object->mCenter.first = game_object->mCurrentPosition.first + game_object->mHalfSize.first;
+	gameObject->mCenter.first = gameObject->mCurrentPosition.first + gameObject->mHalfSize.first;
 
-	game_object->mCenter.second = game_object->mCurrentPosition.second + game_object->mHalfSize.second;
+	gameObject->mCenter.second = gameObject->mCurrentPosition.second + gameObject->mHalfSize.second;
 }
 
 void Animation::disableComponent(){
-	this->component_state = State::DISABLED;
+	this->componentState = State::DISABLED;
 	m_current_animation_time = 0.0f;
 	m_current_sprite = m_start_frame;
 }

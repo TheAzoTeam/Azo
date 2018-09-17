@@ -13,13 +13,13 @@ namespace engine {
 		public:
 			CodeComponent();
 
-			CodeComponent(GameObject &game_object);
+			CodeComponent(GameObject &gameObject);
 
-			void Init();
+			void init();
 
 			void shutdown();
 
-			void UpdateCode();
+			void updateCode();
 	};
 }
 

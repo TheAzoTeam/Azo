@@ -9,31 +9,31 @@
 namespace Azo {
 	class LevelOneCode : public engine::CodeComponent {
 		private:
-			Player *m_player;
-			std::list<Obstacle *> m_obstacle_list;
-			engine::AudioController * mAudioController;
-			engine::GameObject *m_losing_parts;
-			engine::GameObject *m_losing_death;
-			engine::GameObject *m_winning_screen;
-			engine::GameObject *m_arrow;
+			Player *mPlayer;
+			std::list<Obstacle *> mObstacleList;
+			engine::AudioController *mAudioController;
+			engine::GameObject *mLosingParts;
+			engine::GameObject *mLosingDeath;
+			engine::GameObject *mWinningScreen;
+			engine::GameObject *mArrow;
 
-			double m_waiting_time = 0.0f;
-			int m_current_option = 1;
+			double mWaitingTime = 0.0f;
+			int mCurrentOption = 1;
 		public:
-			LevelOneCode(engine::GameObject &game_object);
+			LevelOneCode(engine::GameObject &gameObject);
 			void shutdown();
 		private:
-			void FindAudioController();
-			void UpdateCode();
-			void ChangeOption();
-			void ChooseOption();
-			void UpdateObstaclePosition();
-			void GetParents();
-			bool HasGround(double *ground_y);
-			bool HasCeiling(double *ground_y);
-			bool HasWallOnRight(double *wall_x);
-			bool HasWallOnLeft(double *wall_x);
-			void UpdatePhysics();
+			void findAudioController();
+			void updateCode();
+			void changeOption();
+			void chooseOption();
+			void updateObstaclePosition();
+			void getParents();
+			bool hasGround(double *groundY);
+			bool hasCeiling(double *groundY);
+			bool hasWallOnRight(double *wallX);
+			bool hasWallOnLeft(double *wallX);
+			void updatePhysics();
 
 	};
 }

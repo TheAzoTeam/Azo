@@ -8,7 +8,7 @@ Menu::Menu(std::string name) {
 }
 
 void Menu::restart(){
-	gameObjectMap.clear();
+	gameObject_map.clear();
 	createGameObjects();
 }
 

@@ -63,71 +63,71 @@ void AssetsManager::InsertIntoImageMap(std::string image_path, SDL_Surface* imag
 
 // Load music into music map if we couldn't find it isn't loaded yet.
 // If it's already loaded, return it.
-Mix_Music* AssetsManager::LoadMusic(std::string audio_path){
-	DEBUG("Trying to load music " << audio_path);
+Mix_Music* AssetsManager::LoadMusic(std::string audioPath){
+	DEBUG("Trying to load music " << audioPath);
 	DEBUG("Music Map size before loading " << music_map.size());
 
-	if(music_map.find(audio_path) == music_map.end()){
+	if(music_map.find(audioPath) == music_map.end()){
 		INFO("Loading a new music asset.");
 
-		Mix_Music * music = Mix_LoadMUS(audio_path.c_str());
+		Mix_Music * music = Mix_LoadMUS(audioPath.c_str());
 
 		if(music == NULL){
-			ERROR("Could not load music from path " << audio_path);
+			ERROR("Could not load music from path " << audioPath);
 		}
 
-		InsertIntoMusicMap(audio_path, music);
+		InsertIntoMusicMap(audioPath, music);
 
 	}else{
 		// Nothing to do.
-		DEBUG("Music: " << audio_path << " already loaded!");
+		DEBUG("Music: " << audioPath << " already loaded!");
 	}
 
-	return music_map[audio_path];
+	return music_map[audioPath];
 }
 
 // We will add a music to map.
-void AssetsManager::InsertIntoMusicMap(std::string audio_path, Mix_Music * music){
-	ASSERT(audio_path != "", "Music path can't be empty.");
+void AssetsManager::InsertIntoMusicMap(std::string audioPath, Mix_Music * music){
+	ASSERT(audioPath != "", "Music path can't be empty.");
 	ASSERT(music != NULL, "Mix_Music pointer can't be null.");
 
 	// Insert music into image map.
-	music_map[audio_path] = music;
+	music_map[audioPath] = music;
 	DEBUG("Music Map size after inserting " << music_map.size());
 }
 
 
 // Load sound into sound map if we couldn't find it isn't loaded yet.
 // If it's already loaded, return it.
-Mix_Chunk* AssetsManager::LoadSound(std::string audio_path){
-	DEBUG("Trying to load Sound " << audio_path);
+Mix_Chunk* AssetsManager::LoadSound(std::string audioPath){
+	DEBUG("Trying to load Sound " << audioPath);
 	DEBUG("Sound Map size before loading " << sound_map.size());
 
-	if(sound_map.find(audio_path) == sound_map.end()){
+	if(sound_map.find(audioPath) == sound_map.end()){
 		INFO("Loading a new sound asset.");
 
-		Mix_Chunk * sound = Mix_LoadWAV(audio_path.c_str());
+		Mix_Chunk * sound = Mix_LoadWAV(audioPath.c_str());
 
 		if(sound == NULL){
-			ERROR("Could not load sound from path " << audio_path);
+			ERROR("Could not load sound from path " << audioPath);
 		}
 
-		InsertIntoSoundMap(audio_path, sound);
+		InsertIntoSoundMap(audioPath, sound);
 
 	}else{
 		// Nothing to do.
-		DEBUG("Sound: " << audio_path << " already loaded!");
+		DEBUG("Sound: " << audioPath << " already loaded!");
 	}
 
-	return sound_map[audio_path];
+	return sound_map[audioPath];
 }
 
 // We will add a sound to map.
-void AssetsManager::InsertIntoSoundMap(std::string audio_path, Mix_Chunk * sound){
-	ASSERT(audio_path != "", "Sound path can't be empty.");
+void AssetsManager::InsertIntoSoundMap(std::string audioPath, Mix_Chunk * sound){
+	ASSERT(audioPath != "", "Sound path can't be empty.");
 	ASSERT(sound != NULL, "Mix_Chunk pointer can't be null.");
 
 	// Insert sound into image map.
-	sound_map[audio_path] = sound;
+	sound_map[audioPath] = sound;
 	DEBUG("Sound Map size after inserting " << sound_map.size());
 }
