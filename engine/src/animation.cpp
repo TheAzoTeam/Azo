@@ -53,9 +53,9 @@ Animation::~Animation(){}
 
 void Animation::shutdown(){
 	if(m_sprite_list.size() > 0){
-		for(auto each_sprite : m_sprite_list){
-			delete(each_sprite);
-			each_sprite = NULL;
+		for(auto eachSprite : m_sprite_list){
+			delete(eachSprite);
+			eachSprite = NULL;
 		}
 	}
 }

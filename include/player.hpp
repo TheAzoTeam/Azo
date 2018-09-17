@@ -22,31 +22,31 @@ namespace Azo {
 
 	class Player : public engine::GameObject {
 		private:
-			engine::AnimationController * m_anim_controller;
+			engine::AnimationController *mAnimationController;
 			engine::AudioController *mAudioController;
 
 			// Add new audios here.
-			engine::AudioComponent *m_lost;
-			engine::AudioComponent *m_victory_song;
+			engine::AudioComponent *mLost;
+			engine::AudioComponent *mVictorySong;
 
 			// Add new animations here.
-			engine::Animation *m_walking;
-			engine::Animation *m_jumping;
-			engine::Animation *m_sliding;
-			engine::Animation *m_dying;
-			engine::Animation *m_losing;
-			engine::Animation *m_victory;
+			engine::Animation *mWalking;
+			engine::Animation *mJumping;
+			engine::Animation *mSliding;
+			engine::Animation *mDying;
+			engine::Animation *mLosing;
+			engine::Animation *mVictory;
 
 			// Add new sprite vectors here.
-			std::vector<engine::Sprite *> m_walking_animation_sprites;
-			std::vector<engine::Sprite *> m_jumping_animation_sprites;
-			std::vector<engine::Sprite *> m_sliding_animation_sprites;
-			std::vector<engine::Sprite *> m_dying_animation_sprites;
-			std::vector<engine::Sprite *> m_losing_animation_sprites;
-			std::vector<engine::Sprite *> m_victory_animation_sprites;
+			std::vector<engine::Sprite *> mWalkingAnimationSprites;
+			std::vector<engine::Sprite *> mJumpingAnimationSprites;
+			std::vector<engine::Sprite *> mSlidingAnimationSprites;
+			std::vector<engine::Sprite *> mDyingAnimationSprites;
+			std::vector<engine::Sprite *> mLosingAnimationSprites;
+			std::vector<engine::Sprite *> mVictoryAnimationSprites;
 
+			PlayerCode *mPlayerCode;
 
-			PlayerCode *m_player_code;
 		public:
 			const std::pair<double, double> M_ZERO_VECTOR = std::make_pair(0.0f, 0.0f);
 			const double M_GRAVITY = 0.003f;
@@ -69,13 +69,12 @@ namespace Azo {
 			void createComponents();
 
 			// Add new methods to generate the sprite vectors here.
-			void GenWalkingAnimation();
-			void GenJumpingAnimation();
-			void GenSlidingAnimation();
-			void GenDyingAnimation();
-			void GenLosingAnimation();
-			void GenVictoryAnimation();
-
+			void generateWalkingAnimation();
+			void generateJumpingAnimation();
+			void generateSlidingAnimation();
+			void generateDyingAnimation();
+			void generateLosingAnimation();
+			void generateVictoryAnimation();
 
 			inline std::string getClassName(){
 				return "Player";
@@ -83,7 +82,7 @@ namespace Azo {
 
 		public:
 			Player();
-			Player(std::string name, std::pair<double, double> current_position);
+			Player(std::string name, std::pair<double, double> currentPosition);
 			void shutdown();
 	};
 }

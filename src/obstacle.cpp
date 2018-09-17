@@ -99,7 +99,7 @@ void Obstacle::createComponents() {
 
 		mAudioController = new engine::AudioController();
 		mCollected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
-		mAudioController->AddAudio("coleta", *mCollected);
+		mAudioController->addAudio("coleta", *mCollected);
 		this->addComponent(*mAudioController);
 
 		mMachinePartCode = new MachinePartCode(this);

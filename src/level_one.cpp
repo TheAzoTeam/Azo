@@ -5,7 +5,7 @@ using namespace Azo;
 LevelOne::LevelOne(){}
 
 LevelOne::LevelOne(std::string name){
-	this->scene_name = name;
+	this->sceneName = name;
 
 	CreateGameObjects();
 }
@@ -37,7 +37,7 @@ void LevelOne::CreateGameObjects(){
 
 	mAudioController = new engine::AudioController();
 	m_level_theme = new engine::AudioComponent(*m_level_one, "audios/banjo.ogg", true, true);
-	mAudioController->AddAudio("tema_level_one", *m_level_theme);
+	mAudioController->addAudio("tema_level_one", *m_level_theme);
 	m_level_one->addComponent(*mAudioController);
 
 	this->AddGameObject(*m_level_one);
@@ -445,7 +445,7 @@ void LevelOne::CreateGameObjects(){
 
 
 	DEBUG("Creating Player.");
-	m_player = new Player("player", std::make_pair(165, 280));
+	m_player = new Player("Player", std::make_pair(165, 280));
 	this->AddGameObject(*m_player);
 
 	CreateEndingScreen();

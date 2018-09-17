@@ -2,8 +2,6 @@
 
 using namespace Azo;
 
-InvisibleBlock::InvisibleBlock(){}
-
 InvisibleBlock::~InvisibleBlock(){}
 
 InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> positionRelativeToParent,
@@ -19,11 +17,13 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 
 	mCenter = mHalfSize;
 
-	m_image =  new engine::ImageComponent(*this, "backgrounds/test_invisible_1.png", 1);
-	this->addComponent(*m_image);
+	mImage = new engine::ImageComponent(*this, 
+										"backgrounds/test_invisible_1.png",
+										1);
+	this->addComponent(*mImage);
 }
 
 void InvisibleBlock::shutdown(){
-	m_image->shutdown();
-	m_image = NULL;
+	mImage->shutdown();
+	mImage = NULL;
 }

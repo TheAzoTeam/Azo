@@ -4,8 +4,8 @@ using namespace engine;
 
 Scene::Scene(){}
 
-Scene::Scene(std::string scene_name){
-	this->scene_name = scene_name;
+Scene::Scene(std::string sceneName){
+	this->sceneName = sceneName;
 }
 
 

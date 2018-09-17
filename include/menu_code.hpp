@@ -7,8 +7,8 @@
 namespace Azo {
 	class MenuCode : public engine::CodeComponent {
 		private:
-			engine::AudioController *mAudioController;
-			engine::AnimationController *m_animation_controller;
+			engine::AudioController * mAudioController;
+			engine::AnimationController * mAnimationController;
 			int m_current_button = 1;
 		public:
 			MenuCode(engine::GameObject *gameObject);

@@ -37,7 +37,7 @@ AudioController::AudioController(GameObject &gameObject){
 	this->componentState = State::ENABLED;
 }
 
-void AudioController::AddAudio(std::string audio_name, AudioComponent &audio){
+void AudioController::addAudio(std::string audio_name, AudioComponent &audio){
 	audio_map[audio_name] = &audio;
 }
 

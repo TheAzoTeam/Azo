@@ -106,7 +106,7 @@ void LevelOneCode::changeOption() {
 	switch(mCurrentOption) {
 		case 1:
 				mArrow->mObjectState = engine::ObjectState::ENABLED;
-			mArrow->mCurrentPosition = std::make_pair(70, 260);
+				mArrow->mCurrentPosition = std::make_pair(70, 260);
 
 			if (engine::Game::instance.input_manager.keyDownOnce(engine::Button::RIGHT_ARROW)) {
 				mCurrentOption = 2; // CurrentOption = 2 means Exit

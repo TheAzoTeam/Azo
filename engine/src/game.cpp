@@ -93,39 +93,39 @@ void Game::Run(){
 
 // Used to add a Scene to map that have all Game's Scenes.
 bool Game::AddScene(Scene &scene){
-	auto scene_name = scene.GetSceneName();
+	auto sceneName = scene.GetSceneName();
 
 
-	if(scene_map.find(scene_name) != scene_map.end()){
+	if(scene_map.find(sceneName) != scene_map.end()){
 		ERROR("Scene already exists!");
 		return false;
 	}else{
 		// Nothing to Do.
 	}
 
-	scene_map[scene_name] = &scene;
+	scene_map[sceneName] = &scene;
 
 	return true;
 }
 
-void Game::RestartScene(std::string scene_name){
-	auto scene = scene_map[scene_name];
+void Game::RestartScene(std::string sceneName){
+	auto scene = scene_map[sceneName];
 
 	scene->Restart();
 }
 
 
 // Perform the necessary checks and prepare the structure to switch Scenes.
-void Game::ChangeScene(std::string scene_name){
+void Game::ChangeScene(std::string sceneName){
 	INFO("Changing Scenes.");
-	if(scene_map.find(scene_name) == scene_map.end()){
+	if(scene_map.find(sceneName) == scene_map.end()){
 		ERROR("Scene not found!");
 	}else{
 		// Nothing to Do.
 	}
 
 	last_scene = current_scene;
-	current_scene = scene_map[scene_name];
+	current_scene = scene_map[sceneName];
 	need_to_change_scene = true;
 }
 

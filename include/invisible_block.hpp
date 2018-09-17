@@ -5,9 +5,9 @@
 
 namespace Azo {
 	class InvisibleBlock : public engine::GameObject {
-		//TODO(Roger): Remove this image.
 		private:
-			engine::ImageComponent *m_image;
+			engine::ImageComponent *mImage;
+
 		public:
 			std::pair<double, double> mPositionRelativeToParent;
 		public:

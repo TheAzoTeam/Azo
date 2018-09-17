@@ -15,7 +15,7 @@ namespace engine {
 	class Scene {
 		public:
 			Scene();
-			Scene(std::string scene_name);
+			Scene(std::string sceneName);
 
 			virtual void init();
 			virtual void shutdown();
@@ -24,7 +24,7 @@ namespace engine {
 			virtual void Restart();
 
 			inline std::string GetSceneName() {
-				return scene_name;
+				return sceneName;
 			}
 
 			void DeleteKeyList();
@@ -38,7 +38,7 @@ namespace engine {
 		protected:
 			std::map<std::string, engine::GameObject *> gameObject_map;
 			std::list<std::string> m_key_list;
-			std::string scene_name;
+			std::string sceneName;
 	};
 }
 
