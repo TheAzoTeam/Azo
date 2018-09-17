@@ -40,4 +40,3 @@ bool Component::isEnabled(){
 		return false;
 	}
 }
-

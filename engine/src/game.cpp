@@ -52,7 +52,7 @@ void Game::Run(){
 					break;
 				default:
 					// Check for user inputs.
-					input_manager.Update(_event);
+					input_manager.update(_event);
 					break;
 			}
 		}
@@ -69,7 +69,7 @@ void Game::Run(){
 
 
 		//INFO("Clearing user input from InputManager.");
-		input_manager.Clear();
+		input_manager.clear();
 
 		//INFO("calculating elapsed time from the start of this frame until now");
 		timer.DeltaTime();

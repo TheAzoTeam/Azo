@@ -14,31 +14,31 @@ namespace engine {
 		PAUSED,
 		STOPPED
 	};
-	
-	class AudioComponent : public Component {
-	private:					
-		std::string audioPath;  
-		bool isMusic;		    
-		bool playOnStart; 		
 
-		Mix_Music * music;      
+	class AudioComponent : public Component {
+	private:
+		std::string audioPath;
+		bool isMusic;
+		bool playOnStart;
+
+		Mix_Music * music;
 		Mix_Chunk * sound;
 
 	public:
-		AudioState audioState;  
-		AudioComponent();       
-		virtual ~AudioComponent();			   
-		AudioComponent(GameObject &gameObject, 
-					   std::string audioPath,  
-					   bool isMusic, 		   
-					   bool playOnStart);	   
-		void init();			
-		void shutdown();		
-		void updateCode();      
-		void play(int loops, int channel);	  
-		void stop(int channel); 			  
-		void pause(int channel);			  
-		inline bool getIsMusic(){ return isMusic; } 
+		AudioState audioState;
+		AudioComponent();
+		virtual ~AudioComponent();
+		AudioComponent(GameObject &gameObject,
+					   std::string audioPath,
+					   bool isMusic,
+					   bool playOnStart);
+		void init();
+		void shutdown();
+		void updateCode();
+		void play(int loops, int channel);
+		void stop(int channel);
+		void pause(int channel);
+		inline bool getIsMusic(){ return isMusic; }
 	};
 
 }

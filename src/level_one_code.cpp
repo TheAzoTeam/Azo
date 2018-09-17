@@ -64,14 +64,14 @@ void LevelOneCode::updateCode() {
 			mLosingParts->mObjectState = engine::ObjectState::ENABLED;
 			changeOption();
 
-			if (engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)) {
+			if (engine::Game::instance.input_manager.keyDownOnce(engine::Button::ENTER)) {
 				chooseOption();
 			}
 			const float MAX_WAITING_TIME = 2300.0f;
 			if (mWaitingTime >= MAX_WAITING_TIME) {
 				mLosingDeath->mObjectState = engine::ObjectState::ENABLED;
 				changeOption();
-				if (engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)) {
+				if (engine::Game::instance.input_manager.keyDownOnce(engine::Button::ENTER)) {
 					chooseOption();
 				}
 			}
@@ -91,7 +91,7 @@ void LevelOneCode::updateCode() {
 	  	if (mWaitingTime >= 2300.0f) {
 		  	mLosingDeath->mObjectState = engine::ObjectState::ENABLED;
 		  	changeOption();
-		  	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
+		  	if(engine::Game::instance.input_manager.keyDownOnce(engine::Button::ENTER)){
 			  	chooseOption();
 		  	}
 		}
@@ -108,7 +108,7 @@ void LevelOneCode::changeOption() {
 				mArrow->mObjectState = engine::ObjectState::ENABLED;
 			mArrow->mCurrentPosition = std::make_pair(70, 260);
 
-			if (engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)) {
+			if (engine::Game::instance.input_manager.keyDownOnce(engine::Button::RIGHT_ARROW)) {
 				mCurrentOption = 2; // CurrentOption = 2 means Exit
 			}
 
@@ -117,7 +117,7 @@ void LevelOneCode::changeOption() {
 
 			mArrow->mCurrentPosition = std::make_pair(515, 260);
 
-			if (engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)) {
+			if (engine::Game::instance.input_manager.keyDownOnce(engine::Button::LEFT_ARROW)) {
 				mCurrentOption = 1; //CurrentOption = 1 means Play
 			}
 
@@ -229,7 +229,7 @@ bool LevelOneCode::hasGround(double *groundY) {
 
 		// If the obstacle is a machine part, we check the collision without invisible blocks (since it has animation).
 		// If it collides, we return false (so the position isn't updated) and change the state of the machine part.
-		// TODO(Roger): Update the collision methods so they return the colliding object.
+		// TODO(Roger): update the collision methods so they return the colliding object.
 		// TODO(Roger): Create states to the machine parts.
 
 		if (eachObstacle->mObstacleType == ObstacleType::MACHINE_PART) {

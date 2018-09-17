@@ -27,7 +27,7 @@ namespace engine {
 			float m_animation_time;
 			bool m_loop;
 		public:
-			std::string animation_name;
+			std::string animationName;
 			AnimationState mState = AnimationState::STOPPED;
 		public:
 			Animation();
@@ -61,9 +61,9 @@ namespace engine {
 
 		private:
 			void CheckLimits();
-			void UpdateQuad();
-			void UpdateFrameBasedOntime();
-			void UpdateGameObjectMeasures();
+			void updateQuad();
+			void updateFrameBasedOntime();
+			void updateGameObjectMeasures();
 	};
 
 }

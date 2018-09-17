@@ -10,9 +10,9 @@ AudioComponent::AudioComponent(){}
 AudioComponent::~AudioComponent(){}
 
 
-AudioComponent::AudioComponent(GameObject &gameObject, 
-							   std::string audioPath, 
-							   bool isMusic, 
+AudioComponent::AudioComponent(GameObject &gameObject,
+							   std::string audioPath,
+							   bool isMusic,
 							   bool playOnStart){
 	this->gameObject = &gameObject;
 	this->audioPath = audioPath;

@@ -1,0 +1,3 @@
+{
+  "gccIncludePaths": "./include, ./engine/include"
+}

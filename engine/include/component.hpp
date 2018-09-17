@@ -18,15 +18,15 @@ namespace engine {
 		GameObject *gameObject;
 		State componentState = State::ENABLED;
 	public:
-		Component(); 					   
-		Component(GameObject &gameObject); 
-		virtual void init();			   
-		virtual void shutdown();		   
-		virtual void draw();               
-		virtual void updateCode();         
-		virtual void enableComponent();    
-		virtual void disableComponent();   
-		bool isEnabled();                  
+		Component();
+		Component(GameObject &gameObject);
+		virtual void init();
+		virtual void shutdown();
+		virtual void draw();
+		virtual void updateCode();
+		virtual void enableComponent();
+		virtual void disableComponent();
+		bool isEnabled();
 		virtual inline std::string getClassName(){ return "Component"; }
 	};
 }

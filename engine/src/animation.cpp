@@ -66,10 +66,10 @@ void Animation::draw(){
 	CheckLimits();
 	//DEBUG("Updating Quad");
 
-	UpdateQuad();
+	updateQuad();
 	//DEBUG("Updating Measures Limits");
 
-	UpdateGameObjectMeasures();
+	updateGameObjectMeasures();
 
 	//DEBUG("Rendering");
 	SDL_RenderCopy(
@@ -81,11 +81,11 @@ void Animation::draw(){
 
 	//DEBUG("Current drawing: " << m_current_sprite);
 	//DEBUG("Updating frame.");
-	UpdateFrameBasedOntime();
+	updateFrameBasedOntime();
 
 }
 
-void Animation::UpdateQuad(){
+void Animation::updateQuad(){
 	// DEBUG("Updating render quad.")
 	// DEBUG("Something is wrong here.");
 	// DEBUG("m_current_sprite: " << m_current_sprite);
@@ -121,13 +121,13 @@ void Animation::CheckLimits(){
 	}
 }
 
-void Animation::UpdateFrameBasedOntime(){
+void Animation::updateFrameBasedOntime(){
 	m_current_animation_time += Game::instance.GetTimer().GetDeltaTime();
 	m_current_sprite = m_current_animation_time / m_each_frame_time + m_start_frame;
 }
 
 
-void Animation::UpdateGameObjectMeasures(){
+void Animation::updateGameObjectMeasures(){
 	gameObject->mHalfSize.first = m_sprite_list[m_current_sprite]->spriteWidth * zoom_factor / 2.0f;
 	gameObject->mHalfSize.second = m_sprite_list[m_current_sprite]->spriteHeight * zoom_factor / 2.0f;
 
