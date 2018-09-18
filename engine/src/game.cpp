@@ -5,7 +5,7 @@
 
 using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.
 
-Game Game::instance;    // Used to Initialize in fact the static instance of game;
+Game Game::instance;    // Used to initialize in fact the static instance of game;
 
 Game::Game(){
 	this->needToChangeScene = false;
@@ -18,10 +18,10 @@ Game::Game(){
 void Game::run(){
 
 	// (SDL) Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
-	sdlElements.InitSDL();
+	sdlElements.initSDL();
 
 	// (SDL) Create Window and Canvas.
-	sdlElements.CreateWindow();
+	sdlElements.createWindow();
 
 	// (STATE) Set game state to show that it's running.
 	gameState = engine::GameState::PLAY;
@@ -60,9 +60,9 @@ void Game::run(){
 		// Clean and Draw the Scene to refreh animations and objects.
 		// DEBUG("Drawing current scene.");
 		// DEBUG("Scene name: " << currentScene->getSceneName());
-		SDL_RenderClear(sdlElements.GetCanvas());
+		SDL_RenderClear(sdlElements.getCanvas());
 		currentScene->draw();
-		SDL_RenderPresent(sdlElements.GetCanvas());
+		SDL_RenderPresent(sdlElements.getCanvas());
 
 		//DEBUG("Updating current scene: " << currentScene->getSceneName() << " code.");
 		currentScene->updateCode();
@@ -87,7 +87,7 @@ void Game::run(){
 	INFO("Finishing Main Loop.");
 
 	INFO("Shutting down SDL.");
-	sdlElements.TerminateSDL();
+	sdlElements.terminateSDL();
 }
 
 
@@ -178,6 +178,6 @@ bool Game::startAndStopScenes(){
 /* Transfer the gameName, windowWidth and windowHeight to SDL instace through its method "SetSDLAttributes"
    and set Game's frameRate. */
 void Game::setAttributes(std::string gameName, int windowWidth, int windowHeight, int frameRate){
-	sdlElements.SetSDLAttributes(gameName, windowWidth, windowHeight);
+	sdlElements.setSDLAttributes(gameName, windowWidth, windowHeight);
 	this->frameRate = frameRate;
 }

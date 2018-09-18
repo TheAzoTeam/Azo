@@ -8,39 +8,41 @@
 namespace Azo {
 	class Menu : public engine::Scene {
 		private:
-			engine::GameObject *m_menu;
+			engine::GameObject *mMenu;
 
-			engine::AnimationController *m_animation_controller;
+			engine::AnimationController *mAnimationController;
 
-			engine::Animation *m_start_button;
-			engine::Animation *m_exit_button;
-			engine::Animation *m_sound_enable_button;
-			engine::Animation *m_sound_disabled_button;
+			engine::Animation *mStartButton;
+			engine::Animation *mExitButton;
+			engine::Animation *mSoundEnabledButton;
+			engine::Animation *mSoundDisabledButton;
 
-			engine::Animation *m_arrow_start;
-			engine::Animation *m_arrow_exit;
-			engine::Animation *m_arrow_sound;
+			engine::Animation *mArrowStart;
+			engine::Animation *mArrowExit;
+			engine::Animation *mArrowSound;
 
-			std::vector<engine::Sprite *> m_start_button_sprites;
-			std::vector<engine::Sprite *> m_exit_button_sprites;
-			std::vector<engine::Sprite *> m_sound_enabled_button_sprites;
-			std::vector<engine::Sprite *> m_sound_disabled_button_sprites;
+			std::vector<engine::Sprite *> mStartButtonSprites;
+			std::vector<engine::Sprite *> mExitButtonSprites;
+			std::vector<engine::Sprite *> mSoundEnabledButtonSprites;
+			std::vector<engine::Sprite *> mSoundDisabledButtonSprites;
 
-			std::vector<engine::Sprite *> m_arrow_sprites;
+			std::vector<engine::Sprite *> mArrowSprites;
 
-			engine::BackgroundComponent *m_background;
-			MenuCode *m_code;
-			engine::AudioController *m_audio_controller;
-			engine::AudioComponent *m_menu_theme;
+			engine::BackgroundComponent *mBackground;
+			MenuCode *mCode;
+			engine::AudioController *mAudioController;
+			engine::AudioComponent *mMenuTheme;
+
 		public:
 			Menu();
 			Menu(std::string name);
-			void Restart();
-			void Shutdown();
+			void restart();
+			void shutdown();
+			
 		private:
-			void CreateGameObjects();
-			void CreateMenuComponents();
-			void GenButtonsAnimation();
+			void createGameObjects();
+			void createMenuComponents();
+			void generateButtonsAnimation();
 
 	};
 }

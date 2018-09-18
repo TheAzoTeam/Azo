@@ -3,32 +3,32 @@
 
 #include <string>
 #include <iostream>
-
+#include "input_manager.hpp"
+#include "component.hpp"
 #include "sdl2include.h"
 #include "log.h"
-#include "component.hpp"
-#include "input_manager.hpp"
 
 namespace engine {
 
-	class BackgroundComponent : public Component {
-		protected:
-			std::string image_path;
-			SDL_Texture *image_texture;
-			SDL_Rect renderQuad;
-			int component_width;
-			int component_height;
-		public:
-			BackgroundComponent();
-			BackgroundComponent(std::string image_path);
-			BackgroundComponent(GameObject &gameObject, std::string image_path);
-			~BackgroundComponent();
-			void Init();
-			void Shutdown();
-			void Draw();
-			inline std::string GetClassName(){
-				return "BackgroundComponent";
-			}
+    class BackgroundComponent : public Component {
+	protected:
+		std::string imagePath;
+		SDL_Texture *imageTexture;
+		SDL_Rect renderQuad;
+		int componentWidth;
+		int componentHeight;
+	public:
+		BackgroundComponent();
+		BackgroundComponent(std::string imagePath);
+		BackgroundComponent(GameObject &gameObject, std::string imagePath);
+		~BackgroundComponent();
+		void init();
+		void shutdown();
+		void draw();
+		inline std::string getClassName(){
+			return "BackgroundComponent";
+		}
 	};
 }
+
 #endif

@@ -9,29 +9,33 @@ Component::Component(GameObject &gameObject){
 	this->componentState = State::ENABLED;
 }
 
-void Component::Init(){}
 
-void Component::Shutdown(){}
-
-
-void Component::Draw(){}
+void Component::init(){}
 
 
-void Component::UpdateCode(){}
+void Component::shutdown(){}
 
-void Component::EnableComponent(){
+
+void Component::draw(){}
+
+
+void Component::updateCode(){}
+
+
+void Component::enableComponent(){
 	this->componentState = State::ENABLED;
 }
 
-void Component::DisableComponent(){
+
+void Component::disableComponent(){
 	this->componentState = State::DISABLED;
 }
 
+
 bool Component::isEnabled(){
-	if(componentState == State::ENABLED){
+	if( componentState == State::ENABLED){
 		return true;
-	}else{
+	} else {
 		return false;
 	}
 }
-
