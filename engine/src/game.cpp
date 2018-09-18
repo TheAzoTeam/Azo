@@ -8,35 +8,35 @@ using namespace engine; // Used to avoid write engine::Game engine::Game::instan
 Game Game::instance;    // Used to initialize in fact the static instance of game;
 
 Game::Game(){
-	this->need_to_change_scene = false;
-	this->current_scene = NULL;
-	this->last_scene = NULL;
-	this->FRAME_RATE = 60;
+	this->needToChangeScene = false;
+	this->currentScene = NULL;
+	this->lastScene = NULL;
+	this->frameRate = 60;
 }
 
-// Main Game Loop and SDL initiators.
-void Game::Run(){
+// Main Game Loop and SDL Initiators.
+void Game::run(){
 
-	// (SDL) initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
-	sdl_elements.initSDL();
+	// (SDL) Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
+	sdlElements.initSDL();
 
 	// (SDL) Create Window and Canvas.
-	sdl_elements.createWindow();
+	sdlElements.createWindow();
 
 	// (STATE) Set game state to show that it's running.
-	game_state = engine::GameState::PLAY;
+	gameState = engine::GameState::PLAY;
 
 	// Calculate how many time will have one frame of the Game (miliseconds).
-	frame_time = 1000.0f / FRAME_RATE;
+	frameTime = 1000.0f / frameRate;
 
 
 	INFO("Starting Main Loop Game.");
-	while(game_state == engine::GameState::PLAY){
+	while(gameState == engine::GameState::PLAY){
 
 		// Get the current time.
-		timer.Step();
+		timer.step();
 
-		if(StartAndStopScenes() == false){
+		if(startAndStopScenes() == false){
 			break;
 		}
 
@@ -48,126 +48,126 @@ void Game::Run(){
 			switch(_event.type){
 				case SDL_QUIT:
 					// (STATE) Set game state to show that it'll Die.
-					game_state = engine::GameState::EXIT;
+					gameState = engine::GameState::EXIT;
 					break;
 				default:
 					// Check for user inputs.
-					input_manager.update(_event);
+					inputManager.update(_event);
 					break;
 			}
 		}
 
-		// Clean and draw the Scene to refreh animations and objects.
-		// DEBUG("drawing current scene.");
-		// DEBUG("Scene name: " << current_scene->GetSceneName());
-		SDL_RenderClear(sdl_elements.getCanvas());
-		current_scene->draw();
-		SDL_RenderPresent(sdl_elements.getCanvas());
+		// Clean and Draw the Scene to refreh animations and objects.
+		// DEBUG("Drawing current scene.");
+		// DEBUG("Scene name: " << currentScene->getSceneName());
+		SDL_RenderClear(sdlElements.getCanvas());
+		currentScene->draw();
+		SDL_RenderPresent(sdlElements.getCanvas());
 
-		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
-		current_scene->updateCode();
+		//DEBUG("Updating current scene: " << currentScene->getSceneName() << " code.");
+		currentScene->updateCode();
 
 
 		//INFO("Clearing user input from InputManager.");
-		input_manager.clear();
+		inputManager.clear();
 
-		//INFO("calculating elapsed time from the start of this frame until now");
-		timer.DeltaTime();
+		//INFO("Calculating elapsed time from the start of this frame until now");
+		timer.deltaTime();
 
 		/* If the time that has passed until now was faster than the frame's time, is needed wait
 		   the time necessary to complete a frame's time.*/
-		if(frame_time > timer.GetDeltaTime()){
-			SDL_Delay(frame_time - timer.GetDeltaTime());
+		if(frameTime > timer.getDeltaTime()){
+			SDL_Delay(frameTime - timer.getDeltaTime());
 		}
 
-		timer.DeltaTime();
+		timer.deltaTime();
 
 	}
 
 	INFO("Finishing Main Loop.");
 
 	INFO("Shutting down SDL.");
-	sdl_elements.terminateSDL();
+	sdlElements.terminateSDL();
 }
 
 
 // Used to add a Scene to map that have all Game's Scenes.
-bool Game::AddScene(Scene &scene){
+bool Game::addScene(Scene &scene){
 	auto sceneName = scene.getSceneName();
 
 
-	if(scene_map.find(sceneName) != scene_map.end()){
+	if(sceneMap.find(sceneName) != sceneMap.end()){
 		ERROR("Scene already exists!");
 		return false;
 	}else{
 		// Nothing to Do.
 	}
 
-	scene_map[sceneName] = &scene;
+	sceneMap[sceneName] = &scene;
 
 	return true;
 }
 
-void Game::RestartScene(std::string sceneName){
-	auto scene = scene_map[sceneName];
+void Game::restartScene(std::string sceneName){
+	auto scene = sceneMap[sceneName];
 
 	scene->restart();
 }
 
 
 // Perform the necessary checks and prepare the structure to switch Scenes.
-void Game::ChangeScene(std::string sceneName){
+void Game::changeScene(std::string sceneName){
 	INFO("Changing Scenes.");
-	if(scene_map.find(sceneName) == scene_map.end()){
+	if(sceneMap.find(sceneName) == sceneMap.end()){
 		ERROR("Scene not found!");
 	}else{
 		// Nothing to Do.
 	}
 
-	last_scene = current_scene;
-	current_scene = scene_map[sceneName];
-	need_to_change_scene = true;
+	lastScene = currentScene;
+	currentScene = sceneMap[sceneName];
+	needToChangeScene = true;
 }
 
 
 // Perform scene switching effectively.
-bool Game::StartAndStopScenes(){
-	if(need_to_change_scene){
-		if(current_scene == NULL){
+bool Game::startAndStopScenes(){
+	if(needToChangeScene){
+		if(currentScene == NULL){
 			ERROR("No scenes to run!");
 			return false;
 		}else{
 
 			// If the last scene is equal the current scene, we still need
 			// to delete all keys from the game object map on scene.
-			if(last_scene != NULL && last_scene->getSceneName() == current_scene->getSceneName()){
-				current_scene->deleteKeyList();
+			if(lastScene != NULL && lastScene->getSceneName() == currentScene->getSceneName()){
+				currentScene->deleteKeyList();
 			}
 
-			if(current_scene->mState == SceneState::RUNNED){
-				current_scene->restart();
-				current_scene->mState = SceneState::FIRST_TIME;
+			if(currentScene->mState == SceneState::RUNNED){
+				currentScene->restart();
+				currentScene->mState = SceneState::FIRST_TIME;
 			}
 
-			if(current_scene->mState == SceneState::FIRST_TIME){
-				current_scene->mState = SceneState::RUNNED;
+			if(currentScene->mState == SceneState::FIRST_TIME){
+				currentScene->mState = SceneState::RUNNED;
 			}
 
 
-			current_scene->init();
+			currentScene->init();
 
-			if(last_scene != NULL){
+			if(lastScene != NULL){
 				INFO("Shuting down scene!");
-				if(last_scene->getSceneName() != current_scene->getSceneName()){
-					last_scene->shutdown();
+				if(lastScene->getSceneName() != currentScene->getSceneName()){
+					lastScene->shutdown();
 				}
-				//DEBUG("Scene name: " << last_scene->GetSceneName());
-				//scene_map.erase(last_scene->GetSceneName());
+				//DEBUG("Scene name: " << lastScene->getSceneName());
+				//sceneMap.erase(lastScene->getSceneName());
 			}else{
 				// Nothing to Do.
 			}
 
-			need_to_change_scene = false;
+			needToChangeScene = false;
 		}
 	}
 
@@ -175,9 +175,9 @@ bool Game::StartAndStopScenes(){
 }
 
 
-/* Transfer the GAME_NAME, windowWidth and windowHeight to SDL instace through its method "SetSDLAttributes"
-   and set Game's FRAME_RATE. */
-void Game::SetAttributes(std::string GAME_NAME, int windowWidth, int windowHeight, int FRAME_RATE){
-	sdl_elements.setSDLAttributes(GAME_NAME, windowWidth, windowHeight);
-	this->FRAME_RATE = FRAME_RATE;
+/* Transfer the gameName, windowWidth and windowHeight to SDL instace through its method "SetSDLAttributes"
+   and set Game's frameRate. */
+void Game::setAttributes(std::string gameName, int windowWidth, int windowHeight, int frameRate){
+	sdlElements.setSDLAttributes(gameName, windowWidth, windowHeight);
+	this->frameRate = frameRate;
 }

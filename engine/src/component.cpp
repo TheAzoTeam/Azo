@@ -4,7 +4,6 @@ using namespace engine;
 
 Component::Component(){}
 
-
 Component::Component(GameObject &gameObject){
 	this->gameObject = &gameObject;
 	this->componentState = State::ENABLED;

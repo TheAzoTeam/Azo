@@ -28,12 +28,12 @@ void AudioComponent::init(){
 	INFO("init audio component");
 
 	if (isMusic){
-		music = Game::instance.GetAssetsManager().LoadMusic(audioPath);
+		music = Game::instance.getAssetsManager().LoadMusic(audioPath);
 		if (music == NULL){
 			ERROR("Invalid Music Path (Music = NULL): " << audioPath);
 		}
 	}else {
-		sound = Game::instance.GetAssetsManager().LoadSound(audioPath);
+		sound = Game::instance.getAssetsManager().LoadSound(audioPath);
 		if (sound == NULL){
 			ERROR("Invalid Sound Path (Sound = NULL): " << audioPath);
 		}

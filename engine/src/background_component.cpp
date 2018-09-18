@@ -25,7 +25,7 @@ BackgroundComponent::~BackgroundComponent(){}
 
 void BackgroundComponent::init(){
 	//DEBUG("BackgroundComponent::init method.");
-	auto assetsImage = Game::instance.GetAssetsManager().LoadImage(imagePath);
+	auto assetsImage = Game::instance.getAssetsManager().LoadImage(imagePath);
 	imageTexture = assetsImage->texture;
 	componentWidth = assetsImage->width;
 	componentHeight = assetsImage->height;
@@ -40,7 +40,7 @@ void BackgroundComponent::shutdown(){
 void BackgroundComponent::draw(){
 	//DEBUG("BackgroundComponent::draw method.");
 	SDL_RenderCopy(
-		Game::instance.sdl_elements.getCanvas(),
+		Game::instance.sdlElements.getCanvas(),
 		imageTexture,
 		&renderQuad,
 		NULL

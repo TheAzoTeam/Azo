@@ -54,7 +54,7 @@ void LevelOneCode::updateCode() {
 		const float CONTROLLER_POSITION_PLAYER = 299;
 		mPlayer->mCurrentPosition.first = CONTROLLER_POSITION_PLAYER;
 	} else if (mPlayer->mCurrentPosition.first >= PLAYER_MAX_POSITION) {
-		mWaitingTime += engine::Game::instance.GetTimer().GetDeltaTime();
+		mWaitingTime += engine::Game::instance.getTimer().getDeltaTime();
 		mPlayer->mSpeed.first = 0;
 		mAudioController->stopAudio("tema_level_one");
 		mPlayer->mState = PlayerState::END;
@@ -64,14 +64,14 @@ void LevelOneCode::updateCode() {
 			mLosingParts->mObjectState = engine::ObjectState::ENABLED;
 			changeOption();
 
-			if (engine::Game::instance.input_manager.keyDownOnce(engine::Button::ENTER)) {
+			if (engine::Game::instance.inputManager.keyDownOnce(engine::Button::ENTER)) {
 				chooseOption();
 			}
 			const float MAX_WAITING_TIME = 2300.0f;
 			if (mWaitingTime >= MAX_WAITING_TIME) {
 				mLosingDeath->mObjectState = engine::ObjectState::ENABLED;
 				changeOption();
-				if (engine::Game::instance.input_manager.keyDownOnce(engine::Button::ENTER)) {
+				if (engine::Game::instance.inputManager.keyDownOnce(engine::Button::ENTER)) {
 					chooseOption();
 				}
 			}
@@ -86,12 +86,12 @@ void LevelOneCode::updateCode() {
   	if (mPlayer->mState != PlayerState::DIE) {
     	updatePhysics();
   	} else {
-	  	mWaitingTime += engine::Game::instance.GetTimer().GetDeltaTime();
+	  	mWaitingTime += engine::Game::instance.getTimer().getDeltaTime();
 
 	  	if (mWaitingTime >= 2300.0f) {
 		  	mLosingDeath->mObjectState = engine::ObjectState::ENABLED;
 		  	changeOption();
-		  	if(engine::Game::instance.input_manager.keyDownOnce(engine::Button::ENTER)){
+		  	if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::ENTER)){
 			  	chooseOption();
 		  	}
 		}
@@ -108,7 +108,7 @@ void LevelOneCode::changeOption() {
 				mArrow->mObjectState = engine::ObjectState::ENABLED;
 				mArrow->mCurrentPosition = std::make_pair(70, 260);
 
-			if (engine::Game::instance.input_manager.keyDownOnce(engine::Button::RIGHT_ARROW)) {
+			if (engine::Game::instance.inputManager.keyDownOnce(engine::Button::RIGHT_ARROW)) {
 				mCurrentOption = 2; // CurrentOption = 2 means Exit
 			}
 
@@ -117,7 +117,7 @@ void LevelOneCode::changeOption() {
 
 			mArrow->mCurrentPosition = std::make_pair(515, 260);
 
-			if (engine::Game::instance.input_manager.keyDownOnce(engine::Button::LEFT_ARROW)) {
+			if (engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)) {
 				mCurrentOption = 1; //CurrentOption = 1 means Play
 			}
 
@@ -129,10 +129,10 @@ void LevelOneCode::chooseOption() {
 	switch(mCurrentOption){
 		case 1:
 			mAudioController->stopAllAudios();
-			engine::Game::instance.ChangeScene("level_one");
+			engine::Game::instance.changeScene("level_one");
 			break;
 		case 2:
-			engine::Game::instance.ChangeScene("menu");
+			engine::Game::instance.changeScene("menu");
 			break;
 	}
 }
@@ -161,7 +161,7 @@ void LevelOneCode::updateObstaclePosition() {
 }
 
 void LevelOneCode::updatePhysics() {
-	mPlayer->mCurrentPosition.second += mPlayer->mSpeed.second * engine::Game::instance.GetTimer().GetDeltaTime();
+	mPlayer->mCurrentPosition.second += mPlayer->mSpeed.second * engine::Game::instance.getTimer().getDeltaTime();
 	double groundY = 0.0f;
 	const int PLAYER_RELATIVE_POSITION = 15;
 	if (mPlayer->mSpeed.second < 0.0f && hasCeiling(&groundY)) {
@@ -181,7 +181,7 @@ void LevelOneCode::updatePhysics() {
 		mPlayer->mAtCeiling = false;
 	}
 
-	//double deltaWalked =  mPlayer->mSpeed.first * engine::Game::instance.GetTimer().GetDeltaTime();
+	//double deltaWalked =  mPlayer->mSpeed.first * engine::Game::instance.getTimer().getDeltaTime();
 	double deltaWalked =  mPlayer->mSpeed.first;
 	// DEBUG("Speed: " << mPlayer->mSpeed.first);
 	// DEBUG("Delta walked: " << deltaWalked);

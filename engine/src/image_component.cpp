@@ -27,7 +27,7 @@ ImageComponent::ImageComponent(GameObject &gameObject,
 
 void ImageComponent::init(){
 	// Check AssetsManager to see if image is already loaded.
-	auto assets_image = Game::instance.GetAssetsManager().LoadImage(imagePath);
+	auto assets_image = Game::instance.getAssetsManager().LoadImage(imagePath);
 
 	imageTexture = assets_image->texture;
 
@@ -52,7 +52,7 @@ void ImageComponent::init(){
 void ImageComponent::draw(){
 	updateQuad();
 	SDL_RenderCopy(
-		Game::instance.sdl_elements.getCanvas(),
+		Game::instance.sdlElements.getCanvas(),
 		imageTexture,
 		&renderQuad,
 		&canvasQuad

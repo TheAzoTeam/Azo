@@ -24,57 +24,57 @@ namespace engine {
 	// Generic Game class. It's how the engine'll see all games that will try to use it.
 	class Game {
 		public:
-			static Game instance;                           /* Global game instance that allow access to public attributes and methods in any part of the code.*/
-			SDL sdl_elements;                               // Used to access SDL class to take care of sdl elements in game initialize.
-			InputManager input_manager;
-			GameState game_state;                           // Define Game States to control Loops and other strutuctures.
+			static Game instance;                           // Global game instance that allow access to public attributes and methods in any part of the code.
+			SDL sdlElements;                               // Used to access SDL class to take care of sdl elements in game Initialize.
+			InputManager inputManager;
+			GameState gameState;                           // Define Game States to control Loops and other strutuctures.
 		private:
-			bool need_to_change_scene;                      // Used to define if there's a Change Scene to occur.
-			std::map<std::string, Scene *> scene_map;       // All Scenes of the Game.
-			engine::Scene *current_scene;                   // Current Scene.
-			engine::Scene *last_scene;                      // Last Scene.
+			bool needToChangeScene;                      // Used to define if there's a Change Scene to occur.
+			std::map<std::string, Scene *> sceneMap;       // All Scenes of the Game.
+			engine::Scene *currentScene;                   // Current Scene.
+			engine::Scene *lastScene;                      // Last Scene.
 			Timer timer;                                    // Timer to control all Game's Time.
-			int FRAME_RATE;                                 // Frames per Second of the Game (FPS).
-			float frame_time;                               // How many time will have one frame of the Game (miliseconds).
+			int frameRate;                                 // Frames per Second of the Game (FPS).
+			float frameTime;                               // How many time will have one frame of the Game (miliseconds).
 			// TODO(Roger): Move Assets Manager to Scene.
-			AssetsManager assets_manager;                   // Manager to load, unload and reference assets.
+			AssetsManager assetsManager;                   // Manager to load, unload and reference assets.
 
 		public:
 			// Constructor Default with default values.
 			Game();
 
-			// Used to initialize the Game in fact (Main Loop).
-			void Run();
+			// Used to Initialize the Game in fact (Main Loop).
+			void run();
 
 			// Used to add a Scene to map that have all Game's Scenes.
-			bool AddScene(engine::Scene &scene);
+			bool addScene(engine::Scene &scene);
 
-			void RestartScene(std::string sceneName);
+			void restartScene(std::string sceneName);
 
-			/* Used to transfer the GAME_NAME, windowWidth and windowHeight to SDL instace through its method
-			   "SetSDLAttributes" and set Game's FRAME_RATE. */
-			void SetAttributes(std::string GAME_NAME,
+			/* Used to transfer the gameName, windowWidth and windowHeight to SDL instace through its method
+			   "SetSDLAttributes" and set Game's frameRate. */
+			void setAttributes(std::string gameName,
 					   int windowWidth,
 					   int windowHeight,
-					   int FRAME_RATE);
+					   int frameRate);
 
 			// Used to use the private attribute Timer.
-			inline Timer& GetTimer(){
+			inline Timer& getTimer(){
 				return timer;
 			}
 
 			// Used to get the private attribute AssetsManager.
-			inline AssetsManager& GetAssetsManager(){
-				return assets_manager;
+			inline AssetsManager& getAssetsManager(){
+				return assetsManager;
 			}
 
 
 			// Perform the necessary checks and prepare the structure to switch Scenes.
-			void ChangeScene(std::string sceneName);
+			void changeScene(std::string sceneName);
 
 		private:
 			// Perform scene switching effectively.
-			bool StartAndStopScenes();
+			bool startAndStopScenes();
 
 	};
 }

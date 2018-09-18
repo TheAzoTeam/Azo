@@ -46,7 +46,7 @@ void PlayerCode::updateCode(){
 				//DEBUG("PLAYER SHOULD HAVE SPEED! PLAYER SPEED " << m_player->mSpeed.first);
 			}
 
-			if(engine::Game::instance.input_manager.keyState(engine::Button::W)){
+			if(engine::Game::instance.inputManager.keyState(engine::Button::W)){
 				//DEBUG("W pressed!");
 				m_player->mState = PlayerState::JUMP;
 				m_player->mSpeed.second = m_player->M_JUMPING_SPEED; // Jumping speed.
@@ -56,7 +56,7 @@ void PlayerCode::updateCode(){
 				m_player->mState = PlayerState::JUMP;
 			}
 
-			if(engine::Game::instance.input_manager.keyState(engine::Button::S)){
+			if(engine::Game::instance.inputManager.keyState(engine::Button::S)){
 				m_player->mState = PlayerState::SLIDE;
 			}
 
@@ -70,8 +70,8 @@ void PlayerCode::updateCode(){
 
 			mAnimationController->startUniqueAnimation("jumping");
 
-			m_player->mSpeed.second += (m_player->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
-			//DEBUG("UpdateCode method. Player Speed in Y: " << m_player->mSpeed.second);
+			m_player->mSpeed.second += (m_player->M_GRAVITY * engine::Game::instance.getTimer().getDeltaTime());
+			//DEBUG("UpdateCode method. Player Speed in Y: " << m_player->m_speed.second);
 
 			if(m_player->mPushesRightWall){
 				m_player->mSpeed.first = m_player->M_ZERO_VECTOR.first;
@@ -93,7 +93,7 @@ void PlayerCode::updateCode(){
 				break;
 			}
 
-			m_player->mSpeed.second += (m_player->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
+			m_player->mSpeed.second += (m_player->M_GRAVITY * engine::Game::instance.getTimer().getDeltaTime());
 			//DEBUG("Player speed: " << m_player->mSpeed.second);
 
 			if(m_player->mPushesRightWall){
@@ -102,7 +102,7 @@ void PlayerCode::updateCode(){
 				m_player->mState = PlayerState::WALK;
 			}
 
-			if(engine::Game::instance.input_manager.keyState(engine::Button::W)){
+			if(engine::Game::instance.inputManager.keyState(engine::Button::W)){
 				m_player->mState = PlayerState::JUMP;
 				m_player->mSpeed.second = m_player->M_JUMPING_SPEED;
 			}
@@ -111,7 +111,7 @@ void PlayerCode::updateCode(){
 		case PlayerState::DIE:
 			mAnimationController->startUniqueAnimation("dying");
 
-			mAudioController->PlayAudio("lost");
+			mAudioController->playAudio("lost");
 
 			break;
 		case PlayerState::END:
@@ -119,11 +119,11 @@ void PlayerCode::updateCode(){
 				mAnimationController->startUniqueAnimation("losing");
 
 				if(mAnimationController->getAnimationStatus("losing") == engine::AnimationState::FINISHED){
-					mAudioController->PlayAudio("lost");
+					mAudioController->playAudio("lost");
 				}
 			}else{
 				mAnimationController->startUniqueAnimation("victory");
-				mAudioController->PlayAudio("victory");
+				mAudioController->playAudio("victory");
 			}
 
 			break;

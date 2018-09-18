@@ -77,7 +77,7 @@ void Animation::draw(){
 
 	//DEBUG("Rendering");
 	SDL_RenderCopy(
-		Game::instance.sdl_elements.getCanvas(),
+		Game::instance.sdlElements.getCanvas(),
 		imageTexture,
 		&renderQuad,
 		&canvasQuad
@@ -124,7 +124,7 @@ void Animation::checkLimits(){
 }
 
 void Animation::updateFrameBasedOntime(){
-	mCurrentAnimationTime += Game::instance.GetTimer().GetDeltaTime();
+	mCurrentAnimationTime += Game::instance.getTimer().getDeltaTime();
 	mCurrentSprite = mCurrentAnimationTime / mEachFrameTime + mStartFrame;
 }
 

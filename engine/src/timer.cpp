@@ -13,14 +13,14 @@ void Timer::Reset(){
 	delta_time = 0.0f;
 }
 
-void Timer::DeltaTime(){
+void Timer::deltaTime(){
 	delta_time = SDL_GetTicks() - elapsed_ticks;
 }
 
-float Timer::GetDeltaTime(){
+float Timer::getDeltaTime(){
 	return delta_time;
 }
 
-void Timer::Step(){
+void Timer::step(){
 	elapsed_ticks = SDL_GetTicks();
 }
