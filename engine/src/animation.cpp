@@ -3,57 +3,61 @@
 
 using namespace engine;
 
+const int ANIMATION_NULL_VALUE = 0;
+const int FRAME_VALUE = 1;
+const int CURRENT_SPRITE = 0;
+const float DIVISOR_NUMBER = 2.0f;
+const float CURRENT_ANIMATION_TIME = 0.0f;
+
 Animation::Animation(){}
 
-Animation::Animation(GameObject & gameObject, std::string image_path,
-		     float animation_time, std::vector<Sprite *> sprite_list,
-		     int start_frame, int end_frame, bool loop, double zoom_factor){
-
-	ASSERT(image_path != "", "Animation::CreateAnimation, image_path is empty.");
-	ASSERT(animation_time > 0, "Animation time can't be zero or less.");
+Animation::Animation(GameObject & gameObject, std::string imagePath,
+					 float animationTime, std::vector<Sprite *> spriteList,
+					 int startFrame, int endFrame, bool loop, double zoomFactor){
+	ASSERT(imagePath != "", "Animation::CreateAnimation, imagePath is empty.");
+	ASSERT(animationTime > ANIMATION_NULL_VALUE, "Animation time can't be zero or less.");
 	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
 
 	this->gameObject = &gameObject;
-	this->image_path = image_path;
-	this->m_animation_time = animation_time;
-	this->m_sprite_list = sprite_list;
-	this->m_start_frame = start_frame;
-	this->m_end_frame = end_frame;
-	this->m_each_frame_time = animation_time / (end_frame - start_frame + 1);
-	this->m_current_animation_time = 0.0f;
-	this->m_loop = loop;
-	this->zoom_factor = zoom_factor;
-	this->m_current_sprite = start_frame;
+	this->imagePath = imagePath;
+	this->mAnimationTime = animationTime;
+	this->mSpriteList = spriteList;
+	this->mStartFrame = startFrame;
+	this->mEndFrame = endFrame;
+	this->mEachFrameTime = animationTime / (endFrame - startFrame + FRAME_VALUE);
+	this->mCurrentAnimationTime = CURRENT_ANIMATION_TIME;
+	this->mLoop = loop;
+	this->zoomFactor = zoomFactor;
+	this->mCurrentSprite = startFrame;
 }
 
-Animation::Animation(GameObject & gameObject, std::string image_path,
-		     float animation_time, std::vector<Sprite *> sprite_list,
-		     int start_frame, int end_frame, bool loop, double zoom_factor,
-		     std::pair<double, double> position_relative_to_object){
-
-	ASSERT(image_path != "", "Animation::CreateAnimation, image_path is empty.");
-	ASSERT(animation_time > 0, "Animation time can't be zero or less.");
+Animation::Animation(GameObject & gameObject, std::string imagePath,
+					 float animationTime, std::vector<Sprite *> spriteList,
+					 int startFrame, int endFrame, bool loop, double zoomFactor,
+					 std::pair<double, double> positionRelativeToObject){
+	ASSERT(imagePath != "", "Animation::CreateAnimation, imagePath is empty.");
+	ASSERT(animationTime > ANIMATION_NULL_VALUE, "Animation time can't be zero or less.");
 	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
 
 	this->gameObject = &gameObject;
-	this->image_path = image_path;
-	this->m_animation_time = animation_time;
-	this->m_sprite_list = sprite_list;
-	this->m_start_frame = start_frame;
-	this->m_end_frame = end_frame;
-	this->m_each_frame_time = animation_time / (end_frame - start_frame + 1);
-	this->m_current_animation_time = 0.0f;
-	this->m_loop = loop;
-	this->zoom_factor = zoom_factor;
-	this->m_current_sprite = start_frame;
-	this->m_position_relative_to_object = position_relative_to_object;
+	this->imagePath = imagePath;
+	this->mAnimationTime = animationTime;
+	this->mSpriteList = spriteList;
+	this->mStartFrame = startFrame;
+	this->mEndFrame = endFrame;
+	this->mEachFrameTime = animationTime / (endFrame - startFrame + FRAME_VALUE);
+	this->mCurrentAnimationTime = CURRENT_ANIMATION_TIME;
+	this->mLoop = loop;
+	this->zoomFactor = zoomFactor;
+	this->mCurrentSprite = startFrame;
+	this->mPositionRelativeToObject = positionRelativeToObject;
 }
 
 Animation::~Animation(){}
 
 void Animation::shutdown(){
-	if(m_sprite_list.size() > 0){
-		for(auto eachSprite : m_sprite_list){
+	if(mSpriteList.size() > 0){
+		for (auto eachSprite : mSpriteList){
 			delete(eachSprite);
 			eachSprite = NULL;
 		}
@@ -63,7 +67,7 @@ void Animation::shutdown(){
 void Animation::draw(){
 	// DEBUG("Animation::draw method.");
 	// DEBUG("Checking Limits");
-	CheckLimits();
+	checkLimits();
 	//DEBUG("Updating Quad");
 
 	updateQuad();
@@ -73,13 +77,13 @@ void Animation::draw(){
 
 	//DEBUG("Rendering");
 	SDL_RenderCopy(
-		Game::instance.sdl_elements.GetCanvas(),
-		image_texture,
+		Game::instance.sdl_elements.getCanvas(),
+		imageTexture,
 		&renderQuad,
 		&canvasQuad
-		);
+	);
 
-	//DEBUG("Current drawing: " << m_current_sprite);
+	//DEBUG("Current drawing: " << mCurrentSprite);
 	//DEBUG("Updating frame.");
 	updateFrameBasedOntime();
 
@@ -88,56 +92,51 @@ void Animation::draw(){
 void Animation::updateQuad(){
 	// DEBUG("Updating render quad.")
 	// DEBUG("Something is wrong here.");
-	// DEBUG("m_current_sprite: " << m_current_sprite);
-	// DEBUG("m_sprite_list[m_current_sprite]->spriteX" << m_sprite_list[m_current_sprite]->spriteX);
-
+	// DEBUG("mCurrentSprite: " << mCurrentSprite);
+	// DEBUG("mSpriteList[mCurrentSprite]->spriteX" << mSpriteList[mCurrentSprite]->spriteX);
 	renderQuad = {
-		m_sprite_list[m_current_sprite]->spriteX,
-		m_sprite_list[m_current_sprite]->spriteY,
-		m_sprite_list[m_current_sprite]->spriteWidth,
-		m_sprite_list[m_current_sprite]->spriteHeight
+		mSpriteList[mCurrentSprite]->spriteX,
+		mSpriteList[mCurrentSprite]->spriteY,
+		mSpriteList[mCurrentSprite]->spriteWidth,
+		mSpriteList[mCurrentSprite]->spriteHeight
 	};
 
 	//DEBUG("Updating canvas quad.");
-
 	canvasQuad = {
-		(int)(gameObject->mCurrentPosition.first + m_position_relative_to_object.first),
-		(int)(gameObject->mCurrentPosition.second + m_position_relative_to_object.second),
-		(int)(m_sprite_list[m_current_sprite]->spriteWidth * zoom_factor),
-		(int)(m_sprite_list[m_current_sprite]->spriteHeight * zoom_factor),
+		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
+		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
+		(int)(mSpriteList[mCurrentSprite]->spriteWidth * zoomFactor),
+		(int)(mSpriteList[mCurrentSprite]->spriteHeight * zoomFactor),
 	};
 }
 
-void Animation::CheckLimits(){
-	if(m_current_sprite > m_end_frame){
-		if(m_loop){
-			m_current_sprite = 0;
-			m_current_animation_time = 0.0f;
+void Animation::checkLimits(){
+	if(mCurrentSprite > mEndFrame){
+		if (mLoop) {
+			mCurrentSprite = CURRENT_SPRITE;
+			mCurrentAnimationTime = CURRENT_ANIMATION_TIME;
 			mState = AnimationState::STOPPED;
-		}else{
-			m_current_sprite = m_end_frame;
+		} else {
+			mCurrentSprite = mEndFrame;
 			mState = AnimationState::FINISHED;
 		}
 	}
 }
 
 void Animation::updateFrameBasedOntime(){
-	m_current_animation_time += Game::instance.GetTimer().GetDeltaTime();
-	m_current_sprite = m_current_animation_time / m_each_frame_time + m_start_frame;
+	mCurrentAnimationTime += Game::instance.GetTimer().GetDeltaTime();
+	mCurrentSprite = mCurrentAnimationTime / mEachFrameTime + mStartFrame;
 }
 
-
 void Animation::updateGameObjectMeasures(){
-	gameObject->mHalfSize.first = m_sprite_list[m_current_sprite]->spriteWidth * zoom_factor / 2.0f;
-	gameObject->mHalfSize.second = m_sprite_list[m_current_sprite]->spriteHeight * zoom_factor / 2.0f;
-
+	gameObject->mHalfSize.first = mSpriteList[mCurrentSprite]->spriteWidth * zoomFactor / DIVISOR_NUMBER;
+	gameObject->mHalfSize.second = mSpriteList[mCurrentSprite]->spriteHeight * zoomFactor / DIVISOR_NUMBER;
 	gameObject->mCenter.first = gameObject->mCurrentPosition.first + gameObject->mHalfSize.first;
-
 	gameObject->mCenter.second = gameObject->mCurrentPosition.second + gameObject->mHalfSize.second;
 }
 
 void Animation::disableComponent(){
 	this->componentState = State::DISABLED;
-	m_current_animation_time = 0.0f;
-	m_current_sprite = m_start_frame;
+	mCurrentAnimationTime = CURRENT_ANIMATION_TIME;
+	mCurrentSprite = mStartFrame;
 }

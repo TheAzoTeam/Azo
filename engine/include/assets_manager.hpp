@@ -25,7 +25,7 @@ namespace engine {
 		public:
 			AssetsManager();
 
-			Image* LoadImage(std::string image_path);
+			Image* LoadImage(std::string imagePath);
 
 			Mix_Music* LoadMusic(std::string audioPath);
 

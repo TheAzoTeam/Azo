@@ -8,7 +8,7 @@ Menu::Menu(std::string name) {
 }
 
 void Menu::restart(){
-	gameObject_map.clear();
+	gameObjectMap.clear();
 	createGameObjects();
 }
 
@@ -18,7 +18,7 @@ void Menu::createGameObjects() {
 	mMenu = new engine::GameObject("menu", std::make_pair(0, 0));
 	createMenuComponents();
 
-	this->AddGameObject(*mMenu);
+	this->addGameObject(*mMenu);
 }
 
 void Menu::createMenuComponents() {
@@ -133,7 +133,7 @@ void Menu::generateButtonsAnimation() {
 	 mStartButtonSprites.push_back(new engine::Sprite());
 
 	/*
-		Set the animation sprites coordinates (x, y) 
+		Set the animation sprites coordinates (x, y)
 		and its Width and Height based on its coordinates
 		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/

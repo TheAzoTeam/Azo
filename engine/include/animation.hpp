@@ -4,9 +4,7 @@
 #include "sdl2include.h"
 #include "image_component.hpp"
 #include "sprite.hpp"
-
 #include <vector>
-
 
 namespace engine {
 
@@ -17,55 +15,42 @@ namespace engine {
 	};
 
 	class Animation : public ImageComponent {
-		private:
-			std::vector<Sprite *> m_sprite_list;
-			int m_current_sprite;
-			int m_start_frame;
-			int m_end_frame;
-			float m_current_animation_time;
-			int m_each_frame_time;
-			float m_animation_time;
-			bool m_loop;
-		public:
-			std::string animationName;
-			AnimationState mState = AnimationState::STOPPED;
-		public:
-			Animation();
-			virtual ~Animation();
-			void shutdown();
-			Animation(
-				GameObject & gameObject,
-				std::string image_path,
-				float animation_time,
-				std::vector<Sprite *> sprite_list,
-				int start_frame,
-				int end_frame,
-				bool loop,
-				double zoom_factor);
+	private:
+		std::vector<Sprite *> mSpriteList;
+		int mCurrentSprite;
+		int mStartFrame;
+		int mEndFrame;
+		float mCurrentAnimationTime;
+		int mEachFrameTime;
+		float mAnimationTime;
+		bool mLoop;
+		std::pair<double, double> mPositionRelativeToObject;
 
-			Animation(
-				GameObject & gameObject,
-				std::string image_path,
-				float animation_time,
-				std::vector<Sprite *> sprite_list,
-				int start_frame,
-				int end_frame,
-				bool loop,
-				double zoom_factor,
-				std::pair<double, double> position_relative_to_object);
-			void draw();
-			inline std::string getClassName(){
-				return "Animation";
-			}
-			void disableComponent();
+		void checkLimits();
+		void updateQuad();
+		void updateFrameBasedOntime();
+		void updateGameObjectMeasures();
 
-		private:
-			void CheckLimits();
-			void updateQuad();
-			void updateFrameBasedOntime();
-			void updateGameObjectMeasures();
+	public:
+		Animation();
+		Animation(GameObject & gameObject, std::string imagePath,
+				  float animationTime, std::vector<Sprite *> spriteList,
+				  int startFrame, int endFrame, bool loop, double zoomFactor);
+		Animation(GameObject & gameObject, std::string imagePath,
+				  float animationTime, std::vector<Sprite *> spriteList,
+				  int startFrame, int endFrame, bool loop, double zoomFactor,
+				  std::pair<double, double> positionRelativeToObject);
+		virtual ~Animation();
+
+		std::string animationName;
+		AnimationState mState = AnimationState::STOPPED;
+		void shutdown();
+		void draw();
+		void disableComponent();
+		inline std::string getClassName(){
+			return "Animation";
+		}
 	};
-
 }
 
 #endif
