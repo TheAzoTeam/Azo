@@ -27,16 +27,16 @@ namespace engine {
 
 			Image* LoadImage(std::string imagePath);
 
-			Mix_Music* LoadMusic(std::string audio_path);
+			Mix_Music* LoadMusic(std::string audioPath);
 
-			Mix_Chunk * LoadSound(std::string audio_path);
+			Mix_Chunk * LoadSound(std::string audioPath);
 
 			//TODO(Roger) Create method to shutdown all imagens in map, and put that method in the
 			//scene shutdown.
 		private:
-			void InsertIntoImageMap(std::string imagePath, SDL_Surface* image, SDL_Texture *imageTexture);
-			void InsertIntoMusicMap(std::string audio_path, Mix_Music * music);
-			void InsertIntoSoundMap(std::string audio_path, Mix_Chunk * sound);
+			void InsertIntoImageMap(std::string image_path, SDL_Surface* image, SDL_Texture *image_texture);
+			void InsertIntoMusicMap(std::string audioPath, Mix_Music * music);
+			void InsertIntoSoundMap(std::string audioPath, Mix_Chunk * sound);
 	};
 }
 

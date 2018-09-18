@@ -5,19 +5,19 @@
 
 using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.
 
-Game Game::instance;    // Used to Initialize in fact the static instance of game;
+Game Game::instance;    // Used to initialize in fact the static instance of game;
 
 Game::Game(){
 	this->need_to_change_scene = false;
 	this->current_scene = NULL;
 	this->last_scene = NULL;
-	this->frame_rate = 60;
+	this->FRAME_RATE = 60;
 }
 
-// Main Game Loop and SDL Initiators.
+// Main Game Loop and SDL initiators.
 void Game::Run(){
 
-	// (SDL) Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
+	// (SDL) initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
 	sdl_elements.initSDL();
 
 	// (SDL) Create Window and Canvas.
@@ -27,7 +27,7 @@ void Game::Run(){
 	game_state = engine::GameState::PLAY;
 
 	// Calculate how many time will have one frame of the Game (miliseconds).
-	frame_time = 1000.0f / frame_rate;
+	frame_time = 1000.0f / FRAME_RATE;
 
 
 	INFO("Starting Main Loop Game.");
@@ -52,26 +52,26 @@ void Game::Run(){
 					break;
 				default:
 					// Check for user inputs.
-					input_manager.Update(_event);
+					input_manager.update(_event);
 					break;
 			}
 		}
 
 		// Clean and draw the Scene to refreh animations and objects.
-		// DEBUG("Drawing current scene.");
-		// DEBUG("Scene name: " << current_scene->getSceneName());
+		// DEBUG("drawing current scene.");
+		// DEBUG("Scene name: " << current_scene->GetSceneName());
 		SDL_RenderClear(sdl_elements.getCanvas());
 		current_scene->draw();
 		SDL_RenderPresent(sdl_elements.getCanvas());
 
-		//DEBUG("Updating current scene: " << current_scene->getSceneName() << " code.");
+		//DEBUG("Updating current scene: " << current_scene->GetSceneName() << " code.");
 		current_scene->updateCode();
 
 
 		//INFO("Clearing user input from InputManager.");
-		input_manager.Clear();
+		input_manager.clear();
 
-		//INFO("Calculating elapsed time from the start of this frame until now");
+		//INFO("calculating elapsed time from the start of this frame until now");
 		timer.DeltaTime();
 
 		/* If the time that has passed until now was faster than the frame's time, is needed wait
@@ -161,8 +161,8 @@ bool Game::StartAndStopScenes(){
 				if(last_scene->getSceneName() != current_scene->getSceneName()){
 					last_scene->shutdown();
 				}
-				//DEBUG("Scene name: " << last_scene->getSceneName());
-				//scene_map.erase(last_scene->getSceneName());
+				//DEBUG("Scene name: " << last_scene->GetSceneName());
+				//scene_map.erase(last_scene->GetSceneName());
 			}else{
 				// Nothing to Do.
 			}
@@ -175,9 +175,9 @@ bool Game::StartAndStopScenes(){
 }
 
 
-/* Transfer the gameName, windowWidth and windowHeight to SDL instace through its method "setSDLAttributes"
-   and set Game's frame_rate. */
-void Game::SetAttributes(std::string gameName, int windowWidth, int windowHeight, int frame_rate){
-	sdl_elements.setSDLAttributes(gameName, windowWidth, windowHeight);
-	this->frame_rate = frame_rate;
+/* Transfer the GAME_NAME, windowWidth and windowHeight to SDL instace through its method "SetSDLAttributes"
+   and set Game's FRAME_RATE. */
+void Game::SetAttributes(std::string GAME_NAME, int windowWidth, int windowHeight, int FRAME_RATE){
+	sdl_elements.setSDLAttributes(GAME_NAME, windowWidth, windowHeight);
+	this->FRAME_RATE = FRAME_RATE;
 }

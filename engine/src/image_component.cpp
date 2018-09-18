@@ -1,3 +1,5 @@
+
+
 #include "image_component.hpp"
 #include "game.hpp"
 
@@ -16,28 +18,28 @@ ImageComponent::ImageComponent(GameObject &gameObject, std::string imagePath, do
 ImageComponent::ImageComponent(GameObject &gameObject,
 			       std::string imagePath,
 			       double zoomFactor,
-			       std::pair<double, double> positionRelativeToObject){
+			       std::pair<double, double> position_relative_to_object){
 	this->gameObject = &gameObject;
 	this->imagePath = imagePath;
 	this->zoomFactor = zoomFactor;
-	mPositionRelativeToObject = positionRelativeToObject;
+	m_position_relative_to_object = position_relative_to_object;
 }
 
 void ImageComponent::init(){
 	// Check AssetsManager to see if image is already loaded.
-	auto assetsImage = Game::instance.GetAssetsManager().LoadImage(imagePath);
+	auto assets_image = Game::instance.GetAssetsManager().LoadImage(imagePath);
 
-	imageTexture = assetsImage->texture;
+	imageTexture = assets_image->texture;
 
-	componentWidth = assetsImage->width * zoomFactor;
-	componentHeight = assetsImage->height * zoomFactor;
+	componentWidth = assets_image->width * zoomFactor;
+	componentHeight = assets_image->height * zoomFactor;
 
-	gameObject->m_size.first = componentWidth;
-	gameObject->m_size.second = componentHeight;
+	gameObject->mSize.first = componentWidth;
+	gameObject->mSize.second = componentHeight;
 
 	canvasQuad = {
-		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
-		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
+		(int)(gameObject->mCurrentPosition.first + m_position_relative_to_object.first),
+		(int)(gameObject->mCurrentPosition.second + m_position_relative_to_object.second),
 		componentWidth,
 		componentHeight
 	};
@@ -48,7 +50,7 @@ void ImageComponent::init(){
 
 
 void ImageComponent::draw(){
-	UpdateQuad();
+	updateQuad();
 	SDL_RenderCopy(
 		Game::instance.sdl_elements.getCanvas(),
 		imageTexture,
@@ -57,10 +59,10 @@ void ImageComponent::draw(){
 		);
 }
 
-void ImageComponent::UpdateQuad(){
+void ImageComponent::updateQuad(){
 	canvasQuad = {
-		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
-		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
+		(int)(gameObject->mCurrentPosition.first + m_position_relative_to_object.first),
+		(int)(gameObject->mCurrentPosition.second + m_position_relative_to_object.second),
 		componentWidth,
 		componentHeight
 	};

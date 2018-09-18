@@ -30,7 +30,7 @@ namespace Azo {
 
 			// Add new components to level one here.
 
-			engine::AudioController *m_audio_controller;
+			engine::AudioController *mAudioController;
 			engine::AudioComponent *m_level_theme;
 			LevelOneCode *m_level_code;
 

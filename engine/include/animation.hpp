@@ -24,6 +24,7 @@ namespace engine {
 		int mEachFrameTime;
 		float mAnimationTime;
 		bool mLoop;
+		std::pair<double, double> mPositionRelativeToObject;
 
 		void checkLimits();
 		void updateQuad();
