@@ -14,9 +14,9 @@ namespace engine {
 			~Timer();
 
 			void Reset();
-			void DeltaTime();
-			void Step();
-			float GetDeltaTime();
+			void deltaTime();
+			void step();
+			float getDeltaTime();
 	};
 }
 

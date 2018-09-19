@@ -122,17 +122,17 @@ namespace Azo {
 
 		private:
 			//Don't forget to add the new objects using this function.
-			void CreateGameObjects();
-			void CreateEndingScreen();
+			void createGameObjects();
+			void createEndingScreen();
 
 			/*After adding things that collide (obstacles, for exemple),
 			 add they as paren'ts here.*/
 
-			void AddLevelParents();
+			void addLevelParents();
 		public:
 			LevelOne();
 			LevelOne(std::string name);
-			void Restart();
+			void restart();
 	};
 }
 

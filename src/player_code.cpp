@@ -13,50 +13,52 @@ PlayerCode::PlayerCode(Player *player) {
 	mPlayer->mState = PlayerState::WALK;
 	mPlayer->mOnGround = true;
 	FindAnimationController();
-	FindAudioController();
+	findAudioController();
 }
 
 
-void PlayerCode::FindAnimationController() {
-	mAnimationController = (mPlayer->GetAnimationController(typeid(engine::AnimationController)));
+
+void PlayerCode::FindAnimationController(){
+	 mAnimationController = (mPlayer->getAnimationController(typeid(engine::AnimationController)));
 }
 
-void PlayerCode::FindAudioController() {
-	mAudioController = (mPlayer->GetAudioController(typeid(engine::AudioController)));
+void PlayerCode::findAudioController(){
+	 mAudioController = (mPlayer->getAudioController(typeid(engine::AudioController)));
 }
 
-void PlayerCode::Shutdown() {
-	if (mAnimationController != NULL) {
-		mAnimationController = NULL;
+void PlayerCode::shutdown(){
+	if( mAnimationController != NULL){
+		 mAnimationController = NULL;
+
 	}
 }
 
 
-void PlayerCode::UpdateCode() {
-	switch (mPlayer->mState) {
+void PlayerCode::updateCode(){
+	switch(mPlayer->mState){
 		case PlayerState::WALK:
 
-			mAnimationController->StartUniqueAnimation("walking");
+			mAnimationController->startUniqueAnimation("walking");
 
-			if (mPlayer->m_pushes_right_wall || mPlayer->m_pushes_left_wall){
-				//DEBUG("Update code method. Player Speed in X: " << mPlayer->m_speed.first);
-				mPlayer->m_speed.first = mPlayer->M_ZERO_VECTOR.first;
-			} else {
-				mPlayer->m_speed.first = mPlayer->M_WALKING_SPEED;
-				//DEBUG("PLAYER SHOULD HAVE SPEED! PLAYER SPEED " << mPlayer->m_speed.first);
+			if(mPlayer->mPushesRightWall || mPlayer->mPushesLeftWall){
+				//DEBUG("Update code method. Player Speed in X: " << mPlayer->mSpeed.first);
+				mPlayer->mSpeed.first = mPlayer->M_ZERO_VECTOR.first;
+			}else{
+				mPlayer->mSpeed.first = mPlayer->M_WALKING_SPEED;
+				//DEBUG("PLAYER SHOULD HAVE SPEED! PLAYER SPEED " << mPlayer->mSpeed.first);
 			}
 
-			if (engine::Game::instance.input_manager.KeyState(engine::Button::W)) {
+			if(engine::Game::instance.inputManager.keyState(engine::Button::W)){
 				//DEBUG("W pressed!");
 				mPlayer->mState = PlayerState::JUMP;
-				mPlayer->m_speed.second = mPlayer->M_JUMPING_SPEED; // Jumping speed.
+				mPlayer->mSpeed.second = mPlayer->M_JUMPING_SPEED; // Jumping speed.
 
-			} else if (!mPlayer->mOnGround) {
+			}else if(!mPlayer->mOnGround){
 				//DEBUG("Player isn't on ground. (WALK)");
 				mPlayer->mState = PlayerState::JUMP;
 			}
 
-			if(engine::Game::instance.input_manager.KeyState(engine::Button::S)) {
+			if(engine::Game::instance.inputManager.keyState(engine::Button::S)){
 				mPlayer->mState = PlayerState::SLIDE;
 			}
 
@@ -64,67 +66,66 @@ void PlayerCode::UpdateCode() {
 
 		case PlayerState::JUMP:
 
-			if (mPlayer->mOnGround) {
+			if(mPlayer->mOnGround){
 				mPlayer->mState = PlayerState::WALK;
 			}
 
-			mAnimationController->StartUniqueAnimation("jumping");
+			mAnimationController->startUniqueAnimation("jumping");
 
-			mPlayer->m_speed.second += (mPlayer->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
+			mPlayer->mSpeed.second += (mPlayer->M_GRAVITY * engine::Game::instance.getTimer().getDeltaTime());
 			//DEBUG("UpdateCode method. Player Speed in Y: " << mPlayer->m_speed.second);
 
-			if (mPlayer->m_pushes_right_wall) {
-				mPlayer->m_speed.first = mPlayer->M_ZERO_VECTOR.first;
-			} else {
-				mPlayer->m_speed.first = mPlayer->M_WALKING_SPEED;         // Walking speed.
+			if(mPlayer->mPushesRightWall){
+				mPlayer->mSpeed.first = mPlayer->M_ZERO_VECTOR.first;
+			}else{
+				mPlayer->mSpeed.first = mPlayer->M_WALKING_SPEED;         // Walking speed.
 			}
 
-			// if(mPlayer->m_pushes_left_wall){
-			//      mPlayer->m_speed.first = mPlayer->M_ZERO_VECTOR.first;
+			// if(mPlayer->mPushesLeftWall){
+			//      mPlayer->mSpeed.first = mPlayer->M_ZERO_VECTOR.first;
 			// }
 
 			break;
 
 		case PlayerState::SLIDE:
-			mAnimationController->StartUniqueAnimation("sliding");
+			mAnimationController->startUniqueAnimation("sliding");
 
-			if (mAnimationController->
-				GetAnimationStatus("sliding") == engine::AnimationState::FINISHED) {
+			if(mAnimationController->getAnimationStatus("sliding") == engine::AnimationState::FINISHED){
 				mPlayer->mState = PlayerState::WALK;
 				break;
 			}
 
-			mPlayer->m_speed.second += (mPlayer->M_GRAVITY * engine::Game::instance.GetTimer().GetDeltaTime());
-			//DEBUG("Player speed: " << mPlayer->m_speed.second);
+			mPlayer->mSpeed.second += (mPlayer->M_GRAVITY * engine::Game::instance.getTimer().getDeltaTime());
+			//DEBUG("Player speed: " << mPlayer->mSpeed.second);
 
-			if (mPlayer->m_pushes_right_wall) {
-				mPlayer->m_speed.first = mPlayer->M_ZERO_VECTOR.first;
+			if(mPlayer->mPushesRightWall){
+				mPlayer->mSpeed.first = mPlayer->M_ZERO_VECTOR.first;
 				//TODO(Roger): Change this state to DEATH.
 				mPlayer->mState = PlayerState::WALK;
 			}
 
-			if (engine::Game::instance.input_manager.KeyState(engine::Button::W)) {
+			if(engine::Game::instance.inputManager.keyState(engine::Button::W)){
 				mPlayer->mState = PlayerState::JUMP;
-				mPlayer->m_speed.second = mPlayer->M_JUMPING_SPEED;
+				mPlayer->mSpeed.second = mPlayer->M_JUMPING_SPEED;
 			}
 
 			break;
 		case PlayerState::DIE:
-			mAnimationController->StartUniqueAnimation("dying");
+			mAnimationController->startUniqueAnimation("dying");
 
-			mAudioController->PlayAudio("lost");
+			mAudioController->playAudio("lost");
 
 			break;
 		case PlayerState::END:
-			if (mPlayer->m_collected_parts < mPlayer->M_TOTAL_PARTS) {
-				mAnimationController->StartUniqueAnimation("losing");
+			if(mPlayer->mCollectedParts < mPlayer->M_TOTAL_PARTS){
+				mAnimationController->startUniqueAnimation("losing");
 
-				if (mAnimationController->GetAnimationStatus("losing") == engine::AnimationState::FINISHED) {
-					mAudioController->PlayAudio("lost");
+				if(mAnimationController->getAnimationStatus("losing") == engine::AnimationState::FINISHED){
+					mAudioController->playAudio("lost");
 				}
-			} else {
-				mAnimationController->StartUniqueAnimation("victory");
-				mAudioController->PlayAudio("victory");
+			}else{
+				mAnimationController->startUniqueAnimation("victory");
+				mAudioController->playAudio("victory");
 			}
 
 			break;

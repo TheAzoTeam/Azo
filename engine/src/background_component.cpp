@@ -1,51 +1,48 @@
 #include "background_component.hpp"
-#include "game.hpp"
 #include "game_object.hpp"
+#include "game.hpp"
 #include "sdl.hpp"
 
 using namespace engine;
 
+const int COMPONENT_X = 0;
+const int COMPONENT_Y = 0;
 
 BackgroundComponent::BackgroundComponent(){}
 
-BackgroundComponent::BackgroundComponent(std::string image_path){
-	this->image_path = image_path;
-	this->component_state = State::ENABLED;
+BackgroundComponent::BackgroundComponent(std::string imagePath){
+	this->imagePath = imagePath;
+	this->componentState = State::ENABLED;
 }
 
-
-BackgroundComponent::BackgroundComponent(GameObject & gameObject, std::string image_path){
+BackgroundComponent::BackgroundComponent(GameObject & gameObject, std::string imagePath){
 	this->gameObject = &gameObject;
-	this->image_path = image_path;
-	this->component_state = State::ENABLED;
+	this->imagePath = imagePath;
+	this->componentState = State::ENABLED;
 }
 
 BackgroundComponent::~BackgroundComponent(){}
 
-void BackgroundComponent::Init(){
-	//DEBUG("BackgroundComponent::Init method.");
-	auto assets_image = Game::instance.GetAssetsManager().LoadImage(image_path);
-
-	image_texture = assets_image->texture;
-
-	component_width = assets_image->width;
-	component_height = assets_image->height;
-
-	renderQuad = {0, 0, component_width, component_height};
+void BackgroundComponent::init(){
+	//DEBUG("BackgroundComponent::init method.");
+	auto assetsImage = Game::instance.getAssetsManager().LoadImage(imagePath);
+	imageTexture = assetsImage->texture;
+	componentWidth = assetsImage->width;
+	componentHeight = assetsImage->height;
+	renderQuad = {COMPONENT_X, COMPONENT_Y, componentWidth, componentHeight};
 }
 
-void BackgroundComponent::Shutdown(){
-	/* Terminate Texture */
-	image_texture = NULL;
+void BackgroundComponent::shutdown(){
+	// Terminate Texture
+	imageTexture = NULL;
 }
 
-void BackgroundComponent::Draw(){
-	//DEBUG("BackgroundComponent::Draw method.");
+void BackgroundComponent::draw(){
+	//DEBUG("BackgroundComponent::draw method.");
 	SDL_RenderCopy(
-		Game::instance.sdl_elements.GetCanvas(),
-		image_texture,
+		Game::instance.sdlElements.getCanvas(),
+		imageTexture,
 		&renderQuad,
 		NULL
-		);
-
+	);
 }

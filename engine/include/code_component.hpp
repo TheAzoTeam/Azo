@@ -7,19 +7,17 @@
 #include "timer.hpp"
 
 
-namespace engine {
+namespace engine{
 
-	class CodeComponent : public Component {
+	class CodeComponent : public Component{
 		public:
 			CodeComponent();
 
 			CodeComponent(GameObject &gameObject);
 
-			void Init();
-
-			void Shutdown();
-
-			void UpdateCode();
+			void init();
+			void shutdown();
+			void updateCode();
 	};
 }
 

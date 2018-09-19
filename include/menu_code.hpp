@@ -13,10 +13,10 @@ namespace Azo {
 		public:
 			MenuCode(engine::GameObject *gameObject);
 		private:
-			void UpdateCode();
-			void FindAudioController();
+			void updateCode();
+			void findAudioController();
 			void FindAnimationController();
-			void ChangeOption();
+			void changeOption();
 	};
 }
 
