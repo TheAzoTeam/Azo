@@ -81,13 +81,13 @@ void Player::createComponents() {
 	DEBUG("Creating Player Components.");
 	generateWalkingAnimation();
 
-	mWalking = new engine::Animation(*this, 
-									"sprites/CowboyRun.png", 
-									1000.0f, 
-									mWalkingAnimationSprites, 
-									0, 
-									22, 
-									true, 
+	mWalking = new engine::Animation(*this,
+									"sprites/CowboyRun.png",
+									1000.0f,
+									mWalkingAnimationSprites,
+									0,
+									22,
+									true,
 									1);
 
 	mAnimationController = new engine::AnimationController();
@@ -97,13 +97,13 @@ void Player::createComponents() {
 
 	generateJumpingAnimation();
 
-	mJumping = new engine::Animation(*this, 
-									"sprites/CowboyJump.png", 
-									800.0f, 
-									mJumpingAnimationSprites, 
-									0, 
-									7, 
-									false, 
+	mJumping = new engine::Animation(*this,
+									"sprites/CowboyJump.png",
+									800.0f,
+									mJumpingAnimationSprites,
+									0,
+									7,
+									false,
 									1);
 	mJumping->disableComponent();
 	DEBUG("Adding jumping animation to animation controller");
@@ -112,26 +112,26 @@ void Player::createComponents() {
 	generateSlidingAnimation();
 
 	mSliding = new engine::Animation(*this,
-									"sprites/CowboyDesce.png", 
-									800.0f, 
-									mSlidingAnimationSprites, 
-									0, 
-									20, 
-									false, 
+									"sprites/CowboyDesce.png",
+									800.0f,
+									mSlidingAnimationSprites,
+									0,
+									20,
+									false,
 									1);
 	mSliding->disableComponent();
 
 	mAnimationController->addAnimation("sliding", *mSliding);
 
 	generateDyingAnimation();
-	
-	mDying = new engine::Animation(*this, 
-								    "sprites/CowboyTonto.png", 
-									2000.0f, 
-									mDyingAnimationSprites, 
-									0, 
-									35, 
-									false, 
+
+	mDying = new engine::Animation(*this,
+								    "sprites/CowboyTonto.png",
+									2000.0f,
+									mDyingAnimationSprites,
+									0,
+									35,
+									false,
 									1);
 	mDying->disableComponent();
 
@@ -139,13 +139,13 @@ void Player::createComponents() {
 
 	generateLosingAnimation();
 
-	mLosing = new engine::Animation(*this, 
-									"sprites/CowBoyDerrota.png", 
-									10000.0f, 
-									mLosingAnimationSprites, 
-									0, 
-									6, 
-									false, 
+	mLosing = new engine::Animation(*this,
+									"sprites/CowBoyDerrota.png",
+									10000.0f,
+									mLosingAnimationSprites,
+									0,
+									6,
+									false,
 									1);
 	mLosing->disableComponent();
 
@@ -153,13 +153,13 @@ void Player::createComponents() {
 
 	generateVictoryAnimation();
 
-	mVictory = new engine::Animation(*this, 
-									"sprites/victory.png", 
-									10.0f, 
-									mVictoryAnimationSprites, 
-									0, 
-									0, 
-									false, 
+	mVictory = new engine::Animation(*this,
+									"sprites/victory.png",
+									10.0f,
+									mVictoryAnimationSprites,
+									0,
+									0,
+									false,
 									1);
 	mVictory->disableComponent();
 
@@ -168,14 +168,14 @@ void Player::createComponents() {
 	DEBUG("Adding animation controller to Player.");
 	this->addComponent(*mAnimationController);
 
-	mLost = new engine::AudioComponent(*this, 
-										"audios/derrota.ogg", 
-										false, 
+	mLost = new engine::AudioComponent(*this,
+										"audios/derrota.ogg",
+										false,
 										false);
 
-	mVictorySong = new engine::AudioComponent(*this, 
-												"audios/victory.ogg", 
-												false, 
+	mVictorySong = new engine::AudioComponent(*this,
+												"audios/victory.ogg",
+												false,
 												false);
 
 	mAudioController = new engine::AudioController();
@@ -195,7 +195,7 @@ void Player::generateVictoryAnimation() {
 	mVictoryAnimationSprites.push_back(new engine::Sprite());
 
 	/*
-		Set the animation sprites coordinates (x, y) 
+		Set the animation sprites coordinates (x, y)
 		and its Width and Height based on its coordinates
 		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
@@ -214,7 +214,7 @@ void Player::generateLosingAnimation() {
 	}
 
 	/*
-		Set the animation sprites coordinates (x, y) 
+		Set the animation sprites coordinates (x, y)
 		and its Width and Height based on its coordinates
 		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
@@ -264,7 +264,7 @@ void Player::generateWalkingAnimation(){
 	}
 
 	/*
-		Set the animation sprites coordinates (x, y) 
+		Set the animation sprites coordinates (x, y)
 		and its Width and Height based on its coordinates
 		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
@@ -393,7 +393,7 @@ void Player::generateJumpingAnimation() {
 	}
 
 	/*
-		Set the animation sprites coordinates (x, y) 
+		Set the animation sprites coordinates (x, y)
 		and its Width and Height based on its coordinates
 		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
@@ -446,7 +446,7 @@ void Player::generateSlidingAnimation() {
 	}
 
 	/*
-		Set the animation sprites coordinates (x, y) 
+		Set the animation sprites coordinates (x, y)
 		and its Width and Height based on its coordinates
 		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
@@ -564,7 +564,7 @@ void Player::generateDyingAnimation() {
 	}
 
 	/*
-		Set the animation sprites coordinates (x, y) 
+		Set the animation sprites coordinates (x, y)
 		and its Width and Height based on its coordinates
 		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/

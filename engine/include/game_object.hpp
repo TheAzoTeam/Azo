@@ -1,5 +1,5 @@
-#ifndef GAME_OBJECT_HPP
-#define GAME_OBJECT_HPP
+#ifndef gameObject_HPP
+#define gameObject_HPP
 
 #include <iostream>
 #include <typeinfo>

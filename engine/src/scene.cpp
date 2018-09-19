@@ -68,7 +68,7 @@ void Scene::removeGameObject(std::string &gameObjectName){
 	if (gameObjectMap.find(gameObjectName) == gameObjectMap.end()){
 		ERROR("Game object doesn't exist!");
 	}
-	
+
 	gameObjectMap.erase(gameObjectName);
 	mKeyList.remove(gameObjectName);
 }
