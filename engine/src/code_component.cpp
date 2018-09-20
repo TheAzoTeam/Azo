@@ -7,11 +7,11 @@ CodeComponent::CodeComponent(){}
 
 CodeComponent::CodeComponent(GameObject &gameObject){
 	this->gameObject = &gameObject;
-	this->component_state = State::ENABLED;
+	this->componentState = State::ENABLED;
 }
 
-void CodeComponent::Init(){}
+void CodeComponent::init(){}
 
-void CodeComponent::Shutdown(){}
+void CodeComponent::shutdown(){}
 
-void CodeComponent::UpdateCode(){}
+void CodeComponent::updateCode(){}

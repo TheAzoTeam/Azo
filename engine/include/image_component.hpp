@@ -22,10 +22,10 @@ namespace engine {
 						   double zoomFactor,
 						   std::pair<double,
 						   double> positionRelativeToObject);
-			void Init();
-			void Draw();
-			void UpdateQuad();
-			inline std::string GetClassName() {
+			void init();
+			void draw();
+			void updateQuad();
+			inline std::string getClassName() {
 				return "ImageComponent";
 			}
 	};

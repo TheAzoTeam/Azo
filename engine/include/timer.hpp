@@ -15,8 +15,8 @@ namespace engine {
 
 			void Reset();
 			void DeltaTime();
-			void Step();
-			float GetDeltaTime();
+			void step();
+			float getDeltaTime();
 	};
 }
 

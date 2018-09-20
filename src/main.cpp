@@ -7,21 +7,21 @@ using namespace Azo;
 
 int main(int, char**) {
 	// Get the Primary Data for create the game and transfer to SDL do this.
-	engine::Game::instance.SetAttributes(
-		global::game_name,
-		global::window_width,
-		global::window_height,
-		global::frame_rate);
+	engine::Game::instance.setAttributes(
+		global::GAME_NAME,
+		global::WINDOWN_WIDTH,
+		global::WINDOWN_HEIGHT,
+		global::FRAME_RATE);
 
 	LevelOne level_one("level_one");
 	Menu menu("menu");
 
-	engine::Game::instance.AddScene(level_one);
-	engine::Game::instance.AddScene(menu);
+	engine::Game::instance.addScene(level_one);
+	engine::Game::instance.addScene(menu);
 
-	engine::Game::instance.ChangeScene("menu");
+	engine::Game::instance.changeScene("menu");
 
-	engine::Game::instance.Run();
+	engine::Game::instance.run();
 
 	return 0;
 }

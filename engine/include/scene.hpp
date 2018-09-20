@@ -2,43 +2,42 @@
 #define SCENE_ENGINE_HPP
 
 #include <iostream>
+#include <unordered_map>
 #include "sdl2include.h"
 #include "game_object.hpp"
-#include <unordered_map>
 
 namespace engine {
+
 	enum class SceneState {
 		FIRST_TIME,
 		RUNNED,
 	};
 
 	class Scene {
-		public:
-			Scene();
-			Scene(std::string scene_name);
+	public:
+		Scene();
+		Scene(std::string sceneName);
 
-			virtual void Init();
-			virtual void Shutdown();
-			virtual void Draw();
-			virtual void UpdateCode();
-			virtual void Restart();
+		virtual void init();
+		virtual void shutdown();
+		virtual void draw();
+		virtual void updateCode();
+		virtual void restart();
 
-			inline std::string GetSceneName() {
-				return scene_name;
-			}
+		inline std::string getSceneName() {
+			return sceneName;
+		}
 
-			void DeleteKeyList();
+		void deleteKeyList();
+		void addGameObject(engine::GameObject &gameObject);
+		void removeGameObject(std::string &gameObjectName);
+		engine::GameObject & getGameObject(std::string & gameObjectName);
+		SceneState mState = SceneState::FIRST_TIME;
 
-			void AddGameObject(engine::GameObject &gameObject);
-			engine::GameObject & GetGameObject(std::string & game_object_name);
-			void RemoveGameObject(std::string &game_object_name);
-
-			SceneState m_state = SceneState::FIRST_TIME;
-
-		protected:
-			std::map<std::string, engine::GameObject *> game_object_map;
-			std::list<std::string> m_key_list;
-			std::string scene_name;
+	protected:
+		std::map<std::string, engine::GameObject *> gameObjectMap;
+		std::list<std::string> mKeyList;
+		std::string sceneName;
 	};
 }
 

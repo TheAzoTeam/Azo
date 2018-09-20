@@ -17,10 +17,10 @@ void Timer::DeltaTime() {
 	deltaTime = SDL_GetTicks() - elapsedTicks;
 }
 
-float Timer::GetDeltaTime() {
+float Timer::getDeltaTime() {
 	return deltaTime;
 }
 
-void Timer::Step() {
+void Timer::step() {
 	elapsedTicks = SDL_GetTicks();
 }
