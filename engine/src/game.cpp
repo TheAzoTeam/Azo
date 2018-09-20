@@ -1,3 +1,12 @@
+/** 
+ * @file code_component.cpp
+ * @brief Purpose: Contains general scope to the game.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+*/
 #include "sdl2include.h"
 #include "game.hpp"
 #include <iostream>
@@ -5,8 +14,13 @@
 
 using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.
 
-Game Game::instance;    // Used to initialize in fact the static instance of game;
+Game Game::instance; // Used to initialize in fact the static instance of game;
 
+/**
+ * @brief Default constructor for the Game component.
+ *  
+ * @return "void".
+*/
 Game::Game(){
 	this->needToChangeScene = false;
 	this->currentScene = NULL;
@@ -14,68 +28,60 @@ Game::Game(){
 	this->frameRate = 60;
 }
 
-// Main Game Loop and SDL Initiators.
+/**
+ * @brief Main Game Loop and SDL Initiators.  
+ * 
+ * Run all the game.
+ *  
+ * @return "void".
+*/
 void Game::run(){
 
-	// (SDL) Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
+	// Initialize all SDL attributes, create the window and set state to play.
 	sdlElements.initSDL();
-
-	// (SDL) Create Window and Canvas.
 	sdlElements.createWindow();
-
-	// (STATE) Set game state to show that it's running.
 	gameState = engine::GameState::PLAY;
 
-	// Calculate how many time will have one frame of the Game (miliseconds).
-	frameTime = 1000.0f / frameRate;
-
+	frameTime = 1000.0f / frameRate; // Calculate the time of a game frame (miliseconds).
 
 	INFO("Starting Main Loop Game.");
 	while(gameState == engine::GameState::PLAY){
-
-		// Get the current time.
-		timer.step();
+		timer.step(); // Get the current time.
 
 		if(startAndStopScenes() == false){
 			break;
 		}
 
-		// Reading input (events).
-		SDL_Event _event;
+		SDL_Event _event; // Reading input (events).
 
 		// "Search" for a event that will close the Game.
 		while(SDL_PollEvent(&_event)){
 			switch(_event.type){
 				case SDL_QUIT:
-					// (STATE) Set game state to show that it'll Die.
 					gameState = engine::GameState::EXIT;
 					break;
 				default:
-					// Check for user inputs.
-					inputManager.update(_event);
+					inputManager.update(_event); // Check for user inputs.
 					break;
 			}
 		}
 
 		// Clean and Draw the Scene to refreh animations and objects.
-		// DEBUG("Drawing current scene.");
-		// DEBUG("Scene name: " << currentScene->getSceneName());
 		SDL_RenderClear(sdlElements.getCanvas());
 		currentScene->draw();
 		SDL_RenderPresent(sdlElements.getCanvas());
 
-		//DEBUG("Updating current scene: " << currentScene->getSceneName() << " code.");
 		currentScene->updateCode();
 
-
-		//INFO("Clearing user input from InputManager.");
 		inputManager.clear();
 
-		//INFO("Calculating elapsed time from the start of this frame until now");
-		timer.DeltaTime();
+		timer.DeltaTime(); // Calculating elapsed time from the start of this frame until now.
 
-		/* If the time that has passed until now was faster than the frame's time, is needed wait
-		   the time necessary to complete a frame's time.*/
+		/**
+		 * If the time that has passed until now was faster 
+		 * than the frame's time, is needed wait
+		 * the time necessary to complete a frame's time.
+		*/
 		if(frameTime > timer.getDeltaTime()){
 			SDL_Delay(frameTime - timer.getDeltaTime());
 		}
@@ -90,11 +96,16 @@ void Game::run(){
 	sdlElements.terminateSDL();
 }
 
-
-// Used to add a Scene to map that have all Game's Scenes.
+/**
+ * @brief add scenes to the game.  
+ * 
+ * Used to add a Scene to map that have all Game's Scenes.
+ *  
+ * @param Scene that represent a game stage. 
+ * @return "bool".
+*/
 bool Game::addScene(Scene &scene){
 	auto sceneName = scene.getSceneName();
-
 
 	if(sceneMap.find(sceneName) != sceneMap.end()){
 		ERROR("Scene already exists!");
@@ -108,14 +119,30 @@ bool Game::addScene(Scene &scene){
 	return true;
 }
 
+/**
+ * @brief Restart game scene. 
+ * 
+ * Load the scene. Used every time a scene needs to be reseted.
+ *  
+ * @param sceneName string that has the scene name.
+ * 
+ * @return "void".
+*/
 void Game::restartScene(std::string sceneName){
 	auto scene = sceneMap[sceneName];
 
 	scene->restart();
 }
 
-
-// Perform the necessary checks and prepare the structure to switch Scenes.
+/**
+ * @brief change the game scene. 
+ * 
+ * Perform the necessary checks and prepare the structure to switch Scenes.
+ *  
+ * @param sceneName string that has the scene name
+ * 
+ * @return "void".
+*/
 void Game::changeScene(std::string sceneName){
 	INFO("Changing Scenes.");
 	if(sceneMap.find(sceneName) == sceneMap.end()){
@@ -129,15 +156,21 @@ void Game::changeScene(std::string sceneName){
 	needToChangeScene = true;
 }
 
-
-// Perform scene switching effectively.
+/**
+ * @brief switch the game scene  
+ * 
+ * Perform scene switching effectively.
+ *  
+ * @param sceneName string that has the scene name
+ * 
+ * @return bool that represents the success on change scene.
+*/
 bool Game::startAndStopScenes(){
 	if(needToChangeScene){
 		if(currentScene == NULL){
 			ERROR("No scenes to run!");
 			return false;
 		}else{
-
 			// If the last scene is equal the current scene, we still need
 			// to delete all keys from the game object map on scene.
 			if(lastScene != NULL && lastScene->getSceneName() == currentScene->getSceneName()){
@@ -161,8 +194,6 @@ bool Game::startAndStopScenes(){
 				if(lastScene->getSceneName() != currentScene->getSceneName()){
 					lastScene->shutdown();
 				}
-				//DEBUG("Scene name: " << lastScene->getSceneName());
-				//sceneMap.erase(lastScene->getSceneName());
 			}else{
 				// Nothing to Do.
 			}
@@ -174,9 +205,15 @@ bool Game::startAndStopScenes(){
 	return true;
 }
 
-
-/* Transfer the gameName, windowWidth and windowHeight to SDL instace through its method "SetSDLAttributes"
-   and set Game's frameRate. */
+/**
+ * @brief set the game attributtes to SDL instance. 
+ * 
+ * Transfer the game attributes to SDL instace and set Game's frameRate.
+ *  
+ * @param sceneName string that has the scene name
+ * 
+ * @return "void".
+*/
 void Game::setAttributes(std::string gameName, int windowWidth, int windowHeight, int frameRate){
 	sdlElements.setSDLAttributes(gameName, windowWidth, windowHeight);
 	this->frameRate = frameRate;

@@ -38,20 +38,30 @@ namespace engine {
     */
 	class Component {
 
-	protected:
-		GameObject *gameObject; // represents the object of the game
-		State componentState = State::ENABLED; // set the component state (based on enum class State)
-	public:
-		Component();
-		Component(GameObject &gameObject);
-		virtual void init();
-		virtual void shutdown();
-		virtual void draw();
-		virtual void updateCode();
-		virtual void enableComponent();
-		virtual void disableComponent();
-		bool isEnabled();
-		virtual inline std::string getClassName(){ return "Component"; }
+		protected:
+			GameObject *gameObject; // represents the object of the game
+			State componentState = State::ENABLED; // set the component state (based on enum class State)
+		public:
+			Component();
+			Component(GameObject &gameObject);
+			virtual void init();
+			virtual void shutdown();
+			virtual void draw();
+			virtual void updateCode();
+			virtual void enableComponent();
+			virtual void disableComponent();
+			bool isEnabled();
+
+			/**
+			 * @brief access the name of the class.
+			 *  
+			 * Used to get the private attribute className.
+			 * 
+			 * @return string that contains tha scene name.
+			*/
+			virtual inline std::string getClassName(){
+				return "Component";
+			}
 	};
 }
 
