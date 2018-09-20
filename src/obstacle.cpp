@@ -1,14 +1,42 @@
+/** 
+ * @file obstacle.cpp
+ * @brief Purpose: Contains the Obstacle class methods.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+*/
 #include "obstacle.hpp"
 
 using namespace Azo;
 
+/**
+ * @brief Basic contructor for Obstacle.
+ * 
+ * Default basic constructor for Obstacle.
+ */
 Obstacle::Obstacle() {}
 
+/**
+ * @brief Virtual constructor for Obstacle.
+ * 
+ * Default virtual constructor for Obstacle.
+ */ 
 Obstacle::~Obstacle(){}
 
+
+/**
+ * @brief Destructor class for Obstacle.
+ * 
+ * Used for shutting down each one of the Obstacle's attributes so as to free 
+ * memory when closing the game.
+ */ 
 void Obstacle::shutdown() {
 	for (auto eachBlock : mBlockList) {
 		if (eachBlock != NULL) {
+			/* Each block is its own MachinePart component which has to be 
+			   shut down independently. */
 			eachBlock->shutdown();
 			delete(eachBlock);
 			eachBlock = NULL;
@@ -18,6 +46,8 @@ void Obstacle::shutdown() {
 	if (mTurningAnimationSprites.size() > 0) {
 		for (auto eachAnimation : mTurningAnimationSprites) {
 			if (eachAnimation != NULL) {
+				/* Each animation is part of an AnimationComponent which
+				   must be shutdown independently. */
 				delete(eachAnimation);
 				eachAnimation = NULL;
 			}
@@ -53,6 +83,14 @@ void Obstacle::shutdown() {
 }
 
 
+/**
+ * @brief Constructor class for Obstacle.
+ * 
+ * Used to initialize Obstacle class variables.
+ * @param name Obstacle name.
+ * @param positionRelativeToParent Pair of doubles relative to position(range > 0).
+ * @param obstacleType Type of obstacle according to enum class ObstacleType from obstacle.hpp .
+ */ 
 Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeToParent, ObstacleType obstacleType) {
 	mName = name;
 	mPositionRelativeToParent = positionRelativeToParent;
@@ -63,9 +101,15 @@ Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeT
 	createComponents();
 }
 
-// Here we add the imagens/sound to the obstacle, based on its type.
+
+/**
+ * @brief Method for creating components to Obstacle.
+ * 
+ * Used for creating components according to its type (AudioComponent or ImageComponent).
+ */ 
 void Obstacle::createComponents() {
 	DEBUG("Creating obstacle components.");
+	// If blocks for each ObstacleType and its respective initialization.
 	if (mObstacleType == ObstacleType::WESTERN_CAR) {
 		DEBUG("obstacle is a WESTERN CAR!");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
@@ -122,21 +166,24 @@ void Obstacle::createComponents() {
 	}
 }
 
-// Here we create the invisible objects that make the obstacle.
-// The name attribute of the InvisibleBlock isn't needed. It's for testing only.
-// It's important to create the blocks based on the type of the object.
+
+/**
+ * @brief Method for creating blocks.
+ * 
+ * Used to create invisible objects that compose the Obstacle based on the type
+ * of the object.
+ * Note that the name of the InvisibleBlock is only for internal use.
+ */ 
 void Obstacle::createBlocks() {
 
-	// We initialize the block' position as the position relative to parent of the obstacle.
-	// This way we can position things inside the obstacle just by adding values.
+	/* We initialize the block' position as the position relative to parent of the obstacle.
+	 * This way we can position things inside the obstacle just by adding values to the position.
+	 */
 	std::pair<double, double> blockPosition = mPositionRelativeToParent;
 
-	//setting obstacle position based on its type
-
+	// If blocks for setting obstacle position based on its type.
 	if (mObstacleType == ObstacleType::GROUND) {
-		//	DEBUG("Creating invisible block for the ground.");
-		mBlockList.push_back(new InvisibleBlock("block_1", blockPosition, std::make_pair(21000, 100))); //obstacle size
-		//	DEBUG("List size: " << mBlockList.size());
+		mBlockList.push_back(new InvisibleBlock("block_1", blockPosition, std::make_pair(21000, 100)));
 	} else if (mObstacleType == ObstacleType::WESTERN_CAR) {
 
 		blockPosition.first += 69;
@@ -172,16 +219,23 @@ void Obstacle::createBlocks() {
 
 }
 
+
+/**
+ * @brief Method for setting up animated obstacles.
+ * 
+ * Used for generating animations for obstacles that have animated sprites.
+ */ 
 void Obstacle::generateTurningAnimation() {
+	// Default animation speed is 24 frames per second.
 	const int NUMBER_SPRITES_TURNING_ANIMATION = 24;
 	for (int i = 0; i < NUMBER_SPRITES_TURNING_ANIMATION; i++) {
 		mTurningAnimationSprites.push_back(new engine::Sprite());
 	}
 
-	/*
-    Set the animation sprite coordinates (x, y)
-    and its Width and Height based on its coordinates (width - spriteX) and (Height - spriteY)
-  */
+	/**
+     * Set the animation sprite coordinates (x, y)
+     * and its Width and Height based on its coordinates (width - spriteX) and (Height - spriteY).
+  	 */
 
 	mTurningAnimationSprites[0]->spriteX = 13;
 	mTurningAnimationSprites[0]->spriteY = 11;
