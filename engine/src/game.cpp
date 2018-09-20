@@ -72,7 +72,7 @@ void Game::run(){
 		inputManager.clear();
 
 		//INFO("Calculating elapsed time from the start of this frame until now");
-		timer.deltaTime();
+		timer.DeltaTime();
 
 		/* If the time that has passed until now was faster than the frame's time, is needed wait
 		   the time necessary to complete a frame's time.*/
@@ -80,7 +80,7 @@ void Game::run(){
 			SDL_Delay(frameTime - timer.getDeltaTime());
 		}
 
-		timer.deltaTime();
+		timer.DeltaTime();
 
 	}
 

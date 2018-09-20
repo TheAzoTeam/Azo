@@ -5,11 +5,11 @@
 
 using namespace engine;
 
-ImageComponent::ImageComponent(){}
+ImageComponent::ImageComponent() {}
 
-ImageComponent::~ImageComponent(){}
+ImageComponent::~ImageComponent() {}
 
-ImageComponent::ImageComponent(GameObject &gameObject, std::string imagePath, double zoomFactor){
+ImageComponent::ImageComponent(GameObject &gameObject, std::string imagePath, double zoomFactor) {
 	this->gameObject = &gameObject;
 	this->imagePath = imagePath;
 	this->zoomFactor = zoomFactor;
@@ -22,7 +22,7 @@ ImageComponent::ImageComponent(GameObject &gameObject,
 	this->gameObject = &gameObject;
 	this->imagePath = imagePath;
 	this->zoomFactor = zoomFactor;
-	m_position_relative_to_object = position_relative_to_object;
+	mPositionRelativeToObject = position_relative_to_object;
 }
 
 void ImageComponent::init(){
@@ -38,8 +38,8 @@ void ImageComponent::init(){
 	gameObject->mSize.second = componentHeight;
 
 	canvasQuad = {
-		(int)(gameObject->mCurrentPosition.first + m_position_relative_to_object.first),
-		(int)(gameObject->mCurrentPosition.second + m_position_relative_to_object.second),
+		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
+		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
 		componentWidth,
 		componentHeight
 	};
@@ -61,8 +61,8 @@ void ImageComponent::draw(){
 
 void ImageComponent::updateQuad(){
 	canvasQuad = {
-		(int)(gameObject->mCurrentPosition.first + m_position_relative_to_object.first),
-		(int)(gameObject->mCurrentPosition.second + m_position_relative_to_object.second),
+		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
+		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
 		componentWidth,
 		componentHeight
 	};

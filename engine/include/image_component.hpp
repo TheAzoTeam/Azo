@@ -7,22 +7,25 @@
 namespace engine {
 	class ImageComponent : public BackgroundComponent {
 		protected:
-			std::pair<double, double> m_position_relative_to_object = std::make_pair(0, 0);
+			std::pair<double, double> mPositionRelativeToObject = std::make_pair(0, 0);
 			double zoomFactor;
 			SDL_Rect canvasQuad;
 		public:
 			ImageComponent();
 			virtual ~ImageComponent();
-			ImageComponent(GameObject &gameObject, std::string imagePath, double zoomFactor);
-			ImageComponent(
-				GameObject &gameObject,
-				std::string imagePath,
-				double zoomFactor,
-				std::pair<double, double> position_relative_to_object);
+			ImageComponent(GameObject &gameObject,
+						   std::string imagePath,
+						   double zoomFactor);
+
+			ImageComponent(GameObject &gameObject,
+				           std::string imagePath,
+						   double zoomFactor,
+						   std::pair<double,
+						   double> positionRelativeToObject);
 			void init();
 			void draw();
 			void updateQuad();
-			inline std::string getClassName(){
+			inline std::string getClassName() {
 				return "ImageComponent";
 			}
 	};

@@ -13,7 +13,8 @@ namespace engine {
 			std::map <std::string, Animation *> mAnimationMap;
 		public:
 			AnimationController();
-			AnimationController(GameObject &game_object);
+
+			AnimationController(GameObject &gameObject);
 			void addAnimation(std::string animationName, Animation &animation);
 			void startUniqueAnimation(std::string animationName);
 			void startAnimation(std::string animationName);
