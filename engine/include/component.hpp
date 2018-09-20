@@ -1,22 +1,45 @@
+/** 
+ * @file component.hpp
+ * @brief Purpose: Contains the Component class declaration.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+*/
 #ifndef ENGINE_COMPONENT_HPP
 #define ENGINE_COMPONENT_HPP
 
 #include <string>
 
 namespace engine {
-
+	/**  * T10
+     * @brief A GameObject class.
+  	 *
+     * Reference to GameObject class.
+    */
 	class GameObject;
 
+	/**  * T10
+     * @brief A Hitbox class.
+  	 *
+     * Define Components States to control Loops and other strutuctures.
+    */
 	enum class State {
 		ENABLED,
 		DISABLED
 	};
 
+	/**  * T10
+     * @brief A Component class.
+  	 *
+     * Generic Component class. It's how the engine'll see all components that will try to use it.
+    */
 	class Component {
 
 	protected:
-		GameObject *gameObject;
-		State componentState = State::ENABLED;
+		GameObject *gameObject; // represents the object of the game
+		State componentState = State::ENABLED; // set the component state (based on enum class State)
 	public:
 		Component();
 		Component(GameObject &gameObject);
