@@ -25,7 +25,7 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 			       std::pair<double, double> size){
 	DEBUG("Creating Blocks"); 
 
-	mName = name;
+	mName = name; 
 	mPositionRelativeToParent = positionRelativeToParent;
 	mSize = size;
 
@@ -33,7 +33,7 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 	mHalfSize.first = mSize.first / 2.0f; 
 	mHalfSize.second = mSize.second / 2.0f;
 
-	mCenter = mHalfSize;
+	mCenter = mHalfSize; // Center is equal to the mHalfSize pair.
 
 	// Initializing new ImageComponent with default invisible block image.
 	mImage = new engine::ImageComponent(*this, 
@@ -46,7 +46,7 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 /**
  * @brief Destructor class for InvisibleBlock.
  * 
- * Used for shutting down each ImageComponent so as to free memory when closing the game.
+ * Used for shutting down ImageComponent so as to free memory when closing the game.
  */ 
 void InvisibleBlock::shutdown(){
 	mImage->shutdown();

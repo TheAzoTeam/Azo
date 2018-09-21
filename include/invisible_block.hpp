@@ -30,7 +30,6 @@ namespace Azo {
 			InvisibleBlock(std::string name, std::pair<double, double> positionRelativeToParent,
 				       std::pair<double, double> size);
 			void shutdown();
-
 			/**
 			 * @brief Method for class name.
 			 * 
