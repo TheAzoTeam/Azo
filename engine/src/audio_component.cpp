@@ -1,15 +1,34 @@
+/** 
+  * @file audio_component.cpp
+  * @brief Purpose: Contains all the methods related to AudioComponent.
+  * 
+  * GPL v3.0 License
+  * Copyright (c) 2017 Azo
+  *
+  * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+  */
 #include "audio_component.hpp"
 #include "game.hpp"
 
 
 using namespace engine;
 
+/*
+ *@brief Default constructor for the AudioComponent.
+ *
+ * @return "void".
+ */
 AudioComponent::AudioComponent(){}
 
 
 AudioComponent::~AudioComponent(){}
 
-
+/*
+ *@brief Constructor for the AudioComponent
+ *
+ * Initializes all parameters of the audio component
+ *
+ */
 AudioComponent::AudioComponent(GameObject &gameObject,
 							   std::string audioPath,
 							   bool isMusic,
@@ -23,10 +42,15 @@ AudioComponent::AudioComponent(GameObject &gameObject,
 	this->sound = nullptr;
 }
 
-
+/*
+ *@brief Method to initialize the in game Audio
+ *
+ *@return "void"
+ */
 void AudioComponent::init(){
 	INFO("init audio component");
-
+	
+	// Checks if audio in question is music or sound effect
 	if (isMusic){
 		music = Game::instance.getAssetsManager().LoadMusic(audioPath);
 		if (music == NULL){
@@ -49,7 +73,11 @@ void AudioComponent::updateCode(){
 	}
 }
 
-
+/*
+ *@brief Method to shut down the Audio component
+ *
+ *@return "void"
+*/
 void AudioComponent::shutdown(){
 	INFO("shutdown audio component");
 
@@ -66,10 +94,15 @@ void AudioComponent::shutdown(){
 	}
 }
 
-
+/*
+ *@brief Method to change the audio state to PLAYING
+ *
+ *@return "void".
+ */
 void AudioComponent::play(int loops, int channel){
 	INFO("AudioComponent::Play audio: " << audioPath);
 
+	//checks if the audio in question is music or sound effect
 	if (isMusic){
 		if (audioState == AudioState::STOPPED){
 			Mix_PlayMusic (music, loops);
@@ -92,10 +125,15 @@ void AudioComponent::play(int loops, int channel){
 	audioState = AudioState::PLAYING;
 }
 
-
+/*
+ *@brief Method to change the audio state to STOPPED
+ *
+ *@return "void".
+ */
 void AudioComponent::stop(int channel){
 	INFO("AudioComponent::Stop audio: " << audioPath);
 
+	//checks if the audio in question is music or sound effect
 	if (isMusic){
 		Mix_HaltMusic();
 		INFO("Stop music: " << audioPath);
@@ -107,10 +145,14 @@ void AudioComponent::stop(int channel){
 	audioState = AudioState::STOPPED;
 }
 
-
+/*@brief Method to change the audio state to PAUSED
+ *
+ *@return "void"
+ */
 void AudioComponent::pause(int channel){
 	INFO("AudioComponent::Pause audio: " << audioPath);
 
+	//checks if the audio in question is music or sound effect
 	if (isMusic){
 		Mix_PauseMusic();
 		INFO("Pause music: " << audioPath);
