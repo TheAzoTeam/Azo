@@ -1,3 +1,12 @@
+/** 
+ * @file scene.hpp
+ * @brief Purpose: Contains the Scene class declaration.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+ */
 #ifndef SCENE_ENGINE_HPP
 #define SCENE_ENGINE_HPP
 
@@ -8,11 +17,21 @@
 
 namespace engine {
 
+	/*
+	 *@brief Class for possible Scene States
+	 *
+	 *Enum class used to differentiate Scene States
+	 */
 	enum class SceneState {
 		FIRST_TIME,
 		RUNNED,
 	};
 
+	/*
+	 *@brief a Scene class
+	 *
+	 *It'a how the engine will manage the Scenes that appear on screen
+	 */
 	class Scene {
 	public:
 		Scene();
