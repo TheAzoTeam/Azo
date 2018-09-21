@@ -1,5 +1,5 @@
 /** 
- * @file component.hpp
+ * @file component.cpp
  * @brief Purpose: Contains general scope to game components.
  * 
  * GPL v3.0 License
@@ -49,7 +49,7 @@ void Component::init(){}
 void Component::shutdown(){}
 
 /**
- * @brief inherits function that draw game objects.  
+ * @brief inherits function that draw game objects. 
  * 
  * draws all the enabled game objects.
  * 
@@ -69,7 +69,7 @@ void Component::updateCode(){}
 /**
  * @brief enable components.  
  * 
- * set the game objects state to enabled.
+ * set the game object components state to enabled.
  * 
  * @return "void".
 */
@@ -80,7 +80,7 @@ void Component::enableComponent(){
 /**
  * @brief disable components.  
  * 
- * set the game objects state to disabled.
+ * set the game object components state to disabled.
  *
  * @return "void".
 */

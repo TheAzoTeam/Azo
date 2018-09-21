@@ -96,7 +96,7 @@ AudioController* GameObject::getAudioController(std::type_index componentType){
 /**
  * @brief function that initialize the game objects components.
  * 
- * Set all game objects components to enable.
+ * Set all game object components to enable.
  * 
  * @return "void".
 */
@@ -131,7 +131,7 @@ void GameObject::draw(){
 /**
  * @brief function that update the game object code.  
  * 
- * update all the enabled game objects components.
+ * update all the enabled game object components.
  *  
  * @return "void".
 */

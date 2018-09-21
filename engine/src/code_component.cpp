@@ -31,18 +31,18 @@ CodeComponent::CodeComponent(GameObject &gameObject){
 }
 
 /**
- * @brief inherits function that initialize the game code components
+ * @brief inherits function that initialize the game code components.
  * 
- * Set all game code components to enable
+ * Set all game code components to enable.
  * 
  * @return "void".
 */
 void CodeComponent::init(){}
 
 /**
- * @brief inherits function that disable the game code components
+ * @brief inherits function that disable the game code components.
  * 
- * free the code component pointer
+ * free the code component pointer.
  *  
  * @return "void".
 */

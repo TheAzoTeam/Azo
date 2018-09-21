@@ -1,5 +1,5 @@
 /** 
- * @file code_component.cpp
+ * @file game.cpp
  * @brief Purpose: Contains general scope to the game.
  * 
  * GPL v3.0 License
@@ -78,9 +78,8 @@ void Game::run(){
 		timer.DeltaTime(); // Calculating elapsed time from the start of this frame until now.
 
 		/**
-		 * If the time that has passed until now was faster 
-		 * than the frame's time, is needed wait
-		 * the time necessary to complete a frame's time.
+		 * If the time that has passed until now was faster than the frame's time,
+		 * is needed wait the time necessary to complete a frame's time.
 		*/
 		if(frameTime > timer.getDeltaTime()){
 			SDL_Delay(frameTime - timer.getDeltaTime());
@@ -102,7 +101,8 @@ void Game::run(){
  * Used to add a Scene to map that have all Game's Scenes.
  *  
  * @param Scene that represent a game stage. 
- * @return "bool".
+ * 
+ * @return a bool that indicates the add scene success.
 */
 bool Game::addScene(Scene &scene){
 	auto sceneName = scene.getSceneName();
@@ -185,7 +185,6 @@ bool Game::startAndStopScenes(){
 			if(currentScene->mState == SceneState::FIRST_TIME){
 				currentScene->mState = SceneState::RUNNED;
 			}
-
 
 			currentScene->init();
 

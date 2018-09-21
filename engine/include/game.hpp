@@ -27,7 +27,7 @@ namespace engine {
 	/**
      * @brief A GameState class.
   	 *
-     * Define Game States to control Loops and other strutuctures.
+     * Define Game States to control Loops and other structures.
     */
 	enum class GameState {
 		EXIT,
@@ -37,22 +37,23 @@ namespace engine {
 	/**
      * @brief A Game class.
   	 *
-     * Generic Game class. It's how the engine'll see all games that will try to use it.
+     * Generic Game class. 
+	 * It's how the engine'll see all games that will try to use it.
     */
 	class Game {
 		public:
 			static Game instance; // Global game instance.
 			SDL sdlElements; // Used to access SDL class and sdl elements.
 			InputManager inputManager; // Used to access the user inputs
-			GameState gameState; // Define Game States to control Loops and other strutuctures.
+			GameState gameState; // Define Game States to control Loops and other structures.
 		private:
 			bool needToChangeScene; // Used to define if there's a Change Scene to occur.
 			std::map<std::string, Scene *> sceneMap; // All Scenes of the Game.
-			engine::Scene *currentScene; // must contain the Current Scene.
-			engine::Scene *lastScene; // must contain the Last Scene.
+			engine::Scene *currentScene; // Contain the Current Scene of the game.
+			engine::Scene *lastScene; // must contain the Last Scene of the game.
 			Timer timer; // Timer to control all Game's Time.
 			int frameRate; // Frames per Second of the Game (FPS).
-			float frameTime; // How many time will have one frame of the Game (miliseconds).
+			float frameTime; // Time of each frame of the Game (miliseconds).
 			AssetsManager assetsManager; // Manager to load, unload and reference assets.
 
 		public:
@@ -72,7 +73,7 @@ namespace engine {
 			/**
  			 * @brief access the Timer.
  			 *  
- 			 * Used to use the private attribute Timer.
+ 			 * Used to get the private attribute Timer.
 			 * 
 			 * @return the game timer.
 			*/
@@ -81,7 +82,7 @@ namespace engine {
 			}
 
 			/**
- 			 * @brief access the asset manager.
+ 			 * @brief access the assets manager.
  			 *  
  			 * Used to get the private attribute AssetsManager.
 			 * 

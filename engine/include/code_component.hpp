@@ -20,7 +20,8 @@ namespace engine{
 	/** 
      * @brief A Code Component class.
   	 *
-     * Generic Component class. It's how the engine'll see all components that will try to use it.
+     * Generic Component class. 
+	 * It's how the engine'll see all components that will try to use it.
     */
 	class CodeComponent : public Component{
 		public:

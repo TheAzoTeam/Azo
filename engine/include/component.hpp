@@ -14,14 +14,14 @@
 
 
 namespace engine {
-	/**  * T10
+	/**
      * @brief A GameObject class.
   	 *
      * Reference to GameObject class.
     */
 	class GameObject;
 
-	/**  * T10
+	/**
      * @brief A Hitbox class.
   	 *
      * Define Components States to control Loops and other strutuctures.
@@ -31,7 +31,7 @@ namespace engine {
 		DISABLED
 	};
 
-	/**  * T10
+	/**
      * @brief A Component class.
   	 *
      * Generic Component class. It's how the engine'll see all components that will try to use it.
@@ -57,7 +57,7 @@ namespace engine {
 			 *  
 			 * Used to get the private attribute className.
 			 * 
-			 * @return string that contains tha scene name.
+			 * @return string that contains the scene name.
 			*/
 			virtual inline std::string getClassName(){
 				return "Component";

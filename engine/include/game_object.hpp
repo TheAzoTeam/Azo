@@ -27,7 +27,7 @@ namespace engine {
 	/**
      * @brief A ObjectState class.
   	 *
-     * Define Game Object States to control Loops and other strutuctures.
+     * Define Game Object States to control Loops and other structures.
     */
 	enum ObjectState {
 		ENABLED,
