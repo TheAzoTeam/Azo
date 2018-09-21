@@ -110,8 +110,6 @@ bool Game::addScene(Scene &scene){
 	if(sceneMap.find(sceneName) != sceneMap.end()){
 		ERROR("Scene already exists!");
 		return false;
-	}else{
-		// Nothing to Do.
 	}
 
 	sceneMap[sceneName] = &scene;
@@ -147,8 +145,6 @@ void Game::changeScene(std::string sceneName){
 	INFO("Changing Scenes.");
 	if(sceneMap.find(sceneName) == sceneMap.end()){
 		ERROR("Scene not found!");
-	}else{
-		// Nothing to Do.
 	}
 
 	lastScene = currentScene;
@@ -193,8 +189,6 @@ bool Game::startAndStopScenes(){
 				if(lastScene->getSceneName() != currentScene->getSceneName()){
 					lastScene->shutdown();
 				}
-			}else{
-				// Nothing to Do.
 			}
 
 			needToChangeScene = false;
@@ -209,7 +203,10 @@ bool Game::startAndStopScenes(){
  * 
  * Transfer the game attributes to SDL instace and set Game's frameRate.
  *  
- * @param sceneName string that has the scene name
+ * @param gameName string that has the name of the game
+ * @param windowWidth sets the width of the game screen
+ * @param windowHeight sets the height of the game screen
+ * @param frameRate Frames per Second of the Game (FPS).
  * 
  * @return "void".
 */

@@ -60,11 +60,8 @@ namespace engine {
 			Game();
 
 			void run();
-
 			bool addScene(engine::Scene &scene);
-
 			void restartScene(std::string sceneName);
-
 			void setAttributes(std::string gameName,
 					   int windowWidth,
 					   int windowHeight,
