@@ -17,6 +17,12 @@ https://github.com/TecProg2018-2/Azo
 #include "audio_controller.hpp"
 
 namespace Azo {
+
+	/**
+	* @brief LevelOneCode class
+	* This class is used to manage creation and behavior of
+	* the engine at the first level of the game.
+	*/
 	class LevelOneCode : public engine::CodeComponent {
 		private:
 			Player *mPlayer;
@@ -29,9 +35,11 @@ namespace Azo {
 
 			double mWaitingTime = 0.0f;
 			int mCurrentOption = 1;
+
 		public:
 			LevelOneCode(engine::GameObject &gameObject);
 			void shutdown();
+
 		private:
 			void findAudioController();
 			void updateCode();
@@ -44,7 +52,6 @@ namespace Azo {
 			bool hasWallOnRight(double *wallX);
 			bool hasWallOnLeft(double *wallX);
 			void updatePhysics();
-
 	};
 }
 

@@ -18,16 +18,24 @@ https://github.com/TecProg2018-2/Azo
 #include "audio_controller.hpp"
 
 namespace Azo {
+
+	/**
+	* @brief LevelOne class
+	* This class is used to manage creation and behavior of
+	* game objects, menus and parents.
+	*/
 	class LevelOne : public engine::Scene {
 		private:
 			engine::BackgroundComponent *mWinningScreen;
 			engine::BackgroundComponent *mLosingPartsScreen;
 			engine::BackgroundComponent *mLosingDeathScreen;
+
 			engine::GameObject *mWinningScreenObject;
 			engine::GameObject *mLosingPartsScreenObject;
 			engine::GameObject *mLosingDeathScreenObject;
 			engine::GameObject *mArrow;
 			engine::ImageComponent *mArrowImage;
+
 			engine::ImageComponent *mLevelBackground1;
 			engine::ImageComponent *mLevelBackground2;
 			engine::ImageComponent *mLevelBackground3;
@@ -134,6 +142,7 @@ namespace Azo {
 			 add they as parents here.*/
 
 			void addLevelParents();
+
 		public:
 			LevelOne();
 			LevelOne(std::string name);
