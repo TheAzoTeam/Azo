@@ -33,48 +33,50 @@ Obstacle::~Obstacle(){}
  * memory when closing the game.
  */ 
 void Obstacle::shutdown() {
+	// Each block in mBlockList must be shutdown before Obstacle can also be shut down.
 	for (auto eachBlock : mBlockList) {
 		if (eachBlock != NULL) {
-			/* Each block is its own MachinePart component which has to be 
-			   shut down independently. */
 			eachBlock->shutdown();
 			delete(eachBlock);
 			eachBlock = NULL;
 		}
 	}
 
+	// Clear any animations remaining before shutdding down Obstacle.
 	if (mTurningAnimationSprites.size() > 0) {
 		for (auto eachAnimation : mTurningAnimationSprites) {
 			if (eachAnimation != NULL) {
-				/* Each animation is part of an AnimationComponent which
-				   must be shutdown independently. */
 				delete(eachAnimation);
 				eachAnimation = NULL;
 			}
 		}
 	}
 
+	// Clear all remaining images.
 	if (mObstacleImage != NULL) {
 		delete(mObstacleImage);
 		mObstacleImage = NULL;
 	}
 
+	// Clear all remaining audio.
 	if (mAudioController != NULL) {
 		mAudioController->shutdown();
 		delete(mAudioController);
 		mAudioController = NULL;
 	}
 
+	// Reset mCollected value.
 	if (mCollected != NULL) {
 		mCollected = NULL;
 	}
 
+	// Reset mTurning value.
 	if (mTurning != NULL) {
 		delete(mTurning);
 		mTurning = NULL;
 	}
 
-
+	// Shutdown mMachinePart code.
 	if (mMachinePartCode != NULL) {
 		mMachinePartCode->shutdown();
 		delete(mMachinePartCode);
@@ -92,10 +94,10 @@ void Obstacle::shutdown() {
  * @param obstacleType Type of obstacle according to enum class ObstacleType from obstacle.hpp .
  */ 
 Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeToParent, ObstacleType obstacleType) {
+	// Initializing Obstacle variables.
 	mName = name;
 	mPositionRelativeToParent = positionRelativeToParent;
 	mCurrentPosition = mPositionRelativeToParent;
-
 	mObstacleType = obstacleType;
 
 	createComponents();
@@ -109,7 +111,7 @@ Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeT
  */ 
 void Obstacle::createComponents() {
 	DEBUG("Creating obstacle components.");
-	// If blocks for each ObstacleType and its respective initialization.
+	// If and else if blocks for each ObstacleType and its respective initialization.
 	if (mObstacleType == ObstacleType::WESTERN_CAR) {
 		DEBUG("obstacle is a WESTERN CAR!");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
@@ -176,12 +178,13 @@ void Obstacle::createComponents() {
  */ 
 void Obstacle::createBlocks() {
 
-	/* We initialize the block' position as the position relative to parent of the obstacle.
-	 * This way we can position things inside the obstacle just by adding values to the position.
-	 */
+	/* 
+	  We initialize the block' position as the position relative to parent of the obstacle.
+	  This way we can position things inside the obstacle just by adding values to the position.
+	*/
 	std::pair<double, double> blockPosition = mPositionRelativeToParent;
 
-	// If blocks for setting obstacle position based on its type.
+	// If and else if blocks for setting obstacle position based on its type ObstacleType.
 	if (mObstacleType == ObstacleType::GROUND) {
 		mBlockList.push_back(new InvisibleBlock("block_1", blockPosition, std::make_pair(21000, 100)));
 	} else if (mObstacleType == ObstacleType::WESTERN_CAR) {
@@ -228,14 +231,15 @@ void Obstacle::createBlocks() {
 void Obstacle::generateTurningAnimation() {
 	// Default animation speed is 24 frames per second.
 	const int NUMBER_SPRITES_TURNING_ANIMATION = 24;
+	// Fill sprites animation up to the NUMBER_SPRITES_TURNING_ANIMATION const.
 	for (int i = 0; i < NUMBER_SPRITES_TURNING_ANIMATION; i++) {
 		mTurningAnimationSprites.push_back(new engine::Sprite());
 	}
 
-	/**
-     * Set the animation sprite coordinates (x, y)
-     * and its Width and Height based on its coordinates (width - spriteX) and (Height - spriteY).
-  	 */
+	/*
+      Set the animation sprite coordinates (x, y)
+      and its Width and Height based on its coordinates (width - spriteX) and (Height - spriteY).
+  	*/
 
 	mTurningAnimationSprites[0]->spriteX = 13;
 	mTurningAnimationSprites[0]->spriteY = 11;

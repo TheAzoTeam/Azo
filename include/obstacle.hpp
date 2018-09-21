@@ -61,16 +61,12 @@ namespace Azo {
 			ObstacleType mObstacleType;
 			MachinePartState mMachinePartState = MachinePartState::NON_MACHINE;
 		private:
+			// Initializing pointes for components
 			engine::ImageComponent *mObstacleImage = NULL;
-
 			engine::AudioController *mAudioController = NULL;
-
 			engine::Animation *mTurning = NULL;
-
 			engine::AudioComponent *mCollected = NULL;
-
 			std::vector<engine::Sprite *> mTurningAnimationSprites;
-
 			MachinePartCode *mMachinePartCode = NULL;
 		public:
 			Obstacle();
