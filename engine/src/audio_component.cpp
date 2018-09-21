@@ -34,8 +34,8 @@ AudioComponent::AudioComponent(GameObject &gameObject,
 							   bool isMusic,
 							   bool playOnStart){
 	this->gameObject = &gameObject;
-	this->audioPath = audioPath;
-	this->isMusic = isMusic;
+	this->audioPath = audioPath;//path to audio file
+	this->isMusic = isMusic;//bool to check if music exists
 	this->playOnStart = playOnStart;
 	this->audioState = AudioState::STOPPED;
 	this->music = nullptr;
@@ -88,8 +88,6 @@ void AudioComponent::shutdown(){
 	}
 
 	if(sound != nullptr){
-		//TODO(Roger): For unkown reasons, the Mix_FreeChunk doesn't work. Find out why.
-		//Mix_FreeChunk(sound);
 		sound = nullptr;
 	}
 }

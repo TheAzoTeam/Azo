@@ -46,6 +46,9 @@ void Scene::shutdown(){
 	deleteKeyList();
 }
 
+/*
+ *@brief Method to delete the key list
+ */
 void Scene::deleteKeyList(){
 	mKeyList.erase(mKeyList.begin(), mKeyList.end());
 }
@@ -63,6 +66,11 @@ void Scene::draw(){
 	}
 }
 
+/*
+ *@brief Methos to update the code of the scene
+ *
+ *Passes every element of the gameObjectMap to the updateCode() method.
+ */
 void Scene::updateCode(){
 	for(auto eachKey : mKeyList){
 		if (gameObjectMap[eachKey]->mObjectState == ObjectState::ENABLED){
@@ -71,6 +79,11 @@ void Scene::updateCode(){
 	}
 }
 
+/*
+ *@brief Method to restart scene.
+ *
+ *@returns "void".
+ */
 void Scene::restart(){}
 
 /*

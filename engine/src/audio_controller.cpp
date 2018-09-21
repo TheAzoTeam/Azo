@@ -1,9 +1,21 @@
+/** 
+ * @file invisible_block.hpp
+ * @brief Purpose: Contains the InvisibleBlock class declaration.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+ */
 #include "audio_controller.hpp"
 
 using namespace engine;
 
 AudioController::~AudioController(){}
 
+/*
+ *@brief Method to initialize the in game audio.
+ */
 void AudioController::init(){
 	for(auto audioRow : audioMap){
 		auto audio = audioRow.second;
@@ -11,6 +23,11 @@ void AudioController::init(){
 	}
 }
 
+/*
+ *@brief Method to shut down in game audio.
+ *
+ *passes audio to shutdown() method and resets it to NULL.
+ */
 void AudioController::shutdown(){
 	for(auto audioRow : audioMap){
 		auto audio = audioRow.second;
@@ -18,6 +35,7 @@ void AudioController::shutdown(){
 		audio = NULL;
 	}
 }
+
 
 void AudioController::updateCode(){
 	for(auto audioRow : audioMap){
@@ -28,19 +46,37 @@ void AudioController::updateCode(){
 	}
 }
 
+/*
+ *@brief overwritten constructor for the AudioController.
+ */
 AudioController::AudioController(){
 	this->componentState = State::ENABLED;
 }
 
+/*
+ *@brief overwritten 
+ *
+ *@param Game Object to the audioController. 
+ */
 AudioController::AudioController(GameObject &gameObject){
 	this->gameObject = &gameObject;
 	this->componentState = State::ENABLED;
 }
 
+/*
+ *@brief Method to add audio
+ *
+ *adds new audio to the audioMap.
+ */
 void AudioController::addAudio(std::string audioName, AudioComponent &audio){
 	audioMap[audioName] = &audio;
 }
 
+/*
+ *@brief Method to play in game audio.
+ *
+ *Finds and passes specific audio to play() method.
+ */
 void AudioController::playAudio(std::string audioName){
 
 	auto audioToBePlayed = audioMap.find(audioName);
@@ -53,9 +89,15 @@ void AudioController::playAudio(std::string audioName){
 	}
 }
 
+/*
+ *@brief Method to stop in game audio.
+ *
+ *Finds and passes specific audio to the stop() method. 
+ */
 void AudioController::stopAudio(std::string audioName){
 	auto audioToBePlayed = audioMap.find(audioName);
 
+	//Checks if audio was found in audioMap.
 	if(audioToBePlayed != audioMap.end()){
 		audioToBePlayed->second->stop(-1);
 	}else{
@@ -68,20 +110,31 @@ void AudioController::stopAllAudios(){
 	Mix_HaltMusic();
 }
 
-
+/*
+ *@brief Method to pause in game audio.
+ *
+ *Finds and passes specific audio to the pause() method.
+ */
 void AudioController::pauseAudio(std::string audioName){
 	auto audioToBePlayed = audioMap.find(audioName);
 
+	//Checks if audio was found in audioMap.
 	if(audioToBePlayed != audioMap.end()){
 		audioToBePlayed->second->pause(-1);
 	}else{
-		ERROR("Animation couldn't be found!");
+		ERROR("Audio couldn't be found!");
 	}
 }
 
+/*
+ *@brief Method to retrieve an audioState.
+ *
+ *Returns audioState
+ */
 AudioState AudioController::getAudioState(std::string audioName){
 	auto audio = audioMap.find(audioName);
-
+	
+	//Checks if audio was found.
 	if(audio == audioMap.end()){
 		ERROR("Audio doesn't exist");
 	}
