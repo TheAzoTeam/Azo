@@ -1,12 +1,15 @@
-/** 
- * @file component.cpp
- * @brief Purpose: Contains general scope to game components.
- * 
- * GPL v3.0 License
- * Copyright (c) 2017 Azo
- *
- * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
-*/
+/*************************************
+@file component.cpp
+@brief Purpose: Contains general scope to game components.
+
+GPL v3.0 License
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+
+This file is responsible for create the model to all components of the game.
+*************************************/
 #include "component.hpp"
 
 using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.

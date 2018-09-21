@@ -1,12 +1,15 @@
-/** 
- * @file game.cpp
- * @brief Purpose: Contains general scope to the game.
- * 
- * GPL v3.0 License
- * Copyright (c) 2017 Azo
- *
- * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
-*/
+/*************************************
+@file game.cpp
+@brief Purpose: Contains general scope to the game.
+
+GPL v3.0 License
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+
+This file is responsible for create the model to all game and scene management.
+*************************************/
 #include "sdl2include.h"
 #include "game.hpp"
 #include <iostream>

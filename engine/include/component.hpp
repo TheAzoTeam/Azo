@@ -1,12 +1,16 @@
-/** 
- * @file component.hpp
- * @brief Purpose: Contains the Component class declaration.
- * 
- * GPL v3.0 License
- * Copyright (c) 2017 Azo
- *
- * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
-*/
+/*************************************
+@file component.hpp
+@brief Purpose: Contains the Component class declaration.
+
+GPL v3.0 License
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+
+This file includes its class and game object class. This happens because it implements
+component class and uses elements of game_object on methods and behave.
+*************************************/
 #ifndef ENGINE_COMPONENT_HPP
 #define ENGINE_COMPONENT_HPP
 
@@ -22,9 +26,9 @@ namespace engine {
 	class GameObject;
 
 	/**
-     * @brief A Hitbox class.
+     * @brief A component state class.
   	 *
-     * Define Components States to control Loops and other strutuctures.
+     * Define Components States to control Loops and other structures.
     */
 	enum class State {
 		ENABLED,

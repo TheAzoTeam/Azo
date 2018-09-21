@@ -1,12 +1,15 @@
-/** 
- * @file game_object.cpp
- * @brief Purpose: Contains general scope to the game object.
- * 
- * GPL v3.0 License
- * Copyright (c) 2017 Azo
- *
- * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
-*/
+/*************************************
+@file game_object.cpp
+@brief Purpose: Contains general scope to the game object.
+
+GPL v3.0 License
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+
+This file is responsible for create the general model to all game object behavior.
+*************************************/
 #include "game_object.hpp"
 #include "game.hpp"
 #include "code_component.hpp"
