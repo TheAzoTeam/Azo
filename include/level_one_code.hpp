@@ -1,3 +1,13 @@
+/**************************************
+@file: level_one_code.hpp
+@brief Purpose: LevelOneCode class declaration
+GPL v3.0 Licence
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+**************************************/
+
 #ifndef LEVEL_ONE_CODE
 #define LEVEL_ONE_CODE
 

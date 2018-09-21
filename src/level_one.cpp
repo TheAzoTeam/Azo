@@ -1,3 +1,13 @@
+/**************************************
+@file: level_one.cpp
+@brief Purpose: LevelOne class implementation
+GPL v3.0 Licence
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+**************************************/
+
 #include "level_one.hpp"
 
 using namespace Azo;
@@ -6,25 +16,22 @@ LevelOne::LevelOne() {}
 
 LevelOne::LevelOne(std::string name){
 	this->sceneName = name;
-
 	createGameObjects();
 }
 
 void LevelOne::restart(){
 	gameObjectMap.clear();
 
-	/*TODO(Roger): add objects to be recreated one by one,
-	here, instead of recalling createGameObjects.*/
+	//TODO(Roger): add objects to be recreated one by one here, instead of recalling createGameObjects.
 	createGameObjects();
-
 }
 
 // Create new game objects for the level one here. Remember:
 // the order used to add they to the scene is important.
 void LevelOne::createGameObjects() {
-	DEBUG("Creating Level One Game Objects.");
+	DEBUG("Creating LevelOne GameObjects.");
 
-	DEBUG("Creating level_one object.");
+	DEBUG("Creating LevelOne Object.");
 	mLevelOne = new engine::GameObject("level_one", std::make_pair(0, 0));
 
 	mLevelBackground1 = new engine::ImageComponent(*mLevelOne, "backgrounds/level_one_part_one.png", 1);

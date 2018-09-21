@@ -1,3 +1,13 @@
+/**************************************
+@file: level_one.hpp
+@brief Purpose: LevelOne class declaration
+GPL v3.0 Licence
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+**************************************/
+
 #ifndef LEVEL_ONE
 #define LEVEL_ONE
 
@@ -10,28 +20,23 @@
 namespace Azo {
 	class LevelOne : public engine::Scene {
 		private:
-
 			engine::BackgroundComponent *mWinningScreen;
 			engine::BackgroundComponent *mLosingPartsScreen;
 			engine::BackgroundComponent *mLosingDeathScreen;
-
 			engine::GameObject *mWinningScreenObject;
 			engine::GameObject *mLosingPartsScreenObject;
 			engine::GameObject *mLosingDeathScreenObject;
 			engine::GameObject *mArrow;
 			engine::ImageComponent *mArrowImage;
-
 			engine::ImageComponent *mLevelBackground1;
 			engine::ImageComponent *mLevelBackground2;
 			engine::ImageComponent *mLevelBackground3;
 
 			/*This is the level game object.
 			It contains things such as background, theme, etc.*/
-
 			engine::GameObject *mLevelOne;
 
 			// Add new components to level one here.
-
 			engine::AudioController *mAudioController;
 			engine::AudioComponent *mLevelTheme;
 			LevelOneCode *mLevelCode;
@@ -126,7 +131,7 @@ namespace Azo {
 			void createEndingScreen();
 
 			/*After adding things that collide (obstacles, for exemple),
-			 add they as paren'ts here.*/
+			 add they as parents here.*/
 
 			void addLevelParents();
 		public:
