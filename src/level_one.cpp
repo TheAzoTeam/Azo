@@ -14,43 +14,44 @@ using namespace Azo;
 
 LevelOne::LevelOne() {}
 
+//constructor that inits level one and its game objects
 LevelOne::LevelOne(std::string name){
 	this->sceneName = name;
 	createGameObjects();
 }
 
+//function that restarts level one
 void LevelOne::restart(){
 	gameObjectMap.clear();
-
-	//TODO(Roger): add objects to be recreated one by one here, instead of recalling createGameObjects.
+	//To Do: add objects to be recreated one by one here, instead of recalling createGameObjects.
 	createGameObjects();
 }
 
-// Create new game objects for the level one here. Remember:
-// the order used to add they to the scene is important.
+//function that create all new game objects of level one in order.
 void LevelOne::createGameObjects() {
 	DEBUG("Creating LevelOne GameObjects.");
-
+	//creating main game object of level one
 	DEBUG("Creating LevelOne Object.");
 	mLevelOne = new engine::GameObject("level_one", std::make_pair(0, 0));
-
+	//instantiates level one background
 	mLevelBackground1 = new engine::ImageComponent(*mLevelOne, "backgrounds/level_one_part_one.png", 1);
 	mLevelOne->addComponent(*mLevelBackground1);
 	mLevelBackground2 = new engine::ImageComponent(*mLevelOne, "backgrounds/level_one_part_two.png", 1, std::make_pair(8188, 0));
 	mLevelOne->addComponent(*mLevelBackground2);
 	mLevelBackground3 = new engine::ImageComponent(*mLevelOne, "backgrounds/level_one_part_three.png", 1, std::make_pair(16379, 0));
 	mLevelOne->addComponent(*mLevelBackground3);
-
+	//instantiates level one audio, and its controller
 	mAudioController = new engine::AudioController();
 	mLevelTheme = new engine::AudioComponent(*mLevelOne, "audios/banjo.ogg", true, true);
 	mAudioController->addAudio("tema_level_one", *mLevelTheme);
 	mLevelOne->addComponent(*mAudioController);
 	this->addGameObject(*mLevelOne);
-
+	//instantiates level one ground
 	DEBUG("Creating ground.");
 	mGround = new Obstacle("ground", std::make_pair(0, 404.5), ObstacleType::GROUND);
 	this->addGameObject(*mGround);
 
+	//from here, all block instantiates the level game objects in order
 	DEBUG("Creating obstacle car 1.");
 	mObstacleCar1 = new Obstacle("obstacle_car_1", std::make_pair(1135, 300), ObstacleType::WESTERN_CAR);
 	this->addGameObject(*mObstacleCar1);
@@ -366,7 +367,7 @@ void LevelOne::createGameObjects() {
 	DEBUG("Creating part 22.");
 	mPart22 = new Obstacle("part_22", std::make_pair(15530, 140), ObstacleType::MACHINE_PART);
 	this->addGameObject(*mPart22);
-
+	//instantiates player at level one
 	DEBUG("Creating Player.");
 	mPlayer = new Player("player", std::make_pair(165, 280));
 	this->addGameObject(*mPlayer);
@@ -378,6 +379,7 @@ void LevelOne::createGameObjects() {
 	mLevelOne->addComponent(*mLevelCode);
 }
 
+//function that instantiate game over screen/menu
 void LevelOne::createEndingScreen() {
 	mWinningScreenObject = new engine::GameObject("winning_screen", std::make_pair(0, 0));
 	mWinningScreenObject->mObjectState = engine::ObjectState::DISABLED;
@@ -404,6 +406,7 @@ void LevelOne::createEndingScreen() {
 	this->addGameObject(*mArrow);
 }
 
+//function that adds level one parents
 void LevelOne::addLevelParents() {
 	DEBUG("adding level parents.");
 	mLevelOne->mParentList.push_back(mObstacleCar1);
