@@ -1,17 +1,45 @@
+/**
+     * @file menu.cpp
+	 * @brief Purpose: Responsible for the Map menu screen
+     *
+     * GPL 3.0 License
+     * Copyright (c) 2017 Azo
+     *
+     * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+     */
 #include "menu.hpp"
 
 using namespace Azo;
 
+/**  * T11
+     * @brief function responsible for creating menu scene
+     *
+     * Why: Because it is necessary for the player to have access to the game menu before it starts
+     */
 Menu::Menu(std::string name) {
 	this->sceneName = name;
 	createGameObjects();
 }
 
+/**  * T11
+     * @brief function responsible for restarting the game
+     *
+     * Why: Because it is necessary that the player can restart the game
+	 *
+	 * @return "void".
+     */
 void Menu::restart(){
 	gameObjectMap.clear();
 	createGameObjects();
 }
 
+/**  * T11
+     * @brief function responsible for creating game objects
+     *
+     * Why: Because it is necessary for the menu to have some elements in its interface
+	 *
+	 * @return "void".
+     */
 void Menu::createGameObjects() {
 	DEBUG("Creating Menu GameObjects.");
 
@@ -21,6 +49,13 @@ void Menu::createGameObjects() {
 	this->addGameObject(*mMenu);
 }
 
+/**  * T11
+     * @brief function responsible for creating game objects
+     *
+     * Why: Because it is necessary that the menu has some elements in its interfacece
+	 *
+	 * @return "void".
+     */
 void Menu::createMenuComponents() {
 
 	mMenuTheme = new engine::AudioComponent(*mMenu, "audios/TemaGame.ogg", true, true);
@@ -34,13 +69,13 @@ void Menu::createMenuComponents() {
 	generateButtonsAnimation();
 	mStartButton = new engine::Animation(*mMenu,
 					       				 "general_images/textos.png",
-					       				 1.0f,
+					       				 1.0f, // animationTime T14
 					       				 mStartButtonSprites,
-					       				 0,
-					       				 0,
-					       				 false,
-					       				 1,
-					       				 std::make_pair(205, 162));
+					       				 0, // startFrame T14
+					       				 0, // endFrame T14
+					       				 false, // loop T14
+					       				 1, // zoomFactor T14
+					       				 std::make_pair(205, 162)); // positionRelativeToObject T14
 
 	mAnimationController->addAnimation("start_button", *mStartButton);
 
@@ -129,6 +164,13 @@ void Menu::createMenuComponents() {
 	mMenu->addComponent(*mCode);
 }
 
+/**  * T11
+     * @brief function responsible for generating button animations
+     *
+     * Porque: For aesthetic purposes
+	 *
+	 * @return "void"
+     */
 void Menu::generateButtonsAnimation() {
 	 mStartButtonSprites.push_back(new engine::Sprite());
 
@@ -172,7 +214,13 @@ void Menu::generateButtonsAnimation() {
 	mArrowSprites[0]->spriteHeight = 459 - 433;
 }
 
-
+/**  * T11
+     * @brief function responsible for debugging
+     *
+     * Why: Because it is responsible for debugging the code
+	 *
+	 * @return "void".
+     */
 void Menu::shutdown() {
 	DEBUG("Calling Menu::shutdown.");
 }
