@@ -1,22 +1,58 @@
+/**
+     * @file menu_code.cpp
+     * @brief Purpose: Archive responsible for the operation of the ' menu '
+     *
+     * GPL 3.0 License
+     * Copyright (c) 2017 Azo
+     *
+     * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+     */
 #include "game.hpp"
 #include "menu_code.hpp"
 
 using namespace Azo;
 
+/**
+     * @brief function responsible for building menu
+     *
+     * Why: Used to build menu on the map
+     *
+	 * @param Gameobject that is the creation object of the ' menu '
+     */
 MenuCode::MenuCode(engine::GameObject *gameObject){
-	this->gameObject = gameObject;
+	this->gameObject = gameObject; // variÃ¡vel responsÃ¡vel pelo objeto do jogo
 	findAudioController();
 	FindAnimationController();
 }
-
+/**
+     * @brief function responsible for finding animation controller
+     *
+     * Why: Used to control the animation of the game
+     *
+     * @return "void".
+     */
 void MenuCode::FindAnimationController(){
 	 mAnimationController = (gameObject->getAnimationController(typeid(engine::AnimationController)));
 }
 
+/**
+     * @brief function responsible for finding audio controller
+     *
+     * Why: Used to control game audio
+     *
+     * @return "void".
+     */
 void MenuCode::findAudioController(){
 	 mAudioController = (gameObject->getAudioController(typeid(engine::AudioController)));
 }
 
+/**
+     * @brief function responsible for updating game states
+     *
+     * Why: Used so that the game can consistently respond to the player's inputs
+     *
+     * @return "void".
+     */
 void MenuCode::updateCode(){
 	if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::ENTER)){
 
@@ -26,7 +62,7 @@ void MenuCode::updateCode(){
 				engine::Game::instance.changeScene("level_one");
 				break;
 			case 2:
-				engine::Game::instance.gameState = engine::GameState::EXIT;
+				engine::Game::instance.gameState = engine::GameState::EXIT; // Variable responsible for the state of play
 				break;
 			case 3:
 
@@ -48,6 +84,13 @@ void MenuCode::updateCode(){
 	changeOption();
 }
 
+/**
+     * @brief function responsible for selecting game option
+     *
+     * Why: Used so that the user can select the options in the menu
+     *
+     * @return "void".
+     */
 void MenuCode::changeOption(){
 
 	switch (mCurrentButton) {
