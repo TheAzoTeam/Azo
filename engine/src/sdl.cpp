@@ -1,15 +1,36 @@
+/**
+ * @file sdl.cpp
+ * @brief Purpose: Contains general scope to the sdl.
+ *
+ * GLP v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+*/
 #include "sdl.hpp"
 
-using namespace engine;
+using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.
 
 const int FIRST_RENDERING_DRIVER = -1;
 const int AUDIO_CHANNELS = 2;
 const int AUDIO_CHUNKSIZE = 2048;
 const int AUDIO_RESULT_NULL = 0;
 
+
+/**
+* @brief Default constructor for the sdl.
+*
+* @return "void".
+*/
 SDL::SDL(){}
 
-// Initialize all SDL attributes: Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
+/**
+ * @brief initialize all SDL.
+ *
+ * Initialize attributes to Windows, Canvas, SDL_IMAGE, SDL_VIDEO, SDL_AUDIO.
+ *
+ * @return "void".
+*/
 void SDL::initSDL(){
 	INFO("Initializing SDL.");
 	INFO("Initializing Audio and Video.");
@@ -30,7 +51,13 @@ void SDL::initSDL(){
 	}
 }
 
-// Used inside "Run" method of the Game, creating the Window and Canvas.
+/**
+ * @brief creating the Window and Canvas.
+ *
+ * Used inside "Run" method of the Game.
+ *
+ * @return "void".
+*/
 void SDL::createWindow(){
 	INFO("Creating Window.");
 	window = SDL_CreateWindow(
@@ -50,16 +77,16 @@ void SDL::createWindow(){
 
 	INFO("Creating canvas.");
 	canvas = SDL_CreateRenderer(
-		window,                                                 // Window pointer
-		FIRST_RENDERING_DRIVER,                        			// The index to the rendering driver, or -1 to the first one
-		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC    // Flag. The renderer will use hardware acceleration
+		window,                               // Window pointer
+		FIRST_RENDERING_DRIVER,               // The index to the rendering driver, or -1 to the first one
+		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC  // Flag. The renderer will use hardware acceleration
 	);
 
 	if(canvas == NULL){
 		ERROR("Couldn't create renderer (Canvas).");
 	}
 
-	/* Set window color when redrawing */
+	//Set window color when redrawing.
 	SDL_SetRenderDrawColor(
 		canvas, // Renderer pointer
 		0xff,   // (R)ed color
@@ -68,7 +95,13 @@ void SDL::createWindow(){
 		0xff);  // Opacity (alpha)
 	}
 
-	// Used in the Main Loop's End.
+	/**
+	 * @brief terminating SDL.
+	 *
+	 * Used in the Main Loop's End.
+	 *
+	 * @return "void".
+	*/
 	void SDL::terminateSDL(){
 		INFO("Terminating SDL.");
 		DEBUG("Destroying Renderer");
@@ -89,7 +122,17 @@ void SDL::createWindow(){
 		INFO("Bye bye, SDL.");
 	}
 
-	// Receive attributes of the Game instance, throught "SetGameAttributes" method.
+	/**
+	 * @brief receive attributes of the Game instance.
+	 *
+	 * Throught "SetGameAttributes" method.
+	 *
+	 * @param gameName string that says the name of the game.
+	 * @param windowWidth integer that is responsible for the width of the window.
+	 * @param windowHeighth integer that is responsible for the heith of the window.
+	 *
+	 * @return "void".
+	*/
 	void SDL::setSDLAttributes(std::string gameName, int windowWidth, int windowHeight){
 		this->gameName = gameName;
 		this->windowWidth = windowWidth;
