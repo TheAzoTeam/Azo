@@ -1,6 +1,6 @@
 /** 
- * @file invisible_block.hpp
- * @brief Purpose: Contains the InvisibleBlock class declaration.
+ * @file audio_controller.hpp
+ * @brief Purpose: Contains all the methods related to the AudioController class..
  * 
  * GPL v3.0 License
  * Copyright (c) 2017 Azo
