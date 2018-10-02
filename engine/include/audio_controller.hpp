@@ -1,3 +1,12 @@
+/** 
+ * @file audio_controller.hpp
+ * @brief Purpose: Contains the AudioController class declaration
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+ */
 #ifndef AUDIO_CONTROLLER_HPP
 #define AUDIO_CONTROLLER_HPP
 
@@ -9,6 +18,11 @@
 
 namespace engine {
 
+	/*
+	 *@brief Audio contoller class to control in game audio.
+	 *
+	 *Used to control the behavior defined by the AudioComponent
+	 */
 	class AudioController : public AudioComponent {
 		private:
 			std::map <std::string, AudioComponent *> audioMap;

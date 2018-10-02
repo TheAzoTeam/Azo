@@ -1,3 +1,11 @@
+/** 
+   * @file audio_component.hpp
+   * @brief Purpose: Contains the AudioComponent class declaration.
+   * 
+   * GPL v3.0 License
+   * Copyright (c) 2017 Azo
+   *
+   * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md */
 #ifndef AUDIO_COMPONENT_HPP
 #define AUDIO_COMPONENT_HPP
 
@@ -8,13 +16,26 @@
 #include "log.h"
 
 namespace engine {
-
+	
+	/*
+	 *@brief Class for possible Audio States
+	 *
+	 *Enum Class used to differentiate Audio States
+	 *
+	 */
 	enum class AudioState {
 		PLAYING,
 		PAUSED,
 		STOPPED
 	};
 
+	/*
+	 *
+	 *@brief AudioComponent class for in-game audio
+	 *
+	 *Used to define the behavior of audio in game
+	 *
+	 */
 	class AudioComponent : public Component {
 	private:
 		std::string audioPath;
