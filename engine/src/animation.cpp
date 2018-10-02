@@ -1,4 +1,28 @@
+/*************************************
+@file animation.hpp
+@brief Purpose: Controls animaton.
+
+GPL v3.0 License
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+
+This file implements the main game component its declaration and state.
+*************************************/
 #include "animation.hpp"
+/*************************************
+@file game.hpp
+@brief Purpose: Contains the Game class declaration.
+
+GPL v3.0 License
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+
+This file implements the main game component its declaration and state.
+*************************************/
 #include "game.hpp"
 
 using namespace engine;
