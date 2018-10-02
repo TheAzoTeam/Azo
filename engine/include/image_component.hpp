@@ -1,6 +1,18 @@
 #ifndef IMAGE_COMPONENT_HPP
 #define IMAGE_COMPONENT_HPP
 
+/*************************************
+@file background_component.hpp
+@brief Purpose: Contains the components of the background images.
+
+GPL v3.0 License
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+
+This file implements the main game component its declaration and state.
+*************************************/
 #include "background_component.hpp"
 #include <string>
 
