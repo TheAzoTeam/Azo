@@ -1,3 +1,13 @@
+/**************************************
+@file: level_one.hpp
+@brief Purpose: LevelOne class declaration
+GPL v3.0 Licence
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+**************************************/
+
 #ifndef LEVEL_ONE
 #define LEVEL_ONE
 
@@ -8,37 +18,43 @@
 #include "audio_controller.hpp"
 
 namespace Azo {
+
+	/**
+	* @brief LevelOne class
+	* This class is used to manage creation and behavior of
+	* game objects, menus and parents.
+	*/
 	class LevelOne : public engine::Scene {
 		private:
-
+			//pointers that refers to the background of diferent gameover screens/menus
 			engine::BackgroundComponent *mWinningScreen;
 			engine::BackgroundComponent *mLosingPartsScreen;
 			engine::BackgroundComponent *mLosingDeathScreen;
-
+			//pointers that refers to the game object of diferent gameover screens/menus
 			engine::GameObject *mWinningScreenObject;
 			engine::GameObject *mLosingPartsScreenObject;
 			engine::GameObject *mLosingDeathScreenObject;
+			//pointers that refers to the selection arrow of some menus
 			engine::GameObject *mArrow;
 			engine::ImageComponent *mArrowImage;
-
+			//pointers that refers to different backgrounds of the game
 			engine::ImageComponent *mLevelBackground1;
 			engine::ImageComponent *mLevelBackground2;
 			engine::ImageComponent *mLevelBackground3;
 
-			/*This is the level game object.
-			It contains things such as background, theme, etc.*/
-
-			engine::GameObject *mLevelOne;
+			engine::GameObject *mLevelOne;	//pointer that refer to level game object. Contains things such as background, theme, etc.
 
 			// Add new components to level one here.
 
-			engine::AudioController *mAudioController;
-			engine::AudioComponent *mLevelTheme;
-			LevelOneCode *mLevelCode;
+			engine::AudioController *mAudioController; //pointer that refers to the controller of the audio of level one
+			engine::AudioComponent *mLevelTheme; //pointer that refers to the audio that plays at level one
 
+			LevelOneCode *mLevelCode;
 			Player *mPlayer;
 
 			// Add obstacles here
+
+			//pointers that refers to obstacles' game objects
 			Obstacle *mObstacleCar1;
 			Obstacle *mSpike1;
 			Obstacle *mObstacleAerial1;
@@ -121,18 +137,14 @@ namespace Azo {
 			Obstacle *mGround;
 
 		private:
-			//Don't forget to add the new objects using this function.
-			void createGameObjects();
-			void createEndingScreen();
+			void createGameObjects(); //function that add new objects to level one
+			void createEndingScreen(); //functon that add the ending menu to level one
+			void addLevelParents(); //function that add parents to level one. Use after adding objects that collide.
 
-			/*After adding things that collide (obstacles, for exemple),
-			 add they as paren'ts here.*/
-
-			void addLevelParents();
 		public:
 			LevelOne();
 			LevelOne(std::string name);
-			void restart();
+			void restart(); //function that restarts level one
 	};
 }
 
