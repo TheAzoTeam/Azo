@@ -1,0 +1,235 @@
+\hypertarget{classengine_1_1_audio_component}{}\section{engine\+:\+:Audio\+Component Class Reference}
+\label{classengine_1_1_audio_component}\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+
+
+{\ttfamily \#include $<$audio\+\_\+component.\+hpp$>$}
+
+Inheritance diagram for engine\+:\+:Audio\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classengine_1_1_audio_component}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_audio_component_aaea64af7cd81778f6737f0a4bee35394}{Audio\+Component} ()
+\item 
+virtual \hyperlink{classengine_1_1_audio_component_a68bf2351458d61601aad7abeb3f58588}{$\sim$\+Audio\+Component} ()
+\item 
+\hyperlink{classengine_1_1_audio_component_a59af70319c3b0c81a66b5c1b9525cb46}{Audio\+Component} (\hyperlink{classengine_1_1_game_object}{Game\+Object} \&\hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object}, std\+::string audio\+Path, bool is\+Music, bool play\+On\+Start)
+\item 
+void \hyperlink{classengine_1_1_audio_component_a61f7e9f09253a0619ed979276267150c}{init} ()
+\begin{DoxyCompactList}\small\item\em inherits function that initialize the game components \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_audio_component_acb42c8fa38793ff0fe6c0652bbb9eac9}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em inherits function that disable the game components \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_audio_component_aa35e7f57c104c2281680bb13764e4ef0}{update\+Code} ()
+\begin{DoxyCompactList}\small\item\em inherits function that update the game code. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_audio_component_a09cc2c39a6bb97c79257a4593ab57e42}{play} (int loops, int channel)
+\item 
+void \hyperlink{classengine_1_1_audio_component_aa7274401541925ff8b8a639de01b2b7e}{stop} (int channel)
+\item 
+void \hyperlink{classengine_1_1_audio_component_adbc0fe9c86ccabf06cc685882e98701f}{pause} (int channel)
+\item 
+bool \hyperlink{classengine_1_1_audio_component_a3aeb1bb7591da6da496461a8384cff9c}{get\+Is\+Music} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceengine_a5de9278ae356d4ff4fe8864ebf683bc8}{Audio\+State} \hyperlink{classengine_1_1_audio_component_a78e6ef6497d0f325df7aab194a1ab449}{audio\+State}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 39 of file audio\+\_\+component.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!Audio\+Component@{Audio\+Component}}
+\index{Audio\+Component@{Audio\+Component}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{Audio\+Component()}{AudioComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}Audio\+Component\+::\+Audio\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_audio_component_aaea64af7cd81778f6737f0a4bee35394}{}\label{classengine_1_1_audio_component_aaea64af7cd81778f6737f0a4bee35394}
+
+
+Definition at line 21 of file audio\+\_\+component.\+cpp.
+
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!````~Audio\+Component@{$\sim$\+Audio\+Component}}
+\index{````~Audio\+Component@{$\sim$\+Audio\+Component}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{$\sim$\+Audio\+Component()}{~AudioComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}Audio\+Component\+::$\sim$\+Audio\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_audio_component_a68bf2351458d61601aad7abeb3f58588}{}\label{classengine_1_1_audio_component_a68bf2351458d61601aad7abeb3f58588}
+
+
+Definition at line 24 of file audio\+\_\+component.\+cpp.
+
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!Audio\+Component@{Audio\+Component}}
+\index{Audio\+Component@{Audio\+Component}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{Audio\+Component(\+Game\+Object \&game\+Object, std\+::string audio\+Path, bool is\+Music, bool play\+On\+Start)}{AudioComponent(GameObject &gameObject, std::string audioPath, bool isMusic, bool playOnStart)}}]{\setlength{\rightskip}{0pt plus 5cm}Audio\+Component\+::\+Audio\+Component (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Object} \&}]{game\+Object, }
+\item[{std\+::string}]{audio\+Path, }
+\item[{bool}]{is\+Music, }
+\item[{bool}]{play\+On\+Start}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_audio_component_a59af70319c3b0c81a66b5c1b9525cb46}{}\label{classengine_1_1_audio_component_a59af70319c3b0c81a66b5c1b9525cb46}
+
+
+Definition at line 32 of file audio\+\_\+component.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!get\+Is\+Music@{get\+Is\+Music}}
+\index{get\+Is\+Music@{get\+Is\+Music}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{get\+Is\+Music()}{getIsMusic()}}]{\setlength{\rightskip}{0pt plus 5cm}bool engine\+::\+Audio\+Component\+::get\+Is\+Music (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classengine_1_1_audio_component_a3aeb1bb7591da6da496461a8384cff9c}{}\label{classengine_1_1_audio_component_a3aeb1bb7591da6da496461a8384cff9c}
+
+
+Definition at line 62 of file audio\+\_\+component.\+hpp.
+
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!init@{init}}
+\index{init@{init}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Audio\+Component\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_audio_component_a61f7e9f09253a0619ed979276267150c}{}\label{classengine_1_1_audio_component_a61f7e9f09253a0619ed979276267150c}
+
+
+inherits function that initialize the game components 
+
+Set all game components to enable
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_aa0bf4fb5f4bc0de25d3f7beef3a3ca45}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{classengine_1_1_audio_controller_a34af3c91cadbf4a97eafdd3e311671c9}{engine\+::\+Audio\+Controller}.
+
+
+
+Definition at line 50 of file audio\+\_\+component.\+cpp.
+
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!pause@{pause}}
+\index{pause@{pause}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{pause(int channel)}{pause(int channel)}}]{\setlength{\rightskip}{0pt plus 5cm}void Audio\+Component\+::pause (
+\begin{DoxyParamCaption}
+\item[{int}]{channel}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_audio_component_adbc0fe9c86ccabf06cc685882e98701f}{}\label{classengine_1_1_audio_component_adbc0fe9c86ccabf06cc685882e98701f}
+
+
+Definition at line 150 of file audio\+\_\+component.\+cpp.
+
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!play@{play}}
+\index{play@{play}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{play(int loops, int channel)}{play(int loops, int channel)}}]{\setlength{\rightskip}{0pt plus 5cm}void Audio\+Component\+::play (
+\begin{DoxyParamCaption}
+\item[{int}]{loops, }
+\item[{int}]{channel}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_audio_component_a09cc2c39a6bb97c79257a4593ab57e42}{}\label{classengine_1_1_audio_component_a09cc2c39a6bb97c79257a4593ab57e42}
+
+
+Definition at line 100 of file audio\+\_\+component.\+cpp.
+
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Audio\+Component\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_audio_component_acb42c8fa38793ff0fe6c0652bbb9eac9}{}\label{classengine_1_1_audio_component_acb42c8fa38793ff0fe6c0652bbb9eac9}
+
+
+inherits function that disable the game components 
+
+free the component pointers
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a3e47775d51e78914bdfebba123354849}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{classengine_1_1_audio_controller_aaeb8eaadaa523db5e3608f019fe1bf8e}{engine\+::\+Audio\+Controller}.
+
+
+
+Definition at line 81 of file audio\+\_\+component.\+cpp.
+
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!stop@{stop}}
+\index{stop@{stop}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{stop(int channel)}{stop(int channel)}}]{\setlength{\rightskip}{0pt plus 5cm}void Audio\+Component\+::stop (
+\begin{DoxyParamCaption}
+\item[{int}]{channel}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_audio_component_aa7274401541925ff8b8a639de01b2b7e}{}\label{classengine_1_1_audio_component_aa7274401541925ff8b8a639de01b2b7e}
+
+
+Definition at line 131 of file audio\+\_\+component.\+cpp.
+
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!update\+Code@{update\+Code}}
+\index{update\+Code@{update\+Code}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{update\+Code()}{updateCode()}}]{\setlength{\rightskip}{0pt plus 5cm}void Audio\+Component\+::update\+Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_audio_component_aa35e7f57c104c2281680bb13764e4ef0}{}\label{classengine_1_1_audio_component_aa35e7f57c104c2281680bb13764e4ef0}
+
+
+inherits function that update the game code. 
+
+update all the enabled game objects.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a21fd10ef0e28e9c930ccbffa943486aa}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{classengine_1_1_audio_controller_acbbf0bd451c181fb1e3dc26e7c4be27d}{engine\+::\+Audio\+Controller}.
+
+
+
+Definition at line 69 of file audio\+\_\+component.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}!audio\+State@{audio\+State}}
+\index{audio\+State@{audio\+State}!engine\+::\+Audio\+Component@{engine\+::\+Audio\+Component}}
+\subsubsection[{\texorpdfstring{audio\+State}{audioState}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Audio\+State} engine\+::\+Audio\+Component\+::audio\+State}\hypertarget{classengine_1_1_audio_component_a78e6ef6497d0f325df7aab194a1ab449}{}\label{classengine_1_1_audio_component_a78e6ef6497d0f325df7aab194a1ab449}
+
+
+Definition at line 49 of file audio\+\_\+component.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{audio__component_8hpp}{audio\+\_\+component.\+hpp}\item 
+engine/src/\hyperlink{audio__component_8cpp}{audio\+\_\+component.\+cpp}\end{DoxyCompactItemize}

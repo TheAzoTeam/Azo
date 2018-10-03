@@ -1,15 +1,15 @@
-/*************************************
-@file animation_controller.hpp
-@brief Purpose: Contains the animaton controller component.
-
-GPL v3.0 License
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-
-This file implements the main game component its declaration and state.
-*************************************/
+/**
+ * @file animation_controller.cpp
+ * @brief Purpose: Contains the animaton controller component.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file implements the main game component its declaration and state.
+*/
 #include "animation_controller.hpp"
 
 using namespace engine;

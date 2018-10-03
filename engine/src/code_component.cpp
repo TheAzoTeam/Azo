@@ -1,15 +1,15 @@
-/*************************************
-@file code_component.cpp
-@brief Purpose: Contains all the methods related to code components.
-
-GPL v3.0 License
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-
-This file is responsible for create the model to all code components of the game.
-*************************************/
+/**
+ * @file code_component.cpp
+ * @brief Purpose: Contains all the methods related to code components.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file is responsible for create the model to all code components of the game.
+*/
 #include "code_component.hpp"
 
 using namespace engine;  // Used to avoid write engine::Game engine::Game::instance;.

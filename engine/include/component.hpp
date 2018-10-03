@@ -1,16 +1,16 @@
-/*************************************
-@file component.hpp
-@brief Purpose: Contains the Component class declaration.
-
-GPL v3.0 License
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-
-This file includes its class and game object class. This happens because it implements
-component class and uses elements of game_object on methods and behave.
-*************************************/
+/**
+ * @file component.hpp
+ * @brief Purpose: Contains the Component class declaration.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file includes its class and game object class. This happens because it implements
+ * component class and uses elements of game_object on methods and behave.
+*/
 #ifndef ENGINE_COMPONENT_HPP
 #define ENGINE_COMPONENT_HPP
 

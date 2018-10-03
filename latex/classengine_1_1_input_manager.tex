@@ -1,0 +1,200 @@
+\hypertarget{classengine_1_1_input_manager}{}\section{engine\+:\+:Input\+Manager Class Reference}
+\label{classengine_1_1_input_manager}\index{engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}}
+
+
+\hyperlink{classengine_1_1_input_manager}{Input\+Manager} class.  
+
+
+
+
+{\ttfamily \#include $<$input\+\_\+manager.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_input_manager_a8be46886da639b26d67181c29dab6d6c}{Input\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the input manager. \end{DoxyCompactList}\item 
+\hyperlink{classengine_1_1_input_manager_af518290877dd183606709d5852db5491}{$\sim$\+Input\+Manager} ()
+\item 
+void \hyperlink{classengine_1_1_input_manager_af7fdc23fa8b7bfa3651aa58f476b1a70}{update} (S\+D\+L\+\_\+\+Event \+\_\+event)
+\begin{DoxyCompactList}\small\item\em update the sdl events. \end{DoxyCompactList}\item 
+bool \hyperlink{classengine_1_1_input_manager_a3a25017b57aaa5ce61801158d852d1cb}{key\+Down} (\hyperlink{namespaceengine_ae215983ad6dd0b5102ec75314b5afe2d}{Button} button)
+\begin{DoxyCompactList}\small\item\em test if button is pressed. \end{DoxyCompactList}\item 
+bool \hyperlink{classengine_1_1_input_manager_ad82059c91ae6f43a6a5d5cd211b79c54}{key\+Down\+Once} (\hyperlink{namespaceengine_ae215983ad6dd0b5102ec75314b5afe2d}{Button} button)
+\begin{DoxyCompactList}\small\item\em test if button is pressed once. \end{DoxyCompactList}\item 
+bool \hyperlink{classengine_1_1_input_manager_a80d060705d719bd7f39329f7f34e32b8}{key\+State} (\hyperlink{namespaceengine_ae215983ad6dd0b5102ec75314b5afe2d}{Button} button)
+\begin{DoxyCompactList}\small\item\em test the button state. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_input_manager_a233e9499354dc5c911a32a1f1d1f0ec0}{clear} ()
+\begin{DoxyCompactList}\small\item\em clear. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classengine_1_1_input_manager}{Input\+Manager} class. 
+
+This class is responsible for managing entries.
+
+It works according to the command button that is selected. 
+
+Definition at line 39 of file input\+\_\+manager.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}!Input\+Manager@{Input\+Manager}}
+\index{Input\+Manager@{Input\+Manager}!engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}}
+\subsubsection[{\texorpdfstring{Input\+Manager()}{InputManager()}}]{\setlength{\rightskip}{0pt plus 5cm}Input\+Manager\+::\+Input\+Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_input_manager_a8be46886da639b26d67181c29dab6d6c}{}\label{classengine_1_1_input_manager_a8be46886da639b26d67181c29dab6d6c}
+
+
+Default constructor for the input manager. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 19 of file input\+\_\+manager.\+cpp.
+
+\index{engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}!````~Input\+Manager@{$\sim$\+Input\+Manager}}
+\index{````~Input\+Manager@{$\sim$\+Input\+Manager}!engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}}
+\subsubsection[{\texorpdfstring{$\sim$\+Input\+Manager()}{~InputManager()}}]{\setlength{\rightskip}{0pt plus 5cm}Input\+Manager\+::$\sim$\+Input\+Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_input_manager_af518290877dd183606709d5852db5491}{}\label{classengine_1_1_input_manager_af518290877dd183606709d5852db5491}
+
+
+Definition at line 20 of file input\+\_\+manager.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}!clear@{clear}}
+\index{clear@{clear}!engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}}
+\subsubsection[{\texorpdfstring{clear()}{clear()}}]{\setlength{\rightskip}{0pt plus 5cm}void Input\+Manager\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_input_manager_a233e9499354dc5c911a32a1f1d1f0ec0}{}\label{classengine_1_1_input_manager_a233e9499354dc5c911a32a1f1d1f0ec0}
+
+
+clear. 
+
+Used to clear the events.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 93 of file input\+\_\+manager.\+cpp.
+
+\index{engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}!key\+Down@{key\+Down}}
+\index{key\+Down@{key\+Down}!engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}}
+\subsubsection[{\texorpdfstring{key\+Down(\+Button button)}{keyDown(Button button)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Input\+Manager\+::key\+Down (
+\begin{DoxyParamCaption}
+\item[{{\bf Button}}]{button}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_input_manager_a3a25017b57aaa5ce61801158d852d1cb}{}\label{classengine_1_1_input_manager_a3a25017b57aaa5ce61801158d852d1cb}
+
+
+test if button is pressed. 
+
+Used to set the test of key down.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Button} & that represent user input.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bool that indicates the add scene success. 
+\end{DoxyReturn}
+
+
+Definition at line 31 of file input\+\_\+manager.\+cpp.
+
+\index{engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}!key\+Down\+Once@{key\+Down\+Once}}
+\index{key\+Down\+Once@{key\+Down\+Once}!engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}}
+\subsubsection[{\texorpdfstring{key\+Down\+Once(\+Button button)}{keyDownOnce(Button button)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Input\+Manager\+::key\+Down\+Once (
+\begin{DoxyParamCaption}
+\item[{{\bf Button}}]{button}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_input_manager_ad82059c91ae6f43a6a5d5cd211b79c54}{}\label{classengine_1_1_input_manager_ad82059c91ae6f43a6a5d5cd211b79c54}
+
+
+test if button is pressed once. 
+
+Used to set the test of key down only once.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Button} & that represent user input.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bool that indicates the add scene success. 
+\end{DoxyReturn}
+
+
+Definition at line 61 of file input\+\_\+manager.\+cpp.
+
+\index{engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}!key\+State@{key\+State}}
+\index{key\+State@{key\+State}!engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}}
+\subsubsection[{\texorpdfstring{key\+State(\+Button button)}{keyState(Button button)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Input\+Manager\+::key\+State (
+\begin{DoxyParamCaption}
+\item[{{\bf Button}}]{button}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_input_manager_a80d060705d719bd7f39329f7f34e32b8}{}\label{classengine_1_1_input_manager_a80d060705d719bd7f39329f7f34e32b8}
+
+
+test the button state. 
+
+Used to set the test of key state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Button} & that represent user input.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bool that indicates the add scene success. 
+\end{DoxyReturn}
+
+
+Definition at line 80 of file input\+\_\+manager.\+cpp.
+
+\index{engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}!update@{update}}
+\index{update@{update}!engine\+::\+Input\+Manager@{engine\+::\+Input\+Manager}}
+\subsubsection[{\texorpdfstring{update(\+S\+D\+L\+\_\+\+Event \+\_\+event)}{update(SDL_Event _event)}}]{\setlength{\rightskip}{0pt plus 5cm}void Input\+Manager\+::update (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Event}]{\+\_\+event}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_input_manager_af7fdc23fa8b7bfa3651aa58f476b1a70}{}\label{classengine_1_1_input_manager_af7fdc23fa8b7bfa3651aa58f476b1a70}
+
+
+update the sdl events. 
+
+Used to get the keyboard state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+event.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 106 of file input\+\_\+manager.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{input__manager_8hpp}{input\+\_\+manager.\+hpp}\item 
+engine/src/\hyperlink{input__manager_8cpp}{input\+\_\+manager.\+cpp}\end{DoxyCompactItemize}

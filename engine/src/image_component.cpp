@@ -1,28 +1,16 @@
-/*************************************
-@file image_component.hpp
-@brief Purpose: Contains the components of image fo the game.
-
-GPL v3.0 License
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-
-This file implements the main game component its declaration and state.
-*************************************/
+/**
+ * @file image_component.cpp
+ * @brief Purpose: Contains the components of image fo the game.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file implements the main game component its declaration and state.
+*/
 #include "image_component.hpp"
-/*************************************
-@file game.hpp
-@brief Purpose: Contains the Game class declaration.
-
-GPL v3.0 License
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-
-This file implements the main game component its declaration and state.
-*************************************/
 #include "game.hpp"
 
 using namespace engine;

@@ -1,15 +1,16 @@
-/*************************************
-@file: player_code.hpp
-@brief Purpose: player_code class declaration
-GPL v3.0 License
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-
-This file contains more than one classs, because it has elements that behave
-like this other classes.
-*************************************/
+/**
+ * @file: player_code.hpp
+ * @brief Purpose: player_code class declaration
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file contains more than one classs, because it has elements that behave
+ * like this other classes.
+*/
 
 #ifndef PLAYER_CODE
 #define PLAYER_CODE

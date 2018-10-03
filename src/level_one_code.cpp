@@ -1,12 +1,13 @@
-/**************************************
-@file: level_one_code.cpp
-@brief Purpose: LevelOneCode class implementation
-GPL v3.0 Licence
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-**************************************/
+/**
+ * @file: level_one_code.cpp
+ * @brief Purpose: LevelOneCode class implementation
+ * 
+ * GPL v3.0 Licence
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+*/
 
 #include "level_one_code.hpp"
 

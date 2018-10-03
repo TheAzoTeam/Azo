@@ -1,5 +1,5 @@
 /** 
- * @file audio_controller.hpp
+ * @file audio_controller.cpp
  * @brief Purpose: Contains all the methods related to the AudioController class..
  * 
  * GPL v3.0 License

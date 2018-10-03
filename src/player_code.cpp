@@ -1,15 +1,16 @@
-/*************************************
-@file: player_code.cpp
-@brief Purpose: player_code class implementation
-GPL v3.0 License
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-
-This file includes its class and 2 others. This happens because it implements
-player_code class and uses elements of other classes on methods and behave.
-*************************************/
+/**
+ * @file: player_code.cpp
+ * @brief Purpose: player_code class implementation
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file includes its class and 2 others. This happens because it implements
+ * player_code class and uses elements of other classes on methods and behave.
+*/
 
 #include "player_code.hpp"
 #include "game.hpp"

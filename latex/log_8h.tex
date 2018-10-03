@@ -1,0 +1,106 @@
+\hypertarget{log_8h}{}\section{engine/include/log.h File Reference}
+\label{log_8h}\index{engine/include/log.\+h@{engine/include/log.\+h}}
+
+
+Purpose\+: Contains general scope to the log.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$cstdlib$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{log_8h_aedf01192151e10a6620567952711ff69}{I\+N\+FO}(...)~std\+::cout $<$$<$ \char`\"{}\mbox{[}I\+N\+FO\mbox{]} \char`\"{} $<$$<$ \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+ $<$$<$ std\+::endl;
+\item 
+\#define \hyperlink{log_8h_a8f75b971030a39ef811d3526a62b36b8}{W\+A\+RN}(...)~std\+::cout $<$$<$ \char`\"{}\mbox{[}W\+A\+RN\mbox{]} \char`\"{} $<$$<$ \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+ $<$$<$ std\+::endl;
+\item 
+\#define \hyperlink{log_8h_a02ce8a968600d004ba60858425c46307}{E\+R\+R\+OR}(...)
+\item 
+\#define \hyperlink{log_8h_a96dd473db0b3d10bd43390cdacb00120}{D\+E\+B\+UG}(...)~std\+::cerr $<$$<$ \char`\"{}\mbox{[}D\+E\+B\+UG\mbox{]} \char`\"{} $<$$<$ \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+ $<$$<$ std\+::endl;
+\item 
+\#define \hyperlink{log_8h_a9179532e575967b12397ed528dd4b498}{A\+S\+S\+E\+RT}(condition, ...)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Purpose\+: Contains general scope to the log. 
+
+G\+LP v3.\+0 License Copyright (c) 2017 \hyperlink{namespace_azo}{Azo}
+
+\href{https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md}{\tt https\+://github.\+com/\+Tec\+Prog2018-\/2/\+Azo/blob/master/\+L\+I\+C\+E\+N\+S\+E.\+md} 
+
+\subsection{Macro Definition Documentation}
+\index{log.\+h@{log.\+h}!A\+S\+S\+E\+RT@{A\+S\+S\+E\+RT}}
+\index{A\+S\+S\+E\+RT@{A\+S\+S\+E\+RT}!log.\+h@{log.\+h}}
+\subsubsection[{\texorpdfstring{A\+S\+S\+E\+RT}{ASSERT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+S\+S\+E\+RT(
+\begin{DoxyParamCaption}
+\item[{}]{condition, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{log_8h_a9179532e575967b12397ed528dd4b498}{}\label{log_8h_a9179532e575967b12397ed528dd4b498}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        if(!(condition))\{ \(\backslash\)
+            std::cerr   << \textcolor{stringliteral}{"Assertion `"} # condition \textcolor{stringliteral}{"` failed in "} << \_\_FILE\_\_ \(\backslash\)
+                    << \textcolor{stringliteral}{" line "} << \_\_LINE\_\_ << \textcolor{stringliteral}{": "} << \_\_VA\_ARGS\_\_ << std::endl; \(\backslash\)
+            std::exit(EXIT\_FAILURE); \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{while}(\textcolor{keyword}{false})
+\end{DoxyCode}
+
+
+Definition at line 58 of file log.\+h.
+
+\index{log.\+h@{log.\+h}!D\+E\+B\+UG@{D\+E\+B\+UG}}
+\index{D\+E\+B\+UG@{D\+E\+B\+UG}!log.\+h@{log.\+h}}
+\subsubsection[{\texorpdfstring{D\+E\+B\+UG}{DEBUG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+B\+UG(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~std\+::cerr $<$$<$ \char`\"{}\mbox{[}D\+E\+B\+UG\mbox{]} \char`\"{} $<$$<$ \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+ $<$$<$ std\+::endl;}\hypertarget{log_8h_a96dd473db0b3d10bd43390cdacb00120}{}\label{log_8h_a96dd473db0b3d10bd43390cdacb00120}
+
+
+Definition at line 49 of file log.\+h.
+
+\index{log.\+h@{log.\+h}!E\+R\+R\+OR@{E\+R\+R\+OR}}
+\index{E\+R\+R\+OR@{E\+R\+R\+OR}!log.\+h@{log.\+h}}
+\subsubsection[{\texorpdfstring{E\+R\+R\+OR}{ERROR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+R\+R\+OR(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\hypertarget{log_8h_a02ce8a968600d004ba60858425c46307}{}\label{log_8h_a02ce8a968600d004ba60858425c46307}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                      \(\backslash\)
+        std::cout   << \textcolor{stringliteral}{"[ERROR] "} << \_\_FILE\_\_ << \textcolor{stringliteral}{" line "} << \_\_LINE\_\_       \(\backslash\)
+                << std::endl << \_\_VA\_ARGS\_\_ << std::endl;           \(\backslash\)
+        std::exit(EXIT\_FAILURE);                          \(\backslash\)
+    \} \textcolor{keywordflow}{while}(\textcolor{keyword}{false})
+\end{DoxyCode}
+
+
+Definition at line 36 of file log.\+h.
+
+\index{log.\+h@{log.\+h}!I\+N\+FO@{I\+N\+FO}}
+\index{I\+N\+FO@{I\+N\+FO}!log.\+h@{log.\+h}}
+\subsubsection[{\texorpdfstring{I\+N\+FO}{INFO}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+FO(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~std\+::cout $<$$<$ \char`\"{}\mbox{[}I\+N\+FO\mbox{]} \char`\"{} $<$$<$ \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+ $<$$<$ std\+::endl;}\hypertarget{log_8h_aedf01192151e10a6620567952711ff69}{}\label{log_8h_aedf01192151e10a6620567952711ff69}
+
+
+Definition at line 20 of file log.\+h.
+
+\index{log.\+h@{log.\+h}!W\+A\+RN@{W\+A\+RN}}
+\index{W\+A\+RN@{W\+A\+RN}!log.\+h@{log.\+h}}
+\subsubsection[{\texorpdfstring{W\+A\+RN}{WARN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+A\+RN(
+\begin{DoxyParamCaption}
+\item[{}]{...}
+\end{DoxyParamCaption}
+)~std\+::cout $<$$<$ \char`\"{}\mbox{[}W\+A\+RN\mbox{]} \char`\"{} $<$$<$ \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+ $<$$<$ std\+::endl;}\hypertarget{log_8h_a8f75b971030a39ef811d3526a62b36b8}{}\label{log_8h_a8f75b971030a39ef811d3526a62b36b8}
+
+
+Definition at line 28 of file log.\+h.
+

@@ -1,0 +1,243 @@
+\hypertarget{classengine_1_1_scene}{}\section{engine\+:\+:Scene Class Reference}
+\label{classengine_1_1_scene}\index{engine\+::\+Scene@{engine\+::\+Scene}}
+
+
+{\ttfamily \#include $<$scene.\+hpp$>$}
+
+Inheritance diagram for engine\+:\+:Scene\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classengine_1_1_scene}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_scene_ad10176d75a9cc0da56626f682d083507}{Scene} ()
+\item 
+\hyperlink{classengine_1_1_scene_a06cf49594fe578fbcd662ab0e976cbd5}{Scene} (std\+::string \hyperlink{classengine_1_1_scene_a62943c09d12941bc32feab48e2d7d38a}{scene\+Name})
+\item 
+virtual void \hyperlink{classengine_1_1_scene_abb3b6efc6fdba03cd96436edaf08a967}{init} ()
+\item 
+virtual void \hyperlink{classengine_1_1_scene_afdc5c5539730b162ddb6fd99b0c0660c}{shutdown} ()
+\item 
+virtual void \hyperlink{classengine_1_1_scene_ac0e3d2c98ba6063a086467fb2c19142f}{draw} ()
+\item 
+virtual void \hyperlink{classengine_1_1_scene_ab8eb8334aee22d2797aedbacef9e3874}{update\+Code} ()
+\item 
+virtual void \hyperlink{classengine_1_1_scene_a279192188f7c239355209afd3e7c16ac}{restart} ()
+\item 
+std\+::string \hyperlink{classengine_1_1_scene_a4e9388d63f1576d127928a91d00fe8c8}{get\+Scene\+Name} ()
+\item 
+void \hyperlink{classengine_1_1_scene_a1035f4628a4878a0f1a7eb4082b83ded}{delete\+Key\+List} ()
+\item 
+void \hyperlink{classengine_1_1_scene_a2c1e265823a5e281e1970377674f0ff9}{add\+Game\+Object} (\hyperlink{classengine_1_1_game_object}{engine\+::\+Game\+Object} \&game\+Object)
+\item 
+void \hyperlink{classengine_1_1_scene_a02bb6e553349fe8a37f58cfe1bbc93cf}{remove\+Game\+Object} (std\+::string \&game\+Object\+Name)
+\item 
+\hyperlink{classengine_1_1_game_object}{engine\+::\+Game\+Object} \& \hyperlink{classengine_1_1_scene_af8eacc131836e089cd14f7b1ca88484c}{get\+Game\+Object} (std\+::string \&game\+Object\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceengine_a49a8e8541d5f387918f566b7909abd98}{Scene\+State} \hyperlink{classengine_1_1_scene_a25912176ae12eab48035b7d218955466}{m\+State} = \hyperlink{namespaceengine_a49a8e8541d5f387918f566b7909abd98a7f6c43f1f96a930f7d49210196a52ad2}{Scene\+State\+::\+F\+I\+R\+S\+T\+\_\+\+T\+I\+ME}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, \hyperlink{classengine_1_1_game_object}{engine\+::\+Game\+Object} $\ast$ $>$ \hyperlink{classengine_1_1_scene_a7b27b00796602fc52515114b17f06ea4}{game\+Object\+Map}
+\item 
+std\+::list$<$ std\+::string $>$ \hyperlink{classengine_1_1_scene_a1fff54180b377adb5d66dc75e6494d5e}{m\+Key\+List}
+\item 
+std\+::string \hyperlink{classengine_1_1_scene_a62943c09d12941bc32feab48e2d7d38a}{scene\+Name}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 35 of file scene.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Scene@{engine\+::\+Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{Scene()}{Scene()}}]{\setlength{\rightskip}{0pt plus 5cm}Scene\+::\+Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_scene_ad10176d75a9cc0da56626f682d083507}{}\label{classengine_1_1_scene_ad10176d75a9cc0da56626f682d083507}
+
+
+Definition at line 14 of file scene.\+cpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{Scene(std\+::string scene\+Name)}{Scene(std::string sceneName)}}]{\setlength{\rightskip}{0pt plus 5cm}Scene\+::\+Scene (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{scene\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_scene_a06cf49594fe578fbcd662ab0e976cbd5}{}\label{classengine_1_1_scene_a06cf49594fe578fbcd662ab0e976cbd5}
+
+
+Definition at line 21 of file scene.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Scene@{engine\+::\+Scene}!add\+Game\+Object@{add\+Game\+Object}}
+\index{add\+Game\+Object@{add\+Game\+Object}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{add\+Game\+Object(engine\+::\+Game\+Object \&game\+Object)}{addGameObject(engine::GameObject &gameObject)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::add\+Game\+Object (
+\begin{DoxyParamCaption}
+\item[{{\bf engine\+::\+Game\+Object} \&}]{game\+Object}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_scene_a2c1e265823a5e281e1970377674f0ff9}{}\label{classengine_1_1_scene_a2c1e265823a5e281e1970377674f0ff9}
+
+
+Definition at line 94 of file scene.\+cpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!delete\+Key\+List@{delete\+Key\+List}}
+\index{delete\+Key\+List@{delete\+Key\+List}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{delete\+Key\+List()}{deleteKeyList()}}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::delete\+Key\+List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_scene_a1035f4628a4878a0f1a7eb4082b83ded}{}\label{classengine_1_1_scene_a1035f4628a4878a0f1a7eb4082b83ded}
+
+
+Definition at line 52 of file scene.\+cpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!draw@{draw}}
+\index{draw@{draw}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{draw()}{draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_scene_ac0e3d2c98ba6063a086467fb2c19142f}{}\label{classengine_1_1_scene_ac0e3d2c98ba6063a086467fb2c19142f}
+
+
+Definition at line 61 of file scene.\+cpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!get\+Game\+Object@{get\+Game\+Object}}
+\index{get\+Game\+Object@{get\+Game\+Object}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{get\+Game\+Object(std\+::string \&game\+Object\+Name)}{getGameObject(std::string &gameObjectName)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Object} \& Scene\+::get\+Game\+Object (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{game\+Object\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_scene_af8eacc131836e089cd14f7b1ca88484c}{}\label{classengine_1_1_scene_af8eacc131836e089cd14f7b1ca88484c}
+
+
+Definition at line 110 of file scene.\+cpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!get\+Scene\+Name@{get\+Scene\+Name}}
+\index{get\+Scene\+Name@{get\+Scene\+Name}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{get\+Scene\+Name()}{getSceneName()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string engine\+::\+Scene\+::get\+Scene\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classengine_1_1_scene_a4e9388d63f1576d127928a91d00fe8c8}{}\label{classengine_1_1_scene_a4e9388d63f1576d127928a91d00fe8c8}
+
+
+Definition at line 46 of file scene.\+hpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!init@{init}}
+\index{init@{init}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_scene_abb3b6efc6fdba03cd96436edaf08a967}{}\label{classengine_1_1_scene_abb3b6efc6fdba03cd96436edaf08a967}
+
+
+Definition at line 30 of file scene.\+cpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!remove\+Game\+Object@{remove\+Game\+Object}}
+\index{remove\+Game\+Object@{remove\+Game\+Object}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{remove\+Game\+Object(std\+::string \&game\+Object\+Name)}{removeGameObject(std::string &gameObjectName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::remove\+Game\+Object (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{game\+Object\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_scene_a02bb6e553349fe8a37f58cfe1bbc93cf}{}\label{classengine_1_1_scene_a02bb6e553349fe8a37f58cfe1bbc93cf}
+
+
+Definition at line 123 of file scene.\+cpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!restart@{restart}}
+\index{restart@{restart}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{restart()}{restart()}}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::restart (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_scene_a279192188f7c239355209afd3e7c16ac}{}\label{classengine_1_1_scene_a279192188f7c239355209afd3e7c16ac}
+
+
+Reimplemented in \hyperlink{class_azo_1_1_level_one_ac388145a996f6663e2ae757f026f07f1}{Azo\+::\+Level\+One}, and \hyperlink{class_azo_1_1_menu_a7f375c556043d9e1964c670fc6d0d846}{Azo\+::\+Menu}.
+
+
+
+Definition at line 87 of file scene.\+cpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_scene_afdc5c5539730b162ddb6fd99b0c0660c}{}\label{classengine_1_1_scene_afdc5c5539730b162ddb6fd99b0c0660c}
+
+
+Reimplemented in \hyperlink{class_azo_1_1_menu_a999a8b12f7d1e6572c65f1a97cb3163a}{Azo\+::\+Menu}.
+
+
+
+Definition at line 41 of file scene.\+cpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!update\+Code@{update\+Code}}
+\index{update\+Code@{update\+Code}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{update\+Code()}{updateCode()}}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::update\+Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_scene_ab8eb8334aee22d2797aedbacef9e3874}{}\label{classengine_1_1_scene_ab8eb8334aee22d2797aedbacef9e3874}
+
+
+Definition at line 74 of file scene.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{engine\+::\+Scene@{engine\+::\+Scene}!game\+Object\+Map@{game\+Object\+Map}}
+\index{game\+Object\+Map@{game\+Object\+Map}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{game\+Object\+Map}{gameObjectMap}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$std\+::string, {\bf engine\+::\+Game\+Object} $\ast$$>$ engine\+::\+Scene\+::game\+Object\+Map\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_scene_a7b27b00796602fc52515114b17f06ea4}{}\label{classengine_1_1_scene_a7b27b00796602fc52515114b17f06ea4}
+
+
+Definition at line 57 of file scene.\+hpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!m\+Key\+List@{m\+Key\+List}}
+\index{m\+Key\+List@{m\+Key\+List}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{m\+Key\+List}{mKeyList}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::list$<$std\+::string$>$ engine\+::\+Scene\+::m\+Key\+List\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_scene_a1fff54180b377adb5d66dc75e6494d5e}{}\label{classengine_1_1_scene_a1fff54180b377adb5d66dc75e6494d5e}
+
+
+Definition at line 58 of file scene.\+hpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!m\+State@{m\+State}}
+\index{m\+State@{m\+State}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{m\+State}{mState}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scene\+State} engine\+::\+Scene\+::m\+State = {\bf Scene\+State\+::\+F\+I\+R\+S\+T\+\_\+\+T\+I\+ME}}\hypertarget{classengine_1_1_scene_a25912176ae12eab48035b7d218955466}{}\label{classengine_1_1_scene_a25912176ae12eab48035b7d218955466}
+
+
+Definition at line 54 of file scene.\+hpp.
+
+\index{engine\+::\+Scene@{engine\+::\+Scene}!scene\+Name@{scene\+Name}}
+\index{scene\+Name@{scene\+Name}!engine\+::\+Scene@{engine\+::\+Scene}}
+\subsubsection[{\texorpdfstring{scene\+Name}{sceneName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string engine\+::\+Scene\+::scene\+Name\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_scene_a62943c09d12941bc32feab48e2d7d38a}{}\label{classengine_1_1_scene_a62943c09d12941bc32feab48e2d7d38a}
+
+
+Definition at line 59 of file scene.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{scene_8hpp}{scene.\+hpp}\item 
+engine/src/\hyperlink{scene_8cpp}{scene.\+cpp}\end{DoxyCompactItemize}

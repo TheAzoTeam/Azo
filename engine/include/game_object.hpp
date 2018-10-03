@@ -1,15 +1,15 @@
-/*************************************
-@file game_object.hpp
-@brief Purpose: Contains the Game Object class declaration.
-
-GPL v3.0 License
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-
-This file implements the main game object component its declaration and state.
-*************************************/
+/**
+ * @file game_object.hpp
+ * @brief Purpose: Contains the Game Object class declaration.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file implements the main game object component its declaration and state.
+*/
 #ifndef gameObject_HPP
 #define gameObject_HPP
 

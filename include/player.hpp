@@ -1,15 +1,15 @@
-/*************************************
-@file: player.hpp
-@brief Purpose: player class Declaration
-GPL v3.0 License
-Copyright (c) 2017 Azo
-
-Notice: TheAzo, TheAzoTeam
-https://github.com/TecProg2018-2/Azo
-
-
-This file contains several other classes. It happens because player class
-relates to others in many of its attributes and methods.
+/**
+ * @file: player.hpp
+ * @brief Purpose: player class Declaration
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file contains several other classes. It happens because player class
+ * relates to others in many of its attributes and methods.
 *************************************/
 
 #ifndef PLAYER_HPP

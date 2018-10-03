@@ -1,0 +1,188 @@
+\hypertarget{class_azo_1_1_obstacle}{}\section{Azo\+:\+:Obstacle Class Reference}
+\label{class_azo_1_1_obstacle}\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+
+
+\hyperlink{class_azo_1_1_obstacle}{Obstacle} class for in-\/game objects with collision.  
+
+
+
+
+{\ttfamily \#include $<$obstacle.\+hpp$>$}
+
+Inheritance diagram for Azo\+:\+:Obstacle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_azo_1_1_obstacle}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_azo_1_1_obstacle_a8f734072321fa06a7b7dae2d5f50f352}{Obstacle} ()
+\begin{DoxyCompactList}\small\item\em Basic contructor for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_azo_1_1_obstacle_af2f9cc9c6cff75dca0974fd5ac4f71a9}{$\sim$\+Obstacle} ()
+\begin{DoxyCompactList}\small\item\em Virtual constructor for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. \end{DoxyCompactList}\item 
+\hyperlink{class_azo_1_1_obstacle_ac2605eab1c4049885e27749fe8bd4b14}{Obstacle} (std\+::string name, std\+::pair$<$ double, double $>$ position\+Relative\+To\+Parent, \hyperlink{namespace_azo_ac4ec77a26f64a5b7cd450e40dad04059}{Obstacle\+Type} obstacle\+Type)
+\begin{DoxyCompactList}\small\item\em Constructor class for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. \end{DoxyCompactList}\item 
+void \hyperlink{class_azo_1_1_obstacle_aaff76ad6fd2803f73e941446e1724674}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em Destructor class for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_azo_1_1_obstacle_a376685ade60d5c05661ce0bceab19da6}{get\+Class\+Name} ()
+\begin{DoxyCompactList}\small\item\em Method for class name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ double, double $>$ \hyperlink{class_azo_1_1_obstacle_aac3846345bf1ae1070d8b407fb4f7c3a}{m\+Position\+Relative\+To\+Parent}
+\item 
+std\+::list$<$ \hyperlink{class_azo_1_1_invisible_block}{Invisible\+Block} $\ast$ $>$ \hyperlink{class_azo_1_1_obstacle_a535374cbd0b83f289b0644eda7650e48}{m\+Block\+List}
+\item 
+\hyperlink{namespace_azo_ac4ec77a26f64a5b7cd450e40dad04059}{Obstacle\+Type} \hyperlink{class_azo_1_1_obstacle_aaab3518ffd0b5360643383a9199e7e7d}{m\+Obstacle\+Type}
+\item 
+\hyperlink{namespace_azo_a75e30005795a46482a25b996ca785c67}{Machine\+Part\+State} \hyperlink{class_azo_1_1_obstacle_a3408445f79b6339fc2b72cd1d98676a4}{m\+Machine\+Part\+State} = \hyperlink{namespace_azo_a75e30005795a46482a25b996ca785c67a66b3c5ed1d52d8dcffab16270f632960}{Machine\+Part\+State\+::\+N\+O\+N\+\_\+\+M\+A\+C\+H\+I\+NE}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_azo_1_1_obstacle}{Obstacle} class for in-\/game objects with collision. 
+
+Used to create game objects that the player has to avoid in order to progress or has to collect in-\/game(such as Machine\+Parts). 
+
+Definition at line 57 of file obstacle.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}!Obstacle@{Obstacle}}
+\index{Obstacle@{Obstacle}!Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+\subsubsection[{\texorpdfstring{Obstacle()}{Obstacle()}}]{\setlength{\rightskip}{0pt plus 5cm}Obstacle\+::\+Obstacle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_azo_1_1_obstacle_a8f734072321fa06a7b7dae2d5f50f352}{}\label{class_azo_1_1_obstacle_a8f734072321fa06a7b7dae2d5f50f352}
+
+
+Basic contructor for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. 
+
+Default basic constructor for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. 
+
+Definition at line 19 of file obstacle.\+cpp.
+
+\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}!````~Obstacle@{$\sim$\+Obstacle}}
+\index{````~Obstacle@{$\sim$\+Obstacle}!Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+\subsubsection[{\texorpdfstring{$\sim$\+Obstacle()}{~Obstacle()}}]{\setlength{\rightskip}{0pt plus 5cm}Obstacle\+::$\sim$\+Obstacle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_azo_1_1_obstacle_af2f9cc9c6cff75dca0974fd5ac4f71a9}{}\label{class_azo_1_1_obstacle_af2f9cc9c6cff75dca0974fd5ac4f71a9}
+
+
+Virtual constructor for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. 
+
+Default virtual constructor for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. 
+
+Definition at line 26 of file obstacle.\+cpp.
+
+\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}!Obstacle@{Obstacle}}
+\index{Obstacle@{Obstacle}!Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+\subsubsection[{\texorpdfstring{Obstacle(std\+::string name, std\+::pair$<$ double, double $>$ position\+Relative\+To\+Parent, Obstacle\+Type obstacle\+Type)}{Obstacle(std::string name, std::pair< double, double > positionRelativeToParent, ObstacleType obstacleType)}}]{\setlength{\rightskip}{0pt plus 5cm}Obstacle\+::\+Obstacle (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{std\+::pair$<$ double, double $>$}]{position\+Relative\+To\+Parent, }
+\item[{{\bf Obstacle\+Type}}]{obstacle\+Type}
+\end{DoxyParamCaption}
+)}\hypertarget{class_azo_1_1_obstacle_ac2605eab1c4049885e27749fe8bd4b14}{}\label{class_azo_1_1_obstacle_ac2605eab1c4049885e27749fe8bd4b14}
+
+
+Constructor class for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. 
+
+Used to initialize \hyperlink{class_azo_1_1_obstacle}{Obstacle} class variables. 
+\begin{DoxyParams}{Parameters}
+{\em name} & \hyperlink{class_azo_1_1_obstacle}{Obstacle} name. \\
+\hline
+{\em position\+Relative\+To\+Parent} & Pair of doubles relative to position(range $>$ 0). \\
+\hline
+{\em obstacle\+Type} & Type of obstacle according to enum class Obstacle\+Type from \hyperlink{obstacle_8hpp}{obstacle.\+hpp} . \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 96 of file obstacle.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}!get\+Class\+Name@{get\+Class\+Name}}
+\index{get\+Class\+Name@{get\+Class\+Name}!Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+\subsubsection[{\texorpdfstring{get\+Class\+Name()}{getClassName()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Azo\+::\+Obstacle\+::get\+Class\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_azo_1_1_obstacle_a376685ade60d5c05661ce0bceab19da6}{}\label{class_azo_1_1_obstacle_a376685ade60d5c05661ce0bceab19da6}
+
+
+Method for class name. 
+
+Inline method for returning the class\textquotesingle{} name. 
+
+Reimplemented from \hyperlink{classengine_1_1_game_object_ac836deb7933c725ac09b67386ad10239}{engine\+::\+Game\+Object}.
+
+
+
+Definition at line 81 of file obstacle.\+hpp.
+
+\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Obstacle\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_azo_1_1_obstacle_aaff76ad6fd2803f73e941446e1724674}{}\label{class_azo_1_1_obstacle_aaff76ad6fd2803f73e941446e1724674}
+
+
+Destructor class for \hyperlink{class_azo_1_1_obstacle}{Obstacle}. 
+
+Used for shutting down each one of the \hyperlink{class_azo_1_1_obstacle}{Obstacle}\textquotesingle{}s attributes so as to free memory when closing the game. 
+
+Reimplemented from \hyperlink{classengine_1_1_game_object_a08d7a48b6eb90f55c8b670b6f98ab393}{engine\+::\+Game\+Object}.
+
+
+
+Definition at line 35 of file obstacle.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}!m\+Block\+List@{m\+Block\+List}}
+\index{m\+Block\+List@{m\+Block\+List}!Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+\subsubsection[{\texorpdfstring{m\+Block\+List}{mBlockList}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::list$<${\bf Invisible\+Block} $\ast$$>$ Azo\+::\+Obstacle\+::m\+Block\+List}\hypertarget{class_azo_1_1_obstacle_a535374cbd0b83f289b0644eda7650e48}{}\label{class_azo_1_1_obstacle_a535374cbd0b83f289b0644eda7650e48}
+
+
+Definition at line 60 of file obstacle.\+hpp.
+
+\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}!m\+Machine\+Part\+State@{m\+Machine\+Part\+State}}
+\index{m\+Machine\+Part\+State@{m\+Machine\+Part\+State}!Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+\subsubsection[{\texorpdfstring{m\+Machine\+Part\+State}{mMachinePartState}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Machine\+Part\+State} Azo\+::\+Obstacle\+::m\+Machine\+Part\+State = {\bf Machine\+Part\+State\+::\+N\+O\+N\+\_\+\+M\+A\+C\+H\+I\+NE}}\hypertarget{class_azo_1_1_obstacle_a3408445f79b6339fc2b72cd1d98676a4}{}\label{class_azo_1_1_obstacle_a3408445f79b6339fc2b72cd1d98676a4}
+
+
+Definition at line 62 of file obstacle.\+hpp.
+
+\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}!m\+Obstacle\+Type@{m\+Obstacle\+Type}}
+\index{m\+Obstacle\+Type@{m\+Obstacle\+Type}!Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+\subsubsection[{\texorpdfstring{m\+Obstacle\+Type}{mObstacleType}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Obstacle\+Type} Azo\+::\+Obstacle\+::m\+Obstacle\+Type}\hypertarget{class_azo_1_1_obstacle_aaab3518ffd0b5360643383a9199e7e7d}{}\label{class_azo_1_1_obstacle_aaab3518ffd0b5360643383a9199e7e7d}
+
+
+Definition at line 61 of file obstacle.\+hpp.
+
+\index{Azo\+::\+Obstacle@{Azo\+::\+Obstacle}!m\+Position\+Relative\+To\+Parent@{m\+Position\+Relative\+To\+Parent}}
+\index{m\+Position\+Relative\+To\+Parent@{m\+Position\+Relative\+To\+Parent}!Azo\+::\+Obstacle@{Azo\+::\+Obstacle}}
+\subsubsection[{\texorpdfstring{m\+Position\+Relative\+To\+Parent}{mPositionRelativeToParent}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$double, double$>$ Azo\+::\+Obstacle\+::m\+Position\+Relative\+To\+Parent}\hypertarget{class_azo_1_1_obstacle_aac3846345bf1ae1070d8b407fb4f7c3a}{}\label{class_azo_1_1_obstacle_aac3846345bf1ae1070d8b407fb4f7c3a}
+
+
+Definition at line 59 of file obstacle.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{obstacle_8hpp}{obstacle.\+hpp}\item 
+src/\hyperlink{obstacle_8cpp}{obstacle.\+cpp}\end{DoxyCompactItemize}

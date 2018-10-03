@@ -1,3 +1,15 @@
+/**
+ * @file animation.hpp
+ * @brief Purpose: Defines the general scope of animation.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file implements the main animation component its declaration and state.
+*/
 #ifndef ANIMATION_MANAGER_HPP
 #define ANIMATION_MANAGER_HPP
 

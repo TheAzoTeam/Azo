@@ -1,4 +1,15 @@
-#ifndef GAME_GLOBALS_HPP
+/**
+ * @file game_globals.hpp
+ * @brief Purpose: Set the game globals constants.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file implements the game globals constants.
+*/#ifndef GAME_GLOBALS_HPP
 #define GAME_GLOBALS_HPP
 
 #include <string>
