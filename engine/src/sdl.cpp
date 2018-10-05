@@ -7,6 +7,7 @@
  *
  * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
 */
+#include "log.h"
 #include "sdl.hpp"
 
 using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.
@@ -134,6 +135,9 @@ void SDL::createWindow(){
 	 * @return "void".
 	*/
 	void SDL::setSDLAttributes(std::string gameName, int windowWidth, int windowHeight){
+		ASSERT(gameName != "", "gameName path can't be empty.");
+		ASSERT(windowWidth > 0, "windowWidth path can't be empty.");
+		ASSERT(windowHeight > 0, "windowHeight path can't be empty.");
 		this->gameName = gameName;
 		this->windowWidth = windowWidth;
 		this->windowHeight = windowHeight;
