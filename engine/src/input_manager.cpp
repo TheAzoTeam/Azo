@@ -7,7 +7,7 @@
  *
  * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
 */
-#include "assets_manager.hpp"
+#include "log.h"
 #include "input_manager.hpp"
 
 using namespace engine;// Used to avoid write engine::Game engine::Game::instance;.
