@@ -42,17 +42,21 @@ AnimationController::AnimationController(){
 }
 
 AnimationController::AnimationController(GameObject &gameObject){
+	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
 	this->gameObject = &gameObject;
 	this->componentState = State::ENABLED;
 }
 
 void AnimationController::addAnimation(std::string animationName, Animation &animation){
+	ASSERT(animationName != "", "AnimationController::addAnimation, animationName is empty.");
+	ASSERT(&animation != NULL, "The animation can't be null.");
 	std::pair<std::string, Animation *> newAnimation(animationName, &animation);
 
 	mAnimationMap.insert(newAnimation);
 }
 
 void AnimationController::startUniqueAnimation(std::string animationName){
+	ASSERT(animationName != "", "AnimationController::startUniqueAnimation, animationName is empty.");
 	auto animationToBePlayed = mAnimationMap.find(animationName);
 
 	if (animationToBePlayed == mAnimationMap.end()) {
@@ -72,6 +76,7 @@ void AnimationController::startUniqueAnimation(std::string animationName){
 }
 
 void AnimationController::startAnimation(std::string animationName){
+	ASSERT(animationName != "", "AnimationController::startAnimation, animationName is empty.");
 	auto animationToBePlayed = mAnimationMap.find(animationName);
 
 	if (animationToBePlayed == mAnimationMap.end()) {
@@ -86,6 +91,7 @@ void AnimationController::startAnimation(std::string animationName){
 
 
 void AnimationController::stopAnimation(std::string animationName){
+	ASSERT(animationName != "", "AnimationController::stopAnimation, animationName is empty.");
 	auto animationToBePlayed = mAnimationMap.find(animationName);
 
 	if (animationToBePlayed != mAnimationMap.end()) {
@@ -96,6 +102,7 @@ void AnimationController::stopAnimation(std::string animationName){
 }
 
 AnimationState AnimationController::getAnimationStatus(std::string animationName){
+	ASSERT(animationName != "", "AnimationController::stopAnimation, animationName is empty.");
 	auto animation = mAnimationMap.find(animationName);
 
 	if (animation != mAnimationMap.end()) {

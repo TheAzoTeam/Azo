@@ -20,6 +20,9 @@ ImageComponent::ImageComponent() {}
 ImageComponent::~ImageComponent() {}
 
 ImageComponent::ImageComponent(GameObject &gameObject, std::string imagePath, double zoomFactor) {
+	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
+	ASSERT(imagePath != "", "ImageComponent::ImageComponent, imagePath is empty.");
+	ASSERT(zoomFactor < 100, "zoomFactor cant be bigger than 100.");
 	this->gameObject = &gameObject;
 	this->imagePath = imagePath;
 	this->zoomFactor = zoomFactor;
@@ -29,6 +32,11 @@ ImageComponent::ImageComponent(GameObject &gameObject,
 			       std::string imagePath,
 			       double zoomFactor,
 			       std::pair<double, double> position_relative_to_object){
+	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
+	ASSERT(imagePath != "", "ImageComponent::ImageComponent, imagePath is empty.");
+	ASSERT(zoomFactor < 100, "zoomFactor cant be bigger than 100.");
+	ASSERT(position_relative_to_object.first >= 0, "The relative position must be bigger than zero.");
+	ASSERT(position_relative_to_object.second >= 0, "The relative position must be bigger than zero.");
 	this->gameObject = &gameObject;
 	this->imagePath = imagePath;
 	this->zoomFactor = zoomFactor;
