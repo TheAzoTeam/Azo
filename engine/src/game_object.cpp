@@ -12,6 +12,7 @@
 **/
 #include "game_object.hpp"
 #include "game.hpp"
+#include "log.h"
 #include "code_component.hpp"
 
 using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.
@@ -28,6 +29,7 @@ GameObject::GameObject(){
 	mHalfSize.second = 0;
 }
 
+
 /**
  * @brief Constructor for the game object.
  *  
@@ -37,9 +39,13 @@ GameObject::GameObject(){
  * @return "void".
 */
 GameObject::GameObject(std::string gameObjectName, std::pair<double, double> currentPosition){
+	ASSERT(gameObjectName != "", "The gameObject can't be blank.");
+	ASSERT(currentPosition.first <= 0, "The gameObject can't be negative.");
+	ASSERT(currentPosition.second <= 0, "The gameObject can't be null.");
 	this->mName = gameObjectName;
 	this->mCurrentPosition = currentPosition;
 }
+
 
 /**
  * @brief add components to the game.
@@ -51,9 +57,11 @@ GameObject::GameObject(std::string gameObjectName, std::pair<double, double> cur
  * @return "void".
 */
 void GameObject::addComponent(Component &component){
+	ASSERT(&component != NULL, "The component can't be null.");
 	std::pair <std::type_index, Component *> componentPair(typeid(component), &component);
 	mComponentMap.insert(componentPair);
 }
+
 
 /**
  * @brief retrieve the animation controller.
@@ -75,6 +83,7 @@ AnimationController* GameObject::getAnimationController(std::type_index componen
 	}
 }
 
+
 /**
  * @brief retrieve the audio controller.
  *  
@@ -85,6 +94,7 @@ AnimationController* GameObject::getAnimationController(std::type_index componen
  * @return the game object Audio Controller.
 */
 AudioController* GameObject::getAudioController(std::type_index componentType){
+	ASSERT(&componentType != NULL, "The component type can't be null.");
 	auto componentToBeFound = mComponentMap.find(componentType);
 
 	if (componentToBeFound != mComponentMap.end()){
@@ -95,6 +105,7 @@ AudioController* GameObject::getAudioController(std::type_index componentType){
 		ERROR("Audio Controller couldn't be found!");
 	}
 }
+
 
 /**
  * @brief function that initialize the game objects components.
@@ -111,6 +122,7 @@ void GameObject::init(){
 		}
 	}
 }
+
 
 /**
  * @brief function that draw game objects components.  
@@ -131,6 +143,7 @@ void GameObject::draw(){
 	}
 }
 
+
 /**
  * @brief function that update the game object code.  
  * 
@@ -147,6 +160,7 @@ void GameObject::updateCode(){
 	}
 }
 
+
 /**
  * @brief inherits function that disable the game components.
  * 
@@ -155,6 +169,7 @@ void GameObject::updateCode(){
  * @return "void".
 */
 void GameObject::shutdown(){}
+
 
 /**
  * @brief calculate the bottom left coordinate of a game object.
@@ -170,6 +185,7 @@ std::pair<double, double> GameObject::calcBottomLeft(){
 	return bottomLeft;
 }
 
+
 /**
  * @brief calculate the bottom right coordinate of a game object.
  *  
@@ -183,6 +199,7 @@ std::pair<double, double> GameObject::calcBottomRight(){
 	bottomRight.second = mCenter.second + mHalfSize.second;
 	return bottomRight;
 }
+
 
 /**
  * @brief calculate the top left coordinate of a game object.
@@ -198,6 +215,7 @@ std::pair<double, double> GameObject::calcTopLeft(){
 	return topLeft;
 }
 
+
 /**
  * @brief calculate the top right coordinate of a game object.
  *  
@@ -212,6 +230,7 @@ std::pair<double, double> GameObject::calcTopRight(){
 	return topRight;
 }
 
+
 /**
  * @brief calculate the right up coordinate of a game object.
  *  
@@ -222,6 +241,7 @@ std::pair<double, double> GameObject::calcTopRight(){
 std::pair<double, double> GameObject::calcRightUp(){
 	return calcTopRight();
 }
+
 
 /**
  * @brief calculate the right down coordinate of a game object.
@@ -234,6 +254,7 @@ std::pair<double, double> GameObject::calcRightDown(){
 	return calcBottomRight();
 }
 
+
 /**
  * @brief calculate the left up coordinate of a game object.
  *  
@@ -244,6 +265,7 @@ std::pair<double, double> GameObject::calcRightDown(){
 std::pair<double, double> GameObject::calcLeftUp(){
 	return calcTopLeft();
 }
+
 
 /**
  * @brief calculate the left down coordinate of a game object.
