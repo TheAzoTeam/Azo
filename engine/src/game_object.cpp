@@ -96,10 +96,10 @@ AnimationController* GameObject::getAnimationController(std::type_index componen
 AudioController* GameObject::getAudioController(std::type_index componentType){
 	ASSERT(&componentType != NULL, "The component type can't be null.");
 	auto componentToBeFound = mComponentMap.find(componentType);
+	ASSERT(&componentToBeFound != NULL, "The component can't be null.");
 
 	if (componentToBeFound != mComponentMap.end()){
 		DEBUG("AudioController found. Class name: " << componentToBeFound->second->getClassName());
-
 		return dynamic_cast <AudioController * > (componentToBeFound->second);
 	} else {
 		ERROR("Audio Controller couldn't be found!");

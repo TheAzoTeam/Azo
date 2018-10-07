@@ -110,6 +110,7 @@ void Game::run(){
 bool Game::addScene(Scene &scene){
 	ASSERT(&scene != NULL, "The scene can't be null.");
 	auto sceneName = scene.getSceneName();
+	ASSERT(sceneName != "", "Scene name can't be null.");
 
 	if(sceneMap.find(sceneName) != sceneMap.end()){
 		ERROR("Scene already exists!");
@@ -133,6 +134,7 @@ bool Game::addScene(Scene &scene){
 void Game::restartScene(std::string sceneName){
 	ASSERT(sceneName != "", "The scene name can't be blank.");
 	auto scene = sceneMap[sceneName];
+	ASSERT(&scene != NULL, "Scene can't be null.");
 
 	scene->restart();
 }
