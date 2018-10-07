@@ -108,6 +108,7 @@ void Game::run(){
  * @return a bool that indicates the add scene success.
 */
 bool Game::addScene(Scene &scene){
+	ASSERT(&scene != NULL, "The scene can't be null.");
 	auto sceneName = scene.getSceneName();
 
 	if(sceneMap.find(sceneName) != sceneMap.end()){
@@ -130,6 +131,7 @@ bool Game::addScene(Scene &scene){
  * @return "void".
 */
 void Game::restartScene(std::string sceneName){
+	ASSERT(sceneName != "", "The scene name can't be blank.");
 	auto scene = sceneMap[sceneName];
 
 	scene->restart();
@@ -145,6 +147,7 @@ void Game::restartScene(std::string sceneName){
  * @return "void".
 */
 void Game::changeScene(std::string sceneName){
+	ASSERT(sceneName != "", "The scene name can't be blank.");
 	INFO("Changing Scenes.");
 	if(sceneMap.find(sceneName) == sceneMap.end()){
 		ERROR("Scene not found!");
@@ -214,6 +217,11 @@ bool Game::startAndStopScenes(){
  * @return "void".
 */
 void Game::setAttributes(std::string gameName, int windowWidth, int windowHeight, int frameRate){
+	ASSERT(gameName != "", "The game name can't be blank.");
+	ASSERT(windowWidth >= 0, "The window width can't be lower than zero.");
+	ASSERT(windowHeight >= 0, "The window height can't be lower than zero.");
+	ASSERT(frameRate >= 0, "The frame rate can't be lower than zero.");
+
 	sdlElements.setSDLAttributes(gameName, windowWidth, windowHeight);
 	this->frameRate = frameRate;
 }
