@@ -21,13 +21,15 @@ const int CURRENT_SPRITE = 0;
 const float DIVISOR_NUMBER = 2.0f;
 const float CURRENT_ANIMATION_TIME = 0.0f;
 
-Animation::Animation(){}
+Animation::Animation() {}
 
 Animation::Animation(GameObject & gameObject, std::string imagePath,
 					 float animationTime, std::vector<Sprite *> spriteList,
-					 int startFrame, int endFrame, bool loop, double zoomFactor){
+					 int startFrame, int endFrame,
+					 bool loop, double zoomFactor) {
 	ASSERT(imagePath != "", "Animation::CreateAnimation, imagePath is empty.");
-	ASSERT(animationTime > ANIMATION_NULL_VALUE, "Animation time can't be zero or less.");
+	ASSERT(animationTime > ANIMATION_NULL_VALUE,
+		   "Animation time can't be zero or less.");
 	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
 
 	this->gameObject = &gameObject;
@@ -45,10 +47,12 @@ Animation::Animation(GameObject & gameObject, std::string imagePath,
 
 Animation::Animation(GameObject & gameObject, std::string imagePath,
 					 float animationTime, std::vector<Sprite *> spriteList,
-					 int startFrame, int endFrame, bool loop, double zoomFactor,
-					 std::pair<double, double> positionRelativeToObject){
+					 int startFrame, int endFrame, bool loop, 
+					 double zoomFactor,
+					 std::pair<double, double> positionRelativeToObject) {
 	ASSERT(imagePath != "", "Animation::CreateAnimation, imagePath is empty.");
-	ASSERT(animationTime > ANIMATION_NULL_VALUE, "Animation time can't be zero or less.");
+	ASSERT(animationTime > ANIMATION_NULL_VALUE,
+		   "Animation time can't be zero or less.");
 	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
 
 	this->gameObject = &gameObject;
@@ -65,29 +69,24 @@ Animation::Animation(GameObject & gameObject, std::string imagePath,
 	this->mPositionRelativeToObject = positionRelativeToObject;
 }
 
-Animation::~Animation(){}
+Animation::~Animation() {}
 
-void Animation::shutdown(){
-	if(mSpriteList.size() > 0){
-		for (auto eachSprite : mSpriteList){
+void Animation::shutdown() {
+	if(mSpriteList.size() > 0) {
+		for (auto eachSprite : mSpriteList) {
 			delete(eachSprite);
 			eachSprite = NULL;
 		}
 	}
 }
 
-void Animation::draw(){
-	// DEBUG("Animation::draw method.");
-	// DEBUG("Checking Limits");
+void Animation::draw() {
 	checkLimits();
-	//DEBUG("Updating Quad");
 
 	updateQuad();
-	//DEBUG("Updating Measures Limits");
 
 	updateGameObjectMeasures();
 
-	//DEBUG("Rendering");
 	SDL_RenderCopy(
 		Game::instance.sdlElements.getCanvas(),
 		imageTexture,
@@ -95,17 +94,11 @@ void Animation::draw(){
 		&canvasQuad
 	);
 
-	//DEBUG("Current drawing: " << mCurrentSprite);
-	//DEBUG("Updating frame.");
 	updateFrameBasedOntime();
 
 }
 
-void Animation::updateQuad(){
-	// DEBUG("Updating render quad.")
-	// DEBUG("Something is wrong here.");
-	// DEBUG("mCurrentSprite: " << mCurrentSprite);
-	// DEBUG("mSpriteList[mCurrentSprite]->spriteX" << mSpriteList[mCurrentSprite]->spriteX);
+void Animation::updateQuad() {
 	renderQuad = {
 		mSpriteList[mCurrentSprite]->spriteX,
 		mSpriteList[mCurrentSprite]->spriteY,
@@ -113,7 +106,7 @@ void Animation::updateQuad(){
 		mSpriteList[mCurrentSprite]->spriteHeight
 	};
 
-	//DEBUG("Updating canvas quad.");
+	//Updating canvas quad.
 	canvasQuad = {
 		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
 		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
@@ -122,8 +115,8 @@ void Animation::updateQuad(){
 	};
 }
 
-void Animation::checkLimits(){
-	if(mCurrentSprite > mEndFrame){
+void Animation::checkLimits() {
+	if(mCurrentSprite > mEndFrame) {
 		if (mLoop) {
 			mCurrentSprite = CURRENT_SPRITE;
 			mCurrentAnimationTime = CURRENT_ANIMATION_TIME;
@@ -135,19 +128,22 @@ void Animation::checkLimits(){
 	}
 }
 
-void Animation::updateFrameBasedOntime(){
+void Animation::updateFrameBasedOntime() {
 	mCurrentAnimationTime += Game::instance.getTimer().getDeltaTime();
+	ASSERT((mEachFrameTime + mStartFrame) != 0, "Division by zero");
 	mCurrentSprite = mCurrentAnimationTime / mEachFrameTime + mStartFrame;
 }
 
-void Animation::updateGameObjectMeasures(){
+void Animation::updateGameObjectMeasures() {
+	ASSERT(DIVISOR_NUMBER != 0,
+		   "Animation::updateGameObjectMeasures, DIVISOR_NUMBER can't be zero.");
 	gameObject->mHalfSize.first = mSpriteList[mCurrentSprite]->spriteWidth * zoomFactor / DIVISOR_NUMBER;
 	gameObject->mHalfSize.second = mSpriteList[mCurrentSprite]->spriteHeight * zoomFactor / DIVISOR_NUMBER;
 	gameObject->mCenter.first = gameObject->mCurrentPosition.first + gameObject->mHalfSize.first;
 	gameObject->mCenter.second = gameObject->mCurrentPosition.second + gameObject->mHalfSize.second;
 }
 
-void Animation::disableComponent(){
+void Animation::disableComponent() {
 	this->componentState = State::DISABLED;
 	mCurrentAnimationTime = CURRENT_ANIMATION_TIME;
 	mCurrentSprite = mStartFrame;
