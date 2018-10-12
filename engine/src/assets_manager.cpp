@@ -37,7 +37,7 @@ using namespace engine;// Used to avoid write engine::Game engine::Game::instanc
 
 			image = IMG_Load(imagePath.c_str());
 
-			if (image == NULL) { //tem um negocio de erro aqui e não precisa de assert
+			if (image == NULL) {
 				ERROR("Couldn't load sprite.");
 			}
 
@@ -50,7 +50,6 @@ using namespace engine;// Used to avoid write engine::Game engine::Game::instanc
 			InsertIntoImageMap(imagePath, image, imageTexture);
 
 			SDL_FreeSurface(image);
-		//	ASSERT(image == NULL, "Unreleased image.");
 
 
 		} else {
