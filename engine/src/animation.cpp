@@ -38,6 +38,9 @@ Animation::Animation(GameObject & gameObject, std::string imagePath,
 	this->mSpriteList = spriteList;
 	this->mStartFrame = startFrame;
 	this->mEndFrame = endFrame;
+
+	ASSERT((endFrame - startFrame + FRAME_VALUE), "division by zero.");
+
 	this->mEachFrameTime = animationTime / (endFrame - startFrame + FRAME_VALUE);
 	this->mCurrentAnimationTime = CURRENT_ANIMATION_TIME;
 	this->mLoop = loop;
@@ -61,6 +64,9 @@ Animation::Animation(GameObject & gameObject, std::string imagePath,
 	this->mSpriteList = spriteList;
 	this->mStartFrame = startFrame;
 	this->mEndFrame = endFrame;
+
+	ASSERT((endFrame - startFrame + FRAME_VALUE), "division by zero.");
+	
 	this->mEachFrameTime = animationTime / (endFrame - startFrame + FRAME_VALUE);
 	this->mCurrentAnimationTime = CURRENT_ANIMATION_TIME;
 	this->mLoop = loop;

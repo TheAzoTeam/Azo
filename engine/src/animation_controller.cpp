@@ -18,6 +18,7 @@ void AnimationController::init() {
 	for (auto animationRow : mAnimationMap) {
 		auto animation = animationRow.second;
 		animation->init();
+		ASSERT(animation != NULL, "animation can't be null");
 	}
 }
 
