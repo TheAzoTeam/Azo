@@ -50,7 +50,7 @@ using namespace engine;// Used to avoid write engine::Game engine::Game::instanc
 			InsertIntoImageMap(imagePath, image, imageTexture);
 
 			SDL_FreeSurface(image);
-			ASSERT(image == NULL, "Unreleased image.");
+		//	ASSERT(image == NULL, "Unreleased image.");
 
 
 		} else {
