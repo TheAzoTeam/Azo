@@ -83,9 +83,7 @@ void SDL::createWindow(){
 		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC  // Flag. The renderer will use hardware acceleration
 	);
 
-	if(canvas == NULL){
-		ERROR("Couldn't create renderer (Canvas).");
-	}
+	ASSERT(canvas != NULL, "Couldn't create renderer (Canvas).");	
 
 	//Set window color when redrawing.
 	SDL_SetRenderDrawColor(
