@@ -43,7 +43,9 @@ GameObject::GameObject(std::string gameObjectName, std::pair<double, double> cur
 	ASSERT(currentPosition.first <= 0, "The gameObject can't be negative.");
 	ASSERT(currentPosition.second <= 0, "The gameObject can't be null.");
 	this->mName = gameObjectName;
+	ASSERT(this->mName == gameObjectName, "Name must be equal to the function's parameters.");
 	this->mCurrentPosition = currentPosition;
+	ASSERT(this->mCurrentPosition == currentPosition, "CurrentPosition must equal the function's parameters.");
 }
 
 
@@ -74,7 +76,6 @@ void GameObject::addComponent(Component &component){
 */
 AnimationController* GameObject::getAnimationController(std::type_index componentType){
 	auto componentToBeFound = mComponentMap.find(componentType);
-
 	if (componentToBeFound != mComponentMap.end()){
 		DEBUG("AnimationController found. Class name: " << componentToBeFound->second->getClassName());
 		return dynamic_cast <AnimationController * > (componentToBeFound->second);

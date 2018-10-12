@@ -32,8 +32,8 @@ Component::Component(){}
 */
 Component::Component(GameObject &gameObject){
 	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
-	this->gameObject = &gameObject;
 	this->componentState = State::ENABLED;
+	ASSERT(this->componentState == State::ENABLED, "Must change component state.");
 }
 
 
@@ -86,6 +86,7 @@ void Component::updateCode(){}
 */
 void Component::enableComponent(){
 	this->componentState = State::ENABLED;
+	ASSERT(this->componentState == State::ENABLED, "Must change component state.");
 }
 
 
@@ -98,6 +99,7 @@ void Component::enableComponent(){
 */
 void Component::disableComponent(){
 	this->componentState = State::DISABLED;
+	ASSERT(this->componentState == State::ENABLED, "Must change component state.");
 }
 
 

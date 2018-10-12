@@ -34,6 +34,7 @@ CodeComponent::CodeComponent(GameObject &gameObject){
 	ASSERT(&gameObject != NULL, "The game object can't be null.");
 	this->gameObject = &gameObject;
 	this->componentState = State::ENABLED;
+	ASSERT(this->componentState == State::ENABLED, "State must be enabled.");
 }
 
 

@@ -118,6 +118,7 @@ bool Game::addScene(Scene &scene){
 	}
 
 	sceneMap[sceneName] = &scene;
+	ASSERT(sceneMap[sceneName] == &scene, "Scene must be added to map.");
 
 	return true;
 }
