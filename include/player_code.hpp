@@ -33,7 +33,7 @@ namespace Azo { //Used to avoid writing all the path from Azo context
 
 			void updateCode();
 			void updatePhysics();
-			void FindAnimationController();
+			void findAnimationController();
 			void findAudioController();
 
 		public:

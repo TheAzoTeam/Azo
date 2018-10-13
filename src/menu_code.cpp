@@ -22,7 +22,7 @@ using namespace Azo;
 MenuCode::MenuCode(engine::GameObject *gameObject){
 	this->gameObject = gameObject; // variÃ¡vel responsÃ¡vel pelo objeto do jogo
 	findAudioController();
-	FindAnimationController();
+	findAnimationController();
 }
 /**
      * @brief function responsible for finding animation controller
@@ -31,7 +31,7 @@ MenuCode::MenuCode(engine::GameObject *gameObject){
      *
      * @return "void".
      */
-void MenuCode::FindAnimationController(){
+void MenuCode::findAnimationController(){
 	 mAnimationController = (gameObject->getAnimationController(typeid(engine::AnimationController)));
 }
 
