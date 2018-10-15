@@ -49,7 +49,6 @@ PlayerCode::PlayerCode(Player *player) {
 */
 void PlayerCode::findAnimationController() {
 	 mAnimationController = (mPlayer->getAnimationController(typeid(engine::AnimationController)));
-	 ASSERT(mAnimationController == NULL, "Animation Controller is null");
 }
 
 /**
@@ -59,7 +58,6 @@ void PlayerCode::findAnimationController() {
 */
 void PlayerCode::findAudioController() {
 	 mAudioController = (mPlayer->getAudioController(typeid(engine::AudioController)));
-	 ASSERT(mAnimationController == NULL, "Audio Controller is null");
 }
 
 /**
@@ -68,7 +66,7 @@ void PlayerCode::findAudioController() {
  * @return 'void'.
 */
 void PlayerCode::shutdown(){
-	ASSERT(mAnimationController == NULL, "Animation Controller is null");
+	//ASSERT(mAnimationController == NULL, "Animation Controller is null");
 	if (mAnimationController != NULL) {
 		 mAnimationController = NULL;
 	}
@@ -81,14 +79,14 @@ void PlayerCode::shutdown(){
  * @return 'void'.
 */
 void PlayerCode::updateCode() {
-	ASSERT(mAnimationController == NULL, "Animation Controller is null");
-	ASSERT(mPlayer == NULL, "Player object is null");
+	//ASSERT(mAnimationController == NULL, "Animation Controller is null");
+	//ASSERT(mPlayer == NULL, "Player object is null");
 	//It decides case according to the state of mPlayer object.
 	//Happens to call the right effects of this state
 	switch (mPlayer->mState) {
 		case PlayerState::WALK:
 			mAnimationController->startUniqueAnimation("walking");
-			
+
 			//Check if player hit some obstacle
 			if (mPlayer->mPushesRightWall || mPlayer->mPushesLeftWall) {
 				//DEBUG("Update code method. Player Speed in X: " << mPlayer->mSpeed.first);

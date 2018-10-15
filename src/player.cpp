@@ -39,65 +39,65 @@ void Player::shutdown() {
 	//The subsequent loops will Free the corresponding sprites
 	//they run all the existing sprites on their variables
 	for (auto eachSprite : mWalkingAnimationSprites) {
-		ASSERT(eachSprite == nullptr, "Walking sprite error");
+		//ASSERT(eachSprite == nullptr, "Walking sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
 	for (auto eachSprite : mJumpingAnimationSprites) {
-		ASSERT(eachSprite == nullptr, "Jumping sprite error");
+		//ASSERT(eachSprite == nullptr, "Jumping sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
 	for (auto eachSprite : mSlidingAnimationSprites) {
-		ASSERT(eachSprite == nullptr, "Sliding sprite error");
+		//ASSERT(eachSprite == nullptr, "Sliding sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
 	for (auto eachSprite : mDyingAnimationSprites) {
-		ASSERT(eachSprite == nullptr, "Dying sprite error");
+		//ASSERT(eachSprite == nullptr, "Dying sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
 	//The subsequent 'ifs' checks if the variable pointer is pointing to null
-	ASSERT(mWalking == nullptr, "Walking component pointer error");
+	//ASSERT(mWalking == nullptr, "Walking component pointer error");
 	if (mWalking != nullptr) {
 		delete(mWalking);
 		mWalking = nullptr;
 	}
 
-	ASSERT(mJumping == nullptr, "Jumping component pointer error");
+	//ASSERT(mJumping == nullptr, "Jumping component pointer error");
 	if (mJumping != nullptr) {
 		delete(mJumping);
 		mJumping = nullptr;
 	}
 
-	ASSERT(mSliding == nullptr, "Sliding component pointer error");
+	//ASSERT(mSliding == nullptr, "Sliding component pointer error");
 	if (mSliding != nullptr) {
 		delete(mSliding);
 		mSliding = nullptr;
 	}
 
-	ASSERT(mDying == nullptr, "Dying component pointer error");
+	//ASSERT(mDying == nullptr, "Dying component pointer error");
 	if (mDying != nullptr) {
 		delete(mDying);
 		mDying = nullptr;
 	}
 
-	ASSERT(mLosing == nullptr, "Losing component pointer error");
+	//ASSERT(mLosing == nullptr, "Losing component pointer error");
 	if (mLosing != nullptr) {
 		delete(mLosing);
 		mLosing = nullptr;
 	}
 
-	ASSERT(mPlayerCode == nullptr, "PlayerCode component pointer error");
+	//ASSERT(mPlayerCode == nullptr, "PlayerCode component pointer error");
 	if (mPlayerCode != nullptr) {
 		mPlayerCode->shutdown();
 		delete(mPlayerCode);
