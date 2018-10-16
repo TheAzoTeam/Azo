@@ -11,6 +11,7 @@
  * This file is responsible for create the model to all code components of the game.
 */
 #include "code_component.hpp"
+#include "log.h"
 
 using namespace engine;  // Used to avoid write engine::Game engine::Game::instance;.
 
@@ -21,6 +22,7 @@ using namespace engine;  // Used to avoid write engine::Game engine::Game::insta
 */
 CodeComponent::CodeComponent(){}
 
+
 /**
  * @brief Constructor for the code component.
  *  
@@ -29,9 +31,12 @@ CodeComponent::CodeComponent(){}
  * @return "void".
 */
 CodeComponent::CodeComponent(GameObject &gameObject){
+	ASSERT(&gameObject != NULL, "The game object can't be null.");
 	this->gameObject = &gameObject;
 	this->componentState = State::ENABLED;
+	ASSERT(this->componentState == State::ENABLED, "State must be enabled.");
 }
+
 
 /**
  * @brief inherits function that initialize the game code components.
@@ -42,6 +47,7 @@ CodeComponent::CodeComponent(GameObject &gameObject){
 */
 void CodeComponent::init(){}
 
+
 /**
  * @brief inherits function that disable the game code components.
  * 
@@ -50,6 +56,7 @@ void CodeComponent::init(){}
  * @return "void".
 */
 void CodeComponent::shutdown(){}
+
 
 /**
  * @brief inherits function that update the game code.  
