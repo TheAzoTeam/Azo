@@ -17,6 +17,7 @@ LevelOne::LevelOne() {}
 
 //constructor that inits level one and its game objects
 LevelOne::LevelOne(std::string name){
+	ASSERT(name != "", "Name can`t be blank.");
 	this->sceneName = name;
 	createGameObjects();
 }

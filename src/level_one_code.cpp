@@ -14,6 +14,7 @@
 using namespace Azo;
 
 LevelOneCode::LevelOneCode(engine::GameObject &gameObject){
+	ASSERT(&gameObject != NULL, "The game object can't be null.");
 	this->gameObject = &gameObject;
 	getParents();
 	findAudioController();
@@ -213,6 +214,7 @@ void LevelOneCode::updatePhysics() {
 }
 
 bool LevelOneCode::hasGround(double *groundY) {
+	ASSERT(*groundY == 0.0,"groundY must be initialized at 0.0");
 	std::pair<double, double> playerBottomLeft = mPlayer->calcBottomLeft();
 	std::pair<double, double> playerTopRight = mPlayer->calcTopRight();
 
@@ -282,6 +284,7 @@ bool LevelOneCode::hasGround(double *groundY) {
 }
 
 bool LevelOneCode::hasWallOnRight(double *wallX) {
+	ASSERT(*wallX == 0.0,"wallX must be initialized at 0.0");
 	std::pair<double, double> playerBottomLeft = mPlayer->calcBottomLeft();
 	std::pair<double, double> playerTopRight = mPlayer->calcTopRight();
 
@@ -361,6 +364,7 @@ bool LevelOneCode::hasWallOnRight(double *wallX) {
 }
 
 bool LevelOneCode::hasWallOnLeft(double *wallX) {
+	ASSERT(*wallX == 0.0,"wallX must be initialized at 0.0");
 	std::pair<double, double> playerBottomLeft = mPlayer->calcBottomLeft();
 	std::pair<double, double> playerTopRight = mPlayer->calcTopRight();
 
@@ -389,6 +393,7 @@ bool LevelOneCode::hasWallOnLeft(double *wallX) {
 }
 
 bool LevelOneCode::hasCeiling(double *groundY) {
+	ASSERT(*groundY == 0.0,"groundY must be initialized at 0.0");
 	std::pair<double, double> playerBottomLeft = mPlayer->calcBottomLeft();
 	std::pair<double, double> playerTopRight = mPlayer->calcTopRight();
 
