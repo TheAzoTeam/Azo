@@ -11,6 +11,7 @@
  * This file is responsible for create the model to all components of the game.
 */
 #include "component.hpp"
+#include "log.h"
 
 using namespace engine; // Used to avoid write engine::Game engine::Game::instance;.
 
@@ -21,6 +22,7 @@ using namespace engine; // Used to avoid write engine::Game engine::Game::instan
 */
 Component::Component(){}
 
+
 /**
  * @brief Constructor for the component.
  *  
@@ -29,9 +31,11 @@ Component::Component(){}
  * @return "void".
 */
 Component::Component(GameObject &gameObject){
-	this->gameObject = &gameObject;
+	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
 	this->componentState = State::ENABLED;
+	ASSERT(this->componentState == State::ENABLED, "Must change component state.");
 }
+
 
 /**
  * @brief inherits function that initialize the game components
@@ -42,6 +46,7 @@ Component::Component(GameObject &gameObject){
 */
 void Component::init(){}
 
+
 /**
  * @brief inherits function that disable the game components
  * 
@@ -50,6 +55,7 @@ void Component::init(){}
  * @return "void".
 */
 void Component::shutdown(){}
+
 
 /**
  * @brief inherits function that draw game objects. 
@@ -60,6 +66,7 @@ void Component::shutdown(){}
 */
 void Component::draw(){}
 
+
 /**
  * @brief inherits function that update the game code.  
  * 
@@ -68,6 +75,7 @@ void Component::draw(){}
  * @return "void".
 */
 void Component::updateCode(){}
+
 
 /**
  * @brief enable components.  
@@ -78,7 +86,9 @@ void Component::updateCode(){}
 */
 void Component::enableComponent(){
 	this->componentState = State::ENABLED;
+	ASSERT(this->componentState == State::ENABLED, "Must change component state.");
 }
+
 
 /**
  * @brief disable components.  
@@ -89,7 +99,9 @@ void Component::enableComponent(){
 */
 void Component::disableComponent(){
 	this->componentState = State::DISABLED;
+	ASSERT(this->componentState == State::ENABLED, "Must change component state.");
 }
+
 
 /**
  * @brief test if component is enable.  
