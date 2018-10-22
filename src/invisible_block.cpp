@@ -26,7 +26,7 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 	DEBUG("Creating Blocks");
 
 	mName = name;
-	ASSERT(mName != "", "name can't be empty.");  //T 17
+	ASSERT(mName != "", "name can't be empty.");
 	mPositionRelativeToParent = positionRelativeToParent;
 	mSize = size;
 
@@ -41,7 +41,7 @@ InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> posit
 										"backgrounds/test_invisible_1.png",
 										1);
 	this->addComponent(*mImage);
-	ASSERT(mImage != NULL, "mImage, ImageComponent can't be empty");  //T 17
+	ASSERT(mImage != NULL, "mImage, ImageComponent can't be empty");
 }
 
 
