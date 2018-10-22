@@ -22,6 +22,7 @@ using namespace engine;// Used to avoid write engine::Game engine::Game::instanc
 
 	// Load image into image map.
 	Image* AssetsManager::LoadImage(std::string imagePath) {
+		ASSERT(imagePath != "", "Animation::CreateAnimation, imagePath is empty.");
 		DEBUG("Trying to load image " << imagePath);
 		//DEBUG("Image Map size before loading " << imageMap.size());
 
@@ -50,6 +51,7 @@ using namespace engine;// Used to avoid write engine::Game engine::Game::instanc
 
 			SDL_FreeSurface(image);
 
+
 		} else {
 
 			DEBUG("Image: " << imagePath << " already loaded!");
@@ -69,6 +71,7 @@ using namespace engine;// Used to avoid write engine::Game engine::Game::instanc
 	*/
 	void AssetsManager::InsertIntoImageMap(std::string imagePath, SDL_Surface* image, SDL_Texture *imageTexture) {
 		ASSERT(imagePath != "", "Image path can't be empty.");
+		ASSERT(imageTexture != NULL, "Image texture can't be empty.");
 		ASSERT(image != NULL, "SDL_Suface pointer can't be null.");
 
 		Image *assetsManagerImage = new Image;

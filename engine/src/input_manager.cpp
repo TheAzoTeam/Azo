@@ -7,6 +7,7 @@
  *
  * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
 */
+#include "log.h"
 #include "input_manager.hpp"
 
 using namespace engine;// Used to avoid write engine::Game engine::Game::instance;.
@@ -29,6 +30,7 @@ InputManager::~InputManager() {}
 * @return a bool that indicates the add scene success.
 */
 bool InputManager::keyDown(Button button) {
+	ASSERT(button != -1, "button path can't be -1");
 	for (auto eachEvent : mEventList) {
 		switch(eachEvent.type){
 			mLastEventType = eachEvent.type;
@@ -59,6 +61,7 @@ bool InputManager::keyDown(Button button) {
 * @return a bool that indicates the add scene success.
 */
 bool InputManager::keyDownOnce(Button button) {
+	ASSERT(button != -1, "button path can't be -1.");
 	if (keyboardStates[button]) {
 		SDL_PumpEvents();
 		if (!keyboardStates[button]) {
@@ -78,6 +81,7 @@ bool InputManager::keyDownOnce(Button button) {
 * @return a bool that indicates the add scene success.
 */
 bool InputManager::keyState(Button button) {
+	ASSERT(button != -1, "button path can't be -1.");
 	return keyboardStates[button];
 }
 
