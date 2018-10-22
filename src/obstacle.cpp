@@ -1,7 +1,7 @@
-/** 
+/**
  * @file obstacle.cpp
  * @brief Purpose: Contains the Obstacle class methods.
- * 
+ *
  * GPL v3.0 License
  * Copyright (c) 2017 Azo
  *
@@ -13,25 +13,25 @@ using namespace Azo;
 
 /**
  * @brief Basic contructor for Obstacle.
- * 
+ *
  * Default basic constructor for Obstacle.
  */
 Obstacle::Obstacle() {}
 
 /**
  * @brief Virtual constructor for Obstacle.
- * 
+ *
  * Default virtual constructor for Obstacle.
- */ 
+ */
 Obstacle::~Obstacle(){}
 
 
 /**
  * @brief Destructor class for Obstacle.
- * 
- * Used for shutting down each one of the Obstacle's attributes so as to free 
+ *
+ * Used for shutting down each one of the Obstacle's attributes so as to free
  * memory when closing the game.
- */ 
+ */
 void Obstacle::shutdown() {
 	// Each block in mBlockList must be shutdown before Obstacle can also be shut down.
 	for (auto eachBlock : mBlockList) {
@@ -87,15 +87,16 @@ void Obstacle::shutdown() {
 
 /**
  * @brief Constructor class for Obstacle.
- * 
+ *
  * Used to initialize Obstacle class variables.
  * @param name Obstacle name.
  * @param positionRelativeToParent Pair of doubles relative to position(range > 0).
  * @param obstacleType Type of obstacle according to enum class ObstacleType from obstacle.hpp .
- */ 
+ */
 Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeToParent, ObstacleType obstacleType) {
 	// Initializing Obstacle variables.
 	mName = name;
+	ASSERT(mName != "", "name can't be empty.");
 	mPositionRelativeToParent = positionRelativeToParent;
 	mCurrentPosition = mPositionRelativeToParent;
 	mObstacleType = obstacleType;
@@ -106,33 +107,37 @@ Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeT
 
 /**
  * @brief Method for creating components to Obstacle.
- * 
+ *
  * Used for creating components according to its type (AudioComponent or ImageComponent).
- */ 
+ */
 void Obstacle::createComponents() {
 	DEBUG("Creating obstacle components.");
 	// If and else if blocks for each ObstacleType and its respective initialization.
 	if (mObstacleType == ObstacleType::WESTERN_CAR) {
 		DEBUG("obstacle is a WESTERN CAR!");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
+		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_CAR, mObstacleImage can't be NULL.");
 		this->addComponent(*mObstacleImage);
 		createBlocks();
 
 	} else if (mObstacleType == ObstacleType::WESTERN_BOX) {
 		DEBUG("obstacle is a WESTERN BOX!");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
+		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_BOX, mObstacleImage can't be NULL.");
 		this->addComponent(*mObstacleImage);
 		createBlocks();
 
 	} else if (mObstacleType == ObstacleType::WESTERN_RAISED_BOX) {
 		DEBUG("obstacle is a WESTERN RAISED BOX!");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
+		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_RAISED_BOX, mObstacleImage can't be NULL.");
 		this->addComponent(*mObstacleImage);
 		createBlocks();
 
 	} else if (mObstacleType == ObstacleType::WESTERN_ROCK) {
 		DEBUG("obstacle is a WESTERN ROCK");
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
+		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_ROCK, mObstacleImage can't be NULL.");
 		this->addComponent(*mObstacleImage);
 		createBlocks();
 
@@ -144,23 +149,28 @@ void Obstacle::createComponents() {
 		this->addComponent(*mTurning);
 
 		mAudioController = new engine::AudioController();
+		ASSERT(mAudioController != NULL, "engine::AudioController, AudioController can't be NULL.");
 		mCollected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
+		ASSERT(mCollected != NULL, "engine::AudioComponent, AudioComponent can't be NULL.");
 		mAudioController->addAudio("coleta", *mCollected);
 		this->addComponent(*mAudioController);
 
 		mMachinePartCode = new MachinePartCode(this);
+		ASSERT(mMachinePartCode != NULL, "MachinePartCode, mMachinePartCode can't return NULL.");
 		this->addComponent(*mMachinePartCode);
 
 	} else if (mObstacleType == ObstacleType::WESTERN_SPIKE) {
 		DEBUG("obstacle is a WESTERN SPIKE");
 
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
+		ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
 		this->addComponent(*mObstacleImage);
 		createBlocks();
 	} else if (mObstacleType == ObstacleType::WESTERN_POST) {
 		DEBUG("obstacle is a WESTERN POST");
 
 		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
+		ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
 		this->addComponent(*mObstacleImage);
 		createBlocks();
 	} else if (mObstacleType == ObstacleType::GROUND) {
@@ -171,14 +181,14 @@ void Obstacle::createComponents() {
 
 /**
  * @brief Method for creating blocks.
- * 
+ *
  * Used to create invisible objects that compose the Obstacle based on the type
  * of the object.
  * Note that the name of the InvisibleBlock is only for internal use.
- */ 
+ */
 void Obstacle::createBlocks() {
 
-	/* 
+	/*
 	  We initialize the block' position as the position relative to parent of the obstacle.
 	  This way we can position things inside the obstacle just by adding values to the position.
 	*/
@@ -225,9 +235,9 @@ void Obstacle::createBlocks() {
 
 /**
  * @brief Method for setting up animated obstacles.
- * 
+ *
  * Used for generating animations for obstacles that have animated sprites.
- */ 
+ */
 void Obstacle::generateTurningAnimation() {
 	// Default animation speed is 24 frames per second.
 	const int NUMBER_SPRITES_TURNING_ANIMATION = 24;
