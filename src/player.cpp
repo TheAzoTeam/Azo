@@ -1,22 +1,21 @@
 /**
- * @file: player.cpp
- * @brief Purpose: player class implementation
- * 
- * GPL v3.0 License
- * Copyright (c) 2017 Azo
- * 
- * Notice: TheAzo, TheAzoTeam
- * https://github.com/TecProg2018-2/Azo
- * 
- * This file includes just player declaration because the related use of
- * other classes comes from it.
+* @file: player.cpp
+* @brief Purpose: player class implementation
+*
+* GPL v3.0 License
+* Copyright (c) 2017 Azo
+*
+* Notice: TheAzo, TheAzoTeam
+* https://github.com/TecProg2018-2/Azo
+*
+* This file includes just player declaration because the related use of
+* other classes comes from it.
 */
-
 #include "player.hpp"
 
 using namespace Azo;  //Used to avoid writing all the path from Azo context
 
-//overloaded construcotr of Player instantiating it
+//overloaded constructor of Player instantiating it
 Player::Player(std::string name, std::pair<double, double> currentPosition) {
 	DEBUG("Player::Player method.");
 
@@ -40,55 +39,65 @@ void Player::shutdown() {
 	//The subsequent loops will Free the corresponding sprites
 	//they run all the existing sprites on their variables
 	for (auto eachSprite : mWalkingAnimationSprites) {
+		//ASSERT(eachSprite == nullptr, "Walking sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
 	for (auto eachSprite : mJumpingAnimationSprites) {
+		//ASSERT(eachSprite == nullptr, "Jumping sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
 	for (auto eachSprite : mSlidingAnimationSprites) {
+		//ASSERT(eachSprite == nullptr, "Sliding sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
 	for (auto eachSprite : mDyingAnimationSprites) {
+		//ASSERT(eachSprite == nullptr, "Dying sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}
 	}
 
 	//The subsequent 'ifs' checks if the variable pointer is pointing to null
+	//ASSERT(mWalking == nullptr, "Walking component pointer error");
 	if (mWalking != nullptr) {
 		delete(mWalking);
 		mWalking = nullptr;
 	}
 
+	//ASSERT(mJumping == nullptr, "Jumping component pointer error");
 	if (mJumping != nullptr) {
 		delete(mJumping);
 		mJumping = nullptr;
 	}
 
+	//ASSERT(mSliding == nullptr, "Sliding component pointer error");
 	if (mSliding != nullptr) {
 		delete(mSliding);
 		mSliding = nullptr;
 	}
 
+	//ASSERT(mDying == nullptr, "Dying component pointer error");
 	if (mDying != nullptr) {
 		delete(mDying);
 		mDying = nullptr;
 	}
 
+	//ASSERT(mLosing == nullptr, "Losing component pointer error");
 	if (mLosing != nullptr) {
 		delete(mLosing);
 		mLosing = nullptr;
 	}
 
+	//ASSERT(mPlayerCode == nullptr, "PlayerCode component pointer error");
 	if (mPlayerCode != nullptr) {
 		mPlayerCode->shutdown();
 		delete(mPlayerCode);
@@ -100,113 +109,112 @@ void Player::shutdown() {
 //possible animations and the possibles audios.
 void Player::createComponents() {
 	DEBUG("Creating Player Components.");
+
 	generateWalkingAnimation();
-
-	//Receives a new type of animation
-	mWalking = new engine::Animation(*this,
-									"sprites/CowboyRun.png",
-									1000.0f,
-									mWalkingAnimationSprites,
-									0,
-									22,
-									true,
-									1);
-
+	mWalking = new engine::Animation(
+		*this,
+		"sprites/CowboyRun.png",
+		1000.0f,
+		mWalkingAnimationSprites,
+		0,
+		22,
+		true,
+		1
+	);
 	mAnimationController = new engine::AnimationController();
-
 	DEBUG("Adding walking animation to animation controller.");
 	mAnimationController->addAnimation("walking", *mWalking);
 
 	generateJumpingAnimation();
-
-	mJumping = new engine::Animation(*this,
-									"sprites/CowboyJump.png",
-									800.0f,
-									mJumpingAnimationSprites,
-									0,
-									7,
-									false,
-									1);
+	mJumping = new engine::Animation(
+		*this,
+		"sprites/CowboyJump.png",
+		800.0f,
+		mJumpingAnimationSprites,
+		0,
+		7,
+		false,
+		1
+	);
 	mJumping->disableComponent();
 	DEBUG("Adding jumping animation to animation controller");
 	mAnimationController->addAnimation("jumping", *mJumping);
 
 	generateSlidingAnimation();
-
-	mSliding = new engine::Animation(*this,
-									"sprites/CowboyDesce.png",
-									800.0f,
-									mSlidingAnimationSprites,
-									0,
-									20,
-									false,
-									1);
+	mSliding = new engine::Animation(
+		*this,
+		"sprites/CowboyDesce.png",
+		800.0f,
+		mSlidingAnimationSprites,
+		0,
+		20,
+		false,
+		1
+	);
 	mSliding->disableComponent();
-
 	mAnimationController->addAnimation("sliding", *mSliding);
 
 	generateDyingAnimation();
-
-	mDying = new engine::Animation(*this,
-								    "sprites/CowboyTonto.png",
-									2000.0f,
-									mDyingAnimationSprites,
-									0,
-									35,
-									false,
-									1);
+	mDying = new engine::Animation(
+		*this,
+		"sprites/CowboyTonto.png",
+		2000.0f,
+		mDyingAnimationSprites,
+		0,
+		35,
+		false,
+		1
+	);
 	mDying->disableComponent();
-
 	mAnimationController->addAnimation("dying", *mDying);
 
 	generateLosingAnimation();
-
-	mLosing = new engine::Animation(*this,
-									"sprites/CowBoyDerrota.png",
-									10000.0f,
-									mLosingAnimationSprites,
-									0,
-									6,
-									false,
-									1);
+	mLosing = new engine::Animation(
+		*this,
+		"sprites/CowBoyDerrota.png",
+		10000.0f,
+		mLosingAnimationSprites,
+		0,
+		6,
+		false,
+		1
+	);
 	mLosing->disableComponent();
-
 	mAnimationController->addAnimation("losing", *mLosing);
 
 	generateVictoryAnimation();
-
-	mVictory = new engine::Animation(*this,
-									"sprites/victory.png",
-									10.0f,
-									mVictoryAnimationSprites,
-									0,
-									0,
-									false,
-									1);
+	mVictory = new engine::Animation(
+		*this,
+		"sprites/victory.png",
+		10.0f,
+		mVictoryAnimationSprites,
+		0,
+		0,
+		false,
+		1
+	);
 	mVictory->disableComponent();
-
 	mAnimationController->addAnimation("victory", *mVictory);
 
 	DEBUG("Adding animation controller to Player.");
 	this->addComponent(*mAnimationController);
 
 	//Generates new audios
-	mLost = new engine::AudioComponent(*this,
-										"audios/derrota.ogg",
-										false,
-										false);
-
-	mVictorySong = new engine::AudioComponent(*this,
-												"audios/victory.ogg",
-												false,
-												false);
-
+	mLost = new engine::AudioComponent(
+		*this,
+		"audios/derrota.ogg",
+		false,
+		false
+	);
+	mVictorySong = new engine::AudioComponent(
+		*this,
+		"audios/victory.ogg",
+		false,
+		false
+	);
 	mAudioController = new engine::AudioController();
-
 	mAudioController->addAudio("lost", *mLost);
-
 	mAudioController->addAudio("victory", *mVictorySong);
-
 	this->addComponent(*mAudioController);
 
 	DEBUG("Creating Player Code.");
@@ -219,9 +227,9 @@ void Player::generateVictoryAnimation() {
 	mVictoryAnimationSprites.push_back(new engine::Sprite());
 
 	/*
-		Set the animation sprites coordinates (x, y)
-		and its Width and Height based on its coordinates
-		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	Set the animation sprites coordinates (x, y)
+	and its Width and Height based on its coordinates
+	spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
 
 	mVictoryAnimationSprites[0]->spriteX = 0;
@@ -238,9 +246,9 @@ void Player::generateLosingAnimation() {
 	}
 
 	/*
-		Set the animation sprites coordinates (x, y)
-		and its Width and Height based on its coordinates
-		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	Set the animation sprites coordinates (x, y)
+	and its Width and Height based on its coordinates
+	spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
 
 	mLosingAnimationSprites[0]->spriteX = 1;
@@ -289,9 +297,9 @@ void Player::generateWalkingAnimation() {
 	}//FOR - at the end it will have created the vector of animation sprite with desired number of spaces
 
 	/*
-		Set the animation sprites coordinates (x, y)
-		and its Width and Height based on its coordinates
-		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	Set the animation sprites coordinates (x, y)
+	and its Width and Height based on its coordinates
+	spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
 
 	mWalkingAnimationSprites[0]->spriteX = 2;
@@ -420,9 +428,9 @@ void Player::generateJumpingAnimation() {
 	}//FOR - the vector will have been created
 
 	/*
-		Set the animation sprites coordinates (x, y)
-		and its Width and Height based on its coordinates
-		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	Set the animation sprites coordinates (x, y)
+	and its Width and Height based on its coordinates
+	spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
 
 	mJumpingAnimationSprites[0]->spriteX = 20;
@@ -475,9 +483,9 @@ void Player::generateSlidingAnimation() {
 	} // FOR - vector will have been created
 
 	/*
-		Set the animation sprites coordinates (x, y)
-		and its Width and Height based on its coordinates
-		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	Set the animation sprites coordinates (x, y)
+	and its Width and Height based on its coordinates
+	spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
 
 	mSlidingAnimationSprites[0]->spriteX = 1;
@@ -595,9 +603,9 @@ void Player::generateDyingAnimation() {
 	}//FOR - vector will have been created
 
 	/*
-		Set the animation sprites coordinates (x, y)
-		and its Width and Height based on its coordinates
-		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	Set the animation sprites coordinates (x, y)
+	and its Width and Height based on its coordinates
+	spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
 
 	mDyingAnimationSprites[0]->spriteX = 4;

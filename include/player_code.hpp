@@ -1,17 +1,16 @@
 /**
  * @file: player_code.hpp
  * @brief Purpose: player_code class declaration
- * 
+ *
  * GPL v3.0 License
  * Copyright (c) 2017 Azo
- * 
+ *
  * Notice: TheAzo, TheAzoTeam
  * https://github.com/TecProg2018-2/Azo
- * 
+ *
  * This file contains more than one classs, because it has elements that behave
  * like this other classes.
 */
-
 #ifndef PLAYER_CODE
 #define PLAYER_CODE
 
@@ -21,11 +20,11 @@
 namespace Azo { //Used to avoid writing all the path from Azo context
 	class Player;
 
-/**
-* @brief PlayerCode class
-* This class is used to controll the player's character behaviour.
-* It updates player's animation and audios according to the events.
-*/
+	/**
+	* @brief PlayerCode class
+	* This class is used to controll the player's character behaviour.
+	* It updates player's animation and audios according to the events.
+	*/
 	class PlayerCode : public engine::CodeComponent {
 		private:
 			Player *mPlayer = nullptr; //Pointer that reffer the player character when created
@@ -34,7 +33,7 @@ namespace Azo { //Used to avoid writing all the path from Azo context
 
 			void updateCode();
 			void updatePhysics();
-			void FindAnimationController();
+			void findAnimationController();
 			void findAudioController();
 
 		public:

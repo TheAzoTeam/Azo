@@ -31,7 +31,7 @@ namespace Azo {
 		private:
 			void updateCode();
 			void findAudioController();
-			void FindAnimationController();
+			void findAnimationController();
 			void changeOption();
 	};
 }
