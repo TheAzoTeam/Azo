@@ -20,6 +20,9 @@ ImageComponent::ImageComponent() {}
 ImageComponent::~ImageComponent() {}
 
 ImageComponent::ImageComponent(GameObject &gameObject, std::string imagePath, double zoomFactor) {
+	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
+	ASSERT(imagePath != "", "ImageComponent::ImageComponent, imagePath is empty.");
+	ASSERT(zoomFactor < 100, "zoomFactor cant be bigger than 100.");
 	this->gameObject = &gameObject;
 	this->imagePath = imagePath;
 	this->zoomFactor = zoomFactor;
@@ -28,21 +31,28 @@ ImageComponent::ImageComponent(GameObject &gameObject, std::string imagePath, do
 ImageComponent::ImageComponent(GameObject &gameObject,
 			       std::string imagePath,
 			       double zoomFactor,
-			       std::pair<double, double> position_relative_to_object){
+			       std::pair<double, double> positionRelativeToObject) {
+	ASSERT(&gameObject != NULL, "The gameObject can't be null.");
+	ASSERT(imagePath != "", "ImageComponent::ImageComponent, imagePath is empty.");
+	ASSERT(zoomFactor < 100, "zoomFactor cant be bigger than 100.");
+	ASSERT(positionRelativeToObject.first >= 0, "The relative position must be bigger than zero.");
+	ASSERT(positionRelativeToObject.second >= 0, "The relative position must be bigger than zero.");
 	this->gameObject = &gameObject;
 	this->imagePath = imagePath;
 	this->zoomFactor = zoomFactor;
-	mPositionRelativeToObject = position_relative_to_object;
+	mPositionRelativeToObject = positionRelativeToObject;
 }
 
-void ImageComponent::init(){
+void ImageComponent::init() {
 	// Check AssetsManager to see if image is already loaded.
-	auto assets_image = Game::instance.getAssetsManager().LoadImage(imagePath);
+	auto assetsImage = Game::instance.getAssetsManager().LoadImage(imagePath);
+	ASSERT(assetsImage != NULL,
+		   "ImageComponent::init, The assetsImage can't be null.");
 
-	imageTexture = assets_image->texture;
+	imageTexture = assetsImage->texture;
 
-	componentWidth = assets_image->width * zoomFactor;
-	componentHeight = assets_image->height * zoomFactor;
+	componentWidth = assetsImage->width * zoomFactor;
+	componentHeight = assetsImage->height * zoomFactor;
 
 	gameObject->mSize.first = componentWidth;
 	gameObject->mSize.second = componentHeight;
@@ -59,7 +69,7 @@ void ImageComponent::init(){
 }
 
 
-void ImageComponent::draw(){
+void ImageComponent::draw() {
 	updateQuad();
 	SDL_RenderCopy(
 		Game::instance.sdlElements.getCanvas(),
@@ -69,7 +79,7 @@ void ImageComponent::draw(){
 		);
 }
 
-void ImageComponent::updateQuad(){
+void ImageComponent::updateQuad() {
 	canvasQuad = {
 		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
 		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
