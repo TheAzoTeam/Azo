@@ -224,39 +224,64 @@ void Obstacle::createBlocks() {
 	std::pair<double, double> blockPosition = mPositionRelativeToParent;
 
 	// If and else if blocks for setting obstacle position based on its type ObstacleType.
-	if (mObstacleType == ObstacleType::GROUND) {
-		mBlockList.push_back(new InvisibleBlock("block_1", blockPosition, std::make_pair(21000, 100)));
-	} else if (mObstacleType == ObstacleType::WESTERN_CAR) {
+	switch (mObstacleType) {
+		case ObstacleType::GROUND:
+			mBlockList.push_back(new InvisibleBlock("block_1",
+													blockPosition,
+													std::make_pair(21000, 100)));
+			break;
+		
+		case ObstacleType::WESTERN_CAR:
+			blockPosition.first += 69;
+			blockPosition.second += 20;
+			mBlockList.push_back(new InvisibleBlock("block_2",
+													blockPosition,
+													std::make_pair(109, 143)));
+			break;
 
-		blockPosition.first += 69;
-		blockPosition.second += 20;
+		case ObstacleType::WESTERN_BOX:
+			blockPosition.first += 58;
+			blockPosition.second += 6;
+			mBlockList.push_back(new InvisibleBlock("block_3",
+													blockPosition,
+													std::make_pair(63, 73)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_2", blockPosition, std::make_pair(109, 143)));
-	} else if (mObstacleType == ObstacleType::WESTERN_BOX) {
-		blockPosition.first += 58;
-		blockPosition.second += 6;
+		case ObstacleType::WESTERN_RAISED_BOX:
+			blockPosition.first += 35;
+			blockPosition.second += 6;
+			mBlockList.push_back(new InvisibleBlock("block_4",
+													blockPosition,
+													std::make_pair(50, 68)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_3", blockPosition, std::make_pair(63, 73)));
-	} else if (mObstacleType == ObstacleType::WESTERN_RAISED_BOX) {
-		blockPosition.first += 35;
-		blockPosition.second += 6;
+		case ObstacleType::WESTERN_ROCK:
+			blockPosition.first += 80;
+			blockPosition.second += 12;
+			mBlockList.push_back(new InvisibleBlock("block_5",
+													blockPosition,
+													std::make_pair(4, 100)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_4", blockPosition, std::make_pair(50, 68)));
-	} else if (mObstacleType == ObstacleType::WESTERN_ROCK) {
-		blockPosition.first += 80;
-		blockPosition.second += 12;
+		case ObstacleType::WESTERN_SPIKE:
+			blockPosition.first += 19;
+			blockPosition.second += 23;
+			mBlockList.push_back(new InvisibleBlock("block_6",
+													blockPosition,
+													std::make_pair(210, 92)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_5", blockPosition, std::make_pair(4, 100)));
-	} else if (mObstacleType == ObstacleType::WESTERN_SPIKE) {
-		blockPosition.first += 19;
-		blockPosition.second += 23;
+		case ObstacleType::WESTERN_POST:
+			blockPosition.first += 48;
+			blockPosition.second += 32;
+			mBlockList.push_back(new InvisibleBlock("block_7",
+													blockPosition,
+													std::make_pair(23, 106)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_6", blockPosition, std::make_pair(210, 92)));
-	} else if (mObstacleType == ObstacleType::WESTERN_POST) {
-		blockPosition.first += 48;
-		blockPosition.second += 32;
-
-		mBlockList.push_back(new InvisibleBlock("block_7", blockPosition, std::make_pair(23, 106)));
+		default:
+			//Nothing to do, there is no component with this type
+			break;
 	}
 
 }
