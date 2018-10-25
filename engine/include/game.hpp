@@ -1,3 +1,15 @@
+/*************************************
+@file game.hpp
+@brief Purpose: Contains the Game class declaration.
+
+GPL v3.0 License
+Copyright (c) 2017 Azo
+
+Notice: TheAzo, TheAzoTeam
+https://github.com/TecProg2018-2/Azo
+
+This file implements the main game component its declaration and state.
+*************************************/
 #ifndef GAME_ENGINE_HPP
 #define GAME_ENGINE_HPP
 
@@ -15,66 +27,75 @@
 
 namespace engine {
 
-	// Define Game States to control Loops and other strutuctures.
+	/**
+     * @brief A GameState class.
+  	 *
+     * Define Game States to control Loops and other structures.
+    */
 	enum class GameState {
 		EXIT,
 		PLAY,
 	};
 
-	// Generic Game class. It's how the engine'll see all games that will try to use it.
+	/**
+     * @brief A Game class.
+  	 *
+     * Generic Game class. 
+	 * It's how the engine'll see all games that will try to use it.
+    */
 	class Game {
 		public:
-			static Game instance;                           /* Global game instance that allow access to public attributes and methods in any part of the code.*/
-			SDL sdl_elements;                               // Used to access SDL class to take care of sdl elements in game Initialize.
-			InputManager input_manager;
-			GameState game_state;                           // Define Game States to control Loops and other strutuctures.
+			static Game instance; // Global game instance.
+			SDL sdlElements; // Used to access SDL class and sdl elements.
+			InputManager inputManager; // Used to access the user inputs
+			GameState gameState; // Define Game States to control Loops and other structures.
 		private:
-			bool need_to_change_scene;                      // Used to define if there's a Change Scene to occur.
-			std::map<std::string, Scene *> scene_map;       // All Scenes of the Game.
-			engine::Scene *current_scene;                   // Current Scene.
-			engine::Scene *last_scene;                      // Last Scene.
-			Timer timer;                                    // Timer to control all Game's Time.
-			int frame_rate;                                 // Frames per Second of the Game (FPS).
-			float frame_time;                               // How many time will have one frame of the Game (miliseconds).
-			// TODO(Roger): Move Assets Manager to Scene.
-			AssetsManager assets_manager;                   // Manager to load, unload and reference assets.
+			bool needToChangeScene; // Used to define if there's a Change Scene to occur.
+			std::map<std::string, Scene *> sceneMap; // All Scenes of the Game.
+			engine::Scene *currentScene; // Contain the Current Scene of the game.
+			engine::Scene *lastScene; // must contain the Last Scene of the game.
+			Timer timer; // Timer to control all Game's Time.
+			int frameRate; // Frames per Second of the Game (FPS).
+			float frameTime; // Time of each frame of the Game (miliseconds).
+			AssetsManager assetsManager; // Manager to load, unload and reference assets.
 
 		public:
-			// Constructor Default with default values.
 			Game();
 
-			// Used to Initialize the Game in fact (Main Loop).
-			void Run();
+			void run();
+			bool addScene(engine::Scene &scene);
+			void restartScene(std::string sceneName);
+			void setAttributes(std::string gameName,
+					   int windowWidth,
+					   int windowHeight,
+					   int frameRate);
 
-			// Used to add a Scene to map that have all Game's Scenes.
-			bool AddScene(engine::Scene &scene);
-
-			void RestartScene(std::string scene_name);
-
-			/* Used to transfer the game_name, window_width and window_height to SDL instace through its method
-			   "SetSDLAttributes" and set Game's frame_rate. */
-			void SetAttributes(std::string game_name,
-					   int window_width,
-					   int window_height,
-					   int frame_rate);
-
-			// Used to use the private attribute Timer.
-			inline Timer& GetTimer(){
+			/**
+ 			 * @brief access the Timer.
+ 			 *  
+ 			 * Used to get the private attribute Timer.
+			 * 
+			 * @return the game timer.
+			*/
+			inline Timer& getTimer(){
 				return timer;
 			}
 
-			// Used to get the private attribute AssetsManager.
-			inline AssetsManager& GetAssetsManager(){
-				return assets_manager;
+			/**
+ 			 * @brief access the assets manager.
+ 			 *  
+ 			 * Used to get the private attribute AssetsManager.
+			 * 
+			 * @return the game assets manager.
+			*/
+			inline AssetsManager& getAssetsManager(){
+				return assetsManager;
 			}
 
-
-			// Perform the necessary checks and prepare the structure to switch Scenes.
-			void ChangeScene(std::string scene_name);
+			void changeScene(std::string sceneName);
 
 		private:
-			// Perform scene switching effectively.
-			bool StartAndStopScenes();
+			bool startAndStopScenes();
 
 	};
 }

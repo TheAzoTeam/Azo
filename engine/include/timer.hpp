@@ -6,17 +6,17 @@
 namespace engine {
 	class Timer {
 		private:
-			unsigned int start_ticks;
-			unsigned int elapsed_ticks;
-			float delta_time;
+			unsigned int startTicks;
+			unsigned int elapsedTicks;
+			float deltaTime;
 		public:
 			Timer();
 			~Timer();
 
 			void Reset();
 			void DeltaTime();
-			void Step();
-			float GetDeltaTime();
+			void step();
+			float getDeltaTime();
 	};
 }
 

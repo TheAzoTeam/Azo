@@ -2,25 +2,25 @@
 
 using namespace engine;
 
-Timer::Timer(){
+Timer::Timer() {
 	Reset();
 }
-Timer::~Timer(){}
+Timer::~Timer() {}
 
-void Timer::Reset(){
-	start_ticks = SDL_GetTicks();
-	elapsed_ticks = 0.0f;
-	delta_time = 0.0f;
+void Timer::Reset() {
+	startTicks = SDL_GetTicks();
+	elapsedTicks = 0.0f;
+	deltaTime = 0.0f;
 }
 
-void Timer::DeltaTime(){
-	delta_time = SDL_GetTicks() - elapsed_ticks;
+void Timer::DeltaTime() {
+	deltaTime = SDL_GetTicks() - elapsedTicks;
 }
 
-float Timer::GetDeltaTime(){
-	return delta_time;
+float Timer::getDeltaTime() {
+	return deltaTime;
 }
 
-void Timer::Step(){
-	elapsed_ticks = SDL_GetTicks();
+void Timer::step() {
+	elapsedTicks = SDL_GetTicks();
 }

@@ -5,13 +5,13 @@ namespace engine {
 	class Sprite {
 		public:
 			Sprite();
-			Sprite(int sprite_width, int sprite_height, int sprite_x, int sprite_y);
+			Sprite(int spriteWidth, int spriteHeight, int spriteX, int spriteY);
 			~Sprite();
 		public:
-			int sprite_width;
-			int sprite_height;
-			int sprite_x;
-			int sprite_y;
+			int spriteWidth;
+			int spriteHeight;
+			int spriteX;
+			int spriteY;
 	};
 }
 
