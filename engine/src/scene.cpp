@@ -1,79 +1,130 @@
+/** 
+ * @file scene.cpp
+ * @brief Purpose: Contains all the methods from the Scene class.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+ */
 #include "scene.hpp"
 
 using namespace engine;
 
 Scene::Scene(){}
 
-Scene::Scene(std::string scene_name){
-	this->scene_name = scene_name;
+/*
+ *@brief Contructor for the scene
+ *
+ * initializes the SceneName attribute 
+ */
+Scene::Scene(std::string sceneName){
+	this->sceneName = sceneName;
 }
 
-
-void Scene::Init(){
-	for(auto each_key : m_key_list){
-		game_object_map[each_key]->Init();
+/*
+ *@brief Method to initialize the gameObjectMap
+ *
+ *Initializes every key in the gameObjectMap
+ */
+void Scene::init(){
+	for (auto eachKey : mKeyList){
+		gameObjectMap[eachKey]->init();
 	}
 }
 
-void Scene::Shutdown(){
-	for(auto each_key : m_key_list){
-		game_object_map[each_key]->Shutdown();
+/*
+ *@brief Method to shutdown all game objects
+ *
+ *passes every object in the gameObjectMap to the shutdown method
+ */
+void Scene::shutdown(){
+	for (auto eachKey : mKeyList){
+		gameObjectMap[eachKey]->shutdown();
 	}
 
-	DeleteKeyList();
+	deleteKeyList();
 }
 
-void Scene::DeleteKeyList(){
-	m_key_list.erase(m_key_list.begin(), m_key_list.end());
+/*
+ *@brief Method to delete the key list
+ */
+void Scene::deleteKeyList(){
+	mKeyList.erase(mKeyList.begin(), mKeyList.end());
 }
 
-
-void Scene::Draw(){
-	for(auto each_key : m_key_list){
-		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
-			game_object_map[each_key]->Draw();
+/*
+ *@brief Method to draw scene on screen
+ *
+ *Passes every gameObjectin the gameObjectMap to the draw() method
+ */
+void Scene::draw(){
+	for (auto eachKey : mKeyList){
+		if(gameObjectMap[eachKey]->mObjectState == ObjectState::ENABLED){
+			gameObjectMap[eachKey]->draw();
 		}
 	}
 }
 
-void Scene::UpdateCode(){
-	for(auto each_key : m_key_list){
-		if(game_object_map[each_key]->m_object_state == ObjectState::ENABLED){
-			game_object_map[each_key]->UpdateCode();
+/*
+ *@brief Methos to update the code of the scene
+ *
+ *Passes every element of the gameObjectMap to the updateCode() method.
+ */
+void Scene::updateCode(){
+	for(auto eachKey : mKeyList){
+		if (gameObjectMap[eachKey]->mObjectState == ObjectState::ENABLED){
+			gameObjectMap[eachKey]->updateCode();
 		}
 	}
 }
 
-void Scene::Restart(){}
+/*
+ *@brief Method to restart scene.
+ *
+ *@returns "void".
+ */
+void Scene::restart(){}
 
-void Scene::AddGameObject(GameObject &game_object){
-	auto game_object_name = game_object.m_name;
+/*
+ *@brief Method to add a new game object
+ *
+ *adds a new game object in the gameObjectMap
+ */
+void Scene::addGameObject(GameObject &gameObject){
+	auto gameObjectName = gameObject.mName;
 
-	if(game_object_map.find(game_object_name) != game_object_map.end()){
+	if (gameObjectMap.find(gameObjectName) != gameObjectMap.end()){
 		ERROR("Game object already exists!");
 	}
 
-	game_object_map[game_object_name] = &game_object;
-	m_key_list.push_back(game_object_name);
+	gameObjectMap[gameObjectName] = &gameObject;
+	mKeyList.push_back(gameObjectName);
 }
 
-GameObject & Scene::GetGameObject(std::string &game_object_name){
-
-	if(game_object_map.find(game_object_name) == game_object_map.end()){
+/*
+ *@brief Method to retrieve a gameObject
+ *
+ *returns a gameObject
+ */
+GameObject & Scene::getGameObject(std::string &gameObjectName){
+	if (gameObjectMap.find(gameObjectName) == gameObjectMap.end()){
 		ERROR("Game object doesn't exist!");
 	}
 
-	return *game_object_map[game_object_name];
-
+	return *gameObjectMap[gameObjectName];
 }
 
-void Scene::RemoveGameObject(std::string &game_object_name){
-	if(game_object_map.find(game_object_name) == game_object_map.end()){
+/*
+ *@method to remove a gameObject
+ *
+ *Removes a gameObject from the gameObjectMap
+ */
+void Scene::removeGameObject(std::string &gameObjectName){
+	if (gameObjectMap.find(gameObjectName) == gameObjectMap.end()){
 		ERROR("Game object doesn't exist!");
 	}
 
-	game_object_map.erase(game_object_name);
-
-	m_key_list.remove(game_object_name);
-
+	gameObjectMap.erase(gameObjectName);
+	mKeyList.remove(gameObjectName);
 }

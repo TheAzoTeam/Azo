@@ -1,171 +1,226 @@
+/**
+     * @file menu.cpp
+	 * @brief Purpose: Responsible for the Map menu screen
+     *
+     * GPL 3.0 License
+     * Copyright (c) 2017 Azo
+     *
+     * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+     */
 #include "menu.hpp"
 
 using namespace Azo;
 
-Menu::Menu(std::string name){
-	this->scene_name = name;
-	CreateGameObjects();
+/**  * T11
+     * @brief function responsible for creating menu scene
+     *
+     * Why: Because it is necessary for the player to have access to the game menu before it starts
+     */
+Menu::Menu(std::string name) {
+	this->sceneName = name;
+	createGameObjects();
 }
 
-void Menu::Restart(){
-	game_object_map.clear();
-	CreateGameObjects();
+/**  * T11
+     * @brief function responsible for restarting the game
+     *
+     * Why: Because it is necessary that the player can restart the game
+	 *
+	 * @return "void".
+     */
+void Menu::restart(){
+	gameObjectMap.clear();
+	createGameObjects();
 }
 
-void Menu::CreateGameObjects(){
+/**  * T11
+     * @brief function responsible for creating game objects
+     *
+     * Why: Because it is necessary for the menu to have some elements in its interface
+	 *
+	 * @return "void".
+     */
+void Menu::createGameObjects() {
 	DEBUG("Creating Menu GameObjects.");
 
-	m_menu = new engine::GameObject("menu", std::make_pair(0, 0));
-	CreateMenuComponents();
+	mMenu = new engine::GameObject("menu", std::make_pair(0, 0));
+	createMenuComponents();
 
-	this->AddGameObject(*m_menu);
+	this->addGameObject(*mMenu);
 }
 
-void Menu::CreateMenuComponents(){
-	m_menu_theme = new engine::AudioComponent(*m_menu, "audios/TemaGame.ogg", true, true);
-	m_audio_controller = new engine::AudioController();
-	m_audio_controller->AddAudio("menu_theme", *m_menu_theme);
-	m_menu->AddComponent(*m_audio_controller);
+/**  * T11
+     * @brief function responsible for creating game objects
+     *
+     * Why: Because it is necessary that the menu has some elements in its interfacece
+	 *
+	 * @return "void".
+     */
+void Menu::createMenuComponents() {
 
-	m_animation_controller = new engine::AnimationController(*m_menu);
+	mMenuTheme = new engine::AudioComponent(*mMenu, "audios/TemaGame.ogg", true, true);
+	mAudioController = new engine::AudioController();
 
-	GenButtonsAnimation();
-	m_start_button = new engine::Animation(*m_menu,
-					       "general_images/textos.png",
-					       1.0f,
-					       m_start_button_sprites,
-					       0,
-					       0,
-					       false,
-					       1,
-					       std::make_pair(205, 162));
+	mAudioController->addAudio("menu_theme", *mMenuTheme);
+	mMenu->addComponent(*mAudioController);
 
-	m_animation_controller->AddAnimation("start_button", *m_start_button);
+	mAnimationController = new engine::AnimationController(*mMenu);
 
-	m_arrow_start = new engine::Animation(*m_menu,
-					      "general_images/textos.png",
-					      1.0f,
-					      m_arrow_sprites,
-					      0,
-					      0,
-					      false,
-					      1,
-					      std::make_pair(168, 162));
+	generateButtonsAnimation();
+	mStartButton = new engine::Animation(*mMenu,
+					       				 "general_images/textos.png",
+					       				 1.0f, // animationTime T14
+					       				 mStartButtonSprites,
+					       				 0, // startFrame T14
+					       				 0, // endFrame T14
+					       				 false, // loop T14
+					       				 1, // zoomFactor T14
+					       				 std::make_pair(205, 162)); // positionRelativeToObject T14
 
-	m_animation_controller->AddAnimation("arrow_start", *m_arrow_start);
+	mAnimationController->addAnimation("start_button", *mStartButton);
 
-	m_exit_button = new engine::Animation(*m_menu,
-					      "general_images/textos.png",
-					      1.0f,
-					      m_exit_button_sprites,
-					      0,
-					      0,
-					      false,
-					      1,
-					      std::make_pair(551, 162));
+	mArrowStart = new engine::Animation(*mMenu,
+					      				"general_images/textos.png",
+					      				1.0f,
+					      				mArrowSprites,
+					      				0,
+					      				0,
+					      				false,
+					      				1,
+					      				std::make_pair(168, 162));
 
-	m_animation_controller->AddAnimation("exit_button", *m_exit_button);
+	mAnimationController->addAnimation("arrow_start", *mArrowStart);
 
-	m_arrow_exit = new engine::Animation(*m_menu,
-					     "general_images/textos.png",
-					     1.0f,
-					     m_arrow_sprites,
-					     0,
-					     0,
-					     false,
-					     1,
-					     std::make_pair(514, 162));
+	mExitButton = new engine::Animation(*mMenu,
+					      				"general_images/textos.png",
+					      				1.0f,
+					      				mExitButtonSprites,
+					      				0,
+					      				0,
+					      				false,
+										1,
+					      				std::make_pair(551, 162));
 
-	m_arrow_exit->DisableComponent();
-	m_animation_controller->AddAnimation("arrow_exit", *m_arrow_exit);
+	mAnimationController->addAnimation("exit_button", *mExitButton);
 
-	m_sound_enable_button = new engine::Animation(*m_menu,
-						      "general_images/textos.png",
-						      1.0f,
-						      m_sound_enabled_button_sprites,
-						      0,
-						      0,
-						      false,
-						      1,
-						      std::make_pair(708, 40));
+	mArrowExit = new engine::Animation(*mMenu,
+					     				"general_images/textos.png",
+					     				1.0f,
+					     				mArrowSprites,
+					     				0,
+					     				0,
+					     				false,
+					     				1,
+					     				std::make_pair(514, 162));
 
-	m_animation_controller->AddAnimation("sound_enabled_button", *m_sound_enable_button);
+	mArrowExit->disableComponent();
 
-	m_sound_disabled_button = new engine::Animation(*m_menu,
-							"general_images/textos.png",
-							1.0f,
-							m_sound_disabled_button_sprites,
-							0,
-							0,
-							false,
-							1,
-							std::make_pair(708, 40));
+	mAnimationController->addAnimation("arrow_exit", *mArrowExit);
+	mSoundEnabledButton = new engine::Animation(*mMenu,
+						      				   "general_images/textos.png",
+						      				   1.0f,
+						      				   mSoundEnabledButtonSprites,
+						      				   0,
+						      				   0,
+						      				   false,
+						      				   1,
+						      				   std::make_pair(708, 40));
 
-	m_sound_disabled_button->DisableComponent();
+	mAnimationController->addAnimation("sound_enabled_button", *mSoundEnabledButton);
 
-	m_animation_controller->AddAnimation("sound_disabled_button", *m_sound_disabled_button);
+	mSoundDisabledButton = new engine::Animation(*mMenu,
+												 "general_images/textos.png",
+												 1.0f,
+												 mSoundDisabledButtonSprites,
+												 0,
+												 0,
+												 false,
+												 1,
+												 std::make_pair(708, 40));
 
-	m_arrow_sound = new engine::Animation(*m_menu,
-					      "general_images/textos.png",
-					      1.0f,
-					      m_arrow_sprites,
-					      0,
-					      0,
-					      false,
-					      1,
-					      std::make_pair(676, 40));
+	mSoundDisabledButton->disableComponent();
 
-	m_arrow_sound->DisableComponent();
+	mAnimationController->addAnimation("sound_disabled_button", *mSoundDisabledButton);
+	mArrowSound = new engine::Animation(*mMenu,
+					      				"general_images/textos.png",
+					      				1.0f,
+					      				mArrowSprites,
+					      				0,
+					      				0,
+					      				false,
+					      				1,
+					      				std::make_pair(676, 40));
 
-	m_animation_controller->AddAnimation("arrow_sound", *m_arrow_sound);
+	mArrowSound->disableComponent();
 
-	m_menu->AddComponent(*m_animation_controller);
+	mAnimationController->addAnimation("arrow_sound", *mArrowSound);
 
-	m_background = new engine::BackgroundComponent(*m_menu, "backgrounds/menu.png");
-	m_menu->AddComponent(*m_background);
+	mMenu->addComponent(* mAnimationController);
 
-	m_code = new MenuCode(m_menu);
-	m_menu->AddComponent(*m_code);
+	mBackground = new engine::BackgroundComponent(*mMenu, "backgrounds/menu.png");
+	mMenu->addComponent(*mBackground);
+
+	mCode = new MenuCode(mMenu);
+	mMenu->addComponent(*mCode);
 }
 
-void Menu::GenButtonsAnimation(){
-	m_start_button_sprites.push_back(new engine::Sprite());
+/**  * T11
+     * @brief function responsible for generating button animations
+     *
+     * Porque: For aesthetic purposes
+	 *
+	 * @return "void"
+     */
+void Menu::generateButtonsAnimation() {
+	 mStartButtonSprites.push_back(new engine::Sprite());
 
-	m_start_button_sprites[0]->sprite_x = 43;
-	m_start_button_sprites[0]->sprite_y = 452;
-	m_start_button_sprites[0]->sprite_width = 161 - 43;
-	m_start_button_sprites[0]->sprite_height = 478 - 452;
+	/*
+		Set the animation sprites coordinates (x, y)
+		and its Width and Height based on its coordinates
+		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
+	*/
 
-	m_exit_button_sprites.push_back(new engine::Sprite());
+	 mStartButtonSprites[0]->spriteX = 43;
+	 mStartButtonSprites[0]->spriteY = 452;
+	 mStartButtonSprites[0]->spriteWidth = 161 - 43;
+	 mStartButtonSprites[0]->spriteHeight = 478 - 452;
 
-	m_exit_button_sprites[0]->sprite_x = 207;
-	m_exit_button_sprites[0]->sprite_y = 413;
-	m_exit_button_sprites[0]->sprite_width = 280 - 207;
-	m_exit_button_sprites[0]->sprite_height = 441 - 413;
+	mExitButtonSprites.push_back(new engine::Sprite());
 
-	m_sound_enabled_button_sprites.push_back(new engine::Sprite());
+	mExitButtonSprites[0]->spriteX = 207;
+	mExitButtonSprites[0]->spriteY = 413;
+	mExitButtonSprites[0]->spriteWidth = 280 - 207;
+	mExitButtonSprites[0]->spriteHeight = 441 - 413;
 
-	m_sound_enabled_button_sprites[0]->sprite_x = 660;
-	m_sound_enabled_button_sprites[0]->sprite_y = 46;
-	m_sound_enabled_button_sprites[0]->sprite_width = 702 - 660;
-	m_sound_enabled_button_sprites[0]->sprite_height = 77 - 46;
+	mSoundEnabledButtonSprites.push_back(new engine::Sprite());
 
-	m_sound_disabled_button_sprites.push_back(new engine::Sprite());
+	mSoundEnabledButtonSprites[0]->spriteX = 660;
+	mSoundEnabledButtonSprites[0]->spriteY = 46;
+	mSoundEnabledButtonSprites[0]->spriteWidth = 702 - 660;
+	mSoundEnabledButtonSprites[0]->spriteHeight = 77 - 46;
 
-	m_sound_disabled_button_sprites[0]->sprite_x = 608;
-	m_sound_disabled_button_sprites[0]->sprite_y = 46;
-	m_sound_disabled_button_sprites[0]->sprite_width = 646 - 608;
-	m_sound_disabled_button_sprites[0]->sprite_height = 77 - 46;
+	mSoundDisabledButtonSprites.push_back(new engine::Sprite());
 
-	m_arrow_sprites.push_back(new engine::Sprite());
+	mSoundDisabledButtonSprites[0]->spriteX = 608;
+	mSoundDisabledButtonSprites[0]->spriteY = 46;
+	mSoundDisabledButtonSprites[0]->spriteWidth = 646 - 608;
+	mSoundDisabledButtonSprites[0]->spriteHeight = 77 - 46;
 
-	m_arrow_sprites[0]->sprite_x = 582;
-	m_arrow_sprites[0]->sprite_y = 433;
-	m_arrow_sprites[0]->sprite_width = 598 - 582;
-	m_arrow_sprites[0]->sprite_height = 459 - 433;
+	mArrowSprites.push_back(new engine::Sprite());
+
+	mArrowSprites[0]->spriteX = 582;
+	mArrowSprites[0]->spriteY = 433;
+	mArrowSprites[0]->spriteWidth = 598 - 582;
+	mArrowSprites[0]->spriteHeight = 459 - 433;
 }
 
-
-void Menu::Shutdown(){
-	DEBUG("Calling Menu::Shutdown.");
+/**  * T11
+     * @brief function responsible for debugging
+     *
+     * Why: Because it is responsible for debugging the code
+	 *
+	 * @return "void".
+     */
+void Menu::shutdown() {
+	DEBUG("Calling Menu::shutdown.");
 }

@@ -1,4 +1,12 @@
-
+/**
+ * @file log.h
+ * @brief Purpose: Contains general scope to the log.
+ *
+ * GLP v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+*/
 #ifndef LOG_H
 #define LOG_H
 
@@ -6,13 +14,8 @@
 #include <iostream>
 #include <cstdlib>
 
-/* In the release version define NDEBUG macro */
-// #define NDEBUG  // Clears out the DEBUG macro
-// #define NWARN   // Clears out the WARN macro
-// #define NASSERT // Clears out the ASSERT macro
-// #define NINFO   // Clears out the INFO macro
-// #define NERROR  // Clears out the ERROR macro
 
+// Generating macro of the NINFO.
 #ifndef NINFO
 #   define INFO(...) \
 	std::cout << "[INFO] " << __VA_ARGS__ << std::endl;
@@ -20,6 +23,7 @@
 #   define INFO(...)
 #endif
 
+// Generating macro of the  WARN.
 #ifndef NWARN
 #   define WARN(...) \
 	std::cout << "[WARN] " << __VA_ARGS__ << std::endl;
@@ -27,6 +31,7 @@
 #   define WARN(...)
 #endif
 
+// Generating macro of the NERROR.
 #ifndef NERROR
 #   define ERROR(...)							      \
 	do {									  \
@@ -38,6 +43,7 @@
 #   define ERROR(...)
 #endif
 
+// Generating macro of the NDEBUG.
 #ifndef DEBUG
     #ifndef NDEBUG
     #   define DEBUG(...) \
@@ -47,7 +53,7 @@
     #endif
 #endif
 
-
+// Generating macro of the NASSERT.
 #ifndef NASSERT
 #   define ASSERT(condition, ...) \
 	do { \

@@ -1,3 +1,12 @@
+/**
+     * @file menu_code.hpp
+	 * @brief Purpose: Declaration of the MenuCode class
+     *
+     * GPL 3.0 License
+     * Copyright (c) 2017 Azo
+     *
+     * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+     */
 #ifndef MENU_CODE
 #define MENU_CODE
 
@@ -5,18 +14,25 @@
 #include "audio_controller.hpp"
 
 namespace Azo {
+	/** 
+		 * @brief A Hitbox class.
+		 * MenuCode class
+		 *
+		 * A more elaborate class description.
+		 * Class responsible for creating the Menu features
+		 */
 	class MenuCode : public engine::CodeComponent {
 		private:
-			engine::AudioController *m_audio_controller;
-			engine::AnimationController *m_animation_controller;
-			int m_current_button = 1;
+			engine::AudioController *mAudioController; // Variable responsible for audio control
+			engine::AnimationController *mAnimationController; // Variable responsible for animation control
+			int mCurrentButton = 1; // Variable referring to the current button
 		public:
-			MenuCode(engine::GameObject *game_object);
+			MenuCode(engine::GameObject *gameObject);
 		private:
-			void UpdateCode();
-			void FindAudioController();
+			void updateCode();
+			void findAudioController();
 			void FindAnimationController();
-			void ChangeOption();
+			void changeOption();
 	};
 }
 

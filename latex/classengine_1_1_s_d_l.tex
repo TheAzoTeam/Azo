@@ -1,0 +1,230 @@
+\hypertarget{classengine_1_1_s_d_l}{}\section{engine\+:\+:S\+DL Class Reference}
+\label{classengine_1_1_s_d_l}\index{engine\+::\+S\+DL@{engine\+::\+S\+DL}}
+
+
+class that look after all \hyperlink{classengine_1_1_s_d_l}{S\+DL}\textquotesingle{}s dependences to run in first.  
+
+
+
+
+{\ttfamily \#include $<$sdl.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_s_d_l_af3795554364a7fce185958eede6ad061}{S\+DL} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the sdl. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_s_d_l_af6ee7dd9c220e82ce4f931a0325b315f}{set\+S\+D\+L\+Attributes} (std\+::string game\+Name, int window\+Width, int window\+Height)
+\begin{DoxyCompactList}\small\item\em receive attributes of the \hyperlink{classengine_1_1_game}{Game} instance through \char`\"{}\+Set\+Game\+Attributes\char`\"{} method. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_s_d_l_a10afdc6fa827ad9c3772c7ef759a903c}{init\+S\+DL} ()
+\begin{DoxyCompactList}\small\item\em initialize all \hyperlink{classengine_1_1_s_d_l}{S\+DL}. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Renderer $\ast$ \hyperlink{classengine_1_1_s_d_l_a3875fe564e0571ef84c899ead42675c6}{get\+Canvas} ()
+\begin{DoxyCompactList}\small\item\em copy the code where the method is called. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_s_d_l_a3259aab79da90549924b0eb286e61e64}{create\+Window} ()
+\begin{DoxyCompactList}\small\item\em creating the Window and Canvas. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_s_d_l_afcc094fe19573bc62d6a5c0537f6e073}{terminate\+S\+DL} ()
+\begin{DoxyCompactList}\small\item\em terminating \hyperlink{classengine_1_1_s_d_l}{S\+DL}. \end{DoxyCompactList}\item 
+int \hyperlink{classengine_1_1_s_d_l_a656bbafd95481b395aab1fdccef8a785}{get\+Window\+Width} ()
+\begin{DoxyCompactList}\small\item\em private attribute \char`\"{}window\+\_\+width\char`\"{}. \end{DoxyCompactList}\item 
+int \hyperlink{classengine_1_1_s_d_l_a4de4ede7cd92d53d0f509f2a2058e840}{get\+Window\+Height} ()
+\begin{DoxyCompactList}\small\item\em private attribute \char`\"{}window\+\_\+height\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+class that look after all \hyperlink{classengine_1_1_s_d_l}{S\+DL}\textquotesingle{}s dependences to run in first. 
+
+Class that define the behavior of the sdl.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 27 of file sdl.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+S\+DL@{engine\+::\+S\+DL}!S\+DL@{S\+DL}}
+\index{S\+DL@{S\+DL}!engine\+::\+S\+DL@{engine\+::\+S\+DL}}
+\subsubsection[{\texorpdfstring{S\+D\+L()}{SDL()}}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+::\+S\+DL (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_s_d_l_af3795554364a7fce185958eede6ad061}{}\label{classengine_1_1_s_d_l_af3795554364a7fce185958eede6ad061}
+
+
+Default constructor for the sdl. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 25 of file sdl.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+S\+DL@{engine\+::\+S\+DL}!create\+Window@{create\+Window}}
+\index{create\+Window@{create\+Window}!engine\+::\+S\+DL@{engine\+::\+S\+DL}}
+\subsubsection[{\texorpdfstring{create\+Window()}{createWindow()}}]{\setlength{\rightskip}{0pt plus 5cm}void S\+D\+L\+::create\+Window (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_s_d_l_a3259aab79da90549924b0eb286e61e64}{}\label{classengine_1_1_s_d_l_a3259aab79da90549924b0eb286e61e64}
+
+
+creating the Window and Canvas. 
+
+Used inside \char`\"{}\+Run\char`\"{} method of the \hyperlink{classengine_1_1_game}{Game}.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 61 of file sdl.\+cpp.
+
+\index{engine\+::\+S\+DL@{engine\+::\+S\+DL}!get\+Canvas@{get\+Canvas}}
+\index{get\+Canvas@{get\+Canvas}!engine\+::\+S\+DL@{engine\+::\+S\+DL}}
+\subsubsection[{\texorpdfstring{get\+Canvas()}{getCanvas()}}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Renderer$\ast$ engine\+::\+S\+D\+L\+::get\+Canvas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classengine_1_1_s_d_l_a3875fe564e0571ef84c899ead42675c6}{}\label{classengine_1_1_s_d_l_a3875fe564e0571ef84c899ead42675c6}
+
+
+copy the code where the method is called. 
+
+Used to get Canvas with Inline to be more efficient.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}canvas\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 60 of file sdl.\+hpp.
+
+\index{engine\+::\+S\+DL@{engine\+::\+S\+DL}!get\+Window\+Height@{get\+Window\+Height}}
+\index{get\+Window\+Height@{get\+Window\+Height}!engine\+::\+S\+DL@{engine\+::\+S\+DL}}
+\subsubsection[{\texorpdfstring{get\+Window\+Height()}{getWindowHeight()}}]{\setlength{\rightskip}{0pt plus 5cm}int engine\+::\+S\+D\+L\+::get\+Window\+Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classengine_1_1_s_d_l_a4de4ede7cd92d53d0f509f2a2058e840}{}\label{classengine_1_1_s_d_l_a4de4ede7cd92d53d0f509f2a2058e840}
+
+
+private attribute \char`\"{}window\+\_\+height\char`\"{}. 
+
+Used to use the private attribute \char`\"{}window\+\_\+height\char`\"{}.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}window\+\_\+height\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 102 of file sdl.\+hpp.
+
+\index{engine\+::\+S\+DL@{engine\+::\+S\+DL}!get\+Window\+Width@{get\+Window\+Width}}
+\index{get\+Window\+Width@{get\+Window\+Width}!engine\+::\+S\+DL@{engine\+::\+S\+DL}}
+\subsubsection[{\texorpdfstring{get\+Window\+Width()}{getWindowWidth()}}]{\setlength{\rightskip}{0pt plus 5cm}int engine\+::\+S\+D\+L\+::get\+Window\+Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classengine_1_1_s_d_l_a656bbafd95481b395aab1fdccef8a785}{}\label{classengine_1_1_s_d_l_a656bbafd95481b395aab1fdccef8a785}
+
+
+private attribute \char`\"{}window\+\_\+width\char`\"{}. 
+
+Used to use the private attribute \char`\"{}window\+\_\+width\char`\"{}.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}window\+\_\+width\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 90 of file sdl.\+hpp.
+
+\index{engine\+::\+S\+DL@{engine\+::\+S\+DL}!init\+S\+DL@{init\+S\+DL}}
+\index{init\+S\+DL@{init\+S\+DL}!engine\+::\+S\+DL@{engine\+::\+S\+DL}}
+\subsubsection[{\texorpdfstring{init\+S\+D\+L()}{initSDL()}}]{\setlength{\rightskip}{0pt plus 5cm}void S\+D\+L\+::init\+S\+DL (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_s_d_l_a10afdc6fa827ad9c3772c7ef759a903c}{}\label{classengine_1_1_s_d_l_a10afdc6fa827ad9c3772c7ef759a903c}
+
+
+initialize all \hyperlink{classengine_1_1_s_d_l}{S\+DL}. 
+
+Initialize attributes to Windows, Canvas, S\+D\+L\+\_\+\+I\+M\+A\+GE, S\+D\+L\+\_\+\+V\+I\+D\+EO, S\+D\+L\+\_\+\+A\+U\+D\+IO.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 34 of file sdl.\+cpp.
+
+\index{engine\+::\+S\+DL@{engine\+::\+S\+DL}!set\+S\+D\+L\+Attributes@{set\+S\+D\+L\+Attributes}}
+\index{set\+S\+D\+L\+Attributes@{set\+S\+D\+L\+Attributes}!engine\+::\+S\+DL@{engine\+::\+S\+DL}}
+\subsubsection[{\texorpdfstring{set\+S\+D\+L\+Attributes(std\+::string game\+Name, int window\+Width, int window\+Height)}{setSDLAttributes(std::string gameName, int windowWidth, int windowHeight)}}]{\setlength{\rightskip}{0pt plus 5cm}void S\+D\+L\+::set\+S\+D\+L\+Attributes (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{game\+Name, }
+\item[{int}]{window\+Width, }
+\item[{int}]{window\+Height}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_s_d_l_af6ee7dd9c220e82ce4f931a0325b315f}{}\label{classengine_1_1_s_d_l_af6ee7dd9c220e82ce4f931a0325b315f}
+
+
+receive attributes of the \hyperlink{classengine_1_1_game}{Game} instance through \char`\"{}\+Set\+Game\+Attributes\char`\"{} method. 
+
+receive attributes of the \hyperlink{classengine_1_1_game}{Game} instance.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}.
+\end{DoxyReturn}
+Throught \char`\"{}\+Set\+Game\+Attributes\char`\"{} method.
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Name} & string that says the name of the game. \\
+\hline
+{\em window\+Width} & integer that is responsible for the width of the window. \\
+\hline
+{\em window\+Heighth} & integer that is responsible for the heith of the window.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 136 of file sdl.\+cpp.
+
+\index{engine\+::\+S\+DL@{engine\+::\+S\+DL}!terminate\+S\+DL@{terminate\+S\+DL}}
+\index{terminate\+S\+DL@{terminate\+S\+DL}!engine\+::\+S\+DL@{engine\+::\+S\+DL}}
+\subsubsection[{\texorpdfstring{terminate\+S\+D\+L()}{terminateSDL()}}]{\setlength{\rightskip}{0pt plus 5cm}void S\+D\+L\+::terminate\+S\+DL (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_s_d_l_afcc094fe19573bc62d6a5c0537f6e073}{}\label{classengine_1_1_s_d_l_afcc094fe19573bc62d6a5c0537f6e073}
+
+
+terminating \hyperlink{classengine_1_1_s_d_l}{S\+DL}. 
+
+Used in the Main Loop\textquotesingle{}s End.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 105 of file sdl.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{sdl_8hpp}{sdl.\+hpp}\item 
+engine/src/\hyperlink{sdl_8cpp}{sdl.\+cpp}\end{DoxyCompactItemize}

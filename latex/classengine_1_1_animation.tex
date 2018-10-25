@@ -1,0 +1,242 @@
+\hypertarget{classengine_1_1_animation}{}\section{engine\+:\+:Animation Class Reference}
+\label{classengine_1_1_animation}\index{engine\+::\+Animation@{engine\+::\+Animation}}
+
+
+{\ttfamily \#include $<$animation.\+hpp$>$}
+
+Inheritance diagram for engine\+:\+:Animation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classengine_1_1_animation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_animation_a83f0a16cef7117f187ad596de38dd9d6}{Animation} ()
+\item 
+\hyperlink{classengine_1_1_animation_acc7e1092278297d6e029031115d147a6}{Animation} (\hyperlink{classengine_1_1_game_object}{Game\+Object} \&\hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object}, std\+::string \hyperlink{classengine_1_1_background_component_aeffcb1aa8b67444e004413dee8c266b1}{image\+Path}, float animation\+Time, std\+::vector$<$ \hyperlink{classengine_1_1_sprite}{Sprite} $\ast$ $>$ sprite\+List, int start\+Frame, int end\+Frame, bool loop, double \hyperlink{classengine_1_1_image_component_aa27852286227a84dc9c9f01c9fe2add8}{zoom\+Factor})
+\item 
+\hyperlink{classengine_1_1_animation_a3bca75a5859165a3944d01efde626a2d}{Animation} (\hyperlink{classengine_1_1_game_object}{Game\+Object} \&\hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object}, std\+::string \hyperlink{classengine_1_1_background_component_aeffcb1aa8b67444e004413dee8c266b1}{image\+Path}, float animation\+Time, std\+::vector$<$ \hyperlink{classengine_1_1_sprite}{Sprite} $\ast$ $>$ sprite\+List, int start\+Frame, int end\+Frame, bool loop, double \hyperlink{classengine_1_1_image_component_aa27852286227a84dc9c9f01c9fe2add8}{zoom\+Factor}, std\+::pair$<$ double, double $>$ position\+Relative\+To\+Object)
+\item 
+virtual \hyperlink{classengine_1_1_animation_a401b68793d4fbf48d481c030ee4b2a16}{$\sim$\+Animation} ()
+\item 
+void \hyperlink{classengine_1_1_animation_a219053e2c5bc9179fa355f14cf9bf032}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em inherits function that disable the game components \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_animation_a5bc1f5aaee0372f573d4537dab43a162}{draw} ()
+\begin{DoxyCompactList}\small\item\em inherits function that draw game objects. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_animation_aed6b685cec9e13063f171ce6bd49b9d7}{disable\+Component} ()
+\begin{DoxyCompactList}\small\item\em disable components. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classengine_1_1_animation_a6d7f93578e25311f51f2b3c737f885b2}{get\+Class\+Name} ()
+\begin{DoxyCompactList}\small\item\em access the name of the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classengine_1_1_animation_a7db6aae9eef0e347e04af32b05a28476}{animation\+Name}
+\item 
+\hyperlink{namespaceengine_aa24807a1a7834d08efa99ae4672d3544}{Animation\+State} \hyperlink{classengine_1_1_animation_afa99aa470cb938b88ae337079d5628b7}{m\+State} = \hyperlink{namespaceengine_aa24807a1a7834d08efa99ae4672d3544a09d4d696b4e935115b9313e3c412509a}{Animation\+State\+::\+S\+T\+O\+P\+P\+ED}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 29 of file animation.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Animation@{engine\+::\+Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{Animation()}{Animation()}}]{\setlength{\rightskip}{0pt plus 5cm}Animation\+::\+Animation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_a83f0a16cef7117f187ad596de38dd9d6}{}\label{classengine_1_1_animation_a83f0a16cef7117f187ad596de38dd9d6}
+
+
+Definition at line 24 of file animation.\+cpp.
+
+\index{engine\+::\+Animation@{engine\+::\+Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{Animation(\+Game\+Object \&game\+Object, std\+::string image\+Path, float animation\+Time, std\+::vector$<$ Sprite $\ast$ $>$ sprite\+List, int start\+Frame, int end\+Frame, bool loop, double zoom\+Factor)}{Animation(GameObject &gameObject, std::string imagePath, float animationTime, std::vector< Sprite * > spriteList, int startFrame, int endFrame, bool loop, double zoomFactor)}}]{\setlength{\rightskip}{0pt plus 5cm}Animation\+::\+Animation (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Object} \&}]{game\+Object, }
+\item[{std\+::string}]{image\+Path, }
+\item[{float}]{animation\+Time, }
+\item[{std\+::vector$<$ {\bf Sprite} $\ast$ $>$}]{sprite\+List, }
+\item[{int}]{start\+Frame, }
+\item[{int}]{end\+Frame, }
+\item[{bool}]{loop, }
+\item[{double}]{zoom\+Factor}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_acc7e1092278297d6e029031115d147a6}{}\label{classengine_1_1_animation_acc7e1092278297d6e029031115d147a6}
+
+
+Definition at line 26 of file animation.\+cpp.
+
+\index{engine\+::\+Animation@{engine\+::\+Animation}!Animation@{Animation}}
+\index{Animation@{Animation}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{Animation(\+Game\+Object \&game\+Object, std\+::string image\+Path, float animation\+Time, std\+::vector$<$ Sprite $\ast$ $>$ sprite\+List, int start\+Frame, int end\+Frame, bool loop, double zoom\+Factor, std\+::pair$<$ double, double $>$ position\+Relative\+To\+Object)}{Animation(GameObject &gameObject, std::string imagePath, float animationTime, std::vector< Sprite * > spriteList, int startFrame, int endFrame, bool loop, double zoomFactor, std::pair< double, double > positionRelativeToObject)}}]{\setlength{\rightskip}{0pt plus 5cm}Animation\+::\+Animation (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Object} \&}]{game\+Object, }
+\item[{std\+::string}]{image\+Path, }
+\item[{float}]{animation\+Time, }
+\item[{std\+::vector$<$ {\bf Sprite} $\ast$ $>$}]{sprite\+List, }
+\item[{int}]{start\+Frame, }
+\item[{int}]{end\+Frame, }
+\item[{bool}]{loop, }
+\item[{double}]{zoom\+Factor, }
+\item[{std\+::pair$<$ double, double $>$}]{position\+Relative\+To\+Object}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_a3bca75a5859165a3944d01efde626a2d}{}\label{classengine_1_1_animation_a3bca75a5859165a3944d01efde626a2d}
+
+
+Definition at line 46 of file animation.\+cpp.
+
+\index{engine\+::\+Animation@{engine\+::\+Animation}!````~Animation@{$\sim$\+Animation}}
+\index{````~Animation@{$\sim$\+Animation}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{$\sim$\+Animation()}{~Animation()}}]{\setlength{\rightskip}{0pt plus 5cm}Animation\+::$\sim$\+Animation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_animation_a401b68793d4fbf48d481c030ee4b2a16}{}\label{classengine_1_1_animation_a401b68793d4fbf48d481c030ee4b2a16}
+
+
+Definition at line 68 of file animation.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Animation@{engine\+::\+Animation}!disable\+Component@{disable\+Component}}
+\index{disable\+Component@{disable\+Component}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{disable\+Component()}{disableComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+::disable\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_animation_aed6b685cec9e13063f171ce6bd49b9d7}{}\label{classengine_1_1_animation_aed6b685cec9e13063f171ce6bd49b9d7}
+
+
+disable components. 
+
+set the game object components state to disabled.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a9c42e55639174abeda044285a8b1db4b}{engine\+::\+Component}.
+
+
+
+Definition at line 150 of file animation.\+cpp.
+
+\index{engine\+::\+Animation@{engine\+::\+Animation}!draw@{draw}}
+\index{draw@{draw}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{draw()}{draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_animation_a5bc1f5aaee0372f573d4537dab43a162}{}\label{classengine_1_1_animation_a5bc1f5aaee0372f573d4537dab43a162}
+
+
+inherits function that draw game objects. 
+
+draws all the enabled game objects.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a3d20060d4af0bf0dd0c833994581bdfa}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{classengine_1_1_animation_controller_a906d2adadfd5eeb2dc6edff3e2f15c45}{engine\+::\+Animation\+Controller}.
+
+
+
+Definition at line 79 of file animation.\+cpp.
+
+\index{engine\+::\+Animation@{engine\+::\+Animation}!get\+Class\+Name@{get\+Class\+Name}}
+\index{get\+Class\+Name@{get\+Class\+Name}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{get\+Class\+Name()}{getClassName()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string engine\+::\+Animation\+::get\+Class\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classengine_1_1_animation_a6d7f93578e25311f51f2b3c737f885b2}{}\label{classengine_1_1_animation_a6d7f93578e25311f51f2b3c737f885b2}
+
+
+access the name of the class. 
+
+Used to get the private attribute class\+Name.
+
+\begin{DoxyReturn}{Returns}
+string that contains the scene name. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a4341ed3c744b160590908bea151b6ca7}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{classengine_1_1_animation_controller_a227866340161b386c3e39503a15e03cc}{engine\+::\+Animation\+Controller}.
+
+
+
+Definition at line 62 of file animation.\+hpp.
+
+\index{engine\+::\+Animation@{engine\+::\+Animation}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_animation_a219053e2c5bc9179fa355f14cf9bf032}{}\label{classengine_1_1_animation_a219053e2c5bc9179fa355f14cf9bf032}
+
+
+inherits function that disable the game components 
+
+free the component pointers
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a3e47775d51e78914bdfebba123354849}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{classengine_1_1_animation_controller_a63ed3b30c0ea1fba109e6bed452c21ce}{engine\+::\+Animation\+Controller}.
+
+
+
+Definition at line 70 of file animation.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{engine\+::\+Animation@{engine\+::\+Animation}!animation\+Name@{animation\+Name}}
+\index{animation\+Name@{animation\+Name}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{animation\+Name}{animationName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string engine\+::\+Animation\+::animation\+Name}\hypertarget{classengine_1_1_animation_a7db6aae9eef0e347e04af32b05a28476}{}\label{classengine_1_1_animation_a7db6aae9eef0e347e04af32b05a28476}
+
+
+Definition at line 57 of file animation.\+hpp.
+
+\index{engine\+::\+Animation@{engine\+::\+Animation}!m\+State@{m\+State}}
+\index{m\+State@{m\+State}!engine\+::\+Animation@{engine\+::\+Animation}}
+\subsubsection[{\texorpdfstring{m\+State}{mState}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Animation\+State} engine\+::\+Animation\+::m\+State = {\bf Animation\+State\+::\+S\+T\+O\+P\+P\+ED}}\hypertarget{classengine_1_1_animation_afa99aa470cb938b88ae337079d5628b7}{}\label{classengine_1_1_animation_afa99aa470cb938b88ae337079d5628b7}
+
+
+Definition at line 58 of file animation.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{animation_8hpp}{animation.\+hpp}\item 
+engine/src/\hyperlink{animation_8cpp}{animation.\+cpp}\end{DoxyCompactItemize}

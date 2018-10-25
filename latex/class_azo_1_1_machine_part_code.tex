@@ -1,0 +1,105 @@
+\hypertarget{class_azo_1_1_machine_part_code}{}\section{Azo\+:\+:Machine\+Part\+Code Class Reference}
+\label{class_azo_1_1_machine_part_code}\index{Azo\+::\+Machine\+Part\+Code@{Azo\+::\+Machine\+Part\+Code}}
+
+
+A Hitbox class. \hyperlink{class_azo_1_1_machine_part_code}{Machine\+Part\+Code} class.  
+
+
+
+
+{\ttfamily \#include $<$machine\+\_\+part\+\_\+code.\+hpp$>$}
+
+Inheritance diagram for Azo\+:\+:Machine\+Part\+Code\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_azo_1_1_machine_part_code}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_azo_1_1_machine_part_code_a4ce37129563be975a557942ab8c897f0}{Machine\+Part\+Code} (\hyperlink{class_azo_1_1_obstacle}{Obstacle} $\ast$machine\+Part)
+\begin{DoxyCompactList}\small\item\em function responsible for creating parts that will be collected by the player \end{DoxyCompactList}\item 
+virtual \hyperlink{class_azo_1_1_machine_part_code_a3769b1d5af7d63b989369aef122760b5}{$\sim$\+Machine\+Part\+Code} ()
+\item 
+void \hyperlink{class_azo_1_1_machine_part_code_aea9e8e5ccc20e0ac975277104b29d0bf}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em function responsible for disabling game audio \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A Hitbox class. \hyperlink{class_azo_1_1_machine_part_code}{Machine\+Part\+Code} class. 
+
+A more elaborate class description. Class responsible for the creation of the parts by which the player must collect to get to victory. 
+
+Definition at line 27 of file machine\+\_\+part\+\_\+code.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Azo\+::\+Machine\+Part\+Code@{Azo\+::\+Machine\+Part\+Code}!Machine\+Part\+Code@{Machine\+Part\+Code}}
+\index{Machine\+Part\+Code@{Machine\+Part\+Code}!Azo\+::\+Machine\+Part\+Code@{Azo\+::\+Machine\+Part\+Code}}
+\subsubsection[{\texorpdfstring{Machine\+Part\+Code(\+Obstacle $\ast$machine\+Part)}{MachinePartCode(Obstacle *machinePart)}}]{\setlength{\rightskip}{0pt plus 5cm}Machine\+Part\+Code\+::\+Machine\+Part\+Code (
+\begin{DoxyParamCaption}
+\item[{{\bf Obstacle} $\ast$}]{machine\+Part}
+\end{DoxyParamCaption}
+)}\hypertarget{class_azo_1_1_machine_part_code_a4ce37129563be975a557942ab8c897f0}{}\label{class_azo_1_1_machine_part_code_a4ce37129563be975a557942ab8c897f0}
+
+
+function responsible for creating parts that will be collected by the player 
+
+Why\+: So that they can be collected throughout the game by the player
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{class_azo_1_1_obstacle}{Obstacle}} & that has the parts that need to be collected \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 23 of file machine\+\_\+part\+\_\+code.\+cpp.
+
+\index{Azo\+::\+Machine\+Part\+Code@{Azo\+::\+Machine\+Part\+Code}!````~Machine\+Part\+Code@{$\sim$\+Machine\+Part\+Code}}
+\index{````~Machine\+Part\+Code@{$\sim$\+Machine\+Part\+Code}!Azo\+::\+Machine\+Part\+Code@{Azo\+::\+Machine\+Part\+Code}}
+\subsubsection[{\texorpdfstring{$\sim$\+Machine\+Part\+Code()}{~MachinePartCode()}}]{\setlength{\rightskip}{0pt plus 5cm}Machine\+Part\+Code\+::$\sim$\+Machine\+Part\+Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_azo_1_1_machine_part_code_a3769b1d5af7d63b989369aef122760b5}{}\label{class_azo_1_1_machine_part_code_a3769b1d5af7d63b989369aef122760b5}
+
+
+Definition at line 28 of file machine\+\_\+part\+\_\+code.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{Azo\+::\+Machine\+Part\+Code@{Azo\+::\+Machine\+Part\+Code}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!Azo\+::\+Machine\+Part\+Code@{Azo\+::\+Machine\+Part\+Code}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Machine\+Part\+Code\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_azo_1_1_machine_part_code_aea9e8e5ccc20e0ac975277104b29d0bf}{}\label{class_azo_1_1_machine_part_code_aea9e8e5ccc20e0ac975277104b29d0bf}
+
+
+function responsible for disabling game audio 
+
+Why\+: Used to release pointer referring to the game audio
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_code_component_af76ba17f9f87216418081d1e2c7c3a22}{engine\+::\+Code\+Component}.
+
+
+
+Definition at line 38 of file machine\+\_\+part\+\_\+code.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{machine__part__code_8hpp}{machine\+\_\+part\+\_\+code.\+hpp}\item 
+src/\hyperlink{machine__part__code_8cpp}{machine\+\_\+part\+\_\+code.\+cpp}\end{DoxyCompactItemize}

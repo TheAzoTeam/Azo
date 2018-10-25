@@ -1,5 +1,17 @@
-#ifndef GAME_OBJECT_HPP
-#define GAME_OBJECT_HPP
+/**
+ * @file game_object.hpp
+ * @brief Purpose: Contains the Game Object class declaration.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ * 
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
+ * 
+ * This file implements the main game object component its declaration and state.
+*/
+#ifndef gameObject_HPP
+#define gameObject_HPP
 
 #include <iostream>
 #include <typeinfo>
@@ -15,50 +27,55 @@
 
 namespace engine {
 
+	/**
+     * @brief A ObjectState class.
+  	 *
+     * Define Game Object States to control Loops and other structures.
+    */
 	enum ObjectState {
 		ENABLED,
 		DISABLED,
 	};
 
+	/**
+     * @brief A Game Object class.
+  	 *
+     * Generic Game Object class. It's how the engine'll see all game objects that will try to use it.
+    */
 	class GameObject {
+
 		public:
-			// m_current_position is the left upper corner of the game object, in coordinates.
-			std::pair<double, double> m_current_position;
-			// m_size.first is the X size.
-			// m_sisze.second is the Y size.
-			std::pair<double, double> m_size;
-			std::pair<double, double> m_center;
-			// m_half_size.first is the x distance from center to the border.
-			// m_half_size.second is the y distance from center to the border.
-			std::pair<double, double> m_half_size;
-			std::list<GameObject *> m_parent_list;
-			std::string m_name;
-			ObjectState m_object_state = ObjectState::ENABLED;
+			std::pair<double, double> mCurrentPosition; // Game object's left upper corner coordinates.
+			std::pair<double, double> mSize; // Pair that contains X and Y sizes, respectively.
+			std::pair<double, double> mCenter; // Center position of game object.
+			std::pair<double, double> mHalfSize; // Pair of half size of game object.
+			std::list<GameObject *> mParentList; // All parents of game object
+			std::string mName; // Name of game object
+			ObjectState mObjectState = ObjectState::ENABLED; // Sets the game object state
 
 		protected:
-			std::unordered_multimap<std::type_index, Component *> m_component_map;
+			std::unordered_multimap<std::type_index, Component *> mComponentMap; // Component that represents game object's map.
 
 		public:
 			GameObject();
-			GameObject(std::string game_object_name, std::pair<double, double> current_position);
-			void AddComponent(Component &component);
-			AnimationController* GetAnimationController(std::type_index component_type);
-			AudioController* GetAudioController(std::type_index component_type);
-			virtual void Init();
-			virtual void Draw();
-			virtual void Shutdown();
-			virtual void UpdateCode();
-			virtual inline std::string GetClassName(){
-				return "GameObject";
-			}
-			std::pair<double, double> CalcBottomLeft();
-			std::pair<double, double> CalcBottomRight();
-			std::pair<double, double> CalcTopLeft();
-			std::pair<double, double> CalcTopRight();
-			std::pair<double, double> CalcRightUp();
-			std::pair<double, double> CalcRightDown();
-			std::pair<double, double> CalcLeftUp();
-			std::pair<double, double> CalcLeftDown();
+			GameObject(std::string gameObjectName,
+					std::pair<double, double> currentPosition);
+			void addComponent(Component &component);
+			AnimationController* getAnimationController(std::type_index componentType);
+			AudioController* getAudioController(std::type_index componentType);
+			virtual void init();
+			virtual void draw();
+			virtual void shutdown();
+			virtual void updateCode();
+			virtual inline std::string getClassName(){ return "GameObject";}
+			std::pair<double, double> calcBottomLeft();
+			std::pair<double, double> calcBottomRight();
+			std::pair<double, double> calcTopLeft();
+			std::pair<double, double> calcTopRight();
+			std::pair<double, double> calcRightUp();
+			std::pair<double, double> calcRightDown();
+			std::pair<double, double> calcLeftUp();
+			std::pair<double, double> calcLeftDown();
 	};
 
 }
