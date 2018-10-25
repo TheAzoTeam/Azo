@@ -129,68 +129,81 @@ Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeT
 void Obstacle::createComponents() {
 	DEBUG("Creating obstacle components.");
 	// If and else if blocks for each ObstacleType and its respective initialization.
-	if (mObstacleType == ObstacleType::WESTERN_CAR) {
-		DEBUG("obstacle is a WESTERN CAR!");
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
-		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_CAR, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
+	switch (mObstacleType) {
+		case ObstacleType::WESTERN_CAR:
+			DEBUG("obstacle is a WESTERN CAR!");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_CAR, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	} else if (mObstacleType == ObstacleType::WESTERN_BOX) {
-		DEBUG("obstacle is a WESTERN BOX!");
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
-		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_BOX, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
+		case ObstacleType::WESTERN_BOX:
+			DEBUG("obstacle is a WESTERN BOX!");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_BOX, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	} else if (mObstacleType == ObstacleType::WESTERN_RAISED_BOX) {
-		DEBUG("obstacle is a WESTERN RAISED BOX!");
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
-		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_RAISED_BOX, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
+		case ObstacleType::WESTERN_RAISED_BOX:
+			DEBUG("obstacle is a WESTERN RAISED BOX!");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_RAISED_BOX, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	} else if (mObstacleType == ObstacleType::WESTERN_ROCK) {
-		DEBUG("obstacle is a WESTERN ROCK");
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
-		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_ROCK, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
+		case ObstacleType::WESTERN_ROCK:
+			DEBUG("obstacle is a WESTERN ROCK");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_ROCK, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	} else if (mObstacleType == ObstacleType::MACHINE_PART) {
-		DEBUG("obstacle is a MACHINE PART");
-		mMachinePartState = MachinePartState::NON_COLLECTED;
-		generateTurningAnimation();
-		mTurning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, mTurningAnimationSprites, 0, 23, true, 1);
-		this->addComponent(*mTurning);
+		case ObstacleType::MACHINE_PART:
+			DEBUG("obstacle is a MACHINE PART");
+			mMachinePartState = MachinePartState::NON_COLLECTED;
+			generateTurningAnimation();
+			mTurning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, mTurningAnimationSprites, 0, 23, true, 1);
+			this->addComponent(*mTurning);
 
-		mAudioController = new engine::AudioController();
-		ASSERT(mAudioController != NULL, "engine::AudioController, AudioController can't be NULL.");
-		mCollected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
-		ASSERT(mCollected != NULL, "engine::AudioComponent, AudioComponent can't be NULL.");
-		mAudioController->addAudio("coleta", *mCollected);
-		this->addComponent(*mAudioController);
+			mAudioController = new engine::AudioController();
+			ASSERT(mAudioController != NULL, "engine::AudioController, AudioController can't be NULL.");
+			mCollected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
+			ASSERT(mCollected != NULL, "engine::AudioComponent, AudioComponent can't be NULL.");
+			mAudioController->addAudio("coleta", *mCollected);
+			this->addComponent(*mAudioController);
 
-		mMachinePartCode = new MachinePartCode(this);
-		ASSERT(mMachinePartCode != NULL, "MachinePartCode, mMachinePartCode can't return NULL.");
-		this->addComponent(*mMachinePartCode);
+			mMachinePartCode = new MachinePartCode(this);
+			ASSERT(mMachinePartCode != NULL, "MachinePartCode, mMachinePartCode can't return NULL.");
+			this->addComponent(*mMachinePartCode);
+			break;
 
-	} else if (mObstacleType == ObstacleType::WESTERN_SPIKE) {
-		DEBUG("obstacle is a WESTERN SPIKE");
+		case ObstacleType::WESTERN_SPIKE:
+			DEBUG("obstacle is a WESTERN SPIKE");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
+			ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
-		ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
-	} else if (mObstacleType == ObstacleType::WESTERN_POST) {
-		DEBUG("obstacle is a WESTERN POST");
+		case ObstacleType::WESTERN_POST:
+			DEBUG("obstacle is a WESTERN POST");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
+			ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
+		
+		case ObstacleType::GROUND:
+			createBlocks();
+			break;
 
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
-		ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
-	} else if (mObstacleType == ObstacleType::GROUND) {
-		createBlocks();
+		default:
+			//Nothing to do, there is no component with this type
+			break;
 	}
 }
 
