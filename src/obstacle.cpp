@@ -39,6 +39,8 @@ void Obstacle::shutdown() {
 			eachBlock->shutdown();
 			delete(eachBlock);
 			eachBlock = NULL;
+		} else {
+			//Nothing to do, the pointer is already null
 		}
 	}
 
@@ -48,14 +50,20 @@ void Obstacle::shutdown() {
 			if (eachAnimation != NULL) {
 				delete(eachAnimation);
 				eachAnimation = NULL;
+			} else {
+				//Nothing to do, the pointer is already null
 			}
 		}
+	} else {
+		//Nothing to do, there is no mTurningAnimationSprites
 	}
 
 	// Clear all remaining images.
 	if (mObstacleImage != NULL) {
 		delete(mObstacleImage);
 		mObstacleImage = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
 	// Clear all remaining audio.
@@ -63,17 +71,23 @@ void Obstacle::shutdown() {
 		mAudioController->shutdown();
 		delete(mAudioController);
 		mAudioController = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
 	// Reset mCollected value.
 	if (mCollected != NULL) {
 		mCollected = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
 	// Reset mTurning value.
 	if (mTurning != NULL) {
 		delete(mTurning);
 		mTurning = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
 	// Shutdown mMachinePart code.
@@ -81,6 +95,8 @@ void Obstacle::shutdown() {
 		mMachinePartCode->shutdown();
 		delete(mMachinePartCode);
 		mMachinePartCode = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 }
 
