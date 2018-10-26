@@ -77,6 +77,7 @@ void MenuCode::updateCode(){
 				break;
 			default:
 				// Nothing to do, no button selected.
+				break;
 		}
 	}
 	changeOption();
@@ -148,5 +149,6 @@ void MenuCode::changeOption(){
 			break;
 		default:
 			// Nothing to do, no button defined.
+			break;
 	}
 }

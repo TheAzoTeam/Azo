@@ -74,5 +74,6 @@ void MachinePartCode::updateCode() {
                         break;
 		default:
                         // Nothing to do, MachinePart not collected.
+                        break;
 	}
 }
