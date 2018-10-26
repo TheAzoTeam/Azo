@@ -20,7 +20,9 @@ using namespace Azo;
 	 * @param Gameobject that is the creation object of the ' menu '
      */
 MenuCode::MenuCode(engine::GameObject *gameObject){
+	ASSERT(&gameObject != NULL, "GameObject can't be null.");
 	this->gameObject = gameObject; // Variable responsible for game object.
+	ASSERT(this->gameObject == gameObject, "gameObject must have correct value.");
 	findAudioController();
 	findAnimationController();
 }
@@ -70,6 +72,7 @@ void MenuCode::updateCode(){
 					mAnimationController->stopAnimation("sound_enabled_button");
 					mAnimationController->startAnimation("sound_disabled_button");
 				} else {
+					// Audio not currently playing, so start it again.
 					mAudioController->playAudio("menu_theme");
 					mAnimationController->startAnimation("sound_enabled_button");
 					mAnimationController->stopAnimation("sound_disabled_button");
@@ -114,7 +117,6 @@ void MenuCode::changeOption(){
 		// Exit Option.
 		case ButtonType::EXIT_BUTTON:
 			DEBUG("Exit Button is selected.");
-
 
 			mAnimationController->startAnimation("arrow_exit");
 
