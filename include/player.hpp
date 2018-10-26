@@ -28,7 +28,7 @@ namespace Azo {  //Used to avoid writing all the path from Azo context
 	* This class is used to define the possible player's state.
 	* player's behaviour is updated according to this states.
 	*/
-	enum class PlayerState {   //Application of the technique 25
+	enum class PlayerState {
 		WALK,
 		JUMP,
 		SLIDE,
@@ -41,7 +41,7 @@ namespace Azo {  //Used to avoid writing all the path from Azo context
 	* This class is used to characterize player and set its configurations and behaviour
 	*/
 	class Player : public engine::GameObject {
-		private: // Application of the technique 24
+		private: 
 			engine::AnimationController *mAnimationController; //pointer to corresponding current animation
 			engine::AudioController *mAudioController; //pointer to corresponding current audio
 			// Add new audios here.
@@ -78,7 +78,7 @@ namespace Azo {  //Used to avoid writing all the path from Azo context
 				return "Player";
 			}
 
-		public:  // Application of the technique 24
+		public:
 			Player();
 			Player(std::string name, std::pair<double, double> currentPosition);
 

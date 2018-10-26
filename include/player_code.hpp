@@ -26,7 +26,7 @@ namespace Azo { //Used to avoid writing all the path from Azo context
 	* It updates player's animation and audios according to the events.
 	*/
 	class PlayerCode : public engine::CodeComponent {
-		private:  // Application of the technique 24
+		private:
 			Player *mPlayer = nullptr; //Pointer that reffer the player character when created
 			engine::AnimationController *mAnimationController = nullptr; //Pointer that handle the animations according to player's behaviour
 			engine::AudioController *mAudioController = nullptr; // Pointer that handle the sounds corresponding player's behavour
@@ -36,7 +36,7 @@ namespace Azo { //Used to avoid writing all the path from Azo context
 			void findAnimationController();
 			void findAudioController();
 
-		public:  // Application of the technique 24
+		public:  
 			PlayerCode();
 			virtual ~PlayerCode();
 			PlayerCode(Player *player);

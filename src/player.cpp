@@ -35,7 +35,7 @@ void Player::shutdown() {
 		delete(mAnimationController);
 		mAnimationController = nullptr;
 	}else{
-			//mAnimationController is not null   //Application of the technique 23
+			//mAnimationController is not null
 	}
 
 	//The subsequent loops will Free the corresponding sprites
@@ -45,7 +45,7 @@ void Player::shutdown() {
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}else{
-				//null pointer   //Application of the technique 23
+				//null pointer
 		}
 	}
 
@@ -54,7 +54,7 @@ void Player::shutdown() {
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}else{
-				//null pointer   //Application of the technique 23
+				//null pointer
 		}
 	}
 
@@ -63,7 +63,7 @@ void Player::shutdown() {
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}else{
-				//null pointer   //Application of the technique 23
+				//null pointer
 		}
 	}
 
@@ -72,8 +72,7 @@ void Player::shutdown() {
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}else{
-				//null pointer   //Application of the technique 23
-		}
+				//null pointer
 	}
 
 	//The subsequent 'ifs' checks if the variable pointer is pointing to null
@@ -82,7 +81,7 @@ void Player::shutdown() {
 		delete(mWalking);
 		mWalking = nullptr;
 	}else{
-			//null pointer      //Application of the technique 23
+			//null pointer
 	}
 
 	//ASSERT(mJumping == nullptr, "Jumping component pointer error");
@@ -90,7 +89,7 @@ void Player::shutdown() {
 		delete(mJumping);
 		mJumping = nullptr;
 	}else{
-			//null pointer     //Application of the technique 23
+			//null pointer
 	}
 
 	//ASSERT(mSliding == nullptr, "Sliding component pointer error");
@@ -98,7 +97,7 @@ void Player::shutdown() {
 		delete(mSliding);
 		mSliding = nullptr;
 	}else{
-			//null pointer    //Application of the technique 23
+			//null pointer
 	}
 
 	//ASSERT(mDying == nullptr, "Dying component pointer error");
@@ -106,7 +105,7 @@ void Player::shutdown() {
 		delete(mDying);
 		mDying = nullptr;
 	}else{
-			//null pointer   //Application of the technique 23
+			//null pointer
 	}
 
 	//ASSERT(mLosing == nullptr, "Losing component pointer error");
@@ -114,7 +113,7 @@ void Player::shutdown() {
 		delete(mLosing);
 		mLosing = nullptr;
 	}else{
-			//null pointer   //Application of the technique 23
+			//null pointer
 	}
 
 	//ASSERT(mPlayerCode == nullptr, "PlayerCode component pointer error");
@@ -123,8 +122,9 @@ void Player::shutdown() {
 		delete(mPlayerCode);
 		mPlayerCode = nullptr;
 	}else{
-			//null pointer   //Application of the technique 23
+			//null pointer
 	}
+}
 }
 
 //This method create the components corresponding to player. Components as the
@@ -262,7 +262,7 @@ void Player::generateVictoryAnimation() {
 
 //This method sets the configuration for winning scenario
 void Player::generateLosingAnimation() {
-	const int LOSING_SPRITES = 7;                  //Application of the technique 25
+	const int LOSING_SPRITES = 7;
 	for (int i = 0; i < LOSING_SPRITES; i++) {
 		mLosingAnimationSprites.push_back(new engine::Sprite());
 	}
@@ -312,7 +312,7 @@ void Player::generateLosingAnimation() {
 //This method sets the walking sprites on its desgined variables
 void Player::generateWalkingAnimation() {
 	DEBUG("Generating Player walking animation.");
-	const int WALKING_SPRITES = 23;                               //Application of the technique 25
+	const int WALKING_SPRITES = 23;
 	//A loop to run all the 23 spaces of the mAnimationSprites vector
 	for (int i = 0; i < WALKING_SPRITES; i++) {
 		mWalkingAnimationSprites.push_back(new engine::Sprite());
@@ -443,7 +443,7 @@ void Player::generateWalkingAnimation() {
 //This method sets the jumping sprites on its desgined variables
 void Player::generateJumpingAnimation() {
 	DEBUG("Generating Player Jumping Animation.");
-	const int JUMPING_SPRITES = 8;                       //Application of the technique 25
+	const int JUMPING_SPRITES = 8;
 	//create a vector with designed number of sprites
 	for (int i = 0; i < JUMPING_SPRITES; i++) {
 		mJumpingAnimationSprites.push_back(new engine::Sprite());
@@ -498,7 +498,7 @@ void Player::generateJumpingAnimation() {
 
 //This method sets the sliding sprites on its desgined variables
 void Player::generateSlidingAnimation() {
-	const int SLIDING_SPRITES = 21;                                  //Application of the technique 25
+	const int SLIDING_SPRITES = 21;
 	//create a vector with designed number of sprites
 	for (int i = 0; i < SLIDING_SPRITES; i++) {
 		mSlidingAnimationSprites.push_back(new engine::Sprite());
@@ -618,7 +618,7 @@ void Player::generateSlidingAnimation() {
 
 //This method sets the jumping sprites on its desgined variables
 void Player::generateDyingAnimation() {
-	const int DYING_SPRITES = 36;                  //Application of the technique 25
+	const int DYING_SPRITES = 36;
 	//create a vector with designed number of sprites
 	for (int i = 0; i < DYING_SPRITES; i++) {
 		mDyingAnimationSprites.push_back(new engine::Sprite());
