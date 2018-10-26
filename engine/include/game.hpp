@@ -32,7 +32,7 @@ namespace engine {
 	*/
 	enum class GameState {
 		EXIT,
-		PLAY,
+		PLAY
 	};
 
 	/**
@@ -91,10 +91,10 @@ namespace engine {
 
 			void changeScene(std::string sceneName);
 
-			static Game instance; // Global game instance.
-			SDL sdlElements; // Used to access SDL class and sdl elements.
-			InputManager inputManager; // Used to access the user inputs
-			GameState gameState; // Define Game States to control Loops and other structures.
+			static Game instance; //Global game instance.
+			SDL sdlElements; //Used to access SDL class and sdl elements.
+			InputManager inputManager; //Used to access the user inputs
+			GameState gameState; //Define Game States to control Loops and other structures.
 	};
 }
 

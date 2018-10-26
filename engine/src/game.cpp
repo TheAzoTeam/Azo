@@ -24,7 +24,7 @@ Game Game::instance; // Used to initialize in fact the static instance of game;
 *
 * @return "void".
 */
-Game::Game(){
+Game::Game() {
 	this->needToChangeScene = false;
 	this->currentScene = NULL;
 	this->lastScene = NULL;
@@ -38,8 +38,7 @@ Game::Game(){
 *
 * @return "void".
 */
-void Game::run(){
-
+void Game::run() {
 	// Initialize all SDL attributes, create the window and set state to play.
 	sdlElements.initSDL();
 	sdlElements.createWindow();
@@ -48,24 +47,26 @@ void Game::run(){
 	frameTime = 1000.0f / frameRate; // Calculate the time of a game frame (miliseconds).
 
 	INFO("Starting Main Loop Game.");
-	while(gameState == engine::GameState::PLAY){
-		timer.step(); // Get the current time.
+	while (gameState == engine::GameState::PLAY) {
+		timer.step();  //Get the current time.
 
 		if (startAndStopScenes() == false) {
 			break;
+		} else {
+			//Nothing to do, game continues
 		}
 
-		SDL_Event _event; // Reading input (events).
+		SDL_Event _event;  //Reading input (events).
 
-		// "Search" for a event that will close the Game.
-		while(SDL_PollEvent(&_event)){
-			switch(_event.type){
+		//"Search" for a event that will close the Game.
+		while (SDL_PollEvent(&_event)) {
+			switch (_event.type) {
 				case SDL_QUIT:
-				gameState = engine::GameState::EXIT;
-				break;
+					gameState = engine::GameState::EXIT;
+					break;
 				default:
-				inputManager.update(_event); // Check for user inputs.
-				break;
+					inputManager.update(_event);  //Check for user inputs.
+					break;
 			}
 		}
 
@@ -75,17 +76,17 @@ void Game::run(){
 		SDL_RenderPresent(sdlElements.getCanvas());
 
 		currentScene->updateCode();
-
 		inputManager.clear();
-
 		timer.DeltaTime(); // Calculating elapsed time from the start of this frame until now.
 
 		/**
 		* If the time that has passed until now was faster than the frame's time,
 		* is needed wait the time necessary to complete a frame's time.
 		*/
-		if(frameTime > timer.getDeltaTime()){
+		if (frameTime > timer.getDeltaTime()) {
 			SDL_Delay(frameTime - timer.getDeltaTime());
+		} else {
+			//Nothing to do, delay is correct
 		}
 
 		timer.DeltaTime();
@@ -104,17 +105,19 @@ void Game::run(){
 *
 * @param Scene that represent a game stage.
 *
-* @return a bool that indicates the add scene success.
+* @return Boolean that indicates the add scene success.
 */
-bool Game::addScene(Scene &scene){
+bool Game::addScene(Scene &scene) {
 	ASSERT(&scene != NULL, "The scene can't be null.");
 
 	auto sceneName = scene.getSceneName();
 	ASSERT(sceneName != "", "Scene name can't be null.");
 
-	if(sceneMap.find(sceneName) != sceneMap.end()){
+	if (sceneMap.find(sceneName) != sceneMap.end()) {
 		ERROR("Scene already exists!");
 		return false;
+	} else {
+		//Nothing to do, scene will be loaded
 	}
 
 	sceneMap[sceneName] = &scene;
@@ -132,8 +135,9 @@ bool Game::addScene(Scene &scene){
 *
 * @return "void".
 */
-void Game::restartScene(std::string sceneName){
+void Game::restartScene(std::string sceneName) {
 	ASSERT(sceneName != "", "The scene name can't be blank.");
+
 	auto scene = sceneMap[sceneName];
 	ASSERT(&scene != NULL, "Scene can't be null.");
 
@@ -151,9 +155,12 @@ void Game::restartScene(std::string sceneName){
 */
 void Game::changeScene(std::string sceneName){
 	ASSERT(sceneName != "", "The scene name can't be blank.");
+
 	INFO("Changing Scenes.");
-	if(sceneMap.find(sceneName) == sceneMap.end()){
+	if (sceneMap.find(sceneName) == sceneMap.end()) {
 		ERROR("Scene not found!");
+	} else {
+		//Nothing to do, scene will be loaded
 	}
 
 	lastScene = currentScene;
@@ -170,38 +177,63 @@ void Game::changeScene(std::string sceneName){
 *
 * @return Boolean that represents the success on change scene.
 */
-bool Game::startAndStopScenes(){
+bool Game::startAndStopScenes() {
 	if (needToChangeScene) {
-		if(currentScene == NULL){
+		if (currentScene == NULL) {
 			ERROR("No scenes to run!");
 			return false;
 		} else {
-			// If the last scene is equal the current scene, we still need
-			// to delete all keys from the game object map on scene.
-			if(lastScene != NULL && lastScene->getSceneName() == currentScene->getSceneName()){
+			//If the last scene is equal the current scene, we still need
+			//to delete all keys from the game object map on scene.
+			if (lastScene != NULL && lastScene->getSceneName() == currentScene->getSceneName()) {
 				currentScene->deleteKeyList();
+			} else {
+				//Nothing to do, no scene to be deleted
 			}
 
-			if(currentScene->mState == SceneState::RUNNED){
-				currentScene->restart();
-				currentScene->mState = SceneState::FIRST_TIME;
-			}
+			// if(currentScene->mState == SceneState::RUNNED){
+			// 	currentScene->restart();
+			// 	currentScene->mState = SceneState::FIRST_TIME;
+			// }
+			//
+			// if(currentScene->mState == SceneState::FIRST_TIME){
+			// 	currentScene->mState = SceneState::RUNNED;
+			// }
 
-			if(currentScene->mState == SceneState::FIRST_TIME){
-				currentScene->mState = SceneState::RUNNED;
+			switch (currentScene->mState) {
+				case SceneState::RUNNED:
+					currentScene->restart();
+					currentScene->mState = SceneState::FIRST_TIME;
+					break;
+
+				case SceneState::FIRST_TIME:
+					currentScene->mState = SceneState::RUNNED;
+					break;
+
+				default:
+					//Nothing to do, scene needs to have mState assigned
+					break;
 			}
 
 			currentScene->init();
 
-			if(lastScene != NULL){
+			if (lastScene != NULL) {
 				INFO("Shuting down scene!");
-				if(lastScene->getSceneName() != currentScene->getSceneName()){
+
+				//TODO(This 'if' above is really necessary?)
+				if (lastScene->getSceneName() != currentScene->getSceneName()) {
 					lastScene->shutdown();
+				} else {
+					//Nothing to do, scene doesn't need to be shutted
 				}
+			} else {
+				//Nothing to do, scene doesn't need to be shutted
 			}
 
 			needToChangeScene = false;
 		}
+	} else {
+		//Nothing to do, scene won't be changed
 	}
 
 	return true;
@@ -219,7 +251,7 @@ bool Game::startAndStopScenes(){
 *
 * @return "void".
 */
-void Game::setAttributes(std::string gameName, int windowWidth, int windowHeight, int frameRate){
+void Game::setAttributes(std::string gameName, int windowWidth, int windowHeight, int frameRate) {
 	ASSERT(gameName != "", "The game name can't be blank.");
 	ASSERT(windowWidth >= 0, "The window width can't be lower than zero.");
 	ASSERT(windowHeight >= 0, "The window height can't be lower than zero.");
