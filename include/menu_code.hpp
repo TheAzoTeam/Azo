@@ -22,8 +22,7 @@ namespace Azo {
 	enum class ButtonType {
 		START_BUTTON,
 		EXIT_BUTTON,
-		SOUND_BUTTON,
-		NONE
+		SOUND_BUTTON
 	};
 
 	/** 
@@ -37,7 +36,7 @@ namespace Azo {
 		private:
 			engine::AudioController *mAudioController; // Variable responsible for audio control
 			engine::AnimationController *mAnimationController; // Variable responsible for animation control
-			ButtonType mCurrentButton = NONE; // Variable referring to the current button
+			ButtonType mCurrentButton = ButtonType::START_BUTTON; // Variable referring to the current button
 		public:
 			MenuCode(engine::GameObject *gameObject);
 		private:
