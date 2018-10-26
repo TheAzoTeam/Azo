@@ -28,7 +28,7 @@ namespace Azo {  //Used to avoid writing all the path from Azo context
 	* This class is used to define the possible player's state.
 	* player's behaviour is updated according to this states.
 	*/
-	enum class PlayerState {
+	enum class PlayerState {   //Application of the technique 25
 		WALK,
 		JUMP,
 		SLIDE,

@@ -262,7 +262,7 @@ void Player::generateVictoryAnimation() {
 
 //This method sets the configuration for winning scenario
 void Player::generateLosingAnimation() {
-	const int LOSING_SPRITES = 7;
+	const int LOSING_SPRITES = 7;                  //Application of the technique 25
 	for (int i = 0; i < LOSING_SPRITES; i++) {
 		mLosingAnimationSprites.push_back(new engine::Sprite());
 	}
@@ -312,7 +312,7 @@ void Player::generateLosingAnimation() {
 //This method sets the walking sprites on its desgined variables
 void Player::generateWalkingAnimation() {
 	DEBUG("Generating Player walking animation.");
-	const int WALKING_SPRITES = 23;
+	const int WALKING_SPRITES = 23;                               //Application of the technique 25
 	//A loop to run all the 23 spaces of the mAnimationSprites vector
 	for (int i = 0; i < WALKING_SPRITES; i++) {
 		mWalkingAnimationSprites.push_back(new engine::Sprite());
@@ -443,7 +443,7 @@ void Player::generateWalkingAnimation() {
 //This method sets the jumping sprites on its desgined variables
 void Player::generateJumpingAnimation() {
 	DEBUG("Generating Player Jumping Animation.");
-	const int JUMPING_SPRITES = 8;
+	const int JUMPING_SPRITES = 8;                       //Application of the technique 25
 	//create a vector with designed number of sprites
 	for (int i = 0; i < JUMPING_SPRITES; i++) {
 		mJumpingAnimationSprites.push_back(new engine::Sprite());
@@ -498,7 +498,7 @@ void Player::generateJumpingAnimation() {
 
 //This method sets the sliding sprites on its desgined variables
 void Player::generateSlidingAnimation() {
-	const int SLIDING_SPRITES = 21;
+	const int SLIDING_SPRITES = 21;                                  //Application of the technique 25
 	//create a vector with designed number of sprites
 	for (int i = 0; i < SLIDING_SPRITES; i++) {
 		mSlidingAnimationSprites.push_back(new engine::Sprite());
@@ -618,7 +618,7 @@ void Player::generateSlidingAnimation() {
 
 //This method sets the jumping sprites on its desgined variables
 void Player::generateDyingAnimation() {
-	const int DYING_SPRITES = 36;
+	const int DYING_SPRITES = 36;                  //Application of the technique 25
 	//create a vector with designed number of sprites
 	for (int i = 0; i < DYING_SPRITES; i++) {
 		mDyingAnimationSprites.push_back(new engine::Sprite());
