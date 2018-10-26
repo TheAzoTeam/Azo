@@ -83,6 +83,8 @@ void Animation::shutdown() {
 			delete(eachSprite);
 			eachSprite = NULL;
 		}
+	}else{
+		//Nothing to do
 	}
 }
 
