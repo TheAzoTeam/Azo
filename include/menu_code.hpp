@@ -14,6 +14,18 @@
 #include "audio_controller.hpp"
 
 namespace Azo {
+		/**
+	 * @brief Class for possible button types.
+	 * 
+	 * Enum class used to differentiate buttons inside the menu.
+	 */ 
+	enum class ButtonType {
+		START_BUTTON,
+		EXIT_BUTTON,
+		SOUND_BUTTON,
+		NONE
+	};
+
 	/** 
 		 * @brief A Hitbox class.
 		 * MenuCode class
@@ -25,7 +37,7 @@ namespace Azo {
 		private:
 			engine::AudioController *mAudioController; // Variable responsible for audio control
 			engine::AnimationController *mAnimationController; // Variable responsible for animation control
-			int mCurrentButton = 1; // Variable referring to the current button
+			ButtonType mCurrentButton = NONE; // Variable referring to the current button
 		public:
 			MenuCode(engine::GameObject *gameObject);
 		private:
