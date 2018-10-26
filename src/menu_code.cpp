@@ -20,7 +20,7 @@ using namespace Azo;
 	 * @param Gameobject that is the creation object of the ' menu '
      */
 MenuCode::MenuCode(engine::GameObject *gameObject){
-	this->gameObject = gameObject; // variÃ¡vel responsÃ¡vel pelo objeto do jogo
+	this->gameObject = gameObject; // Variable responsible for game object.
 	findAudioController();
 	findAnimationController();
 }
@@ -62,25 +62,23 @@ void MenuCode::updateCode(){
 				engine::Game::instance.changeScene("level_one");
 				break;
 			case 2:
-				engine::Game::instance.gameState = engine::GameState::EXIT; // Variable responsible for the state of play
+				engine::Game::instance.gameState = engine::GameState::EXIT; // Variable responsible for the state of game.
 				break;
 			case 3:
-
 				if(mAudioController->getAudioState("menu_theme") == engine::AudioState::PLAYING){
 					mAudioController->pauseAudio("menu_theme");
 					mAnimationController->stopAnimation("sound_enabled_button");
 					mAnimationController->startAnimation("sound_disabled_button");
-				}else{
+				} else {
 					mAudioController->playAudio("menu_theme");
 					mAnimationController->startAnimation("sound_enabled_button");
 					mAnimationController->stopAnimation("sound_disabled_button");
 				}
-
 				break;
-
+			default:
+				// Nothing to do, no button selected.
 		}
 	}
-
 	changeOption();
 }
 
@@ -106,9 +104,7 @@ void MenuCode::changeOption(){
 
 				mCurrentButton = 2;
 
-			}
-
-			if (engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)) {
+			} else if (engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)) {
 				mAnimationController->stopAnimation("arrow_start");
 				mCurrentButton = 3;
 			}
@@ -125,9 +121,7 @@ void MenuCode::changeOption(){
 				mAnimationController->stopAnimation("arrow_exit");
 
 				mCurrentButton = 3;
-			}
-
-			if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
+			} else if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
 				mAnimationController->stopAnimation("arrow_exit");
 
 				mCurrentButton = 1;
@@ -146,14 +140,13 @@ void MenuCode::changeOption(){
 				// Go back to the first option.
 				mCurrentButton = 1;
 
-			}
-
-			if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
+			} else if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
 				mAnimationController->stopAnimation("arrow_sound");
 
 				mCurrentButton = 2;
 			}
-
 			break;
+		default:
+			// Nothing to do, no button defined.
 	}
 }
