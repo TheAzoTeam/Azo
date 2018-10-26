@@ -1,13 +1,13 @@
 /**
  * @file component.cpp
  * @brief Purpose: Contains general scope to game components.
- * 
+ *
  * GPL v3.0 License
  * Copyright (c) 2017 Azo
- * 
+ *
  * Notice: TheAzo, TheAzoTeam
  * https://github.com/TecProg2018-2/Azo
- * 
+ *
  * This file is responsible for create the model to all components of the game.
 */
 #include "component.hpp"
@@ -17,17 +17,16 @@ using namespace engine; // Used to avoid write engine::Game engine::Game::instan
 
 /**
  * @brief Default constructor for the component.
- *  
+ *
  * @return "void".
 */
 Component::Component(){}
 
-
 /**
  * @brief Constructor for the component.
- *  
- * @param game object to the component.
- * 
+ *
+ * @param Game object to the component.
+ *
  * @return "void".
 */
 Component::Component(GameObject &gameObject){
@@ -36,52 +35,47 @@ Component::Component(GameObject &gameObject){
 	ASSERT(this->componentState == State::ENABLED, "Must change component state.");
 }
 
-
 /**
- * @brief inherits function that initialize the game components
- * 
+ * @brief Inherits function that initialize the game components
+ *
  * Set all game components to enable
- * 
+ *
  * @return "void".
 */
 void Component::init(){}
 
-
 /**
- * @brief inherits function that disable the game components
- * 
- * free the component pointers
- *  
+ * @brief Inherits function that disable the game components
+ *
+ * Free the component pointers
+ *
  * @return "void".
 */
 void Component::shutdown(){}
 
-
 /**
- * @brief inherits function that draw game objects. 
- * 
- * draws all the enabled game objects.
- * 
+ * @brief Inherits function that draw game objects.
+ *
+ * Draws all the enabled game objects.
+ *
  * @return "void".
 */
 void Component::draw(){}
 
-
 /**
- * @brief inherits function that update the game code.  
- * 
- * update all the enabled game objects.
- *  
+ * @brief Inherits function that update the game code.
+ *
+ * Update all the enabled game objects.
+ *
  * @return "void".
 */
 void Component::updateCode(){}
 
-
 /**
- * @brief enable components.  
- * 
- * set the game object components state to enabled.
- * 
+ * @brief Enable components.
+ *
+ * Set the game object components state to enabled.
+ *
  * @return "void".
 */
 void Component::enableComponent(){
@@ -89,11 +83,10 @@ void Component::enableComponent(){
 	ASSERT(this->componentState == State::ENABLED, "Must change component state.");
 }
 
-
 /**
- * @brief disable components.  
- * 
- * set the game object components state to disabled.
+ * @brief Disable components.
+ *
+ * Set the game object components state to disabled.
  *
  * @return "void".
 */
@@ -102,16 +95,15 @@ void Component::disableComponent(){
 	ASSERT(this->componentState == State::ENABLED, "Must change component state.");
 }
 
-
 /**
- * @brief test if component is enable.  
- * 
- * allows see if component is enable or disable.
- * 
- * @return bool that response if component is enabled.
+ * @brief Test if component is enable.
+ *
+ * Allows see if component is enable or disable.
+ *
+ * @return Bool that response if component is enabled.
 */
 bool Component::isEnabled(){
-	if( componentState == State::ENABLED){
+	if (componentState == State::ENABLED) {
 		return true;
 	} else {
 		return false;
