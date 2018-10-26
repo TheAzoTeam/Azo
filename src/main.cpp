@@ -22,7 +22,7 @@ using namespace Azo;
 	 * @return Integer with output status.
      */
 int main(int, char**) {
-	// Get the Primary Data for create the game and transfer to SDL do this.
+	// Setting the game global variables (such as screen size and frame rate) before starting.
 	engine::Game::instance.setAttributes(
 		global::GAME_NAME,
 		global::WINDOWN_WIDTH,
