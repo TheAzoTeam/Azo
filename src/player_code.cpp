@@ -70,7 +70,7 @@ void PlayerCode::shutdown(){
 	if (mAnimationController != NULL) {
 		 mAnimationController = NULL;
 	}else{
-			//null pointer   //Aplicação da técnica 23
+			//null pointer   //Application of the technique 23
 	}
 }
 
@@ -113,7 +113,7 @@ void PlayerCode::updateCode() {
 			if (engine::Game::instance.inputManager.keyState(engine::Button::S)) {
 				mPlayer->mState = PlayerState::SLIDE;
 			}else{
-					// button is not pressed      //Aplicação da técnica 23
+					// button is not pressed      //Application of the technique 23
 			}
 
 			break;
@@ -125,7 +125,7 @@ void PlayerCode::updateCode() {
 			if (mPlayer->mOnGround) {
 				mPlayer->mState = PlayerState::WALK;
 			}else{
-					// player can't jump cause it isn't on ground      //Aplicação da técnica 23
+					// player can't jump cause it isn't on ground      //Application of the technique 23
 			}
 
 			mAnimationController->startUniqueAnimation("jumping");
@@ -150,7 +150,7 @@ void PlayerCode::updateCode() {
 				mPlayer->mState = PlayerState::WALK;
 				break;
 			}else{
-					// character is not sliding      //Aplicação da técnica 23
+					// character is not sliding      //Application of the technique 23
 			}
 
 
@@ -163,7 +163,7 @@ void PlayerCode::updateCode() {
 				mPlayer->mSpeed.first = mPlayer->M_ZERO_VECTOR.first; //clear mPlayer walking speed
 				mPlayer->mState = PlayerState::WALK;
 			}else{
-					// player not attached no obstacle     //Aplicação da técnica 23
+					// player not attached no obstacle     //Application of the technique 23
 			}
 
 			//check if button 'W' is pressed
@@ -171,7 +171,7 @@ void PlayerCode::updateCode() {
 				mPlayer->mState = PlayerState::JUMP;
 				mPlayer->mSpeed.second = mPlayer->M_JUMPING_SPEED; //normal jump speed of character
 			}else{
-					// 'w' button is not pressed     //Aplicação da técnica 23
+					// 'w' button is not pressed     //Application of the technique 23
 			}
 
 			break;
@@ -188,7 +188,7 @@ void PlayerCode::updateCode() {
 				if (mAnimationController->getAnimationStatus("losing") == engine::AnimationState::FINISHED) {
 					mAudioController->playAudio("lost");
 				}else{
-						// animationStatus is not losing    //Aplicação da técnica 23
+						// animationStatus is not losing    //Application of the technique 23
 				}
 			} else {
 				mAnimationController->startUniqueAnimation("victory");

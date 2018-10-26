@@ -34,6 +34,8 @@ void Player::shutdown() {
 		mAnimationController->shutdown();
 		delete(mAnimationController);
 		mAnimationController = nullptr;
+	}else{
+			//mAnimationController is not null   //Application of the technique 23
 	}
 
 	//The subsequent loops will Free the corresponding sprites
@@ -43,7 +45,7 @@ void Player::shutdown() {
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}else{
-				//null pointer   //Aplicação da técnica 23
+				//null pointer   //Application of the technique 23
 		}
 	}
 
@@ -52,7 +54,7 @@ void Player::shutdown() {
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}else{
-				//null pointer   //Aplicação da técnica 23
+				//null pointer   //Application of the technique 23
 		}
 	}
 
@@ -61,7 +63,7 @@ void Player::shutdown() {
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}else{
-				//null pointer   //Aplicação da técnica 23
+				//null pointer   //Application of the technique 23
 		}
 	}
 
@@ -70,7 +72,7 @@ void Player::shutdown() {
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
 		}else{
-				//null pointer   //Aplicação da técnica 23
+				//null pointer   //Application of the technique 23
 		}
 	}
 
@@ -80,7 +82,7 @@ void Player::shutdown() {
 		delete(mWalking);
 		mWalking = nullptr;
 	}else{
-			//null pointer      //Aplicação da técnica 23
+			//null pointer      //Application of the technique 23
 	}
 
 	//ASSERT(mJumping == nullptr, "Jumping component pointer error");
@@ -88,7 +90,7 @@ void Player::shutdown() {
 		delete(mJumping);
 		mJumping = nullptr;
 	}else{
-			//null pointer     //Aplicação da técnica 23
+			//null pointer     //Application of the technique 23
 	}
 
 	//ASSERT(mSliding == nullptr, "Sliding component pointer error");
@@ -96,7 +98,7 @@ void Player::shutdown() {
 		delete(mSliding);
 		mSliding = nullptr;
 	}else{
-			//null pointer    //Aplicação da técnica 23
+			//null pointer    //Application of the technique 23
 	}
 
 	//ASSERT(mDying == nullptr, "Dying component pointer error");
@@ -104,7 +106,7 @@ void Player::shutdown() {
 		delete(mDying);
 		mDying = nullptr;
 	}else{
-			//null pointer   //Aplicação da técnica 23
+			//null pointer   //Application of the technique 23
 	}
 
 	//ASSERT(mLosing == nullptr, "Losing component pointer error");
@@ -112,7 +114,7 @@ void Player::shutdown() {
 		delete(mLosing);
 		mLosing = nullptr;
 	}else{
-			//null pointer   //Aplicação da técnica 23
+			//null pointer   //Application of the technique 23
 	}
 
 	//ASSERT(mPlayerCode == nullptr, "PlayerCode component pointer error");
@@ -121,7 +123,7 @@ void Player::shutdown() {
 		delete(mPlayerCode);
 		mPlayerCode = nullptr;
 	}else{
-			//null pointer   //Aplicação da técnica 23
+			//null pointer   //Application of the technique 23
 	}
 }
 
