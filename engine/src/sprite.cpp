@@ -28,4 +28,36 @@ Sprite::Sprite(int spriteWidth, int spriteHeight, int spriteX, int spriteY) {
 	this->spriteY = spriteY;
 }
 
+void Sprite::setSpriteWidth(int newSpriteWidth){
+	this->spriteWidth = newSpriteWidth;
+}
+
+int Sprite::getSpriteWidth(){
+	return this->spriteWidth;
+}
+
+void Sprite::setSpriteHeight(int newSpriteHeight){
+	this->spriteHeight = newSpriteHeight;
+}
+
+int Sprite::getSpriteHeight(){
+	return this->spriteHeight;
+}
+
+void Sprite::setSpriteX(int newSpriteX){
+	this->spriteX = newSpriteX;
+}
+
+int Sprite::getSpriteX(){
+	return this->spriteX;
+}
+
+void Sprite::setSpriteY(int newSpriteY){
+	this->spriteY = newSpriteY;
+}
+
+int Sprite::getSpriteY(){
+	return this->spriteY;
+}
+
 Sprite::~Sprite() {}

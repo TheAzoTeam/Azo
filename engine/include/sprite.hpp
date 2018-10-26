@@ -18,6 +18,19 @@ namespace engine {
 		public:
 			Sprite();
 			Sprite(int spriteWidth, int spriteHeight, int spriteX, int spriteY);
+
+			void setSpriteWidth(int newSpriteWidth);
+			int getSpriteWidth();
+
+			void setSpriteHeight(int newSpriteHeight);
+			int getSpriteHeight();
+
+			void setSpriteX(int newSpriteX);
+			int getSpriteX();
+
+			void setSpriteY(int newSpriteY);
+			int getSpriteY();
+
 			~Sprite();
 		public:
 			int spriteWidth;

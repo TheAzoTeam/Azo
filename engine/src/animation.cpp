@@ -108,10 +108,10 @@ void Animation::draw() {
 
 void Animation::updateQuad() {
 	renderQuad = {
-		mSpriteList[mCurrentSprite]->spriteX,
-		mSpriteList[mCurrentSprite]->spriteY,
-		mSpriteList[mCurrentSprite]->spriteWidth,
-		mSpriteList[mCurrentSprite]->spriteHeight
+		mSpriteList[mCurrentSprite].getSpriteX(),
+		mSpriteList[mCurrentSprite].getSpriteY(),
+		mSpriteList[mCurrentSprite].getSpriteWidth(),
+		mSpriteList[mCurrentSprite].getSpriteHeight()
 	};
 
 	//Updating canvas quad.
