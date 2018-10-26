@@ -251,124 +251,124 @@ void Obstacle::generateTurningAnimation() {
       and its Width and Height based on its coordinates (width - spriteX) and (Height - spriteY).
   	*/
 
-	mTurningAnimationSprites[0]->spriteX = 13;
-	mTurningAnimationSprites[0]->spriteY = 11;
-	mTurningAnimationSprites[0]->spriteWidth = 49 - 13;
-	mTurningAnimationSprites[0]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[0]->setSpriteX(13);
+	mTurningAnimationSprites[0]->setSpriteY(11);
+	mTurningAnimationSprites[0]->setSpriteWidth(49 - 13);
+	mTurningAnimationSprites[0]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[1]->spriteX = 50;
-	mTurningAnimationSprites[1]->spriteY = 11;
-	mTurningAnimationSprites[1]->spriteWidth = 86 - 50;
-	mTurningAnimationSprites[1]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[1]->setSpriteX(50);
+	mTurningAnimationSprites[1]->setSpriteY(11);
+	mTurningAnimationSprites[1]->setSpriteWidth(86 - 50);
+	mTurningAnimationSprites[1]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[2]->spriteX = 87;
-	mTurningAnimationSprites[2]->spriteY = 11;
-	mTurningAnimationSprites[2]->spriteWidth = 123 - 87;
-	mTurningAnimationSprites[2]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[2]->setSpriteX(87);
+	mTurningAnimationSprites[2]->setSpriteY(11);
+	mTurningAnimationSprites[2]->setSpriteWidth(123 - 87);
+	mTurningAnimationSprites[2]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[3]->spriteX = 124;
-	mTurningAnimationSprites[3]->spriteY = 11;
-	mTurningAnimationSprites[3]->spriteWidth = 160 - 124;
-	mTurningAnimationSprites[3]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[3]->setSpriteX(124);
+	mTurningAnimationSprites[3]->setSpriteY(11);
+	mTurningAnimationSprites[3]->setSpriteWidth(160 - 124);
+	mTurningAnimationSprites[3]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[4]->spriteX = 161;
-	mTurningAnimationSprites[4]->spriteY = 11;
-	mTurningAnimationSprites[4]->spriteWidth = 197 - 161;
-	mTurningAnimationSprites[4]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[4]->setSpriteX(161);
+	mTurningAnimationSprites[4]->setSpriteY(11);
+	mTurningAnimationSprites[4]->setSpriteWidth(197 - 161);
+	mTurningAnimationSprites[4]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[5]->spriteX = 198;
-	mTurningAnimationSprites[5]->spriteY = 11;
-	mTurningAnimationSprites[5]->spriteWidth = 234 - 198;
-	mTurningAnimationSprites[5]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[5]->setSpriteX(198);
+	mTurningAnimationSprites[5]->setSpriteY(11);
+	mTurningAnimationSprites[5]->setSpriteWidth(234 - 198);
+	mTurningAnimationSprites[5]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[6]->spriteX = 240;
-	mTurningAnimationSprites[6]->spriteY = 11;
-	mTurningAnimationSprites[6]->spriteWidth = 271 - 240;
-	mTurningAnimationSprites[6]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[6]->setSpriteX(240);
+	mTurningAnimationSprites[6]->setSpriteY(11);
+	mTurningAnimationSprites[6]->setSpriteWidth(271 - 240);
+	mTurningAnimationSprites[6]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[7]->spriteX = 277;
-	mTurningAnimationSprites[7]->spriteY = 11;
-	mTurningAnimationSprites[7]->spriteWidth = 308 - 277;
-	mTurningAnimationSprites[7]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[7]->setSpriteX(277);
+	mTurningAnimationSprites[7]->setSpriteY(11);
+	mTurningAnimationSprites[7]->setSpriteWidth(308 - 277);
+	mTurningAnimationSprites[7]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[8]->spriteX = 314;
-	mTurningAnimationSprites[8]->spriteY = 11;
-	mTurningAnimationSprites[8]->spriteWidth = 345 - 314;
-	mTurningAnimationSprites[8]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[8]->setSpriteX(314);
+	mTurningAnimationSprites[8]->setSpriteY(11);
+	mTurningAnimationSprites[8]->setSpriteWidth(345 - 314);
+	mTurningAnimationSprites[8]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[9]->spriteX = 351;
-	mTurningAnimationSprites[9]->spriteY = 11;
-	mTurningAnimationSprites[9]->spriteWidth = 382 - 351;
-	mTurningAnimationSprites[9]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[9]->setSpriteX(351);
+	mTurningAnimationSprites[9]->setSpriteY(11);
+	mTurningAnimationSprites[9]->setSpriteWidth(382 - 351);
+	mTurningAnimationSprites[9]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[10]->spriteX = 388;
-	mTurningAnimationSprites[10]->spriteY = 11;
-	mTurningAnimationSprites[10]->spriteWidth = 419 - 388;
-	mTurningAnimationSprites[10]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[10]->setSpriteX(388);
+	mTurningAnimationSprites[10]->setSpriteY(11);
+	mTurningAnimationSprites[10]->setSpriteWidth(419 - 388);
+	mTurningAnimationSprites[10]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[11]->spriteX = 425;
-	mTurningAnimationSprites[11]->spriteY = 11;
-	mTurningAnimationSprites[11]->spriteWidth = 456 - 425;
-	mTurningAnimationSprites[11]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[11]->setSpriteX(425);
+	mTurningAnimationSprites[11]->setSpriteY(11);
+	mTurningAnimationSprites[11]->setSpriteWidth(456 - 425);
+	mTurningAnimationSprites[11]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[12]->spriteX = 461;
-	mTurningAnimationSprites[12]->spriteY = 11;
-	mTurningAnimationSprites[12]->spriteWidth = 497 - 461;
-	mTurningAnimationSprites[12]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[12]->setSpriteX(461);
+	mTurningAnimationSprites[12]->setSpriteY(11);
+	mTurningAnimationSprites[12]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[12]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[13]->spriteX = 461;
-	mTurningAnimationSprites[13]->spriteY = 11;
-	mTurningAnimationSprites[13]->spriteWidth = 497 - 461;
-	mTurningAnimationSprites[13]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[13]->setSpriteX(461);
+	mTurningAnimationSprites[13]->setSpriteY(11);
+	mTurningAnimationSprites[13]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[13]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[14]->spriteX = 461;
-	mTurningAnimationSprites[14]->spriteY = 11;
-	mTurningAnimationSprites[14]->spriteWidth = 497 - 461;
-	mTurningAnimationSprites[14]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[14]->setSpriteX(461);
+	mTurningAnimationSprites[14]->setSpriteY(11);
+	mTurningAnimationSprites[14]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[14]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[15]->spriteX = 461;
-	mTurningAnimationSprites[15]->spriteY = 11;
-	mTurningAnimationSprites[15]->spriteWidth = 497 - 461;
-	mTurningAnimationSprites[15]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[15]->setSpriteX(461);
+	mTurningAnimationSprites[15]->setSpriteY(11);
+	mTurningAnimationSprites[15]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[15]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[16]->spriteX = 461;
-	mTurningAnimationSprites[16]->spriteY = 11;
-	mTurningAnimationSprites[16]->spriteWidth = 497 - 461;
-	mTurningAnimationSprites[16]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[16]->setSpriteX(461);
+	mTurningAnimationSprites[16]->setSpriteY(11);
+	mTurningAnimationSprites[16]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[16]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[17]->spriteX = 461;
-	mTurningAnimationSprites[17]->spriteY = 11;
-	mTurningAnimationSprites[17]->spriteWidth = 497 - 461;
-	mTurningAnimationSprites[17]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[17]->setSpriteX(461);
+	mTurningAnimationSprites[17]->setSpriteY(11);
+	mTurningAnimationSprites[17]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[17]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[18]->spriteX = 689;
-	mTurningAnimationSprites[18]->spriteY = 11;
-	mTurningAnimationSprites[18]->spriteWidth = 720 - 689;
-	mTurningAnimationSprites[18]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[18]->setSpriteX(689);
+	mTurningAnimationSprites[18]->setSpriteY(11);
+	mTurningAnimationSprites[18]->setSpriteWidth(720 - 689);
+	mTurningAnimationSprites[18]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[19]->spriteX = 726;
-	mTurningAnimationSprites[19]->spriteY = 11;
-	mTurningAnimationSprites[19]->spriteWidth = 757 - 726;
-	mTurningAnimationSprites[19]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[19]->setSpriteX(726);
+	mTurningAnimationSprites[19]->setSpriteY(11);
+	mTurningAnimationSprites[19]->setSpriteWidth(757 - 726);
+	mTurningAnimationSprites[19]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[20]->spriteX = 763;
-	mTurningAnimationSprites[20]->spriteY = 11;
-	mTurningAnimationSprites[20]->spriteWidth = 794 - 763;
-	mTurningAnimationSprites[20]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[20]->setSpriteX(763);
+	mTurningAnimationSprites[20]->setSpriteY(11);
+	mTurningAnimationSprites[20]->setSpriteWidth(794 - 763);
+	mTurningAnimationSprites[20]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[21]->spriteX = 800;
-	mTurningAnimationSprites[21]->spriteY = 11;
-	mTurningAnimationSprites[21]->spriteWidth = 831 - 800;
-	mTurningAnimationSprites[21]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[21]->setSpriteX(800);
+	mTurningAnimationSprites[21]->setSpriteY(11);
+	mTurningAnimationSprites[21]->setSpriteWidth(831 - 800);
+	mTurningAnimationSprites[21]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[22]->spriteX = 837;
-	mTurningAnimationSprites[22]->spriteY = 11;
-	mTurningAnimationSprites[22]->spriteWidth = 868 - 837;
-	mTurningAnimationSprites[22]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[22]->setSpriteX(837);
+	mTurningAnimationSprites[22]->setSpriteY(11);
+	mTurningAnimationSprites[22]->setSpriteWidth(868 - 837);
+	mTurningAnimationSprites[22]->setSpriteHeight(47 - 11);
 
-	mTurningAnimationSprites[23]->spriteX = 874;
-	mTurningAnimationSprites[23]->spriteY = 11;
-	mTurningAnimationSprites[23]->spriteWidth = 905 - 874;
-	mTurningAnimationSprites[23]->spriteHeight = 47 - 11;
+	mTurningAnimationSprites[23]->setSpriteX(874);
+	mTurningAnimationSprites[23]->setSpriteY(11);
+	mTurningAnimationSprites[23]->setSpriteWidth(905 - 874);
+	mTurningAnimationSprites[23]->setSpriteHeight(47 - 11);
 
 }

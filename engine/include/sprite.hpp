@@ -32,7 +32,7 @@ namespace engine {
 			int getSpriteY();
 
 			~Sprite();
-		public:
+		private:
 			int spriteWidth;
 			int spriteHeight;
 			int spriteX;
