@@ -87,7 +87,7 @@ namespace engine {
 		     *
 			 * @return "window_width".
 			*/
-			inline int getWindowWidth(){
+			inline int getWindowWidth() {
 				return windowWidth;
 			}
 
@@ -99,7 +99,7 @@ namespace engine {
 			 *
 		     * @return "window_height".
 			*/
-			inline int getWindowHeight(){
+			inline int getWindowHeight() {
 				return windowHeight;
 			}
 	};
