@@ -31,26 +31,31 @@ using namespace engine;// Used to avoid write engine::Game engine::Game::instanc
 
 			SDL_Surface *image = NULL;
 
-			if (imagePath == "") {
+			if (imagePath != "") {																														
+				//Nothing to do for the imagePath is valid
+			} else {
 				ERROR("Invalid Image Path: " << imagePath);
 			}
 
 			image = IMG_Load(imagePath.c_str());
 
-			if (image == NULL) {
+			if (image != NULL) {
+				//Nothing to do for the image was loaded
+			} else {
 				ERROR("Couldn't load sprite.");
 			}
 
 			SDL_Texture *imageTexture = SDL_CreateTextureFromSurface(Game::instance.sdlElements.getCanvas(), image);
 
-			if (imageTexture == NULL) {
+			if (imageTexture != NULL) {
+				//Nothing to do for the imageTexture was created
+			} else {
 				ERROR("Couldn't create texture from image: " << SDL_GetError());
 			}
 
 			InsertIntoImageMap(imagePath, image, imageTexture);
 
 			SDL_FreeSurface(image);
-
 
 		} else {
 
@@ -90,12 +95,14 @@ using namespace engine;// Used to avoid write engine::Game engine::Game::instanc
 		DEBUG("Trying to load music " << audioPath);
 		DEBUG("Music Map size before loading " << musicMap.size());
 
-		if (musicMap.find(audioPath) == musicMap.end()){
-			INFO("Loading a new music asset.");
+		if (musicMap.find(audioPath) == musicMap.end()) {
+		 	INFO("Loading a new music asset.");
 
 			Mix_Music * music = Mix_LoadMUS(audioPath.c_str());
 
-			if(music == NULL) {
+			if(music != NULL) {
+				//Nothing to do for the audioPath is correct
+			} else {
 				ERROR("Could not load music from path " << audioPath);
 			}
 
@@ -138,14 +145,15 @@ using namespace engine;// Used to avoid write engine::Game engine::Game::instanc
 
 			Mix_Chunk * sound = Mix_LoadWAV(audioPath.c_str());
 
-			if (sound == NULL) {
+			if (sound != NULL) {
+				//Nothing to do for the audioPath is not null
+			} else {
 				ERROR("Could not load sound from path " << audioPath);
 			}
 
 			InsertIntoSoundMap(audioPath, sound);
 
 		} else {
-
 			DEBUG("Sound: " << audioPath << " already loaded!");
 		}
 
