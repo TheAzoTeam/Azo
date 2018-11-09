@@ -215,38 +215,39 @@ void Menu::generateButtonsAnimation() {
 		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
 
-	mStartButtonSprites[0]->spriteX = 43;
-	mStartButtonSprites[0]->spriteY = 452;
-	mStartButtonSprites[0]->spriteWidth = 161 - 43;
-	mStartButtonSprites[0]->spriteHeight = 478 - 452;
+
+	 mStartButtonSprites[0]->setSpriteX(43);
+	 mStartButtonSprites[0]->setSpriteY(452);
+	 mStartButtonSprites[0]->setSpriteWidth(161 - 43);
+	 mStartButtonSprites[0]->setSpriteHeight(478 - 452);
 
 	mExitButtonSprites.push_back(new engine::Sprite());
 
-	mExitButtonSprites[0]->spriteX = 207;
-	mExitButtonSprites[0]->spriteY = 413;
-	mExitButtonSprites[0]->spriteWidth = 280 - 207;
-	mExitButtonSprites[0]->spriteHeight = 441 - 413;
+	mExitButtonSprites[0]->setSpriteX(207);
+	mExitButtonSprites[0]->setSpriteY(413);
+	mExitButtonSprites[0]->setSpriteWidth(280 - 207);
+	mExitButtonSprites[0]->setSpriteHeight(441 - 413);
 
 	mSoundEnabledButtonSprites.push_back(new engine::Sprite());
 
-	mSoundEnabledButtonSprites[0]->spriteX = 660;
-	mSoundEnabledButtonSprites[0]->spriteY = 46;
-	mSoundEnabledButtonSprites[0]->spriteWidth = 702 - 660;
-	mSoundEnabledButtonSprites[0]->spriteHeight = 77 - 46;
+	mSoundEnabledButtonSprites[0]->setSpriteX(660);
+	mSoundEnabledButtonSprites[0]->setSpriteY(46);
+	mSoundEnabledButtonSprites[0]->setSpriteWidth(702 - 660);
+	mSoundEnabledButtonSprites[0]->setSpriteHeight(77 - 46);
 
 	mSoundDisabledButtonSprites.push_back(new engine::Sprite());
 
-	mSoundDisabledButtonSprites[0]->spriteX = 608;
-	mSoundDisabledButtonSprites[0]->spriteY = 46;
-	mSoundDisabledButtonSprites[0]->spriteWidth = 646 - 608;
-	mSoundDisabledButtonSprites[0]->spriteHeight = 77 - 46;
+	mSoundDisabledButtonSprites[0]->setSpriteX(608);
+	mSoundDisabledButtonSprites[0]->setSpriteY(46);
+	mSoundDisabledButtonSprites[0]->setSpriteWidth(646 - 608);
+	mSoundDisabledButtonSprites[0]->setSpriteHeight(77 - 46);
 
 	mArrowSprites.push_back(new engine::Sprite());
 
-	mArrowSprites[0]->spriteX = 582;
-	mArrowSprites[0]->spriteY = 433;
-	mArrowSprites[0]->spriteWidth = 598 - 582;
-	mArrowSprites[0]->spriteHeight = 459 - 433;
+	mArrowSprites[0]->setSpriteX(582);
+	mArrowSprites[0]->setSpriteY(433);
+	mArrowSprites[0]->setSpriteWidth(598 - 582);
+	mArrowSprites[0]->setSpriteHeight(459 - 433);
 }
 
 /**

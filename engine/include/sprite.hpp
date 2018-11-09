@@ -19,14 +19,27 @@ namespace engine {
 
 		public:
 			Sprite();
-			Sprite(int spriteWidth, int spriteHeight, int spriteX, int spriteY);
+			Sprite(unsigned int spriteWidth, unsigned int spriteHeight, unsigned int spriteX, unsigned int spriteY);
+
+			void setSpriteWidth(unsigned int newSpriteWidth);
+			unsigned int getSpriteWidth();
+
+			void setSpriteHeight(unsigned int newSpriteHeight);
+			unsigned int getSpriteHeight();
+
+			void setSpriteX(unsigned int newSpriteX);
+			unsigned int getSpriteX();
+
+			void setSpriteY(unsigned int newSpriteY);
+			unsigned int getSpriteY();
+
 			~Sprite();
 
-		public:
-			int spriteWidth;
-			int spriteHeight;
-			int spriteX;
-			int spriteY;
+		private:
+			unsigned int spriteWidth;
+			unsigned int spriteHeight;
+			unsigned int spriteX;
+			unsigned int spriteY;
 	};
 }
 
