@@ -182,13 +182,17 @@ bool Game::startAndStopScenes(){
 				currentScene->deleteKeyList();
 			}
 
-			if(currentScene->mState == SceneState::RUNNED){
+			if (currentScene->mState == SceneState::RUNNED) {
 				currentScene->restart();
 				currentScene->mState = SceneState::FIRST_TIME;
+			} else {
+				//Nothing to do, scene state is different
 			}
 
-			if(currentScene->mState == SceneState::FIRST_TIME){
+			if (currentScene->mState == SceneState::FIRST_TIME) {
 				currentScene->mState = SceneState::RUNNED;
+			} else {
+				//Nothing to do, scene state is different
 			}
 
 			currentScene->init();
