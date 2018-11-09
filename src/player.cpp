@@ -34,6 +34,8 @@ void Player::shutdown() {
 		mAnimationController->shutdown();
 		delete(mAnimationController);
 		mAnimationController = nullptr;
+	}else{
+			//mAnimationController is not null
 	}
 
 	//The subsequent loops will Free the corresponding sprites
@@ -42,6 +44,8 @@ void Player::shutdown() {
 		//ASSERT(eachSprite == nullptr, "Walking sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
+		}else{
+				//null pointer
 		}
 	}
 
@@ -49,6 +53,8 @@ void Player::shutdown() {
 		//ASSERT(eachSprite == nullptr, "Jumping sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
+		}else{
+				//null pointer
 		}
 	}
 
@@ -56,6 +62,8 @@ void Player::shutdown() {
 		//ASSERT(eachSprite == nullptr, "Sliding sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
+		}else{
+				//null pointer
 		}
 	}
 
@@ -63,7 +71,8 @@ void Player::shutdown() {
 		//ASSERT(eachSprite == nullptr, "Dying sprite error");
 		if (eachSprite != nullptr) {
 			eachSprite = nullptr;
-		}
+		}else{
+				//null pointer
 	}
 
 	//The subsequent 'ifs' checks if the variable pointer is pointing to null
@@ -71,30 +80,40 @@ void Player::shutdown() {
 	if (mWalking != nullptr) {
 		delete(mWalking);
 		mWalking = nullptr;
+	}else{
+			//null pointer
 	}
 
 	//ASSERT(mJumping == nullptr, "Jumping component pointer error");
 	if (mJumping != nullptr) {
 		delete(mJumping);
 		mJumping = nullptr;
+	}else{
+			//null pointer
 	}
 
 	//ASSERT(mSliding == nullptr, "Sliding component pointer error");
 	if (mSliding != nullptr) {
 		delete(mSliding);
 		mSliding = nullptr;
+	}else{
+			//null pointer
 	}
 
 	//ASSERT(mDying == nullptr, "Dying component pointer error");
 	if (mDying != nullptr) {
 		delete(mDying);
 		mDying = nullptr;
+	}else{
+			//null pointer
 	}
 
 	//ASSERT(mLosing == nullptr, "Losing component pointer error");
 	if (mLosing != nullptr) {
 		delete(mLosing);
 		mLosing = nullptr;
+	}else{
+			//null pointer
 	}
 
 	//ASSERT(mPlayerCode == nullptr, "PlayerCode component pointer error");
@@ -102,7 +121,10 @@ void Player::shutdown() {
 		mPlayerCode->shutdown();
 		delete(mPlayerCode);
 		mPlayerCode = nullptr;
+	}else{
+			//null pointer
 	}
+}
 }
 
 //This method create the components corresponding to player. Components as the

@@ -41,7 +41,7 @@ namespace Azo {  //Used to avoid writing all the path from Azo context
 	* This class is used to characterize player and set its configurations and behaviour
 	*/
 	class Player : public engine::GameObject {
-		private:
+		private: 
 			engine::AnimationController *mAnimationController; //pointer to corresponding current animation
 			engine::AudioController *mAudioController; //pointer to corresponding current audio
 			// Add new audios here.
