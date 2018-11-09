@@ -17,7 +17,7 @@ using namespace Azo;
      * Why: Because it is necessary for the player to have access to the game menu before it starts
      */
 Menu::Menu(std::string name) {
-	ASSERT(name != "", "The name can't be empty."); //T17
+	ASSERT(name != "", "The name can't be empty.");
 	this->sceneName = name;
 	createGameObjects();
 }
@@ -44,12 +44,10 @@ void Menu::restart(){
 void Menu::createGameObjects() {
 	DEBUG("Creating Menu GameObjects.");
 
-
 	mMenu = new engine::GameObject("menu", std::make_pair(0, 0));
-	ASSERT(mMenu != NULL, "The mMenu can't be null."); //T17
+	ASSERT(mMenu != NULL, "The mMenu can't be null."); 
 
 	createMenuComponents();
-
 	this->addGameObject(*mMenu);
 }
 
@@ -64,17 +62,17 @@ void Menu::createMenuComponents() {
 
 
 	mMenuTheme = new engine::AudioComponent(*mMenu, "audios/TemaGame.ogg", true, true);
-    ASSERT(mMenuTheme != NULL, "The mMenuTheme can't be null."); //T17
+    ASSERT(mMenuTheme != NULL, "The mMenuTheme can't be null.");
 
 	mAudioController = new engine::AudioController();
-    ASSERT(mAudioController != NULL, "The mAudioController can't be null."); //T17
+    ASSERT(mAudioController != NULL, "The mAudioController can't be null.");
 
 	mAudioController->addAudio("menu_theme", *mMenuTheme);
 	mMenu->addComponent(*mAudioController);
 
 
 	mAnimationController = new engine::AnimationController(*mMenu);
-	ASSERT(mAnimationController != NULL, "The mAnimationController can't be null.");//T17
+	ASSERT(mAnimationController != NULL, "The mAnimationController can't be null.");
 
 	generateButtonsAnimation();
 
@@ -88,7 +86,7 @@ void Menu::createMenuComponents() {
 					       				 1, // zoomFactor
 					       				 std::make_pair(205, 162)); // positionRelativeToObject
 
-	ASSERT(mStartButton != NULL, "The mStartButton can't be null."); //T17
+	ASSERT(mStartButton != NULL, "The mStartButton can't be null."); 
 
 
 	mAnimationController->addAnimation("start_button", *mStartButton);
@@ -103,7 +101,7 @@ void Menu::createMenuComponents() {
 					      				false,
 					      				1,
 					      				std::make_pair(168, 162));
-	ASSERT(mArrowStart != NULL, "The mArrowStart can't be null."); //T17
+	ASSERT(mArrowStart != NULL, "The mArrowStart can't be null."); 
 
 	mAnimationController->addAnimation("arrow_start", *mArrowStart);
 
@@ -117,7 +115,7 @@ void Menu::createMenuComponents() {
 					      				false,
 										1,
 					      				std::make_pair(551, 162));
-	ASSERT(mExitButton != NULL, "The mExitButton can't be null."); //T17
+	ASSERT(mExitButton != NULL, "The mExitButton can't be null.");
 
 	mAnimationController->addAnimation("exit_button", *mExitButton);
 
@@ -131,7 +129,7 @@ void Menu::createMenuComponents() {
 					     				false,
 					     				1,
 					     				std::make_pair(514, 162));
-	ASSERT(mArrowExit != NULL, "The mArrowExit can't be null.");//T17
+	ASSERT(mArrowExit != NULL, "The mArrowExit can't be null.");
 
 	mArrowExit->disableComponent();
 
@@ -147,7 +145,7 @@ void Menu::createMenuComponents() {
 						      				   false,
 						      				   1,
 						      				   std::make_pair(708, 40));
-	//T17
+	
 	ASSERT(mSoundEnabledButton != NULL, "The mSoundEnabledButton can't be null.");
 
 	mAnimationController->addAnimation("sound_enabled_button", *mSoundEnabledButton);
@@ -162,7 +160,7 @@ void Menu::createMenuComponents() {
 												 false,
 												 1,
 												 std::make_pair(708, 40));
-	//T17
+	
 	ASSERT(mSoundDisabledButton != NULL, "The mSoundDisabledButton can't be null.");
 
 	mSoundDisabledButton->disableComponent();
@@ -179,7 +177,7 @@ void Menu::createMenuComponents() {
 					      				false,
 					      				1,
 					      				std::make_pair(676, 40));
-	//T17
+	
 	ASSERT(mArrowSound!= NULL, "The mArrowSound can't be null.");
 
 	mArrowSound->disableComponent();
@@ -190,13 +188,13 @@ void Menu::createMenuComponents() {
 
 
 	mBackground = new engine::BackgroundComponent(*mMenu, "backgrounds/menu.png");
-	ASSERT(mBackground!= NULL, "The mBackground can't be null.");//T17
+	ASSERT(mBackground!= NULL, "The mBackground can't be null.");
 
 	mMenu->addComponent(*mBackground);
 
 
 	mCode = new MenuCode(mMenu);
-	ASSERT(mCode != NULL, "The mCode can't be null."); //T17
+	ASSERT(mCode != NULL, "The mCode can't be null."); 
 
 	mMenu->addComponent(*mCode);
 }
@@ -204,18 +202,19 @@ void Menu::createMenuComponents() {
 /**
      * @brief function responsible for generating button animations
      *
-     * Porque: For aesthetic purposes
+     * Why: For aesthetic purposes
 	 *
 	 * @return "void"
      */
 void Menu::generateButtonsAnimation() {
-	 mStartButtonSprites.push_back(new engine::Sprite());
+	mStartButtonSprites.push_back(new engine::Sprite());
 
 	/*
 		Set the animation sprites coordinates (x, y)
 		and its Width and Height based on its coordinates
 		spriteWidth = (width - spriteX) and spriteHeight = (Height - spriteY)
 	*/
+
 
 	 mStartButtonSprites[0]->setSpriteX(43);
 	 mStartButtonSprites[0]->setSpriteY(452);
@@ -252,12 +251,17 @@ void Menu::generateButtonsAnimation() {
 }
 
 /**
-     * @brief function responsible for debugging
+     * @brief function responsible for shutting down menu.
      *
-     * Why: Because it is responsible for debugging the code
+     * Why: Because it is responsible for shutting down the menu
 	 *
 	 * @return "void".
      */
 void Menu::shutdown() {
 	DEBUG("Calling Menu::shutdown.");
+	if(mMenu != NULL){
+		mMenu = NULL;
+	} else {
+		// Nothing to do, Menu shut down.
+	}
 }

@@ -1,7 +1,7 @@
-/** 
+/**
  * @file audio_controller.hpp
  * @brief Purpose: Contains the AudioController class declaration
- * 
+ *
  * GPL v3.0 License
  * Copyright (c) 2017 Azo
  *
@@ -24,8 +24,10 @@ namespace engine {
 	 *Used to control the behavior defined by the AudioComponent
 	 */
 	class AudioController : public AudioComponent {
+
 		private:
 			std::map <std::string, AudioComponent *> audioMap;
+
 		public:
 			AudioController();
 			virtual ~AudioController();

@@ -20,7 +20,9 @@ using namespace Azo;
 	 * @param Gameobject that is the creation object of the ' menu '
      */
 MenuCode::MenuCode(engine::GameObject *gameObject){
-	this->gameObject = gameObject; // variÃ¡vel responsÃ¡vel pelo objeto do jogo
+	ASSERT(&gameObject != NULL, "GameObject can't be null.");
+	this->gameObject = gameObject; // Variable responsible for game object.
+	ASSERT(this->gameObject == gameObject, "gameObject must have correct value.");
 	findAudioController();
 	findAnimationController();
 }
@@ -57,30 +59,30 @@ void MenuCode::updateCode(){
 	if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::ENTER)){
 
 		switch (mCurrentButton) {
-			case 1:
+			case ButtonType::START_BUTTON:
 				mAudioController->stopAudio("menu_theme");
 				engine::Game::instance.changeScene("level_one");
 				break;
-			case 2:
-				engine::Game::instance.gameState = engine::GameState::EXIT; // Variable responsible for the state of play
+			case ButtonType::EXIT_BUTTON:
+				engine::Game::instance.gameState = engine::GameState::EXIT; // Variable responsible for the state of game.
 				break;
-			case 3:
-
+			case ButtonType::SOUND_BUTTON:
 				if(mAudioController->getAudioState("menu_theme") == engine::AudioState::PLAYING){
 					mAudioController->pauseAudio("menu_theme");
 					mAnimationController->stopAnimation("sound_enabled_button");
 					mAnimationController->startAnimation("sound_disabled_button");
-				}else{
+				} else {
+					// Audio not currently playing, so start it again.
 					mAudioController->playAudio("menu_theme");
 					mAnimationController->startAnimation("sound_enabled_button");
 					mAnimationController->stopAnimation("sound_disabled_button");
 				}
-
 				break;
-
+			default:
+				// Nothing to do, no button selected.
+				break;
 		}
 	}
-
 	changeOption();
 }
 
@@ -95,7 +97,7 @@ void MenuCode::changeOption(){
 
 	switch (mCurrentButton) {
 		// Start Option.
-		case 1:
+		case ButtonType::START_BUTTON:
 			DEBUG("Start Button is selected.");
 
 			mAnimationController->startAnimation("arrow_start");
@@ -104,38 +106,33 @@ void MenuCode::changeOption(){
 			if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::RIGHT_ARROW)){
 				mAnimationController->stopAnimation("arrow_start");
 
-				mCurrentButton = 2;
+				mCurrentButton = ButtonType::EXIT_BUTTON;
 
-			}
-
-			if (engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)) {
+			} else if (engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)) {
 				mAnimationController->stopAnimation("arrow_start");
-				mCurrentButton = 3;
+				mCurrentButton = ButtonType::SOUND_BUTTON;
 			}
 
 			break;
 		// Exit Option.
-		case 2:
+		case ButtonType::EXIT_BUTTON:
 			DEBUG("Exit Button is selected.");
-
 
 			mAnimationController->startAnimation("arrow_exit");
 
 			if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::RIGHT_ARROW)){
 				mAnimationController->stopAnimation("arrow_exit");
 
-				mCurrentButton = 3;
-			}
-
-			if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
+				mCurrentButton = ButtonType::SOUND_BUTTON;
+			} else if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
 				mAnimationController->stopAnimation("arrow_exit");
 
-				mCurrentButton = 1;
+				mCurrentButton = ButtonType::START_BUTTON;
 			}
 
 			break;
 		// Sound Option.
-		case 3:
+		case ButtonType::SOUND_BUTTON:
 			DEBUG("Sound Button is selected.");
 
 			mAnimationController->startAnimation("arrow_sound");
@@ -144,16 +141,16 @@ void MenuCode::changeOption(){
 				mAnimationController->stopAnimation("arrow_sound");
 
 				// Go back to the first option.
-				mCurrentButton = 1;
+				mCurrentButton = ButtonType::START_BUTTON;
 
-			}
-
-			if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
+			} else if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
 				mAnimationController->stopAnimation("arrow_sound");
 
-				mCurrentButton = 2;
+				mCurrentButton = ButtonType::EXIT_BUTTON;
 			}
-
+			break;
+		default:
+			// Nothing to do, no button defined.
 			break;
 	}
 }

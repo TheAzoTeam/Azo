@@ -69,6 +69,8 @@ void PlayerCode::shutdown(){
 	//ASSERT(mAnimationController == NULL, "Animation Controller is null");
 	if (mAnimationController != NULL) {
 		 mAnimationController = NULL;
+	}else{
+			//null pointer
 	}
 }
 
@@ -110,15 +112,20 @@ void PlayerCode::updateCode() {
 			//checks if button 'S' is pressed
 			if (engine::Game::instance.inputManager.keyState(engine::Button::S)) {
 				mPlayer->mState = PlayerState::SLIDE;
+			}else{
+					// button is not pressed
 			}
 
 			break;
+
 
 		case PlayerState::JUMP:
 
 			//checks if character is on ground
 			if (mPlayer->mOnGround) {
 				mPlayer->mState = PlayerState::WALK;
+			}else{
+					// player can't jump cause it isn't on ground
 			}
 
 			mAnimationController->startUniqueAnimation("jumping");
@@ -142,7 +149,10 @@ void PlayerCode::updateCode() {
 			if (mAnimationController->getAnimationStatus("sliding") == engine::AnimationState::FINISHED) {
 				mPlayer->mState = PlayerState::WALK;
 				break;
+			}else{
+					// character is not sliding
 			}
+
 
 			// sets the normal speed of walking
 			mPlayer->mSpeed.second += (mPlayer->M_GRAVITY * engine::Game::instance.getTimer().getDeltaTime());
@@ -152,12 +162,16 @@ void PlayerCode::updateCode() {
 			if (mPlayer->mPushesRightWall) {
 				mPlayer->mSpeed.first = mPlayer->M_ZERO_VECTOR.first; //clear mPlayer walking speed
 				mPlayer->mState = PlayerState::WALK;
+			}else{
+					// player not attached no obstacle
 			}
 
 			//check if button 'W' is pressed
 			if (engine::Game::instance.inputManager.keyState(engine::Button::W)) {
 				mPlayer->mState = PlayerState::JUMP;
 				mPlayer->mSpeed.second = mPlayer->M_JUMPING_SPEED; //normal jump speed of character
+			}else{
+					// 'w' button is not pressed
 			}
 
 			break;
@@ -173,6 +187,8 @@ void PlayerCode::updateCode() {
 				//checks if animationStatus is losing
 				if (mAnimationController->getAnimationStatus("losing") == engine::AnimationState::FINISHED) {
 					mAudioController->playAudio("lost");
+				}else{
+						// animationStatus is not losing    
 				}
 			} else {
 				mAnimationController->startUniqueAnimation("victory");

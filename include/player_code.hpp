@@ -36,7 +36,7 @@ namespace Azo { //Used to avoid writing all the path from Azo context
 			void findAnimationController();
 			void findAudioController();
 
-		public:
+		public:  
 			PlayerCode();
 			virtual ~PlayerCode();
 			PlayerCode(Player *player);
