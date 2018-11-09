@@ -39,6 +39,8 @@ void Obstacle::shutdown() {
 			eachBlock->shutdown();
 			delete(eachBlock);
 			eachBlock = NULL;
+		} else {
+			//Nothing to do, the pointer is already null
 		}
 	}
 
@@ -48,14 +50,20 @@ void Obstacle::shutdown() {
 			if (eachAnimation != NULL) {
 				delete(eachAnimation);
 				eachAnimation = NULL;
+			} else {
+				//Nothing to do, the pointer is already null
 			}
 		}
+	} else {
+		//Nothing to do, there is no mTurningAnimationSprites
 	}
 
 	// Clear all remaining images.
 	if (mObstacleImage != NULL) {
 		delete(mObstacleImage);
 		mObstacleImage = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
 	// Clear all remaining audio.
@@ -63,17 +71,23 @@ void Obstacle::shutdown() {
 		mAudioController->shutdown();
 		delete(mAudioController);
 		mAudioController = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
 	// Reset mCollected value.
 	if (mCollected != NULL) {
 		mCollected = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
 	// Reset mTurning value.
 	if (mTurning != NULL) {
 		delete(mTurning);
 		mTurning = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
 	// Shutdown mMachinePart code.
@@ -81,6 +95,8 @@ void Obstacle::shutdown() {
 		mMachinePartCode->shutdown();
 		delete(mMachinePartCode);
 		mMachinePartCode = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 }
 
@@ -113,68 +129,81 @@ Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeT
 void Obstacle::createComponents() {
 	DEBUG("Creating obstacle components.");
 	// If and else if blocks for each ObstacleType and its respective initialization.
-	if (mObstacleType == ObstacleType::WESTERN_CAR) {
-		DEBUG("obstacle is a WESTERN CAR!");
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
-		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_CAR, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
+	switch (mObstacleType) {
+		case ObstacleType::WESTERN_CAR:
+			DEBUG("obstacle is a WESTERN CAR!");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_CAR, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	} else if (mObstacleType == ObstacleType::WESTERN_BOX) {
-		DEBUG("obstacle is a WESTERN BOX!");
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
-		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_BOX, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
+		case ObstacleType::WESTERN_BOX:
+			DEBUG("obstacle is a WESTERN BOX!");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_BOX, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	} else if (mObstacleType == ObstacleType::WESTERN_RAISED_BOX) {
-		DEBUG("obstacle is a WESTERN RAISED BOX!");
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
-		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_RAISED_BOX, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
+		case ObstacleType::WESTERN_RAISED_BOX:
+			DEBUG("obstacle is a WESTERN RAISED BOX!");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_RAISED_BOX, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	} else if (mObstacleType == ObstacleType::WESTERN_ROCK) {
-		DEBUG("obstacle is a WESTERN ROCK");
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
-		ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_ROCK, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
+		case ObstacleType::WESTERN_ROCK:
+			DEBUG("obstacle is a WESTERN ROCK");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_ROCK, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	} else if (mObstacleType == ObstacleType::MACHINE_PART) {
-		DEBUG("obstacle is a MACHINE PART");
-		mMachinePartState = MachinePartState::NON_COLLECTED;
-		generateTurningAnimation();
-		mTurning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, mTurningAnimationSprites, 0, 23, true, 1);
-		this->addComponent(*mTurning);
+		case ObstacleType::MACHINE_PART:
+			DEBUG("obstacle is a MACHINE PART");
+			mMachinePartState = MachinePartState::NON_COLLECTED;
+			generateTurningAnimation();
+			mTurning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, mTurningAnimationSprites, 0, 23, true, 1);
+			this->addComponent(*mTurning);
 
-		mAudioController = new engine::AudioController();
-		ASSERT(mAudioController != NULL, "engine::AudioController, AudioController can't be NULL.");
-		mCollected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
-		ASSERT(mCollected != NULL, "engine::AudioComponent, AudioComponent can't be NULL.");
-		mAudioController->addAudio("coleta", *mCollected);
-		this->addComponent(*mAudioController);
+			mAudioController = new engine::AudioController();
+			ASSERT(mAudioController != NULL, "engine::AudioController, AudioController can't be NULL.");
+			mCollected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
+			ASSERT(mCollected != NULL, "engine::AudioComponent, AudioComponent can't be NULL.");
+			mAudioController->addAudio("coleta", *mCollected);
+			this->addComponent(*mAudioController);
 
-		mMachinePartCode = new MachinePartCode(this);
-		ASSERT(mMachinePartCode != NULL, "MachinePartCode, mMachinePartCode can't return NULL.");
-		this->addComponent(*mMachinePartCode);
+			mMachinePartCode = new MachinePartCode(this);
+			ASSERT(mMachinePartCode != NULL, "MachinePartCode, mMachinePartCode can't return NULL.");
+			this->addComponent(*mMachinePartCode);
+			break;
 
-	} else if (mObstacleType == ObstacleType::WESTERN_SPIKE) {
-		DEBUG("obstacle is a WESTERN SPIKE");
+		case ObstacleType::WESTERN_SPIKE:
+			DEBUG("obstacle is a WESTERN SPIKE");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
+			ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
-		ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
-	} else if (mObstacleType == ObstacleType::WESTERN_POST) {
-		DEBUG("obstacle is a WESTERN POST");
+		case ObstacleType::WESTERN_POST:
+			DEBUG("obstacle is a WESTERN POST");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
+			ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
+		
+		case ObstacleType::GROUND:
+			createBlocks();
+			break;
 
-		mObstacleImage = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
-		ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
-		this->addComponent(*mObstacleImage);
-		createBlocks();
-	} else if (mObstacleType == ObstacleType::GROUND) {
-		createBlocks();
+		default:
+			//Nothing to do, there is no component with this type
+			break;
 	}
 }
 
@@ -195,39 +224,64 @@ void Obstacle::createBlocks() {
 	std::pair<double, double> blockPosition = mPositionRelativeToParent;
 
 	// If and else if blocks for setting obstacle position based on its type ObstacleType.
-	if (mObstacleType == ObstacleType::GROUND) {
-		mBlockList.push_back(new InvisibleBlock("block_1", blockPosition, std::make_pair(21000, 100)));
-	} else if (mObstacleType == ObstacleType::WESTERN_CAR) {
+	switch (mObstacleType) {
+		case ObstacleType::GROUND:
+			mBlockList.push_back(new InvisibleBlock("block_1",
+													blockPosition,
+													std::make_pair(21000, 100)));
+			break;
+		
+		case ObstacleType::WESTERN_CAR:
+			blockPosition.first += 69;
+			blockPosition.second += 20;
+			mBlockList.push_back(new InvisibleBlock("block_2",
+													blockPosition,
+													std::make_pair(109, 143)));
+			break;
 
-		blockPosition.first += 69;
-		blockPosition.second += 20;
+		case ObstacleType::WESTERN_BOX:
+			blockPosition.first += 58;
+			blockPosition.second += 6;
+			mBlockList.push_back(new InvisibleBlock("block_3",
+													blockPosition,
+													std::make_pair(63, 73)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_2", blockPosition, std::make_pair(109, 143)));
-	} else if (mObstacleType == ObstacleType::WESTERN_BOX) {
-		blockPosition.first += 58;
-		blockPosition.second += 6;
+		case ObstacleType::WESTERN_RAISED_BOX:
+			blockPosition.first += 35;
+			blockPosition.second += 6;
+			mBlockList.push_back(new InvisibleBlock("block_4",
+													blockPosition,
+													std::make_pair(50, 68)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_3", blockPosition, std::make_pair(63, 73)));
-	} else if (mObstacleType == ObstacleType::WESTERN_RAISED_BOX) {
-		blockPosition.first += 35;
-		blockPosition.second += 6;
+		case ObstacleType::WESTERN_ROCK:
+			blockPosition.first += 80;
+			blockPosition.second += 12;
+			mBlockList.push_back(new InvisibleBlock("block_5",
+													blockPosition,
+													std::make_pair(4, 100)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_4", blockPosition, std::make_pair(50, 68)));
-	} else if (mObstacleType == ObstacleType::WESTERN_ROCK) {
-		blockPosition.first += 80;
-		blockPosition.second += 12;
+		case ObstacleType::WESTERN_SPIKE:
+			blockPosition.first += 19;
+			blockPosition.second += 23;
+			mBlockList.push_back(new InvisibleBlock("block_6",
+													blockPosition,
+													std::make_pair(210, 92)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_5", blockPosition, std::make_pair(4, 100)));
-	} else if (mObstacleType == ObstacleType::WESTERN_SPIKE) {
-		blockPosition.first += 19;
-		blockPosition.second += 23;
+		case ObstacleType::WESTERN_POST:
+			blockPosition.first += 48;
+			blockPosition.second += 32;
+			mBlockList.push_back(new InvisibleBlock("block_7",
+													blockPosition,
+													std::make_pair(23, 106)));
+			break;
 
-		mBlockList.push_back(new InvisibleBlock("block_6", blockPosition, std::make_pair(210, 92)));
-	} else if (mObstacleType == ObstacleType::WESTERN_POST) {
-		blockPosition.first += 48;
-		blockPosition.second += 32;
-
-		mBlockList.push_back(new InvisibleBlock("block_7", blockPosition, std::make_pair(23, 106)));
+		default:
+			//Nothing to do, there is no component with this type
+			break;
 	}
 
 }
