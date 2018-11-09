@@ -1,10 +1,10 @@
 /**
  * @file code_component.hpp
  * @brief Purpose: Contains the Code Component class declaration.
- * 
+ *
  * GPL v3.0 License
  * Copyright (c) 2017 Azo
- * 
+ *
  * Notice: TheAzo, TheAzoTeam
  * https://github.com/TecProg2018-2/Azo
 
@@ -19,15 +19,15 @@
 #include "game.hpp"
 #include "timer.hpp"
 
-
-namespace engine{
-	/** 
+namespace engine {
+	/**
      * @brief A Code Component class.
   	 *
-     * Generic Component class. 
+     * Generic Component class.
+	 *
 	 * It's how the engine'll see all components that will try to use it.
     */
-	class CodeComponent : public Component{
+	class CodeComponent : public Component {
 		public:
 			CodeComponent();
 			CodeComponent(GameObject &gameObject);
