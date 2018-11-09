@@ -1,0 +1,536 @@
+\hypertarget{classengine_1_1_game_object}{}\section{engine\+:\+:Game\+Object Class Reference}
+\label{classengine_1_1_game_object}\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+
+
+A \hyperlink{classengine_1_1_game}{Game} Object class.  
+
+
+
+
+{\ttfamily \#include $<$game\+\_\+object.\+hpp$>$}
+
+Inheritance diagram for engine\+:\+:Game\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classengine_1_1_game_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_game_object_a0348e3ee2e83d56eafca7a3547f432c4}{Game\+Object} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \hyperlink{classengine_1_1_game}{Game} Object component. \end{DoxyCompactList}\item 
+\hyperlink{classengine_1_1_game_object_a55a9b8b92185ade1c96bac19b10f72ef}{Game\+Object} (std\+::string game\+Object\+Name, std\+::pair$<$ double, double $>$ current\+Position)
+\begin{DoxyCompactList}\small\item\em Constructor for the game object. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_game_object_ab0358466033307401a6a0714184503d3}{add\+Component} (\hyperlink{classengine_1_1_component}{Component} \&component)
+\begin{DoxyCompactList}\small\item\em add components to the game. \end{DoxyCompactList}\item 
+\hyperlink{classengine_1_1_animation_controller}{Animation\+Controller} $\ast$ \hyperlink{classengine_1_1_game_object_a2ed6ce8eadeb37e2eea4f95eaa82b4e4}{get\+Animation\+Controller} (std\+::type\+\_\+index component\+Type)
+\begin{DoxyCompactList}\small\item\em retrieve the animation controller. \end{DoxyCompactList}\item 
+\hyperlink{classengine_1_1_audio_controller}{Audio\+Controller} $\ast$ \hyperlink{classengine_1_1_game_object_ae14d1f2f05718d3f1e127c81adf6cb36}{get\+Audio\+Controller} (std\+::type\+\_\+index component\+Type)
+\begin{DoxyCompactList}\small\item\em retrieve the audio controller. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_game_object_a9b565e5ec63bef28e5c860f724d2de7c}{init} ()
+\begin{DoxyCompactList}\small\item\em function that initialize the game objects components. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_game_object_abb64143e72358beb808db22182517802}{draw} ()
+\begin{DoxyCompactList}\small\item\em function that draw game objects components. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_game_object_a08d7a48b6eb90f55c8b670b6f98ab393}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em inherits function that disable the game components. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_game_object_ac008ad125b3192f0114af78549f6d829}{update\+Code} ()
+\begin{DoxyCompactList}\small\item\em function that update the game object code. \end{DoxyCompactList}\item 
+virtual std\+::string \hyperlink{classengine_1_1_game_object_ac836deb7933c725ac09b67386ad10239}{get\+Class\+Name} ()
+\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_a615683282d234126169ab8c004c804aa}{calc\+Bottom\+Left} ()
+\begin{DoxyCompactList}\small\item\em calculate the bottom left coordinate of a game object. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_a804740468e962005e912fb7f5905e5e7}{calc\+Bottom\+Right} ()
+\begin{DoxyCompactList}\small\item\em calculate the bottom right coordinate of a game object. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_aa1a0d2f7da78692acb1e8e1fde9a7743}{calc\+Top\+Left} ()
+\begin{DoxyCompactList}\small\item\em calculate the top left coordinate of a game object. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_a86b57828238be71e962132bb28b7e6b7}{calc\+Top\+Right} ()
+\begin{DoxyCompactList}\small\item\em calculate the top right coordinate of a game object. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_a40e9d29053f3d9e7ccd5f3cadd007f03}{calc\+Right\+Up} ()
+\begin{DoxyCompactList}\small\item\em calculate the right up coordinate of a game object. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_a85130378e83e5b0d3cba0b98992c4489}{calc\+Right\+Down} ()
+\begin{DoxyCompactList}\small\item\em calculate the right down coordinate of a game object. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_aabc735b6bccc2106270ee3e09dca21f9}{calc\+Left\+Up} ()
+\begin{DoxyCompactList}\small\item\em calculate the left up coordinate of a game object. \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_aa3215c1412bd15ad3dcd5bbc6e1e3f94}{calc\+Left\+Down} ()
+\begin{DoxyCompactList}\small\item\em calculate the left down coordinate of a game object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_a0a4c0a35e88df30bef6e09df9b51e6bd}{m\+Current\+Position}
+\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_a52f18d63910240efdcd7490d81f37dc8}{m\+Size}
+\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_ae1867b69e8bfbf7d9b01a463f2e89e9a}{m\+Center}
+\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_game_object_a3d62630e8dc477795f8cc3923747aaba}{m\+Half\+Size}
+\item 
+std\+::list$<$ \hyperlink{classengine_1_1_game_object}{Game\+Object} $\ast$ $>$ \hyperlink{classengine_1_1_game_object_a407bc88cc30f6432b378da41ba142fae}{m\+Parent\+List}
+\item 
+std\+::string \hyperlink{classengine_1_1_game_object_af6c682b4912f897b9d798eb5479159bc}{m\+Name}
+\item 
+\hyperlink{namespaceengine_aae2fae4fa5de0d9b0accc1b59b6c2ff5}{Object\+State} \hyperlink{classengine_1_1_game_object_a14fc4192c3e64ff6c6421add7aeacad8}{m\+Object\+State} = Object\+State\+::\+E\+N\+A\+B\+L\+ED
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+multimap$<$ std\+::type\+\_\+index, \hyperlink{classengine_1_1_component}{Component} $\ast$ $>$ \hyperlink{classengine_1_1_game_object_a6a2bc7c46e6b3ebce8b8d5a4c152db71}{m\+Component\+Map}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{classengine_1_1_game}{Game} Object class. 
+
+Generic \hyperlink{classengine_1_1_game}{Game} Object class. It\textquotesingle{}s how the engine\textquotesingle{}ll see all game objects that will try to use it. 
+
+Definition at line 45 of file game\+\_\+object.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!Game\+Object@{Game\+Object}}
+\index{Game\+Object@{Game\+Object}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{Game\+Object()}{GameObject()}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Object\+::\+Game\+Object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_a0348e3ee2e83d56eafca7a3547f432c4}{}\label{classengine_1_1_game_object_a0348e3ee2e83d56eafca7a3547f432c4}
+
+
+Default constructor for the \hyperlink{classengine_1_1_game}{Game} Object component. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 24 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!Game\+Object@{Game\+Object}}
+\index{Game\+Object@{Game\+Object}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{Game\+Object(std\+::string game\+Object\+Name, std\+::pair$<$ double, double $>$ current\+Position)}{GameObject(std::string gameObjectName, std::pair< double, double > currentPosition)}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Object\+::\+Game\+Object (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{game\+Object\+Name, }
+\item[{std\+::pair$<$ double, double $>$}]{current\+Position}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_a55a9b8b92185ade1c96bac19b10f72ef}{}\label{classengine_1_1_game_object_a55a9b8b92185ade1c96bac19b10f72ef}
+
+
+Constructor for the game object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & that has game object name. \\
+\hline
+{\em pair} & that has the game object current position.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 39 of file game\+\_\+object.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!add\+Component@{add\+Component}}
+\index{add\+Component@{add\+Component}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{add\+Component(\+Component \&component)}{addComponent(Component &component)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Object\+::add\+Component (
+\begin{DoxyParamCaption}
+\item[{{\bf Component} \&}]{component}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_ab0358466033307401a6a0714184503d3}{}\label{classengine_1_1_game_object_ab0358466033307401a6a0714184503d3}
+
+
+add components to the game. 
+
+set the position and insert the game components.
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & that is added to the game.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 53 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!calc\+Bottom\+Left@{calc\+Bottom\+Left}}
+\index{calc\+Bottom\+Left@{calc\+Bottom\+Left}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{calc\+Bottom\+Left()}{calcBottomLeft()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, double $>$ Game\+Object\+::calc\+Bottom\+Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_a615683282d234126169ab8c004c804aa}{}\label{classengine_1_1_game_object_a615683282d234126169ab8c004c804aa}
+
+
+calculate the bottom left coordinate of a game object. 
+
+calculate the bottom left coordinate based on its size and half.
+
+\begin{DoxyReturn}{Returns}
+a pair containing the bottom left coordinate of the game object. 
+\end{DoxyReturn}
+
+
+Definition at line 166 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!calc\+Bottom\+Right@{calc\+Bottom\+Right}}
+\index{calc\+Bottom\+Right@{calc\+Bottom\+Right}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{calc\+Bottom\+Right()}{calcBottomRight()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, double $>$ Game\+Object\+::calc\+Bottom\+Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_a804740468e962005e912fb7f5905e5e7}{}\label{classengine_1_1_game_object_a804740468e962005e912fb7f5905e5e7}
+
+
+calculate the bottom right coordinate of a game object. 
+
+calculate the bottom right coordinate based on its size and half.
+
+\begin{DoxyReturn}{Returns}
+a pair containing the bottom right coordinate of the game object. 
+\end{DoxyReturn}
+
+
+Definition at line 180 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!calc\+Left\+Down@{calc\+Left\+Down}}
+\index{calc\+Left\+Down@{calc\+Left\+Down}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{calc\+Left\+Down()}{calcLeftDown()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, double $>$ Game\+Object\+::calc\+Left\+Down (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_aa3215c1412bd15ad3dcd5bbc6e1e3f94}{}\label{classengine_1_1_game_object_aa3215c1412bd15ad3dcd5bbc6e1e3f94}
+
+
+calculate the left down coordinate of a game object. 
+
+calculate the left down coordinate based on bottom left coordinate.
+
+\begin{DoxyReturn}{Returns}
+a pair containing the left down coordinate of the game object. 
+\end{DoxyReturn}
+
+
+Definition at line 255 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!calc\+Left\+Up@{calc\+Left\+Up}}
+\index{calc\+Left\+Up@{calc\+Left\+Up}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{calc\+Left\+Up()}{calcLeftUp()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, double $>$ Game\+Object\+::calc\+Left\+Up (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_aabc735b6bccc2106270ee3e09dca21f9}{}\label{classengine_1_1_game_object_aabc735b6bccc2106270ee3e09dca21f9}
+
+
+calculate the left up coordinate of a game object. 
+
+calculate the left up coordinate based on top left coordinate.
+
+\begin{DoxyReturn}{Returns}
+a pair containing the left up coordinate of the game object. 
+\end{DoxyReturn}
+
+
+Definition at line 244 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!calc\+Right\+Down@{calc\+Right\+Down}}
+\index{calc\+Right\+Down@{calc\+Right\+Down}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{calc\+Right\+Down()}{calcRightDown()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, double $>$ Game\+Object\+::calc\+Right\+Down (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_a85130378e83e5b0d3cba0b98992c4489}{}\label{classengine_1_1_game_object_a85130378e83e5b0d3cba0b98992c4489}
+
+
+calculate the right down coordinate of a game object. 
+
+calculate the right down coordinate based on bottom right coordinate.
+
+\begin{DoxyReturn}{Returns}
+a pair containing the right down coordinate of the game object. 
+\end{DoxyReturn}
+
+
+Definition at line 233 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!calc\+Right\+Up@{calc\+Right\+Up}}
+\index{calc\+Right\+Up@{calc\+Right\+Up}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{calc\+Right\+Up()}{calcRightUp()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, double $>$ Game\+Object\+::calc\+Right\+Up (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_a40e9d29053f3d9e7ccd5f3cadd007f03}{}\label{classengine_1_1_game_object_a40e9d29053f3d9e7ccd5f3cadd007f03}
+
+
+calculate the right up coordinate of a game object. 
+
+calculate the right up coordinate based on top right coordinate.
+
+\begin{DoxyReturn}{Returns}
+a pair containing the right up coordinate of the game object. 
+\end{DoxyReturn}
+
+
+Definition at line 222 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!calc\+Top\+Left@{calc\+Top\+Left}}
+\index{calc\+Top\+Left@{calc\+Top\+Left}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{calc\+Top\+Left()}{calcTopLeft()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, double $>$ Game\+Object\+::calc\+Top\+Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_aa1a0d2f7da78692acb1e8e1fde9a7743}{}\label{classengine_1_1_game_object_aa1a0d2f7da78692acb1e8e1fde9a7743}
+
+
+calculate the top left coordinate of a game object. 
+
+calculate the top left coordinate based on its size and half.
+
+\begin{DoxyReturn}{Returns}
+a pair containing the top left coordinate of the game object. 
+\end{DoxyReturn}
+
+
+Definition at line 194 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!calc\+Top\+Right@{calc\+Top\+Right}}
+\index{calc\+Top\+Right@{calc\+Top\+Right}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{calc\+Top\+Right()}{calcTopRight()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$ double, double $>$ Game\+Object\+::calc\+Top\+Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_a86b57828238be71e962132bb28b7e6b7}{}\label{classengine_1_1_game_object_a86b57828238be71e962132bb28b7e6b7}
+
+
+calculate the top right coordinate of a game object. 
+
+calculate the top right coordinate based on its size and half.
+
+\begin{DoxyReturn}{Returns}
+a pair containing the top right coordinate of the game object. 
+\end{DoxyReturn}
+
+
+Definition at line 208 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!draw@{draw}}
+\index{draw@{draw}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{draw()}{draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Object\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_game_object_abb64143e72358beb808db22182517802}{}\label{classengine_1_1_game_object_abb64143e72358beb808db22182517802}
+
+
+function that draw game objects components. 
+
+draws all the enabled game objects components.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 122 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!get\+Animation\+Controller@{get\+Animation\+Controller}}
+\index{get\+Animation\+Controller@{get\+Animation\+Controller}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{get\+Animation\+Controller(std\+::type\+\_\+index component\+Type)}{getAnimationController(std::type_index componentType)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Animation\+Controller} $\ast$ Game\+Object\+::get\+Animation\+Controller (
+\begin{DoxyParamCaption}
+\item[{std\+::type\+\_\+index}]{component\+Type}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_a2ed6ce8eadeb37e2eea4f95eaa82b4e4}{}\label{classengine_1_1_game_object_a2ed6ce8eadeb37e2eea4f95eaa82b4e4}
+
+
+retrieve the animation controller. 
+
+find and sets the animation controller.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of components that has the component type.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the game object \hyperlink{classengine_1_1_animation}{Animation} Controller. 
+\end{DoxyReturn}
+
+
+Definition at line 67 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!get\+Audio\+Controller@{get\+Audio\+Controller}}
+\index{get\+Audio\+Controller@{get\+Audio\+Controller}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{get\+Audio\+Controller(std\+::type\+\_\+index component\+Type)}{getAudioController(std::type_index componentType)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Audio\+Controller} $\ast$ Game\+Object\+::get\+Audio\+Controller (
+\begin{DoxyParamCaption}
+\item[{std\+::type\+\_\+index}]{component\+Type}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_object_ae14d1f2f05718d3f1e127c81adf6cb36}{}\label{classengine_1_1_game_object_ae14d1f2f05718d3f1e127c81adf6cb36}
+
+
+retrieve the audio controller. 
+
+find and sets the audio controller.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of components that has the component type.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the game object Audio Controller. 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!get\+Class\+Name@{get\+Class\+Name}}
+\index{get\+Class\+Name@{get\+Class\+Name}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{get\+Class\+Name()}{getClassName()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\+::string engine\+::\+Game\+Object\+::get\+Class\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classengine_1_1_game_object_ac836deb7933c725ac09b67386ad10239}{}\label{classengine_1_1_game_object_ac836deb7933c725ac09b67386ad10239}
+
+
+Reimplemented in \hyperlink{class_azo_1_1_obstacle_a376685ade60d5c05661ce0bceab19da6}{Azo\+::\+Obstacle}, and \hyperlink{class_azo_1_1_invisible_block_a627cab09cdae548b6d58ceb150561a45}{Azo\+::\+Invisible\+Block}.
+
+
+
+Definition at line 70 of file game\+\_\+object.\+hpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!init@{init}}
+\index{init@{init}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Object\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_game_object_a9b565e5ec63bef28e5c860f724d2de7c}{}\label{classengine_1_1_game_object_a9b565e5ec63bef28e5c860f724d2de7c}
+
+
+function that initialize the game objects components. 
+
+Set all game object components to enable.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 106 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Object\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_game_object_a08d7a48b6eb90f55c8b670b6f98ab393}{}\label{classengine_1_1_game_object_a08d7a48b6eb90f55c8b670b6f98ab393}
+
+
+inherits function that disable the game components. 
+
+free the component pointers.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_azo_1_1_player_a57070d462aa21dbfb8dc645b2a25bf86}{Azo\+::\+Player}, \hyperlink{class_azo_1_1_obstacle_aaff76ad6fd2803f73e941446e1724674}{Azo\+::\+Obstacle}, and \hyperlink{class_azo_1_1_invisible_block_adeb8f56bc48b28236165da3ef05af0b1}{Azo\+::\+Invisible\+Block}.
+
+
+
+Definition at line 157 of file game\+\_\+object.\+cpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!update\+Code@{update\+Code}}
+\index{update\+Code@{update\+Code}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{update\+Code()}{updateCode()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Object\+::update\+Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_game_object_ac008ad125b3192f0114af78549f6d829}{}\label{classengine_1_1_game_object_ac008ad125b3192f0114af78549f6d829}
+
+
+function that update the game object code. 
+
+update all the enabled game object components.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 141 of file game\+\_\+object.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!m\+Center@{m\+Center}}
+\index{m\+Center@{m\+Center}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{m\+Center}{mCenter}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$double, double$>$ engine\+::\+Game\+Object\+::m\+Center}\hypertarget{classengine_1_1_game_object_ae1867b69e8bfbf7d9b01a463f2e89e9a}{}\label{classengine_1_1_game_object_ae1867b69e8bfbf7d9b01a463f2e89e9a}
+
+
+Definition at line 50 of file game\+\_\+object.\+hpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!m\+Component\+Map@{m\+Component\+Map}}
+\index{m\+Component\+Map@{m\+Component\+Map}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{m\+Component\+Map}{mComponentMap}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unordered\+\_\+multimap$<$std\+::type\+\_\+index, {\bf Component} $\ast$$>$ engine\+::\+Game\+Object\+::m\+Component\+Map\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_game_object_a6a2bc7c46e6b3ebce8b8d5a4c152db71}{}\label{classengine_1_1_game_object_a6a2bc7c46e6b3ebce8b8d5a4c152db71}
+
+
+Definition at line 57 of file game\+\_\+object.\+hpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!m\+Current\+Position@{m\+Current\+Position}}
+\index{m\+Current\+Position@{m\+Current\+Position}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{m\+Current\+Position}{mCurrentPosition}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$double, double$>$ engine\+::\+Game\+Object\+::m\+Current\+Position}\hypertarget{classengine_1_1_game_object_a0a4c0a35e88df30bef6e09df9b51e6bd}{}\label{classengine_1_1_game_object_a0a4c0a35e88df30bef6e09df9b51e6bd}
+
+
+Definition at line 48 of file game\+\_\+object.\+hpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!m\+Half\+Size@{m\+Half\+Size}}
+\index{m\+Half\+Size@{m\+Half\+Size}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{m\+Half\+Size}{mHalfSize}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$double, double$>$ engine\+::\+Game\+Object\+::m\+Half\+Size}\hypertarget{classengine_1_1_game_object_a3d62630e8dc477795f8cc3923747aaba}{}\label{classengine_1_1_game_object_a3d62630e8dc477795f8cc3923747aaba}
+
+
+Definition at line 51 of file game\+\_\+object.\+hpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!m\+Name@{m\+Name}}
+\index{m\+Name@{m\+Name}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{m\+Name}{mName}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string engine\+::\+Game\+Object\+::m\+Name}\hypertarget{classengine_1_1_game_object_af6c682b4912f897b9d798eb5479159bc}{}\label{classengine_1_1_game_object_af6c682b4912f897b9d798eb5479159bc}
+
+
+Definition at line 53 of file game\+\_\+object.\+hpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!m\+Object\+State@{m\+Object\+State}}
+\index{m\+Object\+State@{m\+Object\+State}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{m\+Object\+State}{mObjectState}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object\+State} engine\+::\+Game\+Object\+::m\+Object\+State = Object\+State\+::\+E\+N\+A\+B\+L\+ED}\hypertarget{classengine_1_1_game_object_a14fc4192c3e64ff6c6421add7aeacad8}{}\label{classengine_1_1_game_object_a14fc4192c3e64ff6c6421add7aeacad8}
+
+
+Definition at line 54 of file game\+\_\+object.\+hpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!m\+Parent\+List@{m\+Parent\+List}}
+\index{m\+Parent\+List@{m\+Parent\+List}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{m\+Parent\+List}{mParentList}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::list$<${\bf Game\+Object} $\ast$$>$ engine\+::\+Game\+Object\+::m\+Parent\+List}\hypertarget{classengine_1_1_game_object_a407bc88cc30f6432b378da41ba142fae}{}\label{classengine_1_1_game_object_a407bc88cc30f6432b378da41ba142fae}
+
+
+Definition at line 52 of file game\+\_\+object.\+hpp.
+
+\index{engine\+::\+Game\+Object@{engine\+::\+Game\+Object}!m\+Size@{m\+Size}}
+\index{m\+Size@{m\+Size}!engine\+::\+Game\+Object@{engine\+::\+Game\+Object}}
+\subsubsection[{\texorpdfstring{m\+Size}{mSize}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$double, double$>$ engine\+::\+Game\+Object\+::m\+Size}\hypertarget{classengine_1_1_game_object_a52f18d63910240efdcd7490d81f37dc8}{}\label{classengine_1_1_game_object_a52f18d63910240efdcd7490d81f37dc8}
+
+
+Definition at line 49 of file game\+\_\+object.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{game__object_8hpp}{game\+\_\+object.\+hpp}\item 
+engine/src/\hyperlink{game__object_8cpp}{game\+\_\+object.\+cpp}\end{DoxyCompactItemize}

@@ -1,3 +1,12 @@
+/**
+     * @file machine_part_code.hpp
+	 * @brief Purpose: Declaration of the MachinePartCode class
+     *
+     * GPL 3.0 License
+     * Copyright (c) 2017 Azo
+     *
+     * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+     */
 #ifndef MACHINE_PART_CODE
 #define MACHINE_PART_CODE
 
@@ -7,17 +16,25 @@
 namespace Azo {
 	class Obstacle;
 
+	/**
+	     * @brief A Hitbox class.
+	     * MachinePartCode class
+		 *
+	     * A more elaborate class description.
+		 * Class responsible for the creation of the parts by which the player must
+		 * collect to get to victory.
+	     */
 	class MachinePartCode : public engine::CodeComponent {
-		private:
-			Obstacle *m_machine_part;
-			engine::AudioController *m_audio_controller;
 		public:
-			MachinePartCode(Obstacle *machine_part);
+			MachinePartCode(Obstacle *machinePart);
 			virtual ~MachinePartCode();
-			void Shutdown();
+			void shutdown();
 		private:
-			void UpdateCode();
-			void FindAudioController();
+			Obstacle *mMachinePart; // Variable responsible for creating the existing parts on the map
+			engine::AudioController *mAudioController; // Variable responsible for audio control
+			
+			void updateCode();
+			void findAudioController();
 	};
 }
 #endif

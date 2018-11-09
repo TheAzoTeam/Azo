@@ -1,0 +1,310 @@
+\hypertarget{classengine_1_1_component}{}\section{engine\+:\+:Component Class Reference}
+\label{classengine_1_1_component}\index{engine\+::\+Component@{engine\+::\+Component}}
+
+
+A \hyperlink{classengine_1_1_component}{Component} class.  
+
+
+
+
+{\ttfamily \#include $<$component.\+hpp$>$}
+
+Inheritance diagram for engine\+:\+:Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.393162cm]{classengine_1_1_component}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_component_a8775db6d1a2c1afc2e77cd3c8f39da6f}{Component} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the component. \end{DoxyCompactList}\item 
+\hyperlink{classengine_1_1_component_aa724dee82c2f103886b0663e8fd085a0}{Component} (\hyperlink{classengine_1_1_game_object}{Game\+Object} \&\hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object})
+\begin{DoxyCompactList}\small\item\em Constructor for the component. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_component_aa0bf4fb5f4bc0de25d3f7beef3a3ca45}{init} ()
+\begin{DoxyCompactList}\small\item\em inherits function that initialize the game components \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_component_a3e47775d51e78914bdfebba123354849}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em inherits function that disable the game components \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_component_a3d20060d4af0bf0dd0c833994581bdfa}{draw} ()
+\begin{DoxyCompactList}\small\item\em inherits function that draw game objects. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_component_a21fd10ef0e28e9c930ccbffa943486aa}{update\+Code} ()
+\begin{DoxyCompactList}\small\item\em inherits function that update the game code. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_component_ae4e0b2575af124b63c7c5c15765c3add}{enable\+Component} ()
+\begin{DoxyCompactList}\small\item\em enable components. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classengine_1_1_component_a9c42e55639174abeda044285a8b1db4b}{disable\+Component} ()
+\begin{DoxyCompactList}\small\item\em disable components. \end{DoxyCompactList}\item 
+bool \hyperlink{classengine_1_1_component_aa22ebfe0829ab3f1609fd139ddd0ff54}{is\+Enabled} ()
+\begin{DoxyCompactList}\small\item\em test if component is enable. \end{DoxyCompactList}\item 
+virtual std\+::string \hyperlink{classengine_1_1_component_a4341ed3c744b160590908bea151b6ca7}{get\+Class\+Name} ()
+\begin{DoxyCompactList}\small\item\em access the name of the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_game_object}{Game\+Object} $\ast$ \hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object}
+\item 
+\hyperlink{namespaceengine_aa1fd544a3408d033764aa448ec42c912}{State} \hyperlink{classengine_1_1_component_acd64e7e69db92dbdafe70d208dc1c85e}{component\+State} = State\+::\+E\+N\+A\+B\+L\+ED
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{classengine_1_1_component}{Component} class. 
+
+Generic \hyperlink{classengine_1_1_component}{Component} class. It\textquotesingle{}s how the engine\textquotesingle{}ll see all components that will try to use it. 
+
+Definition at line 43 of file component.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Component@{engine\+::\+Component}!Component@{Component}}
+\index{Component@{Component}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{Component()}{Component()}}]{\setlength{\rightskip}{0pt plus 5cm}Component\+::\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_component_a8775db6d1a2c1afc2e77cd3c8f39da6f}{}\label{classengine_1_1_component_a8775db6d1a2c1afc2e77cd3c8f39da6f}
+
+
+Default constructor for the component. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 22 of file component.\+cpp.
+
+\index{engine\+::\+Component@{engine\+::\+Component}!Component@{Component}}
+\index{Component@{Component}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{Component(\+Game\+Object \&game\+Object)}{Component(GameObject &gameObject)}}]{\setlength{\rightskip}{0pt plus 5cm}Component\+::\+Component (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Object} \&}]{game\+Object}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_component_aa724dee82c2f103886b0663e8fd085a0}{}\label{classengine_1_1_component_aa724dee82c2f103886b0663e8fd085a0}
+
+
+Constructor for the component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & object to the component.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 31 of file component.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Component@{engine\+::\+Component}!disable\+Component@{disable\+Component}}
+\index{disable\+Component@{disable\+Component}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{disable\+Component()}{disableComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::disable\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_component_a9c42e55639174abeda044285a8b1db4b}{}\label{classengine_1_1_component_a9c42e55639174abeda044285a8b1db4b}
+
+
+disable components. 
+
+set the game object components state to disabled.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classengine_1_1_animation_aed6b685cec9e13063f171ce6bd49b9d7}{engine\+::\+Animation}.
+
+
+
+Definition at line 90 of file component.\+cpp.
+
+\index{engine\+::\+Component@{engine\+::\+Component}!draw@{draw}}
+\index{draw@{draw}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{draw()}{draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_component_a3d20060d4af0bf0dd0c833994581bdfa}{}\label{classengine_1_1_component_a3d20060d4af0bf0dd0c833994581bdfa}
+
+
+inherits function that draw game objects. 
+
+draws all the enabled game objects.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classengine_1_1_animation_a5bc1f5aaee0372f573d4537dab43a162}{engine\+::\+Animation}, \hyperlink{classengine_1_1_animation_controller_a906d2adadfd5eeb2dc6edff3e2f15c45}{engine\+::\+Animation\+Controller}, \hyperlink{classengine_1_1_background_component_a7b3c366c4b917888bde48917d83994be}{engine\+::\+Background\+Component}, and \hyperlink{classengine_1_1_image_component_a2be1a46da22f0f2280f7748c49fa6276}{engine\+::\+Image\+Component}.
+
+
+
+Definition at line 61 of file component.\+cpp.
+
+\index{engine\+::\+Component@{engine\+::\+Component}!enable\+Component@{enable\+Component}}
+\index{enable\+Component@{enable\+Component}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{enable\+Component()}{enableComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::enable\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_component_ae4e0b2575af124b63c7c5c15765c3add}{}\label{classengine_1_1_component_ae4e0b2575af124b63c7c5c15765c3add}
+
+
+enable components. 
+
+set the game object components state to enabled.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 79 of file component.\+cpp.
+
+\index{engine\+::\+Component@{engine\+::\+Component}!get\+Class\+Name@{get\+Class\+Name}}
+\index{get\+Class\+Name@{get\+Class\+Name}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{get\+Class\+Name()}{getClassName()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\+::string engine\+::\+Component\+::get\+Class\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classengine_1_1_component_a4341ed3c744b160590908bea151b6ca7}{}\label{classengine_1_1_component_a4341ed3c744b160590908bea151b6ca7}
+
+
+access the name of the class. 
+
+Used to get the private attribute class\+Name.
+
+\begin{DoxyReturn}{Returns}
+string that contains the scene name. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classengine_1_1_animation_a6d7f93578e25311f51f2b3c737f885b2}{engine\+::\+Animation}, \hyperlink{classengine_1_1_animation_controller_a227866340161b386c3e39503a15e03cc}{engine\+::\+Animation\+Controller}, \hyperlink{classengine_1_1_background_component_ad3283bbe6ab2d5c170ca67d2180c9fe2}{engine\+::\+Background\+Component}, and \hyperlink{classengine_1_1_image_component_ac18bc924683d4d389b6706abd0afab20}{engine\+::\+Image\+Component}.
+
+
+
+Definition at line 66 of file component.\+hpp.
+
+\index{engine\+::\+Component@{engine\+::\+Component}!init@{init}}
+\index{init@{init}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_component_aa0bf4fb5f4bc0de25d3f7beef3a3ca45}{}\label{classengine_1_1_component_aa0bf4fb5f4bc0de25d3f7beef3a3ca45}
+
+
+inherits function that initialize the game components 
+
+Set all game components to enable
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classengine_1_1_audio_component_a61f7e9f09253a0619ed979276267150c}{engine\+::\+Audio\+Component}, \hyperlink{classengine_1_1_animation_controller_ae40c2032604f044293d50c27da416f01}{engine\+::\+Animation\+Controller}, \hyperlink{classengine_1_1_audio_controller_a34af3c91cadbf4a97eafdd3e311671c9}{engine\+::\+Audio\+Controller}, \hyperlink{classengine_1_1_background_component_a88a96b265f85934474d23d37cb2e6413}{engine\+::\+Background\+Component}, \hyperlink{classengine_1_1_image_component_a4e5def28ca4647b29a4fe9bda78f9e57}{engine\+::\+Image\+Component}, and \hyperlink{classengine_1_1_code_component_a710d9f79114c7b055aaa94fae179ae55}{engine\+::\+Code\+Component}.
+
+
+
+Definition at line 43 of file component.\+cpp.
+
+\index{engine\+::\+Component@{engine\+::\+Component}!is\+Enabled@{is\+Enabled}}
+\index{is\+Enabled@{is\+Enabled}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{is\+Enabled()}{isEnabled()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Component\+::is\+Enabled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_component_aa22ebfe0829ab3f1609fd139ddd0ff54}{}\label{classengine_1_1_component_aa22ebfe0829ab3f1609fd139ddd0ff54}
+
+
+test if component is enable. 
+
+allows see if component is enable or disable.
+
+\begin{DoxyReturn}{Returns}
+bool that response if component is enabled. 
+\end{DoxyReturn}
+
+
+Definition at line 101 of file component.\+cpp.
+
+\index{engine\+::\+Component@{engine\+::\+Component}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_component_a3e47775d51e78914bdfebba123354849}{}\label{classengine_1_1_component_a3e47775d51e78914bdfebba123354849}
+
+
+inherits function that disable the game components 
+
+free the component pointers
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classengine_1_1_animation_a219053e2c5bc9179fa355f14cf9bf032}{engine\+::\+Animation}, \hyperlink{classengine_1_1_audio_component_acb42c8fa38793ff0fe6c0652bbb9eac9}{engine\+::\+Audio\+Component}, \hyperlink{class_azo_1_1_player_code_aea1004e3e9f7c7c58d69f428dd0b5b6f}{Azo\+::\+Player\+Code}, \hyperlink{classengine_1_1_animation_controller_a63ed3b30c0ea1fba109e6bed452c21ce}{engine\+::\+Animation\+Controller}, \hyperlink{class_azo_1_1_level_one_code_af66d92f836d8a6c0f72d718d05db63a5}{Azo\+::\+Level\+One\+Code}, \hyperlink{classengine_1_1_audio_controller_aaeb8eaadaa523db5e3608f019fe1bf8e}{engine\+::\+Audio\+Controller}, \hyperlink{classengine_1_1_background_component_a88da6fd205007306776b1ff186b29668}{engine\+::\+Background\+Component}, \hyperlink{classengine_1_1_code_component_af76ba17f9f87216418081d1e2c7c3a22}{engine\+::\+Code\+Component}, and \hyperlink{class_azo_1_1_machine_part_code_aea9e8e5ccc20e0ac975277104b29d0bf}{Azo\+::\+Machine\+Part\+Code}.
+
+
+
+Definition at line 52 of file component.\+cpp.
+
+\index{engine\+::\+Component@{engine\+::\+Component}!update\+Code@{update\+Code}}
+\index{update\+Code@{update\+Code}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{update\+Code()}{updateCode()}}]{\setlength{\rightskip}{0pt plus 5cm}void Component\+::update\+Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_component_a21fd10ef0e28e9c930ccbffa943486aa}{}\label{classengine_1_1_component_a21fd10ef0e28e9c930ccbffa943486aa}
+
+
+inherits function that update the game code. 
+
+update all the enabled game objects.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{classengine_1_1_audio_component_aa35e7f57c104c2281680bb13764e4ef0}{engine\+::\+Audio\+Component}, \hyperlink{classengine_1_1_audio_controller_acbbf0bd451c181fb1e3dc26e7c4be27d}{engine\+::\+Audio\+Controller}, and \hyperlink{classengine_1_1_code_component_a78363275025956ccdbfa11fd42f8ae96}{engine\+::\+Code\+Component}.
+
+
+
+Definition at line 70 of file component.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{engine\+::\+Component@{engine\+::\+Component}!component\+State@{component\+State}}
+\index{component\+State@{component\+State}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{component\+State}{componentState}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State} engine\+::\+Component\+::component\+State = State\+::\+E\+N\+A\+B\+L\+ED\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_component_acd64e7e69db92dbdafe70d208dc1c85e}{}\label{classengine_1_1_component_acd64e7e69db92dbdafe70d208dc1c85e}
+
+
+Definition at line 47 of file component.\+hpp.
+
+\index{engine\+::\+Component@{engine\+::\+Component}!game\+Object@{game\+Object}}
+\index{game\+Object@{game\+Object}!engine\+::\+Component@{engine\+::\+Component}}
+\subsubsection[{\texorpdfstring{game\+Object}{gameObject}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Object}$\ast$ engine\+::\+Component\+::game\+Object\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{}\label{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}
+
+
+Definition at line 46 of file component.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{component_8hpp}{component.\+hpp}\item 
+engine/src/\hyperlink{component_8cpp}{component.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,169 @@
+\hypertarget{classengine_1_1_code_component}{}\section{engine\+:\+:Code\+Component Class Reference}
+\label{classengine_1_1_code_component}\index{engine\+::\+Code\+Component@{engine\+::\+Code\+Component}}
+
+
+A Code \hyperlink{classengine_1_1_component}{Component} class.  
+
+
+
+
+{\ttfamily \#include $<$code\+\_\+component.\+hpp$>$}
+
+Inheritance diagram for engine\+:\+:Code\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.675159cm]{classengine_1_1_code_component}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_code_component_a7dada09414813e7a5f83679323402dd3}{Code\+Component} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the code component. \end{DoxyCompactList}\item 
+\hyperlink{classengine_1_1_code_component_aa48bca8c3008c5d51e5131dde228deb3}{Code\+Component} (\hyperlink{classengine_1_1_game_object}{Game\+Object} \&\hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object})
+\begin{DoxyCompactList}\small\item\em Constructor for the code component. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_code_component_a710d9f79114c7b055aaa94fae179ae55}{init} ()
+\begin{DoxyCompactList}\small\item\em inherits function that initialize the game code components. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_code_component_af76ba17f9f87216418081d1e2c7c3a22}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em inherits function that disable the game code components. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_code_component_a78363275025956ccdbfa11fd42f8ae96}{update\+Code} ()
+\begin{DoxyCompactList}\small\item\em inherits function that update the game code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A Code \hyperlink{classengine_1_1_component}{Component} class. 
+
+Generic \hyperlink{classengine_1_1_component}{Component} class. It\textquotesingle{}s how the engine\textquotesingle{}ll see all components that will try to use it. 
+
+Definition at line 30 of file code\+\_\+component.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Code\+Component@{engine\+::\+Code\+Component}!Code\+Component@{Code\+Component}}
+\index{Code\+Component@{Code\+Component}!engine\+::\+Code\+Component@{engine\+::\+Code\+Component}}
+\subsubsection[{\texorpdfstring{Code\+Component()}{CodeComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}Code\+Component\+::\+Code\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_code_component_a7dada09414813e7a5f83679323402dd3}{}\label{classengine_1_1_code_component_a7dada09414813e7a5f83679323402dd3}
+
+
+Default constructor for the code component. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 22 of file code\+\_\+component.\+cpp.
+
+\index{engine\+::\+Code\+Component@{engine\+::\+Code\+Component}!Code\+Component@{Code\+Component}}
+\index{Code\+Component@{Code\+Component}!engine\+::\+Code\+Component@{engine\+::\+Code\+Component}}
+\subsubsection[{\texorpdfstring{Code\+Component(\+Game\+Object \&game\+Object)}{CodeComponent(GameObject &gameObject)}}]{\setlength{\rightskip}{0pt plus 5cm}Code\+Component\+::\+Code\+Component (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Object} \&}]{game\+Object}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_code_component_aa48bca8c3008c5d51e5131dde228deb3}{}\label{classengine_1_1_code_component_aa48bca8c3008c5d51e5131dde228deb3}
+
+
+Constructor for the code component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & object to the code component.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 31 of file code\+\_\+component.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Code\+Component@{engine\+::\+Code\+Component}!init@{init}}
+\index{init@{init}!engine\+::\+Code\+Component@{engine\+::\+Code\+Component}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Code\+Component\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_code_component_a710d9f79114c7b055aaa94fae179ae55}{}\label{classengine_1_1_code_component_a710d9f79114c7b055aaa94fae179ae55}
+
+
+inherits function that initialize the game code components. 
+
+Set all game code components to enable.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_aa0bf4fb5f4bc0de25d3f7beef3a3ca45}{engine\+::\+Component}.
+
+
+
+Definition at line 43 of file code\+\_\+component.\+cpp.
+
+\index{engine\+::\+Code\+Component@{engine\+::\+Code\+Component}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!engine\+::\+Code\+Component@{engine\+::\+Code\+Component}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Code\+Component\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_code_component_af76ba17f9f87216418081d1e2c7c3a22}{}\label{classengine_1_1_code_component_af76ba17f9f87216418081d1e2c7c3a22}
+
+
+inherits function that disable the game code components. 
+
+free the code component pointer.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a3e47775d51e78914bdfebba123354849}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{class_azo_1_1_player_code_aea1004e3e9f7c7c58d69f428dd0b5b6f}{Azo\+::\+Player\+Code}, \hyperlink{class_azo_1_1_level_one_code_af66d92f836d8a6c0f72d718d05db63a5}{Azo\+::\+Level\+One\+Code}, and \hyperlink{class_azo_1_1_machine_part_code_aea9e8e5ccc20e0ac975277104b29d0bf}{Azo\+::\+Machine\+Part\+Code}.
+
+
+
+Definition at line 52 of file code\+\_\+component.\+cpp.
+
+\index{engine\+::\+Code\+Component@{engine\+::\+Code\+Component}!update\+Code@{update\+Code}}
+\index{update\+Code@{update\+Code}!engine\+::\+Code\+Component@{engine\+::\+Code\+Component}}
+\subsubsection[{\texorpdfstring{update\+Code()}{updateCode()}}]{\setlength{\rightskip}{0pt plus 5cm}void Code\+Component\+::update\+Code (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_code_component_a78363275025956ccdbfa11fd42f8ae96}{}\label{classengine_1_1_code_component_a78363275025956ccdbfa11fd42f8ae96}
+
+
+inherits function that update the game code. 
+
+update all the enabled game objects.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a21fd10ef0e28e9c930ccbffa943486aa}{engine\+::\+Component}.
+
+
+
+Definition at line 61 of file code\+\_\+component.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{code__component_8hpp}{code\+\_\+component.\+hpp}\item 
+engine/src/\hyperlink{code__component_8cpp}{code\+\_\+component.\+cpp}\end{DoxyCompactItemize}

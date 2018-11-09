@@ -1,0 +1,254 @@
+\hypertarget{classengine_1_1_background_component}{}\section{engine\+:\+:Background\+Component Class Reference}
+\label{classengine_1_1_background_component}\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+
+
+{\ttfamily \#include $<$background\+\_\+component.\+hpp$>$}
+
+Inheritance diagram for engine\+:\+:Background\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classengine_1_1_background_component}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_background_component_a80e304ab2a7f912dc7947645e26ff992}{Background\+Component} ()
+\item 
+\hyperlink{classengine_1_1_background_component_aba5db2cc51b47dc1fcf48a253cb37e79}{Background\+Component} (std\+::string \hyperlink{classengine_1_1_background_component_aeffcb1aa8b67444e004413dee8c266b1}{image\+Path})
+\item 
+\hyperlink{classengine_1_1_background_component_a0ec590cdd404d4fbf106b7c14a6a7260}{Background\+Component} (\hyperlink{classengine_1_1_game_object}{Game\+Object} \&\hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object}, std\+::string \hyperlink{classengine_1_1_background_component_aeffcb1aa8b67444e004413dee8c266b1}{image\+Path})
+\item 
+\hyperlink{classengine_1_1_background_component_a2de1b03eff649102040132d22f6e23e1}{$\sim$\+Background\+Component} ()
+\item 
+void \hyperlink{classengine_1_1_background_component_a88a96b265f85934474d23d37cb2e6413}{init} ()
+\begin{DoxyCompactList}\small\item\em inherits function that initialize the game components \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_background_component_a88da6fd205007306776b1ff186b29668}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em inherits function that disable the game components \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_background_component_a7b3c366c4b917888bde48917d83994be}{draw} ()
+\begin{DoxyCompactList}\small\item\em inherits function that draw game objects. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classengine_1_1_background_component_ad3283bbe6ab2d5c170ca67d2180c9fe2}{get\+Class\+Name} ()
+\begin{DoxyCompactList}\small\item\em access the name of the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classengine_1_1_background_component_aeffcb1aa8b67444e004413dee8c266b1}{image\+Path}
+\item 
+S\+D\+L\+\_\+\+Texture $\ast$ \hyperlink{classengine_1_1_background_component_a8f3e8087b12106e4cea2f3c3c5e75c8e}{image\+Texture}
+\item 
+S\+D\+L\+\_\+\+Rect \hyperlink{classengine_1_1_background_component_afade3c167174d12a54b2b548199c3942}{render\+Quad}
+\item 
+int \hyperlink{classengine_1_1_background_component_ab791d4b2d6c30affd8d27bbd2f51db69}{component\+Width}
+\item 
+int \hyperlink{classengine_1_1_background_component_af3aa1860b46dc7d4d1252c2a62d03f24}{component\+Height}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 25 of file background\+\_\+component.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!Background\+Component@{Background\+Component}}
+\index{Background\+Component@{Background\+Component}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{Background\+Component()}{BackgroundComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}Background\+Component\+::\+Background\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_background_component_a80e304ab2a7f912dc7947645e26ff992}{}\label{classengine_1_1_background_component_a80e304ab2a7f912dc7947645e26ff992}
+
+
+Definition at line 23 of file background\+\_\+component.\+cpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!Background\+Component@{Background\+Component}}
+\index{Background\+Component@{Background\+Component}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{Background\+Component(std\+::string image\+Path)}{BackgroundComponent(std::string imagePath)}}]{\setlength{\rightskip}{0pt plus 5cm}Background\+Component\+::\+Background\+Component (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{image\+Path}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_background_component_aba5db2cc51b47dc1fcf48a253cb37e79}{}\label{classengine_1_1_background_component_aba5db2cc51b47dc1fcf48a253cb37e79}
+
+
+Definition at line 25 of file background\+\_\+component.\+cpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!Background\+Component@{Background\+Component}}
+\index{Background\+Component@{Background\+Component}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{Background\+Component(\+Game\+Object \&game\+Object, std\+::string image\+Path)}{BackgroundComponent(GameObject &gameObject, std::string imagePath)}}]{\setlength{\rightskip}{0pt plus 5cm}Background\+Component\+::\+Background\+Component (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Object} \&}]{game\+Object, }
+\item[{std\+::string}]{image\+Path}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_background_component_a0ec590cdd404d4fbf106b7c14a6a7260}{}\label{classengine_1_1_background_component_a0ec590cdd404d4fbf106b7c14a6a7260}
+
+
+Definition at line 30 of file background\+\_\+component.\+cpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!````~Background\+Component@{$\sim$\+Background\+Component}}
+\index{````~Background\+Component@{$\sim$\+Background\+Component}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{$\sim$\+Background\+Component()}{~BackgroundComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}Background\+Component\+::$\sim$\+Background\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_background_component_a2de1b03eff649102040132d22f6e23e1}{}\label{classengine_1_1_background_component_a2de1b03eff649102040132d22f6e23e1}
+
+
+Definition at line 36 of file background\+\_\+component.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!draw@{draw}}
+\index{draw@{draw}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{draw()}{draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Background\+Component\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_background_component_a7b3c366c4b917888bde48917d83994be}{}\label{classengine_1_1_background_component_a7b3c366c4b917888bde48917d83994be}
+
+
+inherits function that draw game objects. 
+
+draws all the enabled game objects.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a3d20060d4af0bf0dd0c833994581bdfa}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{classengine_1_1_image_component_a2be1a46da22f0f2280f7748c49fa6276}{engine\+::\+Image\+Component}.
+
+
+
+Definition at line 52 of file background\+\_\+component.\+cpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!get\+Class\+Name@{get\+Class\+Name}}
+\index{get\+Class\+Name@{get\+Class\+Name}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{get\+Class\+Name()}{getClassName()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string engine\+::\+Background\+Component\+::get\+Class\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classengine_1_1_background_component_ad3283bbe6ab2d5c170ca67d2180c9fe2}{}\label{classengine_1_1_background_component_ad3283bbe6ab2d5c170ca67d2180c9fe2}
+
+
+access the name of the class. 
+
+Used to get the private attribute class\+Name.
+
+\begin{DoxyReturn}{Returns}
+string that contains the scene name. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a4341ed3c744b160590908bea151b6ca7}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{classengine_1_1_image_component_ac18bc924683d4d389b6706abd0afab20}{engine\+::\+Image\+Component}.
+
+
+
+Definition at line 40 of file background\+\_\+component.\+hpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!init@{init}}
+\index{init@{init}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Background\+Component\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_background_component_a88a96b265f85934474d23d37cb2e6413}{}\label{classengine_1_1_background_component_a88a96b265f85934474d23d37cb2e6413}
+
+
+inherits function that initialize the game components 
+
+Set all game components to enable
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_aa0bf4fb5f4bc0de25d3f7beef3a3ca45}{engine\+::\+Component}.
+
+
+
+Reimplemented in \hyperlink{classengine_1_1_image_component_a4e5def28ca4647b29a4fe9bda78f9e57}{engine\+::\+Image\+Component}.
+
+
+
+Definition at line 38 of file background\+\_\+component.\+cpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Background\+Component\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_background_component_a88da6fd205007306776b1ff186b29668}{}\label{classengine_1_1_background_component_a88da6fd205007306776b1ff186b29668}
+
+
+inherits function that disable the game components 
+
+free the component pointers
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_a3e47775d51e78914bdfebba123354849}{engine\+::\+Component}.
+
+
+
+Definition at line 47 of file background\+\_\+component.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!component\+Height@{component\+Height}}
+\index{component\+Height@{component\+Height}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{component\+Height}{componentHeight}}]{\setlength{\rightskip}{0pt plus 5cm}int engine\+::\+Background\+Component\+::component\+Height\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_background_component_af3aa1860b46dc7d4d1252c2a62d03f24}{}\label{classengine_1_1_background_component_af3aa1860b46dc7d4d1252c2a62d03f24}
+
+
+Definition at line 31 of file background\+\_\+component.\+hpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!component\+Width@{component\+Width}}
+\index{component\+Width@{component\+Width}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{component\+Width}{componentWidth}}]{\setlength{\rightskip}{0pt plus 5cm}int engine\+::\+Background\+Component\+::component\+Width\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_background_component_ab791d4b2d6c30affd8d27bbd2f51db69}{}\label{classengine_1_1_background_component_ab791d4b2d6c30affd8d27bbd2f51db69}
+
+
+Definition at line 30 of file background\+\_\+component.\+hpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!image\+Path@{image\+Path}}
+\index{image\+Path@{image\+Path}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{image\+Path}{imagePath}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string engine\+::\+Background\+Component\+::image\+Path\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_background_component_aeffcb1aa8b67444e004413dee8c266b1}{}\label{classengine_1_1_background_component_aeffcb1aa8b67444e004413dee8c266b1}
+
+
+Definition at line 27 of file background\+\_\+component.\+hpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!image\+Texture@{image\+Texture}}
+\index{image\+Texture@{image\+Texture}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{image\+Texture}{imageTexture}}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Texture$\ast$ engine\+::\+Background\+Component\+::image\+Texture\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_background_component_a8f3e8087b12106e4cea2f3c3c5e75c8e}{}\label{classengine_1_1_background_component_a8f3e8087b12106e4cea2f3c3c5e75c8e}
+
+
+Definition at line 28 of file background\+\_\+component.\+hpp.
+
+\index{engine\+::\+Background\+Component@{engine\+::\+Background\+Component}!render\+Quad@{render\+Quad}}
+\index{render\+Quad@{render\+Quad}!engine\+::\+Background\+Component@{engine\+::\+Background\+Component}}
+\subsubsection[{\texorpdfstring{render\+Quad}{renderQuad}}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Rect engine\+::\+Background\+Component\+::render\+Quad\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_background_component_afade3c167174d12a54b2b548199c3942}{}\label{classengine_1_1_background_component_afade3c167174d12a54b2b548199c3942}
+
+
+Definition at line 29 of file background\+\_\+component.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{background__component_8hpp}{background\+\_\+component.\+hpp}\item 
+engine/src/\hyperlink{background__component_8cpp}{background\+\_\+component.\+cpp}\end{DoxyCompactItemize}

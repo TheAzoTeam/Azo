@@ -1,29 +1,56 @@
+/**
+ * @file invisible_block.cpp
+ * @brief Purpose: Contains the InvisibleBlock class methods.
+ *
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+*/
 #include "invisible_block.hpp"
 
 using namespace Azo;
 
-InvisibleBlock::InvisibleBlock(){}
-
 InvisibleBlock::~InvisibleBlock(){}
 
-InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> position_relative_to_parent,
+/**
+ * @brief Constructor for InvisibleBlock class.
+ *
+ * Used for initializing class variables.
+ * @param name InvisibleBlock name.
+ * @param positionRelativeToParent Pair of doubles relative to position(range > 0).
+ * @param size Pair of doubles relative to size(range > 0).
+ */
+InvisibleBlock::InvisibleBlock(std::string name, std::pair<double, double> positionRelativeToParent,
 			       std::pair<double, double> size){
 	DEBUG("Creating Blocks");
 
-	m_name = name;
-	m_position_relative_to_parent = position_relative_to_parent;
-	m_size = size;
+	mName = name;
+	ASSERT(mName != "", "name can't be empty.");
+	mPositionRelativeToParent = positionRelativeToParent;
+	mSize = size;
 
-	m_half_size.first = m_size.first / 2.0f;
-	m_half_size.second = m_size.second / 2.0f;
+	// 2.0f is used on the snippets below to halve the size while maintaining float type result.
+	mHalfSize.first = mSize.first / 2.0f;
+	mHalfSize.second = mSize.second / 2.0f;
 
-	m_center = m_half_size;
+	mCenter = mHalfSize; // Center is equal to the mHalfSize pair.
 
-	m_image =  new engine::ImageComponent(*this, "backgrounds/test_invisible_1.png", 1);
-	this->AddComponent(*m_image);
+	// Initializing new ImageComponent with default invisible block image.
+	mImage = new engine::ImageComponent(*this,
+										"backgrounds/test_invisible_1.png",
+										1);
+	this->addComponent(*mImage);
+	ASSERT(mImage != NULL, "mImage, ImageComponent can't be empty");
 }
 
-void InvisibleBlock::Shutdown(){
-	m_image->Shutdown();
-	m_image = NULL;
+
+/**
+ * @brief Destructor class for InvisibleBlock.
+ *
+ * Used for shutting down ImageComponent so as to free memory when closing the game.
+ */
+void InvisibleBlock::shutdown(){
+	mImage->shutdown();
+	mImage = NULL;
 }

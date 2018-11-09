@@ -1,117 +1,156 @@
+/**
+     * @file menu_code.cpp
+     * @brief Purpose: Archive responsible for the operation of the ' menu '
+     *
+     * GPL 3.0 License
+     * Copyright (c) 2017 Azo
+     *
+     * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+     */
 #include "game.hpp"
 #include "menu_code.hpp"
 
 using namespace Azo;
 
-MenuCode::MenuCode(engine::GameObject *game_object){
-	this->game_object = game_object;
-	FindAudioController();
-	FindAnimationController();
+/**
+     * @brief function responsible for building menu
+     *
+     * Why: Used to build menu on the map
+     *
+	 * @param Gameobject that is the creation object of the ' menu '
+     */
+MenuCode::MenuCode(engine::GameObject *gameObject){
+	ASSERT(&gameObject != NULL, "GameObject can't be null.");
+	this->gameObject = gameObject; // Variable responsible for game object.
+	ASSERT(this->gameObject == gameObject, "gameObject must have correct value.");
+	findAudioController();
+	findAnimationController();
+}
+/**
+     * @brief function responsible for finding animation controller
+     *
+     * Why: Used to control the animation of the game
+     *
+     * @return "void".
+     */
+void MenuCode::findAnimationController(){
+	 mAnimationController = (gameObject->getAnimationController(typeid(engine::AnimationController)));
 }
 
-void MenuCode::FindAnimationController(){
-	m_animation_controller = (game_object->GetAnimationController(typeid(engine::AnimationController)));
+/**
+     * @brief function responsible for finding audio controller
+     *
+     * Why: Used to control game audio
+     *
+     * @return "void".
+     */
+void MenuCode::findAudioController(){
+	 mAudioController = (gameObject->getAudioController(typeid(engine::AudioController)));
 }
 
-void MenuCode::FindAudioController(){
-	m_audio_controller = (game_object->GetAudioController(typeid(engine::AudioController)));
-}
+/**
+     * @brief function responsible for updating game states
+     *
+     * Why: Used so that the game can consistently respond to the player's inputs
+     *
+     * @return "void".
+     */
+void MenuCode::updateCode(){
+	if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::ENTER)){
 
-void MenuCode::UpdateCode(){
-	if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::ENTER)){
-
-		switch(m_current_button){
-			case 1:
-				m_audio_controller->StopAudio("menu_theme");
-				engine::Game::instance.ChangeScene("level_one");
+		switch (mCurrentButton) {
+			case ButtonType::START_BUTTON:
+				mAudioController->stopAudio("menu_theme");
+				engine::Game::instance.changeScene("level_one");
 				break;
-			case 2:
-				engine::Game::instance.game_state = engine::GameState::EXIT;
+			case ButtonType::EXIT_BUTTON:
+				engine::Game::instance.gameState = engine::GameState::EXIT; // Variable responsible for the state of game.
 				break;
-			case 3:
-
-				if(m_audio_controller->GetAudioState("menu_theme") == engine::AudioState::PLAYING){
-					m_audio_controller->PauseAudio("menu_theme");
-					m_animation_controller->StopAnimation("sound_enabled_button");
-					m_animation_controller->StartAnimation("sound_disabled_button");
-				}else{
-					m_audio_controller->PlayAudio("menu_theme");
-					m_animation_controller->StartAnimation("sound_enabled_button");
-					m_animation_controller->StopAnimation("sound_disabled_button");
+			case ButtonType::SOUND_BUTTON:
+				if(mAudioController->getAudioState("menu_theme") == engine::AudioState::PLAYING){
+					mAudioController->pauseAudio("menu_theme");
+					mAnimationController->stopAnimation("sound_enabled_button");
+					mAnimationController->startAnimation("sound_disabled_button");
+				} else {
+					// Audio not currently playing, so start it again.
+					mAudioController->playAudio("menu_theme");
+					mAnimationController->startAnimation("sound_enabled_button");
+					mAnimationController->stopAnimation("sound_disabled_button");
 				}
-
 				break;
-
+			default:
+				// Nothing to do, no button selected.
+				break;
 		}
 	}
-
-	ChangeOption();
+	changeOption();
 }
 
-void MenuCode::ChangeOption(){
+/**
+     * @brief function responsible for selecting game option
+     *
+     * Why: Used so that the user can select the options in the menu
+     *
+     * @return "void".
+     */
+void MenuCode::changeOption(){
 
-	switch(m_current_button){
+	switch (mCurrentButton) {
 		// Start Option.
-		case 1:
+		case ButtonType::START_BUTTON:
 			DEBUG("Start Button is selected.");
 
-			m_animation_controller->StartAnimation("arrow_start");
+			mAnimationController->startAnimation("arrow_start");
 
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
-				m_animation_controller->StopAnimation("arrow_start");
+			if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::RIGHT_ARROW)){
+				mAnimationController->stopAnimation("arrow_start");
 
-				m_current_button = 2;
+				mCurrentButton = ButtonType::EXIT_BUTTON;
 
-			}
-
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
-				m_animation_controller->StopAnimation("arrow_start");
-				m_current_button = 3;
+			} else if (engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)) {
+				mAnimationController->stopAnimation("arrow_start");
+				mCurrentButton = ButtonType::SOUND_BUTTON;
 			}
 
 			break;
 		// Exit Option.
-		case 2:
+		case ButtonType::EXIT_BUTTON:
 			DEBUG("Exit Button is selected.");
 
+			mAnimationController->startAnimation("arrow_exit");
 
-			m_animation_controller->StartAnimation("arrow_exit");
+			if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::RIGHT_ARROW)){
+				mAnimationController->stopAnimation("arrow_exit");
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
-				m_animation_controller->StopAnimation("arrow_exit");
+				mCurrentButton = ButtonType::SOUND_BUTTON;
+			} else if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
+				mAnimationController->stopAnimation("arrow_exit");
 
-				m_current_button = 3;
-			}
-
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
-				m_animation_controller->StopAnimation("arrow_exit");
-
-				m_current_button = 1;
+				mCurrentButton = ButtonType::START_BUTTON;
 			}
 
 			break;
 		// Sound Option.
-		case 3:
+		case ButtonType::SOUND_BUTTON:
 			DEBUG("Sound Button is selected.");
 
-			m_animation_controller->StartAnimation("arrow_sound");
+			mAnimationController->startAnimation("arrow_sound");
 
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::RIGHT_ARROW)){
-				m_animation_controller->StopAnimation("arrow_sound");
+			if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::RIGHT_ARROW)){
+				mAnimationController->stopAnimation("arrow_sound");
 
 				// Go back to the first option.
-				m_current_button = 1;
+				mCurrentButton = ButtonType::START_BUTTON;
 
+			} else if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::LEFT_ARROW)){
+				mAnimationController->stopAnimation("arrow_sound");
+
+				mCurrentButton = ButtonType::EXIT_BUTTON;
 			}
-
-			if(engine::Game::instance.input_manager.KeyDownOnce(engine::Button::LEFT_ARROW)){
-				m_animation_controller->StopAnimation("arrow_sound");
-
-				m_current_button = 2;
-			}
-
+			break;
+		default:
+			// Nothing to do, no button defined.
 			break;
 	}
 }
-

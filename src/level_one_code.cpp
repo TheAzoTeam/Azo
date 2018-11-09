@@ -1,12 +1,12 @@
 /**
-* @file: level_one_code.cpp
-* @brief Purpose: LevelOneCode class implementation
-*
-* GPL v3.0 Licence
-* Copyright (c) 2017 Azo
-*
-* Notice: TheAzo, TheAzoTeam
-* https://github.com/TecProg2018-2/Azo
+ * @file: level_one_code.cpp
+ * @brief Purpose: LevelOneCode class implementation
+ *
+ * GPL v3.0 Licence
+ * Copyright (c) 2017 Azo
+ *
+ * Notice: TheAzo, TheAzoTeam
+ * https://github.com/TecProg2018-2/Azo
 */
 
 #include "level_one_code.hpp"
@@ -169,12 +169,12 @@ void LevelOneCode::changeOption() {
 void LevelOneCode::chooseOption() {
 	switch(mCurrentOption){
 		case 1:
-		mAudioController->stopAllAudios();
-		engine::Game::instance.changeScene("level_one");
-		break;
+			mAudioController->stopAllAudios();
+			engine::Game::instance.changeScene("level_one");
+			break;
 		case 2:
-		engine::Game::instance.changeScene("menu");
-		break;
+			engine::Game::instance.changeScene("menu");
+			break;
 	}
 }
 
