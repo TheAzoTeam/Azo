@@ -191,28 +191,17 @@ bool Game::startAndStopScenes() {
 				//Nothing to do, no scene to be deleted
 			}
 
-			// if(currentScene->mState == SceneState::RUNNED){
-			// 	currentScene->restart();
-			// 	currentScene->mState = SceneState::FIRST_TIME;
-			// }
-			//
-			// if(currentScene->mState == SceneState::FIRST_TIME){
-			// 	currentScene->mState = SceneState::RUNNED;
-			// }
+			if (currentScene->mState == SceneState::RUNNED) {
+				currentScene->restart();
+				currentScene->mState = SceneState::FIRST_TIME;
+			} else {
+				//Nothing to do, scene state is different
+			}
 
-			switch (currentScene->mState) {
-				case SceneState::RUNNED:
-					currentScene->restart();
-					currentScene->mState = SceneState::FIRST_TIME;
-					break;
-
-				case SceneState::FIRST_TIME:
-					currentScene->mState = SceneState::RUNNED;
-					break;
-
-				default:
-					//Nothing to do, scene needs to have mState assigned
-					break;
+			if (currentScene->mState == SceneState::FIRST_TIME) {
+				currentScene->mState = SceneState::RUNNED;
+			} else {
+				//Nothing to do, scene state is different
 			}
 
 			currentScene->init();
