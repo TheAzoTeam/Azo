@@ -1,7 +1,7 @@
-/** 
+/**
   * @file timer.cpp
   * @brief Purpose: Contains all the methods related to the Timer class.
-  * 
+  *
   * GPL v3.0 License
   * Copyright (c) 2017 Azo
   *
@@ -19,6 +19,7 @@ using namespace engine;
 Timer::Timer() {
 	Reset();
 }
+
 Timer::~Timer() {}
 
 /*
@@ -27,6 +28,7 @@ Timer::~Timer() {}
  * Reset startTicks and sets all other attributes to zero
  */
 void Timer::Reset() {
+
 	startTicks = SDL_GetTicks();
 	elapsedTicks = 0.0f;
 	deltaTime = 0.0f;

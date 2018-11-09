@@ -1,7 +1,7 @@
-/** 
+/**
    * @file audio_component.hpp
    * @brief Purpose: Contains the AudioComponent class declaration.
-   * 
+   *
    * GPL v3.0 License
    * Copyright (c) 2017 Azo
    *
@@ -10,17 +10,15 @@
 #define AUDIO_COMPONENT_HPP
 
 #include <string>
-
 #include "sdl2include.h"
 #include "component.hpp"
 #include "log.h"
 
 namespace engine {
-	
+
 	/*
 	 *@brief Class for possible Audio States
-	 *
-	 *Enum Class used to differentiate Audio States
+ra	 *Enum Class used to differentiate Audio States
 	 *
 	 */
 	enum class AudioState {
@@ -49,17 +47,18 @@ namespace engine {
 		AudioState audioState;
 		AudioComponent();
 		virtual ~AudioComponent();
-		AudioComponent(GameObject &gameObject,
-					   std::string audioPath,
-					   bool isMusic,
-					   bool playOnStart);
+		AudioComponent(GameObject &gameObject, std::string audioPath,
+					   bool isMusic, bool playOnStart);
 		void init();
 		void shutdown();
 		void updateCode();
 		void play(int loops, int channel);
 		void stop(int channel);
 		void pause(int channel);
-		inline bool getIsMusic(){ return isMusic; }
+
+		inline bool getIsMusic() {
+			return isMusic;
+		}
 	};
 
 }
