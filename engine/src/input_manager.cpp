@@ -32,19 +32,19 @@ InputManager::~InputManager() {}
 bool InputManager::keyDown(Button button) {
 	ASSERT(button != -1, "button path can't be -1");
 	for (auto eachEvent : mEventList) {
-		switch(eachEvent.type){
+		switch(eachEvent.type) {
 			mLastEventType = eachEvent.type;
 
 			//  Case start.
 			case SDL_KEYDOWN:
 
-				if (eachEvent.key.keysym.scancode == (SDL_Scancode)button) {
+				if (eachEvent.key.keysym.scancode == (SDL_Scancode)button) {                                
 					return true;
+				} else {
+					//Nothing to do, for another command was not given
 				}
 
 				break;
-
-				// Case end
 		}
 	}
 
@@ -64,11 +64,16 @@ bool InputManager::keyDownOnce(Button button) {
 	ASSERT(button != -1, "button path can't be -1.");
 	if (keyboardStates[button]) {
 		SDL_PumpEvents();
-		if (!keyboardStates[button]) {
+		if (keyboardStates[button]) {
+			//Nothing to do for the keyboardStates matches button
+		} else {
 			return true;
 		}
+	} else {
+		//Nothing to do for there's no SDL_Event
 	}
 	return false;
+
 }
 
 /**

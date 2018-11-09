@@ -1,7 +1,7 @@
-/** 
+/**
  * @file scene.hpp
  * @brief Purpose: Contains the Scene class declaration.
- * 
+ *
  * GPL v3.0 License
  * Copyright (c) 2017 Azo
  *
@@ -33,6 +33,7 @@ namespace engine {
 	 *It'a how the engine will manage the Scenes that appear on screen
 	 */
 	class Scene {
+
 	public:
 		Scene();
 		Scene(std::string sceneName);
@@ -50,6 +51,7 @@ namespace engine {
 		void deleteKeyList();
 		void addGameObject(engine::GameObject &gameObject);
 		void removeGameObject(std::string &gameObjectName);
+
 		engine::GameObject & getGameObject(std::string & gameObjectName);
 		SceneState mState = SceneState::FIRST_TIME;
 

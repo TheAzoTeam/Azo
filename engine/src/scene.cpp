@@ -1,7 +1,7 @@
-/** 
+/**
  * @file scene.cpp
  * @brief Purpose: Contains all the methods from the Scene class.
- * 
+ *
  * GPL v3.0 License
  * Copyright (c) 2017 Azo
  *
@@ -11,14 +11,14 @@
 
 using namespace engine;
 
-Scene::Scene(){}
+Scene::Scene() {}
 
 /*
  *@brief Contructor for the scene
  *
- * initializes the SceneName attribute 
+ * initializes the SceneName attribute
  */
-Scene::Scene(std::string sceneName){
+Scene::Scene(std::string sceneName) {
 	this->sceneName = sceneName;
 }
 
@@ -28,7 +28,8 @@ Scene::Scene(std::string sceneName){
  *Initializes every key in the gameObjectMap
  */
 void Scene::init(){
-	for (auto eachKey : mKeyList){
+
+	for (auto eachKey : mKeyList) {
 		gameObjectMap[eachKey]->init();
 	}
 }
@@ -38,8 +39,9 @@ void Scene::init(){
  *
  *passes every object in the gameObjectMap to the shutdown method
  */
-void Scene::shutdown(){
-	for (auto eachKey : mKeyList){
+void Scene::shutdown() {
+
+	for (auto eachKey : mKeyList) {
 		gameObjectMap[eachKey]->shutdown();
 	}
 
@@ -49,7 +51,7 @@ void Scene::shutdown(){
 /*
  *@brief Method to delete the key list
  */
-void Scene::deleteKeyList(){
+void Scene::deleteKeyList() {
 	mKeyList.erase(mKeyList.begin(), mKeyList.end());
 }
 
@@ -58,10 +60,13 @@ void Scene::deleteKeyList(){
  *
  *Passes every gameObjectin the gameObjectMap to the draw() method
  */
-void Scene::draw(){
-	for (auto eachKey : mKeyList){
-		if(gameObjectMap[eachKey]->mObjectState == ObjectState::ENABLED){
+void Scene::draw() {
+
+	for (auto eachKey : mKeyList) {
+		if(gameObjectMap[eachKey]->mObjectState == ObjectState::ENABLED) {
 			gameObjectMap[eachKey]->draw();
+		} else {
+			//Nothing to do
 		}
 	}
 }
@@ -72,9 +77,12 @@ void Scene::draw(){
  *Passes every element of the gameObjectMap to the updateCode() method.
  */
 void Scene::updateCode(){
+
 	for(auto eachKey : mKeyList){
 		if (gameObjectMap[eachKey]->mObjectState == ObjectState::ENABLED){
 			gameObjectMap[eachKey]->updateCode();
+		} else {
+			//Nothing to do
 		}
 	}
 }
@@ -92,10 +100,13 @@ void Scene::restart(){}
  *adds a new game object in the gameObjectMap
  */
 void Scene::addGameObject(GameObject &gameObject){
+
 	auto gameObjectName = gameObject.mName;
 
 	if (gameObjectMap.find(gameObjectName) != gameObjectMap.end()){
 		ERROR("Game object already exists!");
+	} else {
+		//Nothing to do
 	}
 
 	gameObjectMap[gameObjectName] = &gameObject;
@@ -108,8 +119,11 @@ void Scene::addGameObject(GameObject &gameObject){
  *returns a gameObject
  */
 GameObject & Scene::getGameObject(std::string &gameObjectName){
+
 	if (gameObjectMap.find(gameObjectName) == gameObjectMap.end()){
 		ERROR("Game object doesn't exist!");
+	} else {
+		//Nothing to do
 	}
 
 	return *gameObjectMap[gameObjectName];
@@ -121,8 +135,11 @@ GameObject & Scene::getGameObject(std::string &gameObjectName){
  *Removes a gameObject from the gameObjectMap
  */
 void Scene::removeGameObject(std::string &gameObjectName){
+
 	if (gameObjectMap.find(gameObjectName) == gameObjectMap.end()){
 		ERROR("Game object doesn't exist!");
+	} else {
+		//Nothing to do
 	}
 
 	gameObjectMap.erase(gameObjectName);

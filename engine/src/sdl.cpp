@@ -32,22 +32,29 @@ SDL::SDL(){}
  *
  * @return "void".
 */
-void SDL::initSDL(){
+void SDL::initSDL() {
 	INFO("Initializing SDL.");
 	INFO("Initializing Audio and Video.");
-	if((SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)){
+
+	if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) == 0) {
+		//Nothing to do. It was initialized correctly.
+	} else {
 		ERROR("SDL Video or SDL Audio couldn't be started.");
 	}
 
 	INFO("Initializing SDL Image.");
 	int imageFlags = IMG_INIT_PNG;
 
-	if(!(IMG_Init(imageFlags) & imageFlags)){
+	if(IMG_Init(imageFlags) & imageFlags) {
+		//Nothing to do. It was initialized correctly.
+	} else {
 		ERROR("SDL Image could't be started.");
 	}
 
 	INFO("Initializing SDL Mixer.");
-	if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, AUDIO_CHANNELS, AUDIO_CHUNKSIZE) < AUDIO_RESULT_NULL){
+	if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, AUDIO_CHANNELS, AUDIO_CHUNKSIZE) >= AUDIO_RESULT_NULL) {
+		//Nothing to do. It was initialized correctly.
+	} else {
 		ERROR("SDL MIXER could't be started.");
 	}
 }
@@ -59,9 +66,9 @@ void SDL::initSDL(){
  *
  * @return "void".
 */
-void SDL::createWindow(){
+void SDL::createWindow() {
 	INFO("Creating Window.");
-	window = SDL_CreateWindow(
+	window = SDL_CreateWindow (
 		gameName.c_str(),      // Game window title.
 		SDL_WINDOWPOS_CENTERED, // Window opening position x.
 		SDL_WINDOWPOS_CENTERED, // Window opening position y.
@@ -70,23 +77,25 @@ void SDL::createWindow(){
 		SDL_WINDOW_SHOWN
 	);
 
-	if(window == NULL){
+	if(window != NULL) {                               
+		//Nothing to do. It was created correctly.
+	} else {
 		ERROR("Couldn't create window.");
 	}
 
 	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
 
 	INFO("Creating canvas.");
-	canvas = SDL_CreateRenderer(
+	canvas = SDL_CreateRenderer (
 		window,                               // Window pointer
 		FIRST_RENDERING_DRIVER,               // The index to the rendering driver, or -1 to the first one
 		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC  // Flag. The renderer will use hardware acceleration
 	);
 
-	ASSERT(canvas != NULL, "Couldn't create renderer (Canvas).");	
+	ASSERT(canvas != NULL, "Couldn't create renderer (Canvas).");
 
 	//Set window color when redrawing.
-	SDL_SetRenderDrawColor(
+	SDL_SetRenderDrawColor (
 		canvas, // Renderer pointer
 		0xff,   // (R)ed color
 		0xff,   // (G)reen color
@@ -101,7 +110,7 @@ void SDL::createWindow(){
 	 *
 	 * @return "void".
 	*/
-	void SDL::terminateSDL(){
+	void SDL::terminateSDL() {
 		INFO("Terminating SDL.");
 		DEBUG("Destroying Renderer");
 		SDL_DestroyRenderer(canvas);
@@ -132,7 +141,7 @@ void SDL::createWindow(){
 	 *
 	 * @return "void".
 	*/
-	void SDL::setSDLAttributes(std::string gameName, int windowWidth, int windowHeight){
+	void SDL::setSDLAttributes(std::string gameName, int windowWidth, int windowHeight) {
 		ASSERT(gameName != "", "gameName path can't be empty.");
 		ASSERT(windowWidth > 0, "windowWidth path can't be empty.");
 		ASSERT(windowHeight > 0, "windowHeight path can't be empty.");

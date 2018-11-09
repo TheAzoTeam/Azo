@@ -29,6 +29,8 @@ void AnimationController::draw() {
 			   "AnimationController::draw, animation map can't be null");
 		if (animation->isEnabled()) {
 			animation->draw();
+		}else{
+			//Nothing to do
 		}
 	}
 }
@@ -72,8 +74,11 @@ void AnimationController::startUniqueAnimation(std::string animationName) {
 	ASSERT(animationToBePlayed->second != NULL, 
 		   "AnimationController::startUniqueAnimation, animationToBePlayed is empty.");
 
+	//Default is to fail
 	if (animationToBePlayed == mAnimationMap.end()) {
 		ERROR("Animation " << animationName << "doesn't exist!");
+	}else{
+		//Nothing to do
 	}
 
 	if (animationToBePlayed->second->mState == AnimationState::STOPPED) {
@@ -84,7 +89,11 @@ void AnimationController::startUniqueAnimation(std::string animationName) {
 		if (animationToBePlayed != mAnimationMap.end()) {
 			animationToBePlayed->second->enableComponent();
 			animationToBePlayed->second->mState = AnimationState::PLAYING;
+		}else{
+			//Nothing to do
 		}
+	}else{
+		//Nothing to do
 	}
 }
 
@@ -95,13 +104,18 @@ void AnimationController::startAnimation(std::string animationName) {
 	ASSERT(animationToBePlayed->second != NULL, 
 		   "AnimationController::startAnimation, animationToBePlayed is empty.");
 
+	//Default is to fail
 	if (animationToBePlayed == mAnimationMap.end()) {
 		ERROR("Animation " << animationName << "doesn't exist!");
+	}else{
+		//Nothing to do
 	}
 
 	if (!animationToBePlayed->second->isEnabled()) {
 		animationToBePlayed->second->enableComponent();
 		animationToBePlayed->second->mState = AnimationState::PLAYING;
+	}else{
+		//Nothing to do
 	}
 }
 

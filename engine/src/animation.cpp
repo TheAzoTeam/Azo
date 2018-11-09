@@ -83,6 +83,8 @@ void Animation::shutdown() {
 			delete(eachSprite);
 			eachSprite = NULL;
 		}
+	}else{
+		//Nothing to do
 	}
 }
 
@@ -106,18 +108,18 @@ void Animation::draw() {
 
 void Animation::updateQuad() {
 	renderQuad = {
-		mSpriteList[mCurrentSprite]->spriteX,
-		mSpriteList[mCurrentSprite]->spriteY,
-		mSpriteList[mCurrentSprite]->spriteWidth,
-		mSpriteList[mCurrentSprite]->spriteHeight
+		mSpriteList[mCurrentSprite]->getSpriteX(),
+		mSpriteList[mCurrentSprite]->getSpriteY(),
+		mSpriteList[mCurrentSprite]->getSpriteWidth(),
+		mSpriteList[mCurrentSprite]->getSpriteHeight()
 	};
 
 	//Updating canvas quad.
 	canvasQuad = {
 		(int)(gameObject->mCurrentPosition.first + mPositionRelativeToObject.first),
 		(int)(gameObject->mCurrentPosition.second + mPositionRelativeToObject.second),
-		(int)(mSpriteList[mCurrentSprite]->spriteWidth * zoomFactor),
-		(int)(mSpriteList[mCurrentSprite]->spriteHeight * zoomFactor),
+		(int)(mSpriteList[mCurrentSprite]->getSpriteWidth() * zoomFactor),
+		(int)(mSpriteList[mCurrentSprite]->getSpriteHeight() * zoomFactor),
 	};
 }
 
@@ -143,8 +145,8 @@ void Animation::updateFrameBasedOntime() {
 void Animation::updateGameObjectMeasures() {
 	ASSERT(DIVISOR_NUMBER != 0,
 		   "Animation::updateGameObjectMeasures, DIVISOR_NUMBER can't be zero.");
-	gameObject->mHalfSize.first = mSpriteList[mCurrentSprite]->spriteWidth * zoomFactor / DIVISOR_NUMBER;
-	gameObject->mHalfSize.second = mSpriteList[mCurrentSprite]->spriteHeight * zoomFactor / DIVISOR_NUMBER;
+	gameObject->mHalfSize.first = mSpriteList[mCurrentSprite]->getSpriteWidth() * zoomFactor / DIVISOR_NUMBER;
+	gameObject->mHalfSize.second = mSpriteList[mCurrentSprite]->getSpriteHeight() * zoomFactor / DIVISOR_NUMBER;
 	gameObject->mCenter.first = gameObject->mCurrentPosition.first + gameObject->mHalfSize.first;
 	gameObject->mCenter.second = gameObject->mCurrentPosition.second + gameObject->mHalfSize.second;
 }

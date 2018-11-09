@@ -25,14 +25,14 @@ namespace Azo {
 		 * collect to get to victory.
 	     */
 	class MachinePartCode : public engine::CodeComponent {
-		private:
-			Obstacle *mMachinePart; // Variable responsible for creating the existing parts on the map
-			engine::AudioController *mAudioController; // Variable responsible for audio control
 		public:
 			MachinePartCode(Obstacle *machinePart);
 			virtual ~MachinePartCode();
 			void shutdown();
 		private:
+			Obstacle *mMachinePart; // Variable responsible for creating the existing parts on the map
+			engine::AudioController *mAudioController; // Variable responsible for audio control
+			
 			void updateCode();
 			void findAudioController();
 	};
