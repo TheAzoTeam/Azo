@@ -66,7 +66,7 @@ void Scene::draw() {
 		if(gameObjectMap[eachKey]->mObjectState == ObjectState::ENABLED) {
 			gameObjectMap[eachKey]->draw();
 		} else {
-
+			//Nothing to do
 		}
 	}
 }
@@ -82,7 +82,7 @@ void Scene::updateCode(){
 		if (gameObjectMap[eachKey]->mObjectState == ObjectState::ENABLED){
 			gameObjectMap[eachKey]->updateCode();
 		} else {
-
+			//Nothing to do
 		}
 	}
 }
@@ -106,7 +106,7 @@ void Scene::addGameObject(GameObject &gameObject){
 	if (gameObjectMap.find(gameObjectName) != gameObjectMap.end()){
 		ERROR("Game object already exists!");
 	} else {
-
+		//Nothing to do
 	}
 
 	gameObjectMap[gameObjectName] = &gameObject;
@@ -123,7 +123,7 @@ GameObject & Scene::getGameObject(std::string &gameObjectName){
 	if (gameObjectMap.find(gameObjectName) == gameObjectMap.end()){
 		ERROR("Game object doesn't exist!");
 	} else {
-
+		//Nothing to do
 	}
 
 	return *gameObjectMap[gameObjectName];
@@ -139,7 +139,7 @@ void Scene::removeGameObject(std::string &gameObjectName){
 	if (gameObjectMap.find(gameObjectName) == gameObjectMap.end()){
 		ERROR("Game object doesn't exist!");
 	} else {
-
+		//Nothing to do
 	}
 
 	gameObjectMap.erase(gameObjectName);

@@ -30,7 +30,7 @@ AudioComponent::~AudioComponent() {}
  */
 AudioComponent::AudioComponent(GameObject &gameObject,std::string audioPath,
 							  	bool isMusic, bool playOnStart) {
-									
+
 	this->gameObject = &gameObject;
 	this->audioPath = audioPath;//path to audio file
 	this->isMusic = isMusic;	//bool to check if music exists
@@ -65,7 +65,7 @@ void AudioComponent::init() {
 		if (sound == NULL) {
 			ERROR("Invalid Sound Path (Sound = NULL): " << audioPath);
 		} else {
-
+			//Nothing to do
 		}
 	}
 
@@ -78,7 +78,7 @@ void AudioComponent::updateCode() {
 		play (-1, -1); // Plays audio once until end
 		playOnStart = false;
 	} else {
-
+		//Nothing to do
 	}
 }
 
@@ -97,13 +97,13 @@ void AudioComponent::shutdown() {
 		Mix_FreeMusic(music);
 		music = nullptr;
 	} else {
-
+		//Nothing to do
 	}
 
 	if(sound != nullptr) {
 		sound = nullptr;
 	} else {
-
+		//Nothing to do
 	}
 }
 
@@ -126,7 +126,7 @@ void AudioComponent::play(int loops, int channel) {
 			Mix_ResumeMusic();
 			INFO("Resume music: " << audioPath);
 		} else {
-
+			//Nothing to do
 		}
 
 	} else {
@@ -138,7 +138,7 @@ void AudioComponent::play(int loops, int channel) {
 			Mix_Resume(channel);
 			INFO("Resume sound: " << audioPath);
 		} else {
-
+			//Nothing to do
 		}
 	}
 
