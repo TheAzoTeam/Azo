@@ -17,8 +17,8 @@ using namespace engine;
 
 Sprite::Sprite() {}
 
-Sprite::Sprite(int spriteWidth, int spriteHeight, int spriteX, int spriteY) {
-	ASSERT(spriteWidth > 0, "Sprite::Sprite, sprite width can't be less than zero.");
+Sprite::Sprite(unsigned int spriteWidth, unsigned int spriteHeight, unsigned int spriteX, unsigned int spriteY) {
+	ASSERT(spriteWidth < 0, "Sprite::Sprite, sprite width can't be less than zero.");
 	ASSERT(spriteHeight > 0, "Sprite::Sprite, sprite height can't be less than zero.");
 	ASSERT(spriteX > 0, "Sprite::Sprite, sprite x coordinate can't be less than zero.");
 	ASSERT(spriteY > 0, "Sprite::Sprite, sprite y coordinate can't be less than zero.");
@@ -28,35 +28,35 @@ Sprite::Sprite(int spriteWidth, int spriteHeight, int spriteX, int spriteY) {
 	this->spriteY = spriteY;
 }
 
-void Sprite::setSpriteWidth(int newSpriteWidth){
+void Sprite::setSpriteWidth(unsigned int newSpriteWidth){
 	this->spriteWidth = newSpriteWidth;
 }
 
-int Sprite::getSpriteWidth(){
+unsigned int Sprite::getSpriteWidth(){
 	return this->spriteWidth;
 }
 
-void Sprite::setSpriteHeight(int newSpriteHeight){
+void Sprite::setSpriteHeight(unsigned int newSpriteHeight){
 	this->spriteHeight = newSpriteHeight;
 }
 
-int Sprite::getSpriteHeight(){
+unsigned int Sprite::getSpriteHeight(){
 	return this->spriteHeight;
 }
 
-void Sprite::setSpriteX(int newSpriteX){
+void Sprite::setSpriteX(unsigned int newSpriteX){
 	this->spriteX = newSpriteX;
 }
 
-int Sprite::getSpriteX(){
+unsigned int Sprite::getSpriteX(){
 	return this->spriteX;
 }
 
-void Sprite::setSpriteY(int newSpriteY){
+void Sprite::setSpriteY(unsigned int newSpriteY){
 	this->spriteY = newSpriteY;
 }
 
-int Sprite::getSpriteY(){
+unsigned int Sprite::getSpriteY(){
 	return this->spriteY;
 }
 

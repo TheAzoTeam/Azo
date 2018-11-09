@@ -17,26 +17,26 @@ namespace engine {
 	class Sprite {
 		public:
 			Sprite();
-			Sprite(int spriteWidth, int spriteHeight, int spriteX, int spriteY);
+			Sprite(unsigned int spriteWidth, unsigned int spriteHeight, unsigned int spriteX, unsigned int spriteY);
 
-			void setSpriteWidth(int newSpriteWidth);
-			int getSpriteWidth();
+			void setSpriteWidth(unsigned int newSpriteWidth);
+			unsigned int getSpriteWidth();
 
-			void setSpriteHeight(int newSpriteHeight);
-			int getSpriteHeight();
+			void setSpriteHeight(unsigned int newSpriteHeight);
+			unsigned int getSpriteHeight();
 
-			void setSpriteX(int newSpriteX);
-			int getSpriteX();
+			void setSpriteX(unsigned int newSpriteX);
+			unsigned int getSpriteX();
 
-			void setSpriteY(int newSpriteY);
-			int getSpriteY();
+			void setSpriteY(unsigned int newSpriteY);
+			unsigned int getSpriteY();
 
 			~Sprite();
 		private:
-			int spriteWidth;
-			int spriteHeight;
-			int spriteX;
-			int spriteY;
+			unsigned int spriteWidth;
+			unsigned int spriteHeight;
+			unsigned int spriteX;
+			unsigned int spriteY;
 	};
 }
 
