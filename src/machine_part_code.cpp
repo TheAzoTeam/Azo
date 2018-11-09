@@ -37,8 +37,11 @@ MachinePartCode::~MachinePartCode() {}
      */
 void MachinePartCode::shutdown(){
 	if (mAudioController != NULL) {
-		mAudioController = NULL;
+	        mAudioController = NULL;
 	}
+        else {
+                // Nothing to do, component already shut down.
+        }
 }
 
 /**
@@ -68,7 +71,9 @@ void MachinePartCode::updateCode() {
 			break;
 		case MachinePartState::FINISHED:
 			mMachinePart->mObjectState = engine::ObjectState::DISABLED;
+                        break;
 		default:
-			break;
+                        // Nothing to do, MachinePart not collected.
+                        break;
 	}
 }
