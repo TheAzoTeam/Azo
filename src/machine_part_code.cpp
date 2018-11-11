@@ -30,6 +30,7 @@ MachinePartCode::~MachinePartCode() {}
      * @param Obstacle that has the parts that need to be collected
      */
 MachinePartCode::MachinePartCode(Obstacle *machinePart) {
+        DEBUG("Creating machinePartCode.");
 	mMachinePart = machinePart; // Variable responsible for the creation of the pieces of the game
 	findAudioController();
 }
@@ -42,6 +43,7 @@ MachinePartCode::MachinePartCode(Obstacle *machinePart) {
      * @return "void".
      */
 void MachinePartCode::shutdown(){
+        DEBUG("Calling MachinePartCode::shutdown.");
 	if (mAudioController != NULL) {
 	        mAudioController = NULL;
 	}
@@ -60,11 +62,13 @@ void MachinePartCode::shutdown(){
 void MachinePartCode::updateCode() {
 	switch(mMachinePart->mMachinePartState) {
 		case MachinePartState::COLLECTED:
+                        DEBUG("Collected a machinePart.");
 			mAudioController->playAudio("coleta");
 
 		        mMachinePart->mMachinePartState = MachinePartState::FINISHED;
 			break;
 		case MachinePartState::FINISHED:
+                        DEBUG("Disabled a machinePart.");
 			mMachinePart->mObjectState = engine::ObjectState::DISABLED;
                         break;
 		default:
@@ -81,5 +85,6 @@ void MachinePartCode::updateCode() {
      * @return "void".
      */
 void MachinePartCode::findAudioController() {
+        DEBUG("Calling MachinePartCode::findAudioController.");
 	mAudioController = (mMachinePart->getAudioController(typeid(engine::AudioController)));
 }
