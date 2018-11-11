@@ -60,7 +60,7 @@ void Menu::shutdown() {
 void Menu::createGameObjects() {
 	DEBUG("Creating Menu GameObjects.");
 
-	mMenu = new engine::GameObject("menu", std::make_pair(0, 0));
+	mMenu = new engine::GameObject("menu", std::make_pair(0.0, 0.0));
 	ASSERT(mMenu != NULL, "The mMenu can't be null."); 
 
 	createMenuComponents();
@@ -99,8 +99,8 @@ void Menu::createMenuComponents() {
 					       				 0, // startFrame
 					       				 0, // endFrame
 					       				 false, // loop
-					       				 1, // zoomFactor
-					       				 std::make_pair(205, 162)); // positionRelativeToObject
+					       				 1.0, // zoomFactor
+					       				 std::make_pair(205.0, 162.0)); // positionRelativeToObject
 
 	ASSERT(mStartButton != NULL, "The mStartButton can't be null."); 
 
@@ -115,8 +115,8 @@ void Menu::createMenuComponents() {
 					      				0,
 					      				0,
 					      				false,
-					      				1,
-					      				std::make_pair(168, 162));
+					      				1.0,
+					      				std::make_pair(168.0, 162.0));
 	ASSERT(mArrowStart != NULL, "The mArrowStart can't be null."); 
 
 	mAnimationController->addAnimation("arrow_start", *mArrowStart);
@@ -129,8 +129,8 @@ void Menu::createMenuComponents() {
 					      				0,
 					      				0,
 					      				false,
-										1,
-					      				std::make_pair(551, 162));
+										1.0,
+					      				std::make_pair(551.0, 162.0));
 	ASSERT(mExitButton != NULL, "The mExitButton can't be null.");
 
 	mAnimationController->addAnimation("exit_button", *mExitButton);
@@ -143,8 +143,8 @@ void Menu::createMenuComponents() {
 					     				0,
 					     				0,
 					     				false,
-					     				1,
-					     				std::make_pair(514, 162));
+					     				1.0,
+					     				std::make_pair(514.0, 162.0));
 	ASSERT(mArrowExit != NULL, "The mArrowExit can't be null.");
 
 	mArrowExit->disableComponent();
@@ -159,8 +159,8 @@ void Menu::createMenuComponents() {
 						      				   0,
 						      				   0,
 						      				   false,
-						      				   1,
-						      				   std::make_pair(708, 40));
+						      				   1.0,
+						      				   std::make_pair(708.0, 40.0));
 	
 	ASSERT(mSoundEnabledButton != NULL, "The mSoundEnabledButton can't be null.");
 
@@ -174,8 +174,8 @@ void Menu::createMenuComponents() {
 												 0,
 												 0,
 												 false,
-												 1,
-												 std::make_pair(708, 40));
+												 1.0,
+												 std::make_pair(708.0, 40.0));
 	
 	ASSERT(mSoundDisabledButton != NULL, "The mSoundDisabledButton can't be null.");
 
@@ -191,8 +191,8 @@ void Menu::createMenuComponents() {
 					      				0,
 					      				0,
 					      				false,
-					      				1,
-					      				std::make_pair(676, 40));
+					      				1.0,
+					      				std::make_pair(676.0, 40.0));
 	
 	ASSERT(mArrowSound!= NULL, "The mArrowSound can't be null.");
 
@@ -232,36 +232,36 @@ void Menu::generateButtonsAnimation() {
 	*/
 
 
-	 mStartButtonSprites[0]->setSpriteX(43);
-	 mStartButtonSprites[0]->setSpriteY(452);
-	 mStartButtonSprites[0]->setSpriteWidth(161 - 43);
-	 mStartButtonSprites[0]->setSpriteHeight(478 - 452);
+	 mStartButtonSprites[0]->setSpriteX((unsigned int)43);
+	 mStartButtonSprites[0]->setSpriteY((unsigned int)452);
+	 mStartButtonSprites[0]->setSpriteWidth((unsigned int)(161 - 43));
+	 mStartButtonSprites[0]->setSpriteHeight((unsigned int)(478 - 452));
 
 	mExitButtonSprites.push_back(new engine::Sprite());
 
-	mExitButtonSprites[0]->setSpriteX(207);
-	mExitButtonSprites[0]->setSpriteY(413);
-	mExitButtonSprites[0]->setSpriteWidth(280 - 207);
-	mExitButtonSprites[0]->setSpriteHeight(441 - 413);
+	mExitButtonSprites[0]->setSpriteX((unsigned int)207);
+	mExitButtonSprites[0]->setSpriteY((unsigned int)413);
+	mExitButtonSprites[0]->setSpriteWidth((unsigned int)(280 - 207));
+	mExitButtonSprites[0]->setSpriteHeight((unsigned int)(441 - 413));
 
 	mSoundEnabledButtonSprites.push_back(new engine::Sprite());
 
-	mSoundEnabledButtonSprites[0]->setSpriteX(660);
-	mSoundEnabledButtonSprites[0]->setSpriteY(46);
-	mSoundEnabledButtonSprites[0]->setSpriteWidth(702 - 660);
-	mSoundEnabledButtonSprites[0]->setSpriteHeight(77 - 46);
+	mSoundEnabledButtonSprites[0]->setSpriteX((unsigned int)660);
+	mSoundEnabledButtonSprites[0]->setSpriteY((unsigned int)46);
+	mSoundEnabledButtonSprites[0]->setSpriteWidth((unsigned int)(702 - 660));
+	mSoundEnabledButtonSprites[0]->setSpriteHeight((unsigned int)(77 - 46));
 
 	mSoundDisabledButtonSprites.push_back(new engine::Sprite());
 
-	mSoundDisabledButtonSprites[0]->setSpriteX(608);
-	mSoundDisabledButtonSprites[0]->setSpriteY(46);
-	mSoundDisabledButtonSprites[0]->setSpriteWidth(646 - 608);
-	mSoundDisabledButtonSprites[0]->setSpriteHeight(77 - 46);
+	mSoundDisabledButtonSprites[0]->setSpriteX((unsigned int)608);
+	mSoundDisabledButtonSprites[0]->setSpriteY((unsigned int)46);
+	mSoundDisabledButtonSprites[0]->setSpriteWidth((unsigned int)(646 - 608));
+	mSoundDisabledButtonSprites[0]->setSpriteHeight((unsigned int)(77 - 46));
 
 	mArrowSprites.push_back(new engine::Sprite());
 
-	mArrowSprites[0]->setSpriteX(582);
-	mArrowSprites[0]->setSpriteY(433);
-	mArrowSprites[0]->setSpriteWidth(598 - 582);
-	mArrowSprites[0]->setSpriteHeight(459 - 433);
+	mArrowSprites[0]->setSpriteX((unsigned int)582);
+	mArrowSprites[0]->setSpriteY((unsigned int)433);
+	mArrowSprites[0]->setSpriteWidth((unsigned int)(598 - 582));
+	mArrowSprites[0]->setSpriteHeight((unsigned int)(459 - 433));
 }
