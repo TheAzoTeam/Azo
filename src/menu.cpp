@@ -35,6 +35,22 @@ void Menu::restart(){
 }
 
 /**
+     * @brief function responsible for shutting down menu.
+     *
+     * Why: Because it is responsible for shutting down the menu
+	 *
+	 * @return "void".
+     */
+void Menu::shutdown() {
+	DEBUG("Calling Menu::shutdown.");
+	if(mMenu != NULL){
+		mMenu = NULL;
+	} else {
+		// Nothing to do, Menu shut down.
+	}
+}
+
+/**
      * @brief function responsible for creating game objects
      *
      * Why: Because it is necessary for the menu to have some elements in its interface
@@ -248,20 +264,4 @@ void Menu::generateButtonsAnimation() {
 	mArrowSprites[0]->setSpriteY(433);
 	mArrowSprites[0]->setSpriteWidth(598 - 582);
 	mArrowSprites[0]->setSpriteHeight(459 - 433);
-}
-
-/**
-     * @brief function responsible for shutting down menu.
-     *
-     * Why: Because it is responsible for shutting down the menu
-	 *
-	 * @return "void".
-     */
-void Menu::shutdown() {
-	DEBUG("Calling Menu::shutdown.");
-	if(mMenu != NULL){
-		mMenu = NULL;
-	} else {
-		// Nothing to do, Menu shut down.
-	}
 }
