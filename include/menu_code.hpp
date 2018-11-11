@@ -33,17 +33,19 @@ namespace Azo {
 		 * Class responsible for creating the Menu features
 		 */
 	class MenuCode : public engine::CodeComponent {
-		public:
-			MenuCode(engine::GameObject *gameObject);
 		private:
 			engine::AudioController *mAudioController; // Variable responsible for audio control
 			engine::AnimationController *mAnimationController; // Variable responsible for animation control
 			ButtonType mCurrentButton = ButtonType::START_BUTTON; // Variable referring to the current button
-			
-			void updateCode();
+
+		public:
+			MenuCode(engine::GameObject *gameObject);
+
+		private:
 			void findAudioController();
 			void findAnimationController();
 			void changeOption();
+			void updateCode();
 	};
 }
 

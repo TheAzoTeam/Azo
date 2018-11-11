@@ -49,44 +49,6 @@ void MenuCode::findAudioController(){
 }
 
 /**
-     * @brief function responsible for updating game states
-     *
-     * Why: Used so that the game can consistently respond to the player's inputs
-     *
-     * @return "void".
-     */
-void MenuCode::updateCode(){
-	if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::ENTER)){
-
-		switch (mCurrentButton) {
-			case ButtonType::START_BUTTON:
-				mAudioController->stopAudio("menu_theme");
-				engine::Game::instance.changeScene("level_one");
-				break;
-			case ButtonType::EXIT_BUTTON:
-				engine::Game::instance.gameState = engine::GameState::EXIT; // Variable responsible for the state of game.
-				break;
-			case ButtonType::SOUND_BUTTON:
-				if(mAudioController->getAudioState("menu_theme") == engine::AudioState::PLAYING){
-					mAudioController->pauseAudio("menu_theme");
-					mAnimationController->stopAnimation("sound_enabled_button");
-					mAnimationController->startAnimation("sound_disabled_button");
-				} else {
-					// Audio not currently playing, so start it again.
-					mAudioController->playAudio("menu_theme");
-					mAnimationController->startAnimation("sound_enabled_button");
-					mAnimationController->stopAnimation("sound_disabled_button");
-				}
-				break;
-			default:
-				// Nothing to do, no button selected.
-				break;
-		}
-	}
-	changeOption();
-}
-
-/**
      * @brief function responsible for selecting game option
      *
      * Why: Used so that the user can select the options in the menu
@@ -153,4 +115,43 @@ void MenuCode::changeOption(){
 			// Nothing to do, no button defined.
 			break;
 	}
+}
+
+
+/**
+     * @brief function responsible for updating game states
+     *
+     * Why: Used so that the game can consistently respond to the player's inputs
+     *
+     * @return "void".
+     */
+void MenuCode::updateCode(){
+	if(engine::Game::instance.inputManager.keyDownOnce(engine::Button::ENTER)){
+
+		switch (mCurrentButton) {
+			case ButtonType::START_BUTTON:
+				mAudioController->stopAudio("menu_theme");
+				engine::Game::instance.changeScene("level_one");
+				break;
+			case ButtonType::EXIT_BUTTON:
+				engine::Game::instance.gameState = engine::GameState::EXIT; // Variable responsible for the state of game.
+				break;
+			case ButtonType::SOUND_BUTTON:
+				if(mAudioController->getAudioState("menu_theme") == engine::AudioState::PLAYING){
+					mAudioController->pauseAudio("menu_theme");
+					mAnimationController->stopAnimation("sound_enabled_button");
+					mAnimationController->startAnimation("sound_disabled_button");
+				} else {
+					// Audio not currently playing, so start it again.
+					mAudioController->playAudio("menu_theme");
+					mAnimationController->startAnimation("sound_enabled_button");
+					mAnimationController->stopAnimation("sound_disabled_button");
+				}
+				break;
+			default:
+				// Nothing to do, no button selected.
+				break;
+		}
+	}
+	changeOption();
 }
