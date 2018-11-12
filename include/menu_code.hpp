@@ -29,12 +29,13 @@ namespace Azo {
 	 * 
 	 * Enum class used to differentiate errors inside the menu.
 	 */ 
-	enum class ErrorType {
+	enum class FunctionStatus {
 		DIVIBYZERO,
 		NULLPOINTER,
 		EMPTYSTRING,
 		WRONGTYPE,
-};
+		SUCCESS,
+	};
 
 	/** 
 		 * @brief A Hitbox class.
@@ -48,6 +49,7 @@ namespace Azo {
 			engine::AudioController *mAudioController; // Variable responsible for audio control
 			engine::AnimationController *mAnimationController; // Variable responsible for animation control
 			ButtonType mCurrentButton = ButtonType::START_BUTTON; // Variable referring to the current button
+			FunctionStatus errorCode = FunctionStatus::SUCCESS;
 
 		public:
 			MenuCode(engine::GameObject *gameObject);
@@ -57,7 +59,7 @@ namespace Azo {
 			void findAnimationController();
 			void changeOption();
 			void updateCode();
-			void errorLog(ErrorType code, std::string file);
+			void errorLog(std::string file);
 	};
 }
 

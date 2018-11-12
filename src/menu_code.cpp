@@ -42,7 +42,10 @@ void MenuCode::findAnimationController(){
 	DEBUG("Finding animation controller on menu code.");
 	mAnimationController = (gameObject->getAnimationController(typeid(engine::AnimationController)));
 	if(mAnimationController == NULL) {
-		errorLog(ErrorType::NULLPOINTER, "MenuCode::findAnimationController");
+		errorCode = FunctionStatus::NULLPOINTER;
+		errorLog("MenuCode::findAnimationController");
+	} else {
+		errorCode = FunctionStatus::SUCCESS;
 	}
 }
 
@@ -57,7 +60,10 @@ void MenuCode::findAudioController(){
 	DEBUG("Finding audio controller on menu code.");
 	mAudioController = (gameObject->getAudioController(typeid(engine::AudioController)));
 	if(mAudioController == NULL) {
-		errorLog(ErrorType::NULLPOINTER, "MenuCode::findAudioController");
+		errorCode = FunctionStatus::NULLPOINTER;
+		errorLog("MenuCode::findAudioController");
+	} else {
+		errorCode = FunctionStatus::SUCCESS;
 	}
 }
 
@@ -173,27 +179,32 @@ void MenuCode::updateCode(){
 	changeOption();
 }
 
-void MenuCode::errorLog(ErrorType code, std::string file){
+void MenuCode::errorLog(std::string file){
     std::ofstream outfile;
     outfile.open("../errorLog.txt", std::ofstream::out | std::ofstream::app);
     time_t now = time(0);
-    std::string dt = ctime(&now); //convert to string
-	outfile << "Function: " + file << std::endl;
-    outfile << "Date: " + dt << std::endl;
+	std::string dt = ctime(&now);
+    std::string message = "===============\n";
+	message += "Function: " + file + "\n";
+    message += "Date: " + dt + "\n";
 	
-    switch(code) {
-        case ErrorType::DIVIBYZERO:
-            outfile << "Error: division by zero" << std::endl;
+    switch(errorCode) {
+        case FunctionStatus::DIVIBYZERO:
+            message += "Error: division by zero\n";
             break;
-        case ErrorType::EMPTYSTRING:
-            outfile << "empty String" << std::endl;
+        case FunctionStatus::EMPTYSTRING:
+            message += "empty String\n";
             break;
-        case ErrorType::NULLPOINTER:
-            outfile << "null pointer" << std::endl;
+        case FunctionStatus::NULLPOINTER:
+            message += "null pointer\n";
+            break;
+		case FunctionStatus::WRONGTYPE:
+            message += "wrong type\n";
             break;
         default:
-            outfile << "wrong type" << std::endl;
+            message = "";
+			break;
     }
-    outfile << "===============" << std::endl;
+    outfile << message;
     outfile.close();
 }
