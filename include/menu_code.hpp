@@ -14,7 +14,7 @@
 #include "audio_controller.hpp"
 
 namespace Azo {
-		/**
+	/**
 	 * @brief Class for possible button types.
 	 * 
 	 * Enum class used to differentiate buttons inside the menu.
@@ -24,6 +24,17 @@ namespace Azo {
 		EXIT_BUTTON,
 		SOUND_BUTTON
 	};
+	/**
+	 * @brief Class for possible errors types.
+	 * 
+	 * Enum class used to differentiate errors inside the menu.
+	 */ 
+	enum class ErrorType {
+		DIVIBYZERO,
+		NULLPOINTER,
+		EMPTYSTRING,
+		WRONGTYPE,
+};
 
 	/** 
 		 * @brief A Hitbox class.
@@ -46,6 +57,7 @@ namespace Azo {
 			void findAnimationController();
 			void changeOption();
 			void updateCode();
+			void errorLog(ErrorType code, std::string file);
 	};
 }
 

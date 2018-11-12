@@ -9,6 +9,10 @@
      */
 #include "game.hpp"
 #include "menu_code.hpp"
+#include <ctime>
+#include <fstream>
+#include <iostream>
+
 
 using namespace Azo;
 
@@ -37,6 +41,9 @@ MenuCode::MenuCode(engine::GameObject *gameObject){
 void MenuCode::findAnimationController(){
 	DEBUG("Finding animation controller on menu code.");
 	mAnimationController = (gameObject->getAnimationController(typeid(engine::AnimationController)));
+	if(mAnimationController == NULL) {
+		errorLog(ErrorType::NULLPOINTER, "MenuCode::findAnimationController");
+	}
 }
 
 /**
@@ -49,6 +56,9 @@ void MenuCode::findAnimationController(){
 void MenuCode::findAudioController(){
 	DEBUG("Finding audio controller on menu code.");
 	mAudioController = (gameObject->getAudioController(typeid(engine::AudioController)));
+	if(mAudioController == NULL) {
+		errorLog(ErrorType::NULLPOINTER, "MenuCode::findAudioController");
+	}
 }
 
 /**
@@ -161,4 +171,29 @@ void MenuCode::updateCode(){
 		}
 	}
 	changeOption();
+}
+
+void MenuCode::errorLog(ErrorType code, std::string file){
+    std::ofstream outfile;
+    outfile.open("../errorLog.txt", std::ofstream::out | std::ofstream::app);
+    time_t now = time(0);
+    std::string dt = ctime(&now); //convert to string
+	outfile << "Function: " + file << std::endl;
+    outfile << "Date: " + dt << std::endl;
+	
+    switch(code) {
+        case ErrorType::DIVIBYZERO:
+            outfile << "Error: division by zero" << std::endl;
+            break;
+        case ErrorType::EMPTYSTRING:
+            outfile << "empty String" << std::endl;
+            break;
+        case ErrorType::NULLPOINTER:
+            outfile << "null pointer" << std::endl;
+            break;
+        default:
+            outfile << "wrong type" << std::endl;
+    }
+    outfile << "===============" << std::endl;
+    outfile.close();
 }
