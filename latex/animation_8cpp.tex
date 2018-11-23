@@ -1,0 +1,69 @@
+\hypertarget{animation_8cpp}{}\section{engine/src/animation.cpp File Reference}
+\label{animation_8cpp}\index{engine/src/animation.\+cpp@{engine/src/animation.\+cpp}}
+
+
+Purpose\+: Controls animaton.  
+
+
+{\ttfamily \#include \char`\"{}animation.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}game.\+hpp\char`\"{}}\\*
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{animation_8cpp_a18929f06bd87a0772f3a6660f3e68017}{A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+V\+A\+L\+UE} = 0
+\item 
+const int \hyperlink{animation_8cpp_ae880b83d782ec474a2a1c0b1dddbde17}{F\+R\+A\+M\+E\+\_\+\+V\+A\+L\+UE} = 1
+\item 
+const int \hyperlink{animation_8cpp_af2d3d8ef88aa7d60f047957302f35161}{C\+U\+R\+R\+E\+N\+T\+\_\+\+S\+P\+R\+I\+TE} = 0
+\item 
+const float \hyperlink{animation_8cpp_a45c5e537335e530444c0e1057dd30424}{D\+I\+V\+I\+S\+O\+R\+\_\+\+N\+U\+M\+B\+ER} = 2.\+0f
+\item 
+const float \hyperlink{animation_8cpp_a47c70c1126f31f6690ab1aa8ed4f5cf1}{C\+U\+R\+R\+E\+N\+T\+\_\+\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+T\+I\+ME} = 0.\+0f
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Purpose\+: Controls animaton. 
+
+G\+PL v3.\+0 License Copyright (c) 2017 \hyperlink{namespace_azo}{Azo}
+
+Notice\+: The\+Azo, The\+Azo\+Team \href{https://github.com/TecProg2018-2/Azo}{\tt https\+://github.\+com/\+Tec\+Prog2018-\/2/\+Azo}
+
+This file implements the main game component its declaration and state. 
+
+\subsection{Variable Documentation}
+\index{animation.\+cpp@{animation.\+cpp}!A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+V\+A\+L\+UE@{A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+V\+A\+L\+UE}}
+\index{A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+V\+A\+L\+UE@{A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+V\+A\+L\+UE}!animation.\+cpp@{animation.\+cpp}}
+\subsubsection[{\texorpdfstring{A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+V\+A\+L\+UE}{ANIMATION_NULL_VALUE}}]{\setlength{\rightskip}{0pt plus 5cm}const int A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+N\+U\+L\+L\+\_\+\+V\+A\+L\+UE = 0}\hypertarget{animation_8cpp_a18929f06bd87a0772f3a6660f3e68017}{}\label{animation_8cpp_a18929f06bd87a0772f3a6660f3e68017}
+
+
+Definition at line 18 of file animation.\+cpp.
+
+\index{animation.\+cpp@{animation.\+cpp}!C\+U\+R\+R\+E\+N\+T\+\_\+\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+T\+I\+ME@{C\+U\+R\+R\+E\+N\+T\+\_\+\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+T\+I\+ME}}
+\index{C\+U\+R\+R\+E\+N\+T\+\_\+\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+T\+I\+ME@{C\+U\+R\+R\+E\+N\+T\+\_\+\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+T\+I\+ME}!animation.\+cpp@{animation.\+cpp}}
+\subsubsection[{\texorpdfstring{C\+U\+R\+R\+E\+N\+T\+\_\+\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+T\+I\+ME}{CURRENT_ANIMATION_TIME}}]{\setlength{\rightskip}{0pt plus 5cm}const float C\+U\+R\+R\+E\+N\+T\+\_\+\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+T\+I\+ME = 0.\+0f}\hypertarget{animation_8cpp_a47c70c1126f31f6690ab1aa8ed4f5cf1}{}\label{animation_8cpp_a47c70c1126f31f6690ab1aa8ed4f5cf1}
+
+
+Definition at line 22 of file animation.\+cpp.
+
+\index{animation.\+cpp@{animation.\+cpp}!C\+U\+R\+R\+E\+N\+T\+\_\+\+S\+P\+R\+I\+TE@{C\+U\+R\+R\+E\+N\+T\+\_\+\+S\+P\+R\+I\+TE}}
+\index{C\+U\+R\+R\+E\+N\+T\+\_\+\+S\+P\+R\+I\+TE@{C\+U\+R\+R\+E\+N\+T\+\_\+\+S\+P\+R\+I\+TE}!animation.\+cpp@{animation.\+cpp}}
+\subsubsection[{\texorpdfstring{C\+U\+R\+R\+E\+N\+T\+\_\+\+S\+P\+R\+I\+TE}{CURRENT_SPRITE}}]{\setlength{\rightskip}{0pt plus 5cm}const int C\+U\+R\+R\+E\+N\+T\+\_\+\+S\+P\+R\+I\+TE = 0}\hypertarget{animation_8cpp_af2d3d8ef88aa7d60f047957302f35161}{}\label{animation_8cpp_af2d3d8ef88aa7d60f047957302f35161}
+
+
+Definition at line 20 of file animation.\+cpp.
+
+\index{animation.\+cpp@{animation.\+cpp}!D\+I\+V\+I\+S\+O\+R\+\_\+\+N\+U\+M\+B\+ER@{D\+I\+V\+I\+S\+O\+R\+\_\+\+N\+U\+M\+B\+ER}}
+\index{D\+I\+V\+I\+S\+O\+R\+\_\+\+N\+U\+M\+B\+ER@{D\+I\+V\+I\+S\+O\+R\+\_\+\+N\+U\+M\+B\+ER}!animation.\+cpp@{animation.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+I\+V\+I\+S\+O\+R\+\_\+\+N\+U\+M\+B\+ER}{DIVISOR_NUMBER}}]{\setlength{\rightskip}{0pt plus 5cm}const float D\+I\+V\+I\+S\+O\+R\+\_\+\+N\+U\+M\+B\+ER = 2.\+0f}\hypertarget{animation_8cpp_a45c5e537335e530444c0e1057dd30424}{}\label{animation_8cpp_a45c5e537335e530444c0e1057dd30424}
+
+
+Definition at line 21 of file animation.\+cpp.
+
+\index{animation.\+cpp@{animation.\+cpp}!F\+R\+A\+M\+E\+\_\+\+V\+A\+L\+UE@{F\+R\+A\+M\+E\+\_\+\+V\+A\+L\+UE}}
+\index{F\+R\+A\+M\+E\+\_\+\+V\+A\+L\+UE@{F\+R\+A\+M\+E\+\_\+\+V\+A\+L\+UE}!animation.\+cpp@{animation.\+cpp}}
+\subsubsection[{\texorpdfstring{F\+R\+A\+M\+E\+\_\+\+V\+A\+L\+UE}{FRAME_VALUE}}]{\setlength{\rightskip}{0pt plus 5cm}const int F\+R\+A\+M\+E\+\_\+\+V\+A\+L\+UE = 1}\hypertarget{animation_8cpp_ae880b83d782ec474a2a1c0b1dddbde17}{}\label{animation_8cpp_ae880b83d782ec474a2a1c0b1dddbde17}
+
+
+Definition at line 19 of file animation.\+cpp.
+

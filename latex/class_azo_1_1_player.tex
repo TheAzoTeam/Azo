@@ -1,0 +1,203 @@
+\hypertarget{class_azo_1_1_player}{}\section{Azo\+:\+:Player Class Reference}
+\label{class_azo_1_1_player}\index{Azo\+::\+Player@{Azo\+::\+Player}}
+
+
+\hyperlink{class_azo_1_1_player}{Player} class This class is used to characterize player and set its configurations and behaviour.  
+
+
+
+
+{\ttfamily \#include $<$player.\+hpp$>$}
+
+Inheritance diagram for Azo\+:\+:Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_azo_1_1_player}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_azo_1_1_player_a70594f977b11b9574450b1f4510f6ee5}{Player} ()
+\item 
+\hyperlink{class_azo_1_1_player_a4e229f75d3c2e31f502ca0bb48f6a42f}{Player} (std\+::string name, std\+::pair$<$ double, double $>$ current\+Position)
+\item 
+void \hyperlink{class_azo_1_1_player_a57070d462aa21dbfb8dc645b2a25bf86}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em inherits function that disable the game components. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::pair$<$ double, double $>$ \hyperlink{class_azo_1_1_player_a7c56f1e510b86c4719bef956b69befa4}{M\+\_\+\+Z\+E\+R\+O\+\_\+\+V\+E\+C\+T\+OR} = std\+::make\+\_\+pair(0.\+0f, 0.\+0f)
+\item 
+const double \hyperlink{class_azo_1_1_player_a2daa546daa4c5f15640d703fdde56059}{M\+\_\+\+G\+R\+A\+V\+I\+TY} = 0.\+003f
+\item 
+const double \hyperlink{class_azo_1_1_player_a926fea900dde401f4b2b5faa28bfa7c6}{M\+\_\+\+J\+U\+M\+P\+I\+N\+G\+\_\+\+S\+P\+E\+ED} = -\/1.\+0f
+\item 
+const double \hyperlink{class_azo_1_1_player_a597ac6977889f5bef7f95aaf13ff3f85}{M\+\_\+\+W\+A\+L\+K\+I\+N\+G\+\_\+\+S\+P\+E\+ED} = 4.\+8f
+\item 
+const int \hyperlink{class_azo_1_1_player_a4cd316a415fb0af5d4179a6cd32a2ab2}{M\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+A\+R\+TS} = 25
+\item 
+\hyperlink{namespace_azo_ab6013e2aec3a179604cef5ea80418e33}{Player\+State} \hyperlink{class_azo_1_1_player_a6c500f32806b1450aaf2acb66ae5b9bf}{m\+State}
+\item 
+std\+::pair$<$ double, double $>$ \hyperlink{class_azo_1_1_player_a545f3a8fe6ace68bc67f9573ba179b3b}{m\+Speed}
+\item 
+bool \hyperlink{class_azo_1_1_player_a777f7f3207c772734e886188c85523fe}{m\+Pushes\+Right\+Wall}
+\item 
+bool \hyperlink{class_azo_1_1_player_a49cc98a0198d753b53837cdd6d35539d}{m\+Pushes\+Left\+Wall}
+\item 
+bool \hyperlink{class_azo_1_1_player_a3bd316a4da8a7b1da0b9844a3d6b1e49}{m\+At\+Ceiling}
+\item 
+bool \hyperlink{class_azo_1_1_player_af525a6da7698c344f378ece79dcd28bc}{m\+On\+Ground}
+\item 
+int \hyperlink{class_azo_1_1_player_a7d2a2c8e92e8fd22aa1dc220fd6d6df7}{m\+Collected\+Parts} = 0
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_azo_1_1_player}{Player} class This class is used to characterize player and set its configurations and behaviour. 
+
+Definition at line 46 of file player.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Azo\+::\+Player@{Azo\+::\+Player}!Player@{Player}}
+\index{Player@{Player}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{Player()}{Player()}}]{\setlength{\rightskip}{0pt plus 5cm}Azo\+::\+Player\+::\+Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_azo_1_1_player_a70594f977b11b9574450b1f4510f6ee5}{}\label{class_azo_1_1_player_a70594f977b11b9574450b1f4510f6ee5}
+\index{Azo\+::\+Player@{Azo\+::\+Player}!Player@{Player}}
+\index{Player@{Player}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{Player(std\+::string name, std\+::pair$<$ double, double $>$ current\+Position)}{Player(std::string name, std::pair< double, double > currentPosition)}}]{\setlength{\rightskip}{0pt plus 5cm}Player\+::\+Player (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{std\+::pair$<$ double, double $>$}]{current\+Position}
+\end{DoxyParamCaption}
+)}\hypertarget{class_azo_1_1_player_a4e229f75d3c2e31f502ca0bb48f6a42f}{}\label{class_azo_1_1_player_a4e229f75d3c2e31f502ca0bb48f6a42f}
+
+
+Definition at line 20 of file player.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{Azo\+::\+Player@{Azo\+::\+Player}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_azo_1_1_player_a57070d462aa21dbfb8dc645b2a25bf86}{}\label{class_azo_1_1_player_a57070d462aa21dbfb8dc645b2a25bf86}
+
+
+inherits function that disable the game components. 
+
+free the component pointers.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_game_object_a08d7a48b6eb90f55c8b670b6f98ab393}{engine\+::\+Game\+Object}.
+
+
+
+Definition at line 30 of file player.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{Azo\+::\+Player@{Azo\+::\+Player}!M\+\_\+\+G\+R\+A\+V\+I\+TY@{M\+\_\+\+G\+R\+A\+V\+I\+TY}}
+\index{M\+\_\+\+G\+R\+A\+V\+I\+TY@{M\+\_\+\+G\+R\+A\+V\+I\+TY}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{M\+\_\+\+G\+R\+A\+V\+I\+TY}{M_GRAVITY}}]{\setlength{\rightskip}{0pt plus 5cm}const double Azo\+::\+Player\+::\+M\+\_\+\+G\+R\+A\+V\+I\+TY = 0.\+003f}\hypertarget{class_azo_1_1_player_a2daa546daa4c5f15640d703fdde56059}{}\label{class_azo_1_1_player_a2daa546daa4c5f15640d703fdde56059}
+
+
+Definition at line 76 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!M\+\_\+\+J\+U\+M\+P\+I\+N\+G\+\_\+\+S\+P\+E\+ED@{M\+\_\+\+J\+U\+M\+P\+I\+N\+G\+\_\+\+S\+P\+E\+ED}}
+\index{M\+\_\+\+J\+U\+M\+P\+I\+N\+G\+\_\+\+S\+P\+E\+ED@{M\+\_\+\+J\+U\+M\+P\+I\+N\+G\+\_\+\+S\+P\+E\+ED}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{M\+\_\+\+J\+U\+M\+P\+I\+N\+G\+\_\+\+S\+P\+E\+ED}{M_JUMPING_SPEED}}]{\setlength{\rightskip}{0pt plus 5cm}const double Azo\+::\+Player\+::\+M\+\_\+\+J\+U\+M\+P\+I\+N\+G\+\_\+\+S\+P\+E\+ED = -\/1.\+0f}\hypertarget{class_azo_1_1_player_a926fea900dde401f4b2b5faa28bfa7c6}{}\label{class_azo_1_1_player_a926fea900dde401f4b2b5faa28bfa7c6}
+
+
+Definition at line 77 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!M\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+A\+R\+TS@{M\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+A\+R\+TS}}
+\index{M\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+A\+R\+TS@{M\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+A\+R\+TS}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{M\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+A\+R\+TS}{M_TOTAL_PARTS}}]{\setlength{\rightskip}{0pt plus 5cm}const int Azo\+::\+Player\+::\+M\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+A\+R\+TS = 25}\hypertarget{class_azo_1_1_player_a4cd316a415fb0af5d4179a6cd32a2ab2}{}\label{class_azo_1_1_player_a4cd316a415fb0af5d4179a6cd32a2ab2}
+
+
+Definition at line 80 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!M\+\_\+\+W\+A\+L\+K\+I\+N\+G\+\_\+\+S\+P\+E\+ED@{M\+\_\+\+W\+A\+L\+K\+I\+N\+G\+\_\+\+S\+P\+E\+ED}}
+\index{M\+\_\+\+W\+A\+L\+K\+I\+N\+G\+\_\+\+S\+P\+E\+ED@{M\+\_\+\+W\+A\+L\+K\+I\+N\+G\+\_\+\+S\+P\+E\+ED}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{M\+\_\+\+W\+A\+L\+K\+I\+N\+G\+\_\+\+S\+P\+E\+ED}{M_WALKING_SPEED}}]{\setlength{\rightskip}{0pt plus 5cm}const double Azo\+::\+Player\+::\+M\+\_\+\+W\+A\+L\+K\+I\+N\+G\+\_\+\+S\+P\+E\+ED = 4.\+8f}\hypertarget{class_azo_1_1_player_a597ac6977889f5bef7f95aaf13ff3f85}{}\label{class_azo_1_1_player_a597ac6977889f5bef7f95aaf13ff3f85}
+
+
+Definition at line 79 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!M\+\_\+\+Z\+E\+R\+O\+\_\+\+V\+E\+C\+T\+OR@{M\+\_\+\+Z\+E\+R\+O\+\_\+\+V\+E\+C\+T\+OR}}
+\index{M\+\_\+\+Z\+E\+R\+O\+\_\+\+V\+E\+C\+T\+OR@{M\+\_\+\+Z\+E\+R\+O\+\_\+\+V\+E\+C\+T\+OR}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{M\+\_\+\+Z\+E\+R\+O\+\_\+\+V\+E\+C\+T\+OR}{M_ZERO_VECTOR}}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::pair$<$double, double$>$ Azo\+::\+Player\+::\+M\+\_\+\+Z\+E\+R\+O\+\_\+\+V\+E\+C\+T\+OR = std\+::make\+\_\+pair(0.\+0f, 0.\+0f)}\hypertarget{class_azo_1_1_player_a7c56f1e510b86c4719bef956b69befa4}{}\label{class_azo_1_1_player_a7c56f1e510b86c4719bef956b69befa4}
+
+
+Definition at line 75 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!m\+At\+Ceiling@{m\+At\+Ceiling}}
+\index{m\+At\+Ceiling@{m\+At\+Ceiling}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{m\+At\+Ceiling}{mAtCeiling}}]{\setlength{\rightskip}{0pt plus 5cm}bool Azo\+::\+Player\+::m\+At\+Ceiling}\hypertarget{class_azo_1_1_player_a3bd316a4da8a7b1da0b9844a3d6b1e49}{}\label{class_azo_1_1_player_a3bd316a4da8a7b1da0b9844a3d6b1e49}
+
+
+Definition at line 87 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!m\+Collected\+Parts@{m\+Collected\+Parts}}
+\index{m\+Collected\+Parts@{m\+Collected\+Parts}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{m\+Collected\+Parts}{mCollectedParts}}]{\setlength{\rightskip}{0pt plus 5cm}int Azo\+::\+Player\+::m\+Collected\+Parts = 0}\hypertarget{class_azo_1_1_player_a7d2a2c8e92e8fd22aa1dc220fd6d6df7}{}\label{class_azo_1_1_player_a7d2a2c8e92e8fd22aa1dc220fd6d6df7}
+
+
+Definition at line 90 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!m\+On\+Ground@{m\+On\+Ground}}
+\index{m\+On\+Ground@{m\+On\+Ground}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{m\+On\+Ground}{mOnGround}}]{\setlength{\rightskip}{0pt plus 5cm}bool Azo\+::\+Player\+::m\+On\+Ground}\hypertarget{class_azo_1_1_player_af525a6da7698c344f378ece79dcd28bc}{}\label{class_azo_1_1_player_af525a6da7698c344f378ece79dcd28bc}
+
+
+Definition at line 88 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!m\+Pushes\+Left\+Wall@{m\+Pushes\+Left\+Wall}}
+\index{m\+Pushes\+Left\+Wall@{m\+Pushes\+Left\+Wall}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{m\+Pushes\+Left\+Wall}{mPushesLeftWall}}]{\setlength{\rightskip}{0pt plus 5cm}bool Azo\+::\+Player\+::m\+Pushes\+Left\+Wall}\hypertarget{class_azo_1_1_player_a49cc98a0198d753b53837cdd6d35539d}{}\label{class_azo_1_1_player_a49cc98a0198d753b53837cdd6d35539d}
+
+
+Definition at line 86 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!m\+Pushes\+Right\+Wall@{m\+Pushes\+Right\+Wall}}
+\index{m\+Pushes\+Right\+Wall@{m\+Pushes\+Right\+Wall}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{m\+Pushes\+Right\+Wall}{mPushesRightWall}}]{\setlength{\rightskip}{0pt plus 5cm}bool Azo\+::\+Player\+::m\+Pushes\+Right\+Wall}\hypertarget{class_azo_1_1_player_a777f7f3207c772734e886188c85523fe}{}\label{class_azo_1_1_player_a777f7f3207c772734e886188c85523fe}
+
+
+Definition at line 85 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!m\+Speed@{m\+Speed}}
+\index{m\+Speed@{m\+Speed}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{m\+Speed}{mSpeed}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$double, double$>$ Azo\+::\+Player\+::m\+Speed}\hypertarget{class_azo_1_1_player_a545f3a8fe6ace68bc67f9573ba179b3b}{}\label{class_azo_1_1_player_a545f3a8fe6ace68bc67f9573ba179b3b}
+
+
+Definition at line 83 of file player.\+hpp.
+
+\index{Azo\+::\+Player@{Azo\+::\+Player}!m\+State@{m\+State}}
+\index{m\+State@{m\+State}!Azo\+::\+Player@{Azo\+::\+Player}}
+\subsubsection[{\texorpdfstring{m\+State}{mState}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player\+State} Azo\+::\+Player\+::m\+State}\hypertarget{class_azo_1_1_player_a6c500f32806b1450aaf2acb66ae5b9bf}{}\label{class_azo_1_1_player_a6c500f32806b1450aaf2acb66ae5b9bf}
+
+
+Definition at line 82 of file player.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{player_8hpp}{player.\+hpp}\item 
+src/\hyperlink{player_8cpp}{player.\+cpp}\end{DoxyCompactItemize}

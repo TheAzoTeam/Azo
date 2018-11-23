@@ -1,26 +1,62 @@
+/**
+  * @file timer.cpp
+  * @brief Purpose: Contains all the methods related to the Timer class.
+  *
+  * GPL v3.0 License
+  * Copyright (c) 2017 Azo
+  *
+  * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+ */
 #include "timer.hpp"
 
 using namespace engine;
 
-Timer::Timer(){
+/*
+ *@brief Constructor for the timer.
+ *
+ *Resets elapsed time to zero
+ */
+Timer::Timer() {
 	Reset();
 }
-Timer::~Timer(){}
 
-void Timer::Reset(){
-	start_ticks = SDL_GetTicks();
-	elapsed_ticks = 0.0f;
-	delta_time = 0.0f;
+Timer::~Timer() {}
+
+/*
+ *@brief Method to reset the timer
+ *
+ * Reset startTicks and sets all other attributes to zero
+ */
+void Timer::Reset() {
+
+	startTicks = SDL_GetTicks();
+	elapsedTicks = 0.0f;
+	deltaTime = 0.0f;
 }
 
-void Timer::DeltaTime(){
-	delta_time = SDL_GetTicks() - elapsed_ticks;
+/*
+ *@brief Method to calculate elapsed time since last step
+ *
+ * Calculates difference from present tick to total elapsed ticks
+ */
+void Timer::DeltaTime() {
+	deltaTime = SDL_GetTicks() - elapsedTicks;
 }
 
-float Timer::GetDeltaTime(){
-	return delta_time;
+/*
+ *@brief Method to get elapsed time since last step
+ *
+ *@return the elapsed time
+ */
+float Timer::getDeltaTime() {
+	return deltaTime;
 }
 
-void Timer::Step(){
-	elapsed_ticks = SDL_GetTicks();
+/*
+ *@brief Method to do a timer step
+ *
+ *updated the total elapsed time with present time
+ */
+void Timer::step() {
+	elapsedTicks = SDL_GetTicks();
 }

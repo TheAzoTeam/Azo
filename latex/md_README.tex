@@ -1,0 +1,125 @@
+Repositório para a matéria de Técnicas de Programação, Universidade de Brasília-\/\+F\+GA, para refatoração do projeto {\itshape \hyperlink{namespace_azo}{Azo}}, que foi desenvolvido na matéria de Introdução à Jogos Eletrônicos, Universidade de Brasília.
+
+\subsubsection*{Envolvidos no Projeto}
+
+\paragraph*{Refatoração}
+
+
+\begin{DoxyItemize}
+\item Miguel Alves (Desenvolvedor -\/ UnB F\+GA);
+\item Kamila Costa (Desenvolvedor -\/ UnB F\+GA);
+\item Igor Aragão (Desenvolvedor -\/ UnB F\+GA);
+\item Lucas Vitor (Desenvolvedor -\/ UnB F\+GA);
+\item Samuel Borges (Desenvolvedor -\/ UnB F\+GA);
+\item Lude Ribeiro (Desenvolvedor -\/ UnB F\+GA);
+\item Eduardo Lima (Desenvolvedor -\/ UnB F\+GA);
+\item Nathalia Lorena (Desenvolvedor -\/ UnB F\+GA);
+\end{DoxyItemize}
+
+\paragraph*{Projeto Original}
+
+
+\begin{DoxyItemize}
+\item Allan Jefrey (Desenvolvedor -\/ UnB F\+GA);
+\item Hugo Alves (Desenvolvedor -\/ UnB F\+GA);
+\item Roger Lenke (Desenvolvedor -\/ UnB F\+GA);
+\item Murilo Oliveira (Músico -\/ UnB Darcy Ribeiro);
+\item Marina Rebello (Designer -\/ UnB Darcy Ribeiro);
+\item Thainá Ferreira (Designer -\/ UnB Darcy Ribeiro).
+\end{DoxyItemize}
+
+\subsubsection*{Introdução e Objetivos}
+
+Aplicar sobre o projeto {\itshape \hyperlink{namespace_azo}{Azo}} as Técnicas de Programação aprendidas no decorrer da matéria Técnicas de Programação. Evoluir o código e arquitetura visando melhorar a qualidade do código e aplicar os conhecimentos adiquiridos.
+
+\char`\"{}\+Azo é um jogo onde o jogador deve controlar três diferentes personagens em diferentes épocas, para corrigir a distorção nas linhas temporais!\char`\"{}
+
+\subsubsection*{História}
+
+No ano de 2097, uma filósofa humana e um cientista de uma raça alienígena discutem para saber quem veio primeiro\+: o ovo, ou a galinha. Sem chegar num consenso, ambos acordam em projetar uma máquina do tempo para que possam verificar por si mesmos. Infelizmente, os cálculos para a concepção da máquina estavam errados, o que causou uma explosão na máquina do tempo e distorceu as linhas temporais! Agora, três diferentes heróis serão escolhidos para coletar os fragmentos da máquina e corrigir o tempo, ou o universo estará condenado para sempre.
+
+\subsubsection*{Características}
+
+
+\begin{DoxyItemize}
+\item Gênero\+: Runner/\+Plataforma.
+\item Quantidade de jogadores\+: Single-\/player.
+\item Quantidade de níveis\+: 1.
+\item Personagens\+: 1.
+\end{DoxyItemize}
+
+\subsubsection*{Objetos}
+
+Os objetos presentes no jogo são\+:
+\begin{DoxyItemize}
+\item Obstáculos de pulo.
+\item Obstáculos para abaixar/deslizar.
+\item Plataformas comuns.
+\item Espinhos.
+\item Fragmentos da máquina do tempo, que são coletáveis.
+\end{DoxyItemize}
+
+\subsubsection*{Controles}
+
+O jogador pode\+:
+\begin{DoxyItemize}
+\item Saltar obstáculos (tecla \textquotesingle{}w\textquotesingle{}).
+\item Deslizar por baixo de obstáculos (tecla \textquotesingle{}s\textquotesingle{}).
+\item Selecionar opções nos menus (tecla \textquotesingle{}seta para direita\textquotesingle{} e \textquotesingle{}seta para esquerda\textquotesingle{}).
+\item Ativar as opções selecionadas (tecla enter).
+\end{DoxyItemize}
+
+\subsubsection*{Dependências}
+
+Para executar o jogo com sucesso é necessário possuir instaladas tais dependências\+:
+\begin{DoxyItemize}
+\item C\+Make 3.\+5.\+1
+\item S\+DL 2
+\item S\+D\+L\+\_\+image 2
+\item S\+D\+L\+\_\+ttf 2
+\item S\+D\+L\+\_\+mixer 2
+\end{DoxyItemize}
+
+\subsubsection*{Como executar}
+
+No terminal do sistema operacional (Linux), utilize os comandos na pasta do clone do projeto\+: 
+\begin{DoxyCode}
+1 $ mkdir build
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+1 $ cd build
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+1 $ cmake ..
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+1 $ make
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+1 $ ./Azo
+\end{DoxyCode}
+
+
+Também é possível criar um instalador .deb para o projeto com os seguintes comandos\+: 
+\begin{DoxyCode}
+1 $ mkdir build
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+1 $ cd build
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+1 $ cmake ..
+\end{DoxyCode}
+ 
+\begin{DoxyCode}
+1 $ make package
+\end{DoxyCode}
+
+
+O instalador estará localizado na pasta build. 

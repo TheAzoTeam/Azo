@@ -1,3 +1,12 @@
+/**
+     * @file menu.hpp
+	 * @brief Purpose: Menu class declaration
+     *
+     * GPL 3.0 License
+     * Copyright (c) 2017 Azo
+     *
+     * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+     */
 #ifndef MENU
 #define MENU
 
@@ -6,41 +15,50 @@
 #include "audio_controller.hpp"
 
 namespace Azo {
+	/**  
+		 * @brief A Hitbox class.
+		 * Menu class
+		 *
+		 * A more elaborate class description.
+		 * Class responsible for creating the ' menu '
+		 */
 	class Menu : public engine::Scene {
 		private:
-			engine::GameObject *m_menu;
+			engine::GameObject *mMenu; // Miscellaneous comment
 
-			engine::AnimationController *m_animation_controller;
+			engine::AnimationController *mAnimationController;
 
-			engine::Animation *m_start_button;
-			engine::Animation *m_exit_button;
-			engine::Animation *m_sound_enable_button;
-			engine::Animation *m_sound_disabled_button;
+			engine::Animation *mStartButton; // Variable referring to the Start button
+			engine::Animation *mExitButton; // Variable referring to the output button
+			engine::Animation *mSoundEnabledButton; // Variable referring to the Activate sound button
+			engine::Animation *mSoundDisabledButton; // Variable referring to the Activate sound button
 
-			engine::Animation *m_arrow_start;
-			engine::Animation *m_arrow_exit;
-			engine::Animation *m_arrow_sound;
+			engine::Animation *mArrowStart; // Variable referring to start arrow
+			engine::Animation *mArrowExit; // Variable referring to output arrow
+			engine::Animation *mArrowSound; // Variable referring to sound
 
-			std::vector<engine::Sprite *> m_start_button_sprites;
-			std::vector<engine::Sprite *> m_exit_button_sprites;
-			std::vector<engine::Sprite *> m_sound_enabled_button_sprites;
-			std::vector<engine::Sprite *> m_sound_disabled_button_sprites;
+			std::vector<engine::Sprite *> mStartButtonSprites;
+			std::vector<engine::Sprite *> mExitButtonSprites;
+			std::vector<engine::Sprite *> mSoundEnabledButtonSprites;
+			std::vector<engine::Sprite *> mSoundDisabledButtonSprites;
 
-			std::vector<engine::Sprite *> m_arrow_sprites;
+			std::vector<engine::Sprite *> mArrowSprites;
 
-			engine::BackgroundComponent *m_background;
-			MenuCode *m_code;
-			engine::AudioController *m_audio_controller;
-			engine::AudioComponent *m_menu_theme;
+			engine::BackgroundComponent *mBackground;
+			MenuCode *mCode;
+			engine::AudioController *mAudioController;
+			engine::AudioComponent *mMenuTheme; // Variable referring to the menu
+		
 		public:
 			Menu();
 			Menu(std::string name);
-			void Restart();
-			void Shutdown();
+			void restart();
+			void shutdown();
+
 		private:
-			void CreateGameObjects();
-			void CreateMenuComponents();
-			void GenButtonsAnimation();
+			void createGameObjects();
+			void createMenuComponents();
+			void generateButtonsAnimation();
 
 	};
 }

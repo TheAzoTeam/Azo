@@ -1,0 +1,215 @@
+\hypertarget{classengine_1_1_image_component}{}\section{engine\+:\+:Image\+Component Class Reference}
+\label{classengine_1_1_image_component}\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+
+
+{\ttfamily \#include $<$image\+\_\+component.\+hpp$>$}
+
+Inheritance diagram for engine\+:\+:Image\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classengine_1_1_image_component}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_image_component_a23b36883184415e68d4da77e06b10bf3}{Image\+Component} ()
+\item 
+virtual \hyperlink{classengine_1_1_image_component_a80d6f915909d151df0c785b803f1aafa}{$\sim$\+Image\+Component} ()
+\item 
+\hyperlink{classengine_1_1_image_component_ab6d7f27c64158fbea6ec71704abbf4ea}{Image\+Component} (\hyperlink{classengine_1_1_game_object}{Game\+Object} \&\hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object}, std\+::string \hyperlink{classengine_1_1_background_component_aeffcb1aa8b67444e004413dee8c266b1}{image\+Path}, double \hyperlink{classengine_1_1_image_component_aa27852286227a84dc9c9f01c9fe2add8}{zoom\+Factor})
+\item 
+\hyperlink{classengine_1_1_image_component_acf18f670b8d344df162a50f76032ecfa}{Image\+Component} (\hyperlink{classengine_1_1_game_object}{Game\+Object} \&\hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object}, std\+::string \hyperlink{classengine_1_1_background_component_aeffcb1aa8b67444e004413dee8c266b1}{image\+Path}, double \hyperlink{classengine_1_1_image_component_aa27852286227a84dc9c9f01c9fe2add8}{zoom\+Factor}, std\+::pair$<$ double, double $>$ position\+Relative\+To\+Object)
+\item 
+void \hyperlink{classengine_1_1_image_component_a4e5def28ca4647b29a4fe9bda78f9e57}{init} ()
+\begin{DoxyCompactList}\small\item\em inherits function that initialize the game components \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_image_component_a2be1a46da22f0f2280f7748c49fa6276}{draw} ()
+\begin{DoxyCompactList}\small\item\em inherits function that draw game objects. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_image_component_ae821d9ce91c9cb6235b80d5ef248516b}{update\+Quad} ()
+\item 
+std\+::string \hyperlink{classengine_1_1_image_component_ac18bc924683d4d389b6706abd0afab20}{get\+Class\+Name} ()
+\begin{DoxyCompactList}\small\item\em access the name of the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ double, double $>$ \hyperlink{classengine_1_1_image_component_aa89d785f15ac45a3b4343d08a2c5c146}{m\+Position\+Relative\+To\+Object} = std\+::make\+\_\+pair(0, 0)
+\item 
+double \hyperlink{classengine_1_1_image_component_aa27852286227a84dc9c9f01c9fe2add8}{zoom\+Factor}
+\item 
+S\+D\+L\+\_\+\+Rect \hyperlink{classengine_1_1_image_component_a563b4484c368c3206ce02a35b3cadd6b}{canvas\+Quad}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 20 of file image\+\_\+component.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!Image\+Component@{Image\+Component}}
+\index{Image\+Component@{Image\+Component}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{Image\+Component()}{ImageComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}Image\+Component\+::\+Image\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_image_component_a23b36883184415e68d4da77e06b10bf3}{}\label{classengine_1_1_image_component_a23b36883184415e68d4da77e06b10bf3}
+
+
+Definition at line 18 of file image\+\_\+component.\+cpp.
+
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!````~Image\+Component@{$\sim$\+Image\+Component}}
+\index{````~Image\+Component@{$\sim$\+Image\+Component}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{$\sim$\+Image\+Component()}{~ImageComponent()}}]{\setlength{\rightskip}{0pt plus 5cm}Image\+Component\+::$\sim$\+Image\+Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_image_component_a80d6f915909d151df0c785b803f1aafa}{}\label{classengine_1_1_image_component_a80d6f915909d151df0c785b803f1aafa}
+
+
+Definition at line 20 of file image\+\_\+component.\+cpp.
+
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!Image\+Component@{Image\+Component}}
+\index{Image\+Component@{Image\+Component}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{Image\+Component(\+Game\+Object \&game\+Object, std\+::string image\+Path, double zoom\+Factor)}{ImageComponent(GameObject &gameObject, std::string imagePath, double zoomFactor)}}]{\setlength{\rightskip}{0pt plus 5cm}Image\+Component\+::\+Image\+Component (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Object} \&}]{game\+Object, }
+\item[{std\+::string}]{image\+Path, }
+\item[{double}]{zoom\+Factor}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_image_component_ab6d7f27c64158fbea6ec71704abbf4ea}{}\label{classengine_1_1_image_component_ab6d7f27c64158fbea6ec71704abbf4ea}
+
+
+Definition at line 22 of file image\+\_\+component.\+cpp.
+
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!Image\+Component@{Image\+Component}}
+\index{Image\+Component@{Image\+Component}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{Image\+Component(\+Game\+Object \&game\+Object, std\+::string image\+Path, double zoom\+Factor, std\+::pair$<$ double, double $>$ position\+Relative\+To\+Object)}{ImageComponent(GameObject &gameObject, std::string imagePath, double zoomFactor, std::pair< double, double > positionRelativeToObject)}}]{\setlength{\rightskip}{0pt plus 5cm}Image\+Component\+::\+Image\+Component (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Object} \&}]{game\+Object, }
+\item[{std\+::string}]{image\+Path, }
+\item[{double}]{zoom\+Factor, }
+\item[{std\+::pair$<$ double, double $>$}]{position\+Relative\+To\+Object}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_image_component_acf18f670b8d344df162a50f76032ecfa}{}\label{classengine_1_1_image_component_acf18f670b8d344df162a50f76032ecfa}
+
+
+Definition at line 28 of file image\+\_\+component.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!draw@{draw}}
+\index{draw@{draw}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{draw()}{draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Image\+Component\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_image_component_a2be1a46da22f0f2280f7748c49fa6276}{}\label{classengine_1_1_image_component_a2be1a46da22f0f2280f7748c49fa6276}
+
+
+inherits function that draw game objects. 
+
+draws all the enabled game objects.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_background_component_a7b3c366c4b917888bde48917d83994be}{engine\+::\+Background\+Component}.
+
+
+
+Definition at line 62 of file image\+\_\+component.\+cpp.
+
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!get\+Class\+Name@{get\+Class\+Name}}
+\index{get\+Class\+Name@{get\+Class\+Name}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{get\+Class\+Name()}{getClassName()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string engine\+::\+Image\+Component\+::get\+Class\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classengine_1_1_image_component_ac18bc924683d4d389b6706abd0afab20}{}\label{classengine_1_1_image_component_ac18bc924683d4d389b6706abd0afab20}
+
+
+access the name of the class. 
+
+Used to get the private attribute class\+Name.
+
+\begin{DoxyReturn}{Returns}
+string that contains the scene name. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_background_component_ad3283bbe6ab2d5c170ca67d2180c9fe2}{engine\+::\+Background\+Component}.
+
+
+
+Definition at line 40 of file image\+\_\+component.\+hpp.
+
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!init@{init}}
+\index{init@{init}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Image\+Component\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_image_component_a4e5def28ca4647b29a4fe9bda78f9e57}{}\label{classengine_1_1_image_component_a4e5def28ca4647b29a4fe9bda78f9e57}
+
+
+inherits function that initialize the game components 
+
+Set all game components to enable
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_background_component_a88a96b265f85934474d23d37cb2e6413}{engine\+::\+Background\+Component}.
+
+
+
+Definition at line 38 of file image\+\_\+component.\+cpp.
+
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!update\+Quad@{update\+Quad}}
+\index{update\+Quad@{update\+Quad}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{update\+Quad()}{updateQuad()}}]{\setlength{\rightskip}{0pt plus 5cm}void Image\+Component\+::update\+Quad (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_image_component_ae821d9ce91c9cb6235b80d5ef248516b}{}\label{classengine_1_1_image_component_ae821d9ce91c9cb6235b80d5ef248516b}
+
+
+Definition at line 72 of file image\+\_\+component.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!canvas\+Quad@{canvas\+Quad}}
+\index{canvas\+Quad@{canvas\+Quad}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{canvas\+Quad}{canvasQuad}}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Rect engine\+::\+Image\+Component\+::canvas\+Quad\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_image_component_a563b4484c368c3206ce02a35b3cadd6b}{}\label{classengine_1_1_image_component_a563b4484c368c3206ce02a35b3cadd6b}
+
+
+Definition at line 24 of file image\+\_\+component.\+hpp.
+
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!m\+Position\+Relative\+To\+Object@{m\+Position\+Relative\+To\+Object}}
+\index{m\+Position\+Relative\+To\+Object@{m\+Position\+Relative\+To\+Object}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{m\+Position\+Relative\+To\+Object}{mPositionRelativeToObject}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<$double, double$>$ engine\+::\+Image\+Component\+::m\+Position\+Relative\+To\+Object = std\+::make\+\_\+pair(0, 0)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_image_component_aa89d785f15ac45a3b4343d08a2c5c146}{}\label{classengine_1_1_image_component_aa89d785f15ac45a3b4343d08a2c5c146}
+
+
+Definition at line 22 of file image\+\_\+component.\+hpp.
+
+\index{engine\+::\+Image\+Component@{engine\+::\+Image\+Component}!zoom\+Factor@{zoom\+Factor}}
+\index{zoom\+Factor@{zoom\+Factor}!engine\+::\+Image\+Component@{engine\+::\+Image\+Component}}
+\subsubsection[{\texorpdfstring{zoom\+Factor}{zoomFactor}}]{\setlength{\rightskip}{0pt plus 5cm}double engine\+::\+Image\+Component\+::zoom\+Factor\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classengine_1_1_image_component_aa27852286227a84dc9c9f01c9fe2add8}{}\label{classengine_1_1_image_component_aa27852286227a84dc9c9f01c9fe2add8}
+
+
+Definition at line 23 of file image\+\_\+component.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{image__component_8hpp}{image\+\_\+component.\+hpp}\item 
+engine/src/\hyperlink{image__component_8cpp}{image\+\_\+component.\+cpp}\end{DoxyCompactItemize}

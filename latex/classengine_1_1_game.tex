@@ -1,0 +1,283 @@
+\hypertarget{classengine_1_1_game}{}\section{engine\+:\+:Game Class Reference}
+\label{classengine_1_1_game}\index{engine\+::\+Game@{engine\+::\+Game}}
+
+
+A \hyperlink{classengine_1_1_game}{Game} class.  
+
+
+
+
+{\ttfamily \#include $<$game.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_game_ad59df6562a58a614fda24622d3715b65}{Game} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \hyperlink{classengine_1_1_game}{Game} component. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run} ()
+\begin{DoxyCompactList}\small\item\em Main \hyperlink{classengine_1_1_game}{Game} Loop and \hyperlink{classengine_1_1_s_d_l}{S\+DL} Initiators. \end{DoxyCompactList}\item 
+bool \hyperlink{classengine_1_1_game_a0c4045649cdb6a1e1a804b6f1c136ec3}{add\+Scene} (\hyperlink{classengine_1_1_scene}{engine\+::\+Scene} \&scene)
+\begin{DoxyCompactList}\small\item\em add scenes to the game. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_game_ae3e212e771960fda160fd298306460c8}{restart\+Scene} (std\+::string scene\+Name)
+\begin{DoxyCompactList}\small\item\em Restart game scene. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_game_a8f6fd890cc6a5c4e4fc8fa5b325d0ca3}{set\+Attributes} (std\+::string game\+Name, int window\+Width, int window\+Height, int frame\+Rate)
+\begin{DoxyCompactList}\small\item\em set the game attributtes to \hyperlink{classengine_1_1_s_d_l}{S\+DL} instance. \end{DoxyCompactList}\item 
+\hyperlink{classengine_1_1_timer}{Timer} \& \hyperlink{classengine_1_1_game_af3b784dd57665c8b8cfa8d17e70fff9a}{get\+Timer} ()
+\begin{DoxyCompactList}\small\item\em access the \hyperlink{classengine_1_1_timer}{Timer}. \end{DoxyCompactList}\item 
+\hyperlink{classengine_1_1_assets_manager}{Assets\+Manager} \& \hyperlink{classengine_1_1_game_ae47c2387cf5bd6881161ae6f556fe385}{get\+Assets\+Manager} ()
+\begin{DoxyCompactList}\small\item\em access the assets manager. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_game_a7150904ff2536b8553b4a152a724c67c}{change\+Scene} (std\+::string scene\+Name)
+\begin{DoxyCompactList}\small\item\em change the game scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_s_d_l}{S\+DL} \hyperlink{classengine_1_1_game_ab4a295f7b30b191183d5411f5fa5d66b}{sdl\+Elements}
+\item 
+\hyperlink{classengine_1_1_input_manager}{Input\+Manager} \hyperlink{classengine_1_1_game_ab9e84515e30301e673fa693c676f0c63}{input\+Manager}
+\item 
+\hyperlink{namespaceengine_af41e517ae74e4a8447ff80a2abcaf8dd}{Game\+State} \hyperlink{classengine_1_1_game_a6e5b7bd8569cf22309b9f934ba426eae}{game\+State}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classengine_1_1_game}{Game} \hyperlink{classengine_1_1_game_aed34cffcaed0e8027c11d68b1d42258b}{instance}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{classengine_1_1_game}{Game} class. 
+
+Generic \hyperlink{classengine_1_1_game}{Game} class. It\textquotesingle{}s how the engine\textquotesingle{}ll see all games that will try to use it. 
+
+Definition at line 46 of file game.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Game@{engine\+::\+Game}!Game@{Game}}
+\index{Game@{Game}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{Game()}{Game()}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+::\+Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_ad59df6562a58a614fda24622d3715b65}{}\label{classengine_1_1_game_ad59df6562a58a614fda24622d3715b65}
+
+
+Default constructor for the \hyperlink{classengine_1_1_game}{Game} component. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 27 of file game.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Game@{engine\+::\+Game}!add\+Scene@{add\+Scene}}
+\index{add\+Scene@{add\+Scene}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{add\+Scene(engine\+::\+Scene \&scene)}{addScene(engine::Scene &scene)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\+::add\+Scene (
+\begin{DoxyParamCaption}
+\item[{{\bf engine\+::\+Scene} \&}]{scene}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_a0c4045649cdb6a1e1a804b6f1c136ec3}{}\label{classengine_1_1_game_a0c4045649cdb6a1e1a804b6f1c136ec3}
+
+
+add scenes to the game. 
+
+Used to add a \hyperlink{classengine_1_1_scene}{Scene} to map that have all \hyperlink{classengine_1_1_game}{Game}\textquotesingle{}s Scenes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classengine_1_1_scene}{Scene}} & that represent a game stage.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bool that indicates the add scene success. 
+\end{DoxyReturn}
+
+
+Definition at line 110 of file game.\+cpp.
+
+\index{engine\+::\+Game@{engine\+::\+Game}!change\+Scene@{change\+Scene}}
+\index{change\+Scene@{change\+Scene}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{change\+Scene(std\+::string scene\+Name)}{changeScene(std::string sceneName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+::change\+Scene (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{scene\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_a7150904ff2536b8553b4a152a724c67c}{}\label{classengine_1_1_game_a7150904ff2536b8553b4a152a724c67c}
+
+
+change the game scene. 
+
+Perform the necessary checks and prepare the structure to switch Scenes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+Name} & string that has the scene name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 147 of file game.\+cpp.
+
+\index{engine\+::\+Game@{engine\+::\+Game}!get\+Assets\+Manager@{get\+Assets\+Manager}}
+\index{get\+Assets\+Manager@{get\+Assets\+Manager}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{get\+Assets\+Manager()}{getAssetsManager()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Assets\+Manager}\& engine\+::\+Game\+::get\+Assets\+Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classengine_1_1_game_ae47c2387cf5bd6881161ae6f556fe385}{}\label{classengine_1_1_game_ae47c2387cf5bd6881161ae6f556fe385}
+
+
+access the assets manager. 
+
+Used to get the private attribute \hyperlink{classengine_1_1_assets_manager}{Assets\+Manager}.
+
+\begin{DoxyReturn}{Returns}
+the game assets manager. 
+\end{DoxyReturn}
+
+
+Definition at line 91 of file game.\+hpp.
+
+\index{engine\+::\+Game@{engine\+::\+Game}!get\+Timer@{get\+Timer}}
+\index{get\+Timer@{get\+Timer}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{get\+Timer()}{getTimer()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Timer}\& engine\+::\+Game\+::get\+Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classengine_1_1_game_af3b784dd57665c8b8cfa8d17e70fff9a}{}\label{classengine_1_1_game_af3b784dd57665c8b8cfa8d17e70fff9a}
+
+
+access the \hyperlink{classengine_1_1_timer}{Timer}. 
+
+Used to get the private attribute \hyperlink{classengine_1_1_timer}{Timer}.
+
+\begin{DoxyReturn}{Returns}
+the game timer. 
+\end{DoxyReturn}
+
+
+Definition at line 80 of file game.\+hpp.
+
+\index{engine\+::\+Game@{engine\+::\+Game}!restart\+Scene@{restart\+Scene}}
+\index{restart\+Scene@{restart\+Scene}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{restart\+Scene(std\+::string scene\+Name)}{restartScene(std::string sceneName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+::restart\+Scene (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{scene\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_ae3e212e771960fda160fd298306460c8}{}\label{classengine_1_1_game_ae3e212e771960fda160fd298306460c8}
+
+
+Restart game scene. 
+
+Load the scene. Used every time a scene needs to be reseted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene\+Name} & string that has the scene name.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 132 of file game.\+cpp.
+
+\index{engine\+::\+Game@{engine\+::\+Game}!run@{run}}
+\index{run@{run}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{run()}{run()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+::run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{}\label{classengine_1_1_game_a1ab78f5ed0d5ea879157357cf2fb2afa}
+
+
+Main \hyperlink{classengine_1_1_game}{Game} Loop and \hyperlink{classengine_1_1_s_d_l}{S\+DL} Initiators. 
+
+Run all the game.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+If the time that has passed until now was faster than the frame\textquotesingle{}s time, is needed wait the time necessary to complete a frame\textquotesingle{}s time.
+
+Definition at line 41 of file game.\+cpp.
+
+\index{engine\+::\+Game@{engine\+::\+Game}!set\+Attributes@{set\+Attributes}}
+\index{set\+Attributes@{set\+Attributes}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{set\+Attributes(std\+::string game\+Name, int window\+Width, int window\+Height, int frame\+Rate)}{setAttributes(std::string gameName, int windowWidth, int windowHeight, int frameRate)}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+::set\+Attributes (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{game\+Name, }
+\item[{int}]{window\+Width, }
+\item[{int}]{window\+Height, }
+\item[{int}]{frame\+Rate}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_game_a8f6fd890cc6a5c4e4fc8fa5b325d0ca3}{}\label{classengine_1_1_game_a8f6fd890cc6a5c4e4fc8fa5b325d0ca3}
+
+
+set the game attributtes to \hyperlink{classengine_1_1_s_d_l}{S\+DL} instance. 
+
+Transfer the game attributes to \hyperlink{classengine_1_1_s_d_l}{S\+DL} instace and set \hyperlink{classengine_1_1_game}{Game}\textquotesingle{}s frame\+Rate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Name} & string that has the name of the game \\
+\hline
+{\em window\+Width} & sets the width of the game screen \\
+\hline
+{\em window\+Height} & sets the height of the game screen \\
+\hline
+{\em frame\+Rate} & Frames per Second of the \hyperlink{classengine_1_1_game}{Game} (F\+PS).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definition at line 216 of file game.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{engine\+::\+Game@{engine\+::\+Game}!game\+State@{game\+State}}
+\index{game\+State@{game\+State}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{game\+State}{gameState}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+State} engine\+::\+Game\+::game\+State}\hypertarget{classengine_1_1_game_a6e5b7bd8569cf22309b9f934ba426eae}{}\label{classengine_1_1_game_a6e5b7bd8569cf22309b9f934ba426eae}
+
+
+Definition at line 51 of file game.\+hpp.
+
+\index{engine\+::\+Game@{engine\+::\+Game}!input\+Manager@{input\+Manager}}
+\index{input\+Manager@{input\+Manager}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{input\+Manager}{inputManager}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Input\+Manager} engine\+::\+Game\+::input\+Manager}\hypertarget{classengine_1_1_game_ab9e84515e30301e673fa693c676f0c63}{}\label{classengine_1_1_game_ab9e84515e30301e673fa693c676f0c63}
+
+
+Definition at line 50 of file game.\+hpp.
+
+\index{engine\+::\+Game@{engine\+::\+Game}!instance@{instance}}
+\index{instance@{instance}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{instance}{instance}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game} Game\+::instance\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classengine_1_1_game_aed34cffcaed0e8027c11d68b1d42258b}{}\label{classengine_1_1_game_aed34cffcaed0e8027c11d68b1d42258b}
+
+
+Definition at line 48 of file game.\+hpp.
+
+\index{engine\+::\+Game@{engine\+::\+Game}!sdl\+Elements@{sdl\+Elements}}
+\index{sdl\+Elements@{sdl\+Elements}!engine\+::\+Game@{engine\+::\+Game}}
+\subsubsection[{\texorpdfstring{sdl\+Elements}{sdlElements}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+DL} engine\+::\+Game\+::sdl\+Elements}\hypertarget{classengine_1_1_game_ab4a295f7b30b191183d5411f5fa5d66b}{}\label{classengine_1_1_game_ab4a295f7b30b191183d5411f5fa5d66b}
+
+
+Definition at line 49 of file game.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{game_8hpp}{game.\+hpp}\item 
+engine/src/\hyperlink{game_8cpp}{game.\+cpp}\end{DoxyCompactItemize}

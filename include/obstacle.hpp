@@ -1,3 +1,12 @@
+/** 
+ * @file obstacle.hpp
+ * @brief Purpose: Contains the Obstacle class declaration.
+ * 
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+*/
 #ifndef OBSTACLE
 #define OBSTACLE
 
@@ -7,7 +16,12 @@
 
 namespace Azo {
 
-	// Add new Obstacle Types here.
+	/**
+	 * @brief Class for possible Obstacle Types.
+	 * 
+	 * Enum class used to differentiate obstacle types accordingly
+	 * for sprite images and sizing purposes.
+	 */ 
 	enum class ObstacleType {
 		GROUND,
 		WESTERN_BOX,
@@ -19,6 +33,13 @@ namespace Azo {
 		WESTERN_POST
 	};
 
+
+	/**
+	 * @brief Class for MachinePart state.
+	 * 
+	 * Used to report the state of the game colectible MachinePart
+	 * to ensure it is displayed correctly based on its state.
+	 */
 	enum class MachinePartState {
 		COLLECTED,
 		NON_COLLECTED,
@@ -26,36 +47,44 @@ namespace Azo {
 		FINISHED,
 	};
 
+
+	/**
+	 * @brief Obstacle class for in-game objects with collision.
+	 * 
+	 * Used to create game objects that the player has to avoid in order to
+	 * progress or has to collect in-game(such as MachineParts).
+	 */ 
 	class Obstacle : public engine::GameObject {
 		public:
-			std::pair<double, double> m_position_relative_to_parent;
-			std::list<InvisibleBlock *> m_block_list;
-			ObstacleType m_obstacle_type;
-			MachinePartState m_machine_part_state = MachinePartState::NON_MACHINE;
+			std::pair<double, double> mPositionRelativeToParent;
+			std::list<InvisibleBlock *> mBlockList;
+			ObstacleType mObstacleType;
+			MachinePartState mMachinePartState = MachinePartState::NON_MACHINE;
 		private:
-			engine::ImageComponent *m_obstacle_image = NULL;
-
-			engine::AudioController *m_audio_controller = NULL;
-
-			engine::Animation *m_turning = NULL;
-
-			engine::AudioComponent *m_collected = NULL;
-
-			std::vector<engine::Sprite *> m_turning_animation_sprites;
-
-			MachinePartCode *m_machine_part_code = NULL;
+			// Initializing pointes for components
+			engine::ImageComponent *mObstacleImage = NULL;
+			engine::AudioController *mAudioController = NULL;
+			engine::Animation *mTurning = NULL;
+			engine::AudioComponent *mCollected = NULL;
+			std::vector<engine::Sprite *> mTurningAnimationSprites;
+			MachinePartCode *mMachinePartCode = NULL;
 		public:
 			Obstacle();
 			virtual ~Obstacle();
-			Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type);
-			void Shutdown();
-			inline std::string GetClassName(){
-				return "Obstacle";
+			Obstacle(std::string name, std::pair<double, double> positionRelativeToParent, ObstacleType obstacleType);
+			void shutdown();
+			/**
+			 * @brief Method for class name.
+			 * 
+			 * Inline method for returning the class' name.
+			 */ 
+			inline std::string getClassName(){
+				return "obstacle";
 			}
 		private:
-			void CreateComponents();
-			void CreateBlocks();
-			void GenTurningAnimation();
+			void createComponents();
+			void createBlocks();
+			void generateTurningAnimation();
 
 	};
 }

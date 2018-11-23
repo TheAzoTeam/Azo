@@ -1,0 +1,240 @@
+\hypertarget{classengine_1_1_animation_controller}{}\section{engine\+:\+:Animation\+Controller Class Reference}
+\label{classengine_1_1_animation_controller}\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+
+
+{\ttfamily \#include $<$animation\+\_\+controller.\+hpp$>$}
+
+Inheritance diagram for engine\+:\+:Animation\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classengine_1_1_animation_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classengine_1_1_animation_controller_a13976b0254122a71974b37ebc93b8526}{Animation\+Controller} ()
+\item 
+\hyperlink{classengine_1_1_animation_controller_ab56bec2905e143305453f2f2a88d0af8}{Animation\+Controller} (\hyperlink{classengine_1_1_game_object}{Game\+Object} \&\hyperlink{classengine_1_1_component_ad4a4865ca4df98ebea34d04a4ec5ad07}{game\+Object})
+\item 
+void \hyperlink{classengine_1_1_animation_controller_af52ba43bd14bb3cd912edd7a84afb3f9}{add\+Animation} (std\+::string \hyperlink{classengine_1_1_animation_a7db6aae9eef0e347e04af32b05a28476}{animation\+Name}, \hyperlink{classengine_1_1_animation}{Animation} \&animation)
+\item 
+void \hyperlink{classengine_1_1_animation_controller_af8950a96e4ac42fdab1d96bc79b951f4}{start\+Unique\+Animation} (std\+::string \hyperlink{classengine_1_1_animation_a7db6aae9eef0e347e04af32b05a28476}{animation\+Name})
+\item 
+void \hyperlink{classengine_1_1_animation_controller_ac0648702aa6724e46a4e377ae35221e1}{start\+Animation} (std\+::string \hyperlink{classengine_1_1_animation_a7db6aae9eef0e347e04af32b05a28476}{animation\+Name})
+\item 
+void \hyperlink{classengine_1_1_animation_controller_afc25ba59dc57193330399c491adff4bd}{stop\+Animation} (std\+::string \hyperlink{classengine_1_1_animation_a7db6aae9eef0e347e04af32b05a28476}{animation\+Name})
+\item 
+\hyperlink{namespaceengine_aa24807a1a7834d08efa99ae4672d3544}{Animation\+State} \hyperlink{classengine_1_1_animation_controller_a700251abe0a8f2145c84eb1d414f85c4}{get\+Animation\+Status} (std\+::string \hyperlink{classengine_1_1_animation_a7db6aae9eef0e347e04af32b05a28476}{animation\+Name})
+\item 
+void \hyperlink{classengine_1_1_animation_controller_ae40c2032604f044293d50c27da416f01}{init} ()
+\begin{DoxyCompactList}\small\item\em inherits function that initialize the game components \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_animation_controller_a63ed3b30c0ea1fba109e6bed452c21ce}{shutdown} ()
+\begin{DoxyCompactList}\small\item\em inherits function that disable the game components \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_animation_controller_a906d2adadfd5eeb2dc6edff3e2f15c45}{draw} ()
+\begin{DoxyCompactList}\small\item\em inherits function that draw game objects. \end{DoxyCompactList}\item 
+void \hyperlink{classengine_1_1_animation_controller_a90f9286c95905815716f87bf6aae733c}{next\+Sprite} (std\+::string name)
+\item 
+std\+::string \hyperlink{classengine_1_1_animation_controller_a227866340161b386c3e39503a15e03cc}{get\+Class\+Name} ()
+\begin{DoxyCompactList}\small\item\em access the name of the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 23 of file animation\+\_\+controller.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!Animation\+Controller@{Animation\+Controller}}
+\index{Animation\+Controller@{Animation\+Controller}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{Animation\+Controller()}{AnimationController()}}]{\setlength{\rightskip}{0pt plus 5cm}Animation\+Controller\+::\+Animation\+Controller (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_controller_a13976b0254122a71974b37ebc93b8526}{}\label{classengine_1_1_animation_controller_a13976b0254122a71974b37ebc93b8526}
+
+
+Definition at line 40 of file animation\+\_\+controller.\+cpp.
+
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!Animation\+Controller@{Animation\+Controller}}
+\index{Animation\+Controller@{Animation\+Controller}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{Animation\+Controller(\+Game\+Object \&game\+Object)}{AnimationController(GameObject &gameObject)}}]{\setlength{\rightskip}{0pt plus 5cm}Animation\+Controller\+::\+Animation\+Controller (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Object} \&}]{game\+Object}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_controller_ab56bec2905e143305453f2f2a88d0af8}{}\label{classengine_1_1_animation_controller_ab56bec2905e143305453f2f2a88d0af8}
+
+
+Definition at line 44 of file animation\+\_\+controller.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!add\+Animation@{add\+Animation}}
+\index{add\+Animation@{add\+Animation}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{add\+Animation(std\+::string animation\+Name, Animation \&animation)}{addAnimation(std::string animationName, Animation &animation)}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+Controller\+::add\+Animation (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{animation\+Name, }
+\item[{{\bf Animation} \&}]{animation}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_controller_af52ba43bd14bb3cd912edd7a84afb3f9}{}\label{classengine_1_1_animation_controller_af52ba43bd14bb3cd912edd7a84afb3f9}
+
+
+Definition at line 49 of file animation\+\_\+controller.\+cpp.
+
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!draw@{draw}}
+\index{draw@{draw}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{draw()}{draw()}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+Controller\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_animation_controller_a906d2adadfd5eeb2dc6edff3e2f15c45}{}\label{classengine_1_1_animation_controller_a906d2adadfd5eeb2dc6edff3e2f15c45}
+
+
+inherits function that draw game objects. 
+
+draws all the enabled game objects.
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_animation_a5bc1f5aaee0372f573d4537dab43a162}{engine\+::\+Animation}.
+
+
+
+Definition at line 24 of file animation\+\_\+controller.\+cpp.
+
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!get\+Animation\+Status@{get\+Animation\+Status}}
+\index{get\+Animation\+Status@{get\+Animation\+Status}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Animation\+Status(std\+::string animation\+Name)}{getAnimationStatus(std::string animationName)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Animation\+State} Animation\+Controller\+::get\+Animation\+Status (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{animation\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_controller_a700251abe0a8f2145c84eb1d414f85c4}{}\label{classengine_1_1_animation_controller_a700251abe0a8f2145c84eb1d414f85c4}
+
+
+Definition at line 98 of file animation\+\_\+controller.\+cpp.
+
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!get\+Class\+Name@{get\+Class\+Name}}
+\index{get\+Class\+Name@{get\+Class\+Name}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{get\+Class\+Name()}{getClassName()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string engine\+::\+Animation\+Controller\+::get\+Class\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classengine_1_1_animation_controller_a227866340161b386c3e39503a15e03cc}{}\label{classengine_1_1_animation_controller_a227866340161b386c3e39503a15e03cc}
+
+
+access the name of the class. 
+
+Used to get the private attribute class\+Name.
+
+\begin{DoxyReturn}{Returns}
+string that contains the scene name. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_animation_a6d7f93578e25311f51f2b3c737f885b2}{engine\+::\+Animation}.
+
+
+
+Definition at line 45 of file animation\+\_\+controller.\+hpp.
+
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!init@{init}}
+\index{init@{init}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+Controller\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_animation_controller_ae40c2032604f044293d50c27da416f01}{}\label{classengine_1_1_animation_controller_ae40c2032604f044293d50c27da416f01}
+
+
+inherits function that initialize the game components 
+
+Set all game components to enable
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_component_aa0bf4fb5f4bc0de25d3f7beef3a3ca45}{engine\+::\+Component}.
+
+
+
+Definition at line 17 of file animation\+\_\+controller.\+cpp.
+
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!next\+Sprite@{next\+Sprite}}
+\index{next\+Sprite@{next\+Sprite}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{next\+Sprite(std\+::string name)}{nextSprite(std::string name)}}]{\setlength{\rightskip}{0pt plus 5cm}void engine\+::\+Animation\+Controller\+::next\+Sprite (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_controller_a90f9286c95905815716f87bf6aae733c}{}\label{classengine_1_1_animation_controller_a90f9286c95905815716f87bf6aae733c}
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{shutdown()}{shutdown()}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+Controller\+::shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classengine_1_1_animation_controller_a63ed3b30c0ea1fba109e6bed452c21ce}{}\label{classengine_1_1_animation_controller_a63ed3b30c0ea1fba109e6bed452c21ce}
+
+
+inherits function that disable the game components 
+
+free the component pointers
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}void\char`\"{}. 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classengine_1_1_animation_a219053e2c5bc9179fa355f14cf9bf032}{engine\+::\+Animation}.
+
+
+
+Definition at line 33 of file animation\+\_\+controller.\+cpp.
+
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!start\+Animation@{start\+Animation}}
+\index{start\+Animation@{start\+Animation}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{start\+Animation(std\+::string animation\+Name)}{startAnimation(std::string animationName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+Controller\+::start\+Animation (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{animation\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_controller_ac0648702aa6724e46a4e377ae35221e1}{}\label{classengine_1_1_animation_controller_ac0648702aa6724e46a4e377ae35221e1}
+
+
+Definition at line 74 of file animation\+\_\+controller.\+cpp.
+
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!start\+Unique\+Animation@{start\+Unique\+Animation}}
+\index{start\+Unique\+Animation@{start\+Unique\+Animation}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{start\+Unique\+Animation(std\+::string animation\+Name)}{startUniqueAnimation(std::string animationName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+Controller\+::start\+Unique\+Animation (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{animation\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_controller_af8950a96e4ac42fdab1d96bc79b951f4}{}\label{classengine_1_1_animation_controller_af8950a96e4ac42fdab1d96bc79b951f4}
+
+
+Definition at line 55 of file animation\+\_\+controller.\+cpp.
+
+\index{engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}!stop\+Animation@{stop\+Animation}}
+\index{stop\+Animation@{stop\+Animation}!engine\+::\+Animation\+Controller@{engine\+::\+Animation\+Controller}}
+\subsubsection[{\texorpdfstring{stop\+Animation(std\+::string animation\+Name)}{stopAnimation(std::string animationName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Animation\+Controller\+::stop\+Animation (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{animation\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classengine_1_1_animation_controller_afc25ba59dc57193330399c491adff4bd}{}\label{classengine_1_1_animation_controller_afc25ba59dc57193330399c491adff4bd}
+
+
+Definition at line 88 of file animation\+\_\+controller.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+engine/include/\hyperlink{animation__controller_8hpp}{animation\+\_\+controller.\+hpp}\item 
+engine/src/\hyperlink{animation__controller_8cpp}{animation\+\_\+controller.\+cpp}\end{DoxyCompactItemize}

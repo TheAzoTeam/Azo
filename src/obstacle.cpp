@@ -1,297 +1,428 @@
+/**
+ * @file obstacle.cpp
+ * @brief Purpose: Contains the Obstacle class methods.
+ *
+ * GPL v3.0 License
+ * Copyright (c) 2017 Azo
+ *
+ * https://github.com/TecProg2018-2/Azo/blob/master/LICENSE.md
+*/
 #include "obstacle.hpp"
 
 using namespace Azo;
 
-Obstacle::Obstacle(){}
+/**
+ * @brief Basic contructor for Obstacle.
+ *
+ * Default basic constructor for Obstacle.
+ */
+Obstacle::Obstacle() {}
 
+/**
+ * @brief Virtual constructor for Obstacle.
+ *
+ * Default virtual constructor for Obstacle.
+ */
 Obstacle::~Obstacle(){}
 
-void Obstacle::Shutdown(){
-	for(auto each_block : m_block_list){
-		if(each_block != NULL){
-			each_block->Shutdown();
-			delete(each_block);
-			each_block = NULL;
+
+/**
+ * @brief Destructor class for Obstacle.
+ *
+ * Used for shutting down each one of the Obstacle's attributes so as to free
+ * memory when closing the game.
+ */
+void Obstacle::shutdown() {
+	// Each block in mBlockList must be shutdown before Obstacle can also be shut down.
+	for (auto eachBlock : mBlockList) {
+		if (eachBlock != NULL) {
+			eachBlock->shutdown();
+			delete(eachBlock);
+			eachBlock = NULL;
+		} else {
+			//Nothing to do, the pointer is already null
 		}
 	}
 
-	if(m_turning_animation_sprites.size() > 0){
-		for(auto each_animation : m_turning_animation_sprites){
-			if(each_animation != NULL){
-				delete(each_animation);
-				each_animation = NULL;
+	// Clear any animations remaining before shutdding down Obstacle.
+	if (mTurningAnimationSprites.size() > 0) {
+		for (auto eachAnimation : mTurningAnimationSprites) {
+			if (eachAnimation != NULL) {
+				delete(eachAnimation);
+				eachAnimation = NULL;
+			} else {
+				//Nothing to do, the pointer is already null
 			}
 		}
+	} else {
+		//Nothing to do, there is no mTurningAnimationSprites
 	}
 
-	if(m_obstacle_image != NULL){
-		delete(m_obstacle_image);
-		m_obstacle_image = NULL;
+	// Clear all remaining images.
+	if (mObstacleImage != NULL) {
+		delete(mObstacleImage);
+		mObstacleImage = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
-	if(m_audio_controller != NULL){
-		m_audio_controller->Shutdown();
-		delete(m_audio_controller);
-		m_audio_controller = NULL;
+	// Clear all remaining audio.
+	if (mAudioController != NULL) {
+		mAudioController->shutdown();
+		delete(mAudioController);
+		mAudioController = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
-	if(m_collected != NULL){
-		m_collected = NULL;
+	// Reset mCollected value.
+	if (mCollected != NULL) {
+		mCollected = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
-	if(m_turning != NULL){
-		delete(m_turning);
-		m_turning = NULL;
+	// Reset mTurning value.
+	if (mTurning != NULL) {
+		delete(mTurning);
+		mTurning = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 
-
-	if(m_machine_part_code != NULL){
-		m_machine_part_code->Shutdown();
-		delete(m_machine_part_code);
-		m_machine_part_code = NULL;
+	// Shutdown mMachinePart code.
+	if (mMachinePartCode != NULL) {
+		mMachinePartCode->shutdown();
+		delete(mMachinePartCode);
+		mMachinePartCode = NULL;
+	} else {
+		//Nothing to do, the pointer is already null
 	}
 }
 
 
-Obstacle::Obstacle(std::string name, std::pair<double, double> position_relative_to_parent, ObstacleType obstacle_type){
-	m_name = name;
-	m_position_relative_to_parent = position_relative_to_parent;
-	m_current_position = m_position_relative_to_parent;
+/**
+ * @brief Constructor class for Obstacle.
+ *
+ * Used to initialize Obstacle class variables.
+ * @param name Obstacle name.
+ * @param positionRelativeToParent Pair of doubles relative to position(range > 0).
+ * @param obstacleType Type of obstacle according to enum class ObstacleType from obstacle.hpp .
+ */
+Obstacle::Obstacle(std::string name, std::pair<double, double> positionRelativeToParent, ObstacleType obstacleType) {
+	// Initializing Obstacle variables.
+	mName = name;
+	ASSERT(mName != "", "name can't be empty.");
+	mPositionRelativeToParent = positionRelativeToParent;
+	mCurrentPosition = mPositionRelativeToParent;
+	mObstacleType = obstacleType;
 
-	m_obstacle_type = obstacle_type;
-
-	CreateComponents();
+	createComponents();
 }
 
-// Here we add the imagens/sound to the obstacle, based on its type.
-void Obstacle::CreateComponents(){
+
+/**
+ * @brief Method for creating components to Obstacle.
+ *
+ * Used for creating components according to its type (AudioComponent or ImageComponent).
+ */
+void Obstacle::createComponents() {
 	DEBUG("Creating obstacle components.");
-	if(m_obstacle_type == ObstacleType::WESTERN_CAR){
-		DEBUG("Obstacle is a WESTERN CAR!");
-		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
-		this->AddComponent(*m_obstacle_image);
-		CreateBlocks();
+	// If and else if blocks for each ObstacleType and its respective initialization.
+	switch (mObstacleType) {
+		case ObstacleType::WESTERN_CAR:
+			DEBUG("obstacle is a WESTERN CAR!");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/broken_caravan.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_CAR, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	}else if(m_obstacle_type == ObstacleType::WESTERN_BOX){
-		DEBUG("Obstacle is a WESTERN BOX!");
-		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
-		this->AddComponent(*m_obstacle_image);
-		CreateBlocks();
+		case ObstacleType::WESTERN_BOX:
+			DEBUG("obstacle is a WESTERN BOX!");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/box.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_BOX, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	}else if(m_obstacle_type == ObstacleType::WESTERN_RAISED_BOX){
-		DEBUG("Obstacle is a WESTERN RAISED BOX!");
-		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
-		this->AddComponent(*m_obstacle_image);
-		CreateBlocks();
+		case ObstacleType::WESTERN_RAISED_BOX:
+			DEBUG("obstacle is a WESTERN RAISED BOX!");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/raised_box.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_RAISED_BOX, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	}else if(m_obstacle_type == ObstacleType::WESTERN_ROCK){
-		DEBUG("Obstacle is a WESTERN ROCK");
-		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
-		this->AddComponent(*m_obstacle_image);
-		CreateBlocks();
+		case ObstacleType::WESTERN_ROCK:
+			DEBUG("obstacle is a WESTERN ROCK");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/rock.png", 1);
+			ASSERT(mObstacleImage != NULL, "ObstacleType::WESTERN_ROCK, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-	}else if(m_obstacle_type == ObstacleType::MACHINE_PART){
-		DEBUG("Obstacle is a MACHINE PART");
-		m_machine_part_state = MachinePartState::NON_COLLECTED;
-		GenTurningAnimation();
-		m_turning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, m_turning_animation_sprites, 0, 23, true, 1);
-		this->AddComponent(*m_turning);
+		case ObstacleType::MACHINE_PART:
+			DEBUG("obstacle is a MACHINE PART");
+			mMachinePartState = MachinePartState::NON_COLLECTED;
+			generateTurningAnimation();
+			mTurning = new engine::Animation(*this, "sprites/machine_part.png", 1200.0f, mTurningAnimationSprites, 0, 23, true, 1);
+			this->addComponent(*mTurning);
 
-		m_audio_controller = new engine::AudioController();
-		m_collected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
-		m_audio_controller->AddAudio("coleta", *m_collected);
-		this->AddComponent(*m_audio_controller);
+			mAudioController = new engine::AudioController();
+			ASSERT(mAudioController != NULL, "engine::AudioController, AudioController can't be NULL.");
+			mCollected = new engine::AudioComponent(*this, "audios/coleta.ogg", false, false);
+			ASSERT(mCollected != NULL, "engine::AudioComponent, AudioComponent can't be NULL.");
+			mAudioController->addAudio("coleta", *mCollected);
+			this->addComponent(*mAudioController);
 
-		m_machine_part_code = new MachinePartCode(this);
-		this->AddComponent(*m_machine_part_code);
+			mMachinePartCode = new MachinePartCode(this);
+			ASSERT(mMachinePartCode != NULL, "MachinePartCode, mMachinePartCode can't return NULL.");
+			this->addComponent(*mMachinePartCode);
+			break;
 
-	}else if(m_obstacle_type == ObstacleType::WESTERN_SPIKE){
-		DEBUG("Obstacle is a WESTERN SPIKE");
+		case ObstacleType::WESTERN_SPIKE:
+			DEBUG("obstacle is a WESTERN SPIKE");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
+			ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
 
-		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/Espinhos_rose.png", 1);
-		this->AddComponent(*m_obstacle_image);
-		CreateBlocks();
-	}else if(m_obstacle_type == ObstacleType::WESTERN_POST){
-		DEBUG("Obstacle is a WESTERN POST");
+		case ObstacleType::WESTERN_POST:
+			DEBUG("obstacle is a WESTERN POST");
+			mObstacleImage = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
+			ASSERT(mObstacleImage != NULL, "engine::ImageComponent, mObstacleImage can't be NULL.");
+			this->addComponent(*mObstacleImage);
+			createBlocks();
+			break;
+		
+		case ObstacleType::GROUND:
+			createBlocks();
+			break;
 
-		m_obstacle_image = new engine::ImageComponent(*this, "backgrounds/obstaculoDescer2.png", 1);
-		this->AddComponent(*m_obstacle_image);
-		CreateBlocks();
-	}else if(m_obstacle_type == ObstacleType::GROUND){
-		CreateBlocks();
+		default:
+			//Nothing to do, there is no component with this type
+			break;
 	}
 }
 
-// Here we create the invisible objects that make the obstacle.
-// The name attribute of the InvisibleBlock isn't needed. It's for testing only.
-// It's important to create the blocks based on the type of the object.
-void Obstacle::CreateBlocks(){
 
-	// We initialize the block' position as the position relative to parent of the obstacle.
-	// This way we can position things inside the obstacle just by adding values.
-	std::pair<double, double> block_position = m_position_relative_to_parent;
-	if(m_obstacle_type == ObstacleType::GROUND){
-		//	DEBUG("Creating invisible block for the ground.");
-		m_block_list.push_back(new InvisibleBlock("block_1", block_position, std::make_pair(21000, 100)));
-		//	DEBUG("List size: " << m_block_list.size());
-	}else if(m_obstacle_type == ObstacleType::WESTERN_CAR){
+/**
+ * @brief Method for creating blocks.
+ *
+ * Used to create invisible objects that compose the Obstacle based on the type
+ * of the object.
+ * Note that the name of the InvisibleBlock is only for internal use.
+ */
+void Obstacle::createBlocks() {
 
-		block_position.first += 69;
-		block_position.second += 20;
+	/*
+	  We initialize the block' position as the position relative to parent of the obstacle.
+	  This way we can position things inside the obstacle just by adding values to the position.
+	*/
+	std::pair<double, double> blockPosition = mPositionRelativeToParent;
 
-		m_block_list.push_back(new InvisibleBlock("block_2", block_position, std::make_pair(109, 143)));
-	}else if(m_obstacle_type == ObstacleType::WESTERN_BOX){
-		block_position.first += 58;
-		block_position.second += 6;
+	// If and else if blocks for setting obstacle position based on its type ObstacleType.
+	switch (mObstacleType) {
+		case ObstacleType::GROUND:
+			mBlockList.push_back(new InvisibleBlock("block_1",
+													blockPosition,
+													std::make_pair(21000, 100)));
+			break;
+		
+		case ObstacleType::WESTERN_CAR:
+			blockPosition.first += 69;
+			blockPosition.second += 20;
+			mBlockList.push_back(new InvisibleBlock("block_2",
+													blockPosition,
+													std::make_pair(109, 143)));
+			break;
 
-		m_block_list.push_back(new InvisibleBlock("block_3", block_position, std::make_pair(63, 73)));
-	}else if(m_obstacle_type == ObstacleType::WESTERN_RAISED_BOX){
-		block_position.first += 35;
-		block_position.second += 6;
+		case ObstacleType::WESTERN_BOX:
+			blockPosition.first += 58;
+			blockPosition.second += 6;
+			mBlockList.push_back(new InvisibleBlock("block_3",
+													blockPosition,
+													std::make_pair(63, 73)));
+			break;
 
-		m_block_list.push_back(new InvisibleBlock("block_4", block_position, std::make_pair(50, 68)));
-	}else if(m_obstacle_type == ObstacleType::WESTERN_ROCK){
-		block_position.first += 80;
-		block_position.second += 12;
+		case ObstacleType::WESTERN_RAISED_BOX:
+			blockPosition.first += 35;
+			blockPosition.second += 6;
+			mBlockList.push_back(new InvisibleBlock("block_4",
+													blockPosition,
+													std::make_pair(50, 68)));
+			break;
 
-		m_block_list.push_back(new InvisibleBlock("block_5", block_position, std::make_pair(4, 100)));
-	}else if(m_obstacle_type == ObstacleType::WESTERN_SPIKE){
-		block_position.first += 19;
-		block_position.second += 23;
+		case ObstacleType::WESTERN_ROCK:
+			blockPosition.first += 80;
+			blockPosition.second += 12;
+			mBlockList.push_back(new InvisibleBlock("block_5",
+													blockPosition,
+													std::make_pair(4, 100)));
+			break;
 
-		m_block_list.push_back(new InvisibleBlock("block_6", block_position, std::make_pair(210, 92)));
-	}else if(m_obstacle_type == ObstacleType::WESTERN_POST){
-		block_position.first += 48;
-		block_position.second += 32;
+		case ObstacleType::WESTERN_SPIKE:
+			blockPosition.first += 19;
+			blockPosition.second += 23;
+			mBlockList.push_back(new InvisibleBlock("block_6",
+													blockPosition,
+													std::make_pair(210, 92)));
+			break;
 
-		m_block_list.push_back(new InvisibleBlock("block_7", block_position, std::make_pair(23, 106)));
+		case ObstacleType::WESTERN_POST:
+			blockPosition.first += 48;
+			blockPosition.second += 32;
+			mBlockList.push_back(new InvisibleBlock("block_7",
+													blockPosition,
+													std::make_pair(23, 106)));
+			break;
+
+		default:
+			//Nothing to do, there is no component with this type
+			break;
 	}
 
 }
 
-void Obstacle::GenTurningAnimation(){
-	for(int i = 0; i < 24; i++){
-		m_turning_animation_sprites.push_back(new engine::Sprite());
+
+/**
+ * @brief Method for setting up animated obstacles.
+ *
+ * Used for generating animations for obstacles that have animated sprites.
+ */
+void Obstacle::generateTurningAnimation() {
+	// Default animation speed is 24 frames per second.
+	const int NUMBER_SPRITES_TURNING_ANIMATION = 24;
+	// Fill sprites animation up to the NUMBER_SPRITES_TURNING_ANIMATION const.
+	for (int i = 0; i < NUMBER_SPRITES_TURNING_ANIMATION; i++) {
+		mTurningAnimationSprites.push_back(new engine::Sprite());
 	}
 
-	m_turning_animation_sprites[0]->sprite_x = 13;
-	m_turning_animation_sprites[0]->sprite_y = 11;
-	m_turning_animation_sprites[0]->sprite_width = 49 - 13;
-	m_turning_animation_sprites[0]->sprite_height = 47 - 11;
+	/*
+      Set the animation sprite coordinates (x, y)
+      and its Width and Height based on its coordinates (width - spriteX) and (Height - spriteY).
+  	*/
 
-	m_turning_animation_sprites[1]->sprite_x = 50;
-	m_turning_animation_sprites[1]->sprite_y = 11;
-	m_turning_animation_sprites[1]->sprite_width = 86 - 50;
-	m_turning_animation_sprites[1]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[0]->setSpriteX(13);
+	mTurningAnimationSprites[0]->setSpriteY(11);
+	mTurningAnimationSprites[0]->setSpriteWidth(49 - 13);
+	mTurningAnimationSprites[0]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[2]->sprite_x = 87;
-	m_turning_animation_sprites[2]->sprite_y = 11;
-	m_turning_animation_sprites[2]->sprite_width = 123 - 87;
-	m_turning_animation_sprites[2]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[1]->setSpriteX(50);
+	mTurningAnimationSprites[1]->setSpriteY(11);
+	mTurningAnimationSprites[1]->setSpriteWidth(86 - 50);
+	mTurningAnimationSprites[1]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[3]->sprite_x = 124;
-	m_turning_animation_sprites[3]->sprite_y = 11;
-	m_turning_animation_sprites[3]->sprite_width = 160 - 124;
-	m_turning_animation_sprites[3]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[2]->setSpriteX(87);
+	mTurningAnimationSprites[2]->setSpriteY(11);
+	mTurningAnimationSprites[2]->setSpriteWidth(123 - 87);
+	mTurningAnimationSprites[2]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[4]->sprite_x = 161;
-	m_turning_animation_sprites[4]->sprite_y = 11;
-	m_turning_animation_sprites[4]->sprite_width = 197 - 161;
-	m_turning_animation_sprites[4]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[3]->setSpriteX(124);
+	mTurningAnimationSprites[3]->setSpriteY(11);
+	mTurningAnimationSprites[3]->setSpriteWidth(160 - 124);
+	mTurningAnimationSprites[3]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[5]->sprite_x = 198;
-	m_turning_animation_sprites[5]->sprite_y = 11;
-	m_turning_animation_sprites[5]->sprite_width = 234 - 198;
-	m_turning_animation_sprites[5]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[4]->setSpriteX(161);
+	mTurningAnimationSprites[4]->setSpriteY(11);
+	mTurningAnimationSprites[4]->setSpriteWidth(197 - 161);
+	mTurningAnimationSprites[4]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[6]->sprite_x = 240;
-	m_turning_animation_sprites[6]->sprite_y = 11;
-	m_turning_animation_sprites[6]->sprite_width = 271 - 240;
-	m_turning_animation_sprites[6]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[5]->setSpriteX(198);
+	mTurningAnimationSprites[5]->setSpriteY(11);
+	mTurningAnimationSprites[5]->setSpriteWidth(234 - 198);
+	mTurningAnimationSprites[5]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[7]->sprite_x = 277;
-	m_turning_animation_sprites[7]->sprite_y = 11;
-	m_turning_animation_sprites[7]->sprite_width = 308 - 277;
-	m_turning_animation_sprites[7]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[6]->setSpriteX(240);
+	mTurningAnimationSprites[6]->setSpriteY(11);
+	mTurningAnimationSprites[6]->setSpriteWidth(271 - 240);
+	mTurningAnimationSprites[6]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[8]->sprite_x = 314;
-	m_turning_animation_sprites[8]->sprite_y = 11;
-	m_turning_animation_sprites[8]->sprite_width = 345 - 314;
-	m_turning_animation_sprites[8]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[7]->setSpriteX(277);
+	mTurningAnimationSprites[7]->setSpriteY(11);
+	mTurningAnimationSprites[7]->setSpriteWidth(308 - 277);
+	mTurningAnimationSprites[7]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[9]->sprite_x = 351;
-	m_turning_animation_sprites[9]->sprite_y = 11;
-	m_turning_animation_sprites[9]->sprite_width = 382 - 351;
-	m_turning_animation_sprites[9]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[8]->setSpriteX(314);
+	mTurningAnimationSprites[8]->setSpriteY(11);
+	mTurningAnimationSprites[8]->setSpriteWidth(345 - 314);
+	mTurningAnimationSprites[8]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[10]->sprite_x = 388;
-	m_turning_animation_sprites[10]->sprite_y = 11;
-	m_turning_animation_sprites[10]->sprite_width = 419 - 388;
-	m_turning_animation_sprites[10]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[9]->setSpriteX(351);
+	mTurningAnimationSprites[9]->setSpriteY(11);
+	mTurningAnimationSprites[9]->setSpriteWidth(382 - 351);
+	mTurningAnimationSprites[9]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[11]->sprite_x = 425;
-	m_turning_animation_sprites[11]->sprite_y = 11;
-	m_turning_animation_sprites[11]->sprite_width = 456 - 425;
-	m_turning_animation_sprites[11]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[10]->setSpriteX(388);
+	mTurningAnimationSprites[10]->setSpriteY(11);
+	mTurningAnimationSprites[10]->setSpriteWidth(419 - 388);
+	mTurningAnimationSprites[10]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[12]->sprite_x = 461;
-	m_turning_animation_sprites[12]->sprite_y = 11;
-	m_turning_animation_sprites[12]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[12]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[11]->setSpriteX(425);
+	mTurningAnimationSprites[11]->setSpriteY(11);
+	mTurningAnimationSprites[11]->setSpriteWidth(456 - 425);
+	mTurningAnimationSprites[11]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[13]->sprite_x = 461;
-	m_turning_animation_sprites[13]->sprite_y = 11;
-	m_turning_animation_sprites[13]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[13]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[12]->setSpriteX(461);
+	mTurningAnimationSprites[12]->setSpriteY(11);
+	mTurningAnimationSprites[12]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[12]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[14]->sprite_x = 461;
-	m_turning_animation_sprites[14]->sprite_y = 11;
-	m_turning_animation_sprites[14]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[14]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[13]->setSpriteX(461);
+	mTurningAnimationSprites[13]->setSpriteY(11);
+	mTurningAnimationSprites[13]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[13]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[15]->sprite_x = 461;
-	m_turning_animation_sprites[15]->sprite_y = 11;
-	m_turning_animation_sprites[15]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[15]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[14]->setSpriteX(461);
+	mTurningAnimationSprites[14]->setSpriteY(11);
+	mTurningAnimationSprites[14]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[14]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[16]->sprite_x = 461;
-	m_turning_animation_sprites[16]->sprite_y = 11;
-	m_turning_animation_sprites[16]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[16]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[15]->setSpriteX(461);
+	mTurningAnimationSprites[15]->setSpriteY(11);
+	mTurningAnimationSprites[15]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[15]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[17]->sprite_x = 461;
-	m_turning_animation_sprites[17]->sprite_y = 11;
-	m_turning_animation_sprites[17]->sprite_width = 497 - 461;
-	m_turning_animation_sprites[17]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[16]->setSpriteX(461);
+	mTurningAnimationSprites[16]->setSpriteY(11);
+	mTurningAnimationSprites[16]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[16]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[18]->sprite_x = 689;
-	m_turning_animation_sprites[18]->sprite_y = 11;
-	m_turning_animation_sprites[18]->sprite_width = 720 - 689;
-	m_turning_animation_sprites[18]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[17]->setSpriteX(461);
+	mTurningAnimationSprites[17]->setSpriteY(11);
+	mTurningAnimationSprites[17]->setSpriteWidth(497 - 461);
+	mTurningAnimationSprites[17]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[19]->sprite_x = 726;
-	m_turning_animation_sprites[19]->sprite_y = 11;
-	m_turning_animation_sprites[19]->sprite_width = 757 - 726;
-	m_turning_animation_sprites[19]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[18]->setSpriteX(689);
+	mTurningAnimationSprites[18]->setSpriteY(11);
+	mTurningAnimationSprites[18]->setSpriteWidth(720 - 689);
+	mTurningAnimationSprites[18]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[20]->sprite_x = 763;
-	m_turning_animation_sprites[20]->sprite_y = 11;
-	m_turning_animation_sprites[20]->sprite_width = 794 - 763;
-	m_turning_animation_sprites[20]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[19]->setSpriteX(726);
+	mTurningAnimationSprites[19]->setSpriteY(11);
+	mTurningAnimationSprites[19]->setSpriteWidth(757 - 726);
+	mTurningAnimationSprites[19]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[21]->sprite_x = 800;
-	m_turning_animation_sprites[21]->sprite_y = 11;
-	m_turning_animation_sprites[21]->sprite_width = 831 - 800;
-	m_turning_animation_sprites[21]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[20]->setSpriteX(763);
+	mTurningAnimationSprites[20]->setSpriteY(11);
+	mTurningAnimationSprites[20]->setSpriteWidth(794 - 763);
+	mTurningAnimationSprites[20]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[22]->sprite_x = 837;
-	m_turning_animation_sprites[22]->sprite_y = 11;
-	m_turning_animation_sprites[22]->sprite_width = 868 - 837;
-	m_turning_animation_sprites[22]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[21]->setSpriteX(800);
+	mTurningAnimationSprites[21]->setSpriteY(11);
+	mTurningAnimationSprites[21]->setSpriteWidth(831 - 800);
+	mTurningAnimationSprites[21]->setSpriteHeight(47 - 11);
 
-	m_turning_animation_sprites[23]->sprite_x = 874;
-	m_turning_animation_sprites[23]->sprite_y = 11;
-	m_turning_animation_sprites[23]->sprite_width = 905 - 874;
-	m_turning_animation_sprites[23]->sprite_height = 47 - 11;
+	mTurningAnimationSprites[22]->setSpriteX(837);
+	mTurningAnimationSprites[22]->setSpriteY(11);
+	mTurningAnimationSprites[22]->setSpriteWidth(868 - 837);
+	mTurningAnimationSprites[22]->setSpriteHeight(47 - 11);
+
+	mTurningAnimationSprites[23]->setSpriteX(874);
+	mTurningAnimationSprites[23]->setSpriteY(11);
+	mTurningAnimationSprites[23]->setSpriteWidth(905 - 874);
+	mTurningAnimationSprites[23]->setSpriteHeight(47 - 11);
 
 }
